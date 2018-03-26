@@ -1,0 +1,217 @@
+@ 유저 테이블 생성 @
+create table users(
+	user_num int(10) unsigned primary key not null auto_increment,
+	category varchar(10) not null,
+	user_id varchar(30) not null,
+	user_pw varchar(100) not null,
+	gender boolean not null,
+	email varchar(50) not null,
+	country varchar(30) not null,
+	birthday date not null,
+	favorite_1 varchar(20),
+	favorite_2 varchar(20),
+	favorite_3 varchar(20)
+);
+
+@ 식당 테이블 생성 @
+create table restaurants(
+	shop_id int(10) unsigned,
+	name varchar(30) not null,
+	user_num int(10) unsigned not null,
+	type varchar(20) not null,
+	explanation text not null,
+	phone int(20),
+	lunch_open time not null,
+	lunch_close time not null,
+	lunch_lo time not null,
+	dinner_open time not null,
+	dinner_close time not null,
+	dinner_lo time not null,
+	payment varchar(30) not null,
+	seat_num int(10) unsigned not null,
+	children boolean not null,
+	pet boolean not null,
+	parking boolean not null,
+	smoking boolean not null,
+	privateroom boolean not null,
+	user_option varchar(30),
+	foreign key (user_num) references users (user_num) on delete cascade
+
+);
+
+@ 메뉴 @
+create table menus (
+	menu_id int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	name varchar(30) not null,
+	explanation varchar(100),
+	price int(10) unsigned not null,
+	remark varchar(20)
+)
+
+@ 옵션 @
+create table options (
+	op_num int(10) unsigned primary key not null auto_increment,
+	menu_id int(10) unsigned not null,
+	name varchar(30),
+	foreign key (menu_id) references menu (menu_id) on delete cascade
+);
+
+@ 하위 옵션 @
+create table sub_options (
+	subop_num int(10) unsigned primary key not null auto_increment,
+	op_num int(10) unsigned not null,
+	name varchar(30),
+	foreign key (op_num) references options (op_num) on delete cascade
+);
+
+@  리뷰  @
+create table review (
+	review_id int(10) unsigned not null primary key auto_increment,
+	content text not null,
+	shop_id int(10) unsigned not null,
+	reg_date datetime not null,
+	writer varchar(30) not null,
+	rating decimal(8,2) not null default 0,
+	taste decimal(8,2) not null default 0,
+	service decimal(8,2) not null default 0,
+	mood decimal(8,2) not null default 0,
+	price decimal(8,2) not null default 0,
+	img_num int(10) unsigned not null default 0,
+	like_num int(10) unsigned not null default 0
+
+)
+
+@ 태그 @
+create table tags (
+	tag_num int(10) unsigned not null primary key auto_increment,
+	review_id int(10) unsigned not null,
+	tag varchar(50),
+	foreign key (review_id) references review (review_id) on delete cascade
+)
+
+@ 주문 @
+create table orders (
+	order_num int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	menu varchar(30),
+	user_num int(10) unsigned not null,
+	price int(10) unsigned not null,
+	quantity int(10) unsigned not null default 1,
+	order_date datetime
+)
+
+@ 주문 옵션 @
+create table orderoptions (
+	op_num int(10) unsigned not null primary key auto_increment,
+	order_num int(10) unsigned not null,
+	user_num int(10) unsigned not null,
+	main_option varchar(30),
+	sub_option varchar(30),
+	foreign key (order_num) references orders(order_num) on delete cascade
+)
+
+@ 예약 @
+create table reservations (
+	res_num int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	user_num int(10) unsigned not null,
+	date datetime not null,
+	person int(10) unsigned not null,
+	menu_select boolean not null,
+	order_num int(10) unsigned not null default 0
+)
+
+@ 리뷰 좋아요 @
+create table review_like (
+	like_num int(10) unsigned not null primary key auto_increment,
+	user_num int(10) unsigned not null,
+	review_id int(10) unsigned not null
+)
+
+@ 북마크 @
+create table bookmark (
+	bookmark_num int(10) unsigned not null primary key auto_increment,
+	user_num int(10) unsigned not null,
+	emoticon_num int(10) unsigned not null
+)
+
+@ 검색 기록 @
+create table search (
+	search_num int(10) unsigned not null primary key auto_increment,
+	user_num int(10) unsigned not null,
+	keyword varchar(100) not null,
+	search_date datetime not null
+)
+
+@ 예약 시간 설정 @
+create table resset (
+	resset_num int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	setting_date datetime not null,
+	setting_dateend datetime not null
+)
+
+@ 식당 좋아요 @
+create table shop_like (
+	like_num int(10) unsigned not null primary key auto_increment,
+	user_num int(10) unsigned not null,
+	shop_id int(10) unsigned not null
+)
+
+@ 이모티콘 @
+create table communication (
+	emoji_num int(10) unsigned not null primary key auto_increment,
+	category varchar(10) not null,
+	img_name varchar(30) not null
+)
+
+@ 정기 휴일 @
+create table holiday (
+	holiday_num int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	setting_date date not null
+)
+
+@ 쿠폰 @
+create table coupon (
+	coupon_num int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	coupon_name varchar(30) not null,
+	category varchar(20) not null,
+	discount int(10) unsigned,
+	user_num int(10) unsigned not null,
+	use_check boolean not null default false,
+	expiry_date datetime not null
+)
+
+@ 식당 공지사항 @
+create table shopnotice (
+	notice_num int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	contents text not null,
+	reg_date datetime not null
+)
+
+@ 레이아웃 @
+create table layout (
+	layout_num int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	layout_data json
+)
+
+@ 세트 메뉴 @
+create table setmenu (
+	set_id int(10) unsigned not null primary key auto_increment,
+	shop_id int(10) unsigned not null,
+	set_name varchar(30) not null,
+	explanation varchar(100),
+	price int(10) unsigned not null
+)
+
+@ 세트 메뉴 구성 요소 @
+create table setcomponent (
+	component_id int(10) unsigned not null primary key auto_increment,
+	set_id int(10) unsigned not null,
+	menu_id int(10) unsigned not null
+)
