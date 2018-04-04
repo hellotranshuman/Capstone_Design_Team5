@@ -69,16 +69,16 @@ Route::get('logout', [
 
 // <-- select Type
 Route::get('register/selectType', function (){
-    return view('selectForm');
+    return view('user.selectForm');
 });
 
 // <-- show Register Form
 Route::get('register/user', function (){
-    return view('userRegisterForm');
+    return view('user.userRegisterForm');
 });
 
 Route::get('register/owner', function (){
-    return view('ownerRegisterForm');
+    return view('user.ownerRegisterForm');
 });
 
 Route::get('test', [

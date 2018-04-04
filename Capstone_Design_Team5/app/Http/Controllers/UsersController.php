@@ -13,7 +13,7 @@ class UsersController extends Controller
     public function showLogin()
     {
         // show the form
-        return View('login');
+        return View('user.login');
     }
 
     public function doLogin(Request $request)
@@ -36,7 +36,7 @@ class UsersController extends Controller
 
         // <-- 유효성 검사 실패
         if ($validator->fails()) {
-            return Redirect::to('login')
+            return Redirect::to('user.login')
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         }
@@ -45,13 +45,13 @@ class UsersController extends Controller
 
             // <-- User Login 정보 가져오기
             $userData = array(
-                'userid'     => $request->get('id'),
+                'user_id'     => $request->get('id'),
                 'password'  => $request->get('password')
             );
 
             // <-- Login 정보 확인
             if (! auth()->attempt($userData, true)) {
-                return Redirect::to('login');
+                return Redirect::to('user.login');
             }
             else {
                 return redirect()->intended('main');

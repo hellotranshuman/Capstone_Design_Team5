@@ -10,7 +10,7 @@ class RestaurantController extends Controller
         if(auth()->user()->category == true)
             return 'failed!!!!!@@@';
         else
-            return view('welcome');
+            return view('restaurant.createRestaurant');
     }
 
     public function createRestaurant(Request $request) {
