@@ -81,7 +81,21 @@ Route::get('register/owner', function (){
     return view('user.ownerRegisterForm');
 });
 
-Route::get('test', [
+Route::get('createRestaurant', array(
+    'as' => 'restaurant.showRestaurantForm',
+    'uses' => 'RestaurantController@showRestaurantForm'
+));
+
+Route::get('createRestaurantTest', function () {
+    return view('restaurant.createRestaurantTest');
+});
+
+Route::post('createRestaurantTest', [
+    'as' => 'restaurant.createRestaurantTest',
+    'uses' => 'RestaurantController@createRestaurant'
+]);
+
+Route::post('createRestaurant', [
     'as' => 'restaurant.createRestaurant',
     'uses' => 'RestaurantController@createRestaurant'
 ]);
@@ -90,4 +104,29 @@ Route::post('register', [
     'as' => 'register.createMember',
     'uses' => 'RegisterController@createMember'
 ]);
+
+Route::get('createCoupon', function () {
+    return view('restaurant.createCoupon');
+});
+
+Route::get('review', [
+   'as' =>  'review.showReview',
+    'uses' => 'ReviewController@showReview'
+]);
+
+Route::get('review/writeReview', [
+    'as' =>  'review.showReviewForm',
+    'uses' => 'ReviewController@showReviewForm'
+]);
+
+Route::post('review/writeReview', [
+    'as' =>  'review.createReview',
+    'uses' => 'ReviewController@createReview'
+]);
+
+// <-- Test
+Route::get('test', function () {
+   return view('test');
+});
+
 
