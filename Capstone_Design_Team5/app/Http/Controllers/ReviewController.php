@@ -17,8 +17,23 @@ class ReviewController extends Controller
 
     public function createReview(Request $request) {
         $reviewContents =$request->get('reviewContents');
-        return response()->json([
-            'content' => $reviewContents,
-        ]);
+
+        // Current Save Shop Image Route
+        $path = storage_path() . '/app/public/img/review';
+
+        if($request->file('image1')) {
+            $request->image1->store('public/review');
+
+            return response()->json([
+                'content' =>'ddddddddddd',
+            ]);
+        }
+        else {
+            return response()->json([
+                'content' => $request->get('image1'),
+            ]);
+        }
+
+
     }
 }

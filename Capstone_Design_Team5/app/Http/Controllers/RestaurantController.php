@@ -62,27 +62,50 @@ class RestaurantController extends Controller
         else
             Storage::makeDirectory($currentShopId);
 
-        $number = 1;
+        $number = $request->get('num');
 
         if($request->file('titleImg')) {
+            // title Img 가져오기
             $titleImg = $request->file('titleImg');
+
+            // File Name Setting
             $fileName = $currentShopId . '_titleImg' . '.' . $titleImg->getClientOriginalExtension();
+
+            // Upload File Save
             $titleImg->storeAs($currentShopId, $fileName);
+
+            \App\Upload::create([
+                'filename' => $fileName,
+                'shop_id' => $currentShopId,
+                'category' => 'owner'
+            ]);
         }
         else {
-            return '파일이 없습니다';
+            echo '파일이 없습니다';
         }
 
-        if($request->file('img')) {
-            $images = $request->file('img');
+        echo $number;
 
-            foreach ($images as $image) {
-                $fileName = $currentShopId . '_img' . $number . '.' . $image->getClientOriginalExtension();
+        if($number != 0) {
+            for( $num = 0 ; $num < $number ; $num++ ) {
+                // 업로드한 파일 인덱스 찾기
+                $uploadName = 'galleryImg' . $num;
+
+                // 이미지 파일 가져오기
+                $image = $request->file($uploadName);
+
+                // File Name Setting
+                $fileName = $currentShopId . 'galleryImg' . '_' . $num .
+                            '.' . $image->getClientOriginalExtension();
+
+                // Upload File Save
                 $image->storeAs($currentShopId, $fileName);
-                $number++;
+
+                // DB에 저장
                 \App\Upload::create([
-                   'filename' => $fileName,
-                    'shop_id' => $currentShopId
+                    'filename' => $fileName,
+                    'shop_id' => $currentShopId,
+                    'category' => 'owner'
                 ]);
             }
 
@@ -92,6 +115,7 @@ class RestaurantController extends Controller
 
         // return redirect()->intended('main');
 
+       //  return var_dump($request->all());
 
     }
 }
