@@ -25,9 +25,6 @@ class CreateUserCouponTable extends Migration
             $table->foreign('user_num')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-            $table->foreign('coupon_id')
-                ->references('id')->on('coupon')
-                ->onDelete('cascade');
         });
     }
 
