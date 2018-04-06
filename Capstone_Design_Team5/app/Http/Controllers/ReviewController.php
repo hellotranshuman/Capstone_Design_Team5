@@ -16,8 +16,16 @@ class ReviewController extends Controller
     }
 
     public function createReview(Request $request) {
-        $reviewContents =$request->get('reviewContents');
 
+        $tags = $request->get('reviewContents');
+
+        $tagCount = count($tags);
+
+        return response()->json([
+            'content' => $tags,
+        ]);
+
+        /*
         // Current Save Shop Image Route
         $path = storage_path() . '/app/public/img/review';
 
@@ -32,7 +40,7 @@ class ReviewController extends Controller
             return response()->json([
                 'content' => $request->get('image1'),
             ]);
-        }
+        } */
 
 
     }

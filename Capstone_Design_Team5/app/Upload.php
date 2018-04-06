@@ -10,6 +10,6 @@ class Upload extends Model
 
     //
     protected $fillable = [
-        'filename', 'shop_id', 'category'
+        'filename', 'shop_id'
     ];
 }

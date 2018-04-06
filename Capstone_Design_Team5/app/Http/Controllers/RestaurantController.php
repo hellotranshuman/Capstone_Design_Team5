@@ -16,22 +16,18 @@ class RestaurantController extends Controller
     }
 
     public function createRestaurant(Request $request) {
-        /*
+
+        // <-- *** insert restaurant data ***
+
         $restaurant = \App\Restaurant::create([
             'name' => $request->input('name'),
             'user_num' => auth()->user()->id,
             'type'=> $request->input('type'),
-            'explanation'=>$request->input('explanation'),
-            'phone' =>$request->input('phone'),
-            'dodobuken' => 'test',
-            'cities' => 'test',
-            'address' => $request->input('address'),
-            'lunch_open' => $request->input('lunch_open'),
-            'lunch_close' => $request->input('lunch_close'),
-            'lunch_lo' => $request->input('lunch_lo'),
-            'dinner_open' => $request->input('dinner_open'),
-            'dinner_close' => $request->input('dinner_close'),
-            'dinner_lo' => $request->input('dinner_lo'),
+            'explanation'=> $request->input('explanation'),
+            'phone' => $request->input('phone'),
+            'dodobuken' => $request->input('dodobuken'),
+            'cities' => $request->input('address1'),
+            'address' => $request->input('address2'),
             'payment' => $request->input('payment'),
             'seat_num' => $request->input('seat_num'),
             'children' => $request->input('children') == 'yes' ? true : false,
@@ -39,18 +35,32 @@ class RestaurantController extends Controller
             'parking' => $request->input('parking') == 'yes' ? true : false,
             'smoking' => $request->input('smoking') == 'yes' ? true : false,
             'privateroom' => $request->input('privateroom') == 'yes' ? true : false
-        ]); */
-
-        // <-- *** Image File Upload ***
+        ]);
 
         // check Shop Id
         $shopId = DB::table('restaurants')
                     ->select('id')
                     ->where('user_num', auth()->user()->id)
-                    ->orderByRaw('created_at DESC')
+                    ->orderByRaw('id DESC')
                     ->first();
 
         $currentShopId = $shopId->id;
+
+        echo $currentShopId;
+
+
+        \App\LunchDinnerTime::create([
+            'shop_id' => $currentShopId,
+            'lunch_open' => $request->input('lunch_open'),
+            'lunch_close' => $request->input('lunch_close'),
+            'lunch_lo' => $request->input('lunch_lo'),
+            'dinner_open' => $request->input('dinner_open'),
+            'dinner_close' => $request->input('dinner_close'),
+            'dinner_lo' => $request->input('dinner_lo'),
+        ]);
+
+
+        // <-- *** Image File Upload ***
 
         // Current Save Shop Image Route
         $path = storage_path() . '/app/public/img/' . $currentShopId;
@@ -58,6 +68,7 @@ class RestaurantController extends Controller
         // Check Shop Path
         if(is_dir($path))
             echo 'ok';
+
         // Make Shop Image SavePath
         else
             Storage::makeDirectory($currentShopId);
@@ -76,8 +87,7 @@ class RestaurantController extends Controller
 
             \App\Upload::create([
                 'filename' => $fileName,
-                'shop_id' => $currentShopId,
-                'category' => 'owner'
+                'shop_id' => $currentShopId
             ]);
         }
         else {
@@ -95,7 +105,7 @@ class RestaurantController extends Controller
                 $image = $request->file($uploadName);
 
                 // File Name Setting
-                $fileName = $currentShopId . 'galleryImg' . '_' . $num .
+                $fileName = $currentShopId . '_' . 'galleryImg' . '_' . $num .
                             '.' . $image->getClientOriginalExtension();
 
                 // Upload File Save
@@ -104,18 +114,16 @@ class RestaurantController extends Controller
                 // DB에 저장
                 \App\Upload::create([
                     'filename' => $fileName,
-                    'shop_id' => $currentShopId,
-                    'category' => 'owner'
+                    'shop_id' => $currentShopId
                 ]);
             }
-
         }
         else
             echo '파일이 없습니다';
 
         // return redirect()->intended('main');
 
-       //  return var_dump($request->all());
+       // return var_dump($request->all());
 
     }
 }

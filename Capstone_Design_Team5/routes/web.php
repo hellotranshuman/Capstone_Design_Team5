@@ -125,8 +125,9 @@ Route::post('review/writeReview', [
 ]);
 
 // <-- Test
-Route::get('test', function () {
-   return view('test');
-});
+Route::get('test',[
+    'as' =>  'main.test',
+    'uses' => 'MainController@test'
+]);
 
 

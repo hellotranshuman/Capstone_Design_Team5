@@ -9,7 +9,6 @@
     {{auth()->user()->name . ' 님 환영합니다'}}
     <a href="{{ URL::to('logout') }}">Logout</a>
 
-
 <div id="app">
     <example></example>
 </div>

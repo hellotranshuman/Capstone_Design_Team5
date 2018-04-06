@@ -10,14 +10,12 @@ use Input;
 class UsersController extends Controller
 {
     //
-    public function showLogin()
-    {
+    public function showLogin() {
         // show the form
         return View('user.login');
     }
 
-    public function doLogin(Request $request)
-    {
+    public function doLogin(Request $request) {
         // <-- 유효성 검사 규칙 정의
         $rules = array(
             'id'    => 'required',
@@ -60,8 +58,7 @@ class UsersController extends Controller
         }
     }
 
-    public function doLogout()
-    {
+    public function doLogout() {
         auth()->logout();
 
         return '또봐요~~';

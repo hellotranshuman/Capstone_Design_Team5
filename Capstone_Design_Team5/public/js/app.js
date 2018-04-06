@@ -11257,9 +11257,30 @@ var formData = new FormData(document.getElementById("upload_info"));
             starArr = [starArr[0].innerHTML, starArr[1].innerHTML, starArr[2].innerHTML, starArr[3].innerHTML, starArr[4].innerHTML];
 
             var reviewImg = document.getElementsByClassName("picture-preview");
-            // console.log(reviewImg[0].image);
-            // console.log(this.$refs.firstImg.image);
-            // console.log(this.image);
+
+            var settings = { headers: { 'content-type': 'multipart/form-data' } };
+
+            // 첫번째 이미지 FormData 형식으로 변환
+            var firstImgFile = this.$refs.firstImg.file;
+            var firstImgData = new FormData();
+            firstImgData.append('firstImgFile', firstImgFile, firstImgFile.name);
+            firstImgData.append('firstTitle', this.title);
+
+            // 두번째 이미지 FormData 형식으로 변환
+            var secondImgFile = this.$refs.secondImg.file;
+            var secondImgData = new FormData();
+            secondImgData.append('secondImgFile', secondImgFile, secondImgFile.name);
+            secondImgData.append('secondTitle', this.title);
+
+            // 세번째 이미지 FormData 형식으로 변환
+            var thirdImgFile = this.$refs.thirdImg.file;
+            var thirdImgData = new FormData();
+            thirdImgData.append('thirdImgFile', thirdImgFile, thirdImgFile.name);
+            thirdImgData.append('thirdTitle', this.title);
+
+            console.log('test1 : ' + firstImgData);
+            console.log('test2 : ' + secondImgData);
+            console.log('test3 : ' + thirdImgData);
 
             // axios http 라이브러리
             __WEBPACK_IMPORTED_MODULE_4_axios___default.a.post('/review/writeReview', {
@@ -11268,10 +11289,10 @@ var formData = new FormData(document.getElementById("upload_info"));
                 tagsArray: this.tagsArray, // 태그값 배열
 
                 // 이미지의 경우 이미지가 등록되어 있지 않으면 전달 되지 않음, 등록되어 있는 경우에만 전달됨
-                image1: this.$refs.firstImg.image, // 첫번째 이미지 (가장 왼쪽 이미지)
-                image2: this.$refs.secondImg.image, // 두번째 이미지 (가운데 이민지)
-                image3: this.$refs.thirdImg.image // 세번째 이미지 (가장 오른쪽 이미지)
-            }).then(function (response) {
+                image1: firstImgData,
+                image2: secondImgData,
+                image3: thirdImgData
+            }, settings).then(function (response) {
                 alert(response.data.content);
             });
         }
