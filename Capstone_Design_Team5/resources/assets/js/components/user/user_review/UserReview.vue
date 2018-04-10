@@ -6,6 +6,7 @@
 -->
 
 <template>
+<<<<<<< HEAD
     <transition name="fade">
         <v-container>
             <v-layout>
@@ -118,6 +119,7 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
     /* ul 태그 CSS */
     ul {
         list-style: none;

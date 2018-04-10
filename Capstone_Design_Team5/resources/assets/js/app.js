@@ -4,8 +4,10 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import VueAxios from 'vue-axios';
+
 import axios    from 'axios';
 Vue.use(VueAxios, axios);
+Vue.use(BootstrapVue);
 
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
@@ -18,8 +20,6 @@ import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 
 import 'vuetify/dist/vuetify.min.css'
-
-
 
 
 

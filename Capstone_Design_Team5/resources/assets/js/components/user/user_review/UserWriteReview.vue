@@ -12,6 +12,7 @@
 -->
 
 <template>
+<<<<<<< HEAD
     <v-container>
         <v-layout>
             <v-flex>
@@ -179,6 +180,7 @@ export default {
         },
 
         // 리뷰 관련 데이터를 전송하는 함수
+
         sendReviewData() {
             // starRating를 class명으로 가지는 별점 항목 엘리먼트를 배열로 가지고옵니다.
             let starArr = document.getElementsByClassName("starRating");
@@ -237,7 +239,6 @@ export default {
                 reviewData.append('HASHTAG[]', this.tagsArray[iCount]);
             }
 
-
             // ***** console.log 테스트, 지워도 됨 *****
             console.log('img : ');
             console.log(reviewData.get('imgFile1'));
@@ -291,5 +292,4 @@ export default {
         margin-left: 3%;
         float: left;
     }
-
 </style>
