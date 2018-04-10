@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use App\Restaurant;
+use App\Upload;
 
 class RestaurantController extends Controller
 {
@@ -17,12 +19,42 @@ class RestaurantController extends Controller
 
     public function showRestaurantInfo(Request $request) {
 
+        $restaurantId = $request->get('restaurant_id');
+
+        $restaurant = Restaurant::join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
+                        '=', 'restaurants.id')
+                        ->select('restaurants.*', 'lunchDinnerTime.*')
+                        ->where('lunchDinnerTime.shop_id', 13)
+                        ->get()
+                        ->toArray();
+
+        $file = Upload::select('path', 'filename')
+                        ->where('shop_id', 13)
+                        ->get()
+                        ->toArray();
+
+        $restaurantInfo = array_merge($restaurant, $file);
+
+
+        return response()->json([
+            'msg' => $request->get('restaurant_id'),
+            'restaurant' => $restaurantInfo,
+        ]);
+
+        /*
         $res =  DB::table('restaurants')
-            ->select('*')
-            ->where('id', $request->get('restaurant_id'))
+            ->join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
+                    '=', 'restaurants.id')
+            ->select('restaurants.*', 'lunchDinnerTime.*')
+            ->where('lunchDinnerTime.shop_id', $shop_id)
             ->get();
 
-       return json_encode($res);
+
+
+
+
+
+       return var_dump($res); */
 
     }
 

@@ -74,6 +74,7 @@ const routes = [
         name: 'UserMain',                                   // root 페이지
         path: '/',
         component: UserMain
+
     },
     {
         name: 'UserRestaurantMain',                         // 가게 페이지

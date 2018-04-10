@@ -144,14 +144,16 @@ export default{
      
     created() { 
         // 값 보내기
-        axios.post('/restaurant/info', restaurant_id)
+        axios.post('/restaurant/info',restaurant_id)
         .then( (response) => {
-            get_datas = response.data;    
-          
+            get_datas = response.data.restaurant;
+            console.log(response.data.msg);
+            console.log(get_datas);
+
             this.enter_data(Object.keys(get_datas));        // 데이터 바인딩
-            this.geoCoder();                                // 지도 생성
+            this.geoCoder();                               // 지도 생성
             // this.enter_title();                            // 타이틀 이미지 삽입
-            // this.enter_galley(get_datas.gallery_num);      // 갤러리 이미지 출력
+            // this.enter_galley(get_datas.gallery_num); */      // 갤러리 이미지 출력
         })
         .catch((ex)=>{ 
             alert('왜 안대');
