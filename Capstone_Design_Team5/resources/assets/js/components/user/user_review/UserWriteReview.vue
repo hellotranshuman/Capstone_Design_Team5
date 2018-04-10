@@ -12,7 +12,6 @@
 -->
 
 <template>
-<<<<<<< HEAD
     <v-container>
         <v-layout>
             <v-flex>
