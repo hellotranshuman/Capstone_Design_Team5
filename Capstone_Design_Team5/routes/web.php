@@ -121,8 +121,13 @@ Route::get('createCoupon', function () {
 });
 
 Route::get('review', [
-   'as' =>  'review.showReview',
-    'uses' => 'ReviewController@showReview'
+   'as' =>  'review.showReviewData',
+    'uses' => 'ReviewController@getReviewData'
+]);
+
+Route::post('review', [
+    'as' =>  'review.getReviewData',
+    'uses' => 'ReviewController@getReviewData'
 ]);
 
 Route::get('review/writeReview', [

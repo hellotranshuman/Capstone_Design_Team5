@@ -4,21 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface;
-
+use App\Review;
 
 class ReviewController extends Controller
 {
-    public function showReview() {
+    public function getReviewData() {
 
-        $review =  DB::table('review')
-            ->select('id', 'content', 'reg_date','writer', 'img_num', 'rating',
-                     'taste', 'service', 'mood', 'price')
-            ->where('shop_id', 13)
-            ->orderByRaw('reg_date DESC')
-            ->get();
-        
-        return view('user.review', ['review' => $review]);
+        $review = Review::join('users', 'users.id', '=', 'review.writer')
+                    ->select('review.*', 'users.name')
+                    ->where('shop_id', 13)
+                    ->orderByRaw('reg_date DESC')
+                    ->get()
+                    ->toArray();
+
+        $totalRating = Review::select(DB::raw('AVG(rating) as totalRating'))
+                        ->where('shop_id', 13)
+                        ->orderByRaw('reg_date DESC')
+                        ->get()
+                        ->toArray();
+
+        $reviewData = array_merge($totalRating, $review);
+
+        return response()->json([
+            'review' => $reviewData
+        ]);
     }
 
     public function showReviewForm() {

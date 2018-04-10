@@ -82,8 +82,8 @@
                         <option value="카고시마" > 카고시마 </option>
                         <option value="오키나와" > 오키나와 </option> 
                     </select> 
-                    <input type="text" name="address1" style="width:30%; margin:1%" value="상세주소1" class="send_datas">
-                    <input type="text" name="address2" style="width:30%; margin:1%" value="상세주소2" class="send_datas">
+                    <input type="text" name="cities" style="width:30%; margin:1%" value="상세주소1" class="send_datas">
+                    <input type="text" name="address" style="width:30%; margin:1%" value="상세주소2" class="send_datas">
                  </div>
             </div>           
         </div>

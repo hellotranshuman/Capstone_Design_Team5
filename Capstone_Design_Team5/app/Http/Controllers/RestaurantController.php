@@ -24,17 +24,16 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
                         '=', 'restaurants.id')
                         ->select('restaurants.*', 'lunchDinnerTime.*')
-                        ->where('lunchDinnerTime.shop_id', 13)
+                        ->where('lunchDinnerTime.shop_id', 14)
                         ->get()
                         ->toArray();
 
         $file = Upload::select('path', 'filename')
-                        ->where('shop_id', 13)
+                        ->where('shop_id', 14)
                         ->get()
                         ->toArray();
 
         $restaurantInfo = array_merge($restaurant, $file);
-
 
         return response()->json([
             'msg' => $request->get('restaurant_id'),
@@ -69,8 +68,8 @@ class RestaurantController extends Controller
             'explanation'=> $request->input('explanation'),
             'phone' => $request->input('phone'),
             'dodobuken' => $request->input('dodobuken'),
-            'cities' => $request->input('address1'),
-            'address' => $request->input('address2'),
+            'cities' => $request->input('cities'),
+            'address' => $request->input('address'),
             'payment' => $request->input('payment'),
             'seat_num' => $request->input('seat_num'),
             'children' => $request->input('children') == 'yes' ? true : false,
