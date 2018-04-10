@@ -20,7 +20,7 @@ import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 
 import 'vuetify/dist/vuetify.min.css'
-
+// main.sty
 
 
 import App from './App.vue';
@@ -39,9 +39,6 @@ Vue.use(SocialSharing);
 import UserMain     from './components/user/user_main/UserMain.vue';
 // 유저 리뷰 페이지 컴포넌트 import
 import UserRestaurantMain   from './components/user/user_common/UserRestaurantMain.vue';
-
-
-import UserCommon from './components/user/user_common/UserCommon.vue';
 
 // 가게 정보 페이지 컴포넌트 import
 import UserMenu         from './components/user/user_menu/UserMenu.vue';

@@ -38,6 +38,6 @@
         "vue-timepicker": "0.0.3",
         "vue2-google-maps": "^0.8.11",
         "vuejs-datepicker": "^0.9.29",
-        "vuetify": "^1.0.13"
+        "vuetify": "^1.0.14"
     }
 }
