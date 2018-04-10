@@ -11202,9 +11202,6 @@ var formData = new FormData(document.getElementById("upload_info"));
 //
 //
 //
-//
-//
-//
 
 // 유저 별점 컴포넌트 import
 
@@ -11253,46 +11250,86 @@ var formData = new FormData(document.getElementById("upload_info"));
         sendReviewData: function sendReviewData() {
             // starRating를 class명으로 가지는 별점 항목 엘리먼트를 배열로 가지고옵니다.
             var starArr = document.getElementsByClassName("starRating");
-            // 별점 항목의 점수값을 배열에 저장합니다.
-            starArr = [starArr[0].innerHTML, starArr[1].innerHTML, starArr[2].innerHTML, starArr[3].innerHTML, starArr[4].innerHTML];
 
-            var reviewImg = document.getElementsByClassName("picture-preview");
+            // 별점 항목의 점수값을 변수에 저장합니다.
+            var RATING = starArr[0].innerHTML; // 총 평점
+            var TASTE = starArr[1].innerHTML; // 맛
+            var SERVICE = starArr[2].innerHTML; // 서비스
+            var MOOD = starArr[3].innerHTML; // 분위기
+            var PRICE = starArr[4].innerHTML; // 가격
 
-            var settings = { headers: { 'content-type': 'multipart/form-data' } };
+            // 리뷰 관련 데이터들을 저장할 FormData를 생성합니다.
+            var reviewData = new FormData();
 
-            // 첫번째 이미지 FormData 형식으로 변환
-            var firstImgFile = this.$refs.firstImg.file;
-            var firstImgData = new FormData();
-            firstImgData.append('firstImgFile', firstImgFile, firstImgFile.name);
-            firstImgData.append('firstTitle', this.title);
+            // 전송할 이미지 개수를 저장합니다.
+            var imgNum = 0;
 
-            // 두번째 이미지 FormData 형식으로 변환
-            var secondImgFile = this.$refs.secondImg.file;
-            var secondImgData = new FormData();
-            secondImgData.append('secondImgFile', secondImgFile, secondImgFile.name);
-            secondImgData.append('secondTitle', this.title);
+            // 첫번째 이미지 FormData에 저장   , (this.$refs.image1.file;, inputElements[2].files[0];)
+            var imgFile1 = this.$refs.image1.file;
 
-            // 세번째 이미지 FormData 형식으로 변환
-            var thirdImgFile = this.$refs.thirdImg.file;
-            var thirdImgData = new FormData();
-            thirdImgData.append('thirdImgFile', thirdImgFile, thirdImgFile.name);
-            thirdImgData.append('thirdTitle', this.title);
+            // 첫번째 이미지가 등록 된 경우 FormData에 저장
+            if (imgFile1 != undefined) {
+                reviewData.append('imgFile1', imgFile1);
+                imgNum++;
+            }
 
-            console.log('test1 : ' + firstImgData);
-            console.log('test2 : ' + secondImgData);
-            console.log('test3 : ' + thirdImgData);
+            // 두번째 이미지 FormData에 저장
+            var imgFile2 = this.$refs.image2.file;
 
-            // axios http 라이브러리
-            __WEBPACK_IMPORTED_MODULE_4_axios___default.a.post('/review/writeReview', {
-                starArr: starArr, // 별점값 배열 (인덱스번호0부터 총점, 맛, 서비스, 분위기, 가격 순)
-                reviewContents: this.reviewContents, // 리뷰 텍스트 값
-                tagsArray: this.tagsArray, // 태그값 배열
+            // 두번째 이미지가 등록 된 경우 FormData에 저장
+            if (imgFile2 != undefined) {
+                reviewData.append('imgFile2', imgFile2);
+                imgNum++;
+            }
+            // 세번째 이미지 FormData에 저장
+            var imgFile3 = this.$refs.image3.file;
 
-                // 이미지의 경우 이미지가 등록되어 있지 않으면 전달 되지 않음, 등록되어 있는 경우에만 전달됨
-                image1: firstImgData,
-                image2: secondImgData,
-                image3: thirdImgData
-            }, settings).then(function (response) {
+            // 세번째 이미지가 등록 된 경우 FormData에 저장
+            if (imgFile3 != undefined) {
+                reviewData.append('imgFile3', imgFile3);
+                imgNum++;
+            }
+
+            reviewData.append('imgNum', imgNum); // 전송한 이미지 개수를 FormData에 저장
+
+            reviewData.append('RATING', RATING); // 총 평점을 FormData에 저장
+            reviewData.append('TASTE', TASTE); // 맛 점수를 FormData에 저장
+            reviewData.append('SERVICE', SERVICE); // 서비스 점수를 FormData에 저장
+            reviewData.append('MOOD', MOOD); // 분위기 점수를 FormData에 저장
+            reviewData.append('PRICE', PRICE); // 가격 점수를 FormData에 저장
+
+            reviewData.append('CONTENT', this.reviewContents); // 리뷰 텍스트를 FormData에 저장
+            reviewData.append('HASHTAG', this.tagsArray); // 태그를 배열로 FormData에 저장
+
+            // ***** console.log 테스트, 지워도 됨 *****
+            console.log('img : ');
+            console.log(reviewData.get('imgFile1'));
+            console.log(reviewData.get('imgFile2'));
+            console.log(reviewData.get('imgFile3'));
+            console.log(reviewData.get('imgNum'));
+            console.log('////////////////');
+
+            console.log('RATE: ');
+            console.log(reviewData.get('RATING'));
+            console.log(reviewData.get('TASTE'));
+            console.log(reviewData.get('SERVICE'));
+            console.log(reviewData.get('MOOD'));
+            console.log(reviewData.get('PRICE'));
+            console.log('////////////////');
+
+            console.log('etc: ');
+            console.log(reviewData.get('CONTENT'));
+            console.log(reviewData.get('HASHTAG'));
+            console.log('////////////////');
+            // ***** console 테스트 끝 *****
+
+            // 데이터 전송시 headers 타입
+            var settings = { headers: { 'content-type': 'multipart/form-data' }
+
+                // axios http 라이브러리
+            };__WEBPACK_IMPORTED_MODULE_4_axios___default.a.post('/review/writeReview',
+            // 리뷰 관련 데이터
+            reviewData, settings).then(function (response) {
                 alert(response.data.content);
             });
         }
@@ -40161,7 +40198,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n.writeReview-header {\n    background-color: #353535;    \n    font-weight: bold;\n    font-size: 1em;\n}\n.btn-outlined.btn-white {\n    background: none;\n    border: 3px solid #ffffff;\n    color: #ffffff;\n    \n    border-radius: 1em\n}\n.btn-outlined.btn-white:hover,\n.btn-outlined.btn-white:active {\n    color: #353535;\n    background: #ffffff;\n}\n\n/************************************************************\n    ↑는 버튼 관련 CSS\n    ↓는 그 밖의 CSS     \n************************************************************/\n\n/* 별점 평가 항목 배치위치 CSS */\n.rating-category-position {\n    width: 20%;\n    margin-left: 10%;\n    float: left;\n    /* margin-right: 5em; */\n}\n\n/* 별 배치위치 CSS */\n.rating-star-position {\n    width: 30%;\n    margin-left: 10%;\n    float: left;\n}\n\n/* 사진등록 이미지 배치위치 CSS */\n.image-position {\n    width: 30%;\n    margin-left: 3%;\n    float: left;\n}\n", ""]);
+exports.push([module.i, "\n.review-write-header {\n    background-color: #353535;\n}\n.btn-outlined.btn-white {\n    background: none;\n    border: 3px solid #ffffff;\n    color: #ffffff;\n    \n    border-radius: 1em\n}\n.btn-outlined.btn-white:hover,\n.btn-outlined.btn-white:active {\n    color: #353535;\n    background: #ffffff;\n}\n\n/************************************************************\n    ↑는 버튼 관련 CSS\n    ↓는 그 밖의 CSS     \n************************************************************/\n\n /* 별점 평가 항목 설정 CSS */\n.rating-category-text {\n    font-size: 3em;\n    margin-left: 10%;\n}\n\n/* 사진등록 이미지 배치위치 CSS */\n.image-position {\n    width: 30%;\n    margin-left: 3%;\n    float: left;\n}\n\n/* 제목 관련 css */\n.title-text {\n    color: #ffffff;\n    font-size: 2em;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -40832,46 +40869,36 @@ var render = function() {
     "b-container",
     [
       _c(
-        "b-row",
+        "b-navbar",
+        { staticClass: "review-write-header" },
         [
+          _c("b-navbar-brand", [
+            _c("span", { staticClass: "title-text" }, [_vm._v("리뷰 작성하기")])
+          ]),
+          _vm._v(" "),
           _c(
-            "b-col",
-            { staticClass: "writeReview-header" },
+            "b-navbar-nav",
+            { staticClass: "ml-auto" },
             [
               _c(
-                "b-navbar",
-                { staticClass: "fontColor-White" },
+                "b-nav-text",
                 [
                   _c(
-                    "b-row",
+                    "router-link",
+                    { attrs: { to: "/review" } },
                     [
                       _c(
-                        "b-col",
-                        { attrs: { sm: "10", md: "10" } },
-                        [_c("b-navbar-brand", [_vm._v("리뷰 작성하기")])],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-col",
-                        { attrs: { sm: "auto", md: "auto" } },
+                        "b-button",
+                        {
+                          staticClass: "btn btn-outlined btn-white",
+                          attrs: { size: "lg" },
+                          on: { click: _vm.sendReviewData }
+                        },
                         [
-                          _c("router-link", { attrs: { to: "/review" } }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-outlined btn-white",
-                                on: { click: _vm.sendReviewData }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                            등록\n                            "
-                                )
-                              ]
-                            )
-                          ])
-                        ],
-                        1
+                          _vm._v(
+                            "\n                    등록\n                    "
+                          )
+                        ]
                       )
                     ],
                     1
@@ -40888,15 +40915,11 @@ var render = function() {
       _vm._v(" "),
       _c(
         "b-row",
+        { staticClass: "rating-category-text" },
         [
-          _c(
-            "b-col",
-            [
-              _vm._v("\n            총점\n            "),
-              _c("UserReviewStarRating")
-            ],
-            1
-          )
+          _c("b-col", { attrs: { sm: "2" } }, [_vm._v("총점")]),
+          _vm._v(" "),
+          _c("b-col", [_c("UserReviewStarRating")], 1)
         ],
         1
       ),
@@ -40923,90 +40946,69 @@ var render = function() {
                   staticClass: "m-1"
                 },
                 [_vm._v("상세평가")]
-              ),
-              _vm._v(" "),
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            [
               _c(
                 "b-collapse",
                 { attrs: { visible: "", id: "detailRate" } },
                 [
                   _c(
-                    "b-card",
+                    "b-row",
+                    { staticClass: "rating-category-text" },
                     [
-                      _c(
-                        "b-row",
-                        [
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-category-position" },
-                            [_c("h3", [_vm._v("맛")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-star-position" },
-                            [_c("UserReviewStarRating")],
-                            1
-                          )
-                        ],
-                        1
-                      ),
+                      _c("b-col", { attrs: { sm: "2" } }, [_vm._v("맛")]),
                       _vm._v(" "),
                       _c(
-                        "b-row",
-                        [
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-category-position" },
-                            [_c("h3", [_vm._v("서비스")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-star-position" },
-                            [_c("UserReviewStarRating")],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-row",
-                        [
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-category-position" },
-                            [_c("h3", [_vm._v("분위기")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-star-position" },
-                            [_c("UserReviewStarRating")],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b-row",
-                        [
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-category-position" },
-                            [_c("h3", [_vm._v("가격")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "b-col",
-                            { staticClass: "rating-star-position" },
-                            [_c("UserReviewStarRating")],
-                            1
-                          )
-                        ],
+                        "b-col",
+                        { attrs: { sm: "auto" } },
+                        [_c("UserReviewStarRating")],
                         1
                       )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-row",
+                    { staticClass: "rating-category-text" },
+                    [
+                      _c("b-col", { attrs: { sm: "2" } }, [_vm._v("서비스")]),
+                      _vm._v(" "),
+                      _c("b-col", [_c("UserReviewStarRating")], 1)
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-row",
+                    { staticClass: "rating-category-text" },
+                    [
+                      _c("b-col", { attrs: { sm: "2" } }, [_vm._v("분위기")]),
+                      _vm._v(" "),
+                      _c("b-col", [_c("UserReviewStarRating")], 1)
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-row",
+                    { staticClass: "rating-category-text" },
+                    [
+                      _c("b-col", { attrs: { sm: "2" } }, [_vm._v("가격")]),
+                      _vm._v(" "),
+                      _c("b-col", [_c("UserReviewStarRating")], 1)
                     ],
                     1
                   )
@@ -41015,138 +41017,135 @@ var render = function() {
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c("hr"),
-          _c("br"),
-          _vm._v(" "),
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("hr"),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
           _c(
-            "b-row",
+            "b-col",
             [
-              _c(
-                "b-col",
-                [
-                  _c("b-form-textarea", {
-                    attrs: {
-                      id: "textarea",
-                      placeholder: "리뷰 작성",
-                      rows: 7,
-                      "max-rows": 6
-                    },
-                    model: {
-                      value: _vm.reviewContents,
-                      callback: function($$v) {
-                        _vm.reviewContents = $$v
-                      },
-                      expression: "reviewContents"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-col",
-                [
-                  _c("InputTag", {
-                    attrs: {
-                      placeholder: _vm.tagPlaceholder,
-                      limit: _vm.tagLimit,
-                      tags: _vm.tagsArray
-                    },
-                    on: {
-                      "update:tags": function($event) {
-                        _vm.tagsArray = $event
-                      }
-                    }
-                  })
-                ],
-                1
-              )
+              _c("b-form-textarea", {
+                attrs: {
+                  id: "textarea",
+                  placeholder: "리뷰 작성",
+                  rows: 10,
+                  "max-rows": 10
+                },
+                model: {
+                  value: _vm.reviewContents,
+                  callback: function($$v) {
+                    _vm.reviewContents = $$v
+                  },
+                  expression: "reviewContents"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            [
+              _c("InputTag", {
+                attrs: {
+                  placeholder: _vm.tagPlaceholder,
+                  limit: _vm.tagLimit,
+                  tags: _vm.tagsArray
+                },
+                on: {
+                  "update:tags": function($event) {
+                    _vm.tagsArray = $event
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("hr"),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            { staticClass: "image-position" },
+            [
+              _c("PictureInput", {
+                ref: "image1",
+                attrs: {
+                  width: "250",
+                  height: "165",
+                  margin: "16",
+                  radius: "10",
+                  accept: "image/*",
+                  size: "10",
+                  buttonClass: "btn",
+                  customStrings: { upload: "기다려 주세요", drag: "사진 등록" }
+                },
+                on: { change: _vm.onChange }
+              })
             ],
             1
           ),
           _vm._v(" "),
-          _c("hr"),
-          _c("br"),
+          _c(
+            "b-col",
+            { staticClass: "image-position" },
+            [
+              _c("PictureInput", {
+                ref: "image2",
+                attrs: {
+                  width: "250",
+                  height: "165",
+                  margin: "16",
+                  radius: "10",
+                  accept: "image/*",
+                  size: "10",
+                  buttonClass: "btn",
+                  customStrings: { upload: "기다려 주세요", drag: "사진 등록" }
+                },
+                on: { change: _vm.onChange }
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
-            "b-row",
+            "b-col",
+            { staticClass: "image-position" },
             [
-              _c(
-                "b-col",
-                { staticClass: "image-position" },
-                [
-                  _c("PictureInput", {
-                    ref: "firstImg",
-                    attrs: {
-                      width: "250",
-                      height: "165",
-                      margin: "16",
-                      radius: "10",
-                      accept: "image/*",
-                      size: "10",
-                      buttonClass: "btn",
-                      customStrings: {
-                        upload: "기다려 주세요",
-                        drag: "사진 등록"
-                      }
-                    },
-                    on: { change: _vm.onChange }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-col",
-                { staticClass: "image-position" },
-                [
-                  _c("PictureInput", {
-                    ref: "secondImg",
-                    attrs: {
-                      width: "250",
-                      height: "165",
-                      margin: "16",
-                      radius: "10",
-                      accept: "image/*",
-                      size: "10",
-                      buttonClass: "btn",
-                      customStrings: {
-                        upload: "기다려 주세요",
-                        drag: "사진 등록"
-                      }
-                    },
-                    on: { change: _vm.onChange }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-col",
-                { staticClass: "image-position" },
-                [
-                  _c("PictureInput", {
-                    ref: "thirdImg",
-                    attrs: {
-                      width: "250",
-                      height: "165",
-                      margin: "16",
-                      radius: "10",
-                      accept: "image/*",
-                      size: "10",
-                      buttonClass: "btn",
-                      customStrings: {
-                        upload: "기다려 주세요",
-                        drag: "사진 등록"
-                      }
-                    },
-                    on: { change: _vm.onChange }
-                  })
-                ],
-                1
-              )
+              _c("PictureInput", {
+                ref: "image3",
+                attrs: {
+                  width: "250",
+                  height: "165",
+                  margin: "16",
+                  radius: "10",
+                  accept: "image/*",
+                  size: "10",
+                  buttonClass: "btn",
+                  customStrings: { upload: "기다려 주세요", drag: "사진 등록" }
+                },
+                on: { change: _vm.onChange }
+              })
             ],
             1
           )

@@ -15,111 +15,108 @@
     <!-- fluid 속성(태그 폭 전체 적용) 적용 여부 생각해 보기 -->
     <b-container>
          <!-- 상단바 -->
-        <b-row>
-            <b-col class="writeReview-header">
-                <b-navbar class="fontColor-White">
-                    <b-row>
-                        <b-col sm="10" md="10"><b-navbar-brand>리뷰 작성하기</b-navbar-brand></b-col>
-                        <b-col sm="auto" md="auto">
-                            <!-- 페이지 이동 태그 + 등록 버튼 -->
-                            <router-link to="/review">
-                                <button class="btn btn-outlined btn-white" @click= "sendReviewData">
-                                등록
-                                </button>
-                            </router-link>
-                        </b-col>
-                    </b-row>
-                </b-navbar>
-            </b-col>
-        </b-row>
-        <b-row>
-            <!-- 별점 -->
-            <b-col>
-                총점
-                <UserReviewStarRating></UserReviewStarRating>
-            </b-col>
+        <b-navbar class="review-write-header">
+            <b-navbar-brand>
+                <span class="title-text">리뷰 작성하기</span>
+            </b-navbar-brand>
+            <b-navbar-nav class="ml-auto">
+                <b-nav-text>
+                    <!-- 페이지 이동 태그 + 등록 버튼 -->
+                    <router-link to="/review">
+                        <b-button size="lg" class="btn btn-outlined btn-white" @click= "sendReviewData">
+                        등록
+                        </b-button>
+                    </router-link>
+                </b-nav-text>
+            </b-navbar-nav>         
+        </b-navbar>
+        <!-- 별점 -->
+        <b-row class="rating-category-text">
+            <b-col sm="2">총점</b-col>
+            <b-col ><UserReviewStarRating></UserReviewStarRating></b-col>
         </b-row>
         <!-- 구분 -->
         <hr><br>
         <!-- 별점 상세평가 -->
         <b-row>
             <b-col>
-                    <b-btn v-b-toggle.detailRate class="m-1">상세평가</b-btn>
-                    <b-collapse visible id="detailRate">
-                        <b-card>
-                            <!-- 맛 -->
-                            <b-row>
-                                <b-col class="rating-category-position"><h3>맛</h3></b-col>
-                                <b-col class="rating-star-position"><UserReviewStarRating></UserReviewStarRating></b-col>
-                            </b-row>
-                            <!-- 서비스 -->
-                            <b-row>
-                                <b-col class="rating-category-position"><h3>서비스</h3></b-col>
-                                <b-col class="rating-star-position"><UserReviewStarRating></UserReviewStarRating></b-col>
-                            </b-row>
-                            <!-- 분위기 -->
-                            <b-row>
-                                <b-col class="rating-category-position"><h3>분위기</h3></b-col>
-                                <b-col class="rating-star-position"><UserReviewStarRating></UserReviewStarRating></b-col>
-                            </b-row>
-                            <!-- 가격 -->
-                            <b-row>
-                                <b-col class="rating-category-position"><h3>가격</h3></b-col>
-                                <b-col class="rating-star-position"><UserReviewStarRating></UserReviewStarRating></b-col>
-                            </b-row>
-                        </b-card>
-                    </b-collapse>
+                <b-btn v-b-toggle.detailRate class="m-1">상세평가</b-btn>
             </b-col>
-            <!-- 구분 -->
-            <hr><br>
-            <b-row>
-                <b-col>
-                    <!-- 리뷰 텍스트 -->
-                    <b-form-textarea id="textarea" v-model= "reviewContents" placeholder="리뷰 작성" 
-                    :rows="7" :max-rows="6">
-                    </b-form-textarea>
-                </b-col>
-                <b-col>
-                    <!-- 태그 -->
-                    <InputTag 
-                    v-bind:placeholder  = 'tagPlaceholder' 
-                    v-bind:limit        = 'tagLimit' 
-                    v-bind:tags.sync    = 'tagsArray'>
-                    </InputTag>  
-
-                </b-col>
-            </b-row>
-            <!-- 구분 -->
-            <hr><br>
-            <!-- 이미지 -->
-            <b-row>
-                <b-col class="image-position">
-                    <PictureInput ref="firstImg" @change="onChange" 
-                    width="250" height="165" margin="16" radius="10" 
-                    accept="image/*" size="10" buttonClass="btn"
-                    :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                    </PictureInput>
-                </b-col>
-
-                <b-col class="image-position">
-                    <PictureInput ref="secondImg" @change="onChange" 
-                    width="250" height="165" margin="16" radius="10" 
-                    accept="image/*" size="10" buttonClass="btn"
-                    :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                    </PictureInput>
-                </b-col>
-
-                <b-col class="image-position">
-                    <PictureInput ref="thirdImg" @change="onChange" 
-                    width="250" height="165" margin="16" radius="10" 
-                    accept="image/*" size="10" buttonClass="btn"
-                    :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                    </PictureInput>
-                </b-col>
-            </b-row>
+        </b-row>
+        <b-row>
+            <b-col>
+                <b-collapse visible id="detailRate">
+                    <!-- 맛 -->
+                    <b-row class="rating-category-text">
+                        <b-col sm="2">맛</b-col>
+                        <b-col sm="auto"><UserReviewStarRating></UserReviewStarRating></b-col>
+                    </b-row>
+                    <!-- 서비스 -->
+                    <b-row class="rating-category-text">
+                        <b-col sm="2">서비스</b-col>
+                        <b-col><UserReviewStarRating></UserReviewStarRating></b-col>
+                    </b-row>
+                    <!-- 분위기 -->
+                    <b-row class="rating-category-text">
+                        <b-col sm="2">분위기</b-col>
+                        <b-col><UserReviewStarRating></UserReviewStarRating></b-col>
+                    </b-row>
+                    <!-- 가격 -->
+                    <b-row class="rating-category-text">
+                        <b-col sm="2">가격</b-col>
+                        <b-col><UserReviewStarRating></UserReviewStarRating></b-col>
+                    </b-row>
+                </b-collapse>
+            </b-col>
+        </b-row>                   
+        <!-- 구분 -->
+        <hr><br>
+        <b-row>
+            <b-col>
+                <!-- 리뷰 텍스트 -->
+                <b-form-textarea id="textarea" v-model= "reviewContents" placeholder="리뷰 작성" :rows="10" :max-rows="10">
+                </b-form-textarea>
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+                <!-- 태그 -->
+                <InputTag 
+                v-bind:placeholder  = 'tagPlaceholder' 
+                v-bind:limit        = 'tagLimit' 
+                v-bind:tags.sync    = 'tagsArray'>
+                </InputTag>  
+            </b-col>
         </b-row>
         <!-- 구분 -->
         <hr><br>
+        <!-- 이미지 -->
+        <b-row>
+            <b-col class="image-position">
+                <PictureInput ref="image1" @change="onChange" 
+                width="250" height="165" margin="16" radius="10" 
+                accept="image/*" size="10" buttonClass="btn"
+                :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
+                </PictureInput>
+            </b-col>
+
+            <b-col class="image-position">
+                <PictureInput ref="image2" @change="onChange" 
+                width="250" height="165" margin="16" radius="10" 
+                accept="image/*" size="10" buttonClass="btn"
+                :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
+                </PictureInput>
+            </b-col>
+
+            <b-col class="image-position">
+                <PictureInput ref="image3" @change="onChange" 
+                width="250" height="165" margin="16" radius="10" 
+                accept="image/*" size="10" buttonClass="btn"
+                :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
+                </PictureInput>                </b-col>
+        </b-row>
+    <!-- 구분 -->
+    <hr><br>
     </b-container>
 </template>
 
@@ -168,61 +165,97 @@ export default {
         // 리뷰 관련 데이터를 전송하는 함수
         sendReviewData (){
             // starRating를 class명으로 가지는 별점 항목 엘리먼트를 배열로 가지고옵니다.
-            var starArr = document.getElementsByClassName("starRating");
-            // 별점 항목의 점수값을 배열에 저장합니다.
-            starArr = [starArr[0].innerHTML, starArr[1].innerHTML, starArr[2].innerHTML,starArr[3].innerHTML,starArr[4].innerHTML];
+            let starArr = document.getElementsByClassName("starRating");
 
-            var reviewImg = document.getElementsByClassName("picture-preview");
+            // 별점 항목의 점수값을 변수에 저장합니다.
+            let RATING      = starArr[0].innerHTML;     // 총 평점
+            let TASTE       = starArr[1].innerHTML;     // 맛
+            let SERVICE     = starArr[2].innerHTML;     // 서비스
+            let MOOD        = starArr[3].innerHTML;     // 분위기
+            let PRICE       = starArr[4].innerHTML;     // 가격
+            
+            // 리뷰 관련 데이터들을 저장할 FormData를 생성합니다.
+            let reviewData = new FormData();
 
-            let settings = { headers: {'content-type': 'multipart/form-data'}};
+            // 전송할 이미지 개수를 저장합니다.
+            let imgNum = 0;
 
-            // 첫번째 이미지 FormData 형식으로 변환
-            let firstImgFile = this.$refs.firstImg.file;
-            let firstImgData = new FormData();
-            firstImgData.append('firstImgFile', firstImgFile, firstImgFile.name);
-            firstImgData.append('firstTitle', this.title);
+            // 첫번째 이미지 FormData에 저장   , (this.$refs.image1.file;, inputElements[2].files[0];)
+            let imgFile1 = this.$refs.image1.file;
 
-            // 두번째 이미지 FormData 형식으로 변환
-            let secondImgFile = this.$refs.secondImg.file;
-            let secondImgData = new FormData();
-            secondImgData.append('secondImgFile', secondImgFile, secondImgFile.name);
-            secondImgData.append('secondTitle', this.title);
+            // 첫번째 이미지가 등록 된 경우 FormData에 저장
+            if(imgFile1 != undefined){
+                reviewData.append('imgFile1', imgFile1);
+                imgNum++;
+            }
 
-            // 세번째 이미지 FormData 형식으로 변환
-            let thirdImgFile = this.$refs.thirdImg.file;
-            let thirdImgData = new FormData();
-            thirdImgData.append('thirdImgFile', thirdImgFile, thirdImgFile.name);
-            thirdImgData.append('thirdTitle', this.title);
+            // 두번째 이미지 FormData에 저장
+            let imgFile2 = this.$refs.image2.file;
 
+            // 두번째 이미지가 등록 된 경우 FormData에 저장
+            if(imgFile2 != undefined){
+                reviewData.append('imgFile2', imgFile2);
+                imgNum++;
+            }
+            // 세번째 이미지 FormData에 저장
+            let imgFile3 = this.$refs.image3.file;
 
-            console.log('test1 : ' + firstImgData);
-            console.log('test2 : ' + secondImgData);
-            console.log('test3 : ' + thirdImgData);
+            // 세번째 이미지가 등록 된 경우 FormData에 저장
+            if(imgFile3 != undefined){
+                reviewData.append('imgFile3', imgFile3);
+                imgNum++;
+            }
 
+            reviewData.append('imgNum', imgNum);                // 전송한 이미지 개수를 FormData에 저장
+
+            reviewData.append('RATING',  RATING);               // 총 평점을 FormData에 저장
+            reviewData.append('TASTE',   TASTE);                // 맛 점수를 FormData에 저장
+            reviewData.append('SERVICE', SERVICE);              // 서비스 점수를 FormData에 저장
+            reviewData.append('MOOD',    MOOD);                 // 분위기 점수를 FormData에 저장
+            reviewData.append('PRICE',   PRICE);                // 가격 점수를 FormData에 저장
+
+            reviewData.append('CONTENT', this.reviewContents);  // 리뷰 텍스트를 FormData에 저장
+            reviewData.append('HASHTAG', this.tagsArray);       // 태그를 배열로 FormData에 저장
+
+            // ***** console.log 테스트, 지워도 됨 *****
+            console.log('img : ');
+            console.log(reviewData.get('imgFile1'));
+            console.log(reviewData.get('imgFile2'));
+            console.log(reviewData.get('imgFile3'));
+            console.log(reviewData.get('imgNum'));
+            console.log('////////////////');
+
+            console.log('RATE: ');
+            console.log(reviewData.get('RATING'));
+            console.log(reviewData.get('TASTE'));
+            console.log(reviewData.get('SERVICE'));
+            console.log(reviewData.get('MOOD'));
+            console.log(reviewData.get('PRICE'));
+            console.log('////////////////');
+
+            console.log('etc: ');
+            console.log(reviewData.get('CONTENT'));
+            console.log(reviewData.get('HASHTAG'));
+            console.log('////////////////');
+            // ***** console 테스트 끝 *****
+            
+            // 데이터 전송시 headers 타입
+            var settings = { headers: { 'content-type': 'multipart/form-data' } }
 
             // axios http 라이브러리
-            axios.post('/review/writeReview', {
-                starArr        : starArr,                       // 별점값 배열 (인덱스번호0부터 총점, 맛, 서비스, 분위기, 가격 순)
-                reviewContents :this.reviewContents,     // 리뷰 텍스트 값
-                tagsArray      : this.tagsArray,             // 태그값 배열
-
-                // 이미지의 경우 이미지가 등록되어 있지 않으면 전달 되지 않음, 등록되어 있는 경우에만 전달됨
-                 image1        : firstImgData,
-                 image2        : secondImgData,
-                 image3        : thirdImgData
-            }, settings).then(function (response) {
+            axios.post('/review/writeReview',
+                // 리뷰 관련 데이터
+                reviewData
+                , settings).then(function (response) {
                 alert(response.data.content);
             });
         }
     },
 }
 </script>
-
 <style>
-    .writeReview-header {
-        background-color: #353535;    
-        font-weight: bold;
-        font-size: 1em;
+    .review-write-header {
+        background-color: #353535;     
     }
     .btn-outlined.btn-white {
         background: none;
@@ -242,19 +275,10 @@ export default {
         ↓는 그 밖의 CSS     
     ************************************************************/
 
-    /* 별점 평가 항목 배치위치 CSS */
-    .rating-category-position {
-        width: 20%;
+     /* 별점 평가 항목 설정 CSS */
+    .rating-category-text {
+        font-size: 3em;
         margin-left: 10%;
-        float: left;
-        /* margin-right: 5em; */
-    }
-
-    /* 별 배치위치 CSS */
-    .rating-star-position {
-        width: 30%;
-        margin-left: 10%;
-        float: left;
     }
 
     /* 사진등록 이미지 배치위치 CSS */
@@ -262,5 +286,12 @@ export default {
         width: 30%;
         margin-left: 3%;
         float: left;
+    }
+
+    /* 제목 관련 css */
+    .title-text {
+        color: #ffffff;
+        font-size: 2em;
+        font-weight: bold;
     }
 </style>

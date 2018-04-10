@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Upload extends Model
+class Hashtag extends Model
 {
-    protected $table = 'upload';
+    protected $table = 'hashtag';
 
     //
     protected $fillable = [
-        'filename', 'shop_id', 'path'
+        'tag', 'review_id'
     ];
 }

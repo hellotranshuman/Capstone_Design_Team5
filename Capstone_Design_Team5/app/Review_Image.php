@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Upload extends Model
+class Review_Image extends Model
 {
-    protected $table = 'upload';
-
     //
+    protected $table = 'review_image';
+
     protected $fillable = [
-        'filename', 'shop_id', 'path'
+        'review_id', 'filename'
     ];
 }

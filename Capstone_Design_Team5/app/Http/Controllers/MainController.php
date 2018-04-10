@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class MainController extends Controller
 {
@@ -15,13 +17,35 @@ class MainController extends Controller
     }
 
     public function test() {
-        $ddd = DB::table('upload')
-            ->select('id', 'filename', 'shop_id')
-            ->get()->toArray();
+        /*
+        $files = DB::table('upload')
+            ->select('shop_id', 'filename', 'path')
+            ->get();
 
-        $ddd = json_encode($ddd);
+        $flag = true;
+        $number = 0;
+        foreach ($files as $file) {
+            if($flag) {
+                $array['titleImg'] = $file->path . $file->filename;
+                $flag = false;
+            }
 
-        echo var_dump($ddd);
+            else  {
+                $name = 'galleryImg'.$number;
+                $array[$name] = $file->path . $file->filename;
+            }
+
+        }
+
+        return view('test')->with($array);*/
+
+        $ddd = DB::table('restaurants')
+            ->select('*')
+            ->where('user_num', auth()->user()->id)
+            ->orderByRaw('id DESC')
+            ->first();
+
+       return view('test', ['ddd' => $ddd]);
     }
 
 }

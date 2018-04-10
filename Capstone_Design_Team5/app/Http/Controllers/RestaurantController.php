@@ -64,6 +64,7 @@ class RestaurantController extends Controller
 
         // Current Save Shop Image Route
         $path = storage_path() . '/app/public/img/' . $currentShopId;
+        $dbPath = '/images/'. $currentShopId . '/';
 
         // Check Shop Path
         if(is_dir($path))
@@ -86,8 +87,9 @@ class RestaurantController extends Controller
             $titleImg->storeAs($currentShopId, $fileName);
 
             \App\Upload::create([
-                'filename' => $fileName,
-                'shop_id' => $currentShopId
+                'filename'   => $fileName,
+                'shop_id'    => $currentShopId,
+                'path'       => $dbPath
             ]);
         }
         else {
@@ -113,8 +115,9 @@ class RestaurantController extends Controller
 
                 // DB에 저장
                 \App\Upload::create([
-                    'filename' => $fileName,
-                    'shop_id' => $currentShopId
+                    'filename'  => $fileName,
+                    'shop_id'   => $currentShopId,
+                    'path'      => $dbPath
                 ]);
             }
         }

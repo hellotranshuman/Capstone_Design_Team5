@@ -131,3 +131,26 @@ Route::get('test',[
 ]);
 
 
+// <-- Image Route
+Route::get('images/{shop_id}/{image}', function($shop_id, $image = null)
+{
+    $path = storage_path().'/app/public/img/' . $shop_id.'/' .$image;
+    if (file_exists($path)) {
+        return Response::download($path);
+    }
+    else
+        return $path;
+});
+
+Route::get('images/review/{image}', function($image = null)
+{
+    $path = storage_path().'/app/public/img/review' .$image;
+
+    if (file_exists($path)) {
+        return Response::download($path);
+    }
+    else
+        return $path;
+});
+
+
