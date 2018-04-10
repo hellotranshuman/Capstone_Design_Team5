@@ -9,27 +9,18 @@
               <b-navbar-toggle target="nav_dropdown_collapse"></b-navbar-toggle>
               <b-collapse is-nav id="nav_dropdown_collapse">
                 <b-navbar-nav>
-                  <b-nav-item href="#"><B>설정</B></b-nav-item>
-                  <b-nav-item href="#"><B>예약</B></b-nav-item>
-                  <b-nav-item href="#"><B>통계</B></b-nav-item>
+                  <b-nav-item><router-link to="/ownerPage/ownerPageSideSetting" class="fontColor_white"><B>설정</B></router-link></b-nav-item>
+                  <b-nav-item><router-link to="/ownerPage/ownerPageSideReservation" class="fontColor_white"><B>예약</B></router-link></b-nav-item>
+                  <b-nav-item><router-link to="/" class="fontColor_white"><B>통계</B></router-link></b-nav-item>
                 </b-navbar-nav>
               </b-collapse>
             </b-navbar>
         </div>
-      </div>
+    </div>
 </template>
 
 <script>
     export default {
-      data () {
-        return {
-          selected: 'first',
-          options: [
-            {text: '이상' ,value: 'up'},
-            {text: '이하' ,value: 'down'}
-          ]
-        }
-      }
     }
 
 </script>

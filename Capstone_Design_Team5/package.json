@@ -18,15 +18,20 @@
         "lodash": "^4.17.4",
         "vue": "^2.5.7",
         "vue-axios": "^2.1.0",
+        "vue-ico": "^1.0.15",
         "vue-loader": "^14.2.2",
         "vue-router": "^3.0.1",
         "vue-template-compiler": "^2.5.16"
     },
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "bootstrap-vue": "^2.0.0-rc.2",
         "vue-hotel-datepicker": "^2.2.0",
         "vue-input-tag": "^1.0.3",
         "vue-picture-input": "^2.1.5",
-        "vue-social-sharing": "^2.3.3"
+        "vue-social-sharing": "^2.3.3",
+        "vue-timepicker": "0.0.3",
+        "vuejs-datepicker": "^0.9.29",
+        "vuetify": "^1.0.13"
     }
 }

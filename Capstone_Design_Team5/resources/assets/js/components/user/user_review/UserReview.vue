@@ -7,78 +7,71 @@
 
 <template>
     <transition name="fade">
-        <b-container fluid>
-            <b-row align-h="start">
-                <b-col>
-                    <b-container>
-                        <br><br>
-                        <p>
-                            <router-link to="/review/writeReview" class="btn btn-outlined btn-block btn-danger">리뷰 작성</router-link>
-                        </p>    
-                    </b-container>
-                </b-col>
-            </b-row>
+        <v-container>
+            <v-layout>
+                <!-- 리뷰 작성 버튼 -->
+                <v-flex>
+                    <v-btn outline color="red lighten-2" to="/userRestaurantMain/review/writeReview" block>리뷰 작성</v-btn>
+                </v-flex>
             <!-- SNS 공유 -->
-            <b-row>
-                <b-col>
+            </v-layout>
+            <v-layout>
+                <v-flex>
                     <social-sharing v-bind:url= "url" inline-template>
-                        <b-row class="text-center">
-                            <b-col>
+                        <v-layout>
+                            <v-flex>
                                 <network network="facebook">
                                     <img src= "../../../../../../public/images/review/facebook.png" class="snsMark">
                                 </network>
-                            </b-col>
-                            <b-col>
+                            </v-flex>
+                            <v-flex>
                                 <network network="twitter">
                                     <img src= "../../../../../../public/images/review/twitter.png" class="snsMark">
-                                </network>
-                            </b-col>
-                            <b-col>
+                                </network>                                
+                            </v-flex>
+                            <v-flex>
                                 <network network="weibo">
                                     <img src= "../../../../../../public/images/review/weibo.png" class="snsMark">
                                 </network>
-                            </b-col>
-                        </b-row>
+                            </v-flex>
+                        </v-layout>         
                     </social-sharing>
-                </b-col>
-            </b-row>
+                </v-flex>
+            </v-layout>
             <!-- 구분 -->
             <br><br>
-            <b-row>
-                <b-col>
-                    <b-nav justified tabs class="review-arrayBar">
-                        <b-nav-item>작성일 순</b-nav-item>
-                        <b-nav-item>인기순</b-nav-item>
-                        <b-nav-item>국가순</b-nav-item>
-                    </b-nav>
-                </b-col>
-            </b-row>
+            <v-layout>
+                <v-flex>
+                    <!-- 리뷰 정렬 -->
+                    <v-tabs centered color="white" hide-slider>
+                        <v-tab class="review-arrayBar-font">작성일순</v-tab>
+                        <v-tab class="review-arrayBar-font">인기순</v-tab>
+                        <v-tab class="review-arrayBar-font">국가순</v-tab>
+                    </v-tabs>
+                </v-flex>
+            </v-layout>
             <br><br>
+            
             <!-- 리뷰 내용 출력 -->
-            <b-row>
-                <b-col>
-                    <!-- 리뷰 출력 -->
-                    <ul>
-                        <!-- 리뷰 갯수 만큼 반복 -->
+            <v-layout>
+                <v-flex>
+                    리뷰 출력
+                    <!-- 리뷰 갯수 만큼 반복 -->
+                    <!-- <ul>
                         <li v-for= "reviewData in reviewDataList" :key= "reviewDataList.reviewID">
-                            <b-row>
-                                <b-col>
-                                    <UserCreateReview userID="reviewData.userID"  nationality="reviewData.nationality" 
-                                    writeDate="reviewData.date" reviewLike="reviewData.reviewLike"
-                                    rating="reviewData.rating" taste="reviewData.taste"
-                                    service="reviewData.service" mood="reviewData.mood"
-                                    price="reviewData.price" image1="reviewData.image1"
-                                    image2="reviewData.image2" image3="reviewData.image3"
-                                    content="reviewData.content" hashTag="" 
-                                    ></UserCreateReview>
-                                </b-col>   
-                            </b-row>
-                            <hr> 
+                            <UserCreateReview userID="reviewData.userID"  nationality="reviewData.nationality" 
+                            writeDate="reviewData.date" reviewLike="reviewData.reviewLike"
+                            rating="reviewData.rating" taste="reviewData.taste"
+                            service="reviewData.service" mood="reviewData.mood"
+                            price="reviewData.price" image1="reviewData.image1"
+                            image2="reviewData.image2" image3="reviewData.image3"
+                            content="reviewData.content" hashTag="" >
+                            </UserCreateReview> 
                         </li>
-                    </ul>
-                </b-col>
-            </b-row>
-        </b-container>
+                    </ul> -->
+                </v-flex>
+            </v-layout>
+        </v-container>
     </transition>
 </template>
 
@@ -125,31 +118,6 @@ export default {
 </script>
 
 <style>
-    .review-arrayBar{
-        font-size: 1.3em;
-        font-weight: bold; 
-    }
-
-    /* ↓버튼 관련 CSS */
-    .btn-outlined {
-        border-radius: 0;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-                transition: all 0.3s;
-    }
-
-    .btn-outlined.btn-danger {
-        background: none;
-        border: 3px solid #d9534f;
-        color: #d9534f;
-    }
-    .btn-outlined.btn-danger:hover,
-    .btn-outlined.btn-danger:active {
-        color: #FFF;
-        background: #d2322d;
-    }
-    /* ↑버튼 관련 CSS */
-
     /* ul 태그 CSS */
     ul {
         list-style: none;
@@ -162,11 +130,19 @@ export default {
         cursor: pointer;
     }
 
-
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s
     }
     .fade-enter, .fade-leave-active {
         opacity: 0
+    }
+
+    /* 리뷰 정렬 바 CSS */
+    .review-arrayBar-font {
+        font-size: 2em;
+        font-weight: bold;   
+        width: 100%;
+        height: 100;
+        color: black;
     }
 </style>

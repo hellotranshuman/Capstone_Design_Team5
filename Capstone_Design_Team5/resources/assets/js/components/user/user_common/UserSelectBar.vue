@@ -7,44 +7,26 @@
 -->
 
 <template>
-    <b-container fluid>
-        <b-row>
-            <b-col>  
+    <v-container>
+        <v-layout>
+            <v-flex>
                 <!-- 정보, 메뉴, 리뷰 중 선택합니다. -->
-                <b-nav justified tabs variant="outline-danger" class="w-100">
-                    <b-nav-item active>
-                        <router-link to="/restaurant">
-                            <b-button variant="outline-danger" class="select-font-style">
-                            정보
-                            </b-button>
-                        </router-link>
-                    </b-nav-item>
-                    <b-nav-item active>
-                        <router-link to="/menu">
-                            <b-button variant="outline-danger" class="select-font-style">
-                            메뉴
-                            </b-button>
-                        </router-link>
-                    </b-nav-item>
-                    <b-nav-item active>
-                        <router-link to="/review">
-                            <b-button variant="outline-danger" class="select-font-style">
-                            리뷰
-                            </b-button>
-                        </router-link>
-                    </b-nav-item>
-                </b-nav>
-            </b-col>
-        </b-row>
+                <v-tabs centered color="red lighten-2" slot="extension" slider-color="yellow">
+                    <v-tab to="/userRestaurantMain/restaurant"  class="select-font-style">정보</v-tab>
+                    <v-tab to="/userRestaurantMain/menu"        class="select-font-style">메뉴</v-tab>
+                    <v-tab to="/userRestaurantMain/review"      class="select-font-style">리뷰</v-tab>
+                </v-tabs>
+            </v-flex>
+        </v-layout>
         <!-- 구분 -->
         <br><br>
-        <b-row>
-            <b-col>
+        <v-layout>
+            <v-flex>
                 <!-- 내용을 출력합니다. -->
                 <router-view></router-view>
-            </b-col>
-        </b-row>
-    </b-container>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -55,19 +37,29 @@ export default {
 </script>
 
 <style>
+    /* 클릭하지 않은 링크 */
+    a:link { 
+        color: red; 
+        text-decoration: none;
+    }
+    /* 한번 클릭했던 혹은 다녀갔던 링크 */
+    a:visited { 
+        color: black; 
+        text-decoration: none;
+    }
+    /* 링크를 클릭하려고 마우스를 가져갔을 때 */
+    a:hover { 
+        color: white; 
+        text-decoration: none;
+    }
+
     .select-font-style {
         font-size: 2em;
         font-weight: bold;   
         width: 100%;
         height: 100;
+        color: white;
     }
 
-    #selectBarWidth {
-        width: 90%
-    }
-
-    /* .sticky {
-        position: sticky;
-    } */
 
 </style>

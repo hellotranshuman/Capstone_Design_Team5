@@ -1,20 +1,23 @@
 <template>
-    <!-- 사이드바 -->
+  <!-- Reservation Main -->
+  <div>
     <div id="sidebar_wrapper">
         <ul class="sidebar_nav">
             <li class="sidebar_brand"><B>예약</B></li>
             <li class="sidebar_brand"><B>예약 관리</B></li>
-            <li><a href="#">예약 현황</a></li>
-            <li><a href="#">예약 수락</a></li>
-            <li><a href="#">예약 설정</a></li>
+            <li><router-link to="/ownerPage/ownerReservationlist">예약 현황</router-link></li>
+            <li><router-link to="/ownerPage/ownerReservationAccept">예약 수락</router-link></li>
+            <li><router-link to="/ownerPage/ownerReservationSetting">예약 설정</router-link></li>
         </ul>
     </div>
+    <div>
+      <router-view  to="/ownerReservationlist"></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
 
-}
 </script>
 
 <style>
@@ -29,13 +32,11 @@ export default {
     /* 사이드바 */
 
   #sidebar_wrapper {
-    position: fixed;
     width: 200px;
-    height: 100%; 
+    height: 600px; 
+    float: left;
 
     background: #000;
-    overflow-x: hidden;
-    overflow-y: auto;
   }
 
   #page-content_wrapper {

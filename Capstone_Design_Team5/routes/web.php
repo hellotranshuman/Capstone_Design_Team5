@@ -17,15 +17,15 @@ Route::get('/', function () {
 
 // Route::post('/dataget', 'axiosTestController@createReview');
 
-// Route::post('/dataget', [
-//     'as' => 'axiosTest.createReview',
-//     'uses' => 'axiosTestController@createReview'
-// ]);
+Route::post('/dataget', [
+    'as' => 'axiosTest.createReview',
+    'uses' => 'axiosTestController@createReview'
+]);
 
-Route::post('/dataget', function () {
-    return "a";
-    //return view('dataGet');
-});
+// Route::post('/dataget', function () {
+//     return "a";
+//     //return view('dataGet');
+// });
 
 Route::get('createCoupon', function () {
     return view('restaurant.createCoupon');

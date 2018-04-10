@@ -12,112 +12,128 @@
 -->
 
 <template>
-    <!-- fluid 속성(태그 폭 전체 적용) 적용 여부 생각해 보기 -->
-    <b-container>
-         <!-- 상단바 -->
-        <b-navbar class="review-write-header">
-            <b-navbar-brand>
-                <span class="title-text">리뷰 작성하기</span>
-            </b-navbar-brand>
-            <b-navbar-nav class="ml-auto">
-                <b-nav-text>
-                    <!-- 페이지 이동 태그 + 등록 버튼 -->
-                    <router-link to="/review">
-                        <b-button size="lg" class="btn btn-outlined btn-white" @click= "sendReviewData">
-                        등록
-                        </b-button>
-                    </router-link>
-                </b-nav-text>
-            </b-navbar-nav>         
-        </b-navbar>
-        <!-- 별점 -->
-        <b-row class="rating-category-text">
-            <b-col sm="2">총점</b-col>
-            <b-col ><UserReviewStarRating></UserReviewStarRating></b-col>
-        </b-row>
+    <v-container>
+        <v-layout>
+            <v-flex>
+                <!-- 상단바 -->
+                <v-toolbar flat color="grey darken-3">
+                    <v-toolbar-title class="white--text">리뷰 작성하기</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-toolbar-items class="hidden-sm-and-down">
+                        <!-- 등록 버튼 -->
+                        <!-- <router-link to="/userRestaurantMain/review"> -->
+                                <v-btn outline large color="grey darken-4" to="/userRestaurantMain/review" @click= "sendReviewData">
+                                <span class="submit-btn">등록</span>
+                                </v-btn>
+                        <!-- </router-link> -->
+                    </v-toolbar-items>
+                </v-toolbar>
+            </v-flex>
+        </v-layout>
         <!-- 구분 -->
-        <hr><br>
+        <br>
+        <v-layout>
+            <!-- 별점 -->
+            <v-flex>
+                <v-card>
+                    <v-card-title>총점</v-card-title>
+                    <v-card-text>
+                        <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
         <!-- 별점 상세평가 -->
-        <b-row>
-            <b-col>
-                <b-btn v-b-toggle.detailRate class="m-1">상세평가</b-btn>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col>
-                <b-collapse visible id="detailRate">
-                    <!-- 맛 -->
-                    <b-row class="rating-category-text">
-                        <b-col sm="2">맛</b-col>
-                        <b-col sm="auto"><UserReviewStarRating></UserReviewStarRating></b-col>
-                    </b-row>
-                    <!-- 서비스 -->
-                    <b-row class="rating-category-text">
-                        <b-col sm="2">서비스</b-col>
-                        <b-col><UserReviewStarRating></UserReviewStarRating></b-col>
-                    </b-row>
-                    <!-- 분위기 -->
-                    <b-row class="rating-category-text">
-                        <b-col sm="2">분위기</b-col>
-                        <b-col><UserReviewStarRating></UserReviewStarRating></b-col>
-                    </b-row>
-                    <!-- 가격 -->
-                    <b-row class="rating-category-text">
-                        <b-col sm="2">가격</b-col>
-                        <b-col><UserReviewStarRating></UserReviewStarRating></b-col>
-                    </b-row>
-                </b-collapse>
-            </b-col>
-        </b-row>                   
+        <v-layout>
+            <v-flex>
+                <v-card>
+                    <v-card-title>상세평가</v-card-title>
+                    <v-card-text>
+                        맛 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex>
+                <v-card>
+                    <v-card-text>
+                        서비스 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex>
+                <v-card>
+                    <v-card-text>
+                        분위기 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex>
+                <v-card>
+                    <v-card-text>
+                        가격 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+
+
         <!-- 구분 -->
         <hr><br>
-        <b-row>
-            <b-col>
-                <!-- 리뷰 텍스트 -->
-                <b-form-textarea id="textarea" v-model= "reviewContents" placeholder="리뷰 작성" :rows="10" :max-rows="10">
-                </b-form-textarea>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col>
-                <!-- 태그 -->
+        <!-- 리뷰 텍스트 -->
+        <v-layout>
+            <v-flex>
+                <v-text-field multi-line rows="6" row-height="6" 
+                v-model= "reviewContents" color="black" 
+                label="리뷰 입력">
+                </v-text-field>
+            </v-flex>
+        </v-layout>
+        
+        <!-- 태그 -->
+        <v-layout>
+            <v-flex>
                 <InputTag 
                 v-bind:placeholder  = 'tagPlaceholder' 
                 v-bind:limit        = 'tagLimit' 
                 v-bind:tags.sync    = 'tagsArray'>
                 </InputTag>  
-            </b-col>
-        </b-row>
+            </v-flex>
+        </v-layout>
         <!-- 구분 -->
         <hr><br>
         <!-- 이미지 -->
-        <b-row>
-            <b-col class="image-position">
+        <v-layout>
+            <v-flex>
                 <PictureInput ref="image1" @change="onChange" 
                 width="250" height="165" margin="16" radius="10" 
                 accept="image/*" size="10" buttonClass="btn"
                 :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
                 </PictureInput>
-            </b-col>
-
-            <b-col class="image-position">
+            </v-flex>
+            <v-flex>
                 <PictureInput ref="image2" @change="onChange" 
                 width="250" height="165" margin="16" radius="10" 
                 accept="image/*" size="10" buttonClass="btn"
                 :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                </PictureInput>
-            </b-col>
-
-            <b-col class="image-position">
+                </PictureInput> 
+            </v-flex>
+            <v-flex>
                 <PictureInput ref="image3" @change="onChange" 
                 width="250" height="165" margin="16" radius="10" 
                 accept="image/*" size="10" buttonClass="btn"
                 :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                </PictureInput>                </b-col>
-        </b-row>
-    <!-- 구분 -->
-    <hr><br>
-    </b-container>
+                </PictureInput>
+            </v-flex>
+        </v-layout>
+        <!-- 구분 -->
+        <br>
+    </v-container>
 </template>
 
 <script>
@@ -151,7 +167,7 @@ export default {
 
     methods: {
         //이미지 관련 메서드
-        onChange (image) {
+        onChange(image) {
             console.log('New picture selected!')
 
             if (image) {
@@ -163,7 +179,7 @@ export default {
         },
 
         // 리뷰 관련 데이터를 전송하는 함수
-        sendReviewData (){
+        sendReviewData() {
             // starRating를 class명으로 가지는 별점 항목 엘리먼트를 배열로 가지고옵니다.
             let starArr = document.getElementsByClassName("starRating");
 
@@ -257,26 +273,11 @@ export default {
 }
 </script>
 <style>
-    .review-write-header {
-        background-color: #353535;     
+    /* 등록 버튼 CSS */
+    .submit-btn {
+        color: white;
+        font: bold;
     }
-    .btn-outlined.btn-white {
-        background: none;
-        border: 3px solid #ffffff;
-        color: #ffffff;
-        
-        border-radius: 1em
-    }
-    .btn-outlined.btn-white:hover,
-    .btn-outlined.btn-white:active {
-        color: #353535;
-        background: #ffffff;
-    }
-
-    /************************************************************
-        ↑는 버튼 관련 CSS
-        ↓는 그 밖의 CSS     
-    ************************************************************/
 
      /* 별점 평가 항목 설정 CSS */
     .rating-category-text {
