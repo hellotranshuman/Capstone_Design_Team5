@@ -35,6 +35,7 @@ class RestaurantController extends Controller
 
         $restaurantInfo = array_merge($restaurant, $file);
 
+
         return response()->json([
             'msg' => $request->get('restaurant_id'),
             'restaurant' => $restaurantInfo,
