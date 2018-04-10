@@ -292,10 +292,4 @@ export default {
         float: left;
     }
 
-    /* 제목 관련 css */
-    .title-text {
-        color: #ffffff;
-        font-size: 2em;
-        font-weight: bold;
-    }
 </style>
