@@ -15,6 +15,17 @@ class RestaurantController extends Controller
             return view('restaurant.createRestaurant');
     }
 
+    public function showRestaurantInfo(Request $request) {
+
+        $res =  DB::table('restaurants')
+            ->select('*')
+            ->where('id', $request->get('restaurant_id'))
+            ->get();
+
+       return json_encode($res);
+
+    }
+
     public function createRestaurant(Request $request) {
 
         // <-- *** insert restaurant data ***

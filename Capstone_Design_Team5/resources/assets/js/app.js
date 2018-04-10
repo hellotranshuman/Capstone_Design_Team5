@@ -19,8 +19,6 @@ import createCupon from './components/owner/owner_coupon/createCupon.vue';
 import UserMain from './components/user/user_main/UserMain.vue';
 // 유저 리뷰 페이지 컴포넌트 import
 import UserCommon from './components/user/user_common/UserCommon.vue';
-
-
 // 가게 정보 페이지 컴포넌트 import
 import UserMenu from './components/user/user_menu/UserMenu.vue';
 // 메뉴판 페이지 컴포넌트 import
@@ -42,6 +40,11 @@ const routes = [
         component: createCupon
     },
     {
+        name: 'UserRestaurant',
+        path: '/restaurant/{shop_id}/info',
+        component: UserRestaurant
+    },
+    {
         name: 'UserCommon',
         path: '/',
         component: UserCommon,
@@ -57,11 +60,6 @@ const routes = [
                 path: '/review',
                 component: UserReview
             },
-            {
-                name: 'UserRestaurant',
-                path: '/restaurant',
-                component: UserRestaurant
-            }
         ]
     },
     {
