@@ -100,11 +100,20 @@ Route::post('createRestaurant', [
 Route::get('restaurant/{shop_id}/info', function (){
     return view('user.userRestaurant');
 });*/
-
+/*
 Route::get('restaurant/{shop_id}/info', [
     'as' => 'restaurant.showRestaurantInfo',
     'uses' => 'RestaurantController@showRestaurantInfo'
-]);
+]);*/
+
+Route::get('restaurant/info', function () {
+   return view('user.userRestaurant');
+});
+
+Route::post('restaurant/info', [
+    'as' => 'restaurant.showRestaurantInfo',
+    'uses' => 'RestaurantController@showRestaurantInfo'
+]) ;
 
 
 Route::get('createCoupon', function () {

@@ -84,10 +84,14 @@ class ReviewController extends Controller
                    'filename' => $imgName,
                 ]);
 
+
+
             }
 
+            $ddd = ['dddd', 'ssss'];
+
             return response()->json([
-                'content' => $request->get('HASHTAG'),
+                'content' => $ddd,
             ]);
 
         }

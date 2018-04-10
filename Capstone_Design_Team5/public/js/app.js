@@ -24115,12 +24115,14 @@ var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받�
 
         // 값 보내기
         __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/restaurant/info', restaurant_id).then(function (response) {
-            get_datas = response.data;
+            get_datas = response.data.restaurant;
+            console.log(response.data.msg);
+            console.log(get_datas);
 
             _this.enter_data(Object.keys(get_datas)); // 데이터 바인딩
             _this.geoCoder(); // 지도 생성
             // this.enter_title();                            // 타이틀 이미지 삽입
-            // this.enter_galley(get_datas.gallery_num);      // 갤러리 이미지 출력
+            // this.enter_galley(get_datas.gallery_num); */      // 갤러리 이미지 출력
         }).catch(function (ex) {
             alert('왜 안대');
         });
@@ -27160,7 +27162,7 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_7__components_owner_owner_coupon_createCupon_vue__["a" /* default */]
 }, {
     name: 'UserRestaurant',
-    path: '/restaurant/{shop_id}/info',
+    path: '/restaurant/info',
     component: __WEBPACK_IMPORTED_MODULE_12__components_user_user_restaurant_UserRestaurant_vue__["a" /* default */]
 }, {
     name: 'UserCommon',

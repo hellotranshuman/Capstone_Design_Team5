@@ -17,23 +17,28 @@ class RestaurantController extends Controller
             return view('restaurant.createRestaurant');
     }
 
-    public function showRestaurantInfo($shop_id) {
+    public function showRestaurantInfo(Request $request) {
+
+        $restaurantId = $request->get('restaurant_id');
 
         $restaurant = Restaurant::join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
                         '=', 'restaurants.id')
                         ->select('restaurants.*', 'lunchDinnerTime.*')
-                        ->where('lunchDinnerTime.shop_id', $shop_id)
+                        ->where('lunchDinnerTime.shop_id', 13)
                         ->get()
                         ->toArray();
 
-        $file = Upload::select('filename', 'path')
-                        ->where('shop_id', $shop_id)
+        $file = Upload::select('path', 'filename')
+                        ->where('shop_id', 13)
                         ->get()
                         ->toArray();
 
         $restaurantInfo = array_merge($restaurant, $file);
 
-        return $restaurantInfo;
+        return response()->json([
+            'msg' => $request->get('restaurant_id'),
+            'restaurant' => $restaurantInfo,
+        ]);
 
         /*
         $res =  DB::table('restaurants')
