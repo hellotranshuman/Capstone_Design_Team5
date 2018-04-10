@@ -23620,7 +23620,7 @@ var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받�
             // this.enter_title();                            // 타이틀 이미지 삽입
             // this.enter_galley(get_datas.gallery_num); */      // 갤러리 이미지 출력
         }).catch(function (ex) {
-            alert('왜 안대');
+            // alert('왜 안대');
         });
     },
 

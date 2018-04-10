@@ -156,7 +156,7 @@ export default{
             // this.enter_galley(get_datas.gallery_num); */      // 갤러리 이미지 출력
         })
         .catch((ex)=>{ 
-            alert('왜 안대');
+            // alert('왜 안대');
         })
     },
     methods : {

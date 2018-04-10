@@ -44,10 +44,10 @@ Route::get('main', array(
     'uses' => 'MainController@showMainPage'
 ));
 
-// Route::get('/', array(
-//     'as' => 'main.showMainPage',
-//     'uses' => 'MainController@showMainPage'
-// ));
+Route::get('/', array(
+    'as' => 'main.showMainPage',
+    'uses' => 'MainController@showMainPage'
+));
 
 // <-- Show Login Form
 Route::get('login', [
