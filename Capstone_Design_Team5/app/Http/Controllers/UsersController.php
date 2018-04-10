@@ -11,8 +11,11 @@ class UsersController extends Controller
 {
     //
     public function showLogin() {
+        if(auth()->check())
+            return redirect('/');
         // show the form
-        return View('user.login');
+        else
+            return View('user.login');
     }
 
     public function doLogin(Request $request) {

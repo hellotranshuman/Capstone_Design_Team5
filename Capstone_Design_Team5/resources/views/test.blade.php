@@ -13,9 +13,8 @@
     }
 </style>
 <body>
-
-<img src="{{ $titleImg }}">
-<img src="{{ $galleryImg0 }}">
-
+@foreach($res as $re)
+  <p> {{ $re->name }} </p>
+@endforeach
 </body>
 </html>

@@ -81,29 +81,30 @@ Route::get('register/owner', function (){
     return view('user.ownerRegisterForm');
 });
 
+Route::post('register', [
+    'as' => 'register.createMember',
+    'uses' => 'RegisterController@createMember'
+]);
+
 Route::get('createRestaurant', array(
     'as' => 'restaurant.showRestaurantForm',
     'uses' => 'RestaurantController@showRestaurantForm'
 ));
-
-Route::get('createRestaurantTest', function () {
-    return view('restaurant.createRestaurantTest');
-});
-
-Route::post('createRestaurantTest', [
-    'as' => 'restaurant.createRestaurantTest',
-    'uses' => 'RestaurantController@createRestaurant'
-]);
 
 Route::post('createRestaurant', [
     'as' => 'restaurant.createRestaurant',
     'uses' => 'RestaurantController@createRestaurant'
 ]);
 
-Route::post('register', [
-    'as' => 'register.createMember',
-    'uses' => 'RegisterController@createMember'
+Route::get('restaurant/{shop_id}/info', function (){
+    return view('user.userRestaurant');
+});
+
+Route::post('restaurant/info', [
+    'as' => 'restaurant.showRestaurantInfo',
+    'uses' => 'RestaurantController@showRestaurantInfo'
 ]);
+
 
 Route::get('createCoupon', function () {
     return view('restaurant.createCoupon');
@@ -129,7 +130,6 @@ Route::get('test',[
     'as' =>  'main.test',
     'uses' => 'MainController@test'
 ]);
-
 
 // <-- Image Route
 Route::get('images/{shop_id}/{image}', function($shop_id, $image = null)

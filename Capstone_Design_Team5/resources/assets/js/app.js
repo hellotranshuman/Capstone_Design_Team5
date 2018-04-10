@@ -40,6 +40,9 @@ import UserMain     from './components/user/user_main/UserMain.vue';
 // 유저 리뷰 페이지 컴포넌트 import
 import UserRestaurantMain   from './components/user/user_common/UserRestaurantMain.vue';
 
+
+import UserCommon from './components/user/user_common/UserCommon.vue';
+
 // 가게 정보 페이지 컴포넌트 import
 import UserMenu         from './components/user/user_menu/UserMenu.vue';
 // 메뉴판 페이지 컴포넌트 import
@@ -76,6 +79,7 @@ const routes = [
         name: 'UserRestaurantMain',                         // 가게 페이지
         path: '/userRestaurantMain',
         component: UserRestaurantMain,
+
         // 네스티드 라우터
         children:[
             {
@@ -93,6 +97,7 @@ const routes = [
                 path: '/userRestaurantMain/review',
                 component: UserReview
             }
+
         ]
     },
     {
