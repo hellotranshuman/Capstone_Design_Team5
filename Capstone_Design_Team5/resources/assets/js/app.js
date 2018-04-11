@@ -16,7 +16,6 @@ Vue.use(BootstrapVue);
 
 import App from './App.vue';
 import OwnerRestaurant from './components/owner/owner_restaurant/OwnerRestaurant.vue';
-import createCupon from './components/owner/owner_coupon/createCupon.vue';
 // 유저 메인 페이지 컴포넌트 import
 import UserMain from './components/user/user_main/UserMain.vue';
 // 유저 리뷰 페이지 컴포넌트 import
@@ -29,6 +28,8 @@ import UserReview from './components/user/user_review/UserReview.vue';
 import UserRestaurant from './components/user/user_restaurant/UserRestaurant.vue';
 // 리뷰 작성 페이지 컴포넌트 import
 import UserWriteReview from './components/user/user_review/UserWriteReview.vue';
+// 쿠폰 생성 페이지 컴포넌트 import
+import createCoupon from './components/owner/owner_coupon/createCoupon.vue';
 
 import UserNavBar from './components/user/user_main/navbar.vue';
 
@@ -40,8 +41,8 @@ const routes = [
     },
     {
         name: 'createCoupon',
-        path: '/createCoupon',
-        component: createCupon
+        path: '/restaurant/:shop_id/createCoupon',
+        component: createCoupon
     },
     {
         name: 'UserRestaurant',

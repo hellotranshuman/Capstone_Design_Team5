@@ -35,7 +35,7 @@ class ReviewController extends Controller
     }
 
     public function createReview(Request $request) {
-
+        // 현재 시간 불러오기
         $currentDate = date("Y-m-d H:i:s");
 
         // create Review column in Review Table
@@ -96,7 +96,6 @@ class ReviewController extends Controller
                 ]);
 
             }
-
 
             return response()->json([
                 'content' => '리뷰 작성이 완료되었습니다.',

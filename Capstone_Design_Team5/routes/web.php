@@ -104,11 +104,22 @@ Route::get('restaurant/{shop_id}/info', [
 Route::get('restaurant/{shop_id}/getInfo', [
     'as' => 'restaurant.showRestaurantInfo',
     'uses' => 'RestaurantController@showRestaurantInfo'
-]) ;
+]);
 
-Route::get('createCoupon', function () {
+/*
+Route::get('restaurant/createCoupon', function () {
     return view('restaurant.createCoupon');
-});
+});*/
+
+Route::get('restaurant/{shop_id}/createCoupon', [
+    'as' => 'coupon.showCouponForm',
+    'uses' => 'CouponController@showCouponForm'
+]);
+
+Route::post('restaurant/createCoupon', [
+    'as' => 'coupon.createCoupon',
+    'uses' => 'CouponController@createCoupon'
+]);
 
 Route::get('review', [
    'as' =>  'review.showReviewData',

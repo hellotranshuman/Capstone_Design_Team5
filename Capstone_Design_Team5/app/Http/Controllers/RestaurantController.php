@@ -48,7 +48,7 @@ class RestaurantController extends Controller
                         ->get()
                         ->toArray();
 
-        $restaurantInfo = array_merge($restaurant, $file); //, $totalRating);
+        $restaurantInfo = array_merge($restaurant, $file, $totalRating); //, $totalRating);
 
 
          return response()->json([
@@ -91,7 +91,6 @@ class RestaurantController extends Controller
         $currentShopId = $shopId->id;
 
         echo $currentShopId;
-
 
         \App\LunchDinnerTime::create([
             'shop_id' => $currentShopId,
