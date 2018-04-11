@@ -96,25 +96,15 @@ Route::post('createRestaurant', [
     'uses' => 'RestaurantController@createRestaurant'
 ]);
 
-/*
-Route::get('restaurant/{shop_id}/info', function (){
-    return view('user.userRestaurant');
-});*/
-/*
 Route::get('restaurant/{shop_id}/info', [
-    'as' => 'restaurant.showRestaurantInfo',
-    'uses' => 'RestaurantController@showRestaurantInfo'
-]);*/
+    'as' => 'restaurant.showRestaurantInfoForm',
+    'uses' => 'RestaurantController@showRestaurantInfoForm'
+]);
 
-Route::get('restaurant/info', function () {
-   return view('user.userRestaurant');
-});
-
-Route::post('restaurant/info', [
+Route::get('restaurant/{shop_id}/getInfo', [
     'as' => 'restaurant.showRestaurantInfo',
     'uses' => 'RestaurantController@showRestaurantInfo'
 ]) ;
-
 
 Route::get('createCoupon', function () {
     return view('restaurant.createCoupon');

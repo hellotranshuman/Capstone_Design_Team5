@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Restaurant;
 use App\Upload;
+use App\Review;
+use phpDocumentor\Reflection\Types\Self_;
 
 class RestaurantController extends Controller
 {
+    static $shopId = 0;
+
     public function showRestaurantForm() {
         if(auth()->user()->category == true)
             return 'failed!!!!!@@@';
@@ -17,43 +21,41 @@ class RestaurantController extends Controller
             return view('restaurant.createRestaurant');
     }
 
-    public function showRestaurantInfo(Request $request) {
+    public function showRestaurantInfoForm() {
 
-        $restaurantId = $request->get('restaurant_id');
+
+        return view('user.userRestaurant');
+    }
+
+    public function showRestaurantInfo($shop_id) {
+
+        // $restaurantId = $request->get('restaurant_id');
 
         $restaurant = Restaurant::join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
                         '=', 'restaurants.id')
                         ->select('restaurants.*', 'lunchDinnerTime.*')
-                        ->where('lunchDinnerTime.shop_id', 14)
+                        ->where('lunchDinnerTime.shop_id', $shop_id)
                         ->get()
                         ->toArray();
 
         $file = Upload::select('path', 'filename')
-                        ->where('shop_id', 14)
+                        ->where('shop_id', $shop_id)
                         ->get()
                         ->toArray();
 
-        $restaurantInfo = array_merge($restaurant, $file);
+        $totalRating = Review::select(DB::raw('AVG(rating) as totalRating'))
+                        ->where('shop_id', $shop_id)
+                        ->get()
+                        ->toArray();
 
-        return response()->json([
-            'msg' => $request->get('restaurant_id'),
+        $restaurantInfo = array_merge($restaurant, $file); //, $totalRating);
+
+
+         return response()->json([
+            // 'test' => RestaurantController::$shopId,
             'restaurant' => $restaurantInfo,
         ]);
 
-        /*
-        $res =  DB::table('restaurants')
-            ->join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
-                    '=', 'restaurants.id')
-            ->select('restaurants.*', 'lunchDinnerTime.*')
-            ->where('lunchDinnerTime.shop_id', $shop_id)
-            ->get();
-
-
-
-
-
-
-       return var_dump($res); */
 
     }
 
@@ -128,6 +130,7 @@ class RestaurantController extends Controller
             // Upload File Save
             $titleImg->storeAs($currentShopId, $fileName);
 
+            // Create Upload File Column in Upload Table
             \App\Upload::create([
                 'filename'   => $fileName,
                 'shop_id'    => $currentShopId,

@@ -13,7 +13,7 @@ class MainController extends Controller
         if( !auth()->check())
             return redirect('login');
 
-        return view('main');
+        return view('user.navbar');
     }
 
     public function test() {

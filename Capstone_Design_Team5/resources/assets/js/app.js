@@ -1,14 +1,16 @@
 import Vue from 'vue';
-
+import Vuetify from 'vuetify';
 import VueRouter from 'vue-router';
-Vue.use(VueRouter);
 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import BootstrapVue from 'bootstrap-vue';
+import 'vuetify/dist/vuetify.min.css';
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+Vue.use(VueRouter);
+Vue.use(Vuetify);
 Vue.use(VueAxios, axios);
 Vue.use(BootstrapVue);
 
@@ -28,6 +30,8 @@ import UserRestaurant from './components/user/user_restaurant/UserRestaurant.vue
 // 리뷰 작성 페이지 컴포넌트 import
 import UserWriteReview from './components/user/user_review/UserWriteReview.vue';
 
+import UserNavBar from './components/user/user_main/navbar.vue';
+
 const routes = [
     {
         name :'OwnerRestaurant',
@@ -41,9 +45,15 @@ const routes = [
     },
     {
         name: 'UserRestaurant',
-        path: '/restaurant/info',
+        path: '/restaurant/:shop_id/info',
         component: UserRestaurant
     },
+    {
+        name: 'UserNavBar',
+        path: '/main',
+        component: UserNavBar
+    }
+    ,
     {
         name: 'UserCommon',
         path: '/',

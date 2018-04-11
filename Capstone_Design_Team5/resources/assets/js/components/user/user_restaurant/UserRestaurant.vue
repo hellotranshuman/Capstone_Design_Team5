@@ -121,15 +121,19 @@ Vue.use(VueGoogleMaps, {
 
 var restaurant_id = '';           // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
 var get_datas  = null;           // 요청한 데이터들이 담길 변수 JSON으로 받을 예정
+var url = '';
 
 export default{
-     
-    created() { 
+    created() {
+
         // 값 보내기
-        axios.post('/restaurant/info',restaurant_id)
+        this.shop_id = this.$route.params.shop_id;
+        url = '/restaurant/' + this.shop_id + '/getInfo';
+
+        axios.get(url)
         .then( (response) => {
             get_datas = response.data.restaurant;
-            console.log(get_datas);
+            console.log();
 
             this.enter_data(Object.keys(get_datas[0]));        // 데이터 바인딩
             this.geoCoder(); // 지도 생성
@@ -138,7 +142,7 @@ export default{
             this.enter_galley();       // 갤러리 이미지 출력
         })
         .catch((ex)=>{
-            alert('왜 안대');
+            // alert('왜 안대');
         })
     },
     methods : {
