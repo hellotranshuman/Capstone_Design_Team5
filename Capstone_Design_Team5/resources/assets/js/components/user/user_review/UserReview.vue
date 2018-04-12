@@ -101,7 +101,7 @@ export default {
     // 라이프 사이클의 created 단계, DB에서 작성되어 있는 리뷰 데이터를 가지고 옵니다.
     created() {
         // axios http 라이브러리
-        axios.post('/dataget',
+        axios.post('/review',
         {
             // 식당 id를 전송
             shopID : this.shopID

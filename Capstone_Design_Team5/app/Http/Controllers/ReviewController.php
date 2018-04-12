@@ -97,10 +97,10 @@ class ReviewController extends Controller
 
             }
 
-            $ddd = ['dddd', 'ssss'];
+           
 
             return response()->json([
-                'content' => $ddd,
+                'content' => 'dddd',
             ]);
 
         }

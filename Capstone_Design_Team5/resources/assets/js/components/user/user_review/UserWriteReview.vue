@@ -264,7 +264,7 @@ export default {
             var settings = { headers: { 'content-type': 'multipart/form-data' } }
 
             // axios http 라이브러리
-            axios.post('/dataget', 
+            axios.post('/review', 
                 // 리뷰 관련 데이터
                 reviewData
             , settings).then(console.log('is success')).catch(console.log('is catch'));

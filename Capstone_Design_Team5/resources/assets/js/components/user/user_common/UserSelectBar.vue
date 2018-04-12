@@ -16,7 +16,6 @@
                     <v-tab exact-active-classv to="/userRestaurantMain/menu" class="select-font-style">메뉴</v-tab>
                     <v-tab exact-active-class to="/userRestaurantMain/review" class="select-font-style">리뷰</v-tab>
                 </v-tabs> -->
-
                 <v-layout>
                     <v-flex>
                         <v-btn outline color="indigo" to="/userRestaurantMain/restaurant" class="select-font-style">정보</v-btn>
@@ -28,7 +27,6 @@
                         <v-btn outline color="indigo" to="/userRestaurantMain/review" class="select-font-style">리뷰</v-btn>
                     </v-flex>
                 </v-layout>
-
             </v-flex>
         </v-layout>
         <v-layout>
