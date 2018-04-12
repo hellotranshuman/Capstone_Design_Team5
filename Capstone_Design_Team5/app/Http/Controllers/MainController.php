@@ -13,7 +13,9 @@ class MainController extends Controller
         // if( !auth()->check())
         //     return redirect('login');
 
-        return view('main');
+        // return view('main');
+
+        return view('welcome');
     }
 
     public function test() {

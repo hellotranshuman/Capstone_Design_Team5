@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 180);
+/******/ 	return __webpack_require__(__webpack_require__.s = 179);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -433,7 +433,7 @@ function normalizeComponent (
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["default"] = addStylesClient;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listToStyles__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listToStyles__ = __webpack_require__(324);
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
@@ -1114,7 +1114,7 @@ var eventOff = function eventOff(el, evtName, handler) {
 
 
 var bind = __webpack_require__(92);
-var isBuffer = __webpack_require__(186);
+var isBuffer = __webpack_require__(185);
 
 /*global toString:true*/
 
@@ -1475,7 +1475,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _forIn = __webpack_require__(436);
+var _forIn = __webpack_require__(434);
 
 var _forIn2 = _interopRequireDefault(_forIn);
 
@@ -1918,7 +1918,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _forEach = __webpack_require__(433);
+var _forEach = __webpack_require__(431);
 
 var _forEach2 = _interopRequireDefault(_forEach);
 
@@ -1977,6 +1977,20 @@ module.exports = clone;
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?"undefined":_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):window.Vue&&window.axios&&Vue.use(o,window.axios)}();
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(184);
+
+/***/ }),
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1999,7 +2013,7 @@ module.exports = clone;
 });
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports) {
 
 /**
@@ -2034,7 +2048,7 @@ module.exports = isObjectLike;
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2104,7 +2118,7 @@ exports.default = {
 }; /* vim: set softtabstop=2 shiftwidth=2 expandtab : */
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports) {
 
 var g;
@@ -2129,20 +2143,6 @@ try {
 
 module.exports = g;
 
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?"undefined":_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):window.Vue&&window.axios&&Vue.use(o,window.axios)}();
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(185);
 
 /***/ }),
 /* 25 */
@@ -2171,8 +2171,8 @@ module.exports = __webpack_require__(185);
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(367),
-    getValue = __webpack_require__(372);
+var baseIsNative = __webpack_require__(365),
+    getValue = __webpack_require__(370);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -2233,11 +2233,11 @@ module.exports = isObject;
 
 var arrayMap = __webpack_require__(83),
     baseClone = __webpack_require__(158),
-    baseUnset = __webpack_require__(460),
+    baseUnset = __webpack_require__(458),
     castPath = __webpack_require__(34),
     copyObject = __webpack_require__(41),
-    customOmitClone = __webpack_require__(464),
-    flatRest = __webpack_require__(466),
+    customOmitClone = __webpack_require__(462),
+    flatRest = __webpack_require__(464),
     getAllKeysIn = __webpack_require__(88);
 
 /** Used to compose bitmasks for cloning. */
@@ -2367,7 +2367,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(237);
+var	fixUrls = __webpack_require__(236);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2706,8 +2706,8 @@ function updateLink (link, options, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(33),
-    getRawTag = __webpack_require__(368),
-    objectToString = __webpack_require__(369);
+    getRawTag = __webpack_require__(366),
+    objectToString = __webpack_require__(367);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -2753,8 +2753,8 @@ module.exports = Symbol;
 
 var isArray = __webpack_require__(11),
     isKey = __webpack_require__(81),
-    stringToPath = __webpack_require__(422),
-    toString = __webpack_require__(425);
+    stringToPath = __webpack_require__(420),
+    toString = __webpack_require__(423);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -3086,7 +3086,7 @@ var load = exports.load = function load(apiKey, version, libraries, loadCn) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(144),
-    baseKeys = __webpack_require__(378),
+    baseKeys = __webpack_require__(376),
     isArrayLike = __webpack_require__(74);
 
 /**
@@ -5780,17 +5780,17 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["a"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(22)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24)))
 
 /***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(382),
-    listCacheDelete = __webpack_require__(383),
-    listCacheGet = __webpack_require__(384),
-    listCacheHas = __webpack_require__(385),
-    listCacheSet = __webpack_require__(386);
+var listCacheClear = __webpack_require__(380),
+    listCacheDelete = __webpack_require__(381),
+    listCacheGet = __webpack_require__(382),
+    listCacheHas = __webpack_require__(383),
+    listCacheSet = __webpack_require__(384);
 
 /**
  * Creates an list cache object.
@@ -5863,7 +5863,7 @@ module.exports = nativeCreate;
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(400);
+var isKeyable = __webpack_require__(398);
 
 /**
  * Gets the data for `map`.
@@ -5887,11 +5887,11 @@ module.exports = getMapData;
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(415),
+var DataView = __webpack_require__(413),
     Map = __webpack_require__(77),
-    Promise = __webpack_require__(416),
-    Set = __webpack_require__(417),
-    WeakMap = __webpack_require__(418),
+    Promise = __webpack_require__(414),
+    Set = __webpack_require__(415),
+    WeakMap = __webpack_require__(416),
     baseGetTag = __webpack_require__(32),
     toSource = __webpack_require__(141);
 
@@ -17053,7 +17053,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22), __webpack_require__(182).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(181).setImmediate))
 
 /***/ }),
 /* 54 */
@@ -17063,7 +17063,7 @@ module.exports = Vue;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(9);
-var normalizeHeaderName = __webpack_require__(188);
+var normalizeHeaderName = __webpack_require__(187);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -17591,11 +17591,11 @@ var props = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dropdown__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dropdown_item__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dropdown_item_button__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dropdown_header__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dropdown_divider__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dropdown__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dropdown_item__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dropdown_item_button__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dropdown_header__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dropdown_divider__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_plugins__ = __webpack_require__(1);
 
 
@@ -18928,8 +18928,8 @@ module.exports = baseAssignValue;
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(375),
-    isObjectLike = __webpack_require__(20);
+var baseIsArguments = __webpack_require__(373),
+    isObjectLike = __webpack_require__(22);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -18971,7 +18971,7 @@ module.exports = isArguments;
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(14),
-    stubFalse = __webpack_require__(376);
+    stubFalse = __webpack_require__(374);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -19228,11 +19228,11 @@ module.exports = isArrayLike;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(46),
-    stackClear = __webpack_require__(387),
-    stackDelete = __webpack_require__(388),
-    stackGet = __webpack_require__(389),
-    stackHas = __webpack_require__(390),
-    stackSet = __webpack_require__(391);
+    stackClear = __webpack_require__(385),
+    stackDelete = __webpack_require__(386),
+    stackGet = __webpack_require__(387),
+    stackHas = __webpack_require__(388),
+    stackSet = __webpack_require__(389);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -19316,11 +19316,11 @@ module.exports = Map;
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(392),
-    mapCacheDelete = __webpack_require__(399),
-    mapCacheGet = __webpack_require__(401),
-    mapCacheHas = __webpack_require__(402),
-    mapCacheSet = __webpack_require__(403);
+var mapCacheClear = __webpack_require__(390),
+    mapCacheDelete = __webpack_require__(397),
+    mapCacheGet = __webpack_require__(399),
+    mapCacheHas = __webpack_require__(400),
+    mapCacheSet = __webpack_require__(401);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -19380,7 +19380,7 @@ module.exports = arrayPush;
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(414),
+var arrayFilter = __webpack_require__(412),
     stubArray = __webpack_require__(153);
 
 /** Used for built-in method references. */
@@ -19452,7 +19452,7 @@ module.exports = isKey;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(32),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -19541,7 +19541,7 @@ module.exports = identity;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(144),
-    baseKeysIn = __webpack_require__(437),
+    baseKeysIn = __webpack_require__(435),
     isArrayLike = __webpack_require__(74);
 
 /**
@@ -19952,12 +19952,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(9);
-var settle = __webpack_require__(189);
-var buildURL = __webpack_require__(191);
-var parseHeaders = __webpack_require__(192);
-var isURLSameOrigin = __webpack_require__(193);
+var settle = __webpack_require__(188);
+var buildURL = __webpack_require__(190);
+var parseHeaders = __webpack_require__(191);
+var isURLSameOrigin = __webpack_require__(192);
 var createError = __webpack_require__(94);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(194);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(193);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -20054,7 +20054,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(195);
+      var cookies = __webpack_require__(194);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -20138,7 +20138,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(190);
+var enhanceError = __webpack_require__(189);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -20623,7 +20623,7 @@ var props = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__collapse__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__collapse__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives_toggle__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
@@ -20650,7 +20650,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__toggle__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__toggle__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -20734,7 +20734,7 @@ var unbindTargets = function unbindTargets(vnode, binding, listenTypes) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__clickout__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__clickout__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listen_on_root__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_array__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_object__ = __webpack_require__(2);
@@ -21322,7 +21322,7 @@ var props = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form_radio_check__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_size__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mixins_form_state__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mixins_form_custom__ = __webpack_require__(38);
@@ -21614,7 +21614,7 @@ var props = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form_state__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_radio_check__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_loose_equal__ = __webpack_require__(62);
@@ -21849,7 +21849,7 @@ var BvEvent = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -21873,11 +21873,11 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nav__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nav_item__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nav_text__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nav_form__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nav_item_dropdown__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__nav__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nav_item__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nav_text__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nav_form__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nav_item_dropdown__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dropdown__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_plugins__ = __webpack_require__(1);
 
@@ -21915,7 +21915,7 @@ Object(__WEBPACK_IMPORTED_MODULE_6__utils_plugins__["c" /* vueUse */])(VuePlugin
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_range__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_range__ = __webpack_require__(286);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_key_codes__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_link_link__ = __webpack_require__(13);
@@ -22510,7 +22510,7 @@ var PopOver = function (_ToolTip) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_array__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_object__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_ssr__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_ssr__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_observe_dom__ = __webpack_require__(36);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -23023,8 +23023,8 @@ var OBSERVER_CONFIG = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_common_UserHeader_vue__ = __webpack_require__(336);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_common_UserSelectBar_vue__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_common_UserHeader_vue__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_common_UserSelectBar_vue__ = __webpack_require__(338);
 //
 //
 //
@@ -23047,6 +23047,7 @@ var OBSERVER_CONFIG = {
 
 // 유저 화면 상단 컴포넌트 import
 
+// import UserHeader from '../user_common/UserNavbar.vue';
 // 유저 화면 상단 컴포넌트 import
 
 
@@ -23137,8 +23138,41 @@ var OBSERVER_CONFIG = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["a"] = ({});
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function data() {
+    return {
+      e2: 3
+    };
+  },
+
+
+  computed: {
+    color: function color() {
+      switch (this.e2) {
+        case 0:
+          return 'blue-grey';
+        case 1:
+          return 'teal';
+        case 2:
+          return 'brown';
+        case 3:
+          return 'indigo';
+      }
+    }
+  }
+});
 
 /***/ }),
 /* 133 */
@@ -23161,10 +23195,10 @@ var OBSERVER_CONFIG = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserCreateReview_vue__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserCreateReview_vue__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 //
 //
@@ -23457,30 +23491,12 @@ var OBSERVER_CONFIG = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -23602,23 +23618,27 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue2
     }
 });
 
-var restaurant_id = '13'; // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
+var restaurant_id = ''; // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
 var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받을 예정
+var url = '';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     created: function created() {
         var _this = this;
 
         // 값 보내기
-        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/restaurant/info', restaurant_id).then(function (response) {
-            get_datas = response.data.restaurant;
-            console.log(response.data.msg);
-            console.log(get_datas);
+        this.shop_id = this.$route.params.shop_id;
+        url = '/restaurant/' + this.shop_id + '/getInfo';
 
-            _this.enter_data(Object.keys(get_datas)); // 데이터 바인딩
+        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(url).then(function (response) {
+            get_datas = response.data.restaurant;
+            console.log();
+
+            _this.enter_data(Object.keys(get_datas[0])); // 데이터 바인딩
             _this.geoCoder(); // 지도 생성
-            // this.enter_title();                            // 타이틀 이미지 삽입
-            // this.enter_galley(get_datas.gallery_num); */      // 갤러리 이미지 출력
+            console.log("url('" + get_datas[1].path + get_datas[1].filename + "')");
+            _this.enter_title(); // 타이틀 이미지 삽입
+            _this.enter_galley(); // 갤러리 이미지 출력
         }).catch(function (ex) {
             // alert('왜 안대');
         });
@@ -23627,6 +23647,8 @@ var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받�
     methods: {
         // 각 공간에 해당 값들을 삽입함.
         enter_data: function enter_data(argIterator) {
+            // var iterator = Object.keys(get_datas[0]);
+
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
@@ -23635,17 +23657,17 @@ var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받�
                 for (var _iterator = argIterator[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var key = _step.value;
 
-                    // 갤러리, 타이틀 값은 걸러냄. 
-                    if (key.substring(0, 7) !== "gallery" && key.substring(0, 5) !== "title") {
+
+                    if (document.getElementById(key) !== null) {
                         var get_div = document.getElementById(key);
 
                         // 데이터 입력
-                        if (get_datas[key] === 'yes') {
+                        if (get_datas[0][key] === 1) {
                             get_div.innerText += '가능';
-                        } else if (get_datas[key] === 'no') {
+                        } else if (get_datas[0][key] === 0) {
                             get_div.innerText += '불가';
                         } else {
-                            get_div.innerText += get_datas[key];
+                            get_div.innerText += get_datas[0][key];
                         }
                     }
                 }
@@ -23667,61 +23689,78 @@ var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받�
 
         // 타이틀 이미지 삽입하기
         enter_title: function enter_title() {
-            title_div = document.getElementById('title_img');
-            title_div.style.backgroundImage = "url('" + get_datas.title_img + "')";
+            var title_div = document.getElementById('title_img');
+            title_div.style.backgroundImage = "url(" + get_datas[1].path + get_datas[1].filename + ")";
         },
 
         // 갤러리에 이미지 추가하기.
         enter_galley: function enter_galley(argNum) {
             var gallery_div = document.getElementById('gallery_div');
+            var argNum = get_datas.length; // 넘어온 데이터 배열 갯수 0은 기본 데이터 , 1은 타이틀 이미지 
 
             // 등록된 이미지가 없으면 메세지 출력 
             if (argNum == 0) {
                 gallery_div.innerText = "등록된 이미지가 없습니다.";
-            }
-            // 등록된 이미지가 6개 이하인 경우 div와 img 생성 후 갤러리에 출력.
-            else if (argNum <= 6) {
-                    for (var i = 0; i < argNum; i++) {
-                        // div, img 생성
-                        var createdDiv = document.createElement('div');
-                        var createdImg = document.createElement('img');
+            } else {
+                for (var i = 2; i < argNum; i++) {
+                    // div, img 생성
+                    var createdDiv = document.createElement('div');
+                    var createdImg = document.createElement('img');
 
-                        // 생성한 div와 img에 css와 src를 추가함.
-                        createdImg.src = get_datas.gallery_img + i;
-                        createdImg.classList.add('gallery_img');
-                        createdDiv.classList.add('gallery');
+                    // 생성한 div와 img에 css와 src를 추가함.
+                    createdImg.src = get_datas[i].path + get_datas[i].filename;
+                    createdImg.classList.add('gallery_img');
+                    createdDiv.classList.add('gallery');
 
-                        // 생성한 div와 img를 갤러리 div에 추가.
-                        createdDiv.appendChild(createdImg);
-                        gallery_div.appendChild(createdDiv);
-                    }
+                    // 생성한 div와 img를 갤러리 div에 추가.
+                    createdDiv.appendChild(createdImg);
+                    gallery_div.appendChild(createdDiv);
                 }
-                // 등록된 이미지가 6개 초과인 경우 5개 div는 그대로 이미지 출력,
-                // 마지막 div를 더보기 클릭 창으로 만듬
-                else if (argNum > 6) {
-                        for (var _i = 0; _i < 6; _i++) {
-                            var _createdDiv = document.createElement('div');
-                            _createdDiv.classList.add('gallery');
+            }
 
-                            // div 5개까지는 이미지 출력
-                            if (_i !== 5) {
-                                var _createdImg = document.createElement('img');
-                                _createdImg.classList.add('gallery_img');
-                                _createdImg.src = get_datas.gallery_img + _i;
-                                _createdDiv.appendChild(_createdImg);
-                            }
-                            // 6번째 div에 더보기 버튼 생성.
-                            else if (_i === 5) {
-                                    _createdDiv.id = 'show_gallery';
-                                    _createdDiv.innerText = '더 보기';
-                                    _createdDiv.onclick = this.show_gallery;
-                                }
-                            // 갤러리 div에 생성한 div 추가하기
-                            gallery_div.appendChild(_createdDiv);
-                        }
-                    }
+            // // 등록된 이미지가 6개 이하인 경우 div와 img 생성 후 갤러리에 출력.
+            // else if (argNum <= 6) {
+            //     for (let i=0; i < argNum; i++){
+            //         // div, img 생성
+            //         let createdDiv = document.createElement('div');
+            //         let createdImg = document.createElement('img');
+
+            //         // 생성한 div와 img에 css와 src를 추가함.
+            //         createdImg.src = get_datas.gallery_img + i;
+            //         createdImg.classList.add('gallery_img');
+            //         createdDiv.classList.add('gallery');
+
+            //         // 생성한 div와 img를 갤러리 div에 추가.
+            //         createdDiv.appendChild(createdImg);
+            //         gallery_div.appendChild(createdDiv);
+            //     }
+            // }
+            // // 등록된 이미지가 6개 초과인 경우 5개 div는 그대로 이미지 출력,
+            // // 마지막 div를 더보기 클릭 창으로 만듬
+            // else if (argNum > 6) {
+            //     for (let i=0; i < 6; i++){
+            //         let createdDiv = document.createElement('div');
+            //         createdDiv.classList.add('gallery');
+
+            //         // div 5개까지는 이미지 출력
+            //         if(i !== 5){
+            //             let createdImg = document.createElement('img');
+            //             createdImg.classList.add('gallery_img');
+            //             createdImg.src = get_datas.gallery_img + i;        
+            //             createdDiv.appendChild(createdImg);
+            //         } 
+            //         // 6번째 div에 더보기 버튼 생성.
+            //         else if (i === 5){
+            //             createdDiv.id        = 'show_gallery';
+            //             createdDiv.innerText = '더 보기';
+            //             createdDiv.onclick   = this.show_gallery;
+            //         }
+            //         // 갤러리 div에 생성한 div 추가하기
+            //         gallery_div.appendChild(createdDiv);
+            //     }
+            // }
         },
-        // 데이터 불러오기 실패
+
         show_gallery: function show_gallery() {
             alert('아직 : 갤러리 보여주기');
         },
@@ -23731,7 +23770,7 @@ var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받�
         },
         geoCoder: function geoCoder() {
             var map = new google.maps.Map(document.getElementById('map'), { zoom: 18 }); // 구글 맵스 생성
-            var address = get_datas.dodobuken + get_datas.address1 + get_datas.address2; // 사장이 입력한 주소 값 더하기
+            var address = get_datas[0].dodobuken + get_datas[0].cities + get_datas[0].address; // 사장이 입력한 주소 값 더하기
             var geocoder = new google.maps.Geocoder(); // 지오 코더 
 
             // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
@@ -23869,7 +23908,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 module.exports = freeGlobal;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
 /* 141 */
@@ -23929,7 +23968,7 @@ module.exports = baseForOwn;
 /* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(373);
+var createBaseFor = __webpack_require__(371);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -23951,7 +23990,7 @@ module.exports = baseFor;
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(374),
+var baseTimes = __webpack_require__(372),
     isArguments = __webpack_require__(66),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(67),
@@ -24006,7 +24045,7 @@ module.exports = arrayLikeKeys;
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(377),
+var baseIsTypedArray = __webpack_require__(375),
     baseUnary = __webpack_require__(71),
     nodeUtil = __webpack_require__(72);
 
@@ -24060,11 +24099,11 @@ module.exports = overArg;
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMatches = __webpack_require__(380),
-    baseMatchesProperty = __webpack_require__(420),
+var baseMatches = __webpack_require__(378),
+    baseMatchesProperty = __webpack_require__(418),
     identity = __webpack_require__(84),
     isArray = __webpack_require__(11),
-    property = __webpack_require__(430);
+    property = __webpack_require__(428);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -24097,8 +24136,8 @@ module.exports = baseIteratee;
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(404),
-    isObjectLike = __webpack_require__(20);
+var baseIsEqualDeep = __webpack_require__(402),
+    isObjectLike = __webpack_require__(22);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -24131,9 +24170,9 @@ module.exports = baseIsEqual;
 /* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(405),
-    arraySome = __webpack_require__(408),
-    cacheHas = __webpack_require__(409);
+var SetCache = __webpack_require__(403),
+    arraySome = __webpack_require__(406),
+    cacheHas = __webpack_require__(407);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -24407,23 +24446,23 @@ module.exports = castFunction;
 var Stack = __webpack_require__(75),
     arrayEach = __webpack_require__(156),
     assignValue = __webpack_require__(86),
-    baseAssign = __webpack_require__(440),
-    baseAssignIn = __webpack_require__(441),
-    cloneBuffer = __webpack_require__(442),
-    copyArray = __webpack_require__(443),
-    copySymbols = __webpack_require__(444),
-    copySymbolsIn = __webpack_require__(445),
+    baseAssign = __webpack_require__(438),
+    baseAssignIn = __webpack_require__(439),
+    cloneBuffer = __webpack_require__(440),
+    copyArray = __webpack_require__(441),
+    copySymbols = __webpack_require__(442),
+    copySymbolsIn = __webpack_require__(443),
     getAllKeys = __webpack_require__(151),
     getAllKeysIn = __webpack_require__(88),
     getTag = __webpack_require__(50),
-    initCloneArray = __webpack_require__(446),
-    initCloneByTag = __webpack_require__(447),
-    initCloneObject = __webpack_require__(452),
+    initCloneArray = __webpack_require__(444),
+    initCloneByTag = __webpack_require__(445),
+    initCloneObject = __webpack_require__(450),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(67),
-    isMap = __webpack_require__(454),
+    isMap = __webpack_require__(452),
     isObject = __webpack_require__(27),
-    isSet = __webpack_require__(456),
+    isSet = __webpack_require__(454),
     keys = __webpack_require__(40);
 
 /** Used to compose bitmasks for cloning. */
@@ -24635,7 +24674,7 @@ var _eventsBinder = __webpack_require__(17);
 
 var _eventsBinder2 = _interopRequireDefault(_eventsBinder);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -24777,7 +24816,7 @@ var _TwoWayBindingWrapper = __webpack_require__(162);
 
 var _TwoWayBindingWrapper2 = _interopRequireDefault(_TwoWayBindingWrapper);
 
-var _WatchPrimitiveProperties = __webpack_require__(484);
+var _WatchPrimitiveProperties = __webpack_require__(482);
 
 var _WatchPrimitiveProperties2 = _interopRequireDefault(_WatchPrimitiveProperties);
 
@@ -25364,7 +25403,7 @@ var _clone = __webpack_require__(18);
 
 var _clone2 = _interopRequireDefault(_clone);
 
-var _pickBy = __webpack_require__(493);
+var _pickBy = __webpack_require__(491);
 
 var _pickBy2 = _interopRequireDefault(_pickBy);
 
@@ -25466,13 +25505,13 @@ exports.default = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserReviewStarRating_vue__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_picture_input__ = __webpack_require__(507);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_input_tag__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserReviewStarRating_vue__ = __webpack_require__(499);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_picture_input__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_input_tag__ = __webpack_require__(509);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_input_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_input_tag__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_axios__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -25756,7 +25795,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserStar_vue__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserStar_vue__ = __webpack_require__(502);
 //
 //
 //
@@ -26613,7 +26652,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ownerPageTop_vue__ = __webpack_require__(516);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__OwnerPageTop_vue__ = __webpack_require__(514);
+//
+//
 //
 //
 //
@@ -26629,7 +26670,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     components: {
-        'ownerPageTop': __WEBPACK_IMPORTED_MODULE_0__ownerPageTop_vue__["a" /* default */]
+        'OwnerPageTop': __WEBPACK_IMPORTED_MODULE_0__OwnerPageTop_vue__["a" /* default */]
     }
 
 });
@@ -26639,7 +26680,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-//
 //
 //
 //
@@ -26721,6 +26761,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -26760,31 +26806,76 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
-        return {
-            myToggle: false,
+        var _ref;
 
-            buttons: [{ variant: 'outline-danger', caption: '오늘', state: false }, { variant: 'outline-danger', caption: '1주일', state: false }, { variant: 'outline-danger', caption: '1개월', state: false }, { variant: 'outline-danger', caption: '6개월', state: false }],
-            fields: ['index', 'name', 'date', 'show_details', 'Accept', 'Cancel'],
-            items: [{ name: '윤진주', adult: '2', child: '3', menu: 'yes', date: '2018-03-31', hour: '13', minute: '30' }, { name: '윤진주2', adult: '1', child: '1', menu: 'no', date: '2018-01-31', hour: '15', minute: '30' }]
-        };
+        return _ref = {
+            /* Add ReservationSetting */
+            dialog: false
+        }, _defineProperty(_ref, 'dialog', false), _defineProperty(_ref, 'headers', [{
+            text: 'index',
+            align: 'left',
+            sortable: false,
+            value: 'name'
+        }, { text: '예약자 명', value: 'usernum' }, { text: '예약 날짜', value: 'start_date' }, { text: '예약 시간', value: 'time' }, { text: '어른 인원', value: 'adult_person' }, { text: '아이 인원', value: 'child_person' }, { text: '수락 & 거절', value: 'Accept', sortable: false }]), _defineProperty(_ref, 'items', []), _defineProperty(_ref, 'ReservationAcceptIndex', -1), _defineProperty(_ref, 'ReservationAcceptItem', {
+            usernum: '',
+            start_date: null,
+            time: null,
+            adult_person: 0,
+            child_person: 0
+        }), _defineProperty(_ref, 'defaultItem', {
+            usernum: '',
+            start_date: null,
+            time: null,
+            adult_person: 0,
+            child_person: 0
+        }), _ref;
+    },
+
+
+    watch: {
+        dialog: function dialog(val) {
+            val || this.close();
+        }
+    },
+
+    methods: {
+        /* 가상 데이터 */
+        initialize: function initialize() {
+            this.items = [{
+                usernum: '가',
+                start_date: '2018-02-10',
+                time: '11:00',
+                adult_person: 0,
+                child_person: 0
+            }, {
+                usernum: '가',
+                start_date: '2018-02-10',
+                time: '11:00',
+                adult_person: 0,
+                child_person: 0
+            }];
+        },
+        AcceptItem: function AcceptItem(item) {
+            var index = this.items.indexOf(item);
+            confirm('예약을 수락 하시겠습니까?');
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/addReservation', {
+                usernum: item.usernum,
+                adult_person: item.adult_person,
+                child_person: item.child_person,
+                start_date: item.start_date,
+                time: item.time
+            }).then(console.log('success')).catch(console.log('test '));
+        },
+        deleteItem: function deleteItem(item) {
+            var index = this.items.indexOf(item);
+            confirm('예약을 거절 하시겠습니까?') && this.items.splice(index, 1);
+        }
     }
 });
 
@@ -26793,9 +26884,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -26893,54 +26984,131 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* 데이터 송신 */
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    data: function data() {
-        return {
-            usernum: '',
-            date: '',
-            time: '',
-            adult_person: '',
-            child_person: '',
-            menuselect: '',
-            start_date: '',
-            end_date: '',
-            myToggle: false,
-            fields: ['index', 'name', 'date', 'show_details', 'cancel'],
-            items: [{ name: '윤진주', adult: '2', child: '3', menu: 'yes', date: '2018-03-31', hour: '13', minute: '30' }, { name: '윤진주2', adult: '1', child: '1', menu: 'no', date: '2018-01-31', hour: '15', minute: '30' }]
-        };
-    },
+  data: function data() {
+    return {
+      /* date picker */
+      start_date: null,
+      reservation_menu: false,
+      modal: false,
 
-    computed: {
-        btnStates: function btnStates() {
-            return this.buttons.map(function (btn) {
-                return btn.state;
-            });
-        }
-    },
-    methods: {
-        SpendData: function SpendData() {
-            // axios http 라이브러리
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/Reservationadd', {
-                usernum: this.usernum,
-                date: this.date,
-                time: this.time,
-                adult_person: this.adult_person,
-                child_person: this.child_person,
-                menuselect: this.menuselect
-            }).then(console.log('success')).catch(console.log('test '));
-        },
-        datefilter: function datefilter() {
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/Reservationadd', {
-                start_date: this.start_date,
-                end_date: this.end_date
-            }).then(console.log('success')).catch(console.log('test '));
-        }
+      /* time picker */
+      time: null,
+      menu2: false,
+      modal2: false,
+
+      /* table */
+      dialog: false,
+      headers: [{
+        text: 'index',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, { text: '예약자 명', value: 'usernum' }, { text: '예약 날짜', value: 'start_date' }, { text: '예약 시간', value: 'time' }, { text: '어른 인원', value: 'adult_person' }, { text: '아이 인원', value: 'child_person' }, { text: 'Actions', value: 'name', sortable: false }],
+
+      /* 저장 & 편집 & 삭제 */
+      items: [],
+      ReservationIndex: -1,
+      ReservationItem: {
+        usernum: '',
+        start_date: '',
+        time: null,
+        adult_person: 0,
+        child_person: 0
+      },
+      defaultItem: {
+        usernum: '',
+        start_date: '',
+        time: null,
+        adult_person: 0,
+        child_person: 0
+      }
+    };
+  },
+
+  computed: {
+    formTitle: function formTitle() {
+      return this.ReservationIndex === -1 ? '예약 추가' : '예약 변경';
     }
+  },
+
+  watch: {
+    dialog: function dialog(val) {
+      val || this.close();
+    }
+  },
+
+  methods: {
+    editItem: function editItem(item) {
+      this.ReservationIndex = this.items.indexOf(item);
+      this.ReservationItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+    deleteItem: function deleteItem(item) {
+      var index = this.items.indexOf(item);
+      confirm('예약을 취소 하시겠습니까?') && this.items.splice(index, 1);
+    },
+    close: function close() {
+      var _this = this;
+
+      this.dialog = false;
+      setTimeout(function () {
+        _this.ReservationItem = Object.assign({}, _this.defaultItem);
+        _this.ReservationIndex = -1;
+      }, 300);
+    },
+    save: function save() {
+      if (this.ReservationIndex > -1) {
+        Object.assign(this.items[this.ReservationIndex], this.ReservationItem);
+      } else {
+        this.items.push(this.ReservationItem);
+      }
+
+      /* Data 송신 */
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/addReservation', {
+        usernum: this.ReservationItem.usernum,
+        start_date: this.ReservationItem.start_date,
+        Discount: this.ReservationItem.Discount,
+        time: this.ReservationItem.time,
+        adult_person: this.ReservationItem.adult_person,
+        child_person: this.ReservationItem.child_person
+      }).then(console.log('success')).catch(console.log('test '));
+
+      this.close();
+    }
+  }
 });
 
 /***/ }),
@@ -26948,108 +27116,262 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_timepicker__ = __webpack_require__(540);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_timepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_timepicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    data: function data() {
-        return {
-            options: [{ text: '예약 가능', value: 'true' }, { text: '예약 불가능', value: 'false' }],
-            selected: '',
-            datepicker: '',
-            start_time: '',
-            end_time: ''
-        };
-    },
+  data: function data() {
+    var _ref;
 
-    components: {
-        'Datepicker': __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default.a,
-        'timePicker': __WEBPACK_IMPORTED_MODULE_1_vue_timepicker___default.a
-    },
-    methods: {
-        SpendData: function SpendData() {
-            // axios http 라이브러리
-            __WEBPACK_IMPORTED_MODULE_3_axios___default.a.post('/Reservationset', {
-                datepicker: this.datepicker,
-                selected: this.selected,
-                start_time: this.start_time,
-                end_time: this.end_time
-            }).then(console.log('success')).catch(console.log('test '));
-        }
+    return _ref = {
+      /* Add ReservationSetting */
+      dialog: false,
+      impossible: null,
+
+      /* date picker */
+      pick_date: null,
+      menu: false,
+      modal: false,
+
+      /* time picker */
+      start_time: null,
+      start_menu: false
+    }, _defineProperty(_ref, 'modal', false), _defineProperty(_ref, 'end_time', null), _defineProperty(_ref, 'end_menu', false), _defineProperty(_ref, 'modal', false), _defineProperty(_ref, 'dialog', false), _defineProperty(_ref, 'headers', [{
+      text: 'index',
+      align: 'left',
+      sortable: false,
+      value: 'name'
+    }, { text: '예약 날짜', value: 'pick_date' }, { text: '시작 시간', value: 'start_time' }, { text: '종료 시간', value: 'end_time' }, { text: '가능 여부', value: 'impossible' }, { text: 'Actions', value: 'name', sortable: false }]), _defineProperty(_ref, 'items', []), _defineProperty(_ref, 'ReservationSettingIndex', -1), _defineProperty(_ref, 'ReservationSettingItem', {
+      pick_date: null,
+      start_time: null,
+      end_time: null,
+      impossible: ''
+    }), _defineProperty(_ref, 'defaultItem', {
+      pick_date: null,
+      start_time: null,
+      end_time: null,
+      impossible: ''
+    }), _ref;
+  },
+
+  computed: {
+    formTitle: function formTitle() {
+      return this.ReservationSettingIndex === -1 ? '예약 설정 추가' : '예약 설정 변경';
     }
+  },
+
+  watch: {
+    dialog: function dialog(val) {
+      val || this.close();
+    }
+  },
+
+  methods: {
+    editItem: function editItem(item) {
+      this.ReservationSettingIndex = this.items.indexOf(item);
+      this.ReservationSettingItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+    deleteItem: function deleteItem(item) {
+      var index = this.items.indexOf(item);
+      confirm('예약을 취소 하시겠습니까?') && this.items.splice(index, 1);
+    },
+    close: function close() {
+      var _this = this;
+
+      this.dialog = false;
+      setTimeout(function () {
+        _this.ReservationSettingItem = Object.assign({}, _this.defaultItem);
+        _this.ReservationSettingIndex = -1;
+      }, 300);
+    },
+    save: function save() {
+      if (this.ReservationSettingIndex > -1) {
+        Object.assign(this.items[this.ReservationSettingIndex], this.ReservationSettingItem);
+      } else {
+        this.items.push(this.ReservationSettingItem);
+      }
+      /* Data 송신 */
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/addReservationSetting', {
+        pick_date: this.ReservationSettingItem.pick_date,
+        start_time: this.ReservationSettingItem.start_time,
+        end_time: this.ReservationSettingItem.end_time,
+        impossible: this.ReservationSettingItem.impossible
+      }).then(console.log('success')).catch(console.log('test '));
+
+      this.close();
+    }
+  }
 });
 
 /***/ }),
 /* 178 */
-/***/ (function(module, exports) {
-
-module.exports=function(e){function t(i){if(n[i])return n[i].exports;var r=n[i]={i:i,l:!1,exports:{}};return e[i].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,i){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:i})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="/",t(t.s=76)}([function(e,t){var n=e.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(e,t){var n={}.hasOwnProperty;e.exports=function(e,t){return n.call(e,t)}},function(e,t,n){var i=n(53),r=n(14);e.exports=function(e){return i(r(e))}},function(e,t,n){e.exports=!n(8)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(e,t,n){var i=n(5),r=n(11);e.exports=n(3)?function(e,t,n){return i.f(e,t,r(1,n))}:function(e,t,n){return e[t]=n,e}},function(e,t,n){var i=n(7),r=n(30),a=n(23),o=Object.defineProperty;t.f=n(3)?Object.defineProperty:function(e,t,n){if(i(e),t=a(t,!0),i(n),r)try{return o(e,t,n)}catch(e){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(e[t]=n.value),e}},function(e,t,n){var i=n(21)("wks"),r=n(12),a=n(0).Symbol,o="function"==typeof a;(e.exports=function(e){return i[e]||(i[e]=o&&a[e]||(o?a:r)("Symbol."+e))}).store=i},function(e,t,n){var i=n(9);e.exports=function(e){if(!i(e))throw TypeError(e+" is not an object!");return e}},function(e,t){e.exports=function(e){try{return!!e()}catch(e){return!0}}},function(e,t){e.exports=function(e){return"object"==typeof e?null!==e:"function"==typeof e}},function(e,t,n){var i=n(35),r=n(15);e.exports=Object.keys||function(e){return i(e,r)}},function(e,t){e.exports=function(e,t){return{enumerable:!(1&e),configurable:!(2&e),writable:!(4&e),value:t}}},function(e,t){var n=0,i=Math.random();e.exports=function(e){return"Symbol(".concat(void 0===e?"":e,")_",(++n+i).toString(36))}},function(e,t){var n=e.exports={version:"2.4.0"};"number"==typeof __e&&(__e=n)},function(e,t){e.exports=function(e){if(void 0==e)throw TypeError("Can't call method on  "+e);return e}},function(e,t){e.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(e,t){e.exports={}},function(e,t){e.exports=!0},function(e,t){t.f={}.propertyIsEnumerable},function(e,t,n){var i=n(5).f,r=n(1),a=n(6)("toStringTag");e.exports=function(e,t,n){e&&!r(e=n?e:e.prototype,a)&&i(e,a,{configurable:!0,value:t})}},function(e,t,n){var i=n(21)("keys"),r=n(12);e.exports=function(e){return i[e]||(i[e]=r(e))}},function(e,t,n){var i=n(0),r=i["__core-js_shared__"]||(i["__core-js_shared__"]={});e.exports=function(e){return r[e]||(r[e]={})}},function(e,t){var n=Math.ceil,i=Math.floor;e.exports=function(e){return isNaN(e=+e)?0:(e>0?i:n)(e)}},function(e,t,n){var i=n(9);e.exports=function(e,t){if(!i(e))return e;var n,r;if(t&&"function"==typeof(n=e.toString)&&!i(r=n.call(e)))return r;if("function"==typeof(n=e.valueOf)&&!i(r=n.call(e)))return r;if(!t&&"function"==typeof(n=e.toString)&&!i(r=n.call(e)))return r;throw TypeError("Can't convert object to primitive value")}},function(e,t,n){var i=n(0),r=n(13),a=n(17),o=n(25),s=n(5).f;e.exports=function(e){var t=r.Symbol||(r.Symbol=a?{}:i.Symbol||{});"_"==e.charAt(0)||e in t||s(t,e,{value:o.f(e)})}},function(e,t,n){t.f=n(6)},function(e,t,n){"use strict";t.a={translations:{af:{language:"Afrikaans",months:{original:["Januarie","Februarie","Maart","April","Mei","Junie","Julie","Augustus","September","Oktober","November","Desember"],abbr:["Jan","Feb","Mrt","Apr","Mei","Jun","Jul","Aug","Sep","Okt","Nov","Des"]},days:["So.","Ma.","Di.","Wo.","Do.","Vr.","Sa."]},ar:{language:"Arabic",rtl:!0,months:{original:["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوڤمبر","ديسمبر"],abbr:["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوڤمبر","ديسمبر"]},days:["أحد","إثنين","ثلاثاء","أربعاء","خميس","جمعة","سبت"]},bg:{language:"Bulgarian",months:{original:["Януари","Февруари","Март","Април","Май","Юни","Юли","Август","Септември","Октомври","Ноември","Декември"],abbr:["Ян","Фев","Мар","Апр","Май","Юни","Юли","Авг","Сеп","Окт","Ное","Дек"]},days:["Нд","Пн","Вт","Ср","Чт","Пт","Сб"]},bs:{language:"Bosnian",months:{original:["Januar","Februar","Mart","April","Maj","Juni","Juli","Avgust","Septembar","Oktobar","Novembar","Decembar"],abbr:["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Avg","Sep","Okt","Nov","Dec"]},days:["Ned","Pon","Uto","Sri","Čet","Pet","Sub"]},cs:{language:"Czech",months:{original:["leden","únor","březen","duben","květen","červen","červenec","srpen","září","říjen","listopad","prosinec"],abbr:["led","úno","bře","dub","kvě","čer","čec","srp","zář","říj","lis","pro"]},days:["ne","po","út","st","čt","pá","so"]},da:{language:"Danish",months:{original:["Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","Oktober","November","December"],abbr:["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"]},days:["Sø","Ma","Ti","On","To","Fr","Lø"]},de:{language:"German",months:{original:["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],abbr:["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]},days:["So.","Mo.","Di.","Mi.","Do.","Fr.","Sa."]},ee:{language:"Estonian",months:{original:["Jaanuar","Veebruar","Märts","Aprill","Mai","Juuni","Juuli","August","September","Oktoober","November","Detsember"],abbr:["Jaan","Veebr","Märts","Apr","Mai","Juuni","Juuli","Aug","Sept","Okt","Nov","Dets"]},days:["P","E","T","K","N","R","L"]},el:{language:"Greek",months:{original:["Ιανουάριος","Φεβρουάριος","Μάρτιος","Απρίλιος","Μάϊος","Ιούνιος","Ιούλιος","Αύγουστος","Σεπτέμβριος","Οκτώβριος","Νοέμβριος","Δεκέμβριος"],abbr:["Ιαν","Φεβ","Μαρ","Απρ","Μαι","Ιουν","Ιουλ","Αυγ","Σεπ","Οκτ","Νοε","Δεκ"]},days:["Κυρ","Δευ","Τρι","Τετ","Πεμ","Παρ","Σατ"]},en:{language:"English",months:{original:["January","February","March","April","May","June","July","August","September","October","November","December"],abbr:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},days:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},es:{language:"Spanish",months:{original:["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],abbr:["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"]},days:["Dom","Lun","Mar","Mié","Jue","Vie","Sab"]},ca:{language:"Catalan",months:{original:["Gener","Febrer","Març","Abril","Maig","Juny","Juliol","Agost","Setembre","Octubre","Novembre","Desembre"],abbr:["Gen","Feb","Mar","Abr","Mai","Jun","Jul","Ago","Set","Oct","Nov","Des"]},days:["Diu","Dil","Dmr","Dmc","Dij","Div","Dis"]},fi:{language:"Finish",months:{original:["tammikuu","helmikuu","maaliskuu","huhtikuu","toukokuu","kesäkuu","heinäkuu","elokuu","syyskuu","lokakuu","marraskuu","joulukuu"],abbr:["tammi","helmi","maalis","huhti","touko","kesä","heinä","elo","syys","loka","marras","joulu"]},days:["su","ma","ti","ke","to","pe","la"]},fr:{language:"French",months:{original:["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],abbr:["Jan","Fév","Mar","Avr","Mai","Juin","Juil","Août","Sep","Oct","Nov","Déc"]},days:["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"]},ge:{language:"Georgia",months:{original:["იანვარი","თებერვალი","მარტი","აპრილი","მაისი","ივნისი","ივლისი","აგვისტო","სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"],abbr:["იან","თებ","მარ","აპრ","მაი","ივნ","ივლ","აგვ","სექ","ოქტ","ნოე","დეკ"]},days:["კვი","ორშ","სამ","ოთხ","ხუთ","პარ","შაბ"]},ja:{language:"Japanese",ymd:!0,months:{original:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],abbr:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]},days:["日","月","火","水","木","金","土"]},he:{language:"Hebrew",rtl:!0,months:{original:["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"],abbr:["ינו","פבר","מרץ","אפר","מאי","יונ","יול","אוג","ספט","אוק","נוב","דצמ"]},days:["א","ב","ג","ד","ה","ו","ש"]},hu:{language:"Hungarian",ymd:!0,months:{original:["Január","Február","Március","Április","Május","Június","Július","Augusztus","Szeptember","Október","November","December"],abbr:["Jan","Febr","Márc","Ápr","Máj","Jún","Júl","Aug","Szept","Okt","Nov","Dec"]},days:["Vas","Hét","Ke","Sze","Csü","Pén","Szo"]},hr:{language:"Croatian",months:{original:["Siječanj","Veljača","Ožujak","Travanj","Svibanj","Lipanj","Srpanj","Kolovoz","Rujan","Listopad","Studeni","Prosinac"],abbr:["Sij","Velj","Ožu","Tra","Svi","Lip","Srp","Kol","Ruj","Lis","Stu","Pro"]},days:["Ned","Pon","Uto","Sri","Čet","Pet","Sub"]},id:{language:"Indonesian",months:{original:["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],abbr:["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"]},days:["Min","Sen","Sel","Rab","Kam","Jum","Sab"]},it:{language:"Italian",months:{original:["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"],abbr:["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"]},days:["Dom","Lun","Mar","Mer","Gio","Ven","Sab"]},is:{language:"Icelandic",months:{original:["Janúar","Febrúar","Mars","Apríl","Maí","Júní","Júlí","Ágúst","September","Október","Nóvember","Desember"],abbr:["Jan","Feb","Mars","Apr","Maí","Jún","Júl","Ágú","Sep","Okt","Nóv","Des"]},days:["Sun","Mán","Þri","Mið","Fim","Fös","Lau"]},fa:{language:"Persian",months:{original:["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"],abbr:["فرو","ارد","خرد","تیر","مرد","شهر","مهر","آبا","آذر","دی","بهم","اسف"]},days:["یکشنبه","دوشنبه","سه‌شنبه","چهارشنبه","پنجشنبه","جمعه","شنبه"]},ko:{language:"Korean",ymd:!0,months:{original:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],abbr:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]},days:["일","월","화","수","목","금","토"]},lb:{language:"Luxembourgish",months:{original:["Januar","Februar","Mäerz","Abrëll","Mäi","Juni","Juli","August","September","Oktober","November","Dezember"],abbr:["Jan","Feb","Mäe","Abr","Mäi","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]},days:["So.","Mé.","Dë.","Më.","Do.","Fr.","Sa."]},lt:{language:"Lithuanian",ymd:!0,months:{original:["Sausis","Vasaris","Kovas","Balandis","Gegužė","Birželis","Liepa","Rugpjūtis","Rugsėjis","Spalis","Lapkritis","Gruodis"],abbr:["Sau","Vas","Kov","Bal","Geg","Bir","Lie","Rugp","Rugs","Spa","Lap","Gru"]},days:["Sek","Pir","Ant","Tre","Ket","Pen","Šeš"]},lv:{language:"Latvian",months:{original:["Janvāris","Februāris","Marts","Aprīlis","Maijs","Jūnijs","Jūlijs","Augusts","Septembris","Oktobris","Novembris","Decembris"],abbr:["Jan","Feb","Mar","Apr","Mai","Jūn","Jūl","Aug","Sep","Okt","Nov","Dec"]},days:["Sv","Pr","Ot","Tr","Ce","Pk","Se"]},mn:{language:"Mongolia",ymd:!0,months:{original:["1 дүгээр сар","2 дугаар сар","3 дугаар сар","4 дүгээр сар","5 дугаар сар","6 дугаар сар","7 дугаар сар","8 дугаар сар","9 дүгээр сар","10 дугаар сар","11 дүгээр сар","12 дугаар сар"],abbr:["1-р сар","2-р сар","3-р сар","4-р сар","5-р сар","6-р сар","7-р сар","8-р сар","9-р сар","10-р сар","11-р сар","12-р сар"]},days:["Ня","Да","Мя","Лх","Пү","Ба","Бя"]},nl:{language:"Dutch",months:{original:["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"],abbr:["jan","feb","maa","apr","mei","jun","jul","aug","sep","okt","nov","dec"]},days:["zo","ma","di","wo","do","vr","za"]},"nb-no":{language:"Norwegian Bokmål",months:{original:["Januar","Februar","Mars","April","Mai","Juni","Juli","August","September","Oktober","November","Desember"],abbr:["Jan","Feb","Mar","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Des"]},days:["Sø","Ma","Ti","On","To","Fr","Lø"]},pl:{language:"Polish",months:{original:["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"],abbr:["Sty","Lut","Mar","Kwi","Maj","Cze","Lip","Sie","Wrz","Paź","Lis","Gru"]},days:["Nd","Pn","Wt","Śr","Czw","Pt","Sob"]},"pt-br":{language:"Brazilian",months:{original:["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],abbr:["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"]},days:["Dom","Seg","Ter","Qua","Qui","Sex","Sab"]},ro:{language:"Romanian",months:{original:["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"],abbr:["Ian","Feb","Mar","Apr","Mai","Iun","Iul","Aug","Sep","Oct","Noi","Dec"]},days:["D","L","Ma","Mi","J","V","S"]},ru:{language:"Russian",months:{original:["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"],abbr:["Янв","Февр","Март","Апр","Май","Июнь","Июль","Авг","Сент","Окт","Нояб","Дек"]},days:["Вс","Пн","Вт","Ср","Чт","Пт","Сб"]},sv:{language:"Swedish",months:{original:["Januari","Februari","Mars","April","Maj","Juni","Juli","Augusti","September","Oktober","November","December"],abbr:["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"]},days:["Sön","Mån","Tis","Ons","Tor","Fre","Lör"]},sk:{language:"Slovakian",months:{original:["január","február","marec","apríl","máj","jún","júl","august","september","október","november","december"],abbr:["jan","feb","mar","apr","máj","jún","júl","aug","sep","okt","nov","dec"]},days:["ne","po","ut","st","št","pi","so"]},"sl-si":{language:"Sloveian",months:{original:["Januar","Februar","Marec","April","Maj","Junij","Julij","Avgust","September","Oktober","November","December"],abbr:["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Avg","Sep","Okt","Nov","Dec"]},days:["Ned","Pon","Tor","Sre","Čet","Pet","Sob"]},sr:{language:"Serbian",months:{original:["Januar","Februar","Mart","April","Maj","Jun","Jul","Avgust","Septembar","Oktobar","Novembar","Decembar"],abbr:["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Avg","Sep","Okt","Nov","Dec"]},days:["Ned","Pon","Uto","Sre","Čet","Pet","Sub"]},"sr-Cyrl":{language:"Serbian in Cyrillic script",months:{original:["Јануар","Фебруар","Март","Април","Мај","Јун","Јул","Август","Септембар","Октобар","Новембар","Децембар"],abbr:["Јан","Феб","Мар","Апр","Мај","Јун","Јул","Авг","Сеп","Окт","Нов","Дец"]},days:["Нед","Пон","Уто","Сре","Чет","Пет","Суб"]},th:{language:"Thai",months:{original:["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"],abbr:["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."]},days:["อา","จ","อ","พ","พฤ","ศ","ส"]},tr:{language:"Turkish",months:{original:["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"],abbr:["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"]},days:["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"]},uk:{language:"Ukraine",months:{original:["Січень","Лютий","Березень","Квітень","Травень","Червень","Липень","Серпень","Вересень","Жовтень","Листопад","Грудень"],abbr:["Січ","Лют","Бер","Квіт","Трав","Чер","Лип","Серп","Вер","Жовт","Лист","Груд"]},days:["Нд","Пн","Вт","Ср","Чт","Пт","Сб"]},ur:{language:"Urdu",rtl:!0,months:{original:["جنوری","فروری","مارچ","اپریل","مئی","جون","جولائی","اگست","سپتمبر","اکتوبر","نومبر","دسمبر"],abbr:["جنوری","فروری","مارچ","اپریل","مئی","جون","جولائی","اگست","سپتمبر","اکتوبر","نومبر","دسمبر"]},days:["اتوار","پیر","منگل","بدھ","جمعرات","جمعہ","ہفتہ"]},vi:{language:"Vientnamese",months:{original:["Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"],abbr:["T 01","T 02","T 03","T 04","T 05","T 06","T 07","T 08","T 09","T 10","T 11","T 12"]},days:["CN","Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7"]},zh:{language:"Chinese",ymd:!0,months:{original:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],abbr:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"]},days:["日","一","二","三","四","五","六"]}}}},function(e,t){var n={}.toString;e.exports=function(e){return n.call(e).slice(8,-1)}},function(e,t,n){var i=n(9),r=n(0).document,a=i(r)&&i(r.createElement);e.exports=function(e){return a?r.createElement(e):{}}},function(e,t,n){var i=n(0),r=n(13),a=n(50),o=n(4),s=function(e,t,n){var l,u,c,d=e&s.F,h=e&s.G,p=e&s.S,f=e&s.P,g=e&s.B,b=e&s.W,m=h?r:r[t]||(r[t]={}),v=m.prototype,y=h?i:p?i[t]:(i[t]||{}).prototype;h&&(n=t);for(l in n)(u=!d&&y&&void 0!==y[l])&&l in m||(c=u?y[l]:n[l],m[l]=h&&"function"!=typeof y[l]?n[l]:g&&u?a(c,i):b&&y[l]==c?function(e){var t=function(t,n,i){if(this instanceof e){switch(arguments.length){case 0:return new e;case 1:return new e(t);case 2:return new e(t,n)}return new e(t,n,i)}return e.apply(this,arguments)};return t.prototype=e.prototype,t}(c):f&&"function"==typeof c?a(Function.call,c):c,f&&((m.virtual||(m.virtual={}))[l]=c,e&s.R&&v&&!v[l]&&o(v,l,c)))};s.F=1,s.G=2,s.S=4,s.P=8,s.B=16,s.W=32,s.U=64,s.R=128,e.exports=s},function(e,t,n){e.exports=!n(3)&&!n(8)(function(){return 7!=Object.defineProperty(n(28)("div"),"a",{get:function(){return 7}}).a})},function(e,t,n){"use strict";var i=n(17),r=n(29),a=n(36),o=n(4),s=n(1),l=n(16),u=n(55),c=n(19),d=n(62),h=n(6)("iterator"),p=!([].keys&&"next"in[].keys()),f=function(){return this};e.exports=function(e,t,n,g,b,m,v){u(n,t,g);var y,D,M,S=function(e){if(!p&&e in x)return x[e];switch(e){case"keys":case"values":return function(){return new n(this,e)}}return function(){return new n(this,e)}},w=t+" Iterator",_="values"==b,k=!1,x=e.prototype,O=x[h]||x["@@iterator"]||b&&x[b],J=O||S(b),F=b?_?S("entries"):J:void 0,A="Array"==t?x.entries||O:O;if(A&&(M=d(A.call(new e)))!==Object.prototype&&(c(M,w,!0),i||s(M,h)||o(M,h,f)),_&&O&&"values"!==O.name&&(k=!0,J=function(){return O.call(this)}),i&&!v||!p&&!k&&x[h]||o(x,h,J),l[t]=J,l[w]=f,b)if(y={values:_?J:S("values"),keys:m?J:S("keys"),entries:F},v)for(D in y)D in x||a(x,D,y[D]);else r(r.P+r.F*(p||k),t,y);return y}},function(e,t,n){var i=n(7),r=n(59),a=n(15),o=n(20)("IE_PROTO"),s=function(){},l=function(){var e,t=n(28)("iframe"),i=a.length;for(t.style.display="none",n(52).appendChild(t),t.src="javascript:",e=t.contentWindow.document,e.open(),e.write("<script>document.F=Object<\/script>"),e.close(),l=e.F;i--;)delete l.prototype[a[i]];return l()};e.exports=Object.create||function(e,t){var n;return null!==e?(s.prototype=i(e),n=new s,s.prototype=null,n[o]=e):n=l(),void 0===t?n:r(n,t)}},function(e,t,n){var i=n(35),r=n(15).concat("length","prototype");t.f=Object.getOwnPropertyNames||function(e){return i(e,r)}},function(e,t){t.f=Object.getOwnPropertySymbols},function(e,t,n){var i=n(1),r=n(2),a=n(49)(!1),o=n(20)("IE_PROTO");e.exports=function(e,t){var n,s=r(e),l=0,u=[];for(n in s)n!=o&&i(s,n)&&u.push(n);for(;t.length>l;)i(s,n=t[l++])&&(~a(u,n)||u.push(n));return u}},function(e,t,n){e.exports=n(4)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=n(41),r=n(26);t.default={props:{value:{validator:function(e){return null===e||e instanceof Date||"string"==typeof e||"number"==typeof e}},name:String,refName:String,id:String,format:{type:[String,Function],default:"dd MMM yyyy"},language:{type:String,default:"en"},openDate:{validator:function(e){return null===e||e instanceof Date||"string"==typeof e}},fullMonthName:Boolean,disabled:Object,highlighted:Object,placeholder:String,inline:Boolean,calendarClass:[String,Object],inputClass:[String,Object],wrapperClass:[String,Object],mondayFirst:Boolean,clearButton:Boolean,clearButtonIcon:String,calendarButton:Boolean,calendarButtonIcon:String,calendarButtonIconContent:String,bootstrapStyling:Boolean,initialView:String,disabledPicker:Boolean,required:Boolean,minimumView:{type:String,default:"day"},maximumView:{type:String,default:"year"}},data:function(){return{pageTimestamp:(this.openDate?new Date(this.openDate):new Date).setDate(1),selectedDate:null,showDayView:!1,showMonthView:!1,showYearView:!1,calendarHeight:0}},watch:{value:function(e){this.setValue(e)},openDate:function(){this.setPageDate()},initialView:function(){this.setInitialView()}},computed:{computedInitialView:function(){return this.initialView?this.initialView:this.minimumView},pageDate:function(){return new Date(this.pageTimestamp)},formattedValue:function(){return this.selectedDate?"function"==typeof this.format?this.format(this.selectedDate):i.a.formatDate(new Date(this.selectedDate),this.format,this.translation):null},translation:function(){return r.a.translations[this.language]},currMonthName:function(){var e=this.fullMonthName?this.translation.months.original:this.translation.months.abbr;return i.a.getMonthNameAbbr(this.pageDate.getMonth(),e)},currYear:function(){return this.pageDate.getFullYear()},blankDays:function(){var e=this.pageDate,t=new Date(e.getFullYear(),e.getMonth(),1,e.getHours(),e.getMinutes());return this.mondayFirst?t.getDay()>0?t.getDay()-1:6:t.getDay()},daysOfWeek:function(){if(this.mondayFirst){var e=this.translation.days.slice();return e.push(e.shift()),e}return this.translation.days},days:function(){for(var e=this.pageDate,t=[],n=new Date(e.getFullYear(),e.getMonth(),1,e.getHours(),e.getMinutes()),r=i.a.daysInMonth(n.getFullYear(),n.getMonth()),a=0;a<r;a++)t.push({date:n.getDate(),timestamp:n.getTime(),isSelected:this.isSelectedDate(n),isDisabled:this.isDisabledDate(n),isHighlighted:this.isHighlightedDate(n),isHighlightStart:this.isHighlightStart(n),isHighlightEnd:this.isHighlightEnd(n),isToday:n.toDateString()===(new Date).toDateString(),isWeekend:0===n.getDay()||6===n.getDay(),isSaturday:6===n.getDay(),isSunday:0===n.getDay()}),n.setDate(n.getDate()+1);return t},months:function(){for(var e=this.pageDate,t=[],n=new Date(e.getFullYear(),0,e.getDate(),e.getHours(),e.getMinutes()),r=0;r<12;r++)t.push({month:i.a.getMonthName(r,this.translation.months.original),timestamp:n.getTime(),isSelected:this.isSelectedMonth(n),isDisabled:this.isDisabledMonth(n)}),n.setMonth(n.getMonth()+1);return t},years:function(){for(var e=this.pageDate,t=[],n=new Date(10*Math.floor(e.getFullYear()/10),e.getMonth(),e.getDate(),e.getHours(),e.getMinutes()),i=0;i<10;i++)t.push({year:n.getFullYear(),timestamp:n.getTime(),isSelected:this.isSelectedYear(n),isDisabled:this.isDisabledYear(n)}),n.setFullYear(n.getFullYear()+1);return t},calendarStyle:function(){return{position:this.isInline?"static":void 0}},isOpen:function(){return this.showDayView||this.showMonthView||this.showYearView},isInline:function(){return!!this.inline},isRtl:function(){return!0===this.translation.rtl},isYmd:function(){return!0===this.translation.ymd}},methods:{close:function(e){this.showDayView=this.showMonthView=this.showYearView=!1,this.isInline||(e&&this.$emit("closed"),document.removeEventListener("click",this.clickOutside,!1))},resetDefaultDate:function(){if(null===this.selectedDate)return void this.setPageDate();this.setPageDate(this.selectedDate)},showCalendar:function(){return!this.disabledPicker&&!this.isInline&&(this.isOpen?this.close(!0):(this.setInitialView(),void(this.isInline||this.$emit("opened"))))},setInitialView:function(){var e=this.computedInitialView;if(!this.allowedToShowView(e))throw new Error("initialView '"+this.initialView+"' cannot be rendered based on minimum '"+this.minimumView+"' and maximum '"+this.maximumView+"'");switch(e){case"year":this.showYearCalendar();break;case"month":this.showMonthCalendar();break;default:this.showDayCalendar()}},allowedToShowView:function(e){var t=["day","month","year"],n=t.indexOf(this.minimumView),i=t.indexOf(this.maximumView),r=t.indexOf(e);return r>=n&&r<=i},showDayCalendar:function(){if(!this.allowedToShowView("day"))return!1;this.close(),this.showDayView=!0,this.addOutsideClickListener()},showMonthCalendar:function(){if(!this.allowedToShowView("month"))return!1;this.close(),this.showMonthView=!0,this.addOutsideClickListener()},showYearCalendar:function(){if(!this.allowedToShowView("year"))return!1;this.close(),this.showYearView=!0,this.addOutsideClickListener()},addOutsideClickListener:function(){var e=this;this.isInline||setTimeout(function(){document.addEventListener("click",e.clickOutside,!1)},100)},setDate:function(e){var t=new Date(e);this.selectedDate=new Date(t),this.setPageDate(t),this.$emit("selected",new Date(t)),this.$emit("input",new Date(t))},clearDate:function(){this.selectedDate=null,this.$emit("selected",null),this.$emit("input",null),this.$emit("cleared")},selectDate:function(e){if(e.isDisabled)return this.$emit("selectedDisabled",e),!1;this.setDate(e.timestamp),this.isInline||this.close(!0)},selectMonth:function(e){if(e.isDisabled)return!1;var t=new Date(e.timestamp);this.allowedToShowView("day")?(this.setPageDate(t),this.$emit("changedMonth",e),this.showDayCalendar()):(this.setDate(t),this.isInline||this.close(!0))},selectYear:function(e){if(e.isDisabled)return!1;var t=new Date(e.timestamp);this.allowedToShowView("month")?(this.setPageDate(t),this.$emit("changedYear",e),this.showMonthCalendar()):(this.setDate(t),this.isInline||this.close(!0))},getPageDate:function(){return this.pageDate.getDate()},getPageMonth:function(){return this.pageDate.getMonth()},getPageYear:function(){return this.pageDate.getFullYear()},getPageDecade:function(){var e=10*Math.floor(this.pageDate.getFullYear()/10);return e+" - "+(e+9)},changeMonth:function(e){var t=this.pageDate;t.setMonth(t.getMonth()+e),this.setPageDate(t),this.$emit("changedMonth",t)},previousMonth:function(){this.previousMonthDisabled()||this.changeMonth(-1)},previousMonthDisabled:function(){if(!this.disabled||!this.disabled.to)return!1;var e=this.pageDate;return this.disabled.to.getMonth()>=e.getMonth()&&this.disabled.to.getFullYear()>=e.getFullYear()},nextMonth:function(){this.nextMonthDisabled()||this.changeMonth(1)},nextMonthDisabled:function(){if(!this.disabled||!this.disabled.from)return!1;var e=this.pageDate;return this.disabled.from.getMonth()<=e.getMonth()&&this.disabled.from.getFullYear()<=e.getFullYear()},changeYear:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"changedYear",n=this.pageDate;n.setYear(n.getFullYear()+e),this.setPageDate(n),this.$emit(t,n)},previousYear:function(){this.previousYearDisabled()||this.changeYear(-1)},previousYearDisabled:function(){return!(!this.disabled||!this.disabled.to)&&this.disabled.to.getFullYear()>=this.pageDate.getFullYear()},nextYear:function(){this.nextYearDisabled()||this.changeYear(1)},nextYearDisabled:function(){return!(!this.disabled||!this.disabled.from)&&this.disabled.from.getFullYear()<=this.pageDate.getFullYear()},previousDecade:function(){this.previousDecadeDisabled()||this.changeYear(-10,"changeDecade")},previousDecadeDisabled:function(){return!(!this.disabled||!this.disabled.to)&&10*Math.floor(this.disabled.to.getFullYear()/10)>=10*Math.floor(this.pageDate.getFullYear()/10)},nextDecade:function(){this.nextDecadeDisabled()||this.changeYear(10,"changeDecade")},nextDecadeDisabled:function(){return!(!this.disabled||!this.disabled.from)&&10*Math.ceil(this.disabled.from.getFullYear()/10)<=10*Math.ceil(this.pageDate.getFullYear()/10)},isSelectedDate:function(e){return this.selectedDate&&this.selectedDate.toDateString()===e.toDateString()},isDisabledDate:function(e){var t=!1;return void 0!==this.disabled&&(void 0!==this.disabled.dates&&this.disabled.dates.forEach(function(n){if(e.toDateString()===n.toDateString())return t=!0,!0}),void 0!==this.disabled.to&&this.disabled.to&&e<this.disabled.to&&(t=!0),void 0!==this.disabled.from&&this.disabled.from&&e>this.disabled.from&&(t=!0),void 0!==this.disabled.ranges&&this.disabled.ranges.forEach(function(n){if(void 0!==n.from&&n.from&&void 0!==n.to&&n.to&&e<n.to&&e>n.from)return t=!0,!0}),void 0!==this.disabled.days&&-1!==this.disabled.days.indexOf(e.getDay())&&(t=!0),void 0!==this.disabled.daysOfMonth&&-1!==this.disabled.daysOfMonth.indexOf(e.getDate())&&(t=!0),"function"==typeof this.disabled.customPredictor&&this.disabled.customPredictor(e)&&(t=!0),t)},isHighlightedDate:function(e){if((!this.highlighted||!this.highlighted.includeDisabled)&&this.isDisabledDate(e))return!1;var t=!1;return void 0!==this.highlighted&&(void 0!==this.highlighted.dates&&this.highlighted.dates.forEach(function(n){if(e.toDateString()===n.toDateString())return t=!0,!0}),this.isDefined(this.highlighted.from)&&this.isDefined(this.highlighted.to)&&(t=e>=this.highlighted.from&&e<=this.highlighted.to),void 0!==this.highlighted.days&&-1!==this.highlighted.days.indexOf(e.getDay())&&(t=!0),void 0!==this.highlighted.daysOfMonth&&-1!==this.highlighted.daysOfMonth.indexOf(e.getDate())&&(t=!0),"function"==typeof this.highlighted.customPredictor&&this.highlighted.customPredictor(e)&&(t=!0),t)},isHighlightStart:function(e){return this.isHighlightedDate(e)&&this.highlighted.from instanceof Date&&this.highlighted.from.getFullYear()===e.getFullYear()&&this.highlighted.from.getMonth()===e.getMonth()&&this.highlighted.from.getDate()===e.getDate()},isHighlightEnd:function(e){return this.isHighlightedDate(e)&&this.highlighted.to instanceof Date&&this.highlighted.to.getFullYear()===e.getFullYear()&&this.highlighted.to.getMonth()===e.getMonth()&&this.highlighted.to.getDate()===e.getDate()},isDefined:function(e){return void 0!==e&&e},isSelectedMonth:function(e){return this.selectedDate&&this.selectedDate.getFullYear()===e.getFullYear()&&this.selectedDate.getMonth()===e.getMonth()},isDisabledMonth:function(e){var t=!1;return void 0!==this.disabled&&(void 0!==this.disabled.to&&this.disabled.to&&(e.getMonth()<this.disabled.to.getMonth()&&e.getFullYear()<=this.disabled.to.getFullYear()||e.getFullYear()<this.disabled.to.getFullYear())&&(t=!0),void 0!==this.disabled.from&&this.disabled.from&&(this.disabled.from&&e.getMonth()>this.disabled.from.getMonth()&&e.getFullYear()>=this.disabled.from.getFullYear()||e.getFullYear()>this.disabled.from.getFullYear())&&(t=!0),t)},isSelectedYear:function(e){return this.selectedDate&&this.selectedDate.getFullYear()===e.getFullYear()},isDisabledYear:function(e){var t=!1;return!(void 0===this.disabled||!this.disabled)&&(void 0!==this.disabled.to&&this.disabled.to&&e.getFullYear()<this.disabled.to.getFullYear()&&(t=!0),void 0!==this.disabled.from&&this.disabled.from&&e.getFullYear()>this.disabled.from.getFullYear()&&(t=!0),t)},setValue:function(e){if("string"==typeof e||"number"==typeof e){var t=new Date(e);e=isNaN(t.valueOf())?null:t}if(!e)return this.setPageDate(),void(this.selectedDate=null);this.selectedDate=e,this.setPageDate(e)},setPageDate:function(e){e||(e=this.openDate?new Date(this.openDate):new Date),this.pageTimestamp=new Date(e).setDate(1)},clickOutside:function(e){if(this.$el&&!this.$el.contains(e.target)){if(this.isInline)return this.showDayCalendar();this.resetDefaultDate(),this.close(!0),document.removeEventListener("click",this.clickOutside,!1)}},dayClasses:function(e){return{selected:e.isSelected,disabled:e.isDisabled,highlighted:e.isHighlighted,today:e.isToday,weekend:e.isWeekend,sat:e.isSaturday,sun:e.isSunday,"highlight-start":e.isHighlightStart,"highlight-end":e.isHighlightEnd}},init:function(){this.value&&this.setValue(this.value),this.isInline&&this.setInitialView()}},mounted:function(){this.init()}}},function(e,t){e.exports=function(e,t,n,i,r){var a,o=e=e||{},s=typeof e.default;"object"!==s&&"function"!==s||(a=e,o=e.default);var l="function"==typeof o?o.options:o;t&&(l.render=t.render,l.staticRenderFns=t.staticRenderFns),i&&(l._scopeId=i);var u;if(r?(u=function(e){e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,e||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),n&&n.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(r)},l._ssrRegister=u):n&&(u=n),u){var c=l.functional,d=c?l.render:l.beforeCreate;c?l.render=function(e,t){return u.call(t),d(e,t)}:l.beforeCreate=d?[].concat(d,u):[u]}return{esModule:a,exports:o,options:l}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"vdp-datepicker",class:[e.wrapperClass,e.isRtl?"rtl":""]},[n("div",{class:{"input-group":e.bootstrapStyling}},[e.calendarButton?n("span",{staticClass:"vdp-datepicker__calendar-button",class:{"input-group-addon":e.bootstrapStyling},style:{"cursor:not-allowed;":e.disabledPicker},on:{click:e.showCalendar}},[n("i",{class:e.calendarButtonIcon},[e._v("\n        "+e._s(e.calendarButtonIconContent)+"\n        "),e.calendarButtonIcon?e._e():n("span",[e._v("…")])])]):e._e(),e._v(" "),n("input",{ref:e.refName,class:[e.inputClass,{"form-control":e.bootstrapStyling}],attrs:{type:e.inline?"hidden":"text",name:e.name,id:e.id,"open-date":e.openDate,placeholder:e.placeholder,"clear-button":e.clearButton,disabled:e.disabledPicker,required:e.required,readonly:""},domProps:{value:e.formattedValue},on:{click:e.showCalendar}}),e._v(" "),e.clearButton&&e.selectedDate?n("span",{staticClass:"vdp-datepicker__clear-button",class:{"input-group-addon":e.bootstrapStyling},on:{click:function(t){e.clearDate()}}},[n("i",{class:e.clearButtonIcon},[e.clearButtonIcon?e._e():n("span",[e._v("×")])])]):e._e()]),e._v(" "),e.allowedToShowView("day")?[n("div",{directives:[{name:"show",rawName:"v-show",value:e.showDayView,expression:"showDayView"}],class:[e.calendarClass,"vdp-datepicker__calendar"],style:e.calendarStyle},[n("header",[n("span",{staticClass:"prev",class:{disabled:e.isRtl?e.nextMonthDisabled(e.pageTimestamp):e.previousMonthDisabled(e.pageTimestamp)},on:{click:function(t){e.isRtl?e.nextMonth():e.previousMonth()}}},[e._v("<")]),e._v(" "),n("span",{class:e.allowedToShowView("month")?"up":"",on:{click:e.showMonthCalendar}},[e._v(e._s(e.isYmd?e.currYear:e.currMonthName)+" "+e._s(e.isYmd?e.currMonthName:e.currYear))]),e._v(" "),n("span",{staticClass:"next",class:{disabled:e.isRtl?e.previousMonthDisabled(e.pageTimestamp):e.nextMonthDisabled(e.pageTimestamp)},on:{click:function(t){e.isRtl?e.previousMonth():e.nextMonth()}}},[e._v(">")])]),e._v(" "),n("div",{class:e.isRtl?"flex-rtl":""},[e._l(e.daysOfWeek,function(t){return n("span",{key:t.timestamp,staticClass:"cell day-header"},[e._v(e._s(t))])}),e._v(" "),e.blankDays>0?e._l(e.blankDays,function(e){return n("span",{key:e.timestamp,staticClass:"cell day blank"})}):e._e(),e._l(e.days,function(t){return n("span",{key:t.timestamp,staticClass:"cell day",class:e.dayClasses(t),attrs:{"track-by":"timestamp"},on:{click:function(n){e.selectDate(t)}}},[e._v(e._s(t.date))])})],2)])]:e._e(),e._v(" "),e.allowedToShowView("month")?[n("div",{directives:[{name:"show",rawName:"v-show",value:e.showMonthView,expression:"showMonthView"}],class:[e.calendarClass,"vdp-datepicker__calendar"],style:e.calendarStyle},[n("header",[n("span",{staticClass:"prev",class:{disabled:e.previousYearDisabled(e.pageTimestamp)},on:{click:e.previousYear}},[e._v("<")]),e._v(" "),n("span",{class:e.allowedToShowView("year")?"up":"",on:{click:e.showYearCalendar}},[e._v(e._s(e.getPageYear()))]),e._v(" "),n("span",{staticClass:"next",class:{disabled:e.nextYearDisabled(e.pageTimestamp)},on:{click:e.nextYear}},[e._v(">")])]),e._v(" "),e._l(e.months,function(t){return n("span",{key:t.timestamp,staticClass:"cell month",class:{selected:t.isSelected,disabled:t.isDisabled},attrs:{"track-by":"timestamp"},on:{click:function(n){n.stopPropagation(),e.selectMonth(t)}}},[e._v(e._s(t.month))])})],2)]:e._e(),e._v(" "),e.allowedToShowView("year")?[n("div",{directives:[{name:"show",rawName:"v-show",value:e.showYearView,expression:"showYearView"}],class:[e.calendarClass,"vdp-datepicker__calendar"],style:e.calendarStyle},[n("header",[n("span",{staticClass:"prev",class:{disabled:e.previousDecadeDisabled(e.pageTimestamp)},on:{click:e.previousDecade}},[e._v("<")]),e._v(" "),n("span",[e._v(e._s(e.getPageDecade()))]),e._v(" "),n("span",{staticClass:"next",class:{disabled:e.nextMonthDisabled(e.pageTimestamp)},on:{click:e.nextDecade}},[e._v(">")])]),e._v(" "),e._l(e.years,function(t){return n("span",{key:t.timestamp,staticClass:"cell year",class:{selected:t.isSelected,disabled:t.isDisabled},attrs:{"track-by":"timestamp"},on:{click:function(n){n.stopPropagation(),e.selectYear(t)}}},[e._v(e._s(t.year))])})],2)]:e._e()],2)},staticRenderFns:[]}},function(e,t,n){var i=n(74);"string"==typeof i&&(i=[[e.i,i,""]]),i.locals&&(e.exports=i.locals);n(77)("7da62ad4",i,!0)},function(e,t,n){"use strict";var i=n(44),r=n.n(i),a=n(26);t.a={isValidDate:function(e){return"[object Date]"===Object.prototype.toString.call(e)&&!isNaN(e.getTime())},getDayNameAbbr:function(e,t){if("object"!==(void 0===e?"undefined":r()(e)))throw TypeError("Invalid Type");return t[e.getDay()]},getMonthName:function(e,t){if(!t)throw Error("missing 2nd parameter Months array");if("object"===(void 0===e?"undefined":r()(e)))return t[e.getMonth()];if("number"==typeof e)return t[e];throw TypeError("Invalid type")},getMonthNameAbbr:function(e,t){if(!t)throw Error("missing 2nd paramter Months array");if("object"===(void 0===e?"undefined":r()(e)))return t[e.getMonth()];if("number"==typeof e)return t[e];throw TypeError("Invalid type")},daysInMonth:function(e,t){return/8|3|5|10/.test(t)?30:1===t?(e%4||!(e%100))&&e%400?28:29:31},getNthSuffix:function(e){switch(e){case 1:case 21:case 31:return"st";case 2:case 22:return"nd";case 3:case 23:return"rd";default:return"th"}},formatDate:function(e,t,n){n=n||a.a.translations.en;var i=e.getFullYear(),r=e.getMonth()+1,o=e.getDate();return t.replace(/dd/,("0"+o).slice(-2)).replace(/d/,o).replace(/yyyy/,i).replace(/yy/,String(i).slice(2)).replace(/MMMM/,this.getMonthName(e.getMonth(),n.months.original)).replace(/MMM/,this.getMonthNameAbbr(e.getMonth(),n.months.abbr)).replace(/MM/,("0"+r).slice(-2)).replace(/M(?!a|ä|e)/,r).replace(/su/,this.getNthSuffix(e.getDate())).replace(/D(?!e|é|i)/,this.getDayNameAbbr(e,n.days))},createDateArray:function(e,t){for(var n=[];e<=t;)n.push(new Date(e)),e=new Date(e).setDate(new Date(e).getDate()+1);return n}}},function(e,t,n){e.exports={default:n(45),__esModule:!0}},function(e,t,n){e.exports={default:n(46),__esModule:!0}},function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{default:e}}t.__esModule=!0;var r=n(43),a=i(r),o=n(42),s=i(o),l="function"==typeof s.default&&"symbol"==typeof a.default?function(e){return typeof e}:function(e){return e&&"function"==typeof s.default&&e.constructor===s.default&&e!==s.default.prototype?"symbol":typeof e};t.default="function"==typeof s.default&&"symbol"===l(a.default)?function(e){return void 0===e?"undefined":l(e)}:function(e){return e&&"function"==typeof s.default&&e.constructor===s.default&&e!==s.default.prototype?"symbol":void 0===e?"undefined":l(e)}},function(e,t,n){n(70),n(68),n(71),n(72),e.exports=n(13).Symbol},function(e,t,n){n(69),n(73),e.exports=n(25).f("iterator")},function(e,t){e.exports=function(e){if("function"!=typeof e)throw TypeError(e+" is not a function!");return e}},function(e,t){e.exports=function(){}},function(e,t,n){var i=n(2),r=n(65),a=n(64);e.exports=function(e){return function(t,n,o){var s,l=i(t),u=r(l.length),c=a(o,u);if(e&&n!=n){for(;u>c;)if((s=l[c++])!=s)return!0}else for(;u>c;c++)if((e||c in l)&&l[c]===n)return e||c||0;return!e&&-1}}},function(e,t,n){var i=n(47);e.exports=function(e,t,n){if(i(e),void 0===t)return e;switch(n){case 1:return function(n){return e.call(t,n)};case 2:return function(n,i){return e.call(t,n,i)};case 3:return function(n,i,r){return e.call(t,n,i,r)}}return function(){return e.apply(t,arguments)}}},function(e,t,n){var i=n(10),r=n(34),a=n(18);e.exports=function(e){var t=i(e),n=r.f;if(n)for(var o,s=n(e),l=a.f,u=0;s.length>u;)l.call(e,o=s[u++])&&t.push(o);return t}},function(e,t,n){e.exports=n(0).document&&document.documentElement},function(e,t,n){var i=n(27);e.exports=Object("z").propertyIsEnumerable(0)?Object:function(e){return"String"==i(e)?e.split(""):Object(e)}},function(e,t,n){var i=n(27);e.exports=Array.isArray||function(e){return"Array"==i(e)}},function(e,t,n){"use strict";var i=n(32),r=n(11),a=n(19),o={};n(4)(o,n(6)("iterator"),function(){return this}),e.exports=function(e,t,n){e.prototype=i(o,{next:r(1,n)}),a(e,t+" Iterator")}},function(e,t){e.exports=function(e,t){return{value:t,done:!!e}}},function(e,t,n){var i=n(10),r=n(2);e.exports=function(e,t){for(var n,a=r(e),o=i(a),s=o.length,l=0;s>l;)if(a[n=o[l++]]===t)return n}},function(e,t,n){var i=n(12)("meta"),r=n(9),a=n(1),o=n(5).f,s=0,l=Object.isExtensible||function(){return!0},u=!n(8)(function(){return l(Object.preventExtensions({}))}),c=function(e){o(e,i,{value:{i:"O"+ ++s,w:{}}})},d=function(e,t){if(!r(e))return"symbol"==typeof e?e:("string"==typeof e?"S":"P")+e;if(!a(e,i)){if(!l(e))return"F";if(!t)return"E";c(e)}return e[i].i},h=function(e,t){if(!a(e,i)){if(!l(e))return!0;if(!t)return!1;c(e)}return e[i].w},p=function(e){return u&&f.NEED&&l(e)&&!a(e,i)&&c(e),e},f=e.exports={KEY:i,NEED:!1,fastKey:d,getWeak:h,onFreeze:p}},function(e,t,n){var i=n(5),r=n(7),a=n(10);e.exports=n(3)?Object.defineProperties:function(e,t){r(e);for(var n,o=a(t),s=o.length,l=0;s>l;)i.f(e,n=o[l++],t[n]);return e}},function(e,t,n){var i=n(18),r=n(11),a=n(2),o=n(23),s=n(1),l=n(30),u=Object.getOwnPropertyDescriptor;t.f=n(3)?u:function(e,t){if(e=a(e),t=o(t,!0),l)try{return u(e,t)}catch(e){}if(s(e,t))return r(!i.f.call(e,t),e[t])}},function(e,t,n){var i=n(2),r=n(33).f,a={}.toString,o="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],s=function(e){try{return r(e)}catch(e){return o.slice()}};e.exports.f=function(e){return o&&"[object Window]"==a.call(e)?s(e):r(i(e))}},function(e,t,n){var i=n(1),r=n(66),a=n(20)("IE_PROTO"),o=Object.prototype;e.exports=Object.getPrototypeOf||function(e){return e=r(e),i(e,a)?e[a]:"function"==typeof e.constructor&&e instanceof e.constructor?e.constructor.prototype:e instanceof Object?o:null}},function(e,t,n){var i=n(22),r=n(14);e.exports=function(e){return function(t,n){var a,o,s=String(r(t)),l=i(n),u=s.length;return l<0||l>=u?e?"":void 0:(a=s.charCodeAt(l),a<55296||a>56319||l+1===u||(o=s.charCodeAt(l+1))<56320||o>57343?e?s.charAt(l):a:e?s.slice(l,l+2):o-56320+(a-55296<<10)+65536)}}},function(e,t,n){var i=n(22),r=Math.max,a=Math.min;e.exports=function(e,t){return e=i(e),e<0?r(e+t,0):a(e,t)}},function(e,t,n){var i=n(22),r=Math.min;e.exports=function(e){return e>0?r(i(e),9007199254740991):0}},function(e,t,n){var i=n(14);e.exports=function(e){return Object(i(e))}},function(e,t,n){"use strict";var i=n(48),r=n(56),a=n(16),o=n(2);e.exports=n(31)(Array,"Array",function(e,t){this._t=o(e),this._i=0,this._k=t},function(){var e=this._t,t=this._k,n=this._i++;return!e||n>=e.length?(this._t=void 0,r(1)):"keys"==t?r(0,n):"values"==t?r(0,e[n]):r(0,[n,e[n]])},"values"),a.Arguments=a.Array,i("keys"),i("values"),i("entries")},function(e,t){},function(e,t,n){"use strict";var i=n(63)(!0);n(31)(String,"String",function(e){this._t=String(e),this._i=0},function(){var e,t=this._t,n=this._i;return n>=t.length?{value:void 0,done:!0}:(e=i(t,n),this._i+=e.length,{value:e,done:!1})})},function(e,t,n){"use strict";var i=n(0),r=n(1),a=n(3),o=n(29),s=n(36),l=n(58).KEY,u=n(8),c=n(21),d=n(19),h=n(12),p=n(6),f=n(25),g=n(24),b=n(57),m=n(51),v=n(54),y=n(7),D=n(2),M=n(23),S=n(11),w=n(32),_=n(61),k=n(60),x=n(5),O=n(10),J=k.f,F=x.f,A=_.f,j=i.Symbol,T=i.JSON,N=T&&T.stringify,Y=p("_hidden"),C=p("toPrimitive"),P={}.propertyIsEnumerable,V=c("symbol-registry"),E=c("symbols"),I=c("op-symbols"),L=Object.prototype,z="function"==typeof j,B=i.QObject,R=!B||!B.prototype||!B.prototype.findChild,H=a&&u(function(){return 7!=w(F({},"a",{get:function(){return F(this,"a",{value:7}).a}})).a})?function(e,t,n){var i=J(L,t);i&&delete L[t],F(e,t,n),i&&e!==L&&F(L,t,i)}:F,G=function(e){var t=E[e]=w(j.prototype);return t._k=e,t},$=z&&"symbol"==typeof j.iterator?function(e){return"symbol"==typeof e}:function(e){return e instanceof j},U=function(e,t,n){return e===L&&U(I,t,n),y(e),t=M(t,!0),y(n),r(E,t)?(n.enumerable?(r(e,Y)&&e[Y][t]&&(e[Y][t]=!1),n=w(n,{enumerable:S(0,!1)})):(r(e,Y)||F(e,Y,S(1,{})),e[Y][t]=!0),H(e,t,n)):F(e,t,n)},K=function(e,t){y(e);for(var n,i=m(t=D(t)),r=0,a=i.length;a>r;)U(e,n=i[r++],t[n]);return e},W=function(e,t){return void 0===t?w(e):K(w(e),t)},q=function(e){var t=P.call(this,e=M(e,!0));return!(this===L&&r(E,e)&&!r(I,e))&&(!(t||!r(this,e)||!r(E,e)||r(this,Y)&&this[Y][e])||t)},X=function(e,t){if(e=D(e),t=M(t,!0),e!==L||!r(E,t)||r(I,t)){var n=J(e,t);return!n||!r(E,t)||r(e,Y)&&e[Y][t]||(n.enumerable=!0),n}},Q=function(e){for(var t,n=A(D(e)),i=[],a=0;n.length>a;)r(E,t=n[a++])||t==Y||t==l||i.push(t);return i},Z=function(e){for(var t,n=e===L,i=A(n?I:D(e)),a=[],o=0;i.length>o;)!r(E,t=i[o++])||n&&!r(L,t)||a.push(E[t]);return a};z||(j=function(){if(this instanceof j)throw TypeError("Symbol is not a constructor!");var e=h(arguments.length>0?arguments[0]:void 0),t=function(n){this===L&&t.call(I,n),r(this,Y)&&r(this[Y],e)&&(this[Y][e]=!1),H(this,e,S(1,n))};return a&&R&&H(L,e,{configurable:!0,set:t}),G(e)},s(j.prototype,"toString",function(){return this._k}),k.f=X,x.f=U,n(33).f=_.f=Q,n(18).f=q,n(34).f=Z,a&&!n(17)&&s(L,"propertyIsEnumerable",q,!0),f.f=function(e){return G(p(e))}),o(o.G+o.W+o.F*!z,{Symbol:j});for(var ee="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),te=0;ee.length>te;)p(ee[te++]);for(var ee=O(p.store),te=0;ee.length>te;)g(ee[te++]);o(o.S+o.F*!z,"Symbol",{for:function(e){return r(V,e+="")?V[e]:V[e]=j(e)},keyFor:function(e){if($(e))return b(V,e);throw TypeError(e+" is not a symbol!")},useSetter:function(){R=!0},useSimple:function(){R=!1}}),o(o.S+o.F*!z,"Object",{create:W,defineProperty:U,defineProperties:K,getOwnPropertyDescriptor:X,getOwnPropertyNames:Q,getOwnPropertySymbols:Z}),T&&o(o.S+o.F*(!z||u(function(){var e=j();return"[null]"!=N([e])||"{}"!=N({a:e})||"{}"!=N(Object(e))})),"JSON",{stringify:function(e){if(void 0!==e&&!$(e)){for(var t,n,i=[e],r=1;arguments.length>r;)i.push(arguments[r++]);return t=i[1],"function"==typeof t&&(n=t),!n&&v(t)||(t=function(e,t){if(n&&(t=n.call(this,e,t)),!$(t))return t}),i[1]=t,N.apply(T,i)}}}),j.prototype[C]||n(4)(j.prototype,C,j.prototype.valueOf),d(j,"Symbol"),d(Math,"Math",!0),d(i.JSON,"JSON",!0)},function(e,t,n){n(24)("asyncIterator")},function(e,t,n){n(24)("observable")},function(e,t,n){n(67);for(var i=n(0),r=n(4),a=n(16),o=n(6)("toStringTag"),s=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],l=0;l<5;l++){var u=s[l],c=i[u],d=c&&c.prototype;d&&!d[o]&&r(d,o,u),a[u]=a.Array}},function(e,t,n){t=e.exports=n(75)(!1),t.push([e.i,'.rtl{direction:rtl}.vdp-datepicker{position:relative;text-align:left}.vdp-datepicker *{box-sizing:border-box}.vdp-datepicker__calendar{position:absolute;z-index:100;background:#fff;width:300px;border:1px solid #ccc}.vdp-datepicker__calendar header{display:block;line-height:40px}.vdp-datepicker__calendar header span{display:inline-block;text-align:center;width:71.42857142857143%;float:left}.vdp-datepicker__calendar header .next,.vdp-datepicker__calendar header .prev{width:14.285714285714286%;float:left;text-indent:-10000px;position:relative}.vdp-datepicker__calendar header .next:after,.vdp-datepicker__calendar header .prev:after{content:"";position:absolute;left:50%;top:50%;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);border:6px solid transparent}.vdp-datepicker__calendar header .prev:after{border-right:10px solid #000;margin-left:-5px}.vdp-datepicker__calendar header .prev.disabled:after{border-right:10px solid #ddd}.vdp-datepicker__calendar header .next:after{border-left:10px solid #000;margin-left:5px}.vdp-datepicker__calendar header .next.disabled:after{border-left:10px solid #ddd}.vdp-datepicker__calendar header .next:not(.disabled),.vdp-datepicker__calendar header .prev:not(.disabled),.vdp-datepicker__calendar header .up:not(.disabled){cursor:pointer}.vdp-datepicker__calendar header .next:not(.disabled):hover,.vdp-datepicker__calendar header .prev:not(.disabled):hover,.vdp-datepicker__calendar header .up:not(.disabled):hover{background:#eee}.vdp-datepicker__calendar .disabled{color:#ddd;cursor:default}.vdp-datepicker__calendar .flex-rtl{display:-webkit-box;display:-ms-flexbox;display:flex;width:inherit;-ms-flex-wrap:wrap;flex-wrap:wrap}.vdp-datepicker__calendar .cell{display:inline-block;padding:0 5px;width:14.285714285714286%;height:40px;line-height:40px;text-align:center;vertical-align:middle;border:1px solid transparent}.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day,.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month,.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year{cursor:pointer}.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).day:hover,.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).month:hover,.vdp-datepicker__calendar .cell:not(.blank):not(.disabled).year:hover{border:1px solid #4bd}.vdp-datepicker__calendar .cell.selected,.vdp-datepicker__calendar .cell.selected.highlighted,.vdp-datepicker__calendar .cell.selected:hover{background:#4bd}.vdp-datepicker__calendar .cell.highlighted{background:#cae5ed}.vdp-datepicker__calendar .cell.highlighted.disabled{color:#a3a3a3}.vdp-datepicker__calendar .cell.grey{color:#888}.vdp-datepicker__calendar .cell.grey:hover{background:inherit}.vdp-datepicker__calendar .cell.day-header{font-size:75%;white-space:no-wrap;cursor:inherit}.vdp-datepicker__calendar .cell.day-header:hover{background:inherit}.vdp-datepicker__calendar .month,.vdp-datepicker__calendar .year{width:33.333%}.vdp-datepicker__calendar-button,.vdp-datepicker__clear-button{cursor:pointer;font-style:normal}.vdp-datepicker__calendar-button.disabled,.vdp-datepicker__clear-button.disabled{color:#999;cursor:default}',""])},function(e,t){function n(e,t){var n=e[1]||"",r=e[3];if(!r)return n;if(t&&"function"==typeof btoa){var a=i(r);return[n].concat(r.sources.map(function(e){return"/*# sourceURL="+r.sourceRoot+e+" */"})).concat([a]).join("\n")}return[n].join("\n")}function i(e){return"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(e))))+" */"}e.exports=function(e){var t=[];return t.toString=function(){return this.map(function(t){var i=n(t,e);return t[2]?"@media "+t[2]+"{"+i+"}":i}).join("")},t.i=function(e,n){"string"==typeof e&&(e=[[null,e,""]]);for(var i={},r=0;r<this.length;r++){var a=this[r][0];"number"==typeof a&&(i[a]=!0)}for(r=0;r<e.length;r++){var o=e[r];"number"==typeof o[0]&&i[o[0]]||(n&&!o[2]?o[2]=n:n&&(o[2]="("+o[2]+") and ("+n+")"),t.push(o))}},t}},function(e,t,n){function i(e){n(40)}var r=n(38)(n(37),n(39),i,null,null);e.exports=r.exports},function(e,t,n){function i(e){for(var t=0;t<e.length;t++){var n=e[t],i=c[n.id];if(i){i.refs++;for(var r=0;r<i.parts.length;r++)i.parts[r](n.parts[r]);for(;r<n.parts.length;r++)i.parts.push(a(n.parts[r]));i.parts.length>n.parts.length&&(i.parts.length=n.parts.length)}else{for(var o=[],r=0;r<n.parts.length;r++)o.push(a(n.parts[r]));c[n.id]={id:n.id,refs:1,parts:o}}}}function r(){var e=document.createElement("style");return e.type="text/css",d.appendChild(e),e}function a(e){var t,n,i=document.querySelector('style[data-vue-ssr-id~="'+e.id+'"]');if(i){if(f)return g;i.parentNode.removeChild(i)}if(b){var a=p++;i=h||(h=r()),t=o.bind(null,i,a,!1),n=o.bind(null,i,a,!0)}else i=r(),t=s.bind(null,i),n=function(){i.parentNode.removeChild(i)};return t(e),function(i){if(i){if(i.css===e.css&&i.media===e.media&&i.sourceMap===e.sourceMap)return;t(e=i)}else n()}}function o(e,t,n,i){var r=n?"":i.css;if(e.styleSheet)e.styleSheet.cssText=m(t,r);else{var a=document.createTextNode(r),o=e.childNodes;o[t]&&e.removeChild(o[t]),o.length?e.insertBefore(a,o[t]):e.appendChild(a)}}function s(e,t){var n=t.css,i=t.media,r=t.sourceMap;if(i&&e.setAttribute("media",i),r&&(n+="\n/*# sourceURL="+r.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */"),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}var l="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!l)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var u=n(78),c={},d=l&&(document.head||document.getElementsByTagName("head")[0]),h=null,p=0,f=!1,g=function(){},b="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());e.exports=function(e,t,n){f=n;var r=u(e,t);return i(r),function(t){for(var n=[],a=0;a<r.length;a++){var o=r[a],s=c[o.id];s.refs--,n.push(s)}t?(r=u(e,t),i(r)):r=[];for(var a=0;a<n.length;a++){var s=n[a];if(0===s.refs){for(var l=0;l<s.parts.length;l++)s.parts[l]();delete c[s.id]}}}};var m=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t){e.exports=function(e,t){for(var n=[],i={},r=0;r<t.length;r++){var a=t[r],o=a[0],s=a[1],l=a[2],u=a[3],c={id:e+":"+r,css:s,media:l,sourceMap:u};i[o]?i[o].parts.push(c):n.push(i[o]={id:o,parts:[c]})}return n}}]);
-
-/***/ }),
-/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
 //
@@ -27132,102 +27454,213 @@ module.exports=function(e){function t(i){if(n[i])return n[i].exports;var r=n[i]=
 //
 //
 //
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  components: {
-    'Datepicker': __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default.a
-  },
   data: function data() {
     return {
-      /* 쿠폰 */
-      CouponName: '',
-      CouponType: '',
-      Discount: '',
-      addproduct: '',
-      Condition: '',
-      explanation: '',
-      start_date: '',
-      end_date: '',
+      /* date picker */
+      start_date: null,
+      start_menu: false,
+      modal: false,
 
-      /* 쿠폰 창 */
-      selected: 'first',
-      options: [{ text: '이상', value: 'up' }, { text: '이하', value: 'down' }],
-      /* 쿠폰 table */
-      fields: ['index', { key: 'cupon_name', label: 'Cupon Name' }, 'cupon_date', 'delete'],
-      items: [{ cupon_name: '300Discount', cupon_date: { start: '2018.03.02', end: '2018.03.03' } }, { cupon_name: 'addProduct', cupon_date: { start: '2018.03.02', end: '2018.03.03' } }]
+      end_date: null,
+      end_menu: false,
+
+      /* table */
+      dialog: false,
+      headers: [{
+        text: 'index',
+        align: 'left',
+        sortable: false,
+        value: 'name'
+      }, { text: '쿠폰 이름', value: 'CouponName' }, { text: '쿠폰 종류', value: 'CouponType' }, { text: '사용 시작일', value: 'start_date' }, { text: '사용 종료일', value: 'end_date' }, { text: 'Actions', value: 'name', sortable: false }],
+
+      /* 저장 & 편집 & 삭제 */
+      items: [],
+      CouponIndex: -1,
+      CouponItem: {
+        CouponName: '',
+        CouponType: '',
+        Discount: null,
+        addproduct: null,
+        Condition: null,
+        start_date: null,
+        end_date: null
+      },
+      defaultItem: {
+        CouponName: '',
+        CouponType: '',
+        Discount: null,
+        addproduct: null,
+        Condition: null,
+        start_date: null,
+        end_date: null
+
+      }
     };
   },
 
+  computed: {
+    formTitle: function formTitle() {
+      return this.CouponIndex === -1 ? '쿠폰 추가' : '쿠폰 변경';
+    }
+  },
+
+  watch: {
+    dialog: function dialog(val) {
+      val || this.close();
+    }
+  },
+
   methods: {
-    SpendData: function SpendData() {
-      // axios http 라이브러리
-      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/Coupon', {
-        CouponName: this.CouponName,
-        CouponType: this.CouponType,
-        Discount: this.Discount,
-        addproduct: this.addproduct,
-        Condition: this.Condition,
-        explanation: this.explanation,
-        start_date: this.start_date,
-        end_date: this.end_date
+    editItem: function editItem(item) {
+      this.CouponIndex = this.items.indexOf(item);
+      this.CouponItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+    deleteItem: function deleteItem(item) {
+      var index = this.items.indexOf(item);
+      confirm('쿠폰을 삭제 하시겠습니까?') && this.items.splice(index, 1);
+    },
+    close: function close() {
+      var _this = this;
+
+      this.dialog = false;
+      setTimeout(function () {
+        _this.CouponItem = Object.assign({}, _this.defaultItem);
+        _this.CouponIndex = -1;
+      }, 300);
+    },
+    save: function save() {
+      if (this.CouponIndex > -1) {
+        Object.assign(this.items[this.CouponIndex], this.CouponItem);
+      } else {
+        this.items.push(this.CouponItem);
+      }
+
+      /* Data 송신 */
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/addCoupon', {
+        CouponName: this.CouponItem.CouponName,
+        CouponType: this.CouponItem.CouponType,
+        Discount: this.CouponItem.Discount,
+        addproduct: this.CouponItem.addproduct,
+        Condition: this.CouponItem.Condition,
+        start_date: this.CouponItem.start_date,
+        end_date: this.CouponItem.end_date
       }).then(console.log('success')).catch(console.log('test '));
+
+      this.close();
     }
   }
-
-  /* axios */
-
 });
 
 /***/ }),
-/* 180 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(181);
-module.exports = __webpack_require__(546);
+__webpack_require__(180);
+module.exports = __webpack_require__(543);
 
 
 /***/ }),
-/* 181 */
+/* 180 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_bootstrap_dist_css_bootstrap_css__ = __webpack_require__(315);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_bootstrap_dist_css_bootstrap_css__ = __webpack_require__(314);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_bootstrap_dist_css_bootstrap_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_bootstrap_dist_css_bootstrap_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_bootstrap_vue_dist_bootstrap_vue_css__ = __webpack_require__(317);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_bootstrap_vue_dist_bootstrap_vue_css__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_bootstrap_vue_dist_bootstrap_vue_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_bootstrap_vue_dist_bootstrap_vue_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuetify__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuetify__ = __webpack_require__(318);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuetify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuetify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuetify_dist_vuetify_min_css__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuetify_dist_vuetify_min_css__ = __webpack_require__(319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuetify_dist_vuetify_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vuetify_dist_vuetify_min_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__App_vue__ = __webpack_require__(322);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vue_ico__ = __webpack_require__(327);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain_vue__ = __webpack_require__(329);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_user_user_common_UserRestaurantMain_vue__ = __webpack_require__(333);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_user_user_menu_UserMenu_vue__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_user_user_review_UserReview_vue__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_user_user_restaurant_UserRestaurant_vue__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_user_user_review_UserWriteReview_vue__ = __webpack_require__(498);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPage_vue__ = __webpack_require__(513);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_common_OwnerPageSideReservation_vue__ = __webpack_require__(521);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_common_OwnerPageSideSetting_vue__ = __webpack_require__(525);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationAccept_vue__ = __webpack_require__(529);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_reservation_OwnerReservationlist_vue__ = __webpack_require__(533);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_reservation_OwnerReservationSetting_vue__ = __webpack_require__(537);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_coupon_OwnerCreateCoupon_vue__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__App_vue__ = __webpack_require__(321);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_user_user_main_UserMain_vue__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_user_user_common_UserRestaurantMain_vue__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_user_user_menu_UserMenu_vue__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_user_user_review_UserReview_vue__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_user_user_restaurant_UserRestaurant_vue__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_user_user_review_UserWriteReview_vue__ = __webpack_require__(496);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPage_vue__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPageSideReservation_vue__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_common_OwnerPageSideSetting_vue__ = __webpack_require__(523);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationAccept_vue__ = __webpack_require__(527);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationlist_vue__ = __webpack_require__(531);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_reservation_OwnerReservationSetting_vue__ = __webpack_require__(535);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_restaurant_OwnerRestaurant_vue__ = __webpack_require__(552);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_coupon_OwnerCreateCoupon_vue__ = __webpack_require__(539);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenu_vue__ = __webpack_require__(558);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuOperate_vue__ = __webpack_require__(564);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_owner_owner_menu_OwnerMenuList_vue__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_owner_owner_menu_OwnerMenuSelectLayout_vue__ = __webpack_require__(573);
 
 
 
@@ -27235,9 +27668,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 
 
-
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_3_axios___default.a);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__["a" /* default */]);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_bootstrap_vue__["a" /* default */]);
@@ -27254,15 +27685,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuet
 
 
 
-
-// icon API
-
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_10_vue_ico__["a" /* default */], {
-    "menu": __WEBPACK_IMPORTED_MODULE_10_vue_ico__["b" /* icoMenu */]
-});
-
 // SNS 공유 API
-var SocialSharing = __webpack_require__(328);
+var SocialSharing = __webpack_require__(326);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(SocialSharing);
 
 // 유저 메인 페이지 컴포넌트 import
@@ -27271,6 +27695,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(SocialSharing);
 
 
 // 가게 정보 페이지 컴포넌트 import
+
 
 // 메뉴판 페이지 컴포넌트 import
 
@@ -27292,69 +27717,100 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(SocialSharing);
 // Reservation Setting
 
 
+// 가게 정보 입력 페이지 컴포넌트 import
+
+
 // Coupon Page, 쿠폰 제작 페이지 컴포넌트 import
+
+
+// 전자메뉴판 설정 페이지 컴포넌트 import
+
+// 전자메뉴판 설정 페이지 컴포넌트 import
+
+// 전자메뉴판 설정 페이지 컴포넌트 import
+
+// 전자메뉴판 설정 페이지 컴포넌트 import
 
 
 var routes = [{
     name: 'UserMain', // root 페이지
     path: '/',
-    component: __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain_vue__["a" /* default */]
-
+    component: __WEBPACK_IMPORTED_MODULE_10__components_user_user_main_UserMain_vue__["a" /* default */]
 }, {
     name: 'UserRestaurantMain', // 가게 페이지
     path: '/userRestaurantMain',
-    component: __WEBPACK_IMPORTED_MODULE_12__components_user_user_common_UserRestaurantMain_vue__["a" /* default */],
-
+    component: __WEBPACK_IMPORTED_MODULE_11__components_user_user_common_UserRestaurantMain_vue__["a" /* default */],
     // 네스티드 라우터
     children: [{
         name: 'UserRestaurant', // 가게 페이지 안의 정보
         path: '/userRestaurantMain/restaurant',
-        component: __WEBPACK_IMPORTED_MODULE_15__components_user_user_restaurant_UserRestaurant_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_14__components_user_user_restaurant_UserRestaurant_vue__["a" /* default */]
     }, {
         name: 'UserMenu', // 가게 페이지 안의 메뉴
         path: '/userRestaurantMain/menu',
-        component: __WEBPACK_IMPORTED_MODULE_13__components_user_user_menu_UserMenu_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_12__components_user_user_menu_UserMenu_vue__["a" /* default */]
     }, {
         name: 'UserReview', // 가게 페이지 안의 리뷰
         path: '/userRestaurantMain/review',
-        component: __WEBPACK_IMPORTED_MODULE_14__components_user_user_review_UserReview_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_13__components_user_user_review_UserReview_vue__["a" /* default */]
     }]
 }, {
     name: 'UserWriteReview', // 리뷰 작성
     path: '/userRestaurantMain/review/writeReview',
-    component: __WEBPACK_IMPORTED_MODULE_16__components_user_user_review_UserWriteReview_vue__["a" /* default */]
+    component: __WEBPACK_IMPORTED_MODULE_15__components_user_user_review_UserWriteReview_vue__["a" /* default */]
 }, {
     name: 'OwnerPage', // 사장님 페이지
     path: '/ownerPage',
-    component: __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPage_vue__["a" /* default */],
+    component: __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPage_vue__["a" /* default */],
     // side_var
     children: [{
         name: 'OwnerPageSideReservation', // 사장님 페이지 예약 관련 좌측 바
         path: '/ownerPage/ownerPageSideReservation',
-        component: __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_common_OwnerPageSideReservation_vue__["default"],
+        component: __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPageSideReservation_vue__["default"],
         // Main
         children: [{
             name: 'OwnerReservationlist', // 사장님 페이지 예약 현황
             path: '/ownerPage/ownerReservationlist',
-            component: __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_reservation_OwnerReservationlist_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationlist_vue__["a" /* default */]
         }, {
             name: 'OwnerReservationAccept', // 사장님 페이지 예약 수락
             path: '/ownerPage/ownerReservationAccept',
-            component: __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationAccept_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationAccept_vue__["a" /* default */]
         }, {
             name: 'OwnerReservationSetting', // 사장님 페이지 예약 설정
             path: '/ownerPage/ownerReservationSetting',
-            component: __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_reservation_OwnerReservationSetting_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_reservation_OwnerReservationSetting_vue__["a" /* default */]
         }]
     }, {
         name: 'OwnerPageSideSetting', // 사장님 페이지 가게 설정 관련 좌측 바
         path: '/ownerPage/ownerPageSideSetting',
-        component: __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_common_OwnerPageSideSetting_vue__["a" /* default */],
+        component: __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_common_OwnerPageSideSetting_vue__["a" /* default */],
 
         children: [{
+            name: 'OwnerRestaurant', // 사장님 페이지 가게 정보 입력 
+            path: '/ownerPage/ownerRestaurant',
+            component: __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_restaurant_OwnerRestaurant_vue__["a" /* default */]
+        }, {
             name: 'OwnerCreateCoupon', // 사장님 페이지 쿠폰 제작     
             path: '/ownerPage/ownerCreateCoupon',
             component: __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_coupon_OwnerCreateCoupon_vue__["a" /* default */]
+        }, {
+            name: 'OwnerMenu', // 전자 메뉴판 설정
+            path: '/ownerPage/OwnerMenu',
+            component: __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenu_vue__["a" /* default */],
+            children: [{
+                name: 'OwnerMenuOperate', // 메뉴 추가
+                path: '/ownerPage/OwnerMenu/operate',
+                component: __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuOperate_vue__["a" /* default */]
+            }, {
+                name: 'OwnerMenuList', // 메뉴 리스트
+                path: '/ownerPage/OwnerMenu/list',
+                component: __WEBPACK_IMPORTED_MODULE_26__components_owner_owner_menu_OwnerMenuList_vue__["a" /* default */]
+            }, {
+                name: 'OwnerMenuSelectLayout', // 메뉴 레이아웃 설정
+                path: '/ownerPage/OwnerMenu/layout',
+                component: __WEBPACK_IMPORTED_MODULE_27__components_owner_owner_menu_OwnerMenuSelectLayout_vue__["a" /* default */]
+            }]
         }]
     }]
 }];
@@ -27367,7 +27823,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_0_vue___default.a.util.extend({ router: router }, __WEBPACK_IMPORTED_MODULE_9__App_vue__["a" /* default */])).$mount('#app');
 
 /***/ }),
-/* 182 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
@@ -27420,7 +27876,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(183);
+__webpack_require__(182);
 // On some exotic environments, it's not clear which object `setimmeidate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -27431,10 +27887,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 183 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -27624,10 +28080,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22), __webpack_require__(91)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(91)))
 
 /***/ }),
-/* 184 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30257,7 +30713,7 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 185 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30265,7 +30721,7 @@ if (inBrowser && window.Vue) {
 
 var utils = __webpack_require__(9);
 var bind = __webpack_require__(92);
-var Axios = __webpack_require__(187);
+var Axios = __webpack_require__(186);
 var defaults = __webpack_require__(54);
 
 /**
@@ -30300,14 +30756,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(96);
-axios.CancelToken = __webpack_require__(201);
+axios.CancelToken = __webpack_require__(200);
 axios.isCancel = __webpack_require__(95);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(202);
+axios.spread = __webpack_require__(201);
 
 module.exports = axios;
 
@@ -30316,7 +30772,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 186 */
+/* 185 */
 /***/ (function(module, exports) {
 
 /*!
@@ -30343,7 +30799,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 187 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30351,8 +30807,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(54);
 var utils = __webpack_require__(9);
-var InterceptorManager = __webpack_require__(196);
-var dispatchRequest = __webpack_require__(197);
+var InterceptorManager = __webpack_require__(195);
+var dispatchRequest = __webpack_require__(196);
 
 /**
  * Create a new instance of Axios
@@ -30429,7 +30885,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 188 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30448,7 +30904,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30481,7 +30937,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30509,7 +30965,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30584,7 +31040,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30644,7 +31100,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30719,7 +31175,7 @@ module.exports = (
 
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30762,7 +31218,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30822,7 +31278,7 @@ module.exports = (
 
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30881,18 +31337,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(9);
-var transformData = __webpack_require__(198);
+var transformData = __webpack_require__(197);
 var isCancel = __webpack_require__(95);
 var defaults = __webpack_require__(54);
-var isAbsoluteURL = __webpack_require__(199);
-var combineURLs = __webpack_require__(200);
+var isAbsoluteURL = __webpack_require__(198);
+var combineURLs = __webpack_require__(199);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -30974,7 +31430,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31001,7 +31457,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31022,7 +31478,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31043,7 +31499,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 201 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31107,7 +31563,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 202 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31141,12 +31597,12 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 203 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
 
@@ -31177,47 +31633,47 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 204 */
+/* 203 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__alert__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__badge__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__breadcrumb__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__button__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__button_group__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__button_toolbar__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__input_group__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__card__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__carousel__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__layout__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__alert__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__badge__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__breadcrumb__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__button__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__button_group__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__button_toolbar__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__input_group__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__card__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__carousel__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__layout__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__collapse__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__dropdown__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__embed__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__form__ = __webpack_require__(244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__form_group__ = __webpack_require__(246);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__form_checkbox__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__form_radio__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__form_input__ = __webpack_require__(252);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__form_textarea__ = __webpack_require__(256);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__form_file__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__form_select__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__image__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__jumbotron__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__link__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__list_group__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__media__ = __webpack_require__(270);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__modal__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__embed__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__form__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__form_group__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__form_checkbox__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__form_radio__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__form_input__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__form_textarea__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__form_file__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__form_select__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__image__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__jumbotron__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__link__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__list_group__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__media__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__modal__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__nav__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__navbar__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pagination__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pagination_nav__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__popover__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__progress__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__table__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__tabs__ = __webpack_require__(302);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__tooltip__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__navbar__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pagination__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pagination_nav__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__popover__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__progress__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__table__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__tabs__ = __webpack_require__(301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__tooltip__ = __webpack_require__(304);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return __WEBPACK_IMPORTED_MODULE_0__alert__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Badge", function() { return __WEBPACK_IMPORTED_MODULE_1__badge__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Breadcrumb", function() { return __WEBPACK_IMPORTED_MODULE_2__breadcrumb__["a"]; });
@@ -31294,11 +31750,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 205 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__alert__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__alert__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -31318,7 +31774,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 206 */
+/* 205 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31439,11 +31895,11 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 207 */
+/* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__badge__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__badge__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -31463,7 +31919,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 208 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31522,11 +31978,11 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_2__utils_object__["a" /* assign */]
 });
 
 /***/ }),
-/* 209 */
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__breadcrumb__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__breadcrumb__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__breadcrumb_item__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__breadcrumb_link__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_plugins__ = __webpack_require__(1);
@@ -31552,7 +32008,7 @@ Object(__WEBPACK_IMPORTED_MODULE_3__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 210 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31610,7 +32066,7 @@ var props = {
 });
 
 /***/ }),
-/* 211 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31639,11 +32095,11 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 212 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button_group__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button_group__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -31664,7 +32120,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 213 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31717,11 +32173,11 @@ var props = {
 });
 
 /***/ }),
-/* 214 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button_toolbar__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button_toolbar__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -31742,7 +32198,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 215 */
+/* 214 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31868,12 +32324,12 @@ var ITEM_SELECTOR = ['.btn:not(.disabled):not([disabled]):not(.dropdown-item)', 
 });
 
 /***/ }),
-/* 216 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_plugins__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__input_group__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__input_group__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__input_group_addon__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__input_group_prepend__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__input_group_append__ = __webpack_require__(101);
@@ -31905,7 +32361,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 217 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31991,16 +32447,16 @@ var props = {
 });
 
 /***/ }),
-/* 218 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__card__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__card__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__card_header__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__card_body__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__card_footer__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__card_img__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__card_group__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__card_group__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_plugins__ = __webpack_require__(1);
 
 
@@ -32030,14 +32486,14 @@ Object(__WEBPACK_IMPORTED_MODULE_6__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 219 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export props */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_functional_data_merge__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_prefix_prop_name__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_unprefix_prop_name__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_unprefix_prop_name__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_copyProps__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_pluck_props__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_object__ = __webpack_require__(2);
@@ -32124,12 +32580,12 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_5__utils_object__["a" /* assign */]
 });
 
 /***/ }),
-/* 220 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = unPrefixPropName;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lower_first__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lower_first__ = __webpack_require__(220);
 
 
 /**
@@ -32141,7 +32597,7 @@ function unPrefixPropName(prefix, value) {
 }
 
 /***/ }),
-/* 221 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32157,7 +32613,7 @@ function lowerFirst(str) {
 }
 
 /***/ }),
-/* 222 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32201,12 +32657,12 @@ var props = {
 });
 
 /***/ }),
-/* 223 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__carousel__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carousel_slide__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__carousel__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carousel_slide__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
 
@@ -32228,7 +32684,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 224 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32689,7 +33145,7 @@ var TransitionEndEvents = {
 });
 
 /***/ }),
-/* 225 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32805,13 +33261,13 @@ var TransitionEndEvents = {
 });
 
 /***/ }),
-/* 226 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__container__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__row__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__col__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__row__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__col__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__form_row__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_plugins__ = __webpack_require__(1);
 
@@ -32838,7 +33294,7 @@ Object(__WEBPACK_IMPORTED_MODULE_4__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 227 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32904,15 +33360,15 @@ var props = {
 });
 
 /***/ }),
-/* 228 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export computeBkPtClass */
 /* unused harmony export props */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_functional_data_merge__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_memoize__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_suffix_prop_name__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_memoize__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_suffix_prop_name__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_object__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_array__ = __webpack_require__(6);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -33057,7 +33513,7 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_3__utils_object__["a" /* assign */]
 });
 
 /***/ }),
-/* 229 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33075,7 +33531,7 @@ function memoize(fn) {
 }
 
 /***/ }),
-/* 230 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33095,7 +33551,7 @@ function suffixPropName(suffix, str) {
 }
 
 /***/ }),
-/* 231 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33292,7 +33748,7 @@ var EVENT_TOGGLE = 'bv::toggle::collapse';
 });
 
 /***/ }),
-/* 232 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33364,14 +33820,14 @@ var EVENT_STATE = 'bv::collapse::state';
 });
 
 /***/ }),
-/* 233 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_dropdown__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__button_button__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dropdown_css__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dropdown_css__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dropdown_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dropdown_css__);
 
 
@@ -33500,7 +33956,7 @@ var EVENT_STATE = 'bv::collapse::state';
 });
 
 /***/ }),
-/* 234 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33528,13 +33984,13 @@ var EVENT_STATE = 'bv::collapse::state';
 });
 
 /***/ }),
-/* 235 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(236);
+var content = __webpack_require__(235);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -33559,7 +34015,7 @@ if(false) {
 }
 
 /***/ }),
-/* 236 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -33573,7 +34029,7 @@ exports.push([module.i, "/* workaround for https://github.com/bootstrap-vue/boot
 
 
 /***/ }),
-/* 237 */
+/* 236 */
 /***/ (function(module, exports) {
 
 
@@ -33668,7 +34124,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 238 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33697,7 +34153,7 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_1__link_link__["c" /* propsFactory 
 });
 
 /***/ }),
-/* 239 */
+/* 238 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33735,7 +34191,7 @@ var props = {
 });
 
 /***/ }),
-/* 240 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33770,7 +34226,7 @@ var props = {
 });
 
 /***/ }),
-/* 241 */
+/* 240 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33800,11 +34256,11 @@ var props = {
 });
 
 /***/ }),
-/* 242 */
+/* 241 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__embed__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__embed__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -33824,7 +34280,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 243 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33871,12 +34327,12 @@ var props = {
 });
 
 /***/ }),
-/* 244 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__form_row__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__form_row__ = __webpack_require__(244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__form_text__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__form_invalid_feedback__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__form_valid_feedback__ = __webpack_require__(115);
@@ -33908,7 +34364,7 @@ Object(__WEBPACK_IMPORTED_MODULE_5__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 245 */
+/* 244 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33918,11 +34374,11 @@ Object(__WEBPACK_IMPORTED_MODULE_5__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__layout_form_row__["a" /* default */]);
 
 /***/ }),
-/* 246 */
+/* 245 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_group__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_group__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -33943,7 +34399,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 247 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34247,12 +34703,12 @@ var SELECTOR = 'input:not(:disabled),textarea:not(:disabled),select:not(:disable
 });
 
 /***/ }),
-/* 248 */
+/* 247 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_checkbox__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__form_checkbox_group__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__form_checkbox_group__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
 
@@ -34278,12 +34734,12 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 249 */
+/* 248 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form_options__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_size__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mixins_form_state__ = __webpack_require__(16);
@@ -34398,12 +34854,12 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 250 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_radio__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__form_radio_group__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__form_radio_group__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
 
@@ -34427,13 +34883,13 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 251 */
+/* 250 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form_options__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_size__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mixins_form_state__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mixins_form_custom__ = __webpack_require__(38);
@@ -34547,11 +35003,11 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 252 */
+/* 251 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_input__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_input__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -34572,16 +35028,16 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 253 */
+/* 252 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form_size__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_state__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_array__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__form_input_css__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__form_input_css__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__form_input_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__form_input_css__);
 
 
@@ -34730,13 +35186,13 @@ var TYPES = ['text', 'password', 'email', 'number', 'url', 'tel', 'search', 'ran
 });
 
 /***/ }),
-/* 254 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(255);
+var content = __webpack_require__(254);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -34761,7 +35217,7 @@ if(false) {
 }
 
 /***/ }),
-/* 255 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -34775,11 +35231,11 @@ exports.push([module.i, "/* Special styling for type=range and type=color input 
 
 
 /***/ }),
-/* 256 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_textarea__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_textarea__ = __webpack_require__(256);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -34800,12 +35256,12 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 257 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form_size__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_state__ = __webpack_require__(16);
 
@@ -34956,11 +35412,11 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 258 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_file__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_file__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -34981,12 +35437,12 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 259 */
+/* 258 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form_state__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_custom__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_array__ = __webpack_require__(6);
@@ -35239,11 +35695,11 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 260 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_select__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__form_select__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -35264,13 +35720,13 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 261 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_id__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_form_options__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_form__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_form_size__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mixins_form_state__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mixins_form_custom__ = __webpack_require__(38);
@@ -35381,12 +35837,12 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 262 */
+/* 261 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__img__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__img_lazy__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__img_lazy__ = __webpack_require__(262);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
 
@@ -35408,7 +35864,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 263 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35600,11 +36056,11 @@ var THROTTLE = 100;
 });
 
 /***/ }),
-/* 264 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__jumbotron__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__jumbotron__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -35624,7 +36080,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 265 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35731,7 +36187,7 @@ var props = {
 });
 
 /***/ }),
-/* 266 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35755,12 +36211,12 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 267 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__list_group__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__list_group_item__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__list_group__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__list_group_item__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
 
@@ -35782,7 +36238,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 268 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35819,7 +36275,7 @@ var props = {
 });
 
 /***/ }),
-/* 269 */
+/* 268 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35885,11 +36341,11 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_2__utils_object__["a" /* assign */]
 });
 
 /***/ }),
-/* 270 */
+/* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__media__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__media__ = __webpack_require__(270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__media_aside__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__media_body__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_plugins__ = __webpack_require__(1);
@@ -35915,7 +36371,7 @@ Object(__WEBPACK_IMPORTED_MODULE_3__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 271 */
+/* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35975,11 +36431,11 @@ var props = {
 });
 
 /***/ }),
-/* 272 */
+/* 271 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal__ = __webpack_require__(272);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives_modal__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
@@ -36002,7 +36458,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 273 */
+/* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36761,7 +37217,7 @@ var Selector = {
 });
 
 /***/ }),
-/* 274 */
+/* 273 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36798,7 +37254,7 @@ var listenTypes = { click: true };
 });
 
 /***/ }),
-/* 275 */
+/* 274 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36865,7 +37321,7 @@ var props = {
 });
 
 /***/ }),
-/* 276 */
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36892,7 +37348,7 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_1__link_link__["c" /* propsFactory 
 });
 
 /***/ }),
-/* 277 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36920,7 +37376,7 @@ var props = {
 });
 
 /***/ }),
-/* 278 */
+/* 277 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36947,7 +37403,7 @@ var props = {
 });
 
 /***/ }),
-/* 279 */
+/* 278 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37024,14 +37480,14 @@ var props = {
 });
 
 /***/ }),
-/* 280 */
+/* 279 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navbar__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar_nav__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__navbar_brand__ = __webpack_require__(283);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__navbar_toggle__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navbar__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar_nav__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__navbar_brand__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__navbar_toggle__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__nav__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__collapse__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dropdown__ = __webpack_require__(61);
@@ -37067,7 +37523,7 @@ Object(__WEBPACK_IMPORTED_MODULE_7__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 281 */
+/* 280 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37126,7 +37582,7 @@ var props = {
 });
 
 /***/ }),
-/* 282 */
+/* 281 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37168,7 +37624,7 @@ var props = {
 });
 
 /***/ }),
-/* 283 */
+/* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37212,7 +37668,7 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_3__utils_object__["a" /* assign */]
 });
 
 /***/ }),
-/* 284 */
+/* 283 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37265,11 +37721,11 @@ var props = Object(__WEBPACK_IMPORTED_MODULE_3__utils_object__["a" /* assign */]
 });
 
 /***/ }),
-/* 285 */
+/* 284 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pagination__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pagination__ = __webpack_require__(285);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -37289,7 +37745,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 286 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37355,7 +37811,7 @@ var props = {
 });
 
 /***/ }),
-/* 287 */
+/* 286 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37368,11 +37824,11 @@ var props = {
 });
 
 /***/ }),
-/* 288 */
+/* 287 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pagination_nav__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pagination_nav__ = __webpack_require__(288);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -37392,7 +37848,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 289 */
+/* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37486,11 +37942,11 @@ routerProps);
 });
 
 /***/ }),
-/* 290 */
+/* 289 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popover__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popover__ = __webpack_require__(290);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -37510,7 +37966,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 291 */
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37568,7 +38024,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 292 */
+/* 291 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37580,11 +38036,11 @@ var isSSR = typeof window === 'undefined';
 var HTMLElement = isSSR ? Object : window.HTMLElement;
 
 /***/ }),
-/* 293 */
+/* 292 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__progress__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__progress__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_bar__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
@@ -37607,7 +38063,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 294 */
+/* 293 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37683,11 +38139,11 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 295 */
+/* 294 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__table__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__table__ = __webpack_require__(295);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -37707,23 +38163,23 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 296 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_startcase__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_startcase__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_startcase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_startcase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_get__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_get__ = __webpack_require__(297);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_get___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_get__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_loose_equal__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_stable_sort__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_stable_sort__ = __webpack_require__(298);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_key_codes__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warn__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_object__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils_array__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__mixins_id__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__mixins_listen_on_root__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__table_css__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__table_css__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__table_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__table_css__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -38616,7 +39072,7 @@ function processField(key, value) {
 });
 
 /***/ }),
-/* 297 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -39200,10 +39656,10 @@ function words(string, pattern, guard) {
 
 module.exports = startCase;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 298 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -40138,10 +40594,10 @@ function get(object, path, defaultValue) {
 
 module.exports = get;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 299 */
+/* 298 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40179,13 +40635,13 @@ function stableSort(array, compareFn) {
 }
 
 /***/ }),
-/* 300 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(301);
+var content = __webpack_require__(300);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -40210,7 +40666,7 @@ if(false) {
 }
 
 /***/ }),
-/* 301 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -40224,12 +40680,12 @@ exports.push([module.i, "/* Add support for fixed layout table */\ntable.b-table
 
 
 /***/ }),
-/* 302 */
+/* 301 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tabs__ = __webpack_require__(303);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tab__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tabs__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tab__ = __webpack_require__(303);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_plugins__ = __webpack_require__(1);
 
 
@@ -40251,7 +40707,7 @@ Object(__WEBPACK_IMPORTED_MODULE_2__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 303 */
+/* 302 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40622,7 +41078,7 @@ var bTabButtonHelper = {
 });
 
 /***/ }),
-/* 304 */
+/* 303 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40744,11 +41200,11 @@ var bTabButtonHelper = {
 });
 
 /***/ }),
-/* 305 */
+/* 304 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tooltip__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tooltip__ = __webpack_require__(305);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -40768,7 +41224,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 306 */
+/* 305 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -40818,16 +41274,16 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 });
 
 /***/ }),
-/* 307 */
+/* 306 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__toggle__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modal__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scrollspy__ = __webpack_require__(308);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tooltip__ = __webpack_require__(311);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__popover__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scrollspy__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tooltip__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__popover__ = __webpack_require__(312);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Toggle", function() { return __WEBPACK_IMPORTED_MODULE_0__toggle__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return __WEBPACK_IMPORTED_MODULE_1__modal__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Scrollspy", function() { return __WEBPACK_IMPORTED_MODULE_2__scrollspy__["a"]; });
@@ -40842,11 +41298,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 308 */
+/* 307 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scrollspy__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scrollspy__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -40866,11 +41322,11 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 309 */
+/* 308 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scrollspy_class__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scrollspy_class__ = __webpack_require__(309);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_object__ = __webpack_require__(2);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -40979,7 +41435,7 @@ function removeBVSS(el) {
 });
 
 /***/ }),
-/* 310 */
+/* 309 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41468,11 +41924,11 @@ var ScrollSpy = function () {
 /* harmony default export */ __webpack_exports__["a"] = (ScrollSpy);
 
 /***/ }),
-/* 311 */
+/* 310 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tooltip__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tooltip__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -41492,7 +41948,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 312 */
+/* 311 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41667,11 +42123,11 @@ function removeBVTT(el) {
 });
 
 /***/ }),
-/* 313 */
+/* 312 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popover__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popover__ = __webpack_require__(313);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_plugins__ = __webpack_require__(1);
 
 
@@ -41691,7 +42147,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__utils_plugins__["c" /* vueUse */])(VuePlugin
 /* harmony default export */ __webpack_exports__["a"] = (VuePlugin);
 
 /***/ }),
-/* 314 */
+/* 313 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41866,13 +42322,13 @@ function removeBVPO(el) {
 });
 
 /***/ }),
-/* 315 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(316);
+var content = __webpack_require__(315);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41897,7 +42353,7 @@ if(false) {
 }
 
 /***/ }),
-/* 316 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -41911,13 +42367,13 @@ exports.push([module.i, "/*!\n * Bootstrap v4.0.0 (https://getbootstrap.com)\n *
 
 
 /***/ }),
-/* 317 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(318);
+var content = __webpack_require__(317);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -41942,7 +42398,7 @@ if(false) {
 }
 
 /***/ }),
-/* 318 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -41956,7 +42412,7 @@ exports.push([module.i, "/* workaround for https://github.com/bootstrap-vue/boot
 
 
 /***/ }),
-/* 319 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -59598,13 +60054,13 @@ function install(Vue) {
 //# sourceMappingURL=vuetify.js.map
 
 /***/ }),
-/* 320 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(321);
+var content = __webpack_require__(320);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -59629,7 +60085,7 @@ if(false) {
 }
 
 /***/ }),
-/* 321 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -59643,18 +60099,18 @@ exports.push([module.i, "/*!\n* Vuetify v1.0.14\n* Forged by John Leider\n* Rele
 
 
 /***/ }),
-/* 322 */
+/* 321 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(128);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6dd1125c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(326);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6dd1125c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(325);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(323)
+  __webpack_require__(322)
 }
 /* script */
 
@@ -59701,13 +60157,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 323 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(324);
+var content = __webpack_require__(323);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -59728,7 +60184,7 @@ if(false) {
 }
 
 /***/ }),
-/* 324 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -59742,7 +60198,7 @@ exports.push([module.i, "\n.fade-enter-active, .fade-leave-active {\n    -webkit
 
 
 /***/ }),
-/* 325 */
+/* 324 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59777,7 +60233,7 @@ function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 326 */
+/* 325 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59802,2002 +60258,7 @@ if (false) {
 }
 
 /***/ }),
-/* 327 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export ico3dRotation */
-/* unused harmony export icoAccessibility */
-/* unused harmony export icoAccessible */
-/* unused harmony export icoAccountBalance */
-/* unused harmony export icoAccountBalanceWallet */
-/* unused harmony export icoAccountBox */
-/* unused harmony export icoAccountCircle */
-/* unused harmony export icoAddShoppingCart */
-/* unused harmony export icoAlarm */
-/* unused harmony export icoAlarmAdd */
-/* unused harmony export icoAlarmOff */
-/* unused harmony export icoAlarmOn */
-/* unused harmony export icoAllOut */
-/* unused harmony export icoAndroid */
-/* unused harmony export icoAnnouncement */
-/* unused harmony export icoAspectRatio */
-/* unused harmony export icoAssessment */
-/* unused harmony export icoAssignment */
-/* unused harmony export icoAssignmentInd */
-/* unused harmony export icoAssignmentLate */
-/* unused harmony export icoAssignmentReturn */
-/* unused harmony export icoAssignmentReturned */
-/* unused harmony export icoAssignmentTurnedIn */
-/* unused harmony export icoAutorenew */
-/* unused harmony export icoBackup */
-/* unused harmony export icoBook */
-/* unused harmony export icoBookmark */
-/* unused harmony export icoBookmarkBorder */
-/* unused harmony export icoBugReport */
-/* unused harmony export icoBuild */
-/* unused harmony export icoCached */
-/* unused harmony export icoCameraEnhance */
-/* unused harmony export icoCardGiftcard */
-/* unused harmony export icoCardMembership */
-/* unused harmony export icoCardTravel */
-/* unused harmony export icoChangeHistory */
-/* unused harmony export icoCheckCircle */
-/* unused harmony export icoChromeReaderMode */
-/* unused harmony export icoClass */
-/* unused harmony export icoCode */
-/* unused harmony export icoCompareArrows */
-/* unused harmony export icoCopyright */
-/* unused harmony export icoCreditCard */
-/* unused harmony export icoDashboard */
-/* unused harmony export icoDateRange */
-/* unused harmony export icoDelete */
-/* unused harmony export icoDeleteForever */
-/* unused harmony export icoDescription */
-/* unused harmony export icoDns */
-/* unused harmony export icoDone */
-/* unused harmony export icoDoneAll */
-/* unused harmony export icoDonutLarge */
-/* unused harmony export icoDonutSmall */
-/* unused harmony export icoEject */
-/* unused harmony export icoEuroSymbol */
-/* unused harmony export icoEvent */
-/* unused harmony export icoEventSeat */
-/* unused harmony export icoExitToApp */
-/* unused harmony export icoExplore */
-/* unused harmony export icoExtension */
-/* unused harmony export icoFace */
-/* unused harmony export icoFavorite */
-/* unused harmony export icoFavoriteBorder */
-/* unused harmony export icoFeedback */
-/* unused harmony export icoFindInPage */
-/* unused harmony export icoFindReplace */
-/* unused harmony export icoFingerprint */
-/* unused harmony export icoFlightLand */
-/* unused harmony export icoFlightTakeoff */
-/* unused harmony export icoFlipToBack */
-/* unused harmony export icoFlipToFront */
-/* unused harmony export icoGTranslate */
-/* unused harmony export icoGavel */
-/* unused harmony export icoGetApp */
-/* unused harmony export icoGif */
-/* unused harmony export icoGrade */
-/* unused harmony export icoGroupWork */
-/* unused harmony export icoHelp */
-/* unused harmony export icoHelpOutline */
-/* unused harmony export icoHighlightOff */
-/* unused harmony export icoHistory */
-/* unused harmony export icoHome */
-/* unused harmony export icoHourglassEmpty */
-/* unused harmony export icoHourglassFull */
-/* unused harmony export icoHttp */
-/* unused harmony export icoHttps */
-/* unused harmony export icoImportantDevices */
-/* unused harmony export icoInfo */
-/* unused harmony export icoInfoOutline */
-/* unused harmony export icoInput */
-/* unused harmony export icoInvertColors */
-/* unused harmony export icoLabel */
-/* unused harmony export icoLabelOutline */
-/* unused harmony export icoLanguage */
-/* unused harmony export icoLaunch */
-/* unused harmony export icoLightbulbOutline */
-/* unused harmony export icoLineStyle */
-/* unused harmony export icoLineWeight */
-/* unused harmony export icoList */
-/* unused harmony export icoLock */
-/* unused harmony export icoLockOpen */
-/* unused harmony export icoLockOutline */
-/* unused harmony export icoLoyalty */
-/* unused harmony export icoMarkunreadMailbox */
-/* unused harmony export icoMotorcycle */
-/* unused harmony export icoNoteAdd */
-/* unused harmony export icoOfflinePin */
-/* unused harmony export icoOpacity */
-/* unused harmony export icoOpenInBrowser */
-/* unused harmony export icoOpenInNew */
-/* unused harmony export icoOpenWith */
-/* unused harmony export icoPageview */
-/* unused harmony export icoPanTool */
-/* unused harmony export icoPayment */
-/* unused harmony export icoPermCameraMic */
-/* unused harmony export icoPermContactCalendar */
-/* unused harmony export icoPermDataSetting */
-/* unused harmony export icoPermDeviceInformation */
-/* unused harmony export icoPermIdentity */
-/* unused harmony export icoPermMedia */
-/* unused harmony export icoPermPhoneMsg */
-/* unused harmony export icoPermScanWifi */
-/* unused harmony export icoPets */
-/* unused harmony export icoPictureInPicture */
-/* unused harmony export icoPictureInPictureAlt */
-/* unused harmony export icoPlayForWork */
-/* unused harmony export icoPolymer */
-/* unused harmony export icoPowerSettingsNew */
-/* unused harmony export icoPregnantWoman */
-/* unused harmony export icoPrint */
-/* unused harmony export icoQueryBuilder */
-/* unused harmony export icoQuestionAnswer */
-/* unused harmony export icoReceipt */
-/* unused harmony export icoRecordVoiceOver */
-/* unused harmony export icoRedeem */
-/* unused harmony export icoRemoveShoppingCart */
-/* unused harmony export icoReorder */
-/* unused harmony export icoReportProblem */
-/* unused harmony export icoRestore */
-/* unused harmony export icoRestorePage */
-/* unused harmony export icoRoom */
-/* unused harmony export icoRoundedCorner */
-/* unused harmony export icoRowing */
-/* unused harmony export icoSchedule */
-/* unused harmony export icoSearch */
-/* unused harmony export icoSettings */
-/* unused harmony export icoSettingsApplications */
-/* unused harmony export icoSettingsBackupRestore */
-/* unused harmony export icoSettingsBluetooth */
-/* unused harmony export icoSettingsBrightness */
-/* unused harmony export icoSettingsCell */
-/* unused harmony export icoSettingsEthernet */
-/* unused harmony export icoSettingsInputAntenna */
-/* unused harmony export icoSettingsInputComponent */
-/* unused harmony export icoSettingsInputComposite */
-/* unused harmony export icoSettingsInputHdmi */
-/* unused harmony export icoSettingsInputSvideo */
-/* unused harmony export icoSettingsOverscan */
-/* unused harmony export icoSettingsPhone */
-/* unused harmony export icoSettingsPower */
-/* unused harmony export icoSettingsRemote */
-/* unused harmony export icoSettingsVoice */
-/* unused harmony export icoShop */
-/* unused harmony export icoShopTwo */
-/* unused harmony export icoShoppingBasket */
-/* unused harmony export icoShoppingCart */
-/* unused harmony export icoSpeakerNotes */
-/* unused harmony export icoSpeakerNotesOff */
-/* unused harmony export icoSpellcheck */
-/* unused harmony export icoStars */
-/* unused harmony export icoStore */
-/* unused harmony export icoSubject */
-/* unused harmony export icoSupervisorAccount */
-/* unused harmony export icoSwapHoriz */
-/* unused harmony export icoSwapVert */
-/* unused harmony export icoSwapVerticalCircle */
-/* unused harmony export icoSystemUpdateAlt */
-/* unused harmony export icoTab */
-/* unused harmony export icoTabUnselected */
-/* unused harmony export icoTheaters */
-/* unused harmony export icoThumbDown */
-/* unused harmony export icoThumbUp */
-/* unused harmony export icoThumbsUpDown */
-/* unused harmony export icoTimeline */
-/* unused harmony export icoToc */
-/* unused harmony export icoToday */
-/* unused harmony export icoToll */
-/* unused harmony export icoTouchApp */
-/* unused harmony export icoTrackChanges */
-/* unused harmony export icoTranslate */
-/* unused harmony export icoTrendingDown */
-/* unused harmony export icoTrendingFlat */
-/* unused harmony export icoTrendingUp */
-/* unused harmony export icoTurnedIn */
-/* unused harmony export icoTurnedInNot */
-/* unused harmony export icoUpdate */
-/* unused harmony export icoVerifiedUser */
-/* unused harmony export icoViewAgenda */
-/* unused harmony export icoViewArray */
-/* unused harmony export icoViewCarousel */
-/* unused harmony export icoViewColumn */
-/* unused harmony export icoViewDay */
-/* unused harmony export icoViewHeadline */
-/* unused harmony export icoViewList */
-/* unused harmony export icoViewModule */
-/* unused harmony export icoViewQuilt */
-/* unused harmony export icoViewStream */
-/* unused harmony export icoViewWeek */
-/* unused harmony export icoVisibility */
-/* unused harmony export icoVisibilityOff */
-/* unused harmony export icoWatchLater */
-/* unused harmony export icoWork */
-/* unused harmony export icoYoutubeSearchedFor */
-/* unused harmony export icoZoomIn */
-/* unused harmony export icoZoomOut */
-/* unused harmony export icoAddAlert */
-/* unused harmony export icoError */
-/* unused harmony export icoErrorOutline */
-/* unused harmony export icoWarning */
-/* unused harmony export icoAddToQueue */
-/* unused harmony export icoAirplay */
-/* unused harmony export icoAlbum */
-/* unused harmony export icoArtTrack */
-/* unused harmony export icoAvTimer */
-/* unused harmony export icoBrandingWatermark */
-/* unused harmony export icoCallToAction */
-/* unused harmony export icoClosedCaption */
-/* unused harmony export icoEqualizer */
-/* unused harmony export icoExplicit */
-/* unused harmony export icoFastForward */
-/* unused harmony export icoFastRewind */
-/* unused harmony export icoFeaturedPlayList */
-/* unused harmony export icoFeaturedVideo */
-/* unused harmony export icoFiberDvr */
-/* unused harmony export icoFiberManualRecord */
-/* unused harmony export icoFiberNew */
-/* unused harmony export icoFiberPin */
-/* unused harmony export icoFiberSmartRecord */
-/* unused harmony export icoForward_10 */
-/* unused harmony export icoForward_30 */
-/* unused harmony export icoForward_5 */
-/* unused harmony export icoGames */
-/* unused harmony export icoHd */
-/* unused harmony export icoHearing */
-/* unused harmony export icoHighQuality */
-/* unused harmony export icoLibraryAdd */
-/* unused harmony export icoLibraryBooks */
-/* unused harmony export icoLibraryMusic */
-/* unused harmony export icoLoop */
-/* unused harmony export icoMic */
-/* unused harmony export icoMicNone */
-/* unused harmony export icoMicOff */
-/* unused harmony export icoMovie */
-/* unused harmony export icoMusicVideo */
-/* unused harmony export icoNewReleases */
-/* unused harmony export icoNotInterested */
-/* unused harmony export icoNote */
-/* unused harmony export icoPause */
-/* unused harmony export icoPauseCircleFilled */
-/* unused harmony export icoPauseCircleOutline */
-/* unused harmony export icoPlayArrow */
-/* unused harmony export icoPlayCircleFilled */
-/* unused harmony export icoPlayCircleOutline */
-/* unused harmony export icoPlaylistAdd */
-/* unused harmony export icoPlaylistAddCheck */
-/* unused harmony export icoPlaylistPlay */
-/* unused harmony export icoQueue */
-/* unused harmony export icoQueueMusic */
-/* unused harmony export icoQueuePlayNext */
-/* unused harmony export icoRadio */
-/* unused harmony export icoRecentActors */
-/* unused harmony export icoRemoveFromQueue */
-/* unused harmony export icoRepeat */
-/* unused harmony export icoRepeatOne */
-/* unused harmony export icoReplay_10 */
-/* unused harmony export icoReplay */
-/* unused harmony export icoReplay_30 */
-/* unused harmony export icoReplay_5 */
-/* unused harmony export icoShuffle */
-/* unused harmony export icoSkipNext */
-/* unused harmony export icoSkipPrevious */
-/* unused harmony export icoSlowMotionVideo */
-/* unused harmony export icoSnooze */
-/* unused harmony export icoSortByAlpha */
-/* unused harmony export icoStop */
-/* unused harmony export icoSubscriptions */
-/* unused harmony export icoSubtitles */
-/* unused harmony export icoSurroundSound */
-/* unused harmony export icoVideoCall */
-/* unused harmony export icoVideoLabel */
-/* unused harmony export icoVideoLibrary */
-/* unused harmony export icoVideocam */
-/* unused harmony export icoVideocamOff */
-/* unused harmony export icoVolumeDown */
-/* unused harmony export icoVolumeMute */
-/* unused harmony export icoVolumeOff */
-/* unused harmony export icoVolumeUp */
-/* unused harmony export icoWeb */
-/* unused harmony export icoWebAsset */
-/* unused harmony export icoBusiness */
-/* unused harmony export icoCall */
-/* unused harmony export icoCallEnd */
-/* unused harmony export icoCallMade */
-/* unused harmony export icoCallMerge */
-/* unused harmony export icoCallMissed */
-/* unused harmony export icoCallMissedOutgoing */
-/* unused harmony export icoCallReceived */
-/* unused harmony export icoCallSplit */
-/* unused harmony export icoChat */
-/* unused harmony export icoChatBubble */
-/* unused harmony export icoChatBubbleOutline */
-/* unused harmony export icoClearAll */
-/* unused harmony export icoComment */
-/* unused harmony export icoContactMail */
-/* unused harmony export icoContactPhone */
-/* unused harmony export icoContacts */
-/* unused harmony export icoDialerSip */
-/* unused harmony export icoDialpad */
-/* unused harmony export icoEmail */
-/* unused harmony export icoForum */
-/* unused harmony export icoImportContacts */
-/* unused harmony export icoImportExport */
-/* unused harmony export icoInvertColorsOff */
-/* unused harmony export icoLiveHelp */
-/* unused harmony export icoLocationOff */
-/* unused harmony export icoLocationOn */
-/* unused harmony export icoMailOutline */
-/* unused harmony export icoMessage */
-/* unused harmony export icoNoSim */
-/* unused harmony export icoPhone */
-/* unused harmony export icoPhonelinkErase */
-/* unused harmony export icoPhonelinkLock */
-/* unused harmony export icoPhonelinkRing */
-/* unused harmony export icoPhonelinkSetup */
-/* unused harmony export icoPortableWifiOff */
-/* unused harmony export icoPresentToAll */
-/* unused harmony export icoRingVolume */
-/* unused harmony export icoRssFeed */
-/* unused harmony export icoScreenShare */
-/* unused harmony export icoSpeakerPhone */
-/* unused harmony export icoStayCurrentLandscape */
-/* unused harmony export icoStayCurrentPortrait */
-/* unused harmony export icoStayPrimaryLandscape */
-/* unused harmony export icoStayPrimaryPortrait */
-/* unused harmony export icoStopScreenShare */
-/* unused harmony export icoSwapCalls */
-/* unused harmony export icoTextsms */
-/* unused harmony export icoVoicemail */
-/* unused harmony export icoVpnKey */
-/* unused harmony export icoAdd */
-/* unused harmony export icoAddBox */
-/* unused harmony export icoAddCircle */
-/* unused harmony export icoAddCircleOutline */
-/* unused harmony export icoArchive */
-/* unused harmony export icoBackspace */
-/* unused harmony export icoBlock */
-/* unused harmony export icoClear */
-/* unused harmony export icoContentCopy */
-/* unused harmony export icoContentCut */
-/* unused harmony export icoContentPaste */
-/* unused harmony export icoCreate */
-/* unused harmony export icoDeleteSweep */
-/* unused harmony export icoDrafts */
-/* unused harmony export icoFilterList */
-/* unused harmony export icoFlag */
-/* unused harmony export icoFontDownload */
-/* unused harmony export icoForward */
-/* unused harmony export icoGesture */
-/* unused harmony export icoInbox */
-/* unused harmony export icoLink */
-/* unused harmony export icoLowPriority */
-/* unused harmony export icoMail */
-/* unused harmony export icoMarkunread */
-/* unused harmony export icoMoveToInbox */
-/* unused harmony export icoNextWeek */
-/* unused harmony export icoRedo */
-/* unused harmony export icoRemove */
-/* unused harmony export icoRemoveCircle */
-/* unused harmony export icoRemoveCircleOutline */
-/* unused harmony export icoReply */
-/* unused harmony export icoReplyAll */
-/* unused harmony export icoReport */
-/* unused harmony export icoSave */
-/* unused harmony export icoSelectAll */
-/* unused harmony export icoSend */
-/* unused harmony export icoSort */
-/* unused harmony export icoTextFormat */
-/* unused harmony export icoUnarchive */
-/* unused harmony export icoUndo */
-/* unused harmony export icoWeekend */
-/* unused harmony export icoAccessAlarm */
-/* unused harmony export icoAccessAlarms */
-/* unused harmony export icoAccessTime */
-/* unused harmony export icoAddAlarm */
-/* unused harmony export icoAirplanemodeActive */
-/* unused harmony export icoAirplanemodeInactive */
-/* unused harmony export icoBattery_20 */
-/* unused harmony export icoBattery_30 */
-/* unused harmony export icoBattery_50 */
-/* unused harmony export icoBattery_60 */
-/* unused harmony export icoBattery_80 */
-/* unused harmony export icoBattery_90 */
-/* unused harmony export icoBatteryAlert */
-/* unused harmony export icoBatteryCharging_20 */
-/* unused harmony export icoBatteryCharging_30 */
-/* unused harmony export icoBatteryCharging_50 */
-/* unused harmony export icoBatteryCharging_60 */
-/* unused harmony export icoBatteryCharging_80 */
-/* unused harmony export icoBatteryCharging_90 */
-/* unused harmony export icoBatteryChargingFull */
-/* unused harmony export icoBatteryFull */
-/* unused harmony export icoBatteryStd */
-/* unused harmony export icoBatteryUnknown */
-/* unused harmony export icoBluetooth */
-/* unused harmony export icoBluetoothConnected */
-/* unused harmony export icoBluetoothDisabled */
-/* unused harmony export icoBluetoothSearching */
-/* unused harmony export icoBrightnessAuto */
-/* unused harmony export icoBrightnessHigh */
-/* unused harmony export icoBrightnessLow */
-/* unused harmony export icoBrightnessMedium */
-/* unused harmony export icoDataUsage */
-/* unused harmony export icoDeveloperMode */
-/* unused harmony export icoDevices */
-/* unused harmony export icoDvr */
-/* unused harmony export icoGpsFixed */
-/* unused harmony export icoGpsNotFixed */
-/* unused harmony export icoGpsOff */
-/* unused harmony export icoGraphicEq */
-/* unused harmony export icoLocationDisabled */
-/* unused harmony export icoLocationSearching */
-/* unused harmony export icoNetworkCell */
-/* unused harmony export icoNetworkWifi */
-/* unused harmony export icoNfc */
-/* unused harmony export icoScreenLockLandscape */
-/* unused harmony export icoScreenLockPortrait */
-/* unused harmony export icoScreenLockRotation */
-/* unused harmony export icoScreenRotation */
-/* unused harmony export icoSdStorage */
-/* unused harmony export icoSettingsSystemDaydream */
-/* unused harmony export icoSignalCellular_0Bar */
-/* unused harmony export icoSignalCellular_1Bar */
-/* unused harmony export icoSignalCellular_2Bar */
-/* unused harmony export icoSignalCellular_3Bar */
-/* unused harmony export icoSignalCellular_4Bar */
-/* unused harmony export icoSignalCellularConnectedNoInternet_0Bar */
-/* unused harmony export icoSignalCellularConnectedNoInternet_1Bar */
-/* unused harmony export icoSignalCellularConnectedNoInternet_2Bar */
-/* unused harmony export icoSignalCellularConnectedNoInternet_3Bar */
-/* unused harmony export icoSignalCellularConnectedNoInternet_4Bar */
-/* unused harmony export icoSignalCellularNoSim */
-/* unused harmony export icoSignalCellularNull */
-/* unused harmony export icoSignalCellularOff */
-/* unused harmony export icoSignalWifi_0Bar */
-/* unused harmony export icoSignalWifi_1Bar */
-/* unused harmony export icoSignalWifi_1BarLock */
-/* unused harmony export icoSignalWifi_2Bar */
-/* unused harmony export icoSignalWifi_2BarLock */
-/* unused harmony export icoSignalWifi_3Bar */
-/* unused harmony export icoSignalWifi_3BarLock */
-/* unused harmony export icoSignalWifi_4Bar */
-/* unused harmony export icoSignalWifi_4BarLock */
-/* unused harmony export icoSignalWifiOff */
-/* unused harmony export icoStorage */
-/* unused harmony export icoUsb */
-/* unused harmony export icoWallpaper */
-/* unused harmony export icoWidgets */
-/* unused harmony export icoWifiLock */
-/* unused harmony export icoWifiTethering */
-/* unused harmony export icoAttachFile */
-/* unused harmony export icoAttachMoney */
-/* unused harmony export icoBorderAll */
-/* unused harmony export icoBorderBottom */
-/* unused harmony export icoBorderClear */
-/* unused harmony export icoBorderColor */
-/* unused harmony export icoBorderHorizontal */
-/* unused harmony export icoBorderInner */
-/* unused harmony export icoBorderLeft */
-/* unused harmony export icoBorderOuter */
-/* unused harmony export icoBorderRight */
-/* unused harmony export icoBorderStyle */
-/* unused harmony export icoBorderTop */
-/* unused harmony export icoBorderVertical */
-/* unused harmony export icoBubbleChart */
-/* unused harmony export icoDragHandle */
-/* unused harmony export icoFormatAlignCenter */
-/* unused harmony export icoFormatAlignJustify */
-/* unused harmony export icoFormatAlignLeft */
-/* unused harmony export icoFormatAlignRight */
-/* unused harmony export icoFormatBold */
-/* unused harmony export icoFormatClear */
-/* unused harmony export icoFormatColorFill */
-/* unused harmony export icoFormatColorReset */
-/* unused harmony export icoFormatColorText */
-/* unused harmony export icoFormatIndentDecrease */
-/* unused harmony export icoFormatIndentIncrease */
-/* unused harmony export icoFormatItalic */
-/* unused harmony export icoFormatLineSpacing */
-/* unused harmony export icoFormatListBulleted */
-/* unused harmony export icoFormatListNumbered */
-/* unused harmony export icoFormatPaint */
-/* unused harmony export icoFormatQuote */
-/* unused harmony export icoFormatShapes */
-/* unused harmony export icoFormatSize */
-/* unused harmony export icoFormatStrikethrough */
-/* unused harmony export icoFormatTextdirectionLToR */
-/* unused harmony export icoFormatTextdirectionRToL */
-/* unused harmony export icoFormatUnderlined */
-/* unused harmony export icoFunctions */
-/* unused harmony export icoHighlight */
-/* unused harmony export icoInsertChart */
-/* unused harmony export icoInsertComment */
-/* unused harmony export icoInsertDriveFile */
-/* unused harmony export icoInsertEmoticon */
-/* unused harmony export icoInsertInvitation */
-/* unused harmony export icoInsertLink */
-/* unused harmony export icoInsertPhoto */
-/* unused harmony export icoLinearScale */
-/* unused harmony export icoMergeType */
-/* unused harmony export icoModeComment */
-/* unused harmony export icoModeEdit */
-/* unused harmony export icoMonetizationOn */
-/* unused harmony export icoMoneyOff */
-/* unused harmony export icoMultilineChart */
-/* unused harmony export icoPieChart */
-/* unused harmony export icoPieChartOutlined */
-/* unused harmony export icoPublish */
-/* unused harmony export icoShortText */
-/* unused harmony export icoShowChart */
-/* unused harmony export icoSpaceBar */
-/* unused harmony export icoStrikethroughS */
-/* unused harmony export icoTextFields */
-/* unused harmony export icoTitle */
-/* unused harmony export icoVerticalAlignBottom */
-/* unused harmony export icoVerticalAlignCenter */
-/* unused harmony export icoVerticalAlignTop */
-/* unused harmony export icoWrapText */
-/* unused harmony export icoAttachment */
-/* unused harmony export icoCloud */
-/* unused harmony export icoCloudCircle */
-/* unused harmony export icoCloudDone */
-/* unused harmony export icoCloudDownload */
-/* unused harmony export icoCloudOff */
-/* unused harmony export icoCloudQueue */
-/* unused harmony export icoCloudUpload */
-/* unused harmony export icoCreateNewFolder */
-/* unused harmony export icoFileDownload */
-/* unused harmony export icoFileUpload */
-/* unused harmony export icoFolder */
-/* unused harmony export icoFolderOpen */
-/* unused harmony export icoFolderShared */
-/* unused harmony export icoCast */
-/* unused harmony export icoCastConnected */
-/* unused harmony export icoComputer */
-/* unused harmony export icoDesktopMac */
-/* unused harmony export icoDesktopWindows */
-/* unused harmony export icoDeveloperBoard */
-/* unused harmony export icoDeviceHub */
-/* unused harmony export icoDevicesOther */
-/* unused harmony export icoDock */
-/* unused harmony export icoGamepad */
-/* unused harmony export icoHeadset */
-/* unused harmony export icoHeadsetMic */
-/* unused harmony export icoKeyboard */
-/* unused harmony export icoKeyboardArrowDown */
-/* unused harmony export icoKeyboardArrowLeft */
-/* unused harmony export icoKeyboardArrowRight */
-/* unused harmony export icoKeyboardArrowUp */
-/* unused harmony export icoKeyboardBackspace */
-/* unused harmony export icoKeyboardCapslock */
-/* unused harmony export icoKeyboardHide */
-/* unused harmony export icoKeyboardReturn */
-/* unused harmony export icoKeyboardTab */
-/* unused harmony export icoKeyboardVoice */
-/* unused harmony export icoLaptop */
-/* unused harmony export icoLaptopChromebook */
-/* unused harmony export icoLaptopMac */
-/* unused harmony export icoLaptopWindows */
-/* unused harmony export icoMemory */
-/* unused harmony export icoMouse */
-/* unused harmony export icoPhoneAndroid */
-/* unused harmony export icoPhoneIphone */
-/* unused harmony export icoPhonelink */
-/* unused harmony export icoPhonelinkOff */
-/* unused harmony export icoPowerInput */
-/* unused harmony export icoRouter */
-/* unused harmony export icoScanner */
-/* unused harmony export icoSecurity */
-/* unused harmony export icoSimCard */
-/* unused harmony export icoSmartphone */
-/* unused harmony export icoSpeaker */
-/* unused harmony export icoSpeakerGroup */
-/* unused harmony export icoTablet */
-/* unused harmony export icoTabletAndroid */
-/* unused harmony export icoTabletMac */
-/* unused harmony export icoToys */
-/* unused harmony export icoTv */
-/* unused harmony export icoVideogameAsset */
-/* unused harmony export icoWatch */
-/* unused harmony export icoAddAPhoto */
-/* unused harmony export icoAddToPhotos */
-/* unused harmony export icoAdjust */
-/* unused harmony export icoAssistant */
-/* unused harmony export icoAssistantPhoto */
-/* unused harmony export icoAudiotrack */
-/* unused harmony export icoBlurCircular */
-/* unused harmony export icoBlurLinear */
-/* unused harmony export icoBlurOff */
-/* unused harmony export icoBlurOn */
-/* unused harmony export icoBrightness_1 */
-/* unused harmony export icoBrightness_2 */
-/* unused harmony export icoBrightness_3 */
-/* unused harmony export icoBrightness_4 */
-/* unused harmony export icoBrightness_5 */
-/* unused harmony export icoBrightness_6 */
-/* unused harmony export icoBrightness_7 */
-/* unused harmony export icoBrokenImage */
-/* unused harmony export icoBrush */
-/* unused harmony export icoBurstMode */
-/* unused harmony export icoCamera */
-/* unused harmony export icoCameraAlt */
-/* unused harmony export icoCameraFront */
-/* unused harmony export icoCameraRear */
-/* unused harmony export icoCameraRoll */
-/* unused harmony export icoCenterFocusStrong */
-/* unused harmony export icoCenterFocusWeak */
-/* unused harmony export icoCollections */
-/* unused harmony export icoCollectionsBookmark */
-/* unused harmony export icoColorLens */
-/* unused harmony export icoColorize */
-/* unused harmony export icoCompare */
-/* unused harmony export icoControlPoint */
-/* unused harmony export icoControlPointDuplicate */
-/* unused harmony export icoCrop_16_9 */
-/* unused harmony export icoCrop */
-/* unused harmony export icoCrop_3_2 */
-/* unused harmony export icoCrop_5_4 */
-/* unused harmony export icoCrop_7_5 */
-/* unused harmony export icoCropDin */
-/* unused harmony export icoCropFree */
-/* unused harmony export icoCropLandscape */
-/* unused harmony export icoCropOriginal */
-/* unused harmony export icoCropPortrait */
-/* unused harmony export icoCropRotate */
-/* unused harmony export icoCropSquare */
-/* unused harmony export icoDehaze */
-/* unused harmony export icoDetails */
-/* unused harmony export icoEdit */
-/* unused harmony export icoExposure */
-/* unused harmony export icoExposureNeg_1 */
-/* unused harmony export icoExposureNeg_2 */
-/* unused harmony export icoExposurePlus_1 */
-/* unused harmony export icoExposurePlus_2 */
-/* unused harmony export icoExposureZero */
-/* unused harmony export icoFilter_1 */
-/* unused harmony export icoFilter_2 */
-/* unused harmony export icoFilter */
-/* unused harmony export icoFilter_3 */
-/* unused harmony export icoFilter_4 */
-/* unused harmony export icoFilter_5 */
-/* unused harmony export icoFilter_6 */
-/* unused harmony export icoFilter_7 */
-/* unused harmony export icoFilter_8 */
-/* unused harmony export icoFilter_9 */
-/* unused harmony export icoFilter_9Plus */
-/* unused harmony export icoFilterBAndW */
-/* unused harmony export icoFilterCenterFocus */
-/* unused harmony export icoFilterDrama */
-/* unused harmony export icoFilterFrames */
-/* unused harmony export icoFilterHdr */
-/* unused harmony export icoFilterNone */
-/* unused harmony export icoFilterTiltShift */
-/* unused harmony export icoFilterVintage */
-/* unused harmony export icoFlare */
-/* unused harmony export icoFlashAuto */
-/* unused harmony export icoFlashOff */
-/* unused harmony export icoFlashOn */
-/* unused harmony export icoFlip */
-/* unused harmony export icoGradient */
-/* unused harmony export icoGrain */
-/* unused harmony export icoGridOff */
-/* unused harmony export icoGridOn */
-/* unused harmony export icoHdrOff */
-/* unused harmony export icoHdrOn */
-/* unused harmony export icoHdrStrong */
-/* unused harmony export icoHdrWeak */
-/* unused harmony export icoHealing */
-/* unused harmony export icoImage */
-/* unused harmony export icoImageAspectRatio */
-/* unused harmony export icoIso */
-/* unused harmony export icoLandscape */
-/* unused harmony export icoLeakAdd */
-/* unused harmony export icoLeakRemove */
-/* unused harmony export icoLens */
-/* unused harmony export icoLinkedCamera */
-/* unused harmony export icoLooks */
-/* unused harmony export icoLooks_3 */
-/* unused harmony export icoLooks_4 */
-/* unused harmony export icoLooks_5 */
-/* unused harmony export icoLooks_6 */
-/* unused harmony export icoLooksOne */
-/* unused harmony export icoLooksTwo */
-/* unused harmony export icoLoupe */
-/* unused harmony export icoMonochromePhotos */
-/* unused harmony export icoMovieCreation */
-/* unused harmony export icoMovieFilter */
-/* unused harmony export icoMusicNote */
-/* unused harmony export icoNature */
-/* unused harmony export icoNaturePeople */
-/* unused harmony export icoNavigateBefore */
-/* unused harmony export icoNavigateNext */
-/* unused harmony export icoPalette */
-/* unused harmony export icoPanorama */
-/* unused harmony export icoPanoramaFishEye */
-/* unused harmony export icoPanoramaHorizontal */
-/* unused harmony export icoPanoramaVertical */
-/* unused harmony export icoPanoramaWideAngle */
-/* unused harmony export icoPhoto */
-/* unused harmony export icoPhotoAlbum */
-/* unused harmony export icoPhotoCamera */
-/* unused harmony export icoPhotoFilter */
-/* unused harmony export icoPhotoLibrary */
-/* unused harmony export icoPhotoSizeSelectActual */
-/* unused harmony export icoPhotoSizeSelectLarge */
-/* unused harmony export icoPhotoSizeSelectSmall */
-/* unused harmony export icoPictureAsPdf */
-/* unused harmony export icoPortrait */
-/* unused harmony export icoRemoveRedEye */
-/* unused harmony export icoRotate_90DegreesCcw */
-/* unused harmony export icoRotateLeft */
-/* unused harmony export icoRotateRight */
-/* unused harmony export icoSlideshow */
-/* unused harmony export icoStraighten */
-/* unused harmony export icoStyle */
-/* unused harmony export icoSwitchCamera */
-/* unused harmony export icoSwitchVideo */
-/* unused harmony export icoTagFaces */
-/* unused harmony export icoTexture */
-/* unused harmony export icoTimelapse */
-/* unused harmony export icoTimer_10 */
-/* unused harmony export icoTimer */
-/* unused harmony export icoTimer_3 */
-/* unused harmony export icoTimerOff */
-/* unused harmony export icoTonality */
-/* unused harmony export icoTransform */
-/* unused harmony export icoTune */
-/* unused harmony export icoViewComfy */
-/* unused harmony export icoViewCompact */
-/* unused harmony export icoVignette */
-/* unused harmony export icoWbAuto */
-/* unused harmony export icoWbCloudy */
-/* unused harmony export icoWbIncandescent */
-/* unused harmony export icoWbIridescent */
-/* unused harmony export icoWbSunny */
-/* unused harmony export icoAddLocation */
-/* unused harmony export icoBeenhere */
-/* unused harmony export icoDirections */
-/* unused harmony export icoDirectionsBike */
-/* unused harmony export icoDirectionsBoat */
-/* unused harmony export icoDirectionsBus */
-/* unused harmony export icoDirectionsCar */
-/* unused harmony export icoDirectionsRailway */
-/* unused harmony export icoDirectionsRun */
-/* unused harmony export icoDirectionsSubway */
-/* unused harmony export icoDirectionsTransit */
-/* unused harmony export icoDirectionsWalk */
-/* unused harmony export icoEditLocation */
-/* unused harmony export icoEvStation */
-/* unused harmony export icoFlight */
-/* unused harmony export icoHotel */
-/* unused harmony export icoLayers */
-/* unused harmony export icoLayersClear */
-/* unused harmony export icoLocalActivity */
-/* unused harmony export icoLocalAirport */
-/* unused harmony export icoLocalAtm */
-/* unused harmony export icoLocalBar */
-/* unused harmony export icoLocalCafe */
-/* unused harmony export icoLocalCarWash */
-/* unused harmony export icoLocalConvenienceStore */
-/* unused harmony export icoLocalDining */
-/* unused harmony export icoLocalDrink */
-/* unused harmony export icoLocalFlorist */
-/* unused harmony export icoLocalGasStation */
-/* unused harmony export icoLocalGroceryStore */
-/* unused harmony export icoLocalHospital */
-/* unused harmony export icoLocalHotel */
-/* unused harmony export icoLocalLaundryService */
-/* unused harmony export icoLocalLibrary */
-/* unused harmony export icoLocalMall */
-/* unused harmony export icoLocalMovies */
-/* unused harmony export icoLocalOffer */
-/* unused harmony export icoLocalParking */
-/* unused harmony export icoLocalPharmacy */
-/* unused harmony export icoLocalPhone */
-/* unused harmony export icoLocalPizza */
-/* unused harmony export icoLocalPlay */
-/* unused harmony export icoLocalPostOffice */
-/* unused harmony export icoLocalPrintshop */
-/* unused harmony export icoLocalSee */
-/* unused harmony export icoLocalShipping */
-/* unused harmony export icoLocalTaxi */
-/* unused harmony export icoMap */
-/* unused harmony export icoMyLocation */
-/* unused harmony export icoNavigation */
-/* unused harmony export icoNearMe */
-/* unused harmony export icoPersonPin */
-/* unused harmony export icoPersonPinCircle */
-/* unused harmony export icoPinDrop */
-/* unused harmony export icoPlace */
-/* unused harmony export icoRateReview */
-/* unused harmony export icoRestaurant */
-/* unused harmony export icoRestaurantMenu */
-/* unused harmony export icoSatellite */
-/* unused harmony export icoStoreMallDirectory */
-/* unused harmony export icoStreetview */
-/* unused harmony export icoSubway */
-/* unused harmony export icoTerrain */
-/* unused harmony export icoTraffic */
-/* unused harmony export icoTrain */
-/* unused harmony export icoTram */
-/* unused harmony export icoTransferWithinAStation */
-/* unused harmony export icoZoomOutMap */
-/* unused harmony export icoApps */
-/* unused harmony export icoArrowBack */
-/* unused harmony export icoArrowDownward */
-/* unused harmony export icoArrowDropDown */
-/* unused harmony export icoArrowDropDownCircle */
-/* unused harmony export icoArrowDropUp */
-/* unused harmony export icoArrowForward */
-/* unused harmony export icoArrowUpward */
-/* unused harmony export icoCancel */
-/* unused harmony export icoCheck */
-/* unused harmony export icoChevronLeft */
-/* unused harmony export icoChevronRight */
-/* unused harmony export icoClose */
-/* unused harmony export icoExpandLess */
-/* unused harmony export icoExpandMore */
-/* unused harmony export icoFirstPage */
-/* unused harmony export icoFullscreen */
-/* unused harmony export icoFullscreenExit */
-/* unused harmony export icoLastPage */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return icoMenu; });
-/* unused harmony export icoMoreHoriz */
-/* unused harmony export icoMoreVert */
-/* unused harmony export icoRefresh */
-/* unused harmony export icoSubdirectoryArrowLeft */
-/* unused harmony export icoSubdirectoryArrowRight */
-/* unused harmony export icoUnfoldLess */
-/* unused harmony export icoUnfoldMore */
-/* unused harmony export icoAdb */
-/* unused harmony export icoAirlineSeatFlat */
-/* unused harmony export icoAirlineSeatFlatAngled */
-/* unused harmony export icoAirlineSeatIndividualSuite */
-/* unused harmony export icoAirlineSeatLegroomExtra */
-/* unused harmony export icoAirlineSeatLegroomNormal */
-/* unused harmony export icoAirlineSeatLegroomReduced */
-/* unused harmony export icoAirlineSeatReclineExtra */
-/* unused harmony export icoAirlineSeatReclineNormal */
-/* unused harmony export icoBluetoothAudio */
-/* unused harmony export icoConfirmationNumber */
-/* unused harmony export icoDiscFull */
-/* unused harmony export icoDoNotDisturb */
-/* unused harmony export icoDoNotDisturbAlt */
-/* unused harmony export icoDoNotDisturbOff */
-/* unused harmony export icoDoNotDisturbOn */
-/* unused harmony export icoDriveEta */
-/* unused harmony export icoEnhancedEncryption */
-/* unused harmony export icoEventAvailable */
-/* unused harmony export icoEventBusy */
-/* unused harmony export icoEventNote */
-/* unused harmony export icoFolderSpecial */
-/* unused harmony export icoLiveTv */
-/* unused harmony export icoMms */
-/* unused harmony export icoMore */
-/* unused harmony export icoNetworkCheck */
-/* unused harmony export icoNetworkLocked */
-/* unused harmony export icoNoEncryption */
-/* unused harmony export icoOndemandVideo */
-/* unused harmony export icoPersonalVideo */
-/* unused harmony export icoPhoneBluetoothSpeaker */
-/* unused harmony export icoPhoneForwarded */
-/* unused harmony export icoPhoneInTalk */
-/* unused harmony export icoPhoneLocked */
-/* unused harmony export icoPhoneMissed */
-/* unused harmony export icoPhonePaused */
-/* unused harmony export icoPower */
-/* unused harmony export icoPriorityHigh */
-/* unused harmony export icoRvHookup */
-/* unused harmony export icoSdCard */
-/* unused harmony export icoSimCardAlert */
-/* unused harmony export icoSms */
-/* unused harmony export icoSmsFailed */
-/* unused harmony export icoSync */
-/* unused harmony export icoSyncDisabled */
-/* unused harmony export icoSyncProblem */
-/* unused harmony export icoSystemUpdate */
-/* unused harmony export icoTapAndPlay */
-/* unused harmony export icoTimeToLeave */
-/* unused harmony export icoVibration */
-/* unused harmony export icoVoiceChat */
-/* unused harmony export icoVpnLock */
-/* unused harmony export icoWc */
-/* unused harmony export icoWifi */
-/* unused harmony export icoAcUnit */
-/* unused harmony export icoAirportShuttle */
-/* unused harmony export icoAllInclusive */
-/* unused harmony export icoBeachAccess */
-/* unused harmony export icoBusinessCenter */
-/* unused harmony export icoCasino */
-/* unused harmony export icoChildCare */
-/* unused harmony export icoChildFriendly */
-/* unused harmony export icoFitnessCenter */
-/* unused harmony export icoFreeBreakfast */
-/* unused harmony export icoGolfCourse */
-/* unused harmony export icoHotTub */
-/* unused harmony export icoKitchen */
-/* unused harmony export icoPool */
-/* unused harmony export icoRoomService */
-/* unused harmony export icoSmokeFree */
-/* unused harmony export icoSmokingRooms */
-/* unused harmony export icoSpa */
-/* unused harmony export icoCake */
-/* unused harmony export icoDomain */
-/* unused harmony export icoGroup */
-/* unused harmony export icoGroupAdd */
-/* unused harmony export icoLocationCity */
-/* unused harmony export icoMood */
-/* unused harmony export icoMoodBad */
-/* unused harmony export icoNotifications */
-/* unused harmony export icoNotificationsActive */
-/* unused harmony export icoNotificationsNone */
-/* unused harmony export icoNotificationsOff */
-/* unused harmony export icoNotificationsPaused */
-/* unused harmony export icoPages */
-/* unused harmony export icoPartyMode */
-/* unused harmony export icoPeople */
-/* unused harmony export icoPeopleOutline */
-/* unused harmony export icoPerson */
-/* unused harmony export icoPersonAdd */
-/* unused harmony export icoPersonOutline */
-/* unused harmony export icoPlusOne */
-/* unused harmony export icoPoll */
-/* unused harmony export icoPublic */
-/* unused harmony export icoSchool */
-/* unused harmony export icoSentimentDissatisfied */
-/* unused harmony export icoSentimentNeutral */
-/* unused harmony export icoSentimentSatisfied */
-/* unused harmony export icoSentimentVeryDissatisfied */
-/* unused harmony export icoSentimentVerySatisfied */
-/* unused harmony export icoShare */
-/* unused harmony export icoWhatshot */
-/* unused harmony export icoCheckBox */
-/* unused harmony export icoCheckBoxOutlineBlank */
-/* unused harmony export icoIndeterminateCheckBox */
-/* unused harmony export icoRadioButtonChecked */
-/* unused harmony export icoRadioButtonUnchecked */
-/* unused harmony export icoStar */
-/* unused harmony export icoStarBorder */
-/* unused harmony export icoStarHalf */
-const icoWrapper = function(svg, s, c) {
-  return '<svg fill="' + (c || 'currentcolor') + '" width="' + (s || 24) + '" height="' + (s || 24) + '" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' + svg + '</svg>';
-};
-
-const Plugin = function () {};
-
-Plugin.install = function (Vue, options) {
-  if (Plugin.installed) {
-    return;
-  }
-
-  options = options || {};
-
-  var namespace = options.namespace || 'ico';
-
-  Vue.directive(namespace, {
-    inserted: function(el, binding) {
-      let icoFn = null;
-      let errorMessage = '';
-
-      if(typeof binding.arg === 'function') {
-        icoFn = binding.arg;
-        errorMessage = 'Unknown Icon Function' + (icoFn.name ? ` ${icoFn.name}` : '');
-      } else if(typeof binding.arg === 'string') {
-        icoFn = options[binding.arg] || null;
-        errorMessage = `Unknown Icon: ${binding.arg}`;
-      }
-
-      if(icoFn) {
-        el.outerHTML = icoFn.call(null, binding.modifier, (binding.value || {}).color);
-      } else if(Vue.config.productionTip) {
-        console.error('[VueIco]', errorMessage, 'Library: https://material.io/icons/'); // could use vue.util.warn
-        el.outerHTML = `[?]<!-- ${errorMessage} -->`;
-      } else {
-        el.outerHTML = `<!-- ${errorMessage} -->`;
-      }
-    }
-  });
-
-  Vue.component(namespace, {
-    props: {
-      name: {
-        type: [String, Function]
-      },
-      size: {
-        type: [String, Number],
-        default: 24
-      },
-      color: {
-        type: [String]
-      },
-    },
-    render: function (createElement) {
-      var _this = this;
-
-      return createElement('span', {
-        directives: [{
-          name: namespace,
-          value: {color: _this.color},
-          arg: _this.name,
-          modifier: _this.size
-        }]
-      });
-    }
-  });
-};
-
-const ico3dRotation = (s, c) => icoWrapper('<path d="M7.52 21.48C4.25 19.94 1.91 16.76 1.55 13H.05C.56 19.16 5.71 24 12 24l.66-.03-3.81-3.81-1.33 1.32zm.89-6.52c-.19 0-.37-.03-.52-.08-.16-.06-.29-.13-.4-.24-.11-.1-.2-.22-.26-.37-.06-.14-.09-.3-.09-.47h-1.3c0 .36.07.68.21.95.14.27.33.5.56.69.24.18.51.32.82.41.3.1.62.15.96.15.37 0 .72-.05 1.03-.15.32-.1.6-.25.83-.44s.42-.43.55-.72c.13-.29.2-.61.2-.97 0-.19-.02-.38-.07-.56-.05-.18-.12-.35-.23-.51-.1-.16-.24-.3-.4-.43-.17-.13-.37-.23-.61-.31.2-.09.37-.2.52-.33.15-.13.27-.27.37-.42.1-.15.17-.3.22-.46.05-.16.07-.32.07-.48 0-.36-.06-.68-.18-.96-.12-.28-.29-.51-.51-.69-.2-.19-.47-.33-.77-.43C9.1 8.05 8.76 8 8.39 8c-.36 0-.69.05-1 .16-.3.11-.57.26-.79.45-.21.19-.38.41-.51.67-.12.26-.18.54-.18.85h1.3c0-.17.03-.32.09-.45s.14-.25.25-.34c.11-.09.23-.17.38-.22.15-.05.3-.08.48-.08.4 0 .7.1.89.31.19.2.29.49.29.86 0 .18-.03.34-.08.49-.05.15-.14.27-.25.37-.11.1-.25.18-.41.24-.16.06-.36.09-.58.09H7.5v1.03h.77c.22 0 .42.02.6.07s.33.13.45.23c.12.11.22.24.29.4.07.16.1.35.1.57 0 .41-.12.72-.35.93-.23.23-.55.33-.95.33zm8.55-5.92c-.32-.33-.7-.59-1.14-.77-.43-.18-.92-.27-1.46-.27H12v8h2.3c.55 0 1.06-.09 1.51-.27.45-.18.84-.43 1.16-.76.32-.33.57-.73.74-1.19.17-.47.26-.99.26-1.57v-.4c0-.58-.09-1.1-.26-1.57-.18-.47-.43-.87-.75-1.2zm-.39 3.16c0 .42-.05.79-.14 1.13-.1.33-.24.62-.43.85-.19.23-.43.41-.71.53-.29.12-.62.18-.99.18h-.91V9.12h.97c.72 0 1.27.23 1.64.69.38.46.57 1.12.57 1.99v.4zM12 0l-.66.03 3.81 3.81 1.33-1.33c3.27 1.55 5.61 4.72 5.96 8.48h1.5C23.44 4.84 18.29 0 12 0z"/>', s, c);
-const icoAccessibility = (s, c) => icoWrapper('<path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>', s, c);
-const icoAccessible = (s, c) => icoWrapper('<path d="M19 13v-2c-1.54.02-3.09-.75-4.07-1.83l-1.29-1.43c-.17-.19-.38-.34-.61-.45-.01 0-.01-.01-.02-.01H13c-.35-.2-.75-.3-1.19-.26C10.76 7.11 10 8.04 10 9.09V15c0 1.1.9 2 2 2h5v5h2v-5.5c0-1.1-.9-2-2-2h-3v-3.45c1.29 1.07 3.25 1.94 5 1.95zm-6.17 5c-.41 1.16-1.52 2-2.83 2-1.66 0-3-1.34-3-3 0-1.31.84-2.41 2-2.83V12.1c-2.28.46-4 2.48-4 4.9 0 2.76 2.24 5 5 5 2.42 0 4.44-1.72 4.9-4h-2.07z"/>', s, c);
-const icoAccountBalance = (s, c) => icoWrapper('<path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/>', s, c);
-const icoAccountBalanceWallet = (s, c) => icoWrapper('<path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoAccountBox = (s, c) => icoWrapper('<path d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z"/>', s, c);
-const icoAccountCircle = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>', s, c);
-const icoAddShoppingCart = (s, c) => icoWrapper('<path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/>', s, c);
-const icoAlarm = (s, c) => icoWrapper('<path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>', s, c);
-const icoAlarmAdd = (s, c) => icoWrapper('<path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z"/>', s, c);
-const icoAlarmOff = (s, c) => icoWrapper('<path d="M12 6c3.87 0 7 3.13 7 7 0 .84-.16 1.65-.43 2.4l1.52 1.52c.58-1.19.91-2.51.91-3.92 0-4.97-4.03-9-9-9-1.41 0-2.73.33-3.92.91L9.6 6.43C10.35 6.16 11.16 6 12 6zm10-.28l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM2.92 2.29L1.65 3.57 2.98 4.9l-1.11.93 1.42 1.42 1.11-.94.8.8C3.83 8.69 3 10.75 3 13c0 4.97 4.02 9 9 9 2.25 0 4.31-.83 5.89-2.2l2.2 2.2 1.27-1.27L3.89 3.27l-.97-.98zm13.55 16.1C15.26 19.39 13.7 20 12 20c-3.87 0-7-3.13-7-7 0-1.7.61-3.26 1.61-4.47l9.86 9.86zM8.02 3.28L6.6 1.86l-.86.71 1.42 1.42.86-.71z"/>', s, c);
-const icoAlarmOn = (s, c) => icoWrapper('<path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-1.46-5.47L8.41 12.4l-1.06 1.06 3.18 3.18 6-6-1.06-1.06-4.93 4.95z"/>', s, c);
-const icoAllOut = (s, c) => icoWrapper('<path d="M16.21 4.16l4 4v-4zm4 12l-4 4h4zm-12 4l-4-4v4zm-4-12l4-4h-4zm12.95-.95c-2.73-2.73-7.17-2.73-9.9 0s-2.73 7.17 0 9.9 7.17 2.73 9.9 0 2.73-7.16 0-9.9zm-1.1 8.8c-2.13 2.13-5.57 2.13-7.7 0s-2.13-5.57 0-7.7 5.57-2.13 7.7 0 2.13 5.57 0 7.7z" fill="#010101"/>', s, c);
-const icoAndroid = (s, c) => icoWrapper('<path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>', s, c);
-const icoAnnouncement = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/>', s, c);
-const icoAspectRatio = (s, c) => icoWrapper('<path d="M19 12h-2v3h-3v2h5v-5zM7 9h3V7H5v5h2V9zm14-6H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z"/>', s, c);
-const icoAssessment = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>', s, c);
-const icoAssignment = (s, c) => icoWrapper('<path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>', s, c);
-const icoAssignmentInd = (s, c) => icoWrapper('<path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z"/>', s, c);
-const icoAssignmentLate = (s, c) => icoWrapper('<path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 15h-2v-2h2v2zm0-4h-2V8h2v6zm-1-9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>', s, c);
-const icoAssignmentReturn = (s, c) => icoWrapper('<path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm4 12h-4v3l-5-5 5-5v3h4v4z"/>', s, c);
-const icoAssignmentReturned = (s, c) => icoWrapper('<path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 15l-5-5h3V9h4v4h3l-5 5z"/>', s, c);
-const icoAssignmentTurnedIn = (s, c) => icoWrapper('<path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>', s, c);
-const icoAutorenew = (s, c) => icoWrapper('<path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/>', s, c);
-const icoBackup = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>', s, c);
-const icoBook = (s, c) => icoWrapper('<path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>', s, c);
-const icoBookmark = (s, c) => icoWrapper('<path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoBookmarkBorder = (s, c) => icoWrapper('<path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>', s, c);
-const icoBugReport = (s, c) => icoWrapper('<path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/>', s, c);
-const icoBuild = (s, c) => icoWrapper('<path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>', s, c);
-const icoCached = (s, c) => icoWrapper('<path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/>', s, c);
-const icoCameraEnhance = (s, c) => icoWrapper('<path d="M9 3L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2h-3.17L15 3H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-1l1.25-2.75L16 13l-2.75-1.25L12 9l-1.25 2.75L8 13l2.75 1.25z"/>', s, c);
-const icoCardGiftcard = (s, c) => icoWrapper('<path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>', s, c);
-const icoCardMembership = (s, c) => icoWrapper('<path d="M20 2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h4v5l4-2 4 2v-5h4c1.11 0 2-.89 2-2V4c0-1.11-.89-2-2-2zm0 13H4v-2h16v2zm0-5H4V4h16v6z"/>', s, c);
-const icoCardTravel = (s, c) => icoWrapper('<path d="M20 6h-3V4c0-1.11-.89-2-2-2H9c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zM9 4h6v2H9V4zm11 15H4v-2h16v2zm0-5H4V8h3v2h2V8h6v2h2V8h3v6z"/>', s, c);
-const icoChangeHistory = (s, c) => icoWrapper('<path d="M12 7.77L18.39 18H5.61L12 7.77M12 4L2 20h20L12 4z"/>', s, c);
-const icoCheckCircle = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>', s, c);
-const icoChromeReaderMode = (s, c) => icoWrapper('<path d="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z"/>', s, c);
-const icoClass = (s, c) => icoWrapper('<path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>', s, c);
-const icoCode = (s, c) => icoWrapper('<path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>', s, c);
-const icoCompareArrows = (s, c) => icoWrapper('<path d="M9.01 14H2v2h7.01v3L13 15l-3.99-4v3zm5.98-1v-3H22V8h-7.01V5L11 9l3.99 4z"/>', s, c);
-const icoCopyright = (s, c) => icoWrapper('<path d="M10.08 10.86c.05-.33.16-.62.3-.87s.34-.46.59-.62c.24-.15.54-.22.91-.23.23.01.44.05.63.13.2.09.38.21.52.36s.25.33.34.53.13.42.14.64h1.79c-.02-.47-.11-.9-.28-1.29s-.4-.73-.7-1.01-.66-.5-1.08-.66-.88-.23-1.39-.23c-.65 0-1.22.11-1.7.34s-.88.53-1.2.92-.56.84-.71 1.36S8 11.29 8 11.87v.27c0 .58.08 1.12.23 1.64s.39.97.71 1.35.72.69 1.2.91 1.05.34 1.7.34c.47 0 .91-.08 1.32-.23s.77-.36 1.08-.63.56-.58.74-.94.29-.74.3-1.15h-1.79c-.01.21-.06.4-.15.58s-.21.33-.36.46-.32.23-.52.3c-.19.07-.39.09-.6.1-.36-.01-.66-.08-.89-.23-.25-.16-.45-.37-.59-.62s-.25-.55-.3-.88-.08-.67-.08-1v-.27c0-.35.03-.68.08-1.01zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoCreditCard = (s, c) => icoWrapper('<path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>', s, c);
-const icoDashboard = (s, c) => icoWrapper('<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>', s, c);
-const icoDateRange = (s, c) => icoWrapper('<path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>', s, c);
-const icoDelete = (s, c) => icoWrapper('<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>', s, c);
-const icoDeleteForever = (s, c) => icoWrapper('<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"/>', s, c);
-const icoDescription = (s, c) => icoWrapper('<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>', s, c);
-const icoDns = (s, c) => icoWrapper('<path d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zM7 19c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zM7 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>', s, c);
-const icoDone = (s, c) => icoWrapper('<path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>', s, c);
-const icoDoneAll = (s, c) => icoWrapper('<path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/>', s, c);
-const icoDonutLarge = (s, c) => icoWrapper('<path d="M11 5.08V2c-5 .5-9 4.81-9 10s4 9.5 9 10v-3.08c-3-.48-6-3.4-6-6.92s3-6.44 6-6.92zM18.97 11H22c-.47-5-4-8.53-9-9v3.08C16 5.51 18.54 8 18.97 11zM13 18.92V22c5-.47 8.53-4 9-9h-3.03c-.43 3-2.97 5.49-5.97 5.92z"/>', s, c);
-const icoDonutSmall = (s, c) => icoWrapper('<path d="M11 9.16V2c-5 .5-9 4.79-9 10s4 9.5 9 10v-7.16c-1-.41-2-1.52-2-2.84s1-2.43 2-2.84zM14.86 11H22c-.48-4.75-4-8.53-9-9v7.16c1 .3 1.52.98 1.86 1.84zM13 14.84V22c5-.47 8.52-4.25 9-9h-7.14c-.34.86-.86 1.54-1.86 1.84z"/>', s, c);
-const icoEject = (s, c) => icoWrapper('<path d="M5 17h14v2H5zm7-12L5.33 15h13.34z"/>', s, c);
-const icoEuroSymbol = (s, c) => icoWrapper('<path d="M15 18.5c-2.51 0-4.68-1.42-5.76-3.5H15v-2H8.58c-.05-.33-.08-.66-.08-1s.03-.67.08-1H15V9H9.24C10.32 6.92 12.5 5.5 15 5.5c1.61 0 3.09.59 4.23 1.57L21 5.3C19.41 3.87 17.3 3 15 3c-3.92 0-7.24 2.51-8.48 6H3v2h3.06c-.04.33-.06.66-.06 1 0 .34.02.67.06 1H3v2h3.52c1.24 3.49 4.56 6 8.48 6 2.31 0 4.41-.87 6-2.3l-1.78-1.77c-1.13.98-2.6 1.57-4.22 1.57z"/>', s, c);
-const icoEvent = (s, c) => icoWrapper('<path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>', s, c);
-const icoEventSeat = (s, c) => icoWrapper('<path d="M4 18v3h3v-3h10v3h3v-6H4zm15-8h3v3h-3zM2 10h3v3H2zm15 3H7V5c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2v8z"/>', s, c);
-const icoExitToApp = (s, c) => icoWrapper('<path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoExplore = (s, c) => icoWrapper('<path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"/>', s, c);
-const icoExtension = (s, c) => icoWrapper('<path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/>', s, c);
-const icoFace = (s, c) => icoWrapper('<path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/>', s, c);
-const icoFavorite = (s, c) => icoWrapper('<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>', s, c);
-const icoFavoriteBorder = (s, c) => icoWrapper('<path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>', s, c);
-const icoFeedback = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>', s, c);
-const icoFindInPage = (s, c) => icoWrapper('<path d="M20 19.59V8l-6-6H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c.45 0 .85-.15 1.19-.4l-4.43-4.43c-.8.52-1.74.83-2.76.83-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5c0 1.02-.31 1.96-.83 2.75L20 19.59zM9 13c0 1.66 1.34 3 3 3s3-1.34 3-3-1.34-3-3-3-3 1.34-3 3z"/>', s, c);
-const icoFindReplace = (s, c) => icoWrapper('<path d="M11 6c1.38 0 2.63.56 3.54 1.46L12 10h6V4l-2.05 2.05C14.68 4.78 12.93 4 11 4c-3.53 0-6.43 2.61-6.92 6H6.1c.46-2.28 2.48-4 4.9-4zm5.64 9.14c.66-.9 1.12-1.97 1.28-3.14H15.9c-.46 2.28-2.48 4-4.9 4-1.38 0-2.63-.56-3.54-1.46L10 12H4v6l2.05-2.05C7.32 17.22 9.07 18 11 18c1.55 0 2.98-.51 4.14-1.36L20 21.49 21.49 20l-4.85-4.86z"/>', s, c);
-const icoFingerprint = (s, c) => icoWrapper('<path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.9-1.26-2.04-2.25-3.39-2.94-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-1.19 0-2.24-.3-3.1-.89-1.49-1.01-2.38-2.65-2.38-4.39 0-.28.22-.5.5-.5s.5.22.5.5c0 1.41.72 2.74 1.94 3.56.71.48 1.54.71 2.54.71.24 0 .64-.03 1.04-.1.27-.05.53.13.58.41.05.27-.13.53-.41.58-.57.11-1.07.12-1.21.12zM14.91 22c-.04 0-.09-.01-.13-.02-1.59-.44-2.63-1.03-3.72-2.1-1.4-1.39-2.17-3.24-2.17-5.22 0-1.62 1.38-2.94 3.08-2.94 1.7 0 3.08 1.32 3.08 2.94 0 1.07.93 1.94 2.08 1.94s2.08-.87 2.08-1.94c0-3.77-3.25-6.83-7.25-6.83-2.84 0-5.44 1.58-6.61 4.03-.39.81-.59 1.76-.59 2.8 0 .78.07 2.01.67 3.61.1.26-.03.55-.29.64-.26.1-.55-.04-.64-.29-.49-1.31-.73-2.61-.73-3.96 0-1.2.23-2.29.68-3.24 1.33-2.79 4.28-4.6 7.51-4.6 4.55 0 8.25 3.51 8.25 7.83 0 1.62-1.38 2.94-3.08 2.94s-3.08-1.32-3.08-2.94c0-1.07-.93-1.94-2.08-1.94s-2.08.87-2.08 1.94c0 1.71.66 3.31 1.87 4.51.95.94 1.86 1.46 3.27 1.85.27.07.42.35.35.61-.05.23-.26.38-.47.38z"/>', s, c);
-const icoFlightLand = (s, c) => icoWrapper('<path d="M2.5 19h19v2h-19zm7.18-5.73l4.35 1.16 5.31 1.42c.8.21 1.62-.26 1.84-1.06.21-.8-.26-1.62-1.06-1.84l-5.31-1.42-2.76-9.02L10.12 2v8.28L5.15 8.95l-.93-2.32-1.45-.39v5.17l1.6.43 5.31 1.43z"/>', s, c);
-const icoFlightTakeoff = (s, c) => icoWrapper('<path d="M2.5 19h19v2h-19zm19.57-9.36c-.21-.8-1.04-1.28-1.84-1.06L14.92 10l-6.9-6.43-1.93.51 4.14 7.17-4.97 1.33-1.97-1.54-1.45.39 1.82 3.16.77 1.33 1.6-.43 5.31-1.42 4.35-1.16L21 11.49c.81-.23 1.28-1.05 1.07-1.85z"/>', s, c);
-const icoFlipToBack = (s, c) => icoWrapper('<path d="M9 7H7v2h2V7zm0 4H7v2h2v-2zm0-8c-1.11 0-2 .9-2 2h2V3zm4 12h-2v2h2v-2zm6-12v2h2c0-1.1-.9-2-2-2zm-6 0h-2v2h2V3zM9 17v-2H7c0 1.1.89 2 2 2zm10-4h2v-2h-2v2zm0-4h2V7h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2zM5 7H3v12c0 1.1.89 2 2 2h12v-2H5V7zm10-2h2V3h-2v2zm0 12h2v-2h-2v2z"/>', s, c);
-const icoFlipToFront = (s, c) => icoWrapper('<path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm2 4v-2H3c0 1.1.89 2 2 2zM3 9h2V7H3v2zm12 12h2v-2h-2v2zm4-18H9c-1.11 0-2 .9-2 2v10c0 1.1.89 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12H9V5h10v10zm-8 6h2v-2h-2v2zm-4 0h2v-2H7v2z"/>', s, c);
-const icoGTranslate = (s, c) => icoWrapper('<path d="M20 5h-9.12L10 2H4c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h7l1 3h8c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zM7.17 14.59c-2.25 0-4.09-1.83-4.09-4.09s1.83-4.09 4.09-4.09c1.04 0 1.99.37 2.74 1.07l.07.06-1.23 1.18-.06-.05c-.29-.27-.78-.59-1.52-.59-1.31 0-2.38 1.09-2.38 2.42s1.07 2.42 2.38 2.42c1.37 0 1.96-.87 2.12-1.46H7.08V9.91h3.95l.01.07c.04.21.05.4.05.61 0 2.35-1.61 4-3.92 4zm6.03-1.71c.33.6.74 1.18 1.19 1.7l-.54.53-.65-2.23zm.77-.76h-.99l-.31-1.04h3.99s-.34 1.31-1.56 2.74c-.52-.62-.89-1.23-1.13-1.7zM21 20c0 .55-.45 1-1 1h-7l2-2-.81-2.77.92-.92L17.79 18l.73-.73-2.71-2.68c.9-1.03 1.6-2.25 1.92-3.51H19v-1.04h-3.64V9h-1.04v1.04h-1.96L11.18 6H20c.55 0 1 .45 1 1v13z"/>', s, c);
-const icoGavel = (s, c) => icoWrapper('<path d="M1 21h12v2H1zM5.245 8.07l2.83-2.827 14.14 14.142-2.828 2.828zM12.317 1l5.657 5.656-2.83 2.83-5.654-5.66zM3.825 9.485l5.657 5.657-2.828 2.828-5.657-5.657z"/>', s, c);
-const icoGetApp = (s, c) => icoWrapper('<path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>', s, c);
-const icoGif = (s, c) => icoWrapper('<path d="M11.5 9H13v6h-1.5zM9 9H6c-.6 0-1 .5-1 1v4c0 .5.4 1 1 1h3c.6 0 1-.5 1-1v-2H8.5v1.5h-2v-3H10V10c0-.5-.4-1-1-1zm10 1.5V9h-4.5v6H16v-2h2v-1.5h-2v-1z"/>', s, c);
-const icoGrade = (s, c) => icoWrapper('<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>', s, c);
-const icoGroupWork = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM8 17.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM9.5 8c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5S9.5 9.38 9.5 8zm6.5 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>', s, c);
-const icoHelp = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>', s, c);
-const icoHelpOutline = (s, c) => icoWrapper('<path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>', s, c);
-const icoHighlightOff = (s, c) => icoWrapper('<path d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoHistory = (s, c) => icoWrapper('<path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>', s, c);
-const icoHome = (s, c) => icoWrapper('<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>', s, c);
-const icoHourglassEmpty = (s, c) => icoWrapper('<path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"/>', s, c);
-const icoHourglassFull = (s, c) => icoWrapper('<path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6z"/>', s, c);
-const icoHttp = (s, c) => icoWrapper('<path d="M4.5 11h-2V9H1v6h1.5v-2.5h2V15H6V9H4.5v2zm2.5-.5h1.5V15H10v-4.5h1.5V9H7v1.5zm5.5 0H14V15h1.5v-4.5H17V9h-4.5v1.5zm9-1.5H18v6h1.5v-2h2c.8 0 1.5-.7 1.5-1.5v-1c0-.8-.7-1.5-1.5-1.5zm0 2.5h-2v-1h2v1z"/>', s, c);
-const icoHttps = (s, c) => icoWrapper('<path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>', s, c);
-const icoImportantDevices = (s, c) => icoWrapper('<path d="M23 11.01L18 11c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5c.55 0 1-.45 1-1v-9c0-.55-.45-.99-1-.99zM23 20h-5v-7h5v7zM20 2H2C.89 2 0 2.89 0 4v12c0 1.1.89 2 2 2h7v2H7v2h8v-2h-2v-2h2v-2H2V4h18v5h2V4c0-1.11-.9-2-2-2zm-8.03 7L11 6l-.97 3H7l2.47 1.76-.94 2.91 2.47-1.8 2.47 1.8-.94-2.91L15 9h-3.03z"/>', s, c);
-const icoInfo = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>', s, c);
-const icoInfoOutline = (s, c) => icoWrapper('<path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>', s, c);
-const icoInput = (s, c) => icoWrapper('<path d="M21 3.01H3c-1.1 0-2 .9-2 2V9h2V4.99h18v14.03H3V15H1v4.01c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98v-14c0-1.11-.9-2-2-2zM11 16l4-4-4-4v3H1v2h10v3z"/>', s, c);
-const icoInvertColors = (s, c) => icoWrapper('<path d="M17.66 7.93L12 2.27 6.34 7.93c-3.12 3.12-3.12 8.19 0 11.31C7.9 20.8 9.95 21.58 12 21.58c2.05 0 4.1-.78 5.66-2.34 3.12-3.12 3.12-8.19 0-11.31zM12 19.59c-1.6 0-3.11-.62-4.24-1.76C6.62 16.69 6 15.19 6 13.59s.62-3.11 1.76-4.24L12 5.1v14.49z"/>', s, c);
-const icoLabel = (s, c) => icoWrapper('<path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"/>', s, c);
-const icoLabelOutline = (s, c) => icoWrapper('<path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"/>', s, c);
-const icoLanguage = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>', s, c);
-const icoLaunch = (s, c) => icoWrapper('<path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>', s, c);
-const icoLightbulbOutline = (s, c) => icoWrapper('<path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>', s, c);
-const icoLineStyle = (s, c) => icoWrapper('<path d="M3 16h5v-2H3v2zm6.5 0h5v-2h-5v2zm6.5 0h5v-2h-5v2zM3 20h2v-2H3v2zm4 0h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zM3 12h8v-2H3v2zm10 0h8v-2h-8v2zM3 4v4h18V4H3z"/>', s, c);
-const icoLineWeight = (s, c) => icoWrapper('<path d="M3 17h18v-2H3v2zm0 3h18v-1H3v1zm0-7h18v-3H3v3zm0-9v4h18V4H3z"/>', s, c);
-const icoList = (s, c) => icoWrapper('<path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>', s, c);
-const icoLock = (s, c) => icoWrapper('<path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>', s, c);
-const icoLockOpen = (s, c) => icoWrapper('<path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10z"/>', s, c);
-const icoLockOutline = (s, c) => icoWrapper('<path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10z"/>', s, c);
-const icoLoyalty = (s, c) => icoWrapper('<path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7zm11.77 8.27L13 19.54l-4.27-4.27C8.28 14.81 8 14.19 8 13.5c0-1.38 1.12-2.5 2.5-2.5.69 0 1.32.28 1.77.74l.73.72.73-.73c.45-.45 1.08-.73 1.77-.73 1.38 0 2.5 1.12 2.5 2.5 0 .69-.28 1.32-.73 1.77z"/>', s, c);
-const icoMarkunreadMailbox = (s, c) => icoWrapper('<path d="M20 6H10v6H8V4h6V0H6v6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/>', s, c);
-const icoMotorcycle = (s, c) => icoWrapper('<path d="M19.44 9.03L15.41 5H11v2h3.59l2 2H5c-2.8 0-5 2.2-5 5s2.2 5 5 5c2.46 0 4.45-1.69 4.9-4h1.65l2.77-2.77c-.21.54-.32 1.14-.32 1.77 0 2.8 2.2 5 5 5s5-2.2 5-5c0-2.65-1.97-4.77-4.56-4.97zM7.82 15C7.4 16.15 6.28 17 5 17c-1.63 0-3-1.37-3-3s1.37-3 3-3c1.28 0 2.4.85 2.82 2H5v2h2.82zM19 17c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>', s, c);
-const icoNoteAdd = (s, c) => icoWrapper('<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 14h-3v3h-2v-3H8v-2h3v-3h2v3h3v2zm-3-7V3.5L18.5 9H13z"/>', s, c);
-const icoOfflinePin = (s, c) => icoWrapper('<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5 16H7v-2h10v2zm-6.7-4L7 10.7l1.4-1.4 1.9 1.9 5.3-5.3L17 7.3 10.3 14z"/>', s, c);
-const icoOpacity = (s, c) => icoWrapper('<path d="M17.66 8L12 2.35 6.34 8C4.78 9.56 4 11.64 4 13.64s.78 4.11 2.34 5.67 3.61 2.35 5.66 2.35 4.1-.79 5.66-2.35S20 15.64 20 13.64 19.22 9.56 17.66 8zM6 14c.01-2 .62-3.27 1.76-4.4L12 5.27l4.24 4.38C17.38 10.77 17.99 12 18 14H6z"/>', s, c);
-const icoOpenInBrowser = (s, c) => icoWrapper('<path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>', s, c);
-const icoOpenInNew = (s, c) => icoWrapper('<path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>', s, c);
-const icoOpenWith = (s, c) => icoWrapper('<path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"/>', s, c);
-const icoPageview = (s, c) => icoWrapper('<path d="M11.5 9C10.12 9 9 10.12 9 11.5s1.12 2.5 2.5 2.5 2.5-1.12 2.5-2.5S12.88 9 11.5 9zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-3.21 14.21l-2.91-2.91c-.69.44-1.51.7-2.39.7C9.01 16 7 13.99 7 11.5S9.01 7 11.5 7 16 9.01 16 11.5c0 .88-.26 1.69-.7 2.39l2.91 2.9-1.42 1.42z"/>', s, c);
-const icoPanTool = (s, c) => icoWrapper('<path d="M23 5.5V20c0 2.2-1.8 4-4 4h-7.3c-1.08 0-2.1-.43-2.85-1.19L1 14.83s1.26-1.23 1.3-1.25c.22-.19.49-.29.79-.29.22 0 .42.06.6.16.04.01 4.31 2.46 4.31 2.46V4c0-.83.67-1.5 1.5-1.5S11 3.17 11 4v7h1V1.5c0-.83.67-1.5 1.5-1.5S15 .67 15 1.5V11h1V2.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5V11h1V5.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5z"/>', s, c);
-const icoPayment = (s, c) => icoWrapper('<path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>', s, c);
-const icoPermCameraMic = (s, c) => icoWrapper('<path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v-2.09c-2.83-.48-5-2.94-5-5.91h2c0 2.21 1.79 4 4 4s4-1.79 4-4h2c0 2.97-2.17 5.43-5 5.91V21h7c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-6 8c0 1.1-.9 2-2 2s-2-.9-2-2V9c0-1.1.9-2 2-2s2 .9 2 2v4z"/>', s, c);
-const icoPermContactCalendar = (s, c) => icoWrapper('<path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1z"/>', s, c);
-const icoPermDataSetting = (s, c) => icoWrapper('<path d="M18.99 11.5c.34 0 .67.03 1 .07L20 0 0 20h11.56c-.04-.33-.07-.66-.07-1 0-4.14 3.36-7.5 7.5-7.5zm3.71 7.99c.02-.16.04-.32.04-.49 0-.17-.01-.33-.04-.49l1.06-.83c.09-.08.12-.21.06-.32l-1-1.73c-.06-.11-.19-.15-.31-.11l-1.24.5c-.26-.2-.54-.37-.85-.49l-.19-1.32c-.01-.12-.12-.21-.24-.21h-2c-.12 0-.23.09-.25.21l-.19 1.32c-.3.13-.59.29-.85.49l-1.24-.5c-.11-.04-.24 0-.31.11l-1 1.73c-.06.11-.04.24.06.32l1.06.83c-.02.16-.03.32-.03.49 0 .17.01.33.03.49l-1.06.83c-.09.08-.12.21-.06.32l1 1.73c.06.11.19.15.31.11l1.24-.5c.26.2.54.37.85.49l.19 1.32c.02.12.12.21.25.21h2c.12 0 .23-.09.25-.21l.19-1.32c.3-.13.59-.29.84-.49l1.25.5c.11.04.24 0 .31-.11l1-1.73c.06-.11.03-.24-.06-.32l-1.07-.83zm-3.71 1.01c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoPermDeviceInformation = (s, c) => icoWrapper('<path d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm4-9.99L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>', s, c);
-const icoPermIdentity = (s, c) => icoWrapper('<path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/>', s, c);
-const icoPermMedia = (s, c) => icoWrapper('<path d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"/>', s, c);
-const icoPermPhoneMsg = (s, c) => icoWrapper('<path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 3v10l3-3h6V3h-9z"/>', s, c);
-const icoPermScanWifi = (s, c) => icoWrapper('<path d="M12 3C6.95 3 3.15 4.85 0 7.23L12 22 24 7.25C20.85 4.87 17.05 3 12 3zm1 13h-2v-6h2v6zm-2-8V6h2v2h-2z"/>', s, c);
-const icoPets = (s, c) => icoWrapper('<path d="M17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z"/>', s, c);
-const icoPictureInPicture = (s, c) => icoWrapper('<path d="M19 7h-8v6h8V7zm2-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98V5c0-1.1-.9-2-2-2zm0 16.01H3V4.98h18v14.03z"/>', s, c);
-const icoPictureInPictureAlt = (s, c) => icoWrapper('<path d="M19 11h-8v6h8v-6zm4 8V4.98C23 3.88 22.1 3 21 3H3c-1.1 0-2 .88-2 1.98V19c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 .02H3V4.97h18v14.05z"/>', s, c);
-const icoPlayForWork = (s, c) => icoWrapper('<path d="M11 5v5.59H7.5l4.5 4.5 4.5-4.5H13V5h-2zm-5 9c0 3.31 2.69 6 6 6s6-2.69 6-6h-2c0 2.21-1.79 4-4 4s-4-1.79-4-4H6z"/>', s, c);
-const icoPolymer = (s, c) => icoWrapper('<path d="M19 4h-4L7.11 16.63 4.5 12 9 4H5L.5 12 5 20h4l7.89-12.63L19.5 12 15 20h4l4.5-8z"/>', s, c);
-const icoPowerSettingsNew = (s, c) => icoWrapper('<path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/>', s, c);
-const icoPregnantWoman = (s, c) => icoWrapper('<path d="M9 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm7 9c-.01-1.34-.83-2.51-2-3 0-1.66-1.34-3-3-3s-3 1.34-3 3v7h2v5h3v-5h3v-4z"/>', s, c);
-const icoPrint = (s, c) => icoWrapper('<path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>', s, c);
-const icoQueryBuilder = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>', s, c);
-const icoQuestionAnswer = (s, c) => icoWrapper('<path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/>', s, c);
-const icoReceipt = (s, c) => icoWrapper('<path d="M18 17H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V7h12v2zM3 22l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2l-1.5 1.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20z"/>', s, c);
-const icoRecordVoiceOver = (s, c) => icoWrapper('<path d="M9 15c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.76-9.64l-1.68 1.69c.84 1.18.84 2.71 0 3.89l1.68 1.69c2.02-2.02 2.02-5.07 0-7.27zM20.07 2l-1.63 1.63c2.77 3.02 2.77 7.56 0 10.74L20.07 16c3.9-3.89 3.91-9.95 0-14z"/>', s, c);
-const icoRedeem = (s, c) => icoWrapper('<path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/>', s, c);
-const icoRemoveShoppingCart = (s, c) => icoWrapper('<path d="M22.73 22.73L2.77 2.77 2 2l-.73-.73L0 2.54l4.39 4.39 2.21 4.66-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h7.46l1.38 1.38c-.5.36-.83.95-.83 1.62 0 1.1.89 2 1.99 2 .67 0 1.26-.33 1.62-.84L21.46 24l1.27-1.27zM7.42 15c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h2.36l2 2H7.42zm8.13-2c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H6.54l9.01 9zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoReorder = (s, c) => icoWrapper('<path d="M3 15h18v-2H3v2zm0 4h18v-2H3v2zm0-8h18V9H3v2zm0-6v2h18V5H3z"/>', s, c);
-const icoReportProblem = (s, c) => icoWrapper('<path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>', s, c);
-const icoRestore = (s, c) => icoWrapper('<path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>', s, c);
-const icoRestorePage = (s, c) => icoWrapper('<path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-2 16c-2.05 0-3.81-1.24-4.58-3h1.71c.63.9 1.68 1.5 2.87 1.5 1.93 0 3.5-1.57 3.5-3.5S13.93 9.5 12 9.5c-1.35 0-2.52.78-3.1 1.9l1.6 1.6h-4V9l1.3 1.3C8.69 8.92 10.23 8 12 8c2.76 0 5 2.24 5 5s-2.24 5-5 5z"/>', s, c);
-const icoRoom = (s, c) => icoWrapper('<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>', s, c);
-const icoRoundedCorner = (s, c) => icoWrapper('<path d="M19 19h2v2h-2v-2zm0-2h2v-2h-2v2zM3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm0-4h2V3H3v2zm4 0h2V3H7v2zm8 16h2v-2h-2v2zm-4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm-8 0h2v-2H7v2zm-4 0h2v-2H3v2zM21 8c0-2.76-2.24-5-5-5h-5v2h5c1.65 0 3 1.35 3 3v5h2V8z"/>', s, c);
-const icoRowing = (s, c) => icoWrapper('<path d="M8.5 14.5L4 19l1.5 1.5L9 17h2l-2.5-2.5zM15 1c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 20.01L18 24l-2.99-3.01V19.5l-7.1-7.09c-.31.05-.61.07-.91.07v-2.16c1.66.03 3.61-.87 4.67-2.04l1.4-1.55c.19-.21.43-.38.69-.5.29-.14.62-.23.96-.23h.03C15.99 6.01 17 7.02 17 8.26v5.75c0 .84-.35 1.61-.92 2.16l-3.58-3.58v-2.27c-.63.52-1.43 1.02-2.29 1.39L16.5 18H18l3 3.01z"/>', s, c);
-const icoSchedule = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>', s, c);
-const icoSearch = (s, c) => icoWrapper('<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>', s, c);
-const icoSettings = (s, c) => icoWrapper('<path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>', s, c);
-const icoSettingsApplications = (s, c) => icoWrapper('<path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm7-7H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-1.75 9c0 .23-.02.46-.05.68l1.48 1.16c.13.11.17.3.08.45l-1.4 2.42c-.09.15-.27.21-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.26 1.85c-.03.17-.18.3-.35.3h-2.8c-.17 0-.32-.13-.35-.29l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.74.7c-.16.06-.34 0-.43-.15l-1.4-2.42c-.09-.15-.05-.34.08-.45l1.48-1.16c-.03-.23-.05-.46-.05-.69 0-.23.02-.46.05-.68l-1.48-1.16c-.13-.11-.17-.3-.08-.45l1.4-2.42c.09-.15.27-.21.43-.15l1.74.7c.36-.28.76-.51 1.18-.69l.26-1.85c.03-.17.18-.3.35-.3h2.8c.17 0 .32.13.35.29l.26 1.85c.43.18.82.41 1.18.69l1.74-.7c.16-.06.34 0 .43.15l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.16c.03.23.05.46.05.69z"/>', s, c);
-const icoSettingsBackupRestore = (s, c) => icoWrapper('<path d="M14 12c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-2-9c-4.97 0-9 4.03-9 9H0l4 4 4-4H5c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.51 0-2.91-.49-4.06-1.3l-1.42 1.44C8.04 20.3 9.94 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>', s, c);
-const icoSettingsBluetooth = (s, c) => icoWrapper('<path d="M11 24h2v-2h-2v2zm-4 0h2v-2H7v2zm8 0h2v-2h-2v2zm2.71-18.29L12 0h-1v7.59L6.41 3 5 4.41 10.59 10 5 15.59 6.41 17 11 12.41V20h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 3.83l1.88 1.88L13 7.59V3.83zm1.88 10.46L13 16.17v-3.76l1.88 1.88z"/>', s, c);
-const icoSettingsBrightness = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02zM8 16h2.5l1.5 1.5 1.5-1.5H16v-2.5l1.5-1.5-1.5-1.5V8h-2.5L12 6.5 10.5 8H8v2.5L6.5 12 8 13.5V16zm4-7c1.66 0 3 1.34 3 3s-1.34 3-3 3V9z"/>', s, c);
-const icoSettingsCell = (s, c) => icoWrapper('<path d="M7 24h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zM16 .01L8 0C6.9 0 6 .9 6 2v16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V2c0-1.1-.9-1.99-2-1.99zM16 16H8V4h8v12z"/>', s, c);
-const icoSettingsEthernet = (s, c) => icoWrapper('<path d="M7.77 6.76L6.23 5.48.82 12l5.41 6.52 1.54-1.28L3.42 12l4.35-5.24zM7 13h2v-2H7v2zm10-2h-2v2h2v-2zm-6 2h2v-2h-2v2zm6.77-7.52l-1.54 1.28L20.58 12l-4.35 5.24 1.54 1.28L23.18 12l-5.41-6.52z"/>', s, c);
-const icoSettingsInputAntenna = (s, c) => icoWrapper('<path d="M12 5c-3.87 0-7 3.13-7 7h2c0-2.76 2.24-5 5-5s5 2.24 5 5h2c0-3.87-3.13-7-7-7zm1 9.29c.88-.39 1.5-1.26 1.5-2.29 0-1.38-1.12-2.5-2.5-2.5S9.5 10.62 9.5 12c0 1.02.62 1.9 1.5 2.29v3.3L7.59 21 9 22.41l3-3 3 3L16.41 21 13 17.59v-3.3zM12 1C5.93 1 1 5.93 1 12h2c0-4.97 4.03-9 9-9s9 4.03 9 9h2c0-6.07-4.93-11-11-11z"/>', s, c);
-const icoSettingsInputComponent = (s, c) => icoWrapper('<path d="M5 2c0-.55-.45-1-1-1s-1 .45-1 1v4H1v6h6V6H5V2zm4 14c0 1.3.84 2.4 2 2.82V23h2v-4.18c1.16-.41 2-1.51 2-2.82v-2H9v2zm-8 0c0 1.3.84 2.4 2 2.82V23h2v-4.18C6.16 18.4 7 17.3 7 16v-2H1v2zM21 6V2c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6V6h-2zm-8-4c0-.55-.45-1-1-1s-1 .45-1 1v4H9v6h6V6h-2V2zm4 14c0 1.3.84 2.4 2 2.82V23h2v-4.18c1.16-.41 2-1.51 2-2.82v-2h-6v2z"/>', s, c);
-const icoSettingsInputComposite = (s, c) => icoWrapper('<path d="M5 2c0-.55-.45-1-1-1s-1 .45-1 1v4H1v6h6V6H5V2zm4 14c0 1.3.84 2.4 2 2.82V23h2v-4.18c1.16-.41 2-1.51 2-2.82v-2H9v2zm-8 0c0 1.3.84 2.4 2 2.82V23h2v-4.18C6.16 18.4 7 17.3 7 16v-2H1v2zM21 6V2c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6V6h-2zm-8-4c0-.55-.45-1-1-1s-1 .45-1 1v4H9v6h6V6h-2V2zm4 14c0 1.3.84 2.4 2 2.82V23h2v-4.18c1.16-.41 2-1.51 2-2.82v-2h-6v2z"/>', s, c);
-const icoSettingsInputHdmi = (s, c) => icoWrapper('<path d="M18 7V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3H5v6l3 6v3h8v-3l3-6V7h-1zM8 4h8v3h-2V5h-1v2h-2V5h-1v2H8V4z"/>', s, c);
-const icoSettingsInputSvideo = (s, c) => icoWrapper('<path d="M8 11.5c0-.83-.67-1.5-1.5-1.5S5 10.67 5 11.5 5.67 13 6.5 13 8 12.33 8 11.5zm7-5c0-.83-.67-1.5-1.5-1.5h-3C9.67 5 9 5.67 9 6.5S9.67 8 10.5 8h3c.83 0 1.5-.67 1.5-1.5zM8.5 15c-.83 0-1.5.67-1.5 1.5S7.67 18 8.5 18s1.5-.67 1.5-1.5S9.33 15 8.5 15zM12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9zm5.5-11c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm-2 5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>', s, c);
-const icoSettingsOverscan = (s, c) => icoWrapper('<path d="M12.01 5.5L10 8h4l-1.99-2.5zM18 10v4l2.5-1.99L18 10zM6 10l-2.5 2.01L6 14v-4zm8 6h-4l2.01 2.5L14 16zm7-13H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z"/>', s, c);
-const icoSettingsPhone = (s, c) => icoWrapper('<path d="M13 9h-2v2h2V9zm4 0h-2v2h2V9zm3 6.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 9v2h2V9h-2z"/>', s, c);
-const icoSettingsPower = (s, c) => icoWrapper('<path d="M7 24h2v-2H7v2zm4 0h2v-2h-2v2zm2-22h-2v10h2V2zm3.56 2.44l-1.45 1.45C16.84 6.94 18 8.83 18 11c0 3.31-2.69 6-6 6s-6-2.69-6-6c0-2.17 1.16-4.06 2.88-5.12L7.44 4.44C5.36 5.88 4 8.28 4 11c0 4.42 3.58 8 8 8s8-3.58 8-8c0-2.72-1.36-5.12-3.44-6.56zM15 24h2v-2h-2v2z"/>', s, c);
-const icoSettingsRemote = (s, c) => icoWrapper('<path d="M15 9H9c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V10c0-.55-.45-1-1-1zm-3 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM7.05 6.05l1.41 1.41C9.37 6.56 10.62 6 12 6s2.63.56 3.54 1.46l1.41-1.41C15.68 4.78 13.93 4 12 4s-3.68.78-4.95 2.05zM12 0C8.96 0 6.21 1.23 4.22 3.22l1.41 1.41C7.26 3.01 9.51 2 12 2s4.74 1.01 6.36 2.64l1.41-1.41C17.79 1.23 15.04 0 12 0z"/>', s, c);
-const icoSettingsVoice = (s, c) => icoWrapper('<path d="M7 24h2v-2H7v2zm5-11c1.66 0 2.99-1.34 2.99-3L15 4c0-1.66-1.34-3-3-3S9 2.34 9 4v6c0 1.66 1.34 3 3 3zm-1 11h2v-2h-2v2zm4 0h2v-2h-2v2zm4-14h-1.7c0 3-2.54 5.1-5.3 5.1S6.7 13 6.7 10H5c0 3.41 2.72 6.23 6 6.72V20h2v-3.28c3.28-.49 6-3.31 6-6.72z"/>', s, c);
-const icoShop = (s, c) => icoWrapper('<path d="M16 6V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H2v13c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6h-6zm-6-2h4v2h-4V4zM9 18V9l7.5 4L9 18z"/>', s, c);
-const icoShopTwo = (s, c) => icoWrapper('<path d="M3 9H1v11c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2H3V9zm15-4V3c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H5v11c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5h-5zm-6-2h4v2h-4V3zm0 12V8l5.5 3-5.5 4z"/>', s, c);
-const icoShoppingBasket = (s, c) => icoWrapper('<path d="M17.21 9l-4.38-6.56c-.19-.28-.51-.42-.83-.42-.32 0-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1h-4.79zM9 9l3-4.4L15 9H9zm3 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>', s, c);
-const icoShoppingCart = (s, c) => icoWrapper('<path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoSpeakerNotes = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 14H6v-2h2v2zm0-3H6V9h2v2zm0-3H6V6h2v2zm7 6h-5v-2h5v2zm3-3h-8V9h8v2zm0-3h-8V6h8v2z"/>', s, c);
-const icoSpeakerNotesOff = (s, c) => icoWrapper('<path d="M10.54 11l-.54-.54L7.54 8 6 6.46 2.38 2.84 1.27 1.73 0 3l2.01 2.01L2 22l4-4h9l5.73 5.73L22 22.46 17.54 18l-7-7zM8 14H6v-2h2v2zm-2-3V9l2 2H6zm14-9H4.08L10 7.92V6h8v2h-7.92l1 1H18v2h-4.92l6.99 6.99C21.14 17.95 22 17.08 22 16V4c0-1.1-.9-2-2-2z"/>', s, c);
-const icoSpellcheck = (s, c) => icoWrapper('<path d="M12.45 16h2.09L9.43 3H7.57L2.46 16h2.09l1.12-3h5.64l1.14 3zm-6.02-5L8.5 5.48 10.57 11H6.43zm15.16.59l-8.09 8.09L9.83 16l-1.41 1.41 5.09 5.09L23 13l-1.41-1.41z"/>', s, c);
-const icoStars = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/>', s, c);
-const icoStore = (s, c) => icoWrapper('<path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>', s, c);
-const icoSubject = (s, c) => icoWrapper('<path d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"/>', s, c);
-const icoSupervisorAccount = (s, c) => icoWrapper('<path d="M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z"/>', s, c);
-const icoSwapHoriz = (s, c) => icoWrapper('<path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/>', s, c);
-const icoSwapVert = (s, c) => icoWrapper('<path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/>', s, c);
-const icoSwapVerticalCircle = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM6.5 9L10 5.5 13.5 9H11v4H9V9H6.5zm11 6L14 18.5 10.5 15H13v-4h2v4h2.5z"/>', s, c);
-const icoSystemUpdateAlt = (s, c) => icoWrapper('<path d="M12 16.5l4-4h-3v-9h-2v9H8l4 4zm9-13h-6v1.99h6v14.03H3V5.49h6V3.5H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2z"/>', s, c);
-const icoTab = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h10v4h8v10z"/>', s, c);
-const icoTabUnselected = (s, c) => icoWrapper('<path d="M1 9h2V7H1v2zm0 4h2v-2H1v2zm0-8h2V3c-1.1 0-2 .9-2 2zm8 16h2v-2H9v2zm-8-4h2v-2H1v2zm2 4v-2H1c0 1.1.9 2 2 2zM21 3h-8v6h10V5c0-1.1-.9-2-2-2zm0 14h2v-2h-2v2zM9 5h2V3H9v2zM5 21h2v-2H5v2zM5 5h2V3H5v2zm16 16c1.1 0 2-.9 2-2h-2v2zm0-8h2v-2h-2v2zm-8 8h2v-2h-2v2zm4 0h2v-2h-2v2z"/>', s, c);
-const icoTheaters = (s, c) => icoWrapper('<path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/>', s, c);
-const icoThumbDown = (s, c) => icoWrapper('<path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>', s, c);
-const icoThumbUp = (s, c) => icoWrapper('<path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/>', s, c);
-const icoThumbsUpDown = (s, c) => icoWrapper('<path d="M12 6c0-.55-.45-1-1-1H5.82l.66-3.18.02-.23c0-.31-.13-.59-.33-.8L5.38 0 .44 4.94C.17 5.21 0 5.59 0 6v6.5c0 .83.67 1.5 1.5 1.5h6.75c.62 0 1.15-.38 1.38-.91l2.26-5.29c.07-.17.11-.36.11-.55V6zm10.5 4h-6.75c-.62 0-1.15.38-1.38.91l-2.26 5.29c-.07.17-.11.36-.11.55V18c0 .55.45 1 1 1h5.18l-.66 3.18-.02.24c0 .31.13.59.33.8l.79.78 4.94-4.94c.27-.27.44-.65.44-1.06v-6.5c0-.83-.67-1.5-1.5-1.5z"/>', s, c);
-const icoTimeline = (s, c) => icoWrapper('<path d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"/>', s, c);
-const icoToc = (s, c) => icoWrapper('<path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/>', s, c);
-const icoToday = (s, c) => icoWrapper('<path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>', s, c);
-const icoToll = (s, c) => icoWrapper('<path d="M15 4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zM3 12c0-2.61 1.67-4.83 4-5.65V4.26C3.55 5.15 1 8.27 1 12s2.55 6.85 6 7.74v-2.09c-2.33-.82-4-3.04-4-5.65z"/>', s, c);
-const icoTouchApp = (s, c) => icoWrapper('<path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/>', s, c);
-const icoTrackChanges = (s, c) => icoWrapper('<path d="M19.07 4.93l-1.41 1.41C19.1 7.79 20 9.79 20 12c0 4.42-3.58 8-8 8s-8-3.58-8-8c0-4.08 3.05-7.44 7-7.93v2.02C8.16 6.57 6 9.03 6 12c0 3.31 2.69 6 6 6s6-2.69 6-6c0-1.66-.67-3.16-1.76-4.24l-1.41 1.41C15.55 9.9 16 10.9 16 12c0 2.21-1.79 4-4 4s-4-1.79-4-4c0-1.86 1.28-3.41 3-3.86v2.14c-.6.35-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.38-1-1.72V2h-1C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10c0-2.76-1.12-5.26-2.93-7.07z"/>', s, c);
-const icoTranslate = (s, c) => icoWrapper('<path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>', s, c);
-const icoTrendingDown = (s, c) => icoWrapper('<path d="M16 18l2.29-2.29-4.88-4.88-4 4L2 7.41 3.41 6l6 6 4-4 6.3 6.29L22 12v6z"/>', s, c);
-const icoTrendingFlat = (s, c) => icoWrapper('<path d="M22 12l-4-4v3H3v2h15v3z"/>', s, c);
-const icoTrendingUp = (s, c) => icoWrapper('<path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>', s, c);
-const icoTurnedIn = (s, c) => icoWrapper('<path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoTurnedInNot = (s, c) => icoWrapper('<path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/>', s, c);
-const icoUpdate = (s, c) => icoWrapper('<path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79 2.73 2.71 7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58 3.51-3.47 9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z"/>', s, c);
-const icoVerifiedUser = (s, c) => icoWrapper('<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>', s, c);
-const icoViewAgenda = (s, c) => icoWrapper('<path d="M20 13H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm0-10H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1z"/>', s, c);
-const icoViewArray = (s, c) => icoWrapper('<path d="M4 18h3V5H4v13zM18 5v13h3V5h-3zM8 18h9V5H8v13z"/>', s, c);
-const icoViewCarousel = (s, c) => icoWrapper('<path d="M7 19h10V4H7v15zm-5-2h4V6H2v11zM18 6v11h4V6h-4z"/>', s, c);
-const icoViewColumn = (s, c) => icoWrapper('<path d="M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"/>', s, c);
-const icoViewDay = (s, c) => icoWrapper('<path d="M2 21h19v-3H2v3zM20 8H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zM2 3v3h19V3H2z"/>', s, c);
-const icoViewHeadline = (s, c) => icoWrapper('<path d="M4 15h16v-2H4v2zm0 4h16v-2H4v2zm0-8h16V9H4v2zm0-6v2h16V5H4z"/>', s, c);
-const icoViewList = (s, c) => icoWrapper('<path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"/>', s, c);
-const icoViewModule = (s, c) => icoWrapper('<path d="M4 11h5V5H4v6zm0 7h5v-6H4v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5V5h-5v6zm6-6v6h5V5h-5z"/>', s, c);
-const icoViewQuilt = (s, c) => icoWrapper('<path d="M10 18h5v-6h-5v6zm-6 0h5V5H4v13zm12 0h5v-6h-5v6zM10 5v6h11V5H10z"/>', s, c);
-const icoViewStream = (s, c) => icoWrapper('<path d="M4 18h17v-6H4v6zM4 5v6h17V5H4z"/>', s, c);
-const icoViewWeek = (s, c) => icoWrapper('<path d="M6 5H3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h3c.55 0 1-.45 1-1V6c0-.55-.45-1-1-1zm14 0h-3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h3c.55 0 1-.45 1-1V6c0-.55-.45-1-1-1zm-7 0h-3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h3c.55 0 1-.45 1-1V6c0-.55-.45-1-1-1z"/>', s, c);
-const icoVisibility = (s, c) => icoWrapper('<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>', s, c);
-const icoVisibilityOff = (s, c) => icoWrapper('<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>', s, c);
-const icoWatchLater = (s, c) => icoWrapper('<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>', s, c);
-const icoWork = (s, c) => icoWrapper('<path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>', s, c);
-const icoYoutubeSearchedFor = (s, c) => icoWrapper('<path d="M17.01 14h-.8l-.27-.27c.98-1.14 1.57-2.61 1.57-4.23 0-3.59-2.91-6.5-6.5-6.5s-6.5 3-6.5 6.5H2l3.84 4 4.16-4H6.51C6.51 7 8.53 5 11.01 5s4.5 2.01 4.5 4.5c0 2.48-2.02 4.5-4.5 4.5-.65 0-1.26-.14-1.82-.38L7.71 15.1c.97.57 2.09.9 3.3.9 1.61 0 3.08-.59 4.22-1.57l.27.27v.79l5.01 4.99L22 19l-4.99-5z"/>', s, c);
-const icoZoomIn = (s, c) => icoWrapper('<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>', s, c);
-const icoZoomOut = (s, c) => icoWrapper('<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM7 9h5v1H7z"/>', s, c);
-const icoAddAlert = (s, c) => icoWrapper('<path d="M10.01 21.01c0 1.1.89 1.99 1.99 1.99s1.99-.89 1.99-1.99h-3.98zm8.87-4.19V11c0-3.25-2.25-5.97-5.29-6.69v-.72C13.59 2.71 12.88 2 12 2s-1.59.71-1.59 1.59v.72C7.37 5.03 5.12 7.75 5.12 11v5.82L3 18.94V20h18v-1.06l-2.12-2.12zM16 13.01h-3v3h-2v-3H8V11h3V8h2v3h3v2.01z"/>', s, c);
-const icoError = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>', s, c);
-const icoErrorOutline = (s, c) => icoWrapper('<path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>', s, c);
-const icoWarning = (s, c) => icoWrapper('<path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>', s, c);
-const icoAddToQueue = (s, c) => icoWrapper('<path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-7v2h-3v3h-2v-3H8v-2h3V7h2v3h3z"/>', s, c);
-const icoAirplay = (s, c) => icoWrapper('<path d="M6 22h12l-6-6zM21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v-2H3V5h18v12h-4v2h4c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoAlbum = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 7.5 12 7.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5zm0-5.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>', s, c);
-const icoArtTrack = (s, c) => icoWrapper('<path fill="#010101" d="M22 13h-8v-2h8v2zm0-6h-8v2h8V7zm-8 10h8v-2h-8v2zm-2-8v6c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2zm-1.5 6l-2.25-3-1.75 2.26-1.25-1.51L3.5 15h7z"/>', s, c);
-const icoAvTimer = (s, c) => icoWrapper('<path d="M11 17c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1zm0-14v4h2V5.08c3.39.49 6 3.39 6 6.92 0 3.87-3.13 7-7 7s-7-3.13-7-7c0-1.68.59-3.22 1.58-4.42L12 13l1.41-1.41-6.8-6.8v.02C4.42 6.45 3 9.05 3 12c0 4.97 4.02 9 9 9 4.97 0 9-4.03 9-9s-4.03-9-9-9h-1zm7 9c0-.55-.45-1-1-1s-1 .45-1 1 .45 1 1 1 1-.45 1-1zM6 12c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1-1 .45-1 1z"/>', s, c);
-const icoBrandingWatermark = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16h-9v-6h9v6z"/>', s, c);
-const icoCallToAction = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3v-3h18v3z"/>', s, c);
-const icoClosedCaption = (s, c) => icoWrapper('<path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/>', s, c);
-const icoEqualizer = (s, c) => icoWrapper('<path d="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z"/>', s, c);
-const icoExplicit = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z"/>', s, c);
-const icoFastForward = (s, c) => icoWrapper('<path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>', s, c);
-const icoFastRewind = (s, c) => icoWrapper('<path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/>', s, c);
-const icoFeaturedPlayList = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 8H3V9h9v2zm0-4H3V5h9v2z"/>', s, c);
-const icoFeaturedVideo = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 9H3V5h9v7z"/>', s, c);
-const icoFiberDvr = (s, c) => icoWrapper('<path d="M17.5 10.5h2v1h-2zm-13 0h2v3h-2zM21 3H3c-1.11 0-2 .89-2 2v14c0 1.1.89 2 2 2h18c1.11 0 2-.9 2-2V5c0-1.11-.89-2-2-2zM8 13.5c0 .85-.65 1.5-1.5 1.5H3V9h3.5c.85 0 1.5.65 1.5 1.5v3zm4.62 1.5h-1.5L9.37 9h1.5l1 3.43 1-3.43h1.5l-1.75 6zM21 11.5c0 .6-.4 1.15-.9 1.4L21 15h-1.5l-.85-2H17.5v2H16V9h3.5c.85 0 1.5.65 1.5 1.5v1z"/>', s, c);
-const icoFiberManualRecord = (s, c) => icoWrapper('<circle fill="#010101" cx="12" cy="12" r="8"/>', s, c);
-const icoFiberNew = (s, c) => icoWrapper('<path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zM8.5 15H7.3l-2.55-3.5V15H3.5V9h1.25l2.5 3.5V9H8.5v6zm5-4.74H11v1.12h2.5v1.26H11v1.11h2.5V15h-4V9h4v1.26zm7 3.74c0 .55-.45 1-1 1h-4c-.55 0-1-.45-1-1V9h1.25v4.51h1.13V9.99h1.25v3.51h1.12V9h1.25v5z"/>', s, c);
-const icoFiberPin = (s, c) => icoWrapper('<path d="M5.5 10.5h2v1h-2zM20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zM9 11.5c0 .85-.65 1.5-1.5 1.5h-2v2H4V9h3.5c.85 0 1.5.65 1.5 1.5v1zm3.5 3.5H11V9h1.5v6zm7.5 0h-1.2l-2.55-3.5V15H15V9h1.25l2.5 3.5V9H20v6z"/>', s, c);
-const icoFiberSmartRecord = (s, c) => icoWrapper('</g>', s, c);
-const icoForward_10 = (s, c) => icoWrapper('<path d="M4 13c0 4.4 3.6 8 8 8s8-3.6 8-8h-2c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6v4l5-5-5-5v4c-4.4 0-8 3.6-8 8zm6.8 3H10v-3.3L9 13v-.7l1.8-.6h.1V16zm4.3-1.8c0 .3 0 .6-.1.8l-.3.6s-.3.3-.5.3-.4.1-.6.1-.4 0-.6-.1-.3-.2-.5-.3-.2-.3-.3-.6-.1-.5-.1-.8v-.7c0-.3 0-.6.1-.8l.3-.6s.3-.3.5-.3.4-.1.6-.1.4 0 .6.1.3.2.5.3.2.3.3.6.1.5.1.8v.7zm-.8-.8v-.5s-.1-.2-.1-.3-.1-.1-.2-.2-.2-.1-.3-.1-.2 0-.3.1l-.2.2s-.1.2-.1.3v2s.1.2.1.3.1.1.2.2.2.1.3.1.2 0 .3-.1l.2-.2s.1-.2.1-.3v-1.5z"/>', s, c);
-const icoForward_30 = (s, c) => icoWrapper('<path d="M9.6 13.5h.4c.2 0 .4-.1.5-.2s.2-.2.2-.4v-.2s-.1-.1-.1-.2-.1-.1-.2-.1h-.5s-.1.1-.2.1-.1.1-.1.2v.2h-1c0-.2 0-.3.1-.5s.2-.3.3-.4.3-.2.4-.2.4-.1.5-.1c.2 0 .4 0 .6.1s.3.1.5.2.2.2.3.4.1.3.1.5v.3s-.1.2-.1.3-.1.2-.2.2-.2.1-.3.2c.2.1.4.2.5.4s.2.4.2.6c0 .2 0 .4-.1.5s-.2.3-.3.4-.3.2-.5.2-.4.1-.6.1c-.2 0-.4 0-.5-.1s-.3-.1-.5-.2-.2-.2-.3-.4-.1-.4-.1-.6h.8v.2s.1.1.1.2.1.1.2.1h.5s.1-.1.2-.1.1-.1.1-.2v-.5s-.1-.1-.1-.2-.1-.1-.2-.1h-.6v-.7zm5.7.7c0 .3 0 .6-.1.8l-.3.6s-.3.3-.5.3-.4.1-.6.1-.4 0-.6-.1-.3-.2-.5-.3-.2-.3-.3-.6-.1-.5-.1-.8v-.7c0-.3 0-.6.1-.8l.3-.6s.3-.3.5-.3.4-.1.6-.1.4 0 .6.1.3.2.5.3.2.3.3.6.1.5.1.8v.7zm-.9-.8v-.5s-.1-.2-.1-.3-.1-.1-.2-.2-.2-.1-.3-.1-.2 0-.3.1l-.2.2s-.1.2-.1.3v2s.1.2.1.3.1.1.2.2.2.1.3.1.2 0 .3-.1l.2-.2s.1-.2.1-.3v-1.5zM4 13c0 4.4 3.6 8 8 8s8-3.6 8-8h-2c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6v4l5-5-5-5v4c-4.4 0-8 3.6-8 8z"/>', s, c);
-const icoForward_5 = (s, c) => icoWrapper('<path d="M4 13c0 4.4 3.6 8 8 8s8-3.6 8-8h-2c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6v4l5-5-5-5v4c-4.4 0-8 3.6-8 8zm6.7.9l.2-2.2h2.4v.7h-1.7l-.1.9s.1 0 .1-.1.1 0 .1-.1.1 0 .2 0h.2c.2 0 .4 0 .5.1s.3.2.4.3.2.3.3.5.1.4.1.6c0 .2 0 .4-.1.5s-.1.3-.3.5-.3.2-.5.3-.4.1-.6.1c-.2 0-.4 0-.5-.1s-.3-.1-.5-.2-.2-.2-.3-.4-.1-.3-.1-.5h.8c0 .2.1.3.2.4s.2.1.4.1c.1 0 .2 0 .3-.1l.2-.2s.1-.2.1-.3v-.6l-.1-.2-.2-.2s-.2-.1-.3-.1h-.2s-.1 0-.2.1-.1 0-.1.1-.1.1-.1.1h-.6z"/>', s, c);
-const icoGames = (s, c) => icoWrapper('<path d="M15 7.5V2H9v5.5l3 3 3-3zM7.5 9H2v6h5.5l3-3-3-3zM9 16.5V22h6v-5.5l-3-3-3 3zM16.5 9l-3 3 3 3H22V9h-5.5z"/>', s, c);
-const icoHd = (s, c) => icoWrapper('<path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 12H9.5v-2h-2v2H6V9h1.5v2.5h2V9H11v6zm2-6h4c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1h-4V9zm1.5 4.5h2v-3h-2v3z"/>', s, c);
-const icoHearing = (s, c) => icoWrapper('<path d="M17 20c-.29 0-.56-.06-.76-.15-.71-.37-1.21-.88-1.71-2.38-.51-1.56-1.47-2.29-2.39-3-.79-.61-1.61-1.24-2.32-2.53C9.29 10.98 9 9.93 9 9c0-2.8 2.2-5 5-5s5 2.2 5 5h2c0-3.93-3.07-7-7-7S7 5.07 7 9c0 1.26.38 2.65 1.07 3.9.91 1.65 1.98 2.48 2.85 3.15.81.62 1.39 1.07 1.71 2.05.6 1.82 1.37 2.84 2.73 3.55.51.23 1.07.35 1.64.35 2.21 0 4-1.79 4-4h-2c0 1.1-.9 2-2 2zM7.64 2.64L6.22 1.22C4.23 3.21 3 5.96 3 9s1.23 5.79 3.22 7.78l1.41-1.41C6.01 13.74 5 11.49 5 9s1.01-4.74 2.64-6.36zM11.5 9c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5z"/>', s, c);
-const icoHighQuality = (s, c) => icoWrapper('<path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 11H9.5v-2h-2v2H6V9h1.5v2.5h2V9H11v6zm7-1c0 .55-.45 1-1 1h-.75v1.5h-1.5V15H14c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v4zm-3.5-.5h2v-3h-2v3z"/>', s, c);
-const icoLibraryAdd = (s, c) => icoWrapper('<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/>', s, c);
-const icoLibraryBooks = (s, c) => icoWrapper('<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>', s, c);
-const icoLibraryMusic = (s, c) => icoWrapper('<path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 5h-3v5.5c0 1.38-1.12 2.5-2.5 2.5S10 13.88 10 12.5s1.12-2.5 2.5-2.5c.57 0 1.08.19 1.5.51V5h4v2zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/>', s, c);
-const icoLoop = (s, c) => icoWrapper('<path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>', s, c);
-const icoMic = (s, c) => icoWrapper('<path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>', s, c);
-const icoMicNone = (s, c) => icoWrapper('<path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1.2-9.1c0-.66.54-1.2 1.2-1.2.66 0 1.2.54 1.2 1.2l-.01 6.2c0 .66-.53 1.2-1.19 1.2-.66 0-1.2-.54-1.2-1.2V4.9zm6.5 6.1c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>', s, c);
-const icoMicOff = (s, c) => icoWrapper('<path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.13 1.77-.45 2.54-.9L19.73 21 21 19.73 4.27 3z"/>', s, c);
-const icoMovie = (s, c) => icoWrapper('<path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>', s, c);
-const icoMusicVideo = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3 .35 0 .69.07 1 .18V6h5v2h-3v7.03c-.02 1.64-1.35 2.97-3 2.97-1.66 0-3-1.34-3-3z"/>', s, c);
-const icoNewReleases = (s, c) => icoWrapper('<path d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"/>', s, c);
-const icoNotInterested = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/>', s, c);
-const icoNote = (s, c) => icoWrapper('<path d="M22 10l-6-6H4c-1.1 0-2 .9-2 2v12.01c0 1.1.9 1.99 2 1.99l16-.01c1.1 0 2-.89 2-1.99v-8zm-7-4.5l5.5 5.5H15V5.5z"/>', s, c);
-const icoPause = (s, c) => icoWrapper('<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>', s, c);
-const icoPauseCircleFilled = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>', s, c);
-const icoPauseCircleOutline = (s, c) => icoWrapper('<path d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z"/>', s, c);
-const icoPlayArrow = (s, c) => icoWrapper('<path d="M8 5v14l11-7z"/>', s, c);
-const icoPlayCircleFilled = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>', s, c);
-const icoPlayCircleOutline = (s, c) => icoWrapper('<path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoPlaylistAdd = (s, c) => icoWrapper('<path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/>', s, c);
-const icoPlaylistAddCheck = (s, c) => icoWrapper('<path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zM2 16h8v-2H2v2zm19.5-4.5L23 13l-6.99 7-4.51-4.5L13 14l3.01 3 5.49-5.5z"/>', s, c);
-const icoPlaylistPlay = (s, c) => icoWrapper('<path d="M19 9H2v2h17V9zm0-4H2v2h17V5zM2 15h13v-2H2v2zm15-2v6l5-3-5-3z"/>', s, c);
-const icoQueue = (s, c) => icoWrapper('<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/>', s, c);
-const icoQueueMusic = (s, c) => icoWrapper('<path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/>', s, c);
-const icoQueuePlayNext = (s, c) => icoWrapper('<path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h2v-2H3V5h18v8h2V5c0-1.11-.9-2-2-2zm-8 7V7h-2v3H8v2h3v3h2v-3h3v-2h-3zm11 8l-4.5 4.5L18 21l3-3-3-3 1.5-1.5L24 18z"/>', s, c);
-const icoRadio = (s, c) => icoWrapper('<path d="M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.89 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.11-.89-2-2-2H8.3l8.26-3.34L15.88 1 3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-2h-2v2H4V8h16v4z"/>', s, c);
-const icoRecentActors = (s, c) => icoWrapper('<path d="M21 5v14h2V5h-2zm-4 14h2V5h-2v14zM14 5H2c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6c0-.55-.45-1-1-1zM8 7.75c1.24 0 2.25 1.01 2.25 2.25S9.24 12.25 8 12.25 5.75 11.24 5.75 10 6.76 7.75 8 7.75zM12.5 17h-9v-.75c0-1.5 3-2.25 4.5-2.25s4.5.75 4.5 2.25V17z"/>', s, c);
-const icoRemoveFromQueue = (s, c) => icoWrapper('<path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-7v2H8v-2h8z"/>', s, c);
-const icoRepeat = (s, c) => icoWrapper('<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>', s, c);
-const icoRepeatOne = (s, c) => icoWrapper('<path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4zm-4-2V9h-1l-2 1v1h1.5v4H13z"/>', s, c);
-const icoReplay_10 = (s, c) => icoWrapper('<path d="M12 5V1L7 6l5 5V7c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8zm-1.1 11H10v-3.3L9 13v-.7l1.8-.6h.1V16zm4.3-1.8c0 .3 0 .6-.1.8l-.3.6s-.3.3-.5.3-.4.1-.6.1-.4 0-.6-.1-.3-.2-.5-.3-.2-.3-.3-.6-.1-.5-.1-.8v-.7c0-.3 0-.6.1-.8l.3-.6s.3-.3.5-.3.4-.1.6-.1.4 0 .6.1c.2.1.3.2.5.3s.2.3.3.6.1.5.1.8v.7zm-.9-.8v-.5s-.1-.2-.1-.3-.1-.1-.2-.2-.2-.1-.3-.1-.2 0-.3.1l-.2.2s-.1.2-.1.3v2s.1.2.1.3.1.1.2.2.2.1.3.1.2 0 .3-.1l.2-.2s.1-.2.1-.3v-1.5z"/>', s, c);
-const icoReplay = (s, c) => icoWrapper('<path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>', s, c);
-const icoReplay_30 = (s, c) => icoWrapper('<path d="M12 5V1L7 6l5 5V7c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8zm-2.4 8.5h.4c.2 0 .4-.1.5-.2s.2-.2.2-.4v-.2s-.1-.1-.1-.2-.1-.1-.2-.1h-.5s-.1.1-.2.1-.1.1-.1.2v.2h-1c0-.2 0-.3.1-.5s.2-.3.3-.4.3-.2.4-.2.4-.1.5-.1c.2 0 .4 0 .6.1s.3.1.5.2.2.2.3.4.1.3.1.5v.3s-.1.2-.1.3-.1.2-.2.2-.2.1-.3.2c.2.1.4.2.5.4s.2.4.2.6c0 .2 0 .4-.1.5s-.2.3-.3.4-.3.2-.5.2-.4.1-.6.1c-.2 0-.4 0-.5-.1s-.3-.1-.5-.2-.2-.2-.3-.4-.1-.4-.1-.6h.8v.2s.1.1.1.2.1.1.2.1h.5s.1-.1.2-.1.1-.1.1-.2v-.5s-.1-.1-.1-.2-.1-.1-.2-.1h-.6v-.7zm5.7.7c0 .3 0 .6-.1.8l-.3.6s-.3.3-.5.3-.4.1-.6.1-.4 0-.6-.1-.3-.2-.5-.3-.2-.3-.3-.6-.1-.5-.1-.8v-.7c0-.3 0-.6.1-.8l.3-.6s.3-.3.5-.3.4-.1.6-.1.4 0 .6.1.3.2.5.3.2.3.3.6.1.5.1.8v.7zm-.8-.8v-.5c0-.1-.1-.2-.1-.3s-.1-.1-.2-.2-.2-.1-.3-.1-.2 0-.3.1l-.2.2s-.1.2-.1.3v2s.1.2.1.3.1.1.2.2.2.1.3.1.2 0 .3-.1l.2-.2s.1-.2.1-.3v-1.5z"/>', s, c);
-const icoReplay_5 = (s, c) => icoWrapper('<path d="M12 5V1L7 6l5 5V7c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8zm-1.3 8.9l.2-2.2h2.4v.7h-1.7l-.1.9s.1 0 .1-.1.1 0 .1-.1.1 0 .2 0h.2c.2 0 .4 0 .5.1s.3.2.4.3.2.3.3.5.1.4.1.6c0 .2 0 .4-.1.5s-.1.3-.3.5-.3.2-.4.3-.4.1-.6.1c-.2 0-.4 0-.5-.1s-.3-.1-.5-.2-.2-.2-.3-.4-.1-.3-.1-.5h.8c0 .2.1.3.2.4s.2.1.4.1c.1 0 .2 0 .3-.1l.2-.2s.1-.2.1-.3v-.6l-.1-.2-.2-.2s-.2-.1-.3-.1h-.2s-.1 0-.2.1-.1 0-.1.1-.1.1-.1.1h-.7z"/>', s, c);
-const icoShuffle = (s, c) => icoWrapper('<path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>', s, c);
-const icoSkipNext = (s, c) => icoWrapper('<path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>', s, c);
-const icoSkipPrevious = (s, c) => icoWrapper('<path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>', s, c);
-const icoSlowMotionVideo = (s, c) => icoWrapper('<path d="M13.05 9.79L10 7.5v9l3.05-2.29L16 12zm0 0L10 7.5v9l3.05-2.29L16 12zm0 0L10 7.5v9l3.05-2.29L16 12zM11 4.07V2.05c-2.01.2-3.84 1-5.32 2.21L7.1 5.69c1.11-.86 2.44-1.44 3.9-1.62zM5.69 7.1L4.26 5.68C3.05 7.16 2.25 8.99 2.05 11h2.02c.18-1.46.76-2.79 1.62-3.9zM4.07 13H2.05c.2 2.01 1 3.84 2.21 5.32l1.43-1.43c-.86-1.1-1.44-2.43-1.62-3.89zm1.61 6.74C7.16 20.95 9 21.75 11 21.95v-2.02c-1.46-.18-2.79-.76-3.9-1.62l-1.42 1.43zM22 12c0 5.16-3.92 9.42-8.95 9.95v-2.02C16.97 19.41 20 16.05 20 12s-3.03-7.41-6.95-7.93V2.05C18.08 2.58 22 6.84 22 12z"/>', s, c);
-const icoSnooze = (s, c) => icoWrapper('<path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-3-9h3.63L9 15.2V17h6v-2h-3.63L15 10.8V9H9v2z"/>', s, c);
-const icoSortByAlpha = (s, c) => icoWrapper('<path d="M14.94 4.66h-4.72l2.36-2.36zm-4.69 14.71h4.66l-2.33 2.33zM6.1 6.27L1.6 17.73h1.84l.92-2.45h5.11l.92 2.45h1.84L7.74 6.27H6.1zm-1.13 7.37l1.94-5.18 1.94 5.18H4.97zm10.76 2.5h6.12v1.59h-8.53v-1.29l5.92-8.56h-5.88v-1.6h8.3v1.26l-5.93 8.6z"/>', s, c);
-const icoStop = (s, c) => icoWrapper('<path d="M6 6h12v12H6z"/>', s, c);
-const icoSubscriptions = (s, c) => icoWrapper('<path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4l-6-3.27v6.53L16 16z"/>', s, c);
-const icoSubtitles = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"/>', s, c);
-const icoSurroundSound = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.76 16.24l-1.41 1.41C4.78 16.1 4 14.05 4 12c0-2.05.78-4.1 2.34-5.66l1.41 1.41C6.59 8.93 6 10.46 6 12s.59 3.07 1.76 4.24zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm5.66 1.66l-1.41-1.41C17.41 15.07 18 13.54 18 12s-.59-3.07-1.76-4.24l1.41-1.41C19.22 7.9 20 9.95 20 12c0 2.05-.78 4.1-2.34 5.66zM12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoVideoCall = (s, c) => icoWrapper('<path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"/>', s, c);
-const icoVideoLabel = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H3V5h18v11z"/>', s, c);
-const icoVideoLibrary = (s, c) => icoWrapper('<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"/>', s, c);
-const icoVideocam = (s, c) => icoWrapper('<path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>', s, c);
-const icoVideocamOff = (s, c) => icoWrapper('<path d="M21 6.5l-4 4V7c0-.55-.45-1-1-1H9.82L21 17.18V6.5zM3.27 2L2 3.27 4.73 6H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.21 0 .39-.08.54-.18L19.73 21 21 19.73 3.27 2z"/>', s, c);
-const icoVolumeDown = (s, c) => icoWrapper('<path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z"/>', s, c);
-const icoVolumeMute = (s, c) => icoWrapper('<path d="M7 9v6h4l5 5V4l-5 5H7z"/>', s, c);
-const icoVolumeOff = (s, c) => icoWrapper('<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>', s, c);
-const icoVolumeUp = (s, c) => icoWrapper('<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>', s, c);
-const icoWeb = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>', s, c);
-const icoWebAsset = (s, c) => icoWrapper('<path fill="#010101" d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm0 14H5V8h14v10z"/>', s, c);
-const icoBusiness = (s, c) => icoWrapper('<path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>', s, c);
-const icoCall = (s, c) => icoWrapper('<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>', s, c);
-const icoCallEnd = (s, c) => icoWrapper('<path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08c-.18-.17-.29-.42-.29-.7 0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/>', s, c);
-const icoCallMade = (s, c) => icoWrapper('<path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5z"/>', s, c);
-const icoCallMerge = (s, c) => icoWrapper('<path d="M17 20.41L18.41 19 15 15.59 13.59 17 17 20.41zM7.5 8H11v5.59L5.59 19 7 20.41l6-6V8h3.5L12 3.5 7.5 8z"/>', s, c);
-const icoCallMissed = (s, c) => icoWrapper('<path d="M19.59 7L12 14.59 6.41 9H11V7H3v8h2v-4.59l7 7 9-9z"/>', s, c);
-const icoCallMissedOutgoing = (s, c) => icoWrapper('<path d="M3 8.41l9 9 7-7V15h2V7h-8v2h4.59L12 14.59 4.41 7 3 8.41z"/>', s, c);
-const icoCallReceived = (s, c) => icoWrapper('<path d="M20 5.41L18.59 4 7 15.59V9H5v10h10v-2H8.41z"/>', s, c);
-const icoCallSplit = (s, c) => icoWrapper('<path d="M14 4l2.29 2.29-2.88 2.88 1.42 1.42 2.88-2.88L20 10V4zm-4 0H4v6l2.29-2.29 4.71 4.7V20h2v-8.41l-5.29-5.3z"/>', s, c);
-const icoChat = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>', s, c);
-const icoChatBubble = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>', s, c);
-const icoChatBubbleOutline = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>', s, c);
-const icoClearAll = (s, c) => icoWrapper('<path d="M5 13h14v-2H5v2zm-2 4h14v-2H3v2zM7 7v2h14V7H7z"/>', s, c);
-const icoComment = (s, c) => icoWrapper('<path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>', s, c);
-const icoContactMail = (s, c) => icoWrapper('<path d="M21 8V7l-3 2-3-2v1l3 2 3-2zm1-5H2C.9 3 0 3.9 0 5v14c0 1.1.9 2 2 2h20c1.1 0 1.99-.9 1.99-2L24 5c0-1.1-.9-2-2-2zM8 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H2v-1c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1zm8-6h-8V6h8v6z"/>', s, c);
-const icoContactPhone = (s, c) => icoWrapper('<path d="M22 3H2C.9 3 0 3.9 0 5v14c0 1.1.9 2 2 2h20c1.1 0 1.99-.9 1.99-2L24 5c0-1.1-.9-2-2-2zM8 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H2v-1c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1zm3.85-4h1.64L21 16l-1.99 1.99c-1.31-.98-2.28-2.38-2.73-3.99-.18-.64-.28-1.31-.28-2s.1-1.36.28-2c.45-1.62 1.42-3.01 2.73-3.99L21 8l-1.51 2h-1.64c-.22.63-.35 1.3-.35 2s.13 1.37.35 2z"/>', s, c);
-const icoContacts = (s, c) => icoWrapper('<path d="M20 0H4v2h16V0zM4 24h16v-2H4v2zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25s-1.01 2.25-2.25 2.25S9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-1.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z"/>', s, c);
-const icoDialerSip = (s, c) => icoWrapper('<path d="M17 3h-1v5h1V3zm-2 2h-2V4h2V3h-3v3h2v1h-2v1h3V5zm3-2v5h1V6h2V3h-3zm2 2h-1V4h1v1zm0 10.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.01.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.27-.26.35-.65.24-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>', s, c);
-const icoDialpad = (s, c) => icoWrapper('<path d="M12 19c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 1c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12-8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoEmail = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>', s, c);
-const icoForum = (s, c) => icoWrapper('<path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/>', s, c);
-const icoImportContacts = (s, c) => icoWrapper('<path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/>', s, c);
-const icoImportExport = (s, c) => icoWrapper('<path d="M9 3L5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z"/>', s, c);
-const icoInvertColorsOff = (s, c) => icoWrapper('<path d="M20.65 20.87l-2.35-2.35-6.3-6.29-3.56-3.57-1.42-1.41L4.27 4.5 3 5.77l2.78 2.78c-2.55 3.14-2.36 7.76.56 10.69C7.9 20.8 9.95 21.58 12 21.58c1.79 0 3.57-.59 5.03-1.78l2.7 2.7L21 21.23l-.35-.36zM12 19.59c-1.6 0-3.11-.62-4.24-1.76C6.62 16.69 6 15.19 6 13.59c0-1.32.43-2.57 1.21-3.6L12 14.77v4.82zM12 5.1v4.58l7.25 7.26c1.37-2.96.84-6.57-1.6-9.01L12 2.27l-3.7 3.7 1.41 1.41L12 5.1z"/>', s, c);
-const icoLiveHelp = (s, c) => icoWrapper('<path d="M19 2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 16h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>', s, c);
-const icoLocationOff = (s, c) => icoWrapper('<path d="M12 6.5c1.38 0 2.5 1.12 2.5 2.5 0 .74-.33 1.39-.83 1.85l3.63 3.63c.98-1.86 1.7-3.8 1.7-5.48 0-3.87-3.13-7-7-7-1.98 0-3.76.83-5.04 2.15l3.19 3.19c.46-.52 1.11-.84 1.85-.84zm4.37 9.6l-4.63-4.63-.11-.11L3.27 3 2 4.27l3.18 3.18C5.07 7.95 5 8.47 5 9c0 5.25 7 13 7 13s1.67-1.85 3.38-4.35L18.73 21 20 19.73l-3.63-3.63z"/>', s, c);
-const icoLocationOn = (s, c) => icoWrapper('<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>', s, c);
-const icoMailOutline = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>', s, c);
-const icoMessage = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>', s, c);
-const icoNoSim = (s, c) => icoWrapper('<path d="M18.99 5c0-1.1-.89-2-1.99-2h-7L7.66 5.34 19 16.68 18.99 5zM3.65 3.88L2.38 5.15 5 7.77V19c0 1.1.9 2 2 2h10.01c.35 0 .67-.1.96-.26l1.88 1.88 1.27-1.27L3.65 3.88z"/>', s, c);
-const icoPhone = (s, c) => icoWrapper('<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>', s, c);
-const icoPhonelinkErase = (s, c) => icoWrapper('<path d="M13 8.2l-1-1-4 4-4-4-1 1 4 4-4 4 1 1 4-4 4 4 1-1-4-4 4-4zM19 1H9c-1.1 0-2 .9-2 2v3h2V4h10v16H9v-2H7v3c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2z"/>', s, c);
-const icoPhonelinkLock = (s, c) => icoWrapper('<path d="M19 1H9c-1.1 0-2 .9-2 2v3h2V4h10v16H9v-2H7v3c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm-8.2 10V9.5C10.8 8.1 9.4 7 8 7S5.2 8.1 5.2 9.5V11c-.6 0-1.2.6-1.2 1.2v3.5c0 .7.6 1.3 1.2 1.3h5.5c.7 0 1.3-.6 1.3-1.2v-3.5c0-.7-.6-1.3-1.2-1.3zm-1.3 0h-3V9.5c0-.8.7-1.3 1.5-1.3s1.5.5 1.5 1.3V11z"/>', s, c);
-const icoPhonelinkRing = (s, c) => icoWrapper('<path d="M20.1 7.7l-1 1c1.8 1.8 1.8 4.6 0 6.5l1 1c2.5-2.3 2.5-6.1 0-8.5zM18 9.8l-1 1c.5.7.5 1.6 0 2.3l1 1c1.2-1.2 1.2-3 0-4.3zM14 1H4c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 19H4V4h10v16z"/>', s, c);
-const icoPhonelinkSetup = (s, c) => icoWrapper('<path d="M11.8 12.5v-1l1.1-.8c.1-.1.1-.2.1-.3l-1-1.7c-.1-.1-.2-.2-.3-.1l-1.3.4c-.3-.2-.6-.4-.9-.5l-.2-1.3c0-.1-.1-.2-.3-.2H7c-.1 0-.2.1-.3.2l-.2 1.3c-.3.1-.6.3-.9.5l-1.3-.5c-.1 0-.2 0-.3.1l-1 1.7c-.1.1 0 .2.1.3l1.1.8v1l-1.1.8c-.1.2-.1.3-.1.4l1 1.7c.1.1.2.2.3.1l1.4-.4c.3.2.6.4.9.5l.2 1.3c-.1.1.1.2.2.2h2c.1 0 .2-.1.3-.2l.2-1.3c.3-.1.6-.3.9-.5l1.3.5c.1 0 .2 0 .3-.1l1-1.7c.1-.1 0-.2-.1-.3l-1.1-.9zM8 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM19 1H9c-1.1 0-2 .9-2 2v3h2V4h10v16H9v-2H7v3c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2z"/>', s, c);
-const icoPortableWifiOff = (s, c) => icoWrapper('<path d="M17.56 14.24c.28-.69.44-1.45.44-2.24 0-3.31-2.69-6-6-6-.79 0-1.55.16-2.24.44l1.62 1.62c.2-.03.41-.06.62-.06 2.21 0 4 1.79 4 4 0 .21-.02.42-.05.63l1.61 1.61zM12 4c4.42 0 8 3.58 8 8 0 1.35-.35 2.62-.95 3.74l1.47 1.47C21.46 15.69 22 13.91 22 12c0-5.52-4.48-10-10-10-1.91 0-3.69.55-5.21 1.47l1.46 1.46C9.37 4.34 10.65 4 12 4zM3.27 2.5L2 3.77l2.1 2.1C2.79 7.57 2 9.69 2 12c0 3.7 2.01 6.92 4.99 8.65l1-1.73C5.61 17.53 4 14.96 4 12c0-1.76.57-3.38 1.53-4.69l1.43 1.44C6.36 9.68 6 10.8 6 12c0 2.22 1.21 4.15 3 5.19l1-1.74c-1.19-.7-2-1.97-2-3.45 0-.65.17-1.25.44-1.79l1.58 1.58L10 12c0 1.1.9 2 2 2l.21-.02.01.01 7.51 7.51L21 20.23 4.27 3.5l-1-1z"/>', s, c);
-const icoPresentToAll = (s, c) => icoWrapper('<path d="M21 3H3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 16.02H3V4.98h18v14.04zM10 12H8l4-4 4 4h-2v4h-4v-4z"/>', s, c);
-const icoRingVolume = (s, c) => icoWrapper('<path d="M23.71 16.67C20.66 13.78 16.54 12 12 12 7.46 12 3.34 13.78.29 16.67c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73s3.15.25 4.6.72v3.1c0 .39.23.74.56.9.98.49 1.87 1.12 2.66 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71 0-.27-.11-.52-.29-.7zM21.16 6.26l-1.41-1.41-3.56 3.55 1.41 1.41s3.45-3.52 3.56-3.55zM13 2h-2v5h2V2zM6.4 9.81L7.81 8.4 4.26 4.84 2.84 6.26c.11.03 3.56 3.55 3.56 3.55z"/>', s, c);
-const icoRssFeed = (s, c) => icoWrapper('<path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>', s, c);
-const icoScreenShare = (s, c) => icoWrapper('<path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.11-.9-2-2-2H4c-1.11 0-2 .89-2 2v10c0 1.1.89 2 2 2H0v2h24v-2h-4zm-7-3.53v-2.19c-2.78 0-4.61.85-6 2.72.56-2.67 2.11-5.33 6-5.87V7l4 3.73-4 3.74z"/>', s, c);
-const icoSpeakerPhone = (s, c) => icoWrapper('<path d="M7 7.07L8.43 8.5c.91-.91 2.18-1.48 3.57-1.48s2.66.57 3.57 1.48L17 7.07C15.72 5.79 13.95 5 12 5s-3.72.79-5 2.07zM12 1C8.98 1 6.24 2.23 4.25 4.21l1.41 1.41C7.28 4 9.53 3 12 3s4.72 1 6.34 2.62l1.41-1.41C17.76 2.23 15.02 1 12 1zm2.86 9.01L9.14 10C8.51 10 8 10.51 8 11.14v9.71c0 .63.51 1.14 1.14 1.14h5.71c.63 0 1.14-.51 1.14-1.14v-9.71c.01-.63-.5-1.13-1.13-1.13zM15 20H9v-8h6v8z"/>', s, c);
-const icoStayCurrentLandscape = (s, c) => icoWrapper('<path d="M1.01 7L1 17c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H3c-1.1 0-1.99.9-1.99 2zM19 7v10H5V7h14z"/>', s, c);
-const icoStayCurrentPortrait = (s, c) => icoWrapper('<path d="M17 1.01L7 1c-1.1 0-1.99.9-1.99 2v18c0 1.1.89 2 1.99 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>', s, c);
-const icoStayPrimaryLandscape = (s, c) => icoWrapper('<path d="M1.01 7L1 17c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H3c-1.1 0-1.99.9-1.99 2zM19 7v10H5V7h14z"/>', s, c);
-const icoStayPrimaryPortrait = (s, c) => icoWrapper('<path d="M17 1.01L7 1c-1.1 0-1.99.9-1.99 2v18c0 1.1.89 2 1.99 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>', s, c);
-const icoStopScreenShare = (s, c) => icoWrapper('<path d="M21.22 18.02l2 2H24v-2h-2.78zm.77-2l.01-10c0-1.11-.9-2-2-2H7.22l5.23 5.23c.18-.04.36-.07.55-.1V7.02l4 3.73-1.58 1.47 5.54 5.54c.61-.33 1.03-.99 1.03-1.74zM2.39 1.73L1.11 3l1.54 1.54c-.4.36-.65.89-.65 1.48v10c0 1.1.89 2 2 2H0v2h18.13l2.71 2.71 1.27-1.27L2.39 1.73zM7 15.02c.31-1.48.92-2.95 2.07-4.06l1.59 1.59c-1.54.38-2.7 1.18-3.66 2.47z"/>', s, c);
-const icoSwapCalls = (s, c) => icoWrapper('<path d="M18 4l-4 4h3v7c0 1.1-.9 2-2 2s-2-.9-2-2V8c0-2.21-1.79-4-4-4S5 5.79 5 8v7H2l4 4 4-4H7V8c0-1.1.9-2 2-2s2 .9 2 2v7c0 2.21 1.79 4 4 4s4-1.79 4-4V8h3l-4-4z"/>', s, c);
-const icoTextsms = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>', s, c);
-const icoVoicemail = (s, c) => icoWrapper('<path d="M18.5 6C15.46 6 13 8.46 13 11.5c0 1.33.47 2.55 1.26 3.5H9.74c.79-.95 1.26-2.17 1.26-3.5C11 8.46 8.54 6 5.5 6S0 8.46 0 11.5 2.46 17 5.5 17h13c3.04 0 5.5-2.46 5.5-5.5S21.54 6 18.5 6zm-13 9C3.57 15 2 13.43 2 11.5S3.57 8 5.5 8 9 9.57 9 11.5 7.43 15 5.5 15zm13 0c-1.93 0-3.5-1.57-3.5-3.5S16.57 8 18.5 8 22 9.57 22 11.5 20.43 15 18.5 15z"/>', s, c);
-const icoVpnKey = (s, c) => icoWrapper('<path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>', s, c);
-const icoAdd = (s, c) => icoWrapper('<path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>', s, c);
-const icoAddBox = (s, c) => icoWrapper('<path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>', s, c);
-const icoAddCircle = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>', s, c);
-const icoAddCircleOutline = (s, c) => icoWrapper('<path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoArchive = (s, c) => icoWrapper('<path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z"/>', s, c);
-const icoBackspace = (s, c) => icoWrapper('<path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 12.59L17.59 17 14 13.41 10.41 17 9 15.59 12.59 12 9 8.41 10.41 7 14 10.59 17.59 7 19 8.41 15.41 12 19 15.59z"/>', s, c);
-const icoBlock = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-4.42 3.58-8 8-8 1.85 0 3.55.63 4.9 1.69L5.69 16.9C4.63 15.55 4 13.85 4 12zm8 8c-1.85 0-3.55-.63-4.9-1.69L18.31 7.1C19.37 8.45 20 10.15 20 12c0 4.42-3.58 8-8 8z"/>', s, c);
-const icoClear = (s, c) => icoWrapper('<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>', s, c);
-const icoContentCopy = (s, c) => icoWrapper('<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>', s, c);
-const icoContentCut = (s, c) => icoWrapper('<path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z"/>', s, c);
-const icoContentPaste = (s, c) => icoWrapper('<path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/>', s, c);
-const icoCreate = (s, c) => icoWrapper('<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>', s, c);
-const icoDeleteSweep = (s, c) => icoWrapper('<path d="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12z"/>', s, c);
-const icoDrafts = (s, c) => icoWrapper('<path d="M21.99 8c0-.72-.37-1.35-.94-1.7L12 1 2.95 6.3C2.38 6.65 2 7.28 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zM12 13L3.74 7.84 12 3l8.26 4.84L12 13z"/>', s, c);
-const icoFilterList = (s, c) => icoWrapper('<path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>', s, c);
-const icoFlag = (s, c) => icoWrapper('<path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/>', s, c);
-const icoFontDownload = (s, c) => icoWrapper('<path d="M9.93 13.5h4.14L12 7.98zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.05 16.5l-1.14-3H9.17l-1.12 3H5.96l5.11-13h1.86l5.11 13h-2.09z"/>', s, c);
-const icoForward = (s, c) => icoWrapper('<path d="M12 8V4l8 8-8 8v-4H4V8z"/>', s, c);
-const icoGesture = (s, c) => icoWrapper('<path d="M4.59 6.89c.7-.71 1.4-1.35 1.71-1.22.5.2 0 1.03-.3 1.52-.25.42-2.86 3.89-2.86 6.31 0 1.28.48 2.34 1.34 2.98.75.56 1.74.73 2.64.46 1.07-.31 1.95-1.4 3.06-2.77 1.21-1.49 2.83-3.44 4.08-3.44 1.63 0 1.65 1.01 1.76 1.79-3.78.64-5.38 3.67-5.38 5.37 0 1.7 1.44 3.09 3.21 3.09 1.63 0 4.29-1.33 4.69-6.1H21v-2.5h-2.47c-.15-1.65-1.09-4.2-4.03-4.2-2.25 0-4.18 1.91-4.94 2.84-.58.73-2.06 2.48-2.29 2.72-.25.3-.68.84-1.11.84-.45 0-.72-.83-.36-1.92.35-1.09 1.4-2.86 1.85-3.52.78-1.14 1.3-1.92 1.3-3.28C8.95 3.69 7.31 3 6.44 3 5.12 3 3.97 4 3.72 4.25c-.36.36-.66.66-.88.93l1.75 1.71zm9.29 11.66c-.31 0-.74-.26-.74-.72 0-.6.73-2.2 2.87-2.76-.3 2.69-1.43 3.48-2.13 3.48z"/>', s, c);
-const icoInbox = (s, c) => icoWrapper('<path d="M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z"/>', s, c);
-const icoLink = (s, c) => icoWrapper('<path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>', s, c);
-const icoLowPriority = (s, c) => icoWrapper('<path d="M14 5h8v2h-8zm0 5.5h8v2h-8zm0 5.5h8v2h-8zM2 11.5C2 15.08 4.92 18 8.5 18H9v2l3-3-3-3v2h-.5C6.02 16 4 13.98 4 11.5S6.02 7 8.5 7H12V5H8.5C4.92 5 2 7.92 2 11.5z"/>', s, c);
-const icoMail = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>', s, c);
-const icoMarkunread = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>', s, c);
-const icoMoveToInbox = (s, c) => icoWrapper('<path d="M19 3H4.99c-1.11 0-1.98.9-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10zm-3-5h-2V7h-4v3H8l4 4 4-4z"/>', s, c);
-const icoNextWeek = (s, c) => icoWrapper('<path fill="#010101" d="M20 7h-4V5c0-.55-.22-1.05-.59-1.41C15.05 3.22 14.55 3 14 3h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm1 13.5l-1-1 3-3-3-3 1-1 4 4-4 4z"/>', s, c);
-const icoRedo = (s, c) => icoWrapper('<path d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"/>', s, c);
-const icoRemove = (s, c) => icoWrapper('<path d="M19 13H5v-2h14v2z"/>', s, c);
-const icoRemoveCircle = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/>', s, c);
-const icoRemoveCircleOutline = (s, c) => icoWrapper('<path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoReply = (s, c) => icoWrapper('<path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>', s, c);
-const icoReplyAll = (s, c) => icoWrapper('<path d="M7 8V5l-7 7 7 7v-3l-4-4 4-4zm6 1V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/>', s, c);
-const icoReport = (s, c) => icoWrapper('<path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z"/>', s, c);
-const icoSave = (s, c) => icoWrapper('<path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>', s, c);
-const icoSelectAll = (s, c) => icoWrapper('<path d="M3 5h2V3c-1.1 0-2 .9-2 2zm0 8h2v-2H3v2zm4 8h2v-2H7v2zM3 9h2V7H3v2zm10-6h-2v2h2V3zm6 0v2h2c0-1.1-.9-2-2-2zM5 21v-2H3c0 1.1.9 2 2 2zm-2-4h2v-2H3v2zM9 3H7v2h2V3zm2 18h2v-2h-2v2zm8-8h2v-2h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2zm0-12h2V7h-2v2zm0 8h2v-2h-2v2zm-4 4h2v-2h-2v2zm0-16h2V3h-2v2zM7 17h10V7H7v10zm2-8h6v6H9V9z"/>', s, c);
-const icoSend = (s, c) => icoWrapper('<path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>', s, c);
-const icoSort = (s, c) => icoWrapper('<path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/>', s, c);
-const icoTextFormat = (s, c) => icoWrapper('<path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/>', s, c);
-const icoUnarchive = (s, c) => icoWrapper('<path d="M20.55 5.22l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.15.55L3.46 5.22C3.17 5.57 3 6.01 3 6.5V19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.49-.17-.93-.45-1.28zM12 9.5l5.5 5.5H14v2h-4v-2H6.5L12 9.5zM5.12 5l.82-1h12l.93 1H5.12z"/>', s, c);
-const icoUndo = (s, c) => icoWrapper('<path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/>', s, c);
-const icoWeekend = (s, c) => icoWrapper('<path d="M21 10c-1.1 0-2 .9-2 2v3H5v-3c0-1.1-.9-2-2-2s-2 .9-2 2v5c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-5c0-1.1-.9-2-2-2zm-3-5H6c-1.1 0-2 .9-2 2v2.15c1.16.41 2 1.51 2 2.82V14h12v-2.03c0-1.3.84-2.4 2-2.82V7c0-1.1-.9-2-2-2z" fill="#010101"/>', s, c);
-const icoAccessAlarm = (s, c) => icoWrapper('<path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>', s, c);
-const icoAccessAlarms = (s, c) => icoWrapper('<path d="M22 5.7l-4.6-3.9-1.3 1.5 4.6 3.9L22 5.7zM7.9 3.4L6.6 1.9 2 5.7l1.3 1.5 4.6-3.8zM12.5 8H11v6l4.7 2.9.8-1.2-4-2.4V8zM12 4c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7z"/>', s, c);
-const icoAccessTime = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>', s, c);
-const icoAddAlarm = (s, c) => icoWrapper('<path d="M7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V9z"/>', s, c);
-const icoAirplanemodeActive = (s, c) => icoWrapper('<path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>', s, c);
-const icoAirplanemodeInactive = (s, c) => icoWrapper('<path d="M13 9V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5v3.68l7.83 7.83L21 16v-2l-8-5zM3 5.27l4.99 4.99L2 14v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-3.73L18.73 21 20 19.73 4.27 4 3 5.27z"/>', s, c);
-const icoBattery_20 = (s, c) => icoWrapper('<path fill-opacity=".3" d="M17 5.33C17 4.6 16.4 4 15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V17h10V5.33z"/>', s, c);
-const icoBattery_30 = (s, c) => icoWrapper('<path d="M7 15v5.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V15H7z"/>', s, c);
-const icoBattery_50 = (s, c) => icoWrapper('<path d="M7 13v7.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V13H7z"/>', s, c);
-const icoBattery_60 = (s, c) => icoWrapper('<path d="M7 11v9.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V11H7z"/>', s, c);
-const icoBattery_80 = (s, c) => icoWrapper('<path d="M7 9v11.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V9H7z"/>', s, c);
-const icoBattery_90 = (s, c) => icoWrapper('<path d="M7 8v12.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V8H7z"/>', s, c);
-const icoBatteryAlert = (s, c) => icoWrapper('<path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM13 18h-2v-2h2v2zm0-4h-2V9h2v5z"/>', s, c);
-const icoBatteryCharging_20 = (s, c) => icoWrapper('<path fill-opacity=".3" d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33V17h4v-2.5H9L13 7v5.5h2L12.6 17H17V5.33C17 4.6 16.4 4 15.67 4z"/>', s, c);
-const icoBatteryCharging_30 = (s, c) => icoWrapper('<path d="M11 20v-5.5H7v6.17C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V14.5h-3.07L11 20z"/>', s, c);
-const icoBatteryCharging_50 = (s, c) => icoWrapper('<path fill-opacity=".3" d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v8.17h2.53L13 7v5.5h2l-.53 1H17V5.33C17 4.6 16.4 4 15.67 4z"/>', s, c);
-const icoBatteryCharging_60 = (s, c) => icoWrapper('<path d="M13 12.5h2L11 20v-5.5H9l1.87-3.5H7v9.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V11h-4v1.5z"/>', s, c);
-const icoBatteryCharging_80 = (s, c) => icoWrapper('<path d="M13 12.5h2L11 20v-5.5H9L11.93 9H7v11.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V9h-4v3.5z"/>', s, c);
-const icoBatteryCharging_90 = (s, c) => icoWrapper('<path d="M13 12.5h2L11 20v-5.5H9L12.47 8H7v12.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V8h-4v4.5z"/>', s, c);
-const icoBatteryChargingFull = (s, c) => icoWrapper('<path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zM11 20v-5.5H9L13 7v5.5h2L11 20z"/>', s, c);
-const icoBatteryFull = (s, c) => icoWrapper('<path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>', s, c);
-const icoBatteryStd = (s, c) => icoWrapper('<path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>', s, c);
-const icoBatteryUnknown = (s, c) => icoWrapper('<path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4zm-2.72 13.95h-1.9v-1.9h1.9v1.9zm1.35-5.26s-.38.42-.67.71c-.48.48-.83 1.15-.83 1.6h-1.6c0-.83.46-1.52.93-2l.93-.94c.27-.27.44-.65.44-1.06 0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5H9c0-1.66 1.34-3 3-3s3 1.34 3 3c0 .66-.27 1.26-.7 1.69z"/>', s, c);
-const icoBluetooth = (s, c) => icoWrapper('<path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/>', s, c);
-const icoBluetoothConnected = (s, c) => icoWrapper('<path d="M7 12l-2-2-2 2 2 2 2-2zm10.71-4.29L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88zM19 10l-2 2 2 2 2-2-2-2z"/>', s, c);
-const icoBluetoothDisabled = (s, c) => icoWrapper('<path d="M13 5.83l1.88 1.88-1.6 1.6 1.41 1.41 3.02-3.02L12 2h-1v5.03l2 2v-3.2zM5.41 4L4 5.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l4.29-4.29 2.3 2.29L20 18.59 5.41 4zM13 18.17v-3.76l1.88 1.88L13 18.17z"/>', s, c);
-const icoBluetoothSearching = (s, c) => icoWrapper('<path d="M14.24 12.01l2.32 2.32c.28-.72.44-1.51.44-2.33 0-.82-.16-1.59-.43-2.31l-2.33 2.32zm5.29-5.3l-1.26 1.26c.63 1.21.98 2.57.98 4.02s-.36 2.82-.98 4.02l1.2 1.2c.97-1.54 1.54-3.36 1.54-5.31-.01-1.89-.55-3.67-1.48-5.19zm-3.82 1L10 2H9v7.59L4.41 5 3 6.41 8.59 12 3 17.59 4.41 19 9 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM11 5.83l1.88 1.88L11 9.59V5.83zm1.88 10.46L11 18.17v-3.76l1.88 1.88z"/>', s, c);
-const icoBrightnessAuto = (s, c) => icoWrapper('<path d="M10.85 12.65h2.3L12 9l-1.15 3.65zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM14.3 16l-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9z"/>', s, c);
-const icoBrightnessHigh = (s, c) => icoWrapper('<path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>', s, c);
-const icoBrightnessLow = (s, c) => icoWrapper('<path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>', s, c);
-const icoBrightnessMedium = (s, c) => icoWrapper('<path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18V6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"/>', s, c);
-const icoDataUsage = (s, c) => icoWrapper('<path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>', s, c);
-const icoDeveloperMode = (s, c) => icoWrapper('<path d="M7 5h10v2h2V3c0-1.1-.9-1.99-2-1.99L7 1c-1.1 0-2 .9-2 2v4h2V5zm8.41 11.59L20 12l-4.59-4.59L14 8.83 17.17 12 14 15.17l1.41 1.42zM10 15.17L6.83 12 10 8.83 8.59 7.41 4 12l4.59 4.59L10 15.17zM17 19H7v-2H5v4c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4h-2v2z"/>', s, c);
-const icoDevices = (s, c) => icoWrapper('<path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"/>', s, c);
-const icoDvr = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zm-2-9H8v2h11V8zm0 4H8v2h11v-2zM7 8H5v2h2V8zm0 4H5v2h2v-2z"/>', s, c);
-const icoGpsFixed = (s, c) => icoWrapper('<path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>', s, c);
-const icoGpsNotFixed = (s, c) => icoWrapper('<path d="M20.94 11c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>', s, c);
-const icoGpsOff = (s, c) => icoWrapper('<path d="M20.94 11c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06c-1.13.12-2.19.46-3.16.97l1.5 1.5C10.16 5.19 11.06 5 12 5c3.87 0 7 3.13 7 7 0 .94-.19 1.84-.52 2.65l1.5 1.5c.5-.96.84-2.02.97-3.15H23v-2h-2.06zM3 4.27l2.04 2.04C3.97 7.62 3.25 9.23 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c1.77-.2 3.38-.91 4.69-1.98L19.73 21 21 19.73 4.27 3 3 4.27zm13.27 13.27C15.09 18.45 13.61 19 12 19c-3.87 0-7-3.13-7-7 0-1.61.55-3.09 1.46-4.27l9.81 9.81z"/>', s, c);
-const icoGraphicEq = (s, c) => icoWrapper('<path d="M7 18h2V6H7v12zm4 4h2V2h-2v20zm-8-8h2v-4H3v4zm12 4h2V6h-2v12zm4-8v4h2v-4h-2z"/>', s, c);
-const icoLocationDisabled = (s, c) => icoWrapper('<path d="M20.94 11c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06c-1.13.12-2.19.46-3.16.97l1.5 1.5C10.16 5.19 11.06 5 12 5c3.87 0 7 3.13 7 7 0 .94-.19 1.84-.52 2.65l1.5 1.5c.5-.96.84-2.02.97-3.15H23v-2h-2.06zM3 4.27l2.04 2.04C3.97 7.62 3.25 9.23 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c1.77-.2 3.38-.91 4.69-1.98L19.73 21 21 19.73 4.27 3 3 4.27zm13.27 13.27C15.09 18.45 13.61 19 12 19c-3.87 0-7-3.13-7-7 0-1.61.55-3.09 1.46-4.27l9.81 9.81z"/>', s, c);
-const icoLocationSearching = (s, c) => icoWrapper('<path d="M20.94 11c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>', s, c);
-const icoNetworkCell = (s, c) => icoWrapper('<path d="M17 7L2 22h15z"/>', s, c);
-const icoNetworkWifi = (s, c) => icoWrapper('<path d="M3.53 10.95l8.46 10.54.01.01.01-.01 8.46-10.54C20.04 10.62 16.81 8 12 8c-4.81 0-8.04 2.62-8.47 2.95z"/>', s, c);
-const icoNfc = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H4V4h16v16zM18 6h-5c-1.1 0-2 .9-2 2v2.28c-.6.35-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.38-1-1.72V8h3v8H8V8h2V6H6v12h12V6z"/>', s, c);
-const icoScreenLockLandscape = (s, c) => icoWrapper('<path d="M21 5H3c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-2 12H5V7h14v10zm-9-1h4c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1v-1c0-1.11-.9-2-2-2-1.11 0-2 .9-2 2v1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1zm.8-6c0-.66.54-1.2 1.2-1.2.66 0 1.2.54 1.2 1.2v1h-2.4v-1z"/>', s, c);
-const icoScreenLockPortrait = (s, c) => icoWrapper('<path d="M10 16h4c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1v-1c0-1.11-.9-2-2-2-1.11 0-2 .9-2 2v1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1zm.8-6c0-.66.54-1.2 1.2-1.2.66 0 1.2.54 1.2 1.2v1h-2.4v-1zM17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/>', s, c);
-const icoScreenLockRotation = (s, c) => icoWrapper('<path d="M23.25 12.77l-2.57-2.57-1.41 1.41 2.22 2.22-5.66 5.66L4.51 8.17l5.66-5.66 2.1 2.1 1.41-1.41L11.23.75c-.59-.59-1.54-.59-2.12 0L2.75 7.11c-.59.59-.59 1.54 0 2.12l12.02 12.02c.59.59 1.54.59 2.12 0l6.36-6.36c.59-.59.59-1.54 0-2.12zM8.47 20.48C5.2 18.94 2.86 15.76 2.5 12H1c.51 6.16 5.66 11 11.95 11l.66-.03-3.81-3.82-1.33 1.33zM16 9h5c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1v-.5C21 1.12 19.88 0 18.5 0S16 1.12 16 2.5V3c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm.8-6.5c0-.94.76-1.7 1.7-1.7s1.7.76 1.7 1.7V3h-3.4v-.5z"/>', s, c);
-const icoScreenRotation = (s, c) => icoWrapper('<path d="M16.48 2.52c3.27 1.55 5.61 4.72 5.97 8.48h1.5C23.44 4.84 18.29 0 12 0l-.66.03 3.81 3.81 1.33-1.32zm-6.25-.77c-.59-.59-1.54-.59-2.12 0L1.75 8.11c-.59.59-.59 1.54 0 2.12l12.02 12.02c.59.59 1.54.59 2.12 0l6.36-6.36c.59-.59.59-1.54 0-2.12L10.23 1.75zm4.6 19.44L2.81 9.17l6.36-6.36 12.02 12.02-6.36 6.36zm-7.31.29C4.25 19.94 1.91 16.76 1.55 13H.05C.56 19.16 5.71 24 12 24l.66-.03-3.81-3.81-1.33 1.32z"/>', s, c);
-const icoSdStorage = (s, c) => icoWrapper('<path d="M18 2h-8L4.02 8 4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 6h-2V4h2v4zm3 0h-2V4h2v4zm3 0h-2V4h2v4z"/>', s, c);
-const icoSettingsSystemDaydream = (s, c) => icoWrapper('<path d="M9 16h6.5c1.38 0 2.5-1.12 2.5-2.5S16.88 11 15.5 11h-.05c-.24-1.69-1.69-3-3.45-3-1.4 0-2.6.83-3.16 2.02h-.16C7.17 10.18 6 11.45 6 13c0 1.66 1.34 3 3 3zM21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z"/>', s, c);
-const icoSignalCellular_0Bar = (s, c) => icoWrapper('<path fill-opacity=".3" d="M2 22h20V2z"/>', s, c);
-const icoSignalCellular_1Bar = (s, c) => icoWrapper('<path d="M12 12L2 22h10z"/>', s, c);
-const icoSignalCellular_2Bar = (s, c) => icoWrapper('<path d="M14 10L2 22h12z"/>', s, c);
-const icoSignalCellular_3Bar = (s, c) => icoWrapper('<path d="M17 7L2 22h15z"/>', s, c);
-const icoSignalCellular_4Bar = (s, c) => icoWrapper('<path d="M2 22h20V2z"/>', s, c);
-const icoSignalCellularConnectedNoInternet_0Bar = (s, c) => icoWrapper('<path d="M20 22h2v-2h-2v2zm0-12v8h2v-8h-2z"/>', s, c);
-const icoSignalCellularConnectedNoInternet_1Bar = (s, c) => icoWrapper('<path d="M20 10v8h2v-8h-2zm-8 12V12L2 22h10zm8 0h2v-2h-2v2z"/>', s, c);
-const icoSignalCellularConnectedNoInternet_2Bar = (s, c) => icoWrapper('<path d="M14 22V10L2 22h12zm6-12v8h2v-8h-2zm0 12h2v-2h-2v2z"/>', s, c);
-const icoSignalCellularConnectedNoInternet_3Bar = (s, c) => icoWrapper('<path d="M17 22V7L2 22h15zm3-12v8h2v-8h-2zm0 12h2v-2h-2v2z"/>', s, c);
-const icoSignalCellularConnectedNoInternet_4Bar = (s, c) => icoWrapper('<path d="M20 18h2v-8h-2v8zm0 4h2v-2h-2v2zM2 22h16V8h4V2L2 22z"/>', s, c);
-const icoSignalCellularNoSim = (s, c) => icoWrapper('<path d="M18.99 5c0-1.1-.89-2-1.99-2h-7L7.66 5.34 19 16.68 18.99 5zM3.65 3.88L2.38 5.15 5 7.77V19c0 1.1.9 2 2 2h10.01c.35 0 .67-.1.96-.26l1.88 1.88 1.27-1.27L3.65 3.88z"/>', s, c);
-const icoSignalCellularNull = (s, c) => icoWrapper('<path d="M20 6.83V20H6.83L20 6.83M22 2L2 22h20V2z"/>', s, c);
-const icoSignalCellularOff = (s, c) => icoWrapper('<path d="M21 1l-8.59 8.59L21 18.18V1zM4.77 4.5L3.5 5.77l6.36 6.36L1 21h17.73l2 2L22 21.73 4.77 4.5z"/>', s, c);
-const icoSignalWifi_0Bar = (s, c) => icoWrapper('<path fill-opacity=".3" d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/>', s, c);
-const icoSignalWifi_1Bar = (s, c) => icoWrapper('<path d="M6.67 14.86L12 21.49v.01l.01-.01 5.33-6.63C17.06 14.65 15.03 13 12 13s-5.06 1.65-5.33 1.86z"/>', s, c);
-const icoSignalWifi_1BarLock = (s, c) => icoWrapper('<path d="M6.7 14.9l5.3 6.6 3.5-4.3v-2.6c0-.2 0-.5.1-.7-.9-.5-2.2-.9-3.6-.9-3 0-5.1 1.7-5.3 1.9z"/>', s, c);
-const icoSignalWifi_2Bar = (s, c) => icoWrapper('<path d="M4.79 12.52l7.2 8.98H12l.01-.01 7.2-8.98C18.85 12.24 16.1 10 12 10s-6.85 2.24-7.21 2.52z"/>', s, c);
-const icoSignalWifi_2BarLock = (s, c) => icoWrapper('<path d="M4.8 12.5l7.2 9 3.5-4.4v-2.6c0-1.3.5-2.5 1.4-3.4C15.6 10.5 14 10 12 10c-4.1 0-6.8 2.2-7.2 2.5z"/>', s, c);
-const icoSignalWifi_3Bar = (s, c) => icoWrapper('<path d="M3.53 10.95l8.46 10.54.01.01.01-.01 8.46-10.54C20.04 10.62 16.81 8 12 8c-4.81 0-8.04 2.62-8.47 2.95z"/>', s, c);
-const icoSignalWifi_3BarLock = (s, c) => icoWrapper('<path d="M23 16v-1.5c0-1.4-1.1-2.5-2.5-2.5S18 13.1 18 14.5V16c-.5 0-1 .5-1 1v4c0 .5.5 1 1 1h5c.5 0 1-.5 1-1v-4c0-.5-.5-1-1-1zm-1 0h-3v-1.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5V16zm-10 5.5l3.5-4.3v-2.6c0-2.2 1.4-4 3.3-4.7C17.3 9 14.9 8 12 8c-4.8 0-8 2.6-8.5 2.9"/>', s, c);
-const icoSignalWifi_4Bar = (s, c) => icoWrapper('<path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/>', s, c);
-const icoSignalWifi_4BarLock = (s, c) => icoWrapper('<path d="M23 16v-1.5c0-1.4-1.1-2.5-2.5-2.5S18 13.1 18 14.5V16c-.5 0-1 .5-1 1v4c0 .5.5 1 1 1h5c.5 0 1-.5 1-1v-4c0-.5-.5-1-1-1zm-1 0h-3v-1.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5V16zm-6.5-1.5c0-2.8 2.2-5 5-5 .4 0 .7 0 1 .1L23.6 7c-.4-.3-4.9-4-11.6-4C5.3 3 .8 6.7.4 7L12 21.5l3.5-4.4v-2.6z"/>', s, c);
-const icoSignalWifiOff = (s, c) => icoWrapper('<path d="M23.64 7c-.45-.34-4.93-4-11.64-4-1.5 0-2.89.19-4.15.48L18.18 13.8 23.64 7zm-6.6 8.22L3.27 1.44 2 2.72l2.05 2.06C1.91 5.76.59 6.82.36 7l11.63 14.49.01.01.01-.01 3.9-4.86 3.32 3.32 1.27-1.27-3.46-3.46z"/>', s, c);
-const icoStorage = (s, c) => icoWrapper('<path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/>', s, c);
-const icoUsb = (s, c) => icoWrapper('<path d="M15 7v4h1v2h-3V5h2l-3-4-3 4h2v8H8v-2.07c.7-.37 1.2-1.08 1.2-1.93 0-1.21-.99-2.2-2.2-2.2-1.21 0-2.2.99-2.2 2.2 0 .85.5 1.56 1.2 1.93V13c0 1.11.89 2 2 2h3v3.05c-.71.37-1.2 1.1-1.2 1.95 0 1.22.99 2.2 2.2 2.2 1.21 0 2.2-.98 2.2-2.2 0-.85-.49-1.58-1.2-1.95V15h3c1.11 0 2-.89 2-2v-2h1V7h-4z"/>', s, c);
-const icoWallpaper = (s, c) => icoWrapper('<path d="M4 4h7V2H4c-1.1 0-2 .9-2 2v7h2V4zm6 9l-4 5h12l-3-4-2.03 2.71L10 13zm7-4.5c0-.83-.67-1.5-1.5-1.5S14 7.67 14 8.5s.67 1.5 1.5 1.5S17 9.33 17 8.5zM20 2h-7v2h7v7h2V4c0-1.1-.9-2-2-2zm0 18h-7v2h7c1.1 0 2-.9 2-2v-7h-2v7zM4 13H2v7c0 1.1.9 2 2 2h7v-2H4v-7z"/>', s, c);
-const icoWidgets = (s, c) => icoWrapper('<path d="M13 13v8h8v-8h-8zM3 21h8v-8H3v8zM3 3v8h8V3H3zm13.66-1.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65z"/>', s, c);
-const icoWifiLock = (s, c) => icoWrapper('<path d="M20.5 9.5c.28 0 .55.04.81.08L24 6c-3.34-2.51-7.5-4-12-4S3.34 3.49 0 6l12 16 3.5-4.67V14.5c0-2.76 2.24-5 5-5zM23 16v-1.5c0-1.38-1.12-2.5-2.5-2.5S18 13.12 18 14.5V16c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h5c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zm-1 0h-3v-1.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5V16z"/>', s, c);
-const icoWifiTethering = (s, c) => icoWrapper('<path d="M12 11c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 2c0-3.31-2.69-6-6-6s-6 2.69-6 6c0 2.22 1.21 4.15 3 5.19l1-1.74c-1.19-.7-2-1.97-2-3.45 0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.48-.81 2.75-2 3.45l1 1.74c1.79-1.04 3-2.97 3-5.19zM12 3C6.48 3 2 7.48 2 13c0 3.7 2.01 6.92 4.99 8.65l1-1.73C5.61 18.53 4 15.96 4 13c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.96-1.61 5.53-4 6.92l1 1.73c2.99-1.73 5-4.95 5-8.65 0-5.52-4.48-10-10-10z"/>', s, c);
-const icoAttachFile = (s, c) => icoWrapper('<path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/>', s, c);
-const icoAttachMoney = (s, c) => icoWrapper('<path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>', s, c);
-const icoBorderAll = (s, c) => icoWrapper('<path d="M3 3v18h18V3H3zm8 16H5v-6h6v6zm0-8H5V5h6v6zm8 8h-6v-6h6v6zm0-8h-6V5h6v6z"/>', s, c);
-const icoBorderBottom = (s, c) => icoWrapper('<path d="M9 11H7v2h2v-2zm4 4h-2v2h2v-2zM9 3H7v2h2V3zm4 8h-2v2h2v-2zM5 3H3v2h2V3zm8 4h-2v2h2V7zm4 4h-2v2h2v-2zm-4-8h-2v2h2V3zm4 0h-2v2h2V3zm2 10h2v-2h-2v2zm0 4h2v-2h-2v2zM5 7H3v2h2V7zm14-4v2h2V3h-2zm0 6h2V7h-2v2zM5 11H3v2h2v-2zM3 21h18v-2H3v2zm2-6H3v2h2v-2z"/>', s, c);
-const icoBorderClear = (s, c) => icoWrapper('<path d="M7 5h2V3H7v2zm0 8h2v-2H7v2zm0 8h2v-2H7v2zm4-4h2v-2h-2v2zm0 4h2v-2h-2v2zm-8 0h2v-2H3v2zm0-4h2v-2H3v2zm0-4h2v-2H3v2zm0-4h2V7H3v2zm0-4h2V3H3v2zm8 8h2v-2h-2v2zm8 4h2v-2h-2v2zm0-4h2v-2h-2v2zm0 8h2v-2h-2v2zm0-12h2V7h-2v2zm-8 0h2V7h-2v2zm8-6v2h2V3h-2zm-8 2h2V3h-2v2zm4 16h2v-2h-2v2zm0-8h2v-2h-2v2zm0-8h2V3h-2v2z"/>', s, c);
-const icoBorderColor = (s, c) => icoWrapper('<path fill-opacity=".36" d="M0 20h24v4H0z"/>', s, c);
-const icoBorderHorizontal = (s, c) => icoWrapper('<path d="M3 21h2v-2H3v2zM5 7H3v2h2V7zM3 17h2v-2H3v2zm4 4h2v-2H7v2zM5 3H3v2h2V3zm4 0H7v2h2V3zm8 0h-2v2h2V3zm-4 4h-2v2h2V7zm0-4h-2v2h2V3zm6 14h2v-2h-2v2zm-8 4h2v-2h-2v2zm-8-8h18v-2H3v2zM19 3v2h2V3h-2zm0 6h2V7h-2v2zm-8 8h2v-2h-2v2zm4 4h2v-2h-2v2zm4 0h2v-2h-2v2z"/>', s, c);
-const icoBorderInner = (s, c) => icoWrapper('<path d="M3 21h2v-2H3v2zm4 0h2v-2H7v2zM5 7H3v2h2V7zM3 17h2v-2H3v2zM9 3H7v2h2V3zM5 3H3v2h2V3zm12 0h-2v2h2V3zm2 6h2V7h-2v2zm0-6v2h2V3h-2zm-4 18h2v-2h-2v2zM13 3h-2v8H3v2h8v8h2v-8h8v-2h-8V3zm6 18h2v-2h-2v2zm0-4h2v-2h-2v2z"/>', s, c);
-const icoBorderLeft = (s, c) => icoWrapper('<path d="M11 21h2v-2h-2v2zm0-4h2v-2h-2v2zm0-12h2V3h-2v2zm0 4h2V7h-2v2zm0 4h2v-2h-2v2zm-4 8h2v-2H7v2zM7 5h2V3H7v2zm0 8h2v-2H7v2zm-4 8h2V3H3v18zM19 9h2V7h-2v2zm-4 12h2v-2h-2v2zm4-4h2v-2h-2v2zm0-14v2h2V3h-2zm0 10h2v-2h-2v2zm0 8h2v-2h-2v2zm-4-8h2v-2h-2v2zm0-8h2V3h-2v2z"/>', s, c);
-const icoBorderOuter = (s, c) => icoWrapper('<path d="M13 7h-2v2h2V7zm0 4h-2v2h2v-2zm4 0h-2v2h2v-2zM3 3v18h18V3H3zm16 16H5V5h14v14zm-6-4h-2v2h2v-2zm-4-4H7v2h2v-2z"/>', s, c);
-const icoBorderRight = (s, c) => icoWrapper('<path d="M7 21h2v-2H7v2zM3 5h2V3H3v2zm4 0h2V3H7v2zm0 8h2v-2H7v2zm-4 8h2v-2H3v2zm8 0h2v-2h-2v2zm-8-8h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm8 8h2v-2h-2v2zm4-4h2v-2h-2v2zm4-10v18h2V3h-2zm-4 18h2v-2h-2v2zm0-16h2V3h-2v2zm-4 8h2v-2h-2v2zm0-8h2V3h-2v2zm0 4h2V7h-2v2z"/>', s, c);
-const icoBorderStyle = (s, c) => icoWrapper('<path d="M15 21h2v-2h-2v2zm4 0h2v-2h-2v2zM7 21h2v-2H7v2zm4 0h2v-2h-2v2zm8-4h2v-2h-2v2zm0-4h2v-2h-2v2zM3 3v18h2V5h16V3H3zm16 6h2V7h-2v2z"/>', s, c);
-const icoBorderTop = (s, c) => icoWrapper('<path d="M7 21h2v-2H7v2zm0-8h2v-2H7v2zm4 0h2v-2h-2v2zm0 8h2v-2h-2v2zm-8-4h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2v-2H3v2zm0-4h2V7H3v2zm8 8h2v-2h-2v2zm8-8h2V7h-2v2zm0 4h2v-2h-2v2zM3 3v2h18V3H3zm16 14h2v-2h-2v2zm-4 4h2v-2h-2v2zM11 9h2V7h-2v2zm8 12h2v-2h-2v2zm-4-8h2v-2h-2v2z"/>', s, c);
-const icoBorderVertical = (s, c) => icoWrapper('<path d="M3 9h2V7H3v2zm0-4h2V3H3v2zm4 16h2v-2H7v2zm0-8h2v-2H7v2zm-4 0h2v-2H3v2zm0 8h2v-2H3v2zm0-4h2v-2H3v2zM7 5h2V3H7v2zm12 12h2v-2h-2v2zm-8 4h2V3h-2v18zm8 0h2v-2h-2v2zm0-8h2v-2h-2v2zm0-10v2h2V3h-2zm0 6h2V7h-2v2zm-4-4h2V3h-2v2zm0 16h2v-2h-2v2zm0-8h2v-2h-2v2z"/>', s, c);
-const icoBubbleChart = (s, c) => icoWrapper('<circle cx="15.2" cy="8.8" r="4.8"/>', s, c);
-const icoDragHandle = (s, c) => icoWrapper('<path d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/>', s, c);
-const icoFormatAlignCenter = (s, c) => icoWrapper('<path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z"/>', s, c);
-const icoFormatAlignJustify = (s, c) => icoWrapper('<path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z"/>', s, c);
-const icoFormatAlignLeft = (s, c) => icoWrapper('<path d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z"/>', s, c);
-const icoFormatAlignRight = (s, c) => icoWrapper('<path d="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z"/>', s, c);
-const icoFormatBold = (s, c) => icoWrapper('<path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/>', s, c);
-const icoFormatClear = (s, c) => icoWrapper('<path d="M3.27 5L2 6.27l6.97 6.97L6.5 19h3l1.57-3.66L16.73 21 18 19.73 3.55 5.27 3.27 5zM6 5v.18L8.82 8h2.4l-.72 1.68 2.1 2.1L14.21 8H20V5H6z"/>', s, c);
-const icoFormatColorFill = (s, c) => icoWrapper('<path fill-opacity=".36" d="M0 20h24v4H0z"/>', s, c);
-const icoFormatColorReset = (s, c) => icoWrapper('<path d="M18 14c0-4-6-10.8-6-10.8s-1.33 1.51-2.73 3.52l8.59 8.59c.09-.42.14-.86.14-1.31zm-.88 3.12L12.5 12.5 5.27 5.27 4 6.55l3.32 3.32C6.55 11.32 6 12.79 6 14c0 3.31 2.69 6 6 6 1.52 0 2.9-.57 3.96-1.5l2.63 2.63 1.27-1.27-2.74-2.74z"/>', s, c);
-const icoFormatColorText = (s, c) => icoWrapper('<path d="M11 3L5.5 17h2.25l1.12-3h6.25l1.12 3h2.25L13 3h-2zm-1.38 9L12 5.67 14.38 12H9.62z"/>', s, c);
-const icoFormatIndentDecrease = (s, c) => icoWrapper('<path d="M11 17h10v-2H11v2zm-8-5l4 4V8l-4 4zm0 9h18v-2H3v2zM3 3v2h18V3H3zm8 6h10V7H11v2zm0 4h10v-2H11v2z"/>', s, c);
-const icoFormatIndentIncrease = (s, c) => icoWrapper('<path d="M3 21h18v-2H3v2zM3 8v8l4-4-4-4zm8 9h10v-2H11v2zM3 3v2h18V3H3zm8 6h10V7H11v2zm0 4h10v-2H11v2z"/>', s, c);
-const icoFormatItalic = (s, c) => icoWrapper('<path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/>', s, c);
-const icoFormatLineSpacing = (s, c) => icoWrapper('<path d="M6 7h2.5L5 3.5 1.5 7H4v10H1.5L5 20.5 8.5 17H6V7zm4-2v2h12V5H10zm0 14h12v-2H10v2zm0-6h12v-2H10v2z"/>', s, c);
-const icoFormatListBulleted = (s, c) => icoWrapper('<path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/>', s, c);
-const icoFormatListNumbered = (s, c) => icoWrapper('<path d="M2 17h2v.5H3v1h1v.5H2v1h3v-4H2v1zm1-9h1V4H2v1h1v3zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2v1zm5-6v2h14V5H7zm0 14h14v-2H7v2zm0-6h14v-2H7v2z"/>', s, c);
-const icoFormatPaint = (s, c) => icoWrapper('<path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"/>', s, c);
-const icoFormatQuote = (s, c) => icoWrapper('<path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>', s, c);
-const icoFormatShapes = (s, c) => icoWrapper('<path d="M23 7V1h-6v2H7V1H1v6h2v10H1v6h6v-2h10v2h6v-6h-2V7h2zM3 3h2v2H3V3zm2 18H3v-2h2v2zm12-2H7v-2H5V7h2V5h10v2h2v10h-2v2zm4 2h-2v-2h2v2zM19 5V3h2v2h-2zm-5.27 9h-3.49l-.73 2H7.89l3.4-9h1.4l3.41 9h-1.63l-.74-2zm-3.04-1.26h2.61L12 8.91l-1.31 3.83z"/>', s, c);
-const icoFormatSize = (s, c) => icoWrapper('<path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/>', s, c);
-const icoFormatStrikethrough = (s, c) => icoWrapper('<path d="M10 19h4v-3h-4v3zM5 4v3h5v3h4V7h5V4H5zM3 14h18v-2H3v2z"/>', s, c);
-const icoFormatTextdirectionLToR = (s, c) => icoWrapper('<path d="M9 10v5h2V4h2v11h2V4h2V2H9C6.79 2 5 3.79 5 6s1.79 4 4 4zm12 8l-4-4v3H5v2h12v3l4-4z"/>', s, c);
-const icoFormatTextdirectionRToL = (s, c) => icoWrapper('<path d="M10 10v5h2V4h2v11h2V4h2V2h-8C7.79 2 6 3.79 6 6s1.79 4 4 4zm-2 7v-3l-4 4 4 4v-3h12v-2H8z"/>', s, c);
-const icoFormatUnderlined = (s, c) => icoWrapper('<path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/>', s, c);
-const icoFunctions = (s, c) => icoWrapper('<path d="M18 4H6v2l6.5 6L6 18v2h12v-3h-7l5-5-5-5h7z"/>', s, c);
-const icoHighlight = (s, c) => icoWrapper('<path d="M6 14l3 3v5h6v-5l3-3V9H6zm5-12h2v3h-2zM3.5 5.875L4.914 4.46l2.12 2.122L5.62 7.997zm13.46.71l2.123-2.12 1.414 1.414L18.375 8z"/>', s, c);
-const icoInsertChart = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>', s, c);
-const icoInsertComment = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>', s, c);
-const icoInsertDriveFile = (s, c) => icoWrapper('<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>', s, c);
-const icoInsertEmoticon = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>', s, c);
-const icoInsertInvitation = (s, c) => icoWrapper('<path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>', s, c);
-const icoInsertLink = (s, c) => icoWrapper('<path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>', s, c);
-const icoInsertPhoto = (s, c) => icoWrapper('<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>', s, c);
-const icoLinearScale = (s, c) => icoWrapper('<path d="M19.5 9.5c-1.03 0-1.9.62-2.29 1.5h-2.92c-.39-.88-1.26-1.5-2.29-1.5s-1.9.62-2.29 1.5H6.79c-.39-.88-1.26-1.5-2.29-1.5C3.12 9.5 2 10.62 2 12s1.12 2.5 2.5 2.5c1.03 0 1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5s1.9-.62 2.29-1.5h2.92c.39.88 1.26 1.5 2.29 1.5 1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"/>', s, c);
-const icoMergeType = (s, c) => icoWrapper('<path d="M17 20.41L18.41 19 15 15.59 13.59 17 17 20.41zM7.5 8H11v5.59L5.59 19 7 20.41l6-6V8h3.5L12 3.5 7.5 8z"/>', s, c);
-const icoModeComment = (s, c) => icoWrapper('<path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/>', s, c);
-const icoModeEdit = (s, c) => icoWrapper('<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>', s, c);
-const icoMonetizationOn = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>', s, c);
-const icoMoneyOff = (s, c) => icoWrapper('<path d="M12.5 6.9c1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-.53.12-1.03.3-1.48.54l1.47 1.47c.41-.17.91-.27 1.51-.27zM5.33 4.06L4.06 5.33 7.5 8.77c0 2.08 1.56 3.21 3.91 3.91l3.51 3.51c-.34.48-1.05.91-2.42.91-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c.96-.18 1.82-.55 2.45-1.12l2.22 2.22 1.27-1.27L5.33 4.06z"/>', s, c);
-const icoMultilineChart = (s, c) => icoWrapper('<path d="M22 6.92l-1.41-1.41-2.85 3.21C15.68 6.4 12.83 5 9.61 5 6.72 5 4.07 6.16 2 8l1.42 1.42C5.12 7.93 7.27 7 9.61 7c2.74 0 5.09 1.26 6.77 3.24l-2.88 3.24-4-4L2 16.99l1.5 1.5 6-6.01 4 4 4.05-4.55c.75 1.35 1.25 2.9 1.44 4.55H21c-.22-2.3-.95-4.39-2.04-6.14L22 6.92z"/>', s, c);
-const icoPieChart = (s, c) => icoWrapper('<path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"/>', s, c);
-const icoPieChartOutlined = (s, c) => icoWrapper('<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 2.07c3.61.45 6.48 3.33 6.93 6.93H13V4.07zM4 12c0-4.06 3.07-7.44 7-7.93v15.87c-3.93-.5-7-3.88-7-7.94zm9 7.93V13h6.93c-.45 3.61-3.32 6.48-6.93 6.93z"/>', s, c);
-const icoPublish = (s, c) => icoWrapper('<path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"/>', s, c);
-const icoShortText = (s, c) => icoWrapper('<path d="M4 9h16v2H4zm0 4h10v2H4z"/>', s, c);
-const icoShowChart = (s, c) => icoWrapper('<path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/>', s, c);
-const icoSpaceBar = (s, c) => icoWrapper('<path d="M18 9v4H6V9H4v6h16V9z"/>', s, c);
-const icoStrikethroughS = (s, c) => icoWrapper('<path fill="#010101" d="M7.24 8.75c-.26-.48-.39-1.03-.39-1.67 0-.61.13-1.16.4-1.67.26-.5.63-.93 1.11-1.29.48-.35 1.05-.63 1.7-.83.66-.19 1.39-.29 2.18-.29.81 0 1.54.11 2.21.34.66.22 1.23.54 1.69.94.47.4.83.88 1.08 1.43.25.55.38 1.15.38 1.81h-3.01c0-.31-.05-.59-.15-.85-.09-.27-.24-.49-.44-.68-.2-.19-.45-.33-.75-.44-.3-.1-.66-.16-1.06-.16-.39 0-.74.04-1.03.13-.29.09-.53.21-.72.36-.19.16-.34.34-.44.55-.1.21-.15.43-.15.66 0 .48.25.88.74 1.21.38.25.77.48 1.41.7H7.39c-.05-.08-.11-.17-.15-.25zM21 12v-2H3v2h9.62c.18.07.4.14.55.2.37.17.66.34.87.51.21.17.35.36.43.57.07.2.11.43.11.69 0 .23-.05.45-.14.66-.09.2-.23.38-.42.53-.19.15-.42.26-.71.35-.29.08-.63.13-1.01.13-.43 0-.83-.04-1.18-.13s-.66-.23-.91-.42c-.25-.19-.45-.44-.59-.75-.14-.31-.25-.76-.25-1.21H6.4c0 .55.08 1.13.24 1.58.16.45.37.85.65 1.21.28.35.6.66.98.92.37.26.78.48 1.22.65.44.17.9.3 1.38.39.48.08.96.13 1.44.13.8 0 1.53-.09 2.18-.28s1.21-.45 1.67-.79c.46-.34.82-.77 1.07-1.27s.38-1.07.38-1.71c0-.6-.1-1.14-.31-1.61-.05-.11-.11-.23-.17-.33H21z"/>', s, c);
-const icoTextFields = (s, c) => icoWrapper('<path d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/>', s, c);
-const icoTitle = (s, c) => icoWrapper('<path d="M5 4v3h5.5v12h3V7H19V4z"/>', s, c);
-const icoVerticalAlignBottom = (s, c) => icoWrapper('<path d="M16 13h-3V3h-2v10H8l4 4 4-4zM4 19v2h16v-2H4z"/>', s, c);
-const icoVerticalAlignCenter = (s, c) => icoWrapper('<path d="M8 19h3v4h2v-4h3l-4-4-4 4zm8-14h-3V1h-2v4H8l4 4 4-4zM4 11v2h16v-2H4z"/>', s, c);
-const icoVerticalAlignTop = (s, c) => icoWrapper('<path d="M8 11h3v10h2V11h3l-4-4-4 4zM4 3v2h16V3H4z"/>', s, c);
-const icoWrapText = (s, c) => icoWrapper('<path d="M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3 3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"/>', s, c);
-const icoAttachment = (s, c) => icoWrapper('<path d="M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5C8.12 15 7 13.88 7 12.5S8.12 10 9.5 10H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z"/>', s, c);
-const icoCloud = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>', s, c);
-const icoCloudCircle = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H8c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01C8.58 8.28 10.13 7 12 7c2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5S17.88 16 16.5 16z"/>', s, c);
-const icoCloudDone = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-3.5-3.5 1.41-1.41L10 14.17 15.18 9l1.41 1.41L10 17z"/>', s, c);
-const icoCloudDownload = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>', s, c);
-const icoCloudOff = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4c-1.48 0-2.85.43-4.01 1.17l1.46 1.46C10.21 6.23 11.08 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3 0 1.13-.64 2.11-1.56 2.62l1.45 1.45C23.16 18.16 24 16.68 24 15c0-2.64-2.05-4.78-4.65-4.96zM3 5.27l2.75 2.74C2.56 8.15 0 10.77 0 14c0 3.31 2.69 6 6 6h11.73l2 2L21 20.73 4.27 4 3 5.27zM7.73 10l8 8H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h1.73z"/>', s, c);
-const icoCloudQueue = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z"/>', s, c);
-const icoCloudUpload = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>', s, c);
-const icoCreateNewFolder = (s, c) => icoWrapper('<path d="M20 6h-8l-2-2H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-1 8h-3v3h-2v-3h-3v-2h3V9h2v3h3v2z"/>', s, c);
-const icoFileDownload = (s, c) => icoWrapper('<path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>', s, c);
-const icoFileUpload = (s, c) => icoWrapper('<path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>', s, c);
-const icoFolder = (s, c) => icoWrapper('<path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>', s, c);
-const icoFolderOpen = (s, c) => icoWrapper('<path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/>', s, c);
-const icoFolderShared = (s, c) => icoWrapper('<path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-5 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 8h-8v-1c0-1.33 2.67-2 4-2s4 .67 4 2v1z"/>', s, c);
-const icoCast = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"/>', s, c);
-const icoCastConnected = (s, c) => icoWrapper('<path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm18-7H5v1.63c3.96 1.28 7.09 4.41 8.37 8.37H19V7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoComputer = (s, c) => icoWrapper('<path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>', s, c);
-const icoDesktopMac = (s, c) => icoWrapper('<path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/>', s, c);
-const icoDesktopWindows = (s, c) => icoWrapper('<path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/>', s, c);
-const icoDeveloperBoard = (s, c) => icoWrapper('<path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6zm6-6h4v3h-4zM6 7h5v5H6zm6 4h4v6h-4z"/>', s, c);
-const icoDeviceHub = (s, c) => icoWrapper('<path d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z"/>', s, c);
-const icoDevicesOther = (s, c) => icoWrapper('<path d="M3 6h18V4H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v-2H3V6zm10 6H9v1.78c-.61.55-1 1.33-1 2.22s.39 1.67 1 2.22V20h4v-1.78c.61-.55 1-1.34 1-2.22s-.39-1.67-1-2.22V12zm-2 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM22 8h-6c-.5 0-1 .5-1 1v10c0 .5.5 1 1 1h6c.5 0 1-.5 1-1V9c0-.5-.5-1-1-1zm-1 10h-4v-8h4v8z"/>', s, c);
-const icoDock = (s, c) => icoWrapper('<path d="M8 23h8v-2H8v2zm8-21.99L8 1c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM16 15H8V5h8v10z"/>', s, c);
-const icoGamepad = (s, c) => icoWrapper('<path d="M15 7.5V2H9v5.5l3 3 3-3zM7.5 9H2v6h5.5l3-3-3-3zM9 16.5V22h6v-5.5l-3-3-3 3zM16.5 9l-3 3 3 3H22V9h-5.5z"/>', s, c);
-const icoHeadset = (s, c) => icoWrapper('<path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/>', s, c);
-const icoHeadsetMic = (s, c) => icoWrapper('<path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h4v1h-7v2h6c1.66 0 3-1.34 3-3V10c0-4.97-4.03-9-9-9z"/>', s, c);
-const icoKeyboard = (s, c) => icoWrapper('<path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/>', s, c);
-const icoKeyboardArrowDown = (s, c) => icoWrapper('<path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>', s, c);
-const icoKeyboardArrowLeft = (s, c) => icoWrapper('<path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>', s, c);
-const icoKeyboardArrowRight = (s, c) => icoWrapper('<path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>', s, c);
-const icoKeyboardArrowUp = (s, c) => icoWrapper('<path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>', s, c);
-const icoKeyboardBackspace = (s, c) => icoWrapper('<path d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z"/>', s, c);
-const icoKeyboardCapslock = (s, c) => icoWrapper('<path d="M12 8.41L16.59 13 18 11.59l-6-6-6 6L7.41 13 12 8.41zM6 18h12v-2H6v2z"/>', s, c);
-const icoKeyboardHide = (s, c) => icoWrapper('<path d="M20 3H4c-1.1 0-1.99.9-1.99 2L2 15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 3h2v2h-2V6zm0 3h2v2h-2V9zM8 6h2v2H8V6zm0 3h2v2H8V9zm-1 2H5V9h2v2zm0-3H5V6h2v2zm9 7H8v-2h8v2zm0-4h-2V9h2v2zm0-3h-2V6h2v2zm3 3h-2V9h2v2zm0-3h-2V6h2v2zm-7 15l4-4H8l4 4z"/>', s, c);
-const icoKeyboardReturn = (s, c) => icoWrapper('<path d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z"/>', s, c);
-const icoKeyboardTab = (s, c) => icoWrapper('<path d="M11.59 7.41L15.17 11H1v2h14.17l-3.59 3.59L13 18l6-6-6-6-1.41 1.41zM20 6v12h2V6h-2z"/>', s, c);
-const icoKeyboardVoice = (s, c) => icoWrapper('<path d="M12 15c1.66 0 2.99-1.34 2.99-3L15 6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 15 6.7 12H5c0 3.42 2.72 6.23 6 6.72V22h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>', s, c);
-const icoLaptop = (s, c) => icoWrapper('<path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>', s, c);
-const icoLaptopChromebook = (s, c) => icoWrapper('<path d="M22 18V3H2v15H0v2h24v-2h-2zm-8 0h-4v-1h4v1zm6-3H4V5h16v10z"/>', s, c);
-const icoLaptopMac = (s, c) => icoWrapper('<path d="M20 18c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2H0c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2h-4zM4 5h16v11H4V5zm8 14c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>', s, c);
-const icoLaptopWindows = (s, c) => icoWrapper('<path d="M20 18v-1c1.1 0 1.99-.9 1.99-2L22 5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2v1H0v2h24v-2h-4zM4 5h16v10H4V5z"/>', s, c);
-const icoMemory = (s, c) => icoWrapper('<path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/>', s, c);
-const icoMouse = (s, c) => icoWrapper('<path d="M13 1.07V9h7c0-4.08-3.05-7.44-7-7.93zM4 15c0 4.42 3.58 8 8 8s8-3.58 8-8v-4H4v4zm7-13.93C7.05 1.56 4 4.92 4 9h7V1.07z"/>', s, c);
-const icoPhoneAndroid = (s, c) => icoWrapper('<path d="M16 1H8C6.34 1 5 2.34 5 4v16c0 1.66 1.34 3 3 3h8c1.66 0 3-1.34 3-3V4c0-1.66-1.34-3-3-3zm-2 20h-4v-1h4v1zm3.25-3H6.75V4h10.5v14z"/>', s, c);
-const icoPhoneIphone = (s, c) => icoWrapper('<path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>', s, c);
-const icoPhonelink = (s, c) => icoWrapper('<path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"/>', s, c);
-const icoPhonelinkOff = (s, c) => icoWrapper('<path d="M22 6V4H6.82l2 2H22zM1.92 1.65L.65 2.92l1.82 1.82C2.18 5.08 2 5.52 2 6v11H0v3h17.73l2.35 2.35 1.27-1.27L3.89 3.62 1.92 1.65zM4 6.27L14.73 17H4V6.27zM23 8h-6c-.55 0-1 .45-1 1v4.18l2 2V10h4v7h-2.18l3 3H23c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1z"/>', s, c);
-const icoPowerInput = (s, c) => icoWrapper('<path d="M2 9v2h19V9H2zm0 6h5v-2H2v2zm7 0h5v-2H9v2zm7 0h5v-2h-5v2z"/>', s, c);
-const icoRouter = (s, c) => icoWrapper('<path d="M20.2 5.9l.8-.8C19.6 3.7 17.8 3 16 3s-3.6.7-5 2.1l.8.8C13 4.8 14.5 4.2 16 4.2s3 .6 4.2 1.7zm-.9.8c-.9-.9-2.1-1.4-3.3-1.4s-2.4.5-3.3 1.4l.8.8c.7-.7 1.6-1 2.5-1 .9 0 1.8.3 2.5 1l.8-.8zM19 13h-2V9h-2v4H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zM8 18H6v-2h2v2zm3.5 0h-2v-2h2v2zm3.5 0h-2v-2h2v2z"/>', s, c);
-const icoScanner = (s, c) => icoWrapper('<path d="M19.8 10.7L4.2 5l-.7 1.9L17.6 12H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5.5c0-.8-.5-1.6-1.2-1.8zM7 17H5v-2h2v2zm12 0H9v-2h10v2z"/>', s, c);
-const icoSecurity = (s, c) => icoWrapper('<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>', s, c);
-const icoSimCard = (s, c) => icoWrapper('<path d="M19.99 4c0-1.1-.89-2-1.99-2h-8L4 8v12c0 1.1.9 2 2 2h12.01c1.1 0 1.99-.9 1.99-2l-.01-16zM9 19H7v-2h2v2zm8 0h-2v-2h2v2zm-8-4H7v-4h2v4zm4 4h-2v-4h2v4zm0-6h-2v-2h2v2zm4 2h-2v-4h2v4z"/>', s, c);
-const icoSmartphone = (s, c) => icoWrapper('<path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>', s, c);
-const icoSpeaker = (s, c) => icoWrapper('<path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 1.99 2 1.99L17 22c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 2c1.1 0 2 .9 2 2s-.9 2-2 2c-1.11 0-2-.9-2-2s.89-2 2-2zm0 16c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>', s, c);
-const icoSpeakerGroup = (s, c) => icoWrapper('<path d="M6 5H4v16c0 1.1.89 2 2 2h10v-2H6V5z"/>', s, c);
-const icoTablet = (s, c) => icoWrapper('<path d="M21 4H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 1.99-.9 1.99-2L23 6c0-1.1-.9-2-2-2zm-2 14H5V6h14v12z"/>', s, c);
-const icoTabletAndroid = (s, c) => icoWrapper('<path d="M18 0H6C4.34 0 3 1.34 3 3v18c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3V3c0-1.66-1.34-3-3-3zm-4 22h-4v-1h4v1zm5.25-3H4.75V3h14.5v16z"/>', s, c);
-const icoTabletMac = (s, c) => icoWrapper('<path d="M18.5 0h-14C3.12 0 2 1.12 2 2.5v19C2 22.88 3.12 24 4.5 24h14c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zm-7 23c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7.5-4H4V3h15v16z"/>', s, c);
-const icoToys = (s, c) => icoWrapper('<path d="M12 12c0-3 2.5-5.5 5.5-5.5S23 9 23 12H12zm0 0c0 3-2.5 5.5-5.5 5.5S1 15 1 12h11zm0 0c-3 0-5.5-2.5-5.5-5.5S9 1 12 1v11zm0 0c3 0 5.5 2.5 5.5 5.5S15 23 12 23V12z"/>', s, c);
-const icoTv = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>', s, c);
-const icoVideogameAsset = (s, c) => icoWrapper('<path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoWatch = (s, c) => icoWrapper('<path d="M20 12c0-2.54-1.19-4.81-3.04-6.27L16 0H8l-.95 5.73C5.19 7.19 4 9.45 4 12s1.19 4.81 3.05 6.27L8 24h8l.96-5.73C18.81 16.81 20 14.54 20 12zM6 12c0-3.31 2.69-6 6-6s6 2.69 6 6-2.69 6-6 6-6-2.69-6-6z"/>', s, c);
-const icoAddAPhoto = (s, c) => icoWrapper('<path d="M3 4V1h2v3h3v2H5v3H3V6H0V4h3zm3 6V7h3V4h7l1.83 2H21c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V10h3zm7 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-3.2-5c0 1.77 1.43 3.2 3.2 3.2s3.2-1.43 3.2-3.2-1.43-3.2-3.2-3.2-3.2 1.43-3.2 3.2z"/>', s, c);
-const icoAddToPhotos = (s, c) => icoWrapper('<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/>', s, c);
-const icoAdjust = (s, c) => icoWrapper('<path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>', s, c);
-const icoAssistant = (s, c) => icoWrapper('<path d="M19 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5.12 10.88L12 17l-1.88-4.12L6 11l4.12-1.88L12 5l1.88 4.12L18 11l-4.12 1.88z"/>', s, c);
-const icoAssistantPhoto = (s, c) => icoWrapper('<path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/>', s, c);
-const icoAudiotrack = (s, c) => icoWrapper('<path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/>', s, c);
-const icoBlurCircular = (s, c) => icoWrapper('<path d="M10 9c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0 4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zM7 9.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm3 7c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm-3-3c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm3-6c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zM14 9c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0-1.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zm3 6c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm0-4c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm2-3.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm0-3.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/>', s, c);
-const icoBlurLinear = (s, c) => icoWrapper('<path d="M5 17.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM9 13c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0-4c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zM3 21h18v-2H3v2zM5 9.5c.83 0 1.5-.67 1.5-1.5S5.83 6.5 5 6.5 3.5 7.17 3.5 8 4.17 9.5 5 9.5zm0 4c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM9 17c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm8-.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zM3 3v2h18V3H3zm14 5.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zm0 4c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zM13 9c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0 4c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0 4c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1z"/>', s, c);
-const icoBlurOff = (s, c) => icoWrapper('<path d="M14 7c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm-.2 4.48l.2.02c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5l.02.2c.09.67.61 1.19 1.28 1.28zM14 3.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zm-4 0c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zm11 7c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zM10 7c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm8 8c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0-4c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0-4c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm-4 13.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM2.5 5.27l3.78 3.78L6 9c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.03-.19-.06-.28l2.81 2.81c-.71.11-1.25.73-1.25 1.47 0 .83.67 1.5 1.5 1.5.74 0 1.36-.54 1.47-1.25l2.81 2.81c-.09-.03-.18-.06-.28-.06-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.03-.19-.06-.28l3.78 3.78L20 20.23 3.77 4 2.5 5.27zM10 17c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm11-3.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM6 13c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zM3 9.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm7 11c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM6 17c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-3-3.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5z"/>', s, c);
-const icoBlurOn = (s, c) => icoWrapper('<path d="M6 13c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0 4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0-8c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-3 .5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM6 5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm15 5.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zM14 7c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0-3.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zm-11 10c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm7 7c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm0-17c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zM10 7c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm0 5.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm8 .5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0 4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0-8c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0-4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm3 8.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zM14 17c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm0 3.5c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm-4-12c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0 8.5c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm4-4.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-4c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/>', s, c);
-const icoBrightness_1 = (s, c) => icoWrapper('<circle cx="12" cy="12" r="10"/>', s, c);
-const icoBrightness_2 = (s, c) => icoWrapper('<path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/>', s, c);
-const icoBrightness_3 = (s, c) => icoWrapper('<path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54 0 4.48-2.94 8.27-7 9.54.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"/>', s, c);
-const icoBrightness_4 = (s, c) => icoWrapper('<path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"/>', s, c);
-const icoBrightness_5 = (s, c) => icoWrapper('<path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>', s, c);
-const icoBrightness_6 = (s, c) => icoWrapper('<path d="M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18V6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"/>', s, c);
-const icoBrightness_7 = (s, c) => icoWrapper('<path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/>', s, c);
-const icoBrokenImage = (s, c) => icoWrapper('<path d="M21 5v6.59l-3-3.01-4 4.01-4-4-4 4-3-3.01V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2zm-3 6.42l3 3.01V19c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2v-6.58l3 2.99 4-4 4 4 4-3.99z"/>', s, c);
-const icoBrush = (s, c) => icoWrapper('<path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>', s, c);
-const icoBurstMode = (s, c) => icoWrapper('<path d="M1 5h2v14H1zm4 0h2v14H5zm17 0H10c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6c0-.55-.45-1-1-1zM11 17l2.5-3.15L15.29 16l2.5-3.22L21 17H11z"/>', s, c);
-const icoCamera = (s, c) => icoWrapper('<path d="M9.4 10.5l4.77-8.26C13.47 2.09 12.75 2 12 2c-2.4 0-4.6.85-6.32 2.25l3.66 6.35.06-.1zM21.54 9c-.92-2.92-3.15-5.26-6-6.34L11.88 9h9.66zm.26 1h-7.49l.29.5 4.76 8.25C21 16.97 22 14.61 22 12c0-.69-.07-1.35-.2-2zM8.54 12l-3.9-6.75C3.01 7.03 2 9.39 2 12c0 .69.07 1.35.2 2h7.49l-1.15-2zm-6.08 3c.92 2.92 3.15 5.26 6 6.34L12.12 15H2.46zm11.27 0l-3.9 6.76c.7.15 1.42.24 2.17.24 2.4 0 4.6-.85 6.32-2.25l-3.66-6.35-.93 1.6z"/>', s, c);
-const icoCameraAlt = (s, c) => icoWrapper('<path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>', s, c);
-const icoCameraFront = (s, c) => icoWrapper('<path d="M10 20H5v2h5v2l3-3-3-3v2zm4 0v2h5v-2h-5zM12 8c1.1 0 2-.9 2-2s-.9-2-2-2-1.99.9-1.99 2S10.9 8 12 8zm5-8H7C5.9 0 5 .9 5 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zM7 2h10v10.5c0-1.67-3.33-2.5-5-2.5s-5 .83-5 2.5V2z"/>', s, c);
-const icoCameraRear = (s, c) => icoWrapper('<path d="M10 20H5v2h5v2l3-3-3-3v2zm4 0v2h5v-2h-5zm3-20H7C5.9 0 5 .9 5 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zm-5 6c-1.11 0-2-.9-2-2s.89-2 1.99-2 2 .9 2 2C14 5.1 13.1 6 12 6z"/>', s, c);
-const icoCameraRoll = (s, c) => icoWrapper('<path d="M14 5c0-1.1-.9-2-2-2h-1V2c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1v1H4c-1.1 0-2 .9-2 2v15c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2h8V5h-8zm-2 13h-2v-2h2v2zm0-9h-2V7h2v2zm4 9h-2v-2h2v2zm0-9h-2V7h2v2zm4 9h-2v-2h2v2zm0-9h-2V7h2v2z"/>', s, c);
-const icoCenterFocusStrong = (s, c) => icoWrapper('<path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-7 7H3v4c0 1.1.9 2 2 2h4v-2H5v-4zM5 5h4V3H5c-1.1 0-2 .9-2 2v4h2V5zm14-2h-4v2h4v4h2V5c0-1.1-.9-2-2-2zm0 16h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4z"/>', s, c);
-const icoCenterFocusWeak = (s, c) => icoWrapper('<path d="M5 15H3v4c0 1.1.9 2 2 2h4v-2H5v-4zM5 5h4V3H5c-1.1 0-2 .9-2 2v4h2V5zm14-2h-4v2h4v4h2V5c0-1.1-.9-2-2-2zm0 16h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>', s, c);
-const icoCollections = (s, c) => icoWrapper('<path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/>', s, c);
-const icoCollectionsBookmark = (s, c) => icoWrapper('<path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 10l-2.5-1.5L15 12V4h5v8z"/>', s, c);
-const icoColorLens = (s, c) => icoWrapper('<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoColorize = (s, c) => icoWrapper('<path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42zM6.92 19L5 17.08l8.06-8.06 1.92 1.92L6.92 19z"/>', s, c);
-const icoCompare = (s, c) => icoWrapper('<path d="M10 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h5v2h2V1h-2v2zm0 15H5l5-6v6zm9-15h-5v2h5v13l-5-6v9h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoControlPoint = (s, c) => icoWrapper('<path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoControlPointDuplicate = (s, c) => icoWrapper('<path d="M16 8h-2v3h-3v2h3v3h2v-3h3v-2h-3zM2 12c0-2.79 1.64-5.2 4.01-6.32V3.52C2.52 4.76 0 8.09 0 12s2.52 7.24 6.01 8.48v-2.16C3.64 17.2 2 14.79 2 12zm13-9c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/>', s, c);
-const icoCrop_16_9 = (s, c) => icoWrapper('<path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z"/>', s, c);
-const icoCrop = (s, c) => icoWrapper('<path d="M17 15h2V7c0-1.1-.9-2-2-2H9v2h8v8zM7 17V1H5v4H1v2h4v10c0 1.1.9 2 2 2h10v4h2v-4h4v-2H7z"/>', s, c);
-const icoCrop_3_2 = (s, c) => icoWrapper('<path d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V6h14v12z"/>', s, c);
-const icoCrop_5_4 = (s, c) => icoWrapper('<path d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"/>', s, c);
-const icoCrop_7_5 = (s, c) => icoWrapper('<path d="M19 7H5c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 8H5V9h14v6z"/>', s, c);
-const icoCropDin = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>', s, c);
-const icoCropFree = (s, c) => icoWrapper('<path d="M3 5v4h2V5h4V3H5c-1.1 0-2 .9-2 2zm2 10H3v4c0 1.1.9 2 2 2h4v-2H5v-4zm14 4h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4zm0-16h-4v2h4v4h2V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoCropLandscape = (s, c) => icoWrapper('<path d="M19 5H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H5V7h14v10z"/>', s, c);
-const icoCropOriginal = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/>', s, c);
-const icoCropPortrait = (s, c) => icoWrapper('<path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h10v14z"/>', s, c);
-const icoCropRotate = (s, c) => icoWrapper('<path d="M7.47 21.49C4.2 19.93 1.86 16.76 1.5 13H0c.51 6.16 5.66 11 11.95 11 .23 0 .44-.02.66-.03L8.8 20.15l-1.33 1.34zM12.05 0c-.23 0-.44.02-.66.04l3.81 3.81 1.33-1.33C19.8 4.07 22.14 7.24 22.5 11H24c-.51-6.16-5.66-11-11.95-11zM16 14h2V8c0-1.11-.9-2-2-2h-6v2h6v6zm-8 2V4H6v2H4v2h2v8c0 1.1.89 2 2 2h8v2h2v-2h2v-2H8z"/>', s, c);
-const icoCropSquare = (s, c) => icoWrapper('<path d="M18 4H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H6V6h12v12z"/>', s, c);
-const icoDehaze = (s, c) => icoWrapper('<path d="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z"/>', s, c);
-const icoDetails = (s, c) => icoWrapper('<path d="M3 4l9 16 9-16H3zm3.38 2h11.25L12 16 6.38 6z"/>', s, c);
-const icoEdit = (s, c) => icoWrapper('<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>', s, c);
-const icoExposure = (s, c) => icoWrapper('<path d="M15 17v2h2v-2h2v-2h-2v-2h-2v2h-2v2h2zm5-15H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM5 5h6v2H5V5zm15 15H4L20 4v16z"/>', s, c);
-const icoExposureNeg_1 = (s, c) => icoWrapper('<path d="M4 11v2h8v-2H4zm15 7h-2V7.38L14 8.4V6.7L18.7 5h.3v13z"/>', s, c);
-const icoExposureNeg_2 = (s, c) => icoWrapper('<path d="M15.05 16.29l2.86-3.07c.38-.39.72-.79 1.04-1.18.32-.39.59-.78.82-1.17.23-.39.41-.78.54-1.17s.19-.79.19-1.18c0-.53-.09-1.02-.27-1.46-.18-.44-.44-.81-.78-1.11-.34-.31-.77-.54-1.26-.71-.51-.16-1.08-.24-1.72-.24-.69 0-1.31.11-1.85.32-.54.21-1 .51-1.36.88-.37.37-.65.8-.84 1.3-.18.47-.27.97-.28 1.5h2.14c.01-.31.05-.6.13-.87.09-.29.23-.54.4-.75.18-.21.41-.37.68-.49.27-.12.6-.18.96-.18.31 0 .58.05.81.15.23.1.43.25.59.43.16.18.28.4.37.65.08.25.13.52.13.81 0 .22-.03.43-.08.65-.06.22-.15.45-.29.7-.14.25-.32.53-.56.83-.23.3-.52.65-.88 1.03l-4.17 4.55V18H21v-1.71h-5.95zM2 11v2h8v-2H2z"/>', s, c);
-const icoExposurePlus_1 = (s, c) => icoWrapper('<path d="M10 7H8v4H4v2h4v4h2v-4h4v-2h-4V7zm10 11h-2V7.38L15 8.4V6.7L19.7 5h.3v13z"/>', s, c);
-const icoExposurePlus_2 = (s, c) => icoWrapper('<path d="M16.05 16.29l2.86-3.07c.38-.39.72-.79 1.04-1.18.32-.39.59-.78.82-1.17.23-.39.41-.78.54-1.17.13-.39.19-.79.19-1.18 0-.53-.09-1.02-.27-1.46-.18-.44-.44-.81-.78-1.11-.34-.31-.77-.54-1.26-.71-.51-.16-1.08-.24-1.72-.24-.69 0-1.31.11-1.85.32-.54.21-1 .51-1.36.88-.37.37-.65.8-.84 1.3-.18.47-.27.97-.28 1.5h2.14c.01-.31.05-.6.13-.87.09-.29.23-.54.4-.75.18-.21.41-.37.68-.49.27-.12.6-.18.96-.18.31 0 .58.05.81.15.23.1.43.25.59.43.16.18.28.4.37.65.08.25.13.52.13.81 0 .22-.03.43-.08.65-.06.22-.15.45-.29.7-.14.25-.32.53-.56.83-.23.3-.52.65-.88 1.03l-4.17 4.55V18H22v-1.71h-5.95zM8 7H6v4H2v2h4v4h2v-4h4v-2H8V7z"/>', s, c);
-const icoExposureZero = (s, c) => icoWrapper('<path d="M16.14 12.5c0 1-.1 1.85-.3 2.55-.2.7-.48 1.27-.83 1.7-.36.44-.79.75-1.3.95-.51.2-1.07.3-1.7.3-.62 0-1.18-.1-1.69-.3-.51-.2-.95-.51-1.31-.95-.36-.44-.65-1.01-.85-1.7-.2-.7-.3-1.55-.3-2.55v-2.04c0-1 .1-1.85.3-2.55.2-.7.48-1.26.84-1.69.36-.43.8-.74 1.31-.93C10.81 5.1 11.38 5 12 5c.63 0 1.19.1 1.7.29.51.19.95.5 1.31.93.36.43.64.99.84 1.69.2.7.3 1.54.3 2.55v2.04zm-2.11-2.36c0-.64-.05-1.18-.13-1.62-.09-.44-.22-.79-.4-1.06-.17-.27-.39-.46-.64-.58-.25-.13-.54-.19-.86-.19-.32 0-.61.06-.86.18s-.47.31-.64.58c-.17.27-.31.62-.4 1.06s-.13.98-.13 1.62v2.67c0 .64.05 1.18.14 1.62.09.45.23.81.4 1.09s.39.48.64.61.54.19.87.19c.33 0 .62-.06.87-.19s.46-.33.63-.61c.17-.28.3-.64.39-1.09.09-.45.13-.99.13-1.62v-2.66z"/>', s, c);
-const icoFilter_1 = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm11 10h2V5h-4v2h2v8zm7-14H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14z"/>', s, c);
-const icoFilter_2 = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14zm-4-4h-4v-2h2c1.1 0 2-.89 2-2V7c0-1.11-.9-2-2-2h-4v2h4v2h-2c-1.1 0-2 .89-2 2v4h6v-2z"/>', s, c);
-const icoFilter = (s, c) => icoWrapper('<path d="M15.96 10.29l-2.75 3.54-1.96-2.36L8.5 15h11l-3.54-4.71zM3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14z"/>', s, c);
-const icoFilter_3 = (s, c) => icoWrapper('<path d="M21 1H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14zM3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm14 8v-1.5c0-.83-.67-1.5-1.5-1.5.83 0 1.5-.67 1.5-1.5V7c0-1.11-.9-2-2-2h-4v2h4v2h-2v2h2v2h-4v2h4c1.1 0 2-.89 2-2z"/>', s, c);
-const icoFilter_4 = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm12 10h2V5h-2v4h-2V5h-2v6h4v4zm6-14H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14z"/>', s, c);
-const icoFilter_5 = (s, c) => icoWrapper('<path d="M21 1H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14zM3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm14 8v-2c0-1.11-.9-2-2-2h-2V7h4V5h-6v6h4v2h-4v2h4c1.1 0 2-.89 2-2z"/>', s, c);
-const icoFilter_6 = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14zm-8-2h2c1.1 0 2-.89 2-2v-2c0-1.11-.9-2-2-2h-2V7h4V5h-4c-1.1 0-2 .89-2 2v6c0 1.11.9 2 2 2zm0-4h2v2h-2v-2z"/>', s, c);
-const icoFilter_7 = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14zm-8-2l4-8V5h-6v2h4l-4 8h2z"/>', s, c);
-const icoFilter_8 = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14zm-8-2h2c1.1 0 2-.89 2-2v-1.5c0-.83-.67-1.5-1.5-1.5.83 0 1.5-.67 1.5-1.5V7c0-1.11-.9-2-2-2h-2c-1.1 0-2 .89-2 2v1.5c0 .83.67 1.5 1.5 1.5-.83 0-1.5.67-1.5 1.5V13c0 1.11.9 2 2 2zm0-8h2v2h-2V7zm0 4h2v2h-2v-2z"/>', s, c);
-const icoFilter_9 = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14zM15 5h-2c-1.1 0-2 .89-2 2v2c0 1.11.9 2 2 2h2v2h-4v2h4c1.1 0 2-.89 2-2V7c0-1.11-.9-2-2-2zm0 4h-2V7h2v2z"/>', s, c);
-const icoFilter_9Plus = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm11 7V8c0-1.11-.9-2-2-2h-1c-1.1 0-2 .89-2 2v1c0 1.11.9 2 2 2h1v1H9v2h3c1.1 0 2-.89 2-2zm-3-3V8h1v1h-1zm10-8H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 8h-2V7h-2v2h-2v2h2v2h2v-2h2v6H7V3h14v6z"/>', s, c);
-const icoFilterBAndW = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16l-7-8v8H5l7-8V5h7v14z"/>', s, c);
-const icoFilterCenterFocus = (s, c) => icoWrapper('<path d="M5 15H3v4c0 1.1.9 2 2 2h4v-2H5v-4zM5 5h4V3H5c-1.1 0-2 .9-2 2v4h2V5zm14-2h-4v2h4v4h2V5c0-1.1-.9-2-2-2zm0 16h-4v2h4c1.1 0 2-.9 2-2v-4h-2v4zM12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>', s, c);
-const icoFilterDrama = (s, c) => icoWrapper('<path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.61 5.64 5.36 8.04 2.35 8.36 0 10.9 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4h2c0-2.76-1.86-5.08-4.4-5.78C8.61 6.88 10.2 6 12 6c3.03 0 5.5 2.47 5.5 5.5v.5H19c1.65 0 3 1.35 3 3s-1.35 3-3 3z"/>', s, c);
-const icoFilterFrames = (s, c) => icoWrapper('<path d="M20 4h-4l-4-4-4 4H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H4V6h4.52l3.52-3.5L15.52 6H20v14zM18 8H6v10h12"/>', s, c);
-const icoFilterHdr = (s, c) => icoWrapper('<path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/>', s, c);
-const icoFilterNone = (s, c) => icoWrapper('<path d="M3 5H1v16c0 1.1.9 2 2 2h16v-2H3V5zm18-4H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 16H7V3h14v14z"/>', s, c);
-const icoFilterTiltShift = (s, c) => icoWrapper('<path d="M11 4.07V2.05c-2.01.2-3.84 1-5.32 2.21L7.1 5.69c1.11-.86 2.44-1.44 3.9-1.62zm7.32.19C16.84 3.05 15.01 2.25 13 2.05v2.02c1.46.18 2.79.76 3.9 1.62l1.42-1.43zM19.93 11h2.02c-.2-2.01-1-3.84-2.21-5.32L18.31 7.1c.86 1.11 1.44 2.44 1.62 3.9zM5.69 7.1L4.26 5.68C3.05 7.16 2.25 8.99 2.05 11h2.02c.18-1.46.76-2.79 1.62-3.9zM4.07 13H2.05c.2 2.01 1 3.84 2.21 5.32l1.43-1.43c-.86-1.1-1.44-2.43-1.62-3.89zM15 12c0-1.66-1.34-3-3-3s-3 1.34-3 3 1.34 3 3 3 3-1.34 3-3zm3.31 4.9l1.43 1.43c1.21-1.48 2.01-3.32 2.21-5.32h-2.02c-.18 1.45-.76 2.78-1.62 3.89zM13 19.93v2.02c2.01-.2 3.84-1 5.32-2.21l-1.43-1.43c-1.1.86-2.43 1.44-3.89 1.62zm-7.32-.19C7.16 20.95 9 21.75 11 21.95v-2.02c-1.46-.18-2.79-.76-3.9-1.62l-1.42 1.43z"/>', s, c);
-const icoFilterVintage = (s, c) => icoWrapper('<path d="M18.7 12.4c-.28-.16-.57-.29-.86-.4.29-.11.58-.24.86-.4 1.92-1.11 2.99-3.12 3-5.19-1.79-1.03-4.07-1.11-6 0-.28.16-.54.35-.78.54.05-.31.08-.63.08-.95 0-2.22-1.21-4.15-3-5.19C10.21 1.85 9 3.78 9 6c0 .32.03.64.08.95-.24-.2-.5-.39-.78-.55-1.92-1.11-4.2-1.03-6 0 0 2.07 1.07 4.08 3 5.19.28.16.57.29.86.4-.29.11-.58.24-.86.4-1.92 1.11-2.99 3.12-3 5.19 1.79 1.03 4.07 1.11 6 0 .28-.16.54-.35.78-.54-.05.32-.08.64-.08.96 0 2.22 1.21 4.15 3 5.19 1.79-1.04 3-2.97 3-5.19 0-.32-.03-.64-.08-.95.24.2.5.38.78.54 1.92 1.11 4.2 1.03 6 0-.01-2.07-1.08-4.08-3-5.19zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>', s, c);
-const icoFlare = (s, c) => icoWrapper('<path d="M7 11H1v2h6v-2zm2.17-3.24L7.05 5.64 5.64 7.05l2.12 2.12 1.41-1.41zM13 1h-2v6h2V1zm5.36 6.05l-1.41-1.41-2.12 2.12 1.41 1.41 2.12-2.12zM17 11v2h6v-2h-6zm-5-2c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm2.83 7.24l2.12 2.12 1.41-1.41-2.12-2.12-1.41 1.41zm-9.19.71l1.41 1.41 2.12-2.12-1.41-1.41-2.12 2.12zM11 23h2v-6h-2v6z"/>', s, c);
-const icoFlashAuto = (s, c) => icoWrapper('<path d="M3 2v12h3v9l7-12H9l4-9H3zm16 0h-2l-3.2 9h1.9l.7-2h3.2l.7 2h1.9L19 2zm-2.15 5.65L18 4l1.15 3.65h-2.3z"/>', s, c);
-const icoFlashOff = (s, c) => icoWrapper('<path d="M3.27 3L2 4.27l5 5V13h3v9l3.58-6.14L17.73 20 19 18.73 3.27 3zM17 10h-4l4-8H7v2.18l8.46 8.46L17 10z"/>', s, c);
-const icoFlashOn = (s, c) => icoWrapper('<path d="M7 2v11h3v9l7-12h-4l4-8z"/>', s, c);
-const icoFlip = (s, c) => icoWrapper('<path d="M15 21h2v-2h-2v2zm4-12h2V7h-2v2zM3 5v14c0 1.1.9 2 2 2h4v-2H5V5h4V3H5c-1.1 0-2 .9-2 2zm16-2v2h2c0-1.1-.9-2-2-2zm-8 20h2V1h-2v22zm8-6h2v-2h-2v2zM15 5h2V3h-2v2zm4 8h2v-2h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2z"/>', s, c);
-const icoGradient = (s, c) => icoWrapper('<path d="M11 9h2v2h-2zm-2 2h2v2H9zm4 0h2v2h-2zm2-2h2v2h-2zM7 9h2v2H7zm12-6H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 18H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm2-7h-2v2h2v2h-2v-2h-2v2h-2v-2h-2v2H9v-2H7v2H5v-2h2v-2H5V5h14v6z"/>', s, c);
-const icoGrain = (s, c) => icoWrapper('<path d="M10 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12-8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-4 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4-4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoGridOff = (s, c) => icoWrapper('<path d="M8 4v1.45l2 2V4h4v4h-3.45l2 2H14v1.45l2 2V10h4v4h-3.45l2 2H20v1.45l2 2V4c0-1.1-.9-2-2-2H4.55l2 2H8zm8 0h4v4h-4V4zM1.27 1.27L0 2.55l2 2V20c0 1.1.9 2 2 2h15.46l2 2 1.27-1.27L1.27 1.27zM10 12.55L11.45 14H10v-1.45zm-6-6L5.45 8H4V6.55zM8 20H4v-4h4v4zm0-6H4v-4h3.45l.55.55V14zm6 6h-4v-4h3.45l.55.54V20zm2 0v-1.46L17.46 20H16z"/>', s, c);
-const icoGridOn = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"/>', s, c);
-const icoHdrOff = (s, c) => icoWrapper('<path d="M17.5 15v-2h1.1l.9 2H21l-.9-2.1c.5-.2.9-.8.9-1.4v-1c0-.8-.7-1.5-1.5-1.5H16v4.9l1.1 1.1h.4zm0-4.5h2v1h-2v-1zm-4.5 0v.4l1.5 1.5v-1.9c0-.8-.7-1.5-1.5-1.5h-1.9l1.5 1.5h.4zm-3.5-1l-7-7-1.1 1L6.9 9h-.4v2h-2V9H3v6h1.5v-2.5h2V15H8v-4.9l1.5 1.5V15h3.4l7.6 7.6 1.1-1.1-12.1-12z"/>', s, c);
-const icoHdrOn = (s, c) => icoWrapper('<path d="M21 11.5v-1c0-.8-.7-1.5-1.5-1.5H16v6h1.5v-2h1.1l.9 2H21l-.9-2.1c.5-.3.9-.8.9-1.4zm-1.5 0h-2v-1h2v1zm-13-.5h-2V9H3v6h1.5v-2.5h2V15H8V9H6.5v2zM13 9H9.5v6H13c.8 0 1.5-.7 1.5-1.5v-3c0-.8-.7-1.5-1.5-1.5zm0 4.5h-2v-3h2v3z"/>', s, c);
-const icoHdrStrong = (s, c) => icoWrapper('<path d="M17 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zM5 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>', s, c);
-const icoHdrWeak = (s, c) => icoWrapper('<path d="M5 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm12-2c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>', s, c);
-const icoHealing = (s, c) => icoWrapper('<path d="M17.73 12.02l3.98-3.98c.39-.39.39-1.02 0-1.41l-4.34-4.34c-.39-.39-1.02-.39-1.41 0l-3.98 3.98L8 2.29C7.8 2.1 7.55 2 7.29 2c-.25 0-.51.1-.7.29L2.25 6.63c-.39.39-.39 1.02 0 1.41l3.98 3.98L2.25 16c-.39.39-.39 1.02 0 1.41l4.34 4.34c.39.39 1.02.39 1.41 0l3.98-3.98 3.98 3.98c.2.2.45.29.71.29.26 0 .51-.1.71-.29l4.34-4.34c.39-.39.39-1.02 0-1.41l-3.99-3.98zM12 9c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-4.71 1.96L3.66 7.34l3.63-3.63 3.62 3.62-3.62 3.63zM10 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm2 2c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm2-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2.66 9.34l-3.63-3.62 3.63-3.63 3.62 3.62-3.62 3.63z"/>', s, c);
-const icoImage = (s, c) => icoWrapper('<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>', s, c);
-const icoImageAspectRatio = (s, c) => icoWrapper('<path d="M16 10h-2v2h2v-2zm0 4h-2v2h2v-2zm-8-4H6v2h2v-2zm4 0h-2v2h2v-2zm8-6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z"/>', s, c);
-const icoIso = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5.5 7.5h2v-2H9v2h2V9H9v2H7.5V9h-2V7.5zM19 19H5L19 5v14zm-2-2v-1.5h-5V17h5z"/>', s, c);
-const icoLandscape = (s, c) => icoWrapper('<path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/>', s, c);
-const icoLeakAdd = (s, c) => icoWrapper('<path d="M6 3H3v3c1.66 0 3-1.34 3-3zm8 0h-2c0 4.97-4.03 9-9 9v2c6.08 0 11-4.93 11-11zm-4 0H8c0 2.76-2.24 5-5 5v2c3.87 0 7-3.13 7-7zm0 18h2c0-4.97 4.03-9 9-9v-2c-6.07 0-11 4.93-11 11zm8 0h3v-3c-1.66 0-3 1.34-3 3zm-4 0h2c0-2.76 2.24-5 5-5v-2c-3.87 0-7 3.13-7 7z"/>', s, c);
-const icoLeakRemove = (s, c) => icoWrapper('<path d="M10 3H8c0 .37-.04.72-.12 1.06l1.59 1.59C9.81 4.84 10 3.94 10 3zM3 4.27l2.84 2.84C5.03 7.67 4.06 8 3 8v2c1.61 0 3.09-.55 4.27-1.46L8.7 9.97C7.14 11.24 5.16 12 3 12v2c2.71 0 5.19-.99 7.11-2.62l2.5 2.5C10.99 15.81 10 18.29 10 21h2c0-2.16.76-4.14 2.03-5.69l1.43 1.43C14.55 17.91 14 19.39 14 21h2c0-1.06.33-2.03.89-2.84L19.73 21 21 19.73 4.27 3 3 4.27zM14 3h-2c0 1.5-.37 2.91-1.02 4.16l1.46 1.46C13.42 6.98 14 5.06 14 3zm5.94 13.12c.34-.08.69-.12 1.06-.12v-2c-.94 0-1.84.19-2.66.52l1.6 1.6zm-4.56-4.56l1.46 1.46C18.09 12.37 19.5 12 21 12v-2c-2.06 0-3.98.58-5.62 1.56z"/>', s, c);
-const icoLens = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>', s, c);
-const icoLinkedCamera = (s, c) => icoWrapper('<path d="M17 9c0-1.11-.89-2-2-2V4H9L7.17 6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9h-5zm-5 10c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>', s, c);
-const icoLooks = (s, c) => icoWrapper('<path d="M12 10c-3.86 0-7 3.14-7 7h2c0-2.76 2.24-5 5-5s5 2.24 5 5h2c0-3.86-3.14-7-7-7zm0-4C5.93 6 1 10.93 1 17h2c0-4.96 4.04-9 9-9s9 4.04 9 9h2c0-6.07-4.93-11-11-11z"/>', s, c);
-const icoLooks_3 = (s, c) => icoWrapper('<path d="M19.01 3h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 7.5c0 .83-.67 1.5-1.5 1.5.83 0 1.5.67 1.5 1.5V15c0 1.11-.9 2-2 2h-4v-2h4v-2h-2v-2h2V9h-4V7h4c1.1 0 2 .89 2 2v1.5z"/>', s, c);
-const icoLooks_4 = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 14h-2v-4H9V7h2v4h2V7h2v10z"/>', s, c);
-const icoLooks_5 = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h2c1.1 0 2 .89 2 2v2c0 1.11-.9 2-2 2H9v-2h4v-2H9V7h6v2z"/>', s, c);
-const icoLooks_6 = (s, c) => icoWrapper('<path d="M11 15h2v-2h-2v2zm8-12H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h2c1.1 0 2 .89 2 2v2c0 1.11-.9 2-2 2h-2c-1.1 0-2-.89-2-2V9c0-1.11.9-2 2-2h4v2z"/>', s, c);
-const icoLooksOne = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z"/>', s, c);
-const icoLooksTwo = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 8c0 1.11-.9 2-2 2h-2v2h4v2H9v-4c0-1.11.9-2 2-2h2V9H9V7h4c1.1 0 2 .89 2 2v2z"/>', s, c);
-const icoLoupe = (s, c) => icoWrapper('<path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10h8c1.1 0 2-.9 2-2v-8c0-5.51-4.49-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoMonochromePhotos = (s, c) => icoWrapper('<path d="M20 5h-3.2L15 3H9L7.2 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 14h-8v-1c-2.8 0-5-2.2-5-5s2.2-5 5-5V7h8v12zm-3-6c0-2.8-2.2-5-5-5v1.8c1.8 0 3.2 1.4 3.2 3.2s-1.4 3.2-3.2 3.2V18c2.8 0 5-2.2 5-5zm-8.2 0c0 1.8 1.4 3.2 3.2 3.2V9.8c-1.8 0-3.2 1.4-3.2 3.2z"/>', s, c);
-const icoMovieCreation = (s, c) => icoWrapper('<path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>', s, c);
-const icoMovieFilter = (s, c) => icoWrapper('<path d="M18 4l2 3h-3l-2-3h-2l2 3h-3l-2-3H8l2 3H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4zm-6.75 11.25L10 18l-1.25-2.75L6 14l2.75-1.25L10 10l1.25 2.75L14 14l-2.75 1.25zm5.69-3.31L16 14l-.94-2.06L13 11l2.06-.94L16 8l.94 2.06L19 11l-2.06.94z"/>', s, c);
-const icoMusicNote = (s, c) => icoWrapper('<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>', s, c);
-const icoNature = (s, c) => icoWrapper('<path d="M13 16.12c3.47-.41 6.17-3.36 6.17-6.95 0-3.87-3.13-7-7-7s-7 3.13-7 7c0 3.47 2.52 6.34 5.83 6.89V20H5v2h14v-2h-6v-3.88z"/>', s, c);
-const icoNaturePeople = (s, c) => icoWrapper('<path d="M22.17 9.17c0-3.87-3.13-7-7-7s-7 3.13-7 7c0 3.47 2.52 6.34 5.83 6.89V20H6v-3h1v-4c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v4h1v5h16v-2h-3v-3.88c3.47-.41 6.17-3.36 6.17-6.95zM4.5 11c.83 0 1.5-.67 1.5-1.5S5.33 8 4.5 8 3 8.67 3 9.5 3.67 11 4.5 11z"/>', s, c);
-const icoNavigateBefore = (s, c) => icoWrapper('<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>', s, c);
-const icoNavigateNext = (s, c) => icoWrapper('<path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>', s, c);
-const icoPalette = (s, c) => icoWrapper('<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoPanorama = (s, c) => icoWrapper('<path d="M23 18V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zM8.5 12.5l2.5 3.01L14.5 11l4.5 6H5l3.5-4.5z"/>', s, c);
-const icoPanoramaFishEye = (s, c) => icoWrapper('<path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>', s, c);
-const icoPanoramaHorizontal = (s, c) => icoWrapper('<path d="M20 6.54v10.91c-2.6-.77-5.28-1.16-8-1.16-2.72 0-5.4.39-8 1.16V6.54c2.6.77 5.28 1.16 8 1.16 2.72.01 5.4-.38 8-1.16M21.43 4c-.1 0-.2.02-.31.06C18.18 5.16 15.09 5.7 12 5.7c-3.09 0-6.18-.55-9.12-1.64-.11-.04-.22-.06-.31-.06-.34 0-.57.23-.57.63v14.75c0 .39.23.62.57.62.1 0 .2-.02.31-.06 2.94-1.1 6.03-1.64 9.12-1.64 3.09 0 6.18.55 9.12 1.64.11.04.21.06.31.06.33 0 .57-.23.57-.63V4.63c0-.4-.24-.63-.57-.63z"/>', s, c);
-const icoPanoramaVertical = (s, c) => icoWrapper('<path d="M19.94 21.12c-1.1-2.94-1.64-6.03-1.64-9.12 0-3.09.55-6.18 1.64-9.12.04-.11.06-.22.06-.31 0-.34-.23-.57-.63-.57H4.63c-.4 0-.63.23-.63.57 0 .1.02.2.06.31C5.16 5.82 5.71 8.91 5.71 12c0 3.09-.55 6.18-1.64 9.12-.05.11-.07.22-.07.31 0 .33.23.57.63.57h14.75c.39 0 .63-.24.63-.57-.01-.1-.03-.2-.07-.31zM6.54 20c.77-2.6 1.16-5.28 1.16-8 0-2.72-.39-5.4-1.16-8h10.91c-.77 2.6-1.16 5.28-1.16 8 0 2.72.39 5.4 1.16 8H6.54z"/>', s, c);
-const icoPanoramaWideAngle = (s, c) => icoWrapper('<path d="M12 6c2.45 0 4.71.2 7.29.64.47 1.78.71 3.58.71 5.36 0 1.78-.24 3.58-.71 5.36-2.58.44-4.84.64-7.29.64s-4.71-.2-7.29-.64C4.24 15.58 4 13.78 4 12c0-1.78.24-3.58.71-5.36C7.29 6.2 9.55 6 12 6m0-2c-2.73 0-5.22.24-7.95.72l-.93.16-.25.9C2.29 7.85 2 9.93 2 12s.29 4.15.87 6.22l.25.89.93.16c2.73.49 5.22.73 7.95.73s5.22-.24 7.95-.72l.93-.16.25-.89c.58-2.08.87-4.16.87-6.23s-.29-4.15-.87-6.22l-.25-.89-.93-.16C17.22 4.24 14.73 4 12 4z"/>', s, c);
-const icoPhoto = (s, c) => icoWrapper('<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>', s, c);
-const icoPhotoAlbum = (s, c) => icoWrapper('<path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4zm0 15l3-3.86 2.14 2.58 3-3.86L18 19H6z"/>', s, c);
-const icoPhotoCamera = (s, c) => icoWrapper('<path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>', s, c);
-const icoPhotoFilter = (s, c) => icoWrapper('<path d="M19.02 10v9H5V5h9V3H5.02c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-9h-2zM17 10l.94-2.06L20 7l-2.06-.94L17 4l-.94 2.06L14 7l2.06.94zm-3.75.75L12 8l-1.25 2.75L8 12l2.75 1.25L12 16l1.25-2.75L16 12z"/>', s, c);
-const icoPhotoLibrary = (s, c) => icoWrapper('<path d="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z"/>', s, c);
-const icoPhotoSizeSelectActual = (s, c) => icoWrapper('<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zM5 17l3.5-4.5 2.5 3.01L14.5 11l4.5 6H5z"/>', s, c);
-const icoPhotoSizeSelectLarge = (s, c) => icoWrapper('<path d="M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z"/>', s, c);
-const icoPhotoSizeSelectSmall = (s, c) => icoWrapper('<path d="M23 15h-2v2h2v-2zm0-4h-2v2h2v-2zm0 8h-2v2c1 0 2-1 2-2zM15 3h-2v2h2V3zm8 4h-2v2h2V7zm-2-4v2h2c0-1-1-2-2-2zM3 21h8v-6H1v4c0 1.1.9 2 2 2zM3 7H1v2h2V7zm12 12h-2v2h2v-2zm4-16h-2v2h2V3zm0 16h-2v2h2v-2zM3 3C2 3 1 4 1 5h2V3zm0 8H1v2h2v-2zm8-8H9v2h2V3zM7 3H5v2h2V3z"/>', s, c);
-const icoPictureAsPdf = (s, c) => icoWrapper('<path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/>', s, c);
-const icoPortrait = (s, c) => icoWrapper('<path d="M12 12.25c1.24 0 2.25-1.01 2.25-2.25S13.24 7.75 12 7.75 9.75 8.76 9.75 10s1.01 2.25 2.25 2.25zm4.5 4c0-1.5-3-2.25-4.5-2.25s-4.5.75-4.5 2.25V17h9v-.75zM19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>', s, c);
-const icoRemoveRedEye = (s, c) => icoWrapper('<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>', s, c);
-const icoRotate_90DegreesCcw = (s, c) => icoWrapper('<path d="M7.34 6.41L.86 12.9l6.49 6.48 6.49-6.48-6.5-6.49zM3.69 12.9l3.66-3.66L11 12.9l-3.66 3.66-3.65-3.66zm15.67-6.26C17.61 4.88 15.3 4 13 4V.76L8.76 5 13 9.24V6c1.79 0 3.58.68 4.95 2.05 2.73 2.73 2.73 7.17 0 9.9C16.58 19.32 14.79 20 13 20c-.97 0-1.94-.21-2.84-.61l-1.49 1.49C10.02 21.62 11.51 22 13 22c2.3 0 4.61-.88 6.36-2.64 3.52-3.51 3.52-9.21 0-12.72z"/>', s, c);
-const icoRotateLeft = (s, c) => icoWrapper('<path d="M7.11 8.53L5.7 7.11C4.8 8.27 4.24 9.61 4.07 11h2.02c.14-.87.49-1.72 1.02-2.47zM6.09 13H4.07c.17 1.39.72 2.73 1.62 3.89l1.41-1.42c-.52-.75-.87-1.59-1.01-2.47zm1.01 5.32c1.16.9 2.51 1.44 3.9 1.61V17.9c-.87-.15-1.71-.49-2.46-1.03L7.1 18.32zM13 4.07V1L8.45 5.55 13 10V6.09c2.84.48 5 2.94 5 5.91s-2.16 5.43-5 5.91v2.02c3.95-.49 7-3.85 7-7.93s-3.05-7.44-7-7.93z"/>', s, c);
-const icoRotateRight = (s, c) => icoWrapper('<path d="M15.55 5.55L11 1v3.07C7.06 4.56 4 7.92 4 12s3.05 7.44 7 7.93v-2.02c-2.84-.48-5-2.94-5-5.91s2.16-5.43 5-5.91V10l4.55-4.45zM19.93 11c-.17-1.39-.72-2.73-1.62-3.89l-1.42 1.42c.54.75.88 1.6 1.02 2.47h2.02zM13 17.9v2.02c1.39-.17 2.74-.71 3.9-1.61l-1.44-1.44c-.75.54-1.59.89-2.46 1.03zm3.89-2.42l1.42 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.02c-.14.87-.48 1.72-1.02 2.48z"/>', s, c);
-const icoSlideshow = (s, c) => icoWrapper('<path d="M10 8v8l5-4-5-4zm9-5H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>', s, c);
-const icoStraighten = (s, c) => icoWrapper('<path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h2v4h2V8h2v4h2V8h2v4h2V8h2v4h2V8h2v8z"/>', s, c);
-const icoStyle = (s, c) => icoWrapper('<path d="M2.53 19.65l1.34.56v-9.03l-2.43 5.86c-.41 1.02.08 2.19 1.09 2.61zm19.5-3.7L17.07 3.98c-.31-.75-1.04-1.21-1.81-1.23-.26 0-.53.04-.79.15L7.1 5.95c-.75.31-1.21 1.03-1.23 1.8-.01.27.04.54.15.8l4.96 11.97c.31.76 1.05 1.22 1.83 1.23.26 0 .52-.05.77-.15l7.36-3.05c1.02-.42 1.51-1.59 1.09-2.6zM7.88 8.75c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-2 11c0 1.1.9 2 2 2h1.45l-3.45-8.34v6.34z"/>', s, c);
-const icoSwitchCamera = (s, c) => icoWrapper('<path d="M20 4h-3.17L15 2H9L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 11.5V13H9v2.5L5.5 12 9 8.5V11h6V8.5l3.5 3.5-3.5 3.5z"/>', s, c);
-const icoSwitchVideo = (s, c) => icoWrapper('<path d="M18 9.5V6c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3.5l4 4v-13l-4 4zm-5 6V13H7v2.5L3.5 12 7 8.5V11h6V8.5l3.5 3.5-3.5 3.5z"/>', s, c);
-const icoTagFaces = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>', s, c);
-const icoTexture = (s, c) => icoWrapper('<path d="M19.51 3.08L3.08 19.51c.09.34.27.65.51.9.25.24.56.42.9.51L20.93 4.49c-.19-.69-.73-1.23-1.42-1.41zM11.88 3L3 11.88v2.83L14.71 3h-2.83zM5 3c-1.1 0-2 .9-2 2v2l4-4H5zm14 18c.55 0 1.05-.22 1.41-.59.37-.36.59-.86.59-1.41v-2l-4 4h2zm-9.71 0h2.83L21 12.12V9.29L9.29 21z"/>', s, c);
-const icoTimelapse = (s, c) => icoWrapper('<path d="M16.24 7.76C15.07 6.59 13.54 6 12 6v6l-4.24 4.24c2.34 2.34 6.14 2.34 8.49 0 2.34-2.34 2.34-6.14-.01-8.48zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>', s, c);
-const icoTimer_10 = (s, c) => icoWrapper('<path d="M0 7.72V9.4l3-1V18h2V6h-.25L0 7.72zm23.78 6.65c-.14-.28-.35-.53-.63-.74-.28-.21-.61-.39-1.01-.53s-.85-.27-1.35-.38c-.35-.07-.64-.15-.87-.23-.23-.08-.41-.16-.55-.25-.14-.09-.23-.19-.28-.3-.05-.11-.08-.24-.08-.39 0-.14.03-.28.09-.41.06-.13.15-.25.27-.34.12-.1.27-.18.45-.24s.4-.09.64-.09c.25 0 .47.04.66.11.19.07.35.17.48.29.13.12.22.26.29.42.06.16.1.32.1.49h1.95c0-.39-.08-.75-.24-1.09-.16-.34-.39-.63-.69-.88-.3-.25-.66-.44-1.09-.59C21.49 9.07 21 9 20.46 9c-.51 0-.98.07-1.39.21-.41.14-.77.33-1.06.57-.29.24-.51.52-.67.84-.16.32-.23.65-.23 1.01s.08.69.23.96c.15.28.36.52.64.73.27.21.6.38.98.53.38.14.81.26 1.27.36.39.08.71.17.95.26s.43.19.57.29c.13.1.22.22.27.34.05.12.07.25.07.39 0 .32-.13.57-.4.77-.27.2-.66.29-1.17.29-.22 0-.43-.02-.64-.08-.21-.05-.4-.13-.56-.24-.17-.11-.3-.26-.41-.44-.11-.18-.17-.41-.18-.67h-1.89c0 .36.08.71.24 1.05.16.34.39.65.7.93.31.27.69.49 1.15.66.46.17.98.25 1.58.25.53 0 1.01-.06 1.44-.19.43-.13.8-.31 1.11-.54.31-.23.54-.51.71-.83.17-.32.25-.67.25-1.06-.02-.4-.09-.74-.24-1.02zm-9.96-7.32c-.34-.4-.75-.7-1.23-.88-.47-.18-1.01-.27-1.59-.27-.58 0-1.11.09-1.59.27-.48.18-.89.47-1.23.88-.34.41-.6.93-.79 1.59-.18.65-.28 1.45-.28 2.39v1.92c0 .94.09 1.74.28 2.39.19.66.45 1.19.8 1.6.34.41.75.71 1.23.89.48.18 1.01.28 1.59.28.59 0 1.12-.09 1.59-.28.48-.18.88-.48 1.22-.89.34-.41.6-.94.78-1.6.18-.65.28-1.45.28-2.39v-1.92c0-.94-.09-1.74-.28-2.39-.18-.66-.44-1.19-.78-1.59zm-.92 6.17c0 .6-.04 1.11-.12 1.53-.08.42-.2.76-.36 1.02-.16.26-.36.45-.59.57-.23.12-.51.18-.82.18-.3 0-.58-.06-.82-.18s-.44-.31-.6-.57c-.16-.26-.29-.6-.38-1.02-.09-.42-.13-.93-.13-1.53v-2.5c0-.6.04-1.11.13-1.52.09-.41.21-.74.38-1 .16-.25.36-.43.6-.55.24-.11.51-.17.81-.17.31 0 .58.06.81.17.24.11.44.29.6.55.16.25.29.58.37.99.08.41.13.92.13 1.52v2.51z"/>', s, c);
-const icoTimer = (s, c) => icoWrapper('<path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>', s, c);
-const icoTimer_3 = (s, c) => icoWrapper('<path d="M11.61 12.97c-.16-.24-.36-.46-.62-.65-.25-.19-.56-.35-.93-.48.3-.14.57-.3.8-.5.23-.2.42-.41.57-.64.15-.23.27-.46.34-.71.08-.24.11-.49.11-.73 0-.55-.09-1.04-.28-1.46-.18-.42-.44-.77-.78-1.06-.33-.28-.73-.5-1.2-.64-.45-.13-.97-.2-1.53-.2-.55 0-1.06.08-1.52.24-.47.17-.87.4-1.2.69-.33.29-.6.63-.78 1.03-.2.39-.29.83-.29 1.29h1.98c0-.26.05-.49.14-.69.09-.2.22-.38.38-.52.17-.14.36-.25.58-.33.22-.08.46-.12.73-.12.61 0 1.06.16 1.36.47.3.31.44.75.44 1.32 0 .27-.04.52-.12.74-.08.22-.21.41-.38.57-.17.16-.38.28-.63.37-.25.09-.55.13-.89.13H6.72v1.57H7.9c.34 0 .64.04.91.11.27.08.5.19.69.35.19.16.34.36.44.61.1.24.16.54.16.87 0 .62-.18 1.09-.53 1.42-.35.33-.84.49-1.45.49-.29 0-.56-.04-.8-.13-.24-.08-.44-.2-.61-.36-.17-.16-.3-.34-.39-.56-.09-.22-.14-.46-.14-.72H4.19c0 .55.11 1.03.32 1.45.21.42.5.77.86 1.05s.77.49 1.24.63.96.21 1.48.21c.57 0 1.09-.08 1.58-.23.49-.15.91-.38 1.26-.68.36-.3.64-.66.84-1.1.2-.43.3-.93.3-1.48 0-.29-.04-.58-.11-.86-.08-.25-.19-.51-.35-.76zm9.26 1.4c-.14-.28-.35-.53-.63-.74-.28-.21-.61-.39-1.01-.53s-.85-.27-1.35-.38c-.35-.07-.64-.15-.87-.23-.23-.08-.41-.16-.55-.25-.14-.09-.23-.19-.28-.3-.05-.11-.08-.24-.08-.39s.03-.28.09-.41c.06-.13.15-.25.27-.34.12-.1.27-.18.45-.24s.4-.09.64-.09c.25 0 .47.04.66.11.19.07.35.17.48.29.13.12.22.26.29.42.06.16.1.32.1.49h1.95c0-.39-.08-.75-.24-1.09-.16-.34-.39-.63-.69-.88-.3-.25-.66-.44-1.09-.59-.43-.15-.92-.22-1.46-.22-.51 0-.98.07-1.39.21-.41.14-.77.33-1.06.57-.29.24-.51.52-.67.84-.16.32-.23.65-.23 1.01s.08.68.23.96c.15.28.37.52.64.73.27.21.6.38.98.53.38.14.81.26 1.27.36.39.08.71.17.95.26s.43.19.57.29c.13.1.22.22.27.34.05.12.07.25.07.39 0 .32-.13.57-.4.77-.27.2-.66.29-1.17.29-.22 0-.43-.02-.64-.08-.21-.05-.4-.13-.56-.24-.17-.11-.3-.26-.41-.44-.11-.18-.17-.41-.18-.67h-1.89c0 .36.08.71.24 1.05.16.34.39.65.7.93.31.27.69.49 1.15.66.46.17.98.25 1.58.25.53 0 1.01-.06 1.44-.19.43-.13.8-.31 1.11-.54.31-.23.54-.51.71-.83.17-.32.25-.67.25-1.06-.02-.4-.09-.74-.24-1.02z"/>', s, c);
-const icoTimerOff = (s, c) => icoWrapper('<path d="M19.04 4.55l-1.42 1.42C16.07 4.74 14.12 4 12 4c-1.83 0-3.53.55-4.95 1.48l1.46 1.46C9.53 6.35 10.73 6 12 6c3.87 0 7 3.13 7 7 0 1.27-.35 2.47-.94 3.49l1.45 1.45C20.45 16.53 21 14.83 21 13c0-2.12-.74-4.07-1.97-5.61l1.42-1.42-1.41-1.42zM15 1H9v2h6V1zm-4 8.44l2 2V8h-2v1.44zM3.02 4L1.75 5.27 4.5 8.03C3.55 9.45 3 11.16 3 13c0 4.97 4.02 9 9 9 1.84 0 3.55-.55 4.98-1.5l2.5 2.5 1.27-1.27-7.71-7.71L3.02 4zM12 20c-3.87 0-7-3.13-7-7 0-1.28.35-2.48.95-3.52l9.56 9.56c-1.03.61-2.23.96-3.51.96z"/>', s, c);
-const icoTonality = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 9.93V19h2.87c-.87.48-1.84.8-2.87.93zM18.24 17H13v-1h5.92c-.2.35-.43.69-.68 1zm1.5-3H13v-1h6.93c-.04.34-.11.67-.19 1z"/>', s, c);
-const icoTransform = (s, c) => icoWrapper('<path d="M22 18v-2H8V4h2L7 1 4 4h2v2H2v2h4v8c0 1.1.9 2 2 2h8v2h-2l3 3 3-3h-2v-2h4zM10 8h6v6h2V8c0-1.1-.9-2-2-2h-6v2z"/>', s, c);
-const icoTune = (s, c) => icoWrapper('<path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/>', s, c);
-const icoViewComfy = (s, c) => icoWrapper('<path d="M3 9h4V5H3v4zm0 5h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zM8 9h4V5H8v4zm5-4v4h4V5h-4zm5 9h4v-4h-4v4zM3 19h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zm5 0h4v-4h-4v4zm0-14v4h4V5h-4z"/>', s, c);
-const icoViewCompact = (s, c) => icoWrapper('<path d="M3 19h6v-7H3v7zm7 0h12v-7H10v7zM3 5v6h19V5H3z"/>', s, c);
-const icoVignette = (s, c) => icoWrapper('<path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 15c-4.42 0-8-2.69-8-6s3.58-6 8-6 8 2.69 8 6-3.58 6-8 6z"/>', s, c);
-const icoWbAuto = (s, c) => icoWrapper('<path d="M6.85 12.65h2.3L8 9l-1.15 3.65zM22 7l-1.2 6.29L19.3 7h-1.6l-1.49 6.29L15 7h-.76C12.77 5.17 10.53 4 8 4c-4.42 0-8 3.58-8 8s3.58 8 8 8c3.13 0 5.84-1.81 7.15-4.43l.1.43H17l1.5-6.1L20 16h1.75l2.05-9H22zm-11.7 9l-.7-2H6.4l-.7 2H3.8L7 7h2l3.2 9h-1.9z"/>', s, c);
-const icoWbCloudy = (s, c) => icoWrapper('<path d="M19.36 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.64-4.96z"/>', s, c);
-const icoWbIncandescent = (s, c) => icoWrapper('<path d="M3.55 18.54l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8zM11 22.45h2V19.5h-2v2.95zM4 10.5H1v2h3v-2zm11-4.19V1.5H9v4.81C7.21 7.35 6 9.28 6 11.5c0 3.31 2.69 6 6 6s6-2.69 6-6c0-2.22-1.21-4.15-3-5.19zm5 4.19v2h3v-2h-3zm-2.76 7.66l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4z"/>', s, c);
-const icoWbIridescent = (s, c) => icoWrapper('<path d="M5 14.5h14v-6H5v6zM11 .55V3.5h2V.55h-2zm8.04 2.5l-1.79 1.79 1.41 1.41 1.8-1.79-1.42-1.41zM13 22.45V19.5h-2v2.95h2zm7.45-3.91l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zM3.55 4.46l1.79 1.79 1.41-1.41-1.79-1.79-1.41 1.41zm1.41 15.49l1.79-1.8-1.41-1.41-1.79 1.79 1.41 1.42z"/>', s, c);
-const icoWbSunny = (s, c) => icoWrapper('<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/>', s, c);
-const icoAddLocation = (s, c) => icoWrapper('<path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm4 8h-3v3h-2v-3H8V8h3V5h2v3h3v2z"/>', s, c);
-const icoBeenhere = (s, c) => icoWrapper('<path d="M19 1H5c-1.1 0-1.99.9-1.99 2L3 15.93c0 .69.35 1.3.88 1.66L12 23l8.11-5.41c.53-.36.88-.97.88-1.66L21 3c0-1.1-.9-2-2-2zm-9 15l-5-5 1.41-1.41L10 13.17l7.59-7.59L19 7l-9 9z"/>', s, c);
-const icoDirections = (s, c) => icoWrapper('<path d="M21.71 11.29l-9-9c-.39-.39-1.02-.39-1.41 0l-9 9c-.39.39-.39 1.02 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9c.39-.38.39-1.01 0-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/>', s, c);
-const icoDirectionsBike = (s, c) => icoWrapper('<path d="M15.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM5 12c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 8.5c-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5-1.6 3.5-3.5 3.5zm5.8-10l2.4-2.4.8.8c1.3 1.3 3 2.1 5.1 2.1V9c-1.5 0-2.7-.6-3.6-1.5l-1.9-1.9c-.5-.4-1-.6-1.6-.6s-1.1.2-1.4.6L7.8 8.4c-.4.4-.6.9-.6 1.4 0 .6.2 1.1.6 1.4L11 14v5h2v-6.2l-2.2-2.3zM19 12c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0 8.5c-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5-1.6 3.5-3.5 3.5z"/>', s, c);
-const icoDirectionsBoat = (s, c) => icoWrapper('<path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19zM6 6h12v3.97L12 8 6 9.97V6z"/>', s, c);
-const icoDirectionsBus = (s, c) => icoWrapper('<path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z"/>', s, c);
-const icoDirectionsCar = (s, c) => icoWrapper('<path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>', s, c);
-const icoDirectionsRailway = (s, c) => icoWrapper('<path d="M4 15.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V5c0-3.5-3.58-4-8-4s-8 .5-8 4v10.5zm8 1.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-7H6V5h12v5z"/>', s, c);
-const icoDirectionsRun = (s, c) => icoWrapper('<path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/>', s, c);
-const icoDirectionsSubway = (s, c) => icoWrapper('<path d="M12 2c-4.42 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm5.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6h-5V6h5v5z"/>', s, c);
-const icoDirectionsTransit = (s, c) => icoWrapper('<path d="M12 2c-4.42 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm5.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6h-5V6h5v5z"/>', s, c);
-const icoDirectionsWalk = (s, c) => icoWrapper('<path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/>', s, c);
-const icoEditLocation = (s, c) => icoWrapper('<path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm-1.56 10H9v-1.44l3.35-3.34 1.43 1.43L10.44 12zm4.45-4.45l-.7.7-1.44-1.44.7-.7c.15-.15.39-.15.54 0l.9.9c.15.15.15.39 0 .54z"/>', s, c);
-const icoEvStation = (s, c) => icoWrapper('<path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33 0 1.38 1.12 2.5 2.5 2.5.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM18 10c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zM8 18v-4.5H6L10 6v5h2l-4 7z"/>', s, c);
-const icoFlight = (s, c) => icoWrapper('<path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>', s, c);
-const icoHotel = (s, c) => icoWrapper('<path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/>', s, c);
-const icoLayers = (s, c) => icoWrapper('<path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"/>', s, c);
-const icoLayersClear = (s, c) => icoWrapper('<path d="M19.81 14.99l1.19-.92-1.43-1.43-1.19.92 1.43 1.43zm-.45-4.72L21 9l-9-7-2.91 2.27 7.87 7.88 2.4-1.88zM3.27 1L2 2.27l4.22 4.22L3 9l1.63 1.27L12 16l2.1-1.63 1.43 1.43L12 18.54l-7.37-5.73L3 14.07l9 7 4.95-3.85L20.73 21 22 19.73 3.27 1z"/>', s, c);
-const icoLocalActivity = (s, c) => icoWrapper('<path d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2zm-4.42 4.8L12 14.5l-3.58 2.3 1.08-4.12-3.29-2.69 4.24-.25L12 5.8l1.54 3.95 4.24.25-3.29 2.69 1.09 4.11z"/>', s, c);
-const icoLocalAirport = (s, c) => icoWrapper('<path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>', s, c);
-const icoLocalAtm = (s, c) => icoWrapper('<path d="M11 17h2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-3v-1h4V8h-2V7h-2v1h-1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h3v1H9v2h2v1zm9-13H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4V6h16v12z"/>', s, c);
-const icoLocalBar = (s, c) => icoWrapper('<path d="M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM7.43 7L5.66 5h12.69l-1.78 2H7.43z"/>', s, c);
-const icoLocalCafe = (s, c) => icoWrapper('<path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM2 21h18v-2H2v2z"/>', s, c);
-const icoLocalCarWash = (s, c) => icoWrapper('<path d="M17 5c.83 0 1.5-.67 1.5-1.5 0-1-1.5-2.7-1.5-2.7s-1.5 1.7-1.5 2.7c0 .83.67 1.5 1.5 1.5zm-5 0c.83 0 1.5-.67 1.5-1.5 0-1-1.5-2.7-1.5-2.7s-1.5 1.7-1.5 2.7c0 .83.67 1.5 1.5 1.5zM7 5c.83 0 1.5-.67 1.5-1.5C8.5 2.5 7 .8 7 .8S5.5 2.5 5.5 3.5C5.5 4.33 6.17 5 7 5zm11.92 3.01C18.72 7.42 18.16 7 17.5 7h-11c-.66 0-1.21.42-1.42 1.01L3 14v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 18c-.83 0-1.5-.67-1.5-1.5S5.67 15 6.5 15s1.5.67 1.5 1.5S7.33 18 6.5 18zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 13l1.5-4.5h11L19 13H5z"/>', s, c);
-const icoLocalConvenienceStore = (s, c) => icoWrapper('<path d="M19 7V4H5v3H2v13h8v-4h4v4h8V7h-3zm-8 3H9v1h2v1H8V9h2V8H8V7h3v3zm5 2h-1v-2h-2V7h1v2h1V7h1v5z"/>', s, c);
-const icoLocalDining = (s, c) => icoWrapper('<path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>', s, c);
-const icoLocalDrink = (s, c) => icoWrapper('<path d="M3 2l2.01 18.23C5.13 21.23 5.97 22 7 22h10c1.03 0 1.87-.77 1.99-1.77L21 2H3zm9 17c-1.66 0-3-1.34-3-3 0-2 3-5.4 3-5.4s3 3.4 3 5.4c0 1.66-1.34 3-3 3zm6.33-11H5.67l-.44-4h13.53l-.43 4z"/>', s, c);
-const icoLocalFlorist = (s, c) => icoWrapper('<path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9zM5.6 10.25c0 1.38 1.12 2.5 2.5 2.5.53 0 1.01-.16 1.42-.44l-.02.19c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5l-.02-.19c.4.28.89.44 1.42.44 1.38 0 2.5-1.12 2.5-2.5 0-1-.59-1.85-1.43-2.25.84-.4 1.43-1.25 1.43-2.25 0-1.38-1.12-2.5-2.5-2.5-.53 0-1.01.16-1.42.44l.02-.19C14.5 2.12 13.38 1 12 1S9.5 2.12 9.5 3.5l.02.19c-.4-.28-.89-.44-1.42-.44-1.38 0-2.5 1.12-2.5 2.5 0 1 .59 1.85 1.43 2.25-.84.4-1.43 1.25-1.43 2.25zM12 5.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5S9.5 9.38 9.5 8s1.12-2.5 2.5-2.5zM3 13c0 4.97 4.03 9 9 9 0-4.97-4.03-9-9-9z"/>', s, c);
-const icoLocalGasStation = (s, c) => icoWrapper('<path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33 0 1.38 1.12 2.5 2.5 2.5.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>', s, c);
-const icoLocalGroceryStore = (s, c) => icoWrapper('<path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoLocalHospital = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/>', s, c);
-const icoLocalHotel = (s, c) => icoWrapper('<path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/>', s, c);
-const icoLocalLaundryService = (s, c) => icoWrapper('<path d="M9.17 16.83c1.56 1.56 4.1 1.56 5.66 0 1.56-1.56 1.56-4.1 0-5.66l-5.66 5.66zM18 2.01L6 2c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V4c0-1.11-.89-1.99-2-1.99zM10 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM7 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm5 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>', s, c);
-const icoLocalLibrary = (s, c) => icoWrapper('<path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.19 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/>', s, c);
-const icoLocalMall = (s, c) => icoWrapper('<path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3h2c0 2.76-2.24 5-5 5z"/>', s, c);
-const icoLocalMovies = (s, c) => icoWrapper('<path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/>', s, c);
-const icoLocalOffer = (s, c) => icoWrapper('<path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>', s, c);
-const icoLocalParking = (s, c) => icoWrapper('<path d="M13 3H6v18h4v-6h3c3.31 0 6-2.69 6-6s-2.69-6-6-6zm.2 8H10V7h3.2c1.1 0 2 .9 2 2s-.9 2-2 2z"/>', s, c);
-const icoLocalPharmacy = (s, c) => icoWrapper('<path d="M21 5h-2.64l1.14-3.14L17.15 1l-1.46 4H3v2l2 6-2 6v2h18v-2l-2-6 2-6V5zm-5 9h-3v3h-2v-3H8v-2h3V9h2v3h3v2z"/>', s, c);
-const icoLocalPhone = (s, c) => icoWrapper('<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>', s, c);
-const icoLocalPizza = (s, c) => icoWrapper('<path d="M12 2C8.43 2 5.23 3.54 3.01 6L12 22l8.99-16C18.78 3.55 15.57 2 12 2zM7 7c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm5 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>', s, c);
-const icoLocalPlay = (s, c) => icoWrapper('<path d="M20 12c0-1.1.9-2 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2zm-4.42 4.8L12 14.5l-3.58 2.3 1.08-4.12-3.29-2.69 4.24-.25L12 5.8l1.54 3.95 4.24.25-3.29 2.69 1.09 4.11z"/>', s, c);
-const icoLocalPostOffice = (s, c) => icoWrapper('<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>', s, c);
-const icoLocalPrintshop = (s, c) => icoWrapper('<path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>', s, c);
-const icoLocalSee = (s, c) => icoWrapper('<path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>', s, c);
-const icoLocalShipping = (s, c) => icoWrapper('<path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoLocalTaxi = (s, c) => icoWrapper('<path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H15V3H9v2H6.5c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>', s, c);
-const icoMap = (s, c) => icoWrapper('<path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/>', s, c);
-const icoMyLocation = (s, c) => icoWrapper('<path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>', s, c);
-const icoNavigation = (s, c) => icoWrapper('<path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>', s, c);
-const icoNearMe = (s, c) => icoWrapper('<path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/>', s, c);
-const icoPersonPin = (s, c) => icoWrapper('<path d="M19 2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 3.3c1.49 0 2.7 1.21 2.7 2.7 0 1.49-1.21 2.7-2.7 2.7-1.49 0-2.7-1.21-2.7-2.7 0-1.49 1.21-2.7 2.7-2.7zM18 16H6v-.9c0-2 4-3.1 6-3.1s6 1.1 6 3.1v.9z"/>', s, c);
-const icoPersonPinCircle = (s, c) => icoWrapper('<path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 2c1.1 0 2 .9 2 2 0 1.11-.9 2-2 2s-2-.89-2-2c0-1.1.9-2 2-2zm0 10c-1.67 0-3.14-.85-4-2.15.02-1.32 2.67-2.05 4-2.05s3.98.73 4 2.05c-.86 1.3-2.33 2.15-4 2.15z"/>', s, c);
-const icoPinDrop = (s, c) => icoWrapper('<path d="M18 8c0-3.31-2.69-6-6-6S6 4.69 6 8c0 4.5 6 11 6 11s6-6.5 6-11zm-8 0c0-1.1.9-2 2-2s2 .9 2 2-.89 2-2 2c-1.1 0-2-.9-2-2zM5 20v2h14v-2H5z"/>', s, c);
-const icoPlace = (s, c) => icoWrapper('<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>', s, c);
-const icoRateReview = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 14v-2.47l6.88-6.88c.2-.2.51-.2.71 0l1.77 1.77c.2.2.2.51 0 .71L8.47 14H6zm12 0h-7.5l2-2H18v2z"/>', s, c);
-const icoRestaurant = (s, c) => icoWrapper('<path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/>', s, c);
-const icoRestaurantMenu = (s, c) => icoWrapper('<path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>', s, c);
-const icoSatellite = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 4.99h3C8 6.65 6.66 8 5 8V4.99zM5 12v-2c2.76 0 5-2.25 5-5.01h2C12 8.86 8.87 12 5 12zm0 6l3.5-4.5 2.5 3.01L14.5 12l4.5 6H5z"/>', s, c);
-const icoStoreMallDirectory = (s, c) => icoWrapper('<path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>', s, c);
-const icoStreetview = (s, c) => icoWrapper('<path d="M11.5 6c0-1.08.27-2.1.74-3H5c-1.1 0-2 .9-2 2v14c0 .55.23 1.05.59 1.41l9.82-9.82C12.23 9.42 11.5 7.8 11.5 6z"/>', s, c);
-const icoSubway = (s, c) => icoWrapper('<path d="M7.01 9h10v5h-10zM17.8 2.8C16 2.09 13.86 2 12 2c-1.86 0-4 .09-5.8.8C3.53 3.84 2 6.05 2 8.86V22h20V8.86c0-2.81-1.53-5.02-4.2-6.06zm.2 13.08c0 1.45-1.18 2.62-2.63 2.62l1.13 1.12V20H15l-1.5-1.5h-2.83L9.17 20H7.5v-.38l1.12-1.12C7.18 18.5 6 17.32 6 15.88V9c0-2.63 3-3 6-3 3.32 0 6 .38 6 3v6.88z"/>', s, c);
-const icoTerrain = (s, c) => icoWrapper('<path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/>', s, c);
-const icoTraffic = (s, c) => icoWrapper('<path d="M20 10h-3V8.86c1.72-.45 3-2 3-3.86h-3V4c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v1H4c0 1.86 1.28 3.41 3 3.86V10H4c0 1.86 1.28 3.41 3 3.86V15H4c0 1.86 1.28 3.41 3 3.86V20c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-1.14c1.72-.45 3-2 3-3.86h-3v-1.14c1.72-.45 3-2 3-3.86zm-8 9c-1.11 0-2-.9-2-2s.89-2 2-2c1.1 0 2 .9 2 2s-.89 2-2 2zm0-5c-1.11 0-2-.9-2-2s.89-2 2-2c1.1 0 2 .9 2 2s-.89 2-2 2zm0-5c-1.11 0-2-.9-2-2 0-1.11.89-2 2-2 1.1 0 2 .89 2 2 0 1.1-.89 2-2 2z"/>', s, c);
-const icoTrain = (s, c) => icoWrapper('<path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V6h5v4zm2 0V6h5v4h-5zm3.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoTram = (s, c) => icoWrapper('<path d="M19 16.94V8.5c0-2.79-2.61-3.4-6.01-3.49l.76-1.51H17V2H7v1.5h4.75l-.76 1.52C7.86 5.11 5 5.73 5 8.5v8.44c0 1.45 1.19 2.66 2.59 2.97L6 21.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 20h-.08c1.69 0 2.58-1.37 2.58-3.06zm-7 1.56c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5-4.5H7V9h10v5z"/>', s, c);
-const icoTransferWithinAStation = (s, c) => icoWrapper('<path d="M16.49 15.5v-1.75L14 16.25l2.49 2.5V17H22v-1.5zm3.02 4.25H14v1.5h5.51V23L22 20.5 19.51 18zM9.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM5.75 8.9L3 23h2.1l1.75-8L9 17v6h2v-7.55L8.95 13.4l.6-3C10.85 12 12.8 13 15 13v-2c-1.85 0-3.45-1-4.35-2.45l-.95-1.6C9.35 6.35 8.7 6 8 6c-.25 0-.5.05-.75.15L2 8.3V13h2V9.65l1.75-.75"/>', s, c);
-const icoZoomOutMap = (s, c) => icoWrapper('<path d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>', s, c);
-const icoApps = (s, c) => icoWrapper('<path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/>', s, c);
-const icoArrowBack = (s, c) => icoWrapper('<path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>', s, c);
-const icoArrowDownward = (s, c) => icoWrapper('<path fill="#010101" d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>', s, c);
-const icoArrowDropDown = (s, c) => icoWrapper('<path d="M7 10l5 5 5-5z"/>', s, c);
-const icoArrowDropDownCircle = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 12l-4-4h8l-4 4z"/>', s, c);
-const icoArrowDropUp = (s, c) => icoWrapper('<path d="M7 14l5-5 5 5z"/>', s, c);
-const icoArrowForward = (s, c) => icoWrapper('<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>', s, c);
-const icoArrowUpward = (s, c) => icoWrapper('<path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>', s, c);
-const icoCancel = (s, c) => icoWrapper('<path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/>', s, c);
-const icoCheck = (s, c) => icoWrapper('<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>', s, c);
-const icoChevronLeft = (s, c) => icoWrapper('<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>', s, c);
-const icoChevronRight = (s, c) => icoWrapper('<path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>', s, c);
-const icoClose = (s, c) => icoWrapper('<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>', s, c);
-const icoExpandLess = (s, c) => icoWrapper('<path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>', s, c);
-const icoExpandMore = (s, c) => icoWrapper('<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>', s, c);
-const icoFirstPage = (s, c) => icoWrapper('<path d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"/>', s, c);
-const icoFullscreen = (s, c) => icoWrapper('<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>', s, c);
-const icoFullscreenExit = (s, c) => icoWrapper('<path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>', s, c);
-const icoLastPage = (s, c) => icoWrapper('<path d="M5.59 7.41L10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"/>', s, c);
-const icoMenu = (s, c) => icoWrapper('<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>', s, c);
-const icoMoreHoriz = (s, c) => icoWrapper('<path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoMoreVert = (s, c) => icoWrapper('<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>', s, c);
-const icoRefresh = (s, c) => icoWrapper('<path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>', s, c);
-const icoSubdirectoryArrowLeft = (s, c) => icoWrapper('<path d="M11 9l1.42 1.42L8.83 14H18V4h2v12H8.83l3.59 3.58L11 21l-6-6 6-6z"/>', s, c);
-const icoSubdirectoryArrowRight = (s, c) => icoWrapper('<path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/>', s, c);
-const icoUnfoldLess = (s, c) => icoWrapper('<path d="M7.41 18.59L8.83 20 12 16.83 15.17 20l1.41-1.41L12 14l-4.59 4.59zm9.18-13.18L15.17 4 12 7.17 8.83 4 7.41 5.41 12 10l4.59-4.59z"/>', s, c);
-const icoUnfoldMore = (s, c) => icoWrapper('<path d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z"/>', s, c);
-const icoAdb = (s, c) => icoWrapper('<path d="M5 16c0 3.87 3.13 7 7 7s7-3.13 7-7v-4H5v4zM16.12 4.37l2.1-2.1-.82-.83-2.3 2.31C14.16 3.28 13.12 3 12 3s-2.16.28-3.09.75L6.6 1.44l-.82.83 2.1 2.1C6.14 5.64 5 7.68 5 10v1h14v-1c0-2.32-1.14-4.36-2.88-5.63zM9 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>', s, c);
-const icoAirlineSeatFlat = (s, c) => icoWrapper('<path d="M22 11v2H9V7h9c2.21 0 4 1.79 4 4zM2 14v2h6v2h8v-2h6v-2H2zm5.14-1.9c1.16-1.19 1.14-3.08-.04-4.24-1.19-1.16-3.08-1.14-4.24.04-1.16 1.19-1.14 3.08.04 4.24 1.19 1.16 3.08 1.14 4.24-.04z"/>', s, c);
-const icoAirlineSeatFlatAngled = (s, c) => icoWrapper('<path d="M22.25 14.29l-.69 1.89L9.2 11.71l2.08-5.66 8.56 3.09c2.1.76 3.18 3.06 2.41 5.15zM1.5 12.14L8 14.48V19h8v-1.63L20.52 19l.69-1.89-19.02-6.86-.69 1.89zm5.8-1.94c1.49-.72 2.12-2.51 1.41-4C7.99 4.71 6.2 4.08 4.7 4.8c-1.49.71-2.12 2.5-1.4 4 .71 1.49 2.5 2.12 4 1.4z"/>', s, c);
-const icoAirlineSeatIndividualSuite = (s, c) => icoWrapper('<path d="M7 13c1.65 0 3-1.35 3-3S8.65 7 7 7s-3 1.35-3 3 1.35 3 3 3zm12-6h-8v7H3V7H1v10h22v-6c0-2.21-1.79-4-4-4z"/>', s, c);
-const icoAirlineSeatLegroomExtra = (s, c) => icoWrapper('<path d="M4 12V3H2v9c0 2.76 2.24 5 5 5h6v-2H7c-1.66 0-3-1.34-3-3zm18.83 5.24c-.38-.72-1.29-.97-2.03-.63l-1.09.5-3.41-6.98c-.34-.68-1.03-1.12-1.79-1.12L11 9V3H5v8c0 1.66 1.34 3 3 3h7l3.41 7 3.72-1.7c.77-.36 1.1-1.3.7-2.06z"/>', s, c);
-const icoAirlineSeatLegroomNormal = (s, c) => icoWrapper('<path d="M5 12V3H3v9c0 2.76 2.24 5 5 5h6v-2H8c-1.66 0-3-1.34-3-3zm15.5 6H19v-7c0-1.1-.9-2-2-2h-5V3H6v8c0 1.65 1.35 3 3 3h7v7h4.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/>', s, c);
-const icoAirlineSeatLegroomReduced = (s, c) => icoWrapper('<path d="M19.97 19.2c.18.96-.55 1.8-1.47 1.8H14v-3l1-4H9c-1.65 0-3-1.35-3-3V3h6v6h5c1.1 0 2 .9 2 2l-2 7h1.44c.73 0 1.39.49 1.53 1.2zM5 12V3H3v9c0 2.76 2.24 5 5 5h4v-2H8c-1.66 0-3-1.34-3-3z"/>', s, c);
-const icoAirlineSeatReclineExtra = (s, c) => icoWrapper('<path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.63-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49zM16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l1.99 9.76C4.37 19.2 6.47 21 8.94 21H16v-2zm.23-4h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V9.99c-1.63.31-3.44-.27-4.69-1.25L9.14 7.47c-.23-.18-.49-.3-.76-.38-.32-.09-.66-.12-.99-.06h-.02c-1.23.22-2.05 1.39-1.84 2.61l1.35 5.92C7.16 16.98 8.39 18 9.83 18h6.85l3.82 3 1.5-1.5-5.77-4.5z"/>', s, c);
-const icoAirlineSeatReclineNormal = (s, c) => icoWrapper('<path d="M7.59 5.41c-.78-.78-.78-2.05 0-2.83.78-.78 2.05-.78 2.83 0 .78.78.78 2.05 0 2.83-.79.79-2.05.79-2.83 0zM6 16V7H4v9c0 2.76 2.24 5 5 5h6v-2H9c-1.66 0-3-1.34-3-3zm14 4.07L14.93 15H11.5v-3.68c1.4 1.15 3.6 2.16 5.5 2.16v-2.16c-1.66.02-3.61-.87-4.67-2.04l-1.4-1.55c-.19-.21-.43-.38-.69-.5-.29-.14-.62-.23-.96-.23h-.03C8.01 7 7 8.01 7 9.25V15c0 1.66 1.34 3 3 3h5.07l3.5 3.5L20 20.07z"/>', s, c);
-const icoBluetoothAudio = (s, c) => icoWrapper('<path d="M14.24 12.01l2.32 2.32c.28-.72.44-1.51.44-2.33 0-.82-.16-1.59-.43-2.31l-2.33 2.32zm5.29-5.3l-1.26 1.26c.63 1.21.98 2.57.98 4.02s-.36 2.82-.98 4.02l1.2 1.2c.97-1.54 1.54-3.36 1.54-5.31-.01-1.89-.55-3.67-1.48-5.19zm-3.82 1L10 2H9v7.59L4.41 5 3 6.41 8.59 12 3 17.59 4.41 19 9 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM11 5.83l1.88 1.88L11 9.59V5.83zm1.88 10.46L11 18.17v-3.76l1.88 1.88z"/>', s, c);
-const icoConfirmationNumber = (s, c) => icoWrapper('<path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-2h2v2zm0-4.5h-2v-2h2v2zm0-4.5h-2v-2h2v2z"/>', s, c);
-const icoDiscFull = (s, c) => icoWrapper('<path d="M20 16h2v-2h-2v2zm0-9v5h2V7h-2zM10 4c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>', s, c);
-const icoDoNotDisturb = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"/>', s, c);
-const icoDoNotDisturbAlt = (s, c) => icoWrapper('<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM4 12c0-4.4 3.6-8 8-8 1.8 0 3.5.6 4.9 1.7L5.7 16.9C4.6 15.5 4 13.8 4 12zm8 8c-1.8 0-3.5-.6-4.9-1.7L18.3 7.1C19.4 8.5 20 10.2 20 12c0 4.4-3.6 8-8 8z"/>', s, c);
-const icoDoNotDisturbOff = (s, c) => icoWrapper('<path d="M17 11v2h-1.46l4.68 4.68C21.34 16.07 22 14.11 22 12c0-5.52-4.48-10-10-10-2.11 0-4.07.66-5.68 1.78L13.54 11H17zM2.27 2.27L1 3.54l2.78 2.78C2.66 7.93 2 9.89 2 12c0 5.52 4.48 10 10 10 2.11 0 4.07-.66 5.68-1.78L20.46 23l1.27-1.27L11 11 2.27 2.27zM7 13v-2h1.46l2 2H7z"/>', s, c);
-const icoDoNotDisturbOn = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/>', s, c);
-const icoDriveEta = (s, c) => icoWrapper('<path d="M18.92 5.01C18.72 4.42 18.16 4 17.5 4h-11c-.66 0-1.21.42-1.42 1.01L3 11v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 15c-.83 0-1.5-.67-1.5-1.5S5.67 12 6.5 12s1.5.67 1.5 1.5S7.33 15 6.5 15zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 10l1.5-4.5h11L19 10H5z"/>', s, c);
-const icoEnhancedEncryption = (s, c) => icoWrapper('<path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM16 16h-3v3h-2v-3H8v-2h3v-3h2v3h3v2z"/>', s, c);
-const icoEventAvailable = (s, c) => icoWrapper('<path d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>', s, c);
-const icoEventBusy = (s, c) => icoWrapper('<path d="M9.31 17l2.44-2.44L14.19 17l1.06-1.06-2.44-2.44 2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06 2.44 2.44-2.44 2.44L9.31 17zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>', s, c);
-const icoEventNote = (s, c) => icoWrapper('<path d="M17 10H7v2h10v-2zm2-7h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zm-5-5H7v2h7v-2z"/>', s, c);
-const icoFolderSpecial = (s, c) => icoWrapper('<path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-2.06 11L15 15.28 12.06 17l.78-3.33-2.59-2.24 3.41-.29L15 8l1.34 3.14 3.41.29-2.59 2.24.78 3.33z"/>', s, c);
-const icoLiveTv = (s, c) => icoWrapper('<path d="M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3c-1.1 0-2 .89-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm0 14H3V8h18v12zM9 10v8l7-4z"/>', s, c);
-const icoMms = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM5 14l3.5-4.5 2.5 3.01L14.5 8l4.5 6H5z"/>', s, c);
-const icoMore = (s, c) => icoWrapper('<path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.97.89 1.66.89H22c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>', s, c);
-const icoNetworkCheck = (s, c) => icoWrapper('<path d="M15.9 5c-.17 0-.32.09-.41.23l-.07.15-5.18 11.65c-.16.29-.26.61-.26.96 0 1.11.9 2.01 2.01 2.01.96 0 1.77-.68 1.96-1.59l.01-.03L16.4 5.5c0-.28-.22-.5-.5-.5zM1 9l2 2c2.88-2.88 6.79-4.08 10.53-3.62l1.19-2.68C9.89 3.84 4.74 5.27 1 9zm20 2l2-2c-1.64-1.64-3.55-2.82-5.59-3.57l-.53 2.82c1.5.62 2.9 1.53 4.12 2.75zm-4 4l2-2c-.8-.8-1.7-1.42-2.66-1.89l-.55 2.92c.42.27.83.59 1.21.97zM5 13l2 2c1.13-1.13 2.56-1.79 4.03-2l1.28-2.88c-2.63-.08-5.3.87-7.31 2.88z"/>', s, c);
-const icoNetworkLocked = (s, c) => icoWrapper('<path d="M19.5 10c.17 0 .33.03.5.05V1L1 20h13v-3c0-.89.39-1.68 1-2.23v-.27c0-2.48 2.02-4.5 4.5-4.5zm2.5 6v-1.5c0-1.38-1.12-2.5-2.5-2.5S17 13.12 17 14.5V16c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h5c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zm-1 0h-3v-1.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5V16z"/>', s, c);
-const icoNoEncryption = (s, c) => icoWrapper('<path d="M21 21.78L4.22 5 3 6.22l2.04 2.04C4.42 8.6 4 9.25 4 10v10c0 1.1.9 2 2 2h12c.23 0 .45-.05.66-.12L19.78 23 21 21.78zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H9.66L20 18.34V10c0-1.1-.9-2-2-2h-1V6c0-2.76-2.24-5-5-5-2.56 0-4.64 1.93-4.94 4.4L8.9 7.24V6z"/>', s, c);
-const icoOndemandVideo = (s, c) => icoWrapper('<path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z"/>', s, c);
-const icoPersonalVideo = (s, c) => icoWrapper('<path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12z"/>', s, c);
-const icoPhoneBluetoothSpeaker = (s, c) => icoWrapper('<path d="M14.71 9.5L17 7.21V11h.5l2.85-2.85L18.21 6l2.15-2.15L17.5 1H17v3.79L14.71 2.5l-.71.71L16.79 6 14 8.79l.71.71zM18 2.91l.94.94-.94.94V2.91zm0 4.3l.94.94-.94.94V7.21zm2 8.29c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>', s, c);
-const icoPhoneForwarded = (s, c) => icoWrapper('<path d="M18 11l5-5-5-5v3h-4v4h4v3zm2 4.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/>', s, c);
-const icoPhoneInTalk = (s, c) => icoWrapper('<path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/>', s, c);
-const icoPhoneLocked = (s, c) => icoWrapper('<path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM20 4v-.5C20 2.12 18.88 1 17.5 1S15 2.12 15 3.5V4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h5c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zm-.8 0h-3.4v-.5c0-.94.76-1.7 1.7-1.7s1.7.76 1.7 1.7V4z"/>', s, c);
-const icoPhoneMissed = (s, c) => icoWrapper('<path d="M6.5 5.5L12 11l7-7-1-1-6 6-4.5-4.5H11V3H5v6h1.5V5.5zm17.21 11.17C20.66 13.78 16.54 12 12 12 7.46 12 3.34 13.78.29 16.67c-.18.18-.29.43-.29.71s.11.53.29.71l2.48 2.48c.18.18.43.29.71.29.27 0 .52-.11.7-.28.79-.74 1.69-1.36 2.66-1.85.33-.16.56-.5.56-.9v-3.1c1.45-.48 3-.73 4.6-.73 1.6 0 3.15.25 4.6.72v3.1c0 .39.23.74.56.9.98.49 1.87 1.12 2.67 1.85.18.18.43.28.7.28.28 0 .53-.11.71-.29l2.48-2.48c.18-.18.29-.43.29-.71s-.12-.52-.3-.7z"/>', s, c);
-const icoPhonePaused = (s, c) => icoWrapper('<path d="M17 3h-2v7h2V3zm3 12.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 3v7h2V3h-2z"/>', s, c);
-const icoPower = (s, c) => icoWrapper('<path d="M16.01 7L16 3h-2v4h-4V3H8v4h-.01C7 6.99 6 7.99 6 8.99v5.49L9.5 18v3h5v-3l3.5-3.51v-5.5c0-1-1-2-1.99-1.99z"/>', s, c);
-const icoPriorityHigh = (s, c) => icoWrapper('<path d="M10 3h4v12h-4z"/>', s, c);
-const icoRvHookup = (s, c) => icoWrapper('<path d="M20 17v-6c0-1.1-.9-2-2-2H7V7l-3 3 3 3v-2h4v3H4v3c0 1.1.9 2 2 2h2c0 1.66 1.34 3 3 3s3-1.34 3-3h8v-2h-2zm-9 3c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm7-6h-4v-3h4v3zM17 2v2H9v2h8v2l3-3z"/>', s, c);
-const icoSdCard = (s, c) => icoWrapper('<path d="M18 2h-8L4.02 8 4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 6h-2V4h2v4zm3 0h-2V4h2v4zm3 0h-2V4h2v4z"/>', s, c);
-const icoSimCardAlert = (s, c) => icoWrapper('<path d="M18 2h-8L4.02 8 4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 15h-2v-2h2v2zm0-4h-2V8h2v5z"/>', s, c);
-const icoSms = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>', s, c);
-const icoSmsFailed = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>', s, c);
-const icoSync = (s, c) => icoWrapper('<path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>', s, c);
-const icoSyncDisabled = (s, c) => icoWrapper('<path d="M10 6.35V4.26c-.8.21-1.55.54-2.23.96l1.46 1.46c.25-.12.5-.24.77-.33zm-7.14-.94l2.36 2.36C4.45 8.99 4 10.44 4 12c0 2.21.91 4.2 2.36 5.64L4 20h6v-6l-2.24 2.24C6.68 15.15 6 13.66 6 12c0-1 .25-1.94.68-2.77l8.08 8.08c-.25.13-.5.25-.77.34v2.09c.8-.21 1.55-.54 2.23-.96l2.36 2.36 1.27-1.27L4.14 4.14 2.86 5.41zM20 4h-6v6l2.24-2.24C17.32 8.85 18 10.34 18 12c0 1-.25 1.94-.68 2.77l1.46 1.46C19.55 15.01 20 13.56 20 12c0-2.21-.91-4.2-2.36-5.64L20 4z"/>', s, c);
-const icoSyncProblem = (s, c) => icoWrapper('<path d="M3 12c0 2.21.91 4.2 2.36 5.64L3 20h6v-6l-2.24 2.24C5.68 15.15 5 13.66 5 12c0-2.61 1.67-4.83 4-5.65V4.26C5.55 5.15 3 8.27 3 12zm8 5h2v-2h-2v2zM21 4h-6v6l2.24-2.24C18.32 8.85 19 10.34 19 12c0 2.61-1.67 4.83-4 5.65v2.09c3.45-.89 6-4.01 6-7.74 0-2.21-.91-4.2-2.36-5.64L21 4zm-10 9h2V7h-2v6z"/>', s, c);
-const icoSystemUpdate = (s, c) => icoWrapper('<path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-1-6h-3V8h-2v5H8l4 4 4-4z"/>', s, c);
-const icoTapAndPlay = (s, c) => icoWrapper('<path d="M2 16v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0 4v3h3c0-1.66-1.34-3-3-3zm0-8v2c4.97 0 9 4.03 9 9h2c0-6.08-4.92-11-11-11zM17 1.01L7 1c-1.1 0-2 .9-2 2v7.37c.69.16 1.36.37 2 .64V5h10v13h-3.03c.52 1.25.84 2.59.95 4H17c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99z"/>', s, c);
-const icoTimeToLeave = (s, c) => icoWrapper('<path d="M18.92 5.01C18.72 4.42 18.16 4 17.5 4h-11c-.66 0-1.21.42-1.42 1.01L3 11v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 15c-.83 0-1.5-.67-1.5-1.5S5.67 12 6.5 12s1.5.67 1.5 1.5S7.33 15 6.5 15zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 10l1.5-4.5h11L19 10H5z"/>', s, c);
-const icoVibration = (s, c) => icoWrapper('<path d="M0 15h2V9H0v6zm3 2h2V7H3v10zm19-8v6h2V9h-2zm-3 8h2V7h-2v10zM16.5 3h-9C6.67 3 6 3.67 6 4.5v15c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-15c0-.83-.67-1.5-1.5-1.5zM16 19H8V5h8v14z"/>', s, c);
-const icoVoiceChat = (s, c) => icoWrapper('<path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12l-4-3.2V14H6V6h8v3.2L18 6v8z"/>', s, c);
-const icoVpnLock = (s, c) => icoWrapper('<path d="M22 4v-.5C22 2.12 20.88 1 19.5 1S17 2.12 17 3.5V4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h5c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1zm-.8 0h-3.4v-.5c0-.94.76-1.7 1.7-1.7s1.7.76 1.7 1.7V4zm-2.28 8c.04.33.08.66.08 1 0 2.08-.8 3.97-2.1 5.39-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H7v-2h2c.55 0 1-.45 1-1V8h2c1.1 0 2-.9 2-2V3.46c-.95-.3-1.95-.46-3-.46C5.48 3 1 7.48 1 13s4.48 10 10 10 10-4.48 10-10c0-.34-.02-.67-.05-1h-2.03zM10 20.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L8 16v1c0 1.1.9 2 2 2v1.93z"/>', s, c);
-const icoWc = (s, c) => icoWrapper('<path d="M5.5 22v-7.5H4V9c0-1.1.9-2 2-2h3c1.1 0 2 .9 2 2v5.5H9.5V22h-4zM18 22v-6h3l-2.54-7.63C18.18 7.55 17.42 7 16.56 7h-.12c-.86 0-1.63.55-1.9 1.37L12 16h3v6h3zM7.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm9 0c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2z"/>', s, c);
-const icoWifi = (s, c) => icoWrapper('<path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>', s, c);
-const icoAcUnit = (s, c) => icoWrapper('<path d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22z"/>', s, c);
-const icoAirportShuttle = (s, c) => icoWrapper('<path d="M17 5H3c-1.1 0-2 .89-2 2v9h2c0 1.65 1.34 3 3 3s3-1.35 3-3h5.5c0 1.65 1.34 3 3 3s3-1.35 3-3H23v-5l-6-6zM3 11V7h4v4H3zm3 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7-6.5H9V7h4v4zm4.5 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM15 11V7h1l4 4h-5z"/>', s, c);
-const icoAllInclusive = (s, c) => icoWrapper('<path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/>', s, c);
-const icoBeachAccess = (s, c) => icoWrapper('<path d="M13.127 14.56l1.43-1.43 6.44 6.443L19.57 21zm4.293-5.73l2.86-2.86c-3.95-3.95-10.35-3.96-14.3-.02 3.93-1.3 8.31-.25 11.44 2.88zM5.95 5.98c-3.94 3.95-3.93 10.35.02 14.3l2.86-2.86C5.7 14.29 4.65 9.91 5.95 5.98zm.02-.02l-.01.01c-.38 3.01 1.17 6.88 4.3 10.02l5.73-5.73c-3.13-3.13-7.01-4.68-10.02-4.3z"/>', s, c);
-const icoBusinessCenter = (s, c) => icoWrapper('<path d="M10 16v-1H3.01L3 19c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2v-4h-7v1h-4zm10-9h-4.01V5l-2-2h-4l-2 2v2H4c-1.1 0-2 .9-2 2v3c0 1.11.89 2 2 2h6v-2h4v2h6c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 0h-4V5h4v2z"/>', s, c);
-const icoCasino = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z"/>', s, c);
-const icoChildCare = (s, c) => icoWrapper('<path d="M22.94 12.66c.04-.21.06-.43.06-.66s-.02-.45-.06-.66c-.25-1.51-1.36-2.74-2.81-3.17-.53-1.12-1.28-2.1-2.19-2.91C16.36 3.85 14.28 3 12 3s-4.36.85-5.94 2.26c-.92.81-1.67 1.8-2.19 2.91-1.45.43-2.56 1.65-2.81 3.17-.04.21-.06.43-.06.66s.02.45.06.66c.25 1.51 1.36 2.74 2.81 3.17.52 1.11 1.27 2.09 2.17 2.89C7.62 20.14 9.71 21 12 21s4.38-.86 5.97-2.28c.9-.8 1.65-1.79 2.17-2.89 1.44-.43 2.55-1.65 2.8-3.17zM19 14c-.1 0-.19-.02-.29-.03-.2.67-.49 1.29-.86 1.86C16.6 17.74 14.45 19 12 19s-4.6-1.26-5.85-3.17c-.37-.57-.66-1.19-.86-1.86-.1.01-.19.03-.29.03-1.1 0-2-.9-2-2s.9-2 2-2c.1 0 .19.02.29.03.2-.67.49-1.29.86-1.86C7.4 6.26 9.55 5 12 5s4.6 1.26 5.85 3.17c.37.57.66 1.19.86 1.86.1-.01.19-.03.29-.03 1.1 0 2 .9 2 2s-.9 2-2 2zM7.5 14c.76 1.77 2.49 3 4.5 3s3.74-1.23 4.5-3h-9z"/>', s, c);
-const icoChildFriendly = (s, c) => icoWrapper('<path d="M13 2v8h8c0-4.42-3.58-8-8-8zm6.32 13.89C20.37 14.54 21 12.84 21 11H6.44l-.95-2H2v2h2.22s1.89 4.07 2.12 4.42c-1.1.59-1.84 1.75-1.84 3.08C4.5 20.43 6.07 22 8 22c1.76 0 3.22-1.3 3.46-3h2.08c.24 1.7 1.7 3 3.46 3 1.93 0 3.5-1.57 3.5-3.5 0-1.04-.46-1.97-1.18-2.61zM8 20c-.83 0-1.5-.67-1.5-1.5S7.17 17 8 17s1.5.67 1.5 1.5S8.83 20 8 20zm9 0c-.83 0-1.5-.67-1.5-1.5S16.17 17 17 17s1.5.67 1.5 1.5S17.83 20 17 20z"/>', s, c);
-const icoFitnessCenter = (s, c) => icoWrapper('<path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>', s, c);
-const icoFreeBreakfast = (s, c) => icoWrapper('<path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.9 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/>', s, c);
-const icoGolfCourse = (s, c) => icoWrapper('<path d="M17 5.92L9 2v18H7v-1.73c-1.79.35-3 .99-3 1.73 0 1.1 2.69 2 6 2s6-.9 6-2c0-.99-2.16-1.81-5-1.97V8.98l6-3.06z"/>', s, c);
-const icoHotTub = (s, c) => icoWrapper('<path d="M11.15 12c-.31-.22-.59-.46-.82-.72l-1.4-1.55c-.19-.21-.43-.38-.69-.5-.29-.14-.62-.23-.96-.23h-.03C6.01 9 5 10.01 5 11.25V12H2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-8H11.15zM7 20H5v-6h2v6zm4 0H9v-6h2v6zm4 0h-2v-6h2v6zm4 0h-2v-6h2v6zm-.35-14.14l-.07-.07c-.57-.62-.82-1.41-.67-2.2L18 3h-1.89l-.06.43c-.2 1.36.27 2.71 1.3 3.72l.07.06c.57.62.82 1.41.67 2.2l-.11.59h1.91l.06-.43c.21-1.36-.27-2.71-1.3-3.71zm-4 0l-.07-.07c-.57-.62-.82-1.41-.67-2.2L14 3h-1.89l-.06.43c-.2 1.36.27 2.71 1.3 3.72l.07.06c.57.62.82 1.41.67 2.2l-.11.59h1.91l.06-.43c.21-1.36-.27-2.71-1.3-3.71z"/>', s, c);
-const icoKitchen = (s, c) => icoWrapper('<path d="M18 2.01L6 2c-1.1 0-2 .89-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.11-.9-1.99-2-1.99zM18 20H6v-9.02h12V20zm0-11H6V4h12v5zM8 5h2v3H8zm0 7h2v5H8z"/>', s, c);
-const icoPool = (s, c) => icoWrapper('<circle cx="16.5" cy="5.5" r="2.5"/>', s, c);
-const icoRoomService = (s, c) => icoWrapper('<path d="M2 17h20v2H2zm11.84-9.21c.1-.24.16-.51.16-.79 0-1.1-.9-2-2-2s-2 .9-2 2c0 .28.06.55.16.79C6.25 8.6 3.27 11.93 3 16h18c-.27-4.07-3.25-7.4-7.16-8.21z"/>', s, c);
-const icoSmokeFree = (s, c) => icoWrapper('<path d="M2 6l6.99 7H2v3h9.99l7 7 1.26-1.25-17-17zm18.5 7H22v3h-1.5zM18 13h1.5v3H18zm.85-8.12c.62-.61 1-1.45 1-2.38h-1.5c0 1.02-.83 1.85-1.85 1.85v1.5c2.24 0 4 1.83 4 4.07V12H22V9.92c0-2.23-1.28-4.15-3.15-5.04zM14.5 8.7h1.53c1.05 0 1.97.74 1.97 2.05V12h1.5v-1.59c0-1.8-1.6-3.16-3.47-3.16H14.5c-1.02 0-1.85-.98-1.85-2s.83-1.75 1.85-1.75V2c-1.85 0-3.35 1.5-3.35 3.35s1.5 3.35 3.35 3.35zm2.5 7.23V13h-2.93z"/>', s, c);
-const icoSmokingRooms = (s, c) => icoWrapper('<path d="M2 16h15v3H2zm18.5 0H22v3h-1.5zM18 16h1.5v3H18zm.85-8.27c.62-.61 1-1.45 1-2.38C19.85 3.5 18.35 2 16.5 2v1.5c1.02 0 1.85.83 1.85 1.85S17.52 7.2 16.5 7.2v1.5c2.24 0 4 1.83 4 4.07V15H22v-2.24c0-2.22-1.28-4.14-3.15-5.03zm-2.82 2.47H14.5c-1.02 0-1.85-.98-1.85-2s.83-1.75 1.85-1.75v-1.5c-1.85 0-3.35 1.5-3.35 3.35s1.5 3.35 3.35 3.35h1.53c1.05 0 1.97.74 1.97 2.05V15h1.5v-1.64c0-1.81-1.6-3.16-3.47-3.16z"/>', s, c);
-const icoSpa = (s, c) => icoWrapper('<path d="M15.49 9.63c-.18-2.79-1.31-5.51-3.43-7.63-2.14 2.14-3.32 4.86-3.55 7.63 1.28.68 2.46 1.56 3.49 2.63 1.03-1.06 2.21-1.94 3.49-2.63zm-6.5 2.65c-.14-.1-.3-.19-.45-.29.15.11.31.19.45.29zm6.42-.25c-.13.09-.27.16-.4.26.13-.1.27-.17.4-.26zM12 15.45C9.85 12.17 6.18 10 2 10c0 5.32 3.36 9.82 8.03 11.49.63.23 1.29.4 1.97.51.68-.12 1.33-.29 1.97-.51C18.64 19.82 22 15.32 22 10c-4.18 0-7.85 2.17-10 5.45z"/>', s, c);
-const icoCake = (s, c) => icoWrapper('<path d="M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.31-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.38.57 1.08 0 1.96-.88 1.96-1.96V12C21 10.34 19.66 9 18 9z"/>', s, c);
-const icoDomain = (s, c) => icoWrapper('<path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>', s, c);
-const icoGroup = (s, c) => icoWrapper('<path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>', s, c);
-const icoGroupAdd = (s, c) => icoWrapper('<path d="M8 10H5V7H3v3H0v2h3v3h2v-3h3v-2zm10 1c1.66 0 2.99-1.34 2.99-3S19.66 5 18 5c-.32 0-.63.05-.91.14.57.81.9 1.79.9 2.86s-.34 2.04-.9 2.86c.28.09.59.14.91.14zm-5 0c1.66 0 2.99-1.34 2.99-3S14.66 5 13 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm6.62 2.16c.83.73 1.38 1.66 1.38 2.84v2h3v-2c0-1.54-2.37-2.49-4.38-2.84zM13 13c-2 0-6 1-6 3v2h12v-2c0-2-4-3-6-3z"/>', s, c);
-const icoLocationCity = (s, c) => icoWrapper('<path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/>', s, c);
-const icoMood = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>', s, c);
-const icoMoodBad = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 3c-2.33 0-4.31 1.46-5.11 3.5h10.22c-.8-2.04-2.78-3.5-5.11-3.5z"/>', s, c);
-const icoNotifications = (s, c) => icoWrapper('<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>', s, c);
-const icoNotificationsActive = (s, c) => icoWrapper('<path d="M7.58 4.08L6.15 2.65C3.75 4.48 2.17 7.3 2.03 10.5h2c.15-2.65 1.51-4.97 3.55-6.42zm12.39 6.42h2c-.15-3.2-1.73-6.02-4.12-7.85l-1.42 1.43c2.02 1.45 3.39 3.77 3.54 6.42zM18 11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2v-5zm-6 11c.14 0 .27-.01.4-.04.65-.14 1.18-.58 1.44-1.18.1-.24.15-.5.15-.78h-4c.01 1.1.9 2 2.01 2z"/>', s, c);
-const icoNotificationsNone = (s, c) => icoWrapper('<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>', s, c);
-const icoNotificationsOff = (s, c) => icoWrapper('<path d="M20 18.69L7.84 6.14 5.27 3.49 4 4.76l2.8 2.8v.01c-.52.99-.8 2.16-.8 3.42v5l-2 2v1h13.73l2 2L21 19.72l-1-1.03zM12 22c1.11 0 2-.89 2-2h-4c0 1.11.89 2 2 2zm6-7.32V11c0-3.08-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.15.03-.29.08-.42.12-.1.03-.2.07-.3.11h-.01c-.01 0-.01 0-.02.01-.23.09-.46.2-.68.31 0 0-.01 0-.01.01L18 14.68z"/>', s, c);
-const icoNotificationsPaused = (s, c) => icoWrapper('<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.93 6 11v5l-2 2v1h16v-1l-2-2zm-3.5-6.2l-2.8 3.4h2.8V15h-5v-1.8l2.8-3.4H9.5V8h5v1.8z"/>', s, c);
-const icoPages = (s, c) => icoWrapper('<path d="M3 5v6h5L7 7l4 1V3H5c-1.1 0-2 .9-2 2zm5 8H3v6c0 1.1.9 2 2 2h6v-5l-4 1 1-4zm9 4l-4-1v5h6c1.1 0 2-.9 2-2v-6h-5l1 4zm2-14h-6v5l4-1-1 4h5V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoPartyMode = (s, c) => icoWrapper('<path d="M20 4h-3.17L15 2H9L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 3c1.63 0 3.06.79 3.98 2H12c-1.66 0-3 1.34-3 3 0 .35.07.69.18 1H7.1c-.06-.32-.1-.66-.1-1 0-2.76 2.24-5 5-5zm0 10c-1.63 0-3.06-.79-3.98-2H12c1.66 0 3-1.34 3-3 0-.35-.07-.69-.18-1h2.08c.07.32.1.66.1 1 0 2.76-2.24 5-5 5z"/>', s, c);
-const icoPeople = (s, c) => icoWrapper('<path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>', s, c);
-const icoPeopleOutline = (s, c) => icoWrapper('<path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>', s, c);
-const icoPerson = (s, c) => icoWrapper('<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>', s, c);
-const icoPersonAdd = (s, c) => icoWrapper('<path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>', s, c);
-const icoPersonOutline = (s, c) => icoWrapper('<path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/>', s, c);
-const icoPlusOne = (s, c) => icoWrapper('<path d="M10 8H8v4H4v2h4v4h2v-4h4v-2h-4zm4.5-1.92V7.9l2.5-.5V18h2V5z"/>', s, c);
-const icoPoll = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>', s, c);
-const icoPublic = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>', s, c);
-const icoSchool = (s, c) => icoWrapper('<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>', s, c);
-const icoSentimentDissatisfied = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-6c-2.33 0-4.32 1.45-5.12 3.5h1.67c.69-1.19 1.97-2 3.45-2s2.75.81 3.45 2h1.67c-.8-2.05-2.79-3.5-5.12-3.5z"/>', s, c);
-const icoSentimentNeutral = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>', s, c);
-const icoSentimentSatisfied = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-4c-1.48 0-2.75-.81-3.45-2H6.88c.8 2.05 2.79 3.5 5.12 3.5s4.32-1.45 5.12-3.5h-1.67c-.7 1.19-1.97 2-3.45 2z"/>', s, c);
-const icoSentimentVeryDissatisfied = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.47 2 12s4.47 10 9.99 10S22 17.53 22 12 17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm4.18-12.24l-1.06 1.06-1.06-1.06L13 8.82l1.06 1.06L13 10.94 14.06 12l1.06-1.06L16.18 12l1.06-1.06-1.06-1.06 1.06-1.06zM7.82 12l1.06-1.06L9.94 12 11 10.94 9.94 9.88 11 8.82 9.94 7.76 8.88 8.82 7.82 7.76 6.76 8.82l1.06 1.06-1.06 1.06zM12 14c-2.33 0-4.31 1.46-5.11 3.5h10.22c-.8-2.04-2.78-3.5-5.11-3.5z"/>', s, c);
-const icoSentimentVerySatisfied = (s, c) => icoWrapper('<path d="M11.99 2C6.47 2 2 6.47 2 12s4.47 10 9.99 10S22 17.53 22 12 17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm1-10.06L14.06 11l1.06-1.06L16.18 11l1.06-1.06-2.12-2.12zm-4.12 0L9.94 11 11 9.94 8.88 7.82 6.76 9.94 7.82 11zM12 17.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>', s, c);
-const icoShare = (s, c) => icoWrapper('<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>', s, c);
-const icoWhatshot = (s, c) => icoWrapper('<path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>', s, c);
-const icoCheckBox = (s, c) => icoWrapper('<path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>', s, c);
-const icoCheckBoxOutlineBlank = (s, c) => icoWrapper('<path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>', s, c);
-const icoIndeterminateCheckBox = (s, c) => icoWrapper('<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/>', s, c);
-const icoRadioButtonChecked = (s, c) => icoWrapper('<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>', s, c);
-const icoRadioButtonUnchecked = (s, c) => icoWrapper('<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>', s, c);
-const icoStar = (s, c) => icoWrapper('<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>', s, c);
-const icoStarBorder = (s, c) => icoWrapper('<path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>', s, c);
-const icoStarHalf = (s, c) => icoWrapper('<path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>', s, c);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (Plugin);
-
-
-/***/ }),
-/* 328 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62168,18 +60629,18 @@ if (typeof window !== 'undefined') {
 module.exports = SocialSharing;
 
 /***/ }),
-/* 329 */
+/* 327 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserMain_vue__ = __webpack_require__(129);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b63383d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain_vue__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b63383d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain_vue__ = __webpack_require__(330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(330)
+  __webpack_require__(328)
 }
 /* script */
 
@@ -62226,13 +60687,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 330 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(331);
+var content = __webpack_require__(329);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62253,7 +60714,7 @@ if(false) {
 }
 
 /***/ }),
-/* 331 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -62267,7 +60728,7 @@ exports.push([module.i, "\n.main-button-style {\n    font-size: 2em;\n    font-w
 
 
 /***/ }),
-/* 332 */
+/* 330 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62358,18 +60819,18 @@ if (false) {
 }
 
 /***/ }),
-/* 333 */
+/* 331 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserRestaurantMain_vue__ = __webpack_require__(130);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_124357a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurantMain_vue__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_124357a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurantMain_vue__ = __webpack_require__(342);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(334)
+  __webpack_require__(332)
 }
 /* script */
 
@@ -62416,13 +60877,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 334 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(335);
+var content = __webpack_require__(333);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62443,7 +60904,7 @@ if(false) {
 }
 
 /***/ }),
-/* 335 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -62451,24 +60912,24 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 336 */
+/* 334 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserHeader_vue__ = __webpack_require__(131);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5248a21f_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserHeader_vue__ = __webpack_require__(339);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5248a21f_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserHeader_vue__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(337)
+  __webpack_require__(335)
 }
 /* script */
 
@@ -62515,13 +60976,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 337 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(338);
+var content = __webpack_require__(336);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62542,7 +61003,7 @@ if(false) {
 }
 
 /***/ }),
-/* 338 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -62556,7 +61017,7 @@ exports.push([module.i, "\n.fontColor_Red {\n    color: red;\n}\n\n/* title */\n
 
 
 /***/ }),
-/* 339 */
+/* 337 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62641,18 +61102,18 @@ if (false) {
 }
 
 /***/ }),
-/* 340 */
+/* 338 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserSelectBar_vue__ = __webpack_require__(132);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9d711256_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserSelectBar_vue__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9d711256_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserSelectBar_vue__ = __webpack_require__(341);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(341)
+  __webpack_require__(339)
 }
 /* script */
 
@@ -62699,13 +61160,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 341 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(342);
+var content = __webpack_require__(340);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62726,7 +61187,7 @@ if(false) {
 }
 
 /***/ }),
-/* 342 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -62734,13 +61195,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 클릭하지 않은 링크 */\na:link { \n    color: red; \n    text-decoration: none;\n}\n/* 한번 클릭했던 혹은 다녀갔던 링크 */\na:visited { \n    color: black; \n    text-decoration: none;\n}\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: white; \n    text-decoration: none;\n}\n.select-font-style {\n    font-size: 2em;\n    font-weight: bold;   \n    width: 100%;\n    height: 100;\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 클릭하지 않은 링크 */\na:link { \n    color: black; \n    text-decoration: none;\n}\n/* 한번 클릭했던 혹은 다녀갔던 링크 */\na:visited { \n    color: black; \n    text-decoration: none;\n}\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: white; \n    text-decoration: none;\n}\n.select-font-style {\n    font-size: 2em;\n    font-weight: bold;   \n    width: 100%;\n    height: 100;\n    color: white;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 343 */
+/* 341 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62760,42 +61221,63 @@ var render = function() {
             "v-flex",
             [
               _c(
-                "v-tabs",
-                {
-                  attrs: {
-                    slot: "extension",
-                    centered: "",
-                    color: "red lighten-2",
-                    "slider-color": "yellow"
-                  },
-                  slot: "extension"
-                },
+                "v-layout",
                 [
                   _c(
-                    "v-tab",
-                    {
-                      staticClass: "select-font-style",
-                      attrs: { to: "/userRestaurantMain/restaurant" }
-                    },
-                    [_vm._v("정보")]
+                    "v-flex",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "select-font-style",
+                          attrs: {
+                            outline: "",
+                            color: "indigo",
+                            to: "/userRestaurantMain/restaurant"
+                          }
+                        },
+                        [_vm._v("정보")]
+                      )
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-tab",
-                    {
-                      staticClass: "select-font-style",
-                      attrs: { to: "/userRestaurantMain/menu" }
-                    },
-                    [_vm._v("메뉴")]
+                    "v-flex",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "select-font-style",
+                          attrs: {
+                            outline: "",
+                            color: "indigo",
+                            to: "/userRestaurantMain/menu"
+                          }
+                        },
+                        [_vm._v("메뉴")]
+                      )
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-tab",
-                    {
-                      staticClass: "select-font-style",
-                      attrs: { to: "/userRestaurantMain/review" }
-                    },
-                    [_vm._v("리뷰")]
+                    "v-flex",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "select-font-style",
+                          attrs: {
+                            outline: "",
+                            color: "indigo",
+                            to: "/userRestaurantMain/review"
+                          }
+                        },
+                        [_vm._v("리뷰")]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
@@ -62806,9 +61288,6 @@ var render = function() {
         ],
         1
       ),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
       _vm._v(" "),
       _c("v-layout", [_c("v-flex", [_c("router-view")], 1)], 1)
     ],
@@ -62826,7 +61305,7 @@ if (false) {
 }
 
 /***/ }),
-/* 344 */
+/* 342 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62865,18 +61344,18 @@ if (false) {
 }
 
 /***/ }),
-/* 345 */
+/* 343 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserMenu_vue__ = __webpack_require__(133);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_66efda06_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMenu_vue__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_66efda06_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMenu_vue__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(346)
+  __webpack_require__(344)
 }
 /* script */
 
@@ -62923,13 +61402,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 346 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(347);
+var content = __webpack_require__(345);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62950,7 +61429,7 @@ if(false) {
 }
 
 /***/ }),
-/* 347 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -62964,7 +61443,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 348 */
+/* 346 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62992,18 +61471,18 @@ if (false) {
 }
 
 /***/ }),
-/* 349 */
+/* 347 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReview_vue__ = __webpack_require__(134);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(350)
+  __webpack_require__(348)
 }
 /* script */
 
@@ -63050,13 +61529,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 350 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(351);
+var content = __webpack_require__(349);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -63077,7 +61556,7 @@ if(false) {
 }
 
 /***/ }),
-/* 351 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -63091,18 +61570,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 352 */
+/* 350 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserCreateReview_vue__ = __webpack_require__(135);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bcc0de8e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserCreateReview_vue__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bcc0de8e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserCreateReview_vue__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(353)
+  __webpack_require__(351)
 }
 /* script */
 
@@ -63149,13 +61628,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 353 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(354);
+var content = __webpack_require__(352);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -63176,7 +61655,7 @@ if(false) {
 }
 
 /***/ }),
-/* 354 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -63190,7 +61669,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 355 */
+/* 353 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63306,7 +61785,7 @@ if (false) {
 }
 
 /***/ }),
-/* 356 */
+/* 354 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63374,7 +61853,7 @@ var render = function() {
                                     _c("img", {
                                       staticClass: "snsMark",
                                       attrs: {
-                                        src: __webpack_require__(357)
+                                        src: __webpack_require__(355)
                                       }
                                     })
                                   ]
@@ -63393,7 +61872,7 @@ var render = function() {
                                     _c("img", {
                                       staticClass: "snsMark",
                                       attrs: {
-                                        src: __webpack_require__(358)
+                                        src: __webpack_require__(356)
                                       }
                                     })
                                   ]
@@ -63409,7 +61888,7 @@ var render = function() {
                                   _c("img", {
                                     staticClass: "snsMark",
                                     attrs: {
-                                      src: __webpack_require__(359)
+                                      src: __webpack_require__(357)
                                     }
                                   })
                                 ])
@@ -63496,37 +61975,36 @@ if (false) {
 }
 
 /***/ }),
-/* 357 */
+/* 355 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/facebook.png?2010674d616a388e4f797f2fb63e879a";
 
 /***/ }),
-/* 358 */
+/* 356 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/twitter.png?9124798790b4aa093dde2f936aeaf653";
 
 /***/ }),
-/* 359 */
+/* 357 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/weibo.png?4b8b3c12e82c1510cc78877b5f0eeba6";
 
 /***/ }),
-/* 360 */
+/* 358 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserRestaurant_vue__ = __webpack_require__(136);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5024903d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurant_vue__ = __webpack_require__(497);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5024903d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurant_vue__ = __webpack_require__(495);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(361)
-  __webpack_require__(363)
+  __webpack_require__(359)
 }
 /* script */
 
@@ -63573,13 +62051,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 361 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(362);
+var content = __webpack_require__(360);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -63600,48 +62078,7 @@ if(false) {
 }
 
 /***/ }),
-/* 362 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(364);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(5).default
-var update = add("38b4586f", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./UserRestaurant.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./UserRestaurant.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 364 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -63655,7 +62092,9 @@ exports.push([module.i, "\n.frame {\n    width: 100%; \n    border-top: 1px soli
 
 
 /***/ }),
-/* 365 */
+/* 361 */,
+/* 362 */,
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63669,51 +62108,51 @@ exports.install = install;
 
 var _manager = __webpack_require__(39);
 
-var _marker = __webpack_require__(366);
+var _marker = __webpack_require__(364);
 
 var _marker2 = _interopRequireDefault(_marker);
 
-var _cluster = __webpack_require__(439);
+var _cluster = __webpack_require__(437);
 
 var _cluster2 = _interopRequireDefault(_cluster);
 
-var _polyline = __webpack_require__(459);
+var _polyline = __webpack_require__(457);
 
 var _polyline2 = _interopRequireDefault(_polyline);
 
-var _polygon = __webpack_require__(476);
+var _polygon = __webpack_require__(474);
 
 var _polygon2 = _interopRequireDefault(_polygon);
 
-var _circle = __webpack_require__(477);
+var _circle = __webpack_require__(475);
 
 var _circle2 = _interopRequireDefault(_circle);
 
-var _rectangle = __webpack_require__(478);
+var _rectangle = __webpack_require__(476);
 
 var _rectangle2 = _interopRequireDefault(_rectangle);
 
-var _infoWindow = __webpack_require__(479);
+var _infoWindow = __webpack_require__(477);
 
 var _infoWindow2 = _interopRequireDefault(_infoWindow);
 
-var _map = __webpack_require__(481);
+var _map = __webpack_require__(479);
 
 var _map2 = _interopRequireDefault(_map);
 
-var _streetViewPanorama = __webpack_require__(486);
+var _streetViewPanorama = __webpack_require__(484);
 
 var _streetViewPanorama2 = _interopRequireDefault(_streetViewPanorama);
 
-var _placeInput = __webpack_require__(490);
+var _placeInput = __webpack_require__(488);
 
 var _placeInput2 = _interopRequireDefault(_placeInput);
 
-var _autocomplete = __webpack_require__(492);
+var _autocomplete = __webpack_require__(490);
 
 var _autocomplete2 = _interopRequireDefault(_autocomplete);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -63778,7 +62217,7 @@ function install(Vue, options) {
 }
 
 /***/ }),
-/* 366 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63804,7 +62243,7 @@ var _getPropsValuesMixin = __webpack_require__(15);
 
 var _getPropsValuesMixin2 = _interopRequireDefault(_getPropsValuesMixin);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -63941,11 +62380,11 @@ exports.default = {
 };
 
 /***/ }),
-/* 367 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(139),
-    isMasked = __webpack_require__(370),
+    isMasked = __webpack_require__(368),
     isObject = __webpack_require__(27),
     toSource = __webpack_require__(141);
 
@@ -63994,7 +62433,7 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 368 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(33);
@@ -64046,7 +62485,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 369 */
+/* 367 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -64074,10 +62513,10 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 370 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(371);
+var coreJsData = __webpack_require__(369);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -64100,7 +62539,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 371 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(14);
@@ -64112,7 +62551,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 372 */
+/* 370 */
 /***/ (function(module, exports) {
 
 /**
@@ -64131,7 +62570,7 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 373 */
+/* 371 */
 /***/ (function(module, exports) {
 
 /**
@@ -64162,7 +62601,7 @@ module.exports = createBaseFor;
 
 
 /***/ }),
-/* 374 */
+/* 372 */
 /***/ (function(module, exports) {
 
 /**
@@ -64188,11 +62627,11 @@ module.exports = baseTimes;
 
 
 /***/ }),
-/* 375 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(32),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -64212,7 +62651,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 376 */
+/* 374 */
 /***/ (function(module, exports) {
 
 /**
@@ -64236,12 +62675,12 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 377 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(32),
     isLength = __webpack_require__(70),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -64302,11 +62741,11 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 378 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isPrototype = __webpack_require__(73),
-    nativeKeys = __webpack_require__(379);
+    nativeKeys = __webpack_require__(377);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -64338,7 +62777,7 @@ module.exports = baseKeys;
 
 
 /***/ }),
-/* 379 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var overArg = __webpack_require__(146);
@@ -64350,11 +62789,11 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 380 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(381),
-    getMatchData = __webpack_require__(419),
+var baseIsMatch = __webpack_require__(379),
+    getMatchData = __webpack_require__(417),
     matchesStrictComparable = __webpack_require__(155);
 
 /**
@@ -64378,7 +62817,7 @@ module.exports = baseMatches;
 
 
 /***/ }),
-/* 381 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(75),
@@ -64446,7 +62885,7 @@ module.exports = baseIsMatch;
 
 
 /***/ }),
-/* 382 */
+/* 380 */
 /***/ (function(module, exports) {
 
 /**
@@ -64465,7 +62904,7 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 383 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -64506,7 +62945,7 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 384 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -64531,7 +62970,7 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 385 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -64553,7 +62992,7 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 386 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(47);
@@ -64585,7 +63024,7 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 387 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(46);
@@ -64606,7 +63045,7 @@ module.exports = stackClear;
 
 
 /***/ }),
-/* 388 */
+/* 386 */
 /***/ (function(module, exports) {
 
 /**
@@ -64630,7 +63069,7 @@ module.exports = stackDelete;
 
 
 /***/ }),
-/* 389 */
+/* 387 */
 /***/ (function(module, exports) {
 
 /**
@@ -64650,7 +63089,7 @@ module.exports = stackGet;
 
 
 /***/ }),
-/* 390 */
+/* 388 */
 /***/ (function(module, exports) {
 
 /**
@@ -64670,7 +63109,7 @@ module.exports = stackHas;
 
 
 /***/ }),
-/* 391 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(46),
@@ -64710,10 +63149,10 @@ module.exports = stackSet;
 
 
 /***/ }),
-/* 392 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(393),
+var Hash = __webpack_require__(391),
     ListCache = __webpack_require__(46),
     Map = __webpack_require__(77);
 
@@ -64737,14 +63176,14 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 393 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(394),
-    hashDelete = __webpack_require__(395),
-    hashGet = __webpack_require__(396),
-    hashHas = __webpack_require__(397),
-    hashSet = __webpack_require__(398);
+var hashClear = __webpack_require__(392),
+    hashDelete = __webpack_require__(393),
+    hashGet = __webpack_require__(394),
+    hashHas = __webpack_require__(395),
+    hashSet = __webpack_require__(396);
 
 /**
  * Creates a hash object.
@@ -64775,7 +63214,7 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 394 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(48);
@@ -64796,7 +63235,7 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 395 */
+/* 393 */
 /***/ (function(module, exports) {
 
 /**
@@ -64819,7 +63258,7 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 396 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(48);
@@ -64855,7 +63294,7 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 397 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(48);
@@ -64884,7 +63323,7 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 398 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(48);
@@ -64913,7 +63352,7 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 399 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(49);
@@ -64937,7 +63376,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 400 */
+/* 398 */
 /***/ (function(module, exports) {
 
 /**
@@ -64958,7 +63397,7 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 401 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(49);
@@ -64980,7 +63419,7 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 402 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(49);
@@ -65002,7 +63441,7 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 403 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(49);
@@ -65030,13 +63469,13 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 404 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Stack = __webpack_require__(75),
     equalArrays = __webpack_require__(149),
-    equalByTag = __webpack_require__(410),
-    equalObjects = __webpack_require__(413),
+    equalByTag = __webpack_require__(408),
+    equalObjects = __webpack_require__(411),
     getTag = __webpack_require__(50),
     isArray = __webpack_require__(11),
     isBuffer = __webpack_require__(67),
@@ -65119,12 +63558,12 @@ module.exports = baseIsEqualDeep;
 
 
 /***/ }),
-/* 405 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(78),
-    setCacheAdd = __webpack_require__(406),
-    setCacheHas = __webpack_require__(407);
+    setCacheAdd = __webpack_require__(404),
+    setCacheHas = __webpack_require__(405);
 
 /**
  *
@@ -65152,7 +63591,7 @@ module.exports = SetCache;
 
 
 /***/ }),
-/* 406 */
+/* 404 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -65177,7 +63616,7 @@ module.exports = setCacheAdd;
 
 
 /***/ }),
-/* 407 */
+/* 405 */
 /***/ (function(module, exports) {
 
 /**
@@ -65197,7 +63636,7 @@ module.exports = setCacheHas;
 
 
 /***/ }),
-/* 408 */
+/* 406 */
 /***/ (function(module, exports) {
 
 /**
@@ -65226,7 +63665,7 @@ module.exports = arraySome;
 
 
 /***/ }),
-/* 409 */
+/* 407 */
 /***/ (function(module, exports) {
 
 /**
@@ -65245,15 +63684,15 @@ module.exports = cacheHas;
 
 
 /***/ }),
-/* 410 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(33),
     Uint8Array = __webpack_require__(150),
     eq = __webpack_require__(76),
     equalArrays = __webpack_require__(149),
-    mapToArray = __webpack_require__(411),
-    setToArray = __webpack_require__(412);
+    mapToArray = __webpack_require__(409),
+    setToArray = __webpack_require__(410);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -65363,7 +63802,7 @@ module.exports = equalByTag;
 
 
 /***/ }),
-/* 411 */
+/* 409 */
 /***/ (function(module, exports) {
 
 /**
@@ -65387,7 +63826,7 @@ module.exports = mapToArray;
 
 
 /***/ }),
-/* 412 */
+/* 410 */
 /***/ (function(module, exports) {
 
 /**
@@ -65411,7 +63850,7 @@ module.exports = setToArray;
 
 
 /***/ }),
-/* 413 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getAllKeys = __webpack_require__(151);
@@ -65506,7 +63945,7 @@ module.exports = equalObjects;
 
 
 /***/ }),
-/* 414 */
+/* 412 */
 /***/ (function(module, exports) {
 
 /**
@@ -65537,7 +63976,7 @@ module.exports = arrayFilter;
 
 
 /***/ }),
-/* 415 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -65550,7 +63989,7 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 416 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -65563,7 +64002,7 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 417 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -65576,7 +64015,7 @@ module.exports = Set;
 
 
 /***/ }),
-/* 418 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -65589,7 +64028,7 @@ module.exports = WeakMap;
 
 
 /***/ }),
-/* 419 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(154),
@@ -65619,12 +64058,12 @@ module.exports = getMatchData;
 
 
 /***/ }),
-/* 420 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(148),
-    get = __webpack_require__(421),
-    hasIn = __webpack_require__(427),
+    get = __webpack_require__(419),
+    hasIn = __webpack_require__(425),
     isKey = __webpack_require__(81),
     isStrictComparable = __webpack_require__(154),
     matchesStrictComparable = __webpack_require__(155),
@@ -65658,7 +64097,7 @@ module.exports = baseMatchesProperty;
 
 
 /***/ }),
-/* 421 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(51);
@@ -65697,10 +64136,10 @@ module.exports = get;
 
 
 /***/ }),
-/* 422 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(423);
+var memoizeCapped = __webpack_require__(421);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -65730,10 +64169,10 @@ module.exports = stringToPath;
 
 
 /***/ }),
-/* 423 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(424);
+var memoize = __webpack_require__(422);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -65762,7 +64201,7 @@ module.exports = memoizeCapped;
 
 
 /***/ }),
-/* 424 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(78);
@@ -65841,10 +64280,10 @@ module.exports = memoize;
 
 
 /***/ }),
-/* 425 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(426);
+var baseToString = __webpack_require__(424);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -65875,7 +64314,7 @@ module.exports = toString;
 
 
 /***/ }),
-/* 426 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(33),
@@ -65918,11 +64357,11 @@ module.exports = baseToString;
 
 
 /***/ }),
-/* 427 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(428),
-    hasPath = __webpack_require__(429);
+var baseHasIn = __webpack_require__(426),
+    hasPath = __webpack_require__(427);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -65958,7 +64397,7 @@ module.exports = hasIn;
 
 
 /***/ }),
-/* 428 */
+/* 426 */
 /***/ (function(module, exports) {
 
 /**
@@ -65977,7 +64416,7 @@ module.exports = baseHasIn;
 
 
 /***/ }),
-/* 429 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(34),
@@ -66022,11 +64461,11 @@ module.exports = hasPath;
 
 
 /***/ }),
-/* 430 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(431),
-    basePropertyDeep = __webpack_require__(432),
+var baseProperty = __webpack_require__(429),
+    basePropertyDeep = __webpack_require__(430),
     isKey = __webpack_require__(81),
     toKey = __webpack_require__(35);
 
@@ -66060,7 +64499,7 @@ module.exports = property;
 
 
 /***/ }),
-/* 431 */
+/* 429 */
 /***/ (function(module, exports) {
 
 /**
@@ -66080,7 +64519,7 @@ module.exports = baseProperty;
 
 
 /***/ }),
-/* 432 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(51);
@@ -66102,11 +64541,11 @@ module.exports = basePropertyDeep;
 
 
 /***/ }),
-/* 433 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayEach = __webpack_require__(156),
-    baseEach = __webpack_require__(434),
+    baseEach = __webpack_require__(432),
     castFunction = __webpack_require__(157),
     isArray = __webpack_require__(11);
 
@@ -66149,11 +64588,11 @@ module.exports = forEach;
 
 
 /***/ }),
-/* 434 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseForOwn = __webpack_require__(142),
-    createBaseEach = __webpack_require__(435);
+    createBaseEach = __webpack_require__(433);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -66169,7 +64608,7 @@ module.exports = baseEach;
 
 
 /***/ }),
-/* 435 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(74);
@@ -66207,7 +64646,7 @@ module.exports = createBaseEach;
 
 
 /***/ }),
-/* 436 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFor = __webpack_require__(143),
@@ -66252,12 +64691,12 @@ module.exports = forIn;
 
 
 /***/ }),
-/* 437 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(27),
     isPrototype = __webpack_require__(73),
-    nativeKeysIn = __webpack_require__(438);
+    nativeKeysIn = __webpack_require__(436);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -66291,7 +64730,7 @@ module.exports = baseKeysIn;
 
 
 /***/ }),
-/* 438 */
+/* 436 */
 /***/ (function(module, exports) {
 
 /**
@@ -66317,7 +64756,7 @@ module.exports = nativeKeysIn;
 
 
 /***/ }),
-/* 439 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66339,7 +64778,7 @@ var _propsBinder = __webpack_require__(12);
 
 var _propsBinder2 = _interopRequireDefault(_propsBinder);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -66347,7 +64786,7 @@ var _getPropsValuesMixin = __webpack_require__(15);
 
 var _getPropsValuesMixin2 = _interopRequireDefault(_getPropsValuesMixin);
 
-var _markerClustererPlus = __webpack_require__(458);
+var _markerClustererPlus = __webpack_require__(456);
 
 var _markerClustererPlus2 = _interopRequireDefault(_markerClustererPlus);
 
@@ -66434,7 +64873,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 440 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(41),
@@ -66457,7 +64896,7 @@ module.exports = baseAssign;
 
 
 /***/ }),
-/* 441 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(41),
@@ -66480,7 +64919,7 @@ module.exports = baseAssignIn;
 
 
 /***/ }),
-/* 442 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(14);
@@ -66522,7 +64961,7 @@ module.exports = cloneBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)(module)))
 
 /***/ }),
-/* 443 */
+/* 441 */
 /***/ (function(module, exports) {
 
 /**
@@ -66548,7 +64987,7 @@ module.exports = copyArray;
 
 
 /***/ }),
-/* 444 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(41),
@@ -66570,7 +65009,7 @@ module.exports = copySymbols;
 
 
 /***/ }),
-/* 445 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(41),
@@ -66592,7 +65031,7 @@ module.exports = copySymbolsIn;
 
 
 /***/ }),
-/* 446 */
+/* 444 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -66624,14 +65063,14 @@ module.exports = initCloneArray;
 
 
 /***/ }),
-/* 447 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var cloneArrayBuffer = __webpack_require__(89),
-    cloneDataView = __webpack_require__(448),
-    cloneRegExp = __webpack_require__(449),
-    cloneSymbol = __webpack_require__(450),
-    cloneTypedArray = __webpack_require__(451);
+    cloneDataView = __webpack_require__(446),
+    cloneRegExp = __webpack_require__(447),
+    cloneSymbol = __webpack_require__(448),
+    cloneTypedArray = __webpack_require__(449);
 
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
@@ -66707,7 +65146,7 @@ module.exports = initCloneByTag;
 
 
 /***/ }),
-/* 448 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var cloneArrayBuffer = __webpack_require__(89);
@@ -66729,7 +65168,7 @@ module.exports = cloneDataView;
 
 
 /***/ }),
-/* 449 */
+/* 447 */
 /***/ (function(module, exports) {
 
 /** Used to match `RegExp` flags from their coerced string values. */
@@ -66752,7 +65191,7 @@ module.exports = cloneRegExp;
 
 
 /***/ }),
-/* 450 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(33);
@@ -66776,7 +65215,7 @@ module.exports = cloneSymbol;
 
 
 /***/ }),
-/* 451 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var cloneArrayBuffer = __webpack_require__(89);
@@ -66798,10 +65237,10 @@ module.exports = cloneTypedArray;
 
 
 /***/ }),
-/* 452 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(453),
+var baseCreate = __webpack_require__(451),
     getPrototype = __webpack_require__(87),
     isPrototype = __webpack_require__(73);
 
@@ -66822,7 +65261,7 @@ module.exports = initCloneObject;
 
 
 /***/ }),
-/* 453 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(27);
@@ -66858,10 +65297,10 @@ module.exports = baseCreate;
 
 
 /***/ }),
-/* 454 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMap = __webpack_require__(455),
+var baseIsMap = __webpack_require__(453),
     baseUnary = __webpack_require__(71),
     nodeUtil = __webpack_require__(72);
 
@@ -66891,11 +65330,11 @@ module.exports = isMap;
 
 
 /***/ }),
-/* 455 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getTag = __webpack_require__(50),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]';
@@ -66915,10 +65354,10 @@ module.exports = baseIsMap;
 
 
 /***/ }),
-/* 456 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsSet = __webpack_require__(457),
+var baseIsSet = __webpack_require__(455),
     baseUnary = __webpack_require__(71),
     nodeUtil = __webpack_require__(72);
 
@@ -66948,11 +65387,11 @@ module.exports = isSet;
 
 
 /***/ }),
-/* 457 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getTag = __webpack_require__(50),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var setTag = '[object Set]';
@@ -66972,7 +65411,7 @@ module.exports = baseIsSet;
 
 
 /***/ }),
-/* 458 */
+/* 456 */
 /***/ (function(module, exports) {
 
 /**
@@ -68612,7 +67051,7 @@ module.exports = MarkerClusterer
 
 
 /***/ }),
-/* 459 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68640,7 +67079,7 @@ var _propsBinder = __webpack_require__(12);
 
 var _propsBinder2 = _interopRequireDefault(_propsBinder);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -68738,12 +67177,12 @@ exports.default = {
 };
 
 /***/ }),
-/* 460 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(34),
-    last = __webpack_require__(461),
-    parent = __webpack_require__(462),
+    last = __webpack_require__(459),
+    parent = __webpack_require__(460),
     toKey = __webpack_require__(35);
 
 /**
@@ -68764,7 +67203,7 @@ module.exports = baseUnset;
 
 
 /***/ }),
-/* 461 */
+/* 459 */
 /***/ (function(module, exports) {
 
 /**
@@ -68790,11 +67229,11 @@ module.exports = last;
 
 
 /***/ }),
-/* 462 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(51),
-    baseSlice = __webpack_require__(463);
+    baseSlice = __webpack_require__(461);
 
 /**
  * Gets the parent value at `path` of `object`.
@@ -68812,7 +67251,7 @@ module.exports = parent;
 
 
 /***/ }),
-/* 463 */
+/* 461 */
 /***/ (function(module, exports) {
 
 /**
@@ -68849,10 +67288,10 @@ module.exports = baseSlice;
 
 
 /***/ }),
-/* 464 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPlainObject = __webpack_require__(465);
+var isPlainObject = __webpack_require__(463);
 
 /**
  * Used by `_.omit` to customize its `_.cloneDeep` use to only clone plain
@@ -68871,12 +67310,12 @@ module.exports = customOmitClone;
 
 
 /***/ }),
-/* 465 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(32),
     getPrototype = __webpack_require__(87),
-    isObjectLike = __webpack_require__(20);
+    isObjectLike = __webpack_require__(22);
 
 /** `Object#toString` result references. */
 var objectTag = '[object Object]';
@@ -68939,12 +67378,12 @@ module.exports = isPlainObject;
 
 
 /***/ }),
-/* 466 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var flatten = __webpack_require__(467),
-    overRest = __webpack_require__(470),
-    setToString = __webpack_require__(472);
+var flatten = __webpack_require__(465),
+    overRest = __webpack_require__(468),
+    setToString = __webpack_require__(470);
 
 /**
  * A specialized version of `baseRest` which flattens the rest array.
@@ -68961,10 +67400,10 @@ module.exports = flatRest;
 
 
 /***/ }),
-/* 467 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFlatten = __webpack_require__(468);
+var baseFlatten = __webpack_require__(466);
 
 /**
  * Flattens `array` a single level deep.
@@ -68989,11 +67428,11 @@ module.exports = flatten;
 
 
 /***/ }),
-/* 468 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(79),
-    isFlattenable = __webpack_require__(469);
+    isFlattenable = __webpack_require__(467);
 
 /**
  * The base implementation of `_.flatten` with support for restricting flattening.
@@ -69033,7 +67472,7 @@ module.exports = baseFlatten;
 
 
 /***/ }),
-/* 469 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(33),
@@ -69059,10 +67498,10 @@ module.exports = isFlattenable;
 
 
 /***/ }),
-/* 470 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(471);
+var apply = __webpack_require__(469);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -69101,7 +67540,7 @@ module.exports = overRest;
 
 
 /***/ }),
-/* 471 */
+/* 469 */
 /***/ (function(module, exports) {
 
 /**
@@ -69128,11 +67567,11 @@ module.exports = apply;
 
 
 /***/ }),
-/* 472 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSetToString = __webpack_require__(473),
-    shortOut = __webpack_require__(475);
+var baseSetToString = __webpack_require__(471),
+    shortOut = __webpack_require__(473);
 
 /**
  * Sets the `toString` method of `func` to return `string`.
@@ -69148,10 +67587,10 @@ module.exports = setToString;
 
 
 /***/ }),
-/* 473 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var constant = __webpack_require__(474),
+var constant = __webpack_require__(472),
     defineProperty = __webpack_require__(138),
     identity = __webpack_require__(84);
 
@@ -69176,7 +67615,7 @@ module.exports = baseSetToString;
 
 
 /***/ }),
-/* 474 */
+/* 472 */
 /***/ (function(module, exports) {
 
 /**
@@ -69208,7 +67647,7 @@ module.exports = constant;
 
 
 /***/ }),
-/* 475 */
+/* 473 */
 /***/ (function(module, exports) {
 
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
@@ -69251,7 +67690,7 @@ module.exports = shortOut;
 
 
 /***/ }),
-/* 476 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69279,7 +67718,7 @@ var _propsBinder = __webpack_require__(12);
 
 var _propsBinder2 = _interopRequireDefault(_propsBinder);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -69427,7 +67866,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 477 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69449,7 +67888,7 @@ var _propsBinder = __webpack_require__(12);
 
 var _propsBinder2 = _interopRequireDefault(_propsBinder);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -69531,7 +67970,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 478 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69553,7 +67992,7 @@ var _propsBinder = __webpack_require__(12);
 
 var _propsBinder2 = _interopRequireDefault(_propsBinder);
 
-var _mapElementMixin = __webpack_require__(21);
+var _mapElementMixin = __webpack_require__(23);
 
 var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
 
@@ -69614,7 +68053,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 479 */
+/* 477 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69622,7 +68061,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f5ee817c_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_infoWindow_vue__ = __webpack_require__(480);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f5ee817c_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_infoWindow_vue__ = __webpack_require__(478);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 /* script */
@@ -69669,7 +68108,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 480 */
+/* 478 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69692,7 +68131,7 @@ if (false) {
 }
 
 /***/ }),
-/* 481 */
+/* 479 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69700,12 +68139,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_4b3ce208_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_map_vue__ = __webpack_require__(485);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_4b3ce208_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_map_vue__ = __webpack_require__(483);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(482)
+  __webpack_require__(480)
 }
 /* script */
 
@@ -69751,13 +68190,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 482 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(483);
+var content = __webpack_require__(481);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -69778,7 +68217,7 @@ if(false) {
 }
 
 /***/ }),
-/* 483 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -69792,7 +68231,7 @@ exports.push([module.i, "\n.vue-map-container {\n  position: relative;\n}\n.vue-
 
 
 /***/ }),
-/* 484 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69851,7 +68290,7 @@ function WatchPrimitiveProperties(vueInst, propertiesToTrack, handler) {
 }
 
 /***/ }),
-/* 485 */
+/* 483 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69885,7 +68324,7 @@ if (false) {
 }
 
 /***/ }),
-/* 486 */
+/* 484 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69893,12 +68332,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_c4367d3e_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_streetViewPanorama_vue__ = __webpack_require__(489);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_c4367d3e_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_streetViewPanorama_vue__ = __webpack_require__(487);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(487)
+  __webpack_require__(485)
 }
 /* script */
 
@@ -69944,13 +68383,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 487 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(488);
+var content = __webpack_require__(486);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -69971,7 +68410,7 @@ if(false) {
 }
 
 /***/ }),
-/* 488 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -69985,7 +68424,7 @@ exports.push([module.i, "\n.vue-street-view-pano-container {\n  position: relati
 
 
 /***/ }),
-/* 489 */
+/* 487 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70020,7 +68459,7 @@ if (false) {
 }
 
 /***/ }),
-/* 490 */
+/* 488 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70028,7 +68467,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_0c367d87_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_placeInput_vue__ = __webpack_require__(491);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_0c367d87_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_placeInput_vue__ = __webpack_require__(489);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 /* script */
@@ -70075,7 +68514,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 491 */
+/* 489 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70106,7 +68545,7 @@ if (false) {
 }
 
 /***/ }),
-/* 492 */
+/* 490 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70114,7 +68553,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f0d8a628_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_autocomplete_vue__ = __webpack_require__(496);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f0d8a628_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_autocomplete_vue__ = __webpack_require__(494);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 /* script */
@@ -70161,12 +68600,12 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 493 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(83),
     baseIteratee = __webpack_require__(147),
-    basePickBy = __webpack_require__(494),
+    basePickBy = __webpack_require__(492),
     getAllKeysIn = __webpack_require__(88);
 
 /**
@@ -70204,11 +68643,11 @@ module.exports = pickBy;
 
 
 /***/ }),
-/* 494 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(51),
-    baseSet = __webpack_require__(495),
+    baseSet = __webpack_require__(493),
     castPath = __webpack_require__(34);
 
 /**
@@ -70240,7 +68679,7 @@ module.exports = basePickBy;
 
 
 /***/ }),
-/* 495 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(86),
@@ -70293,7 +68732,7 @@ module.exports = baseSet;
 
 
 /***/ }),
-/* 496 */
+/* 494 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70320,7 +68759,7 @@ if (false) {
 }
 
 /***/ }),
-/* 497 */
+/* 495 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70356,7 +68795,7 @@ var render = function() {
       [_vm._v(" \n        가게 설명    \n    ")]
     ),
     _vm._v(" "),
-    _c("h2", [_vm._v("   갤러리 ")]),
+    _c("h2", [_vm._v(" 갤러리 ")]),
     _vm._v(" "),
     _c("div", {
       staticClass: "frame",
@@ -70364,7 +68803,7 @@ var render = function() {
       attrs: { id: "gallery_div" }
     }),
     _vm._v(" "),
-    _c("h2", [_vm._v("   주소 ")]),
+    _c("h2", [_vm._v(" 주소 ")]),
     _vm._v(" "),
     _vm._m(3),
     _vm._v(" "),
@@ -70406,7 +68845,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticStyle: { width: "40%", float: "left" } }, [
-      _c("h2", { staticStyle: { "font-size": "200%" } }, [_vm._v("   소개 ")])
+      _c("h2", { staticStyle: { "font-size": "200%" } }, [_vm._v("  소개 ")])
     ])
   },
   function() {
@@ -70420,7 +68859,7 @@ var staticRenderFns = [
           staticStyle: { "text-align": "right", "font-size": "200%" },
           attrs: { id: "rating" }
         },
-        [_vm._v("\n               방문객 평점 :   \n            ")]
+        [_vm._v("\n               방문객 평점 :  \n            ")]
       )
     ])
   },
@@ -70439,9 +68878,9 @@ var staticRenderFns = [
           attrs: { id: "dodobuken" }
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "address_values", attrs: { id: "address1" } }),
+        _c("div", { staticClass: "address_values", attrs: { id: "cities" } }),
         _vm._v(" "),
-        _c("div", { staticClass: "address_values", attrs: { id: "address2" } })
+        _c("div", { staticClass: "address_values", attrs: { id: "address" } })
       ])
     ])
   },
@@ -70527,25 +68966,25 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "column_value" }, [
         _c("div", { staticClass: "others", attrs: { id: "children" } }, [
-          _vm._v(" 아이 동반 :  ")
+          _vm._v(" 아이 동반 : ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "others", attrs: { id: "pet" } }, [
-          _vm._v(" 애완 동물 동반 :  ")
+          _vm._v(" 애완 동물 동반 : ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "others", attrs: { id: "parking" } }, [
-          _vm._v(" 주차 :  ")
+          _vm._v(" 주차 : ")
         ]),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c("div", { staticClass: "others", attrs: { id: "smoking" } }, [
-          _vm._v(" 흡연 :  ")
+          _vm._v(" 흡연 : ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "others", attrs: { id: "privateroom" } }, [
-          _vm._v(" 개인실 :  ")
+          _vm._v(" 개인실 : ")
         ])
       ])
     ])
@@ -70561,18 +69000,18 @@ if (false) {
 }
 
 /***/ }),
-/* 498 */
+/* 496 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserWriteReview_vue__ = __webpack_require__(167);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42ab863c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserWriteReview_vue__ = __webpack_require__(512);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42ab863c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserWriteReview_vue__ = __webpack_require__(510);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(499)
+  __webpack_require__(497)
 }
 /* script */
 
@@ -70619,13 +69058,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 499 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(500);
+var content = __webpack_require__(498);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70646,7 +69085,7 @@ if(false) {
 }
 
 /***/ }),
-/* 500 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -70660,18 +69099,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 501 */
+/* 499 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewStarRating_vue__ = __webpack_require__(168);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7be88568_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewStarRating_vue__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7be88568_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewStarRating_vue__ = __webpack_require__(504);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(502)
+  __webpack_require__(500)
 }
 /* script */
 
@@ -70718,13 +69157,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 502 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(503);
+var content = __webpack_require__(501);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70745,7 +69184,7 @@ if(false) {
 }
 
 /***/ }),
-/* 503 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -70759,13 +69198,13 @@ exports.push([module.i, "\n.vue-star-rating-star[data-v-7be88568] {\r\n    displ
 
 
 /***/ }),
-/* 504 */
+/* 502 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserStar_vue__ = __webpack_require__(169);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_31311d97_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserStar_vue__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_31311d97_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserStar_vue__ = __webpack_require__(503);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 /* script */
@@ -70813,7 +69252,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 505 */
+/* 503 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70879,7 +69318,7 @@ if (false) {
 }
 
 /***/ }),
-/* 506 */
+/* 504 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70969,18 +69408,18 @@ if (false) {
 }
 
 /***/ }),
-/* 507 */
+/* 505 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_vue_loader_lib_selector_type_script_index_0_PictureInput_vue__ = __webpack_require__(170);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_43083542_hasScoped_true_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_PictureInput_vue__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_43083542_hasScoped_true_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_PictureInput_vue__ = __webpack_require__(508);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(508)
+  __webpack_require__(506)
 }
 /* script */
 
@@ -71027,13 +69466,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 508 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(509);
+var content = __webpack_require__(507);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -71054,7 +69493,7 @@ if(false) {
 }
 
 /***/ }),
-/* 509 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -71068,7 +69507,7 @@ exports.push([module.i, "\n.picture-input[data-v-43083542] {\n  width: 100%;\n  
 
 
 /***/ }),
-/* 510 */
+/* 508 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71304,14 +69743,14 @@ if (false) {
 }
 
 /***/ }),
-/* 511 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(t,e){if(true)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var n=e();for(var r in n)("object"==typeof exports?exports:t)[r]=n[r]}}(this,function(){return function(t){function e(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,e),o.l=!0,o.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="dist/",e(e.s=41)}([function(t,e,n){var r=n(23)("wks"),o=n(15),i=n(1).Symbol,u="function"==typeof i;(t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))}).store=r},function(t,e){var n=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(t,e){var n=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=n)},function(t,e){var n={}.hasOwnProperty;t.exports=function(t,e){return n.call(t,e)}},function(t,e,n){var r=n(8),o=n(31),i=n(26),u=Object.defineProperty;e.f=n(6)?Object.defineProperty:function(t,e,n){if(r(t),e=i(e,!0),r(n),o)try{return u(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(t[e]=n.value),t}},function(t,e,n){var r=n(60),o=n(17);t.exports=function(t){return r(o(t))}},function(t,e,n){t.exports=!n(9)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,e,n){var r=n(4),o=n(12);t.exports=n(6)?function(t,e,n){return r.f(t,e,o(1,n))}:function(t,e,n){return t[e]=n,t}},function(t,e,n){var r=n(14);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,e){t.exports={}},function(t,e,n){var r=n(36),o=n(18);t.exports=Object.keys||function(t){return r(t,o)}},function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},function(t,e,n){var r=n(1),o=n(2),i=n(29),u=n(7),a=function(t,e,n){var f,c,s,p=t&a.F,l=t&a.G,d=t&a.S,v=t&a.P,h=t&a.B,y=t&a.W,g=l?o:o[e]||(o[e]={}),m=g.prototype,x=l?r:d?r[e]:(r[e]||{}).prototype;l&&(n=e);for(f in n)(c=!p&&x&&void 0!==x[f])&&f in g||(s=c?x[f]:n[f],g[f]=l&&"function"!=typeof x[f]?n[f]:h&&c?i(s,r):y&&x[f]==s?function(t){var e=function(e,n,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(e);case 2:return new t(e,n)}return new t(e,n,r)}return t.apply(this,arguments)};return e.prototype=t.prototype,e}(s):v&&"function"==typeof s?i(Function.call,s):s,v&&((g.virtual||(g.virtual={}))[f]=s,t&a.R&&m&&!m[f]&&u(m,f,s)))};a.F=1,a.G=2,a.S=4,a.P=8,a.B=16,a.W=32,a.U=64,a.R=128,t.exports=a},function(t,e){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,e){var n=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++n+r).toString(36))}},function(t,e){var n={}.toString;t.exports=function(t){return n.call(t).slice(8,-1)}},function(t,e){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,e){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,e){t.exports=!0},function(t,e){e.f={}.propertyIsEnumerable},function(t,e,n){var r=n(4).f,o=n(3),i=n(0)("toStringTag");t.exports=function(t,e,n){t&&!o(t=n?t:t.prototype,i)&&r(t,i,{configurable:!0,value:e})}},function(t,e,n){var r=n(23)("keys"),o=n(15);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,e,n){var r=n(1),o=r["__core-js_shared__"]||(r["__core-js_shared__"]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,e){var n=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:n)(t)}},function(t,e,n){var r=n(17);t.exports=function(t){return Object(r(t))}},function(t,e,n){var r=n(14);t.exports=function(t,e){if(!r(t))return t;var n,o;if(e&&"function"==typeof(n=t.toString)&&!r(o=n.call(t)))return o;if("function"==typeof(n=t.valueOf)&&!r(o=n.call(t)))return o;if(!e&&"function"==typeof(n=t.toString)&&!r(o=n.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,e,n){var r=n(1),o=n(2),i=n(19),u=n(28),a=n(4).f;t.exports=function(t){var e=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in e||a(e,t,{value:u.f(t)})}},function(t,e,n){e.f=n(0)},function(t,e,n){var r=n(53);t.exports=function(t,e,n){if(r(t),void 0===e)return t;switch(n){case 1:return function(n){return t.call(e,n)};case 2:return function(n,r){return t.call(e,n,r)};case 3:return function(n,r,o){return t.call(e,n,r,o)}}return function(){return t.apply(e,arguments)}}},function(t,e,n){var r=n(14),o=n(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,e,n){t.exports=!n(6)&&!n(9)(function(){return 7!=Object.defineProperty(n(30)("div"),"a",{get:function(){return 7}}).a})},function(t,e,n){"use strict";var r=n(19),o=n(13),i=n(37),u=n(7),a=n(3),f=n(10),c=n(64),s=n(21),p=n(72),l=n(0)("iterator"),d=!([].keys&&"next"in[].keys()),v=function(){return this};t.exports=function(t,e,n,h,y,g,m){c(n,e,h);var x,b,w,_=function(t){if(!d&&t in j)return j[t];switch(t){case"keys":case"values":return function(){return new n(this,t)}}return function(){return new n(this,t)}},O=e+" Iterator",S="values"==y,T=!1,j=t.prototype,E=j[l]||j["@@iterator"]||y&&j[y],A=E||_(y),C=y?S?_("entries"):A:void 0,P="Array"==e?j.entries||E:E;if(P&&(w=p(P.call(new t)))!==Object.prototype&&(s(w,O,!0),r||a(w,l)||u(w,l,v)),S&&E&&"values"!==E.name&&(T=!0,A=function(){return E.call(this)}),r&&!m||!d&&!T&&j[l]||u(j,l,A),f[e]=A,f[O]=v,y)if(x={values:S?A:_("values"),keys:g?A:_("keys"),entries:C},m)for(b in x)b in j||i(j,b,x[b]);else o(o.P+o.F*(d||T),e,x);return x}},function(t,e,n){var r=n(8),o=n(69),i=n(18),u=n(22)("IE_PROTO"),a=function(){},f=function(){var t,e=n(30)("iframe"),r=i.length;for(e.style.display="none",n(59).appendChild(e),e.src="javascript:",t=e.contentWindow.document,t.open(),t.write("<script>document.F=Object<\/script>"),t.close(),f=t.F;r--;)delete f.prototype[i[r]];return f()};t.exports=Object.create||function(t,e){var n;return null!==t?(a.prototype=r(t),n=new a,a.prototype=null,n[u]=t):n=f(),void 0===e?n:o(n,e)}},function(t,e,n){var r=n(36),o=n(18).concat("length","prototype");e.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,e){e.f=Object.getOwnPropertySymbols},function(t,e,n){var r=n(3),o=n(5),i=n(55)(!1),u=n(22)("IE_PROTO");t.exports=function(t,e){var n,a=o(t),f=0,c=[];for(n in a)n!=u&&r(a,n)&&c.push(n);for(;e.length>f;)r(a,n=e[f++])&&(~i(c,n)||c.push(n));return c}},function(t,e,n){t.exports=n(7)},function(t,e,n){var r=n(24),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,e,n){"use strict";var r=n(74)(!0);n(32)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,e=this._t,n=this._i;return n>=e.length?{value:void 0,done:!0}:(t=r(e,n),this._i+=t.length,{value:t,done:!1})})},function(t,e,n){function r(t){n(89)}var o=n(87)(n(42),n(88),r,null,null);t.exports=o.exports},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.InputTag=void 0;var r=n(40),o=function(t){return t&&t.__esModule?t:{default:t}}(r);e.InputTag=o.default,e.default=o.default},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var o=n(48),i=r(o),u=n(44),a=r(u),f=n(47),c=r(f),s={email:new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),url:new RegExp(/^(https?|ftp|rmtp|mms):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?\/?/i),text:new RegExp(/^[a-zA-Z]+$/),digits:new RegExp(/^[\d() \.\:\-\+#]+$/),isodate:new RegExp(/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/)};e.default={name:"InputTag",props:{tags:{type:Array,default:function(){return[]}},placeholder:{type:String,default:""},readOnly:{type:Boolean,default:!1},validate:{type:String|Object,default:""},addTagOnKeys:{type:Array,default:function(){return[13,188,9]}},addTagOnBlur:{type:Boolean,default:!1},limit:{default:-1}},data:function(){return{newTag:"",innerTags:[].concat((0,c.default)(this.tags))}},watch:{tags:function(){this.innerTags=[].concat((0,c.default)(this.tags))}},computed:{isLimit:function(){return this.limit>0&&Number(this.limit)===this.innerTags.length}},methods:{focusNewTag:function(){!this.readOnly&&this.$el.querySelector(".new-tag")&&this.$el.querySelector(".new-tag").focus()},addNew:function(t){t&&-1===this.addTagOnKeys.indexOf(t.keyCode)&&("blur"!==t.type||!this.addTagOnBlur)||this.isLimit||(t&&(t.stopPropagation(),t.preventDefault()),this.newTag&&-1===this.innerTags.indexOf(this.newTag)&&this.validateIfNeeded(this.newTag)&&(this.innerTags.push(this.newTag),this.newTag="",this.tagChange()))},validateIfNeeded:function(t){return""===this.validate||void 0===this.validate||("string"==typeof this.validate&&(0,a.default)(s).indexOf(this.validate)>-1?s[this.validate].test(t):"object"!==(0,i.default)(this.validate)||void 0===this.validate.test||this.validate.test(t))},remove:function(t){this.innerTags.splice(t,1),this.tagChange()},removeLastTag:function(){this.newTag||(this.innerTags.pop(),this.tagChange())},tagChange:function(){this.$emit("update:tags",this.innerTags)}}}},function(t,e,n){t.exports={default:n(49),__esModule:!0}},function(t,e,n){t.exports={default:n(50),__esModule:!0}},function(t,e,n){t.exports={default:n(51),__esModule:!0}},function(t,e,n){t.exports={default:n(52),__esModule:!0}},function(t,e,n){"use strict";e.__esModule=!0;var r=n(43),o=function(t){return t&&t.__esModule?t:{default:t}}(r);e.default=function(t){if(Array.isArray(t)){for(var e=0,n=Array(t.length);e<t.length;e++)n[e]=t[e];return n}return(0,o.default)(t)}},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}e.__esModule=!0;var o=n(46),i=r(o),u=n(45),a=r(u),f="function"==typeof a.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof a.default&&t.constructor===a.default&&t!==a.default.prototype?"symbol":typeof t};e.default="function"==typeof a.default&&"symbol"===f(i.default)?function(t){return void 0===t?"undefined":f(t)}:function(t){return t&&"function"==typeof a.default&&t.constructor===a.default&&t!==a.default.prototype?"symbol":void 0===t?"undefined":f(t)}},function(t,e,n){n(39),n(77),t.exports=n(2).Array.from},function(t,e,n){n(79),t.exports=n(2).Object.keys},function(t,e,n){n(81),n(80),n(82),n(83),t.exports=n(2).Symbol},function(t,e,n){n(39),n(84),t.exports=n(28).f("iterator")},function(t,e){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,e){t.exports=function(){}},function(t,e,n){var r=n(5),o=n(38),i=n(75);t.exports=function(t){return function(e,n,u){var a,f=r(e),c=o(f.length),s=i(u,c);if(t&&n!=n){for(;c>s;)if((a=f[s++])!=a)return!0}else for(;c>s;s++)if((t||s in f)&&f[s]===n)return t||s||0;return!t&&-1}}},function(t,e,n){var r=n(16),o=n(0)("toStringTag"),i="Arguments"==r(function(){return arguments}()),u=function(t,e){try{return t[e]}catch(t){}};t.exports=function(t){var e,n,a;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(n=u(e=Object(t),o))?n:i?r(e):"Object"==(a=r(e))&&"function"==typeof e.callee?"Arguments":a}},function(t,e,n){"use strict";var r=n(4),o=n(12);t.exports=function(t,e,n){e in t?r.f(t,e,o(0,n)):t[e]=n}},function(t,e,n){var r=n(11),o=n(35),i=n(20);t.exports=function(t){var e=r(t),n=o.f;if(n)for(var u,a=n(t),f=i.f,c=0;a.length>c;)f.call(t,u=a[c++])&&e.push(u);return e}},function(t,e,n){t.exports=n(1).document&&document.documentElement},function(t,e,n){var r=n(16);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,e,n){var r=n(10),o=n(0)("iterator"),i=Array.prototype;t.exports=function(t){return void 0!==t&&(r.Array===t||i[o]===t)}},function(t,e,n){var r=n(16);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,e,n){var r=n(8);t.exports=function(t,e,n,o){try{return o?e(r(n)[0],n[1]):e(n)}catch(e){var i=t.return;throw void 0!==i&&r(i.call(t)),e}}},function(t,e,n){"use strict";var r=n(33),o=n(12),i=n(21),u={};n(7)(u,n(0)("iterator"),function(){return this}),t.exports=function(t,e,n){t.prototype=r(u,{next:o(1,n)}),i(t,e+" Iterator")}},function(t,e,n){var r=n(0)("iterator"),o=!1;try{var i=[7][r]();i.return=function(){o=!0},Array.from(i,function(){throw 2})}catch(t){}t.exports=function(t,e){if(!e&&!o)return!1;var n=!1;try{var i=[7],u=i[r]();u.next=function(){return{done:n=!0}},i[r]=function(){return u},t(i)}catch(t){}return n}},function(t,e){t.exports=function(t,e){return{value:e,done:!!t}}},function(t,e,n){var r=n(11),o=n(5);t.exports=function(t,e){for(var n,i=o(t),u=r(i),a=u.length,f=0;a>f;)if(i[n=u[f++]]===e)return n}},function(t,e,n){var r=n(15)("meta"),o=n(14),i=n(3),u=n(4).f,a=0,f=Object.isExtensible||function(){return!0},c=!n(9)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++a,w:{}}})},p=function(t,e){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!f(t))return"F";if(!e)return"E";s(t)}return t[r].i},l=function(t,e){if(!i(t,r)){if(!f(t))return!0;if(!e)return!1;s(t)}return t[r].w},d=function(t){return c&&v.NEED&&f(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:p,getWeak:l,onFreeze:d}},function(t,e,n){var r=n(4),o=n(8),i=n(11);t.exports=n(6)?Object.defineProperties:function(t,e){o(t);for(var n,u=i(e),a=u.length,f=0;a>f;)r.f(t,n=u[f++],e[n]);return t}},function(t,e,n){var r=n(20),o=n(12),i=n(5),u=n(26),a=n(3),f=n(31),c=Object.getOwnPropertyDescriptor;e.f=n(6)?c:function(t,e){if(t=i(t),e=u(e,!0),f)try{return c(t,e)}catch(t){}if(a(t,e))return o(!r.f.call(t,e),t[e])}},function(t,e,n){var r=n(5),o=n(34).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],a=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?a(t):o(r(t))}},function(t,e,n){var r=n(3),o=n(25),i=n(22)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,e,n){var r=n(13),o=n(2),i=n(9);t.exports=function(t,e){var n=(o.Object||{})[t]||Object[t],u={};u[t]=e(n),r(r.S+r.F*i(function(){n(1)}),"Object",u)}},function(t,e,n){var r=n(24),o=n(17);t.exports=function(t){return function(e,n){var i,u,a=String(o(e)),f=r(n),c=a.length;return f<0||f>=c?t?"":void 0:(i=a.charCodeAt(f),i<55296||i>56319||f+1===c||(u=a.charCodeAt(f+1))<56320||u>57343?t?a.charAt(f):i:t?a.slice(f,f+2):u-56320+(i-55296<<10)+65536)}}},function(t,e,n){var r=n(24),o=Math.max,i=Math.min;t.exports=function(t,e){return t=r(t),t<0?o(t+e,0):i(t,e)}},function(t,e,n){var r=n(56),o=n(0)("iterator"),i=n(10);t.exports=n(2).getIteratorMethod=function(t){if(void 0!=t)return t[o]||t["@@iterator"]||i[r(t)]}},function(t,e,n){"use strict";var r=n(29),o=n(13),i=n(25),u=n(63),a=n(61),f=n(38),c=n(57),s=n(76);o(o.S+o.F*!n(65)(function(t){Array.from(t)}),"Array",{from:function(t){var e,n,o,p,l=i(t),d="function"==typeof this?this:Array,v=arguments.length,h=v>1?arguments[1]:void 0,y=void 0!==h,g=0,m=s(l);if(y&&(h=r(h,v>2?arguments[2]:void 0,2)),void 0==m||d==Array&&a(m))for(e=f(l.length),n=new d(e);e>g;g++)c(n,g,y?h(l[g],g):l[g]);else for(p=m.call(l),n=new d;!(o=p.next()).done;g++)c(n,g,y?u(p,h,[o.value,g],!0):o.value);return n.length=g,n}})},function(t,e,n){"use strict";var r=n(54),o=n(66),i=n(10),u=n(5);t.exports=n(32)(Array,"Array",function(t,e){this._t=u(t),this._i=0,this._k=e},function(){var t=this._t,e=this._k,n=this._i++;return!t||n>=t.length?(this._t=void 0,o(1)):"keys"==e?o(0,n):"values"==e?o(0,t[n]):o(0,[n,t[n]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,e,n){var r=n(25),o=n(11);n(73)("keys",function(){return function(t){return o(r(t))}})},function(t,e){},function(t,e,n){"use strict";var r=n(1),o=n(3),i=n(6),u=n(13),a=n(37),f=n(68).KEY,c=n(9),s=n(23),p=n(21),l=n(15),d=n(0),v=n(28),h=n(27),y=n(67),g=n(58),m=n(62),x=n(8),b=n(5),w=n(26),_=n(12),O=n(33),S=n(71),T=n(70),j=n(4),E=n(11),A=T.f,C=j.f,P=S.f,M=r.Symbol,k=r.JSON,N=k&&k.stringify,I=d("_hidden"),R=d("toPrimitive"),F={}.propertyIsEnumerable,L=s("symbol-registry"),$=s("symbols"),B=s("op-symbols"),U=Object.prototype,D="function"==typeof M,z=r.QObject,W=!z||!z.prototype||!z.prototype.findChild,Z=i&&c(function(){return 7!=O(C({},"a",{get:function(){return C(this,"a",{value:7}).a}})).a})?function(t,e,n){var r=A(U,e);r&&delete U[e],C(t,e,n),r&&t!==U&&C(U,e,r)}:C,G=function(t){var e=$[t]=O(M.prototype);return e._k=t,e},J=D&&"symbol"==typeof M.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof M},K=function(t,e,n){return t===U&&K(B,e,n),x(t),e=w(e,!0),x(n),o($,e)?(n.enumerable?(o(t,I)&&t[I][e]&&(t[I][e]=!1),n=O(n,{enumerable:_(0,!1)})):(o(t,I)||C(t,I,_(1,{})),t[I][e]=!0),Z(t,e,n)):C(t,e,n)},q=function(t,e){x(t);for(var n,r=g(e=b(e)),o=0,i=r.length;i>o;)K(t,n=r[o++],e[n]);return t},V=function(t,e){return void 0===e?O(t):q(O(t),e)},X=function(t){var e=F.call(this,t=w(t,!0));return!(this===U&&o($,t)&&!o(B,t))&&(!(e||!o(this,t)||!o($,t)||o(this,I)&&this[I][t])||e)},Y=function(t,e){if(t=b(t),e=w(e,!0),t!==U||!o($,e)||o(B,e)){var n=A(t,e);return!n||!o($,e)||o(t,I)&&t[I][e]||(n.enumerable=!0),n}},Q=function(t){for(var e,n=P(b(t)),r=[],i=0;n.length>i;)o($,e=n[i++])||e==I||e==f||r.push(e);return r},H=function(t){for(var e,n=t===U,r=P(n?B:b(t)),i=[],u=0;r.length>u;)!o($,e=r[u++])||n&&!o(U,e)||i.push($[e]);return i};D||(M=function(){if(this instanceof M)throw TypeError("Symbol is not a constructor!");var t=l(arguments.length>0?arguments[0]:void 0),e=function(n){this===U&&e.call(B,n),o(this,I)&&o(this[I],t)&&(this[I][t]=!1),Z(this,t,_(1,n))};return i&&W&&Z(U,t,{configurable:!0,set:e}),G(t)},a(M.prototype,"toString",function(){return this._k}),T.f=Y,j.f=K,n(34).f=S.f=Q,n(20).f=X,n(35).f=H,i&&!n(19)&&a(U,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!D,{Symbol:M});for(var tt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;tt.length>et;)d(tt[et++]);for(var tt=E(d.store),et=0;tt.length>et;)h(tt[et++]);u(u.S+u.F*!D,"Symbol",{for:function(t){return o(L,t+="")?L[t]:L[t]=M(t)},keyFor:function(t){if(J(t))return y(L,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){W=!0},useSimple:function(){W=!1}}),u(u.S+u.F*!D,"Object",{create:V,defineProperty:K,defineProperties:q,getOwnPropertyDescriptor:Y,getOwnPropertyNames:Q,getOwnPropertySymbols:H}),k&&u(u.S+u.F*(!D||c(function(){var t=M();return"[null]"!=N([t])||"{}"!=N({a:t})||"{}"!=N(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!J(t)){for(var e,n,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return e=r[1],"function"==typeof e&&(n=e),!n&&m(e)||(e=function(t,e){if(n&&(e=n.call(this,t,e)),!J(e))return e}),r[1]=e,N.apply(k,r)}}}),M.prototype[R]||n(7)(M.prototype,R,M.prototype.valueOf),p(M,"Symbol"),p(Math,"Math",!0),p(r.JSON,"JSON",!0)},function(t,e,n){n(27)("asyncIterator")},function(t,e,n){n(27)("observable")},function(t,e,n){n(78);for(var r=n(1),o=n(7),i=n(10),u=n(0)("toStringTag"),a=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],f=0;f<5;f++){var c=a[f],s=r[c],p=s&&s.prototype;p&&!p[u]&&o(p,u,c),i[c]=i.Array}},function(t,e,n){e=t.exports=n(86)(),e.push([t.i,'.vue-input-tag-wrapper{background-color:#fff;border:1px solid #ccc;overflow:hidden;padding-left:4px;padding-top:4px;cursor:text;text-align:left;-webkit-appearance:textfield;display:flex;flex-wrap:wrap}.vue-input-tag-wrapper .input-tag{background-color:#cde69c;border-radius:2px;border:1px solid #a5d24a;color:#638421;display:inline-block;font-size:13px;font-weight:400;margin-bottom:4px;margin-right:4px;padding:3px}.vue-input-tag-wrapper .input-tag .remove{cursor:pointer;font-weight:700;color:#638421}.vue-input-tag-wrapper .input-tag .remove:hover{text-decoration:none}.vue-input-tag-wrapper .input-tag .remove:before{content:" x"}.vue-input-tag-wrapper .new-tag{background:transparent;border:0;color:#777;font-size:13px;font-weight:400;margin-bottom:6px;margin-top:1px;outline:none;padding:4px;padding-left:0;flex-grow:1}.vue-input-tag-wrapper.read-only{cursor:default}',""])},function(t,e){t.exports=function(){var t=[];return t.toString=function(){for(var t=[],e=0;e<this.length;e++){var n=this[e];n[2]?t.push("@media "+n[2]+"{"+n[1]+"}"):t.push(n[1])}return t.join("")},t.i=function(e,n){"string"==typeof e&&(e=[[null,e,""]]);for(var r={},o=0;o<this.length;o++){var i=this[o][0];"number"==typeof i&&(r[i]=!0)}for(o=0;o<e.length;o++){var u=e[o];"number"==typeof u[0]&&r[u[0]]||(n&&!u[2]?u[2]=n:n&&(u[2]="("+u[2]+") and ("+n+")"),t.push(u))}},t}},function(t,e){t.exports=function(t,e,n,r,o){var i,u=t=t||{},a=typeof t.default;"object"!==a&&"function"!==a||(i=t,u=t.default);var f="function"==typeof u?u.options:u;e&&(f.render=e.render,f.staticRenderFns=e.staticRenderFns),r&&(f._scopeId=r);var c;if(o?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),n&&n.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},f._ssrRegister=c):n&&(c=n),c){var s=f.functional,p=s?f.render:f.beforeCreate;s?f.render=function(t,e){return c.call(e),p(t,e)}:f.beforeCreate=p?[].concat(p,c):[c]}return{esModule:i,exports:u,options:f}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"vue-input-tag-wrapper",class:{"read-only":t.readOnly},on:{click:function(e){t.focusNewTag()}}},[t._l(t.innerTags,function(e,r){return n("span",{key:r,staticClass:"input-tag"},[n("span",[t._v(t._s(e))]),t._v(" "),t.readOnly?t._e():n("a",{staticClass:"remove",on:{click:function(e){e.preventDefault(),e.stopPropagation(),t.remove(r)}}})])}),t._v(" "),t.readOnly||t.isLimit?t._e():n("input",{directives:[{name:"model",rawName:"v-model",value:t.newTag,expression:"newTag"}],ref:"inputtag",staticClass:"new-tag",attrs:{placeholder:t.placeholder,type:"text"},domProps:{value:t.newTag},on:{keydown:[function(e){if(!("button"in e)&&t._k(e.keyCode,"delete",[8,46]))return null;e.stopPropagation(),t.removeLastTag(e)},t.addNew],blur:t.addNew,input:function(e){e.target.composing||(t.newTag=e.target.value)}}})],2)},staticRenderFns:[]}},function(t,e,n){var r=n(85);"string"==typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);n(90)("a07ea41c",r,!0)},function(t,e,n){function r(t){for(var e=0;e<t.length;e++){var n=t[e],r=s[n.id];if(r){r.refs++;for(var o=0;o<r.parts.length;o++)r.parts[o](n.parts[o]);for(;o<n.parts.length;o++)r.parts.push(i(n.parts[o]));r.parts.length>n.parts.length&&(r.parts.length=n.parts.length)}else{for(var u=[],o=0;o<n.parts.length;o++)u.push(i(n.parts[o]));s[n.id]={id:n.id,refs:1,parts:u}}}}function o(){var t=document.createElement("style");return t.type="text/css",p.appendChild(t),t}function i(t){var e,n,r=document.querySelector('style[data-vue-ssr-id~="'+t.id+'"]');if(r){if(v)return h;r.parentNode.removeChild(r)}if(y){var i=d++;r=l||(l=o()),e=u.bind(null,r,i,!1),n=u.bind(null,r,i,!0)}else r=o(),e=a.bind(null,r),n=function(){r.parentNode.removeChild(r)};return e(t),function(r){if(r){if(r.css===t.css&&r.media===t.media&&r.sourceMap===t.sourceMap)return;e(t=r)}else n()}}function u(t,e,n,r){var o=n?"":r.css;if(t.styleSheet)t.styleSheet.cssText=g(e,o);else{var i=document.createTextNode(o),u=t.childNodes;u[e]&&t.removeChild(u[e]),u.length?t.insertBefore(i,u[e]):t.appendChild(i)}}function a(t,e){var n=e.css,r=e.media,o=e.sourceMap;if(r&&t.setAttribute("media",r),o&&(n+="\n/*# sourceURL="+o.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */"),t.styleSheet)t.styleSheet.cssText=n;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}var f="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!f)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var c=n(91),s={},p=f&&(document.head||document.getElementsByTagName("head")[0]),l=null,d=0,v=!1,h=function(){},y="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());t.exports=function(t,e,n){v=n;var o=c(t,e);return r(o),function(e){for(var n=[],i=0;i<o.length;i++){var u=o[i],a=s[u.id];a.refs--,n.push(a)}e?(o=c(t,e),r(o)):o=[];for(var i=0;i<n.length;i++){var a=n[i];if(0===a.refs){for(var f=0;f<a.parts.length;f++)a.parts[f]();delete s[a.id]}}}};var g=function(){var t=[];return function(e,n){return t[e]=n,t.filter(Boolean).join("\n")}}()},function(t,e){t.exports=function(t,e){for(var n=[],r={},o=0;o<e.length;o++){var i=e[o],u=i[0],a=i[1],f=i[2],c=i[3],s={id:t+":"+o,css:a,media:f,sourceMap:c};r[u]?r[u].parts.push(s):n.push(r[u]={id:u,parts:[s]})}return n}}])});
 //# sourceMappingURL=vue-input-tag.min.js.map
 
 /***/ }),
-/* 512 */
+/* 510 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71653,18 +70092,18 @@ if (false) {
 }
 
 /***/ }),
-/* 513 */
+/* 511 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPage_vue__ = __webpack_require__(171);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_60192786_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPage_vue__ = __webpack_require__(520);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_60192786_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPage_vue__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(514)
+  __webpack_require__(512)
 }
 /* script */
 
@@ -71711,13 +70150,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 514 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(515);
+var content = __webpack_require__(513);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -71738,7 +70177,7 @@ if(false) {
 }
 
 /***/ }),
-/* 515 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -71746,24 +70185,24 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 516 */
+/* 514 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_ownerPageTop_vue__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageTop_vue__ = __webpack_require__(172);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7879bd68_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ownerPageTop_vue__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_463e0188_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageTop_vue__ = __webpack_require__(517);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(517)
+  __webpack_require__(515)
 }
 /* script */
 
@@ -71780,15 +70219,15 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_ownerPageTop_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7879bd68_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ownerPageTop_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7879bd68_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ownerPageTop_vue__["b" /* staticRenderFns */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageTop_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_463e0188_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageTop_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_463e0188_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageTop_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_common\\ownerPageTop.vue"
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_common\\OwnerPageTop.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -71797,9 +70236,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7879bd68", Component.options)
+    hotAPI.createRecord("data-v-463e0188", Component.options)
   } else {
-    hotAPI.reload("data-v-7879bd68", Component.options)
+    hotAPI.reload("data-v-463e0188", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -71810,24 +70249,24 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 517 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(518);
+var content = __webpack_require__(516);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(5).default
-var update = add("13e364ee", content, false, {});
+var update = add("7ea1ee24", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ownerPageTop.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ownerPageTop.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerPageTop.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerPageTop.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -71837,7 +70276,7 @@ if(false) {
 }
 
 /***/ }),
-/* 518 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -71851,7 +70290,7 @@ exports.push([module.i, "\n.header {\n  background-color: #353535;\n}\n.title {\
 
 
 /***/ }),
-/* 519 */
+/* 517 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71963,12 +70402,12 @@ render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7879bd68", { render: render, staticRenderFns: staticRenderFns })
+    require("vue-hot-reload-api")      .rerender("data-v-463e0188", { render: render, staticRenderFns: staticRenderFns })
   }
 }
 
 /***/ }),
-/* 520 */
+/* 518 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71978,16 +70417,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "ownerPage" }, [
-    _c("div", [_c("ownerPageTop")], 1),
-    _vm._v(" "),
-    _c(
-      "div",
-      [
-        _c("router-view", { attrs: { to: "/ownerPage/ownerPageSide_Setting" } })
-      ],
-      1
-    )
+  return _c("v-app", [
+    _c("div", { staticClass: "ownerPage" }, [
+      _c("div", [_c("OwnerPageTop")], 1),
+      _vm._v(" "),
+      _c(
+        "div",
+        [
+          _c("router-view", {
+            attrs: { to: "/ownerPage/ownerPageSideSetting" }
+          })
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -72001,19 +70444,19 @@ if (false) {
 }
 
 /***/ }),
-/* 521 */
+/* 519 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideReservation_vue__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideReservation_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideReservation_vue__);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4858c1a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideReservation_vue__ = __webpack_require__(524);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4858c1a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideReservation_vue__ = __webpack_require__(522);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(522)
+  __webpack_require__(520)
 }
 /* script */
 
@@ -72060,13 +70503,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 522 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(523);
+var content = __webpack_require__(521);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72087,7 +70530,7 @@ if(false) {
 }
 
 /***/ }),
-/* 523 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -72095,13 +70538,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  /* 폰트 컬러 */\n.fontColor_red {\n  color: red;\n}\n.fontColor_white {\n  color: white;\n}\n\n  /* 사이드바 */\n#sidebar_wrapper {\n  width: 200px;\n  height: 600px; \n  float: left;\n\n  background: #000;\n}\n#page-content_wrapper {\n  width: 100%;\n}\n\n  /* 사이드바 스타일 */\n.sidebar_nav {\n  width: 250px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n.sidebar_nav li {\n  text-indent: 1.5em;\n  line-height: 2.8em;\n}\n.sidebar_nav li a {\n  display: block;\n  text-decoration: none;\n  color: #999;\n}\n.sidebar_nav li a:hover {\n  color: #fff;\n  background: rgba(255, 255, 255, 0.2);\n}\n.sidebar_nav > .sidebar_brand {\n  font-size: 1.3em;\n  color: white;\n\n  line-height: 3em;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  /* 폰트 컬러 */\n.fontColor_red {\n  color: red;\n}\n.fontColor_white {\n  color: white;\n}\n\n  /* 사이드바 */\n#sidebar_wrapper {\n  width: 190px;\n  height: 600px; \n  float: left;\n\n  background: #000;\n}\n#page-content_wrapper {\n  width: 100%;\n}\n\n  /* 사이드바 스타일 */\n.sidebar_nav {\n  width: 250px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n.sidebar_nav li {\n  text-indent: 1.5em;\n  line-height: 2.8em;\n}\n.sidebar_nav li a {\n  display: block;\n  text-decoration: none;\n  color: #999;\n}\n.sidebar_nav li a:hover {\n  color: #fff;\n  background: rgba(255, 255, 255, 0.2);\n}\n.sidebar_nav > .sidebar_brand {\n  font-size: 1.3em;\n  color: white;\n\n  line-height: 3em;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 524 */
+/* 522 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72168,7 +70611,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      [_c("router-view", { attrs: { to: "/ownerReservationlist" } })],
+      [_c("router-view", { attrs: { to: "/ownerPage/ownerReservationlist" } })],
       1
     )
   ])
@@ -72184,18 +70627,18 @@ if (false) {
 }
 
 /***/ }),
-/* 525 */
+/* 523 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideSetting_vue__ = __webpack_require__(174);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c9d627a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideSetting_vue__ = __webpack_require__(528);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c9d627a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideSetting_vue__ = __webpack_require__(526);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(526)
+  __webpack_require__(524)
 }
 /* script */
 
@@ -72242,13 +70685,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 526 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(527);
+var content = __webpack_require__(525);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72269,7 +70712,7 @@ if(false) {
 }
 
 /***/ }),
-/* 527 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -72277,13 +70720,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  /* 폰트 컬러 */\n.fontColor_red {\n  color: red;\n}\n.fontColor_white {\n  color: white;\n}\n\n  /* 사이드바 */\n#sidebar_wrapper {\n  width: 200px;\n  height: 600px; \n  float: left;\n\n  background: #000;\n}\n#page-content_wrapper {\n  width: 100%;\n}\n\n  /* 사이드바 스타일 */\n.sidebar_nav {\n  width: 250px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n.sidebar_nav li {\n  text-indent: 1.5em;\n  line-height: 2.8em;\n}\n.sidebar_nav li a {\n  display: block;\n  text-decoration: none;\n  color: #999;\n}\n.sidebar_nav li a:hover {\n  color: #fff;\n  background: rgba(255, 255, 255, 0.2);\n}\n.sidebar_nav > .sidebar_brand {\n  font-size: 1.3em;\n  color: white;\n\n  line-height: 3em;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  /* 폰트 컬러 */\n.fontColor_red {\n  color: red;\n}\n.fontColor_white {\n  color: white;\n}\n\n  /* 사이드바 */\n#sidebar_wrapper {\n  width: 190px;\n  height: 600px; \n  float: left;\n\n  background: #000;\n}\n#page-content_wrapper {\n  width: 100%;\n}\n\n  /* 사이드바 스타일 */\n.sidebar_nav {\n  width: 250px;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n.sidebar_nav li {\n  text-indent: 1.5em;\n  line-height: 2.8em;\n}\n.sidebar_nav li a {\n  display: block;\n  text-decoration: none;\n  color: #999;\n}\n.sidebar_nav li a:hover {\n  color: #fff;\n  background: rgba(255, 255, 255, 0.2);\n}\n.sidebar_nav > .sidebar_brand {\n  font-size: 1.3em;\n  color: white;\n\n  line-height: 3em;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 528 */
+/* 526 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72312,7 +70755,11 @@ var render = function() {
         _vm._v(" "),
         _c(
           "li",
-          [_c("router-link", { attrs: { to: "/" } }, [_vm._v("가게 정보")])],
+          [
+            _c("router-link", { attrs: { to: "/ownerPage/ownerRestaurant" } }, [
+              _vm._v("가게 정보")
+            ])
+          ],
           1
         ),
         _vm._v(" "),
@@ -72354,7 +70801,7 @@ var render = function() {
         _c(
           "li",
           [
-            _c("router-link", { attrs: { to: "/" } }, [
+            _c("router-link", { attrs: { to: "/ownerPage/OwnerMenu" } }, [
               _vm._v("전자 메뉴판 설정")
             ])
           ],
@@ -72377,18 +70824,18 @@ if (false) {
 }
 
 /***/ }),
-/* 529 */
+/* 527 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerReservationAccept_vue__ = __webpack_require__(175);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4f447bdd_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationAccept_vue__ = __webpack_require__(532);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4f447bdd_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationAccept_vue__ = __webpack_require__(530);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(530)
+  __webpack_require__(528)
 }
 /* script */
 
@@ -72435,13 +70882,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 530 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(531);
+var content = __webpack_require__(529);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72462,7 +70909,7 @@ if(false) {
 }
 
 /***/ }),
-/* 531 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -72470,13 +70917,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.reservationAccept {\n    padding-left: 24%;\n}\n", ""]);
+exports.push([module.i, "\n.create_coupon {\n    padding-left: 5%;\n    padding-right: 5%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 532 */
+/* 530 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72486,157 +70933,121 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "reservationAccept" }, [
+  return _c("v-app", [
+    _c("div", { staticClass: "create_coupon" }, [
       _c("br"),
       _vm._v(" "),
-      _c("h3", [_c("B", [_vm._v("예약 수락")])], 1),
-      _vm._v("\n        현재 신청된 예약 현황을 볼 수 있습니다.\n        "),
+      _c("h3", [_c("B", [_vm._v("예약 설정")])], 1),
+      _vm._v("\r\n        예약에 관련 설정 할 수 있습니다.\r\n        "),
       _c("hr"),
       _c("br"),
       _vm._v(" "),
-      _c("h5", [_c("B", [_vm._v(" 예약 신청 대기 인원")])], 1),
-      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "reservation_list" },
+        { staticClass: "coupon_table" },
         [
-          _c("b-table", {
-            attrs: { items: _vm.items, fields: _vm.fields },
-            scopedSlots: _vm._u([
-              {
-                key: "index",
-                fn: function(data) {
-                  return [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(data.index + 1) +
-                        "\n                "
-                    )
-                  ]
-                }
+          _c(
+            "v-data-table",
+            {
+              staticClass: "elevation-1",
+              attrs: {
+                headers: _vm.headers,
+                items: _vm.items,
+                "hide-actions": ""
               },
-              {
-                key: "date",
-                fn: function(row) {
-                  return [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(row.item.date) +
-                        " - " +
-                        _vm._s(row.item.hour) +
-                        "시 " +
-                        _vm._s(row.item.minute) +
-                        "분\n                "
-                    )
-                  ]
+              scopedSlots: _vm._u([
+                {
+                  key: "items",
+                  fn: function(props) {
+                    return [
+                      _c("td", [_vm._v(_vm._s(props.index + 1))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(props.item.usernum))]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.start_date))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.time))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.adult_person))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.child_person))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "justify-center layout px-0" },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "primary", dark: "", small: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.AcceptItem(props.item)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v("\r\n                  Accept "),
+                              _c("v-icon", { attrs: { dark: "", right: "" } }, [
+                                _vm._v("check_circle")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { dark: "", small: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteItem(props.item)
+                                }
+                              }
+                            },
+                            [
+                              _c("v-icon", { attrs: { dark: "", left: "" } }, [
+                                _vm._v("remove_circle")
+                              ]),
+                              _vm._v("Cancel\r\n                ")
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  }
                 }
-              },
-              {
-                key: "show_details",
-                fn: function(row) {
-                  return [
-                    _c(
-                      "b-button",
-                      {
-                        staticClass: "mr-2",
-                        attrs: { size: "sm" },
-                        on: {
-                          click: function($event) {
-                            $event.stopPropagation()
-                            return row.toggleDetails($event)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(row.detailsShowing ? "Hide" : "Show") +
-                            " Details\n                    "
-                        )
-                      ]
-                    )
-                  ]
-                }
-              },
-              {
-                key: "row-details",
-                fn: function(row) {
-                  return [
-                    _c(
-                      "b-card",
-                      [
-                        _c(
-                          "b-row",
-                          { staticClass: "mb-2" },
-                          [
-                            _c(
-                              "b-col",
-                              {
-                                staticClass: "text-sm-right",
-                                attrs: { sm: "3" }
-                              },
-                              [_c("b", [_vm._v("인원")])]
-                            ),
-                            _vm._v(" "),
-                            _c("b-col", [
-                              _vm._v("어른 : " + _vm._s(row.item.adult) + " "),
-                              _c("br"),
-                              _vm._v("아이 : " + _vm._s(row.item.adult))
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-row",
-                          { staticClass: "mb-2" },
-                          [
-                            _c(
-                              "b-col",
-                              {
-                                staticClass: "text-sm-right",
-                                attrs: { sm: "3" }
-                              },
-                              [_c("b", [_vm._v("메뉴 선택 여부")])]
-                            ),
-                            _vm._v(" "),
-                            _c("b-col", [_vm._v(_vm._s(row.item.menu))])
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ]
-                }
-              },
-              {
-                key: "Accept",
-                fn: function(data) {
-                  return [
-                    _c(
-                      "b-button",
-                      { attrs: { variant: "primary", name: "accept" } },
-                      [_vm._v("수락")]
-                    )
-                  ]
-                }
-              },
-              {
-                key: "Cancel",
-                fn: function(data) {
-                  return [
-                    _c(
-                      "b-button",
-                      { attrs: { variant: "danger", name: "cancel" } },
-                      [_vm._v("거절")]
-                    )
-                  ]
-                }
-              }
-            ])
-          })
+              ])
+            },
+            [
+              _c(
+                "template",
+                { slot: "no-data" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "primary" },
+                      on: { click: _vm.initialize }
+                    },
+                    [_vm._v("Reset")]
+                  )
+                ],
+                1
+              )
+            ],
+            2
+          )
         ],
         1
       )
@@ -72654,18 +71065,18 @@ if (false) {
 }
 
 /***/ }),
-/* 533 */
+/* 531 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerReservationlist_vue__ = __webpack_require__(176);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ff3778da_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationlist_vue__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ff3778da_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationlist_vue__ = __webpack_require__(534);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(534)
+  __webpack_require__(532)
 }
 /* script */
 
@@ -72712,13 +71123,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 534 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(535);
+var content = __webpack_require__(533);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72739,7 +71150,7 @@ if(false) {
 }
 
 /***/ }),
-/* 535 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -72747,13 +71158,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.reservationlist {\n    padding-left: 24%;\n}\n.reservation_add {\n    margin-left: 80%;\n}\n.datefilter {\n    float: left;\n    margin-top: 2%;\n    margin-bottom: 1%;\n}\n.btnfilter {\n    float: left;\n    margin-left: 17%;\n    margin-top: 2%;\n    height: 30px;\n}\n", ""]);
+exports.push([module.i, "\n.Reservation_list {\n    padding-left: 5%;\n    padding-right: 5%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 536 */
+/* 534 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72763,248 +71174,375 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("v-app", [
     _c(
       "div",
-      { staticClass: "reservationlist" },
+      { staticClass: "Reservation_list" },
       [
         _c("br"),
         _vm._v(" "),
         _c("h3", [_c("B", [_vm._v("예약 현황")])], 1),
-        _vm._v("\n        전체 예약 현황을 볼 수 있습니다.\n        "),
+        _vm._v("\r\n        현재 예약 현황을 알 수 있습니다.\r\n        "),
         _c("hr"),
+        _c("br"),
         _vm._v(" "),
         _c(
-          "b-btn",
+          "v-dialog",
           {
-            directives: [
+            attrs: { persistent: "", "max-width": "500px" },
+            model: {
+              value: _vm.dialog,
+              callback: function($$v) {
+                _vm.dialog = $$v
+              },
+              expression: "dialog"
+            }
+          },
+          [
+            _c(
+              "v-btn",
               {
-                name: "b-modal",
-                rawName: "v-b-modal.addReservation",
-                modifiers: { addReservation: true }
-              }
-            ],
-            staticClass: "reservation_add"
-          },
-          [_vm._v("예약 추가")]
-        ),
-        _vm._v(" "),
-        _c(
-          "b-modal",
-          {
-            attrs: { id: "addReservation", title: "예약추가" },
-            on: { ok: _vm.SpendData }
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "addReservation" },
-              [
-                _c("B", [_vm._v("예약자명")]),
-                _vm._v(" "),
-                _c("b-input", {
-                  model: {
-                    value: _vm.usernum,
-                    callback: function($$v) {
-                      _vm.usernum = $$v
-                    },
-                    expression: "usernum"
-                  }
-                }),
-                _vm._v(" "),
-                _c("B", [_vm._v("예약 날짜")]),
-                _c("B", { staticStyle: { "margin-left": "90px" } }, [
-                  _vm._v("예약 시간")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.date,
-                      expression: "date"
-                    }
-                  ],
-                  attrs: { type: "date" },
-                  domProps: { value: _vm.date },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.date = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v("/>\n                    "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.time,
-                      expression: "time"
-                    }
-                  ],
-                  attrs: { type: "time" },
-                  domProps: { value: _vm.time },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.time = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("B", [_vm._v("인원수")]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v("\n                    어른  "),
-                _c("b-input", {
-                  model: {
-                    value: _vm.adult_person,
-                    callback: function($$v) {
-                      _vm.adult_person = $$v
-                    },
-                    expression: "adult_person"
-                  }
-                }),
-                _vm._v("\n                    아이  "),
-                _c("b-input", {
-                  model: {
-                    value: _vm.child_person,
-                    callback: function($$v) {
-                      _vm.child_person = $$v
-                    },
-                    expression: "child_person"
-                  }
-                }),
-                _vm._v(" "),
-                _c("B", [_vm._v("메뉴 선택 여부")]),
-                _vm._v(" "),
-                _c(
-                  "b-form-select",
-                  {
-                    staticClass: "mb-3",
-                    model: {
-                      value: _vm.menuselect,
-                      callback: function($$v) {
-                        _vm.menuselect = $$v
-                      },
-                      expression: "menuselect"
-                    }
-                  },
-                  [
-                    _c("option", { domProps: { value: null } }, [
-                      _vm._v("메뉴를 선택해주세요")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "yes", disabled: "" } }, [
-                      _vm._v("메뉴 선택")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "no" } }, [
-                      _vm._v("매장에서 선택")
-                    ])
-                  ]
-                )
-              ],
-              1
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c(
-              "div",
-              { staticClass: "datefilter" },
-              [
-                _c("B", [_vm._v(" 기간 선택  ")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.start_date,
-                      expression: "start_date"
-                    }
-                  ],
-                  attrs: { type: "date" },
-                  domProps: { value: _vm.start_date },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.start_date = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" ~ "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.end_date,
-                      expression: "end_date"
-                    }
-                  ],
-                  attrs: { type: "date" },
-                  domProps: { value: _vm.end_date },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.end_date = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "b-btn",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.datefilter()
-                      }
-                    }
-                  },
-                  [_vm._v("조회")]
-                )
-              ],
-              1
+                attrs: { slot: "activator", color: "#424242", dark: "" },
+                slot: "activator"
+              },
+              [_vm._v("예약 추가")]
             ),
             _vm._v(" "),
             _c(
-              "b-button-group",
-              { staticClass: "btnfilter", attrs: { size: "sm" } },
+              "v-card",
               [
-                _c("b-button", { attrs: { variant: "outline-danger" } }, [
-                  _vm._v("오늘")
+                _c("v-card-title", [
+                  _c("span", { staticClass: "headline" }, [_vm._v("예약 추가")])
                 ]),
                 _vm._v(" "),
-                _c("b-button", { attrs: { variant: "outline-danger" } }, [
-                  _vm._v("일주일")
-                ]),
+                _c(
+                  "v-card-text",
+                  [
+                    _c(
+                      "v-container",
+                      { attrs: { "grid-list-md": "" } },
+                      [
+                        _c(
+                          "v-layout",
+                          { attrs: { wrap: "" } },
+                          [
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "예약자 명", required: "" },
+                                  model: {
+                                    value: _vm.ReservationItem.usernum,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.ReservationItem,
+                                        "usernum",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "ReservationItem.usernum"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs11: "", sm5: "" } },
+                              [
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "reservation_menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "min-width": "290px",
+                                      "return-value":
+                                        _vm.ReservationItem.start_date
+                                    },
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.$set(
+                                          _vm.ReservationItem,
+                                          "start_date",
+                                          $event
+                                        )
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.reservation_menu,
+                                      callback: function($$v) {
+                                        _vm.reservation_menu = $$v
+                                      },
+                                      expression: "reservation_menu"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "pick Date",
+                                        "prepend-icon": "event",
+                                        readonly: ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value: _vm.ReservationItem.start_date,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationItem,
+                                            "start_date",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "ReservationItem.start_date"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-date-picker",
+                                      {
+                                        attrs: {
+                                          "no-title": "",
+                                          scrollable: ""
+                                        },
+                                        model: {
+                                          value: _vm.ReservationItem.start_date,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.ReservationItem,
+                                              "start_date",
+                                              $$v
+                                            )
+                                          },
+                                          expression:
+                                            "ReservationItem.start_date"
+                                        }
+                                      },
+                                      [
+                                        _c("v-spacer"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.reservation_menu = false
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Cancel")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.$refs.reservation_menu.save(
+                                                  _vm.ReservationItem.start_date
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("OK")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs11: "", sm5: "" } },
+                              [
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "max-width": "290px",
+                                      "min-width": "290px",
+                                      "return-value": _vm.ReservationItem.time
+                                    },
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.$set(
+                                          _vm.ReservationItem,
+                                          "time",
+                                          $event
+                                        )
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.menu2,
+                                      callback: function($$v) {
+                                        _vm.menu2 = $$v
+                                      },
+                                      expression: "menu2"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "pick Time",
+                                        "prepend-icon": "access_time",
+                                        readonly: ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value: _vm.ReservationItem.time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationItem,
+                                            "time",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "ReservationItem.time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("v-time-picker", {
+                                      on: {
+                                        change: function($event) {
+                                          _vm.$refs.menu.save(
+                                            _vm.ReservationItem.time
+                                          )
+                                        }
+                                      },
+                                      model: {
+                                        value: _vm.ReservationItem.time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationItem,
+                                            "time",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "ReservationItem.time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "", sm6: "", md4: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "어른 인원", required: "" },
+                                  model: {
+                                    value: _vm.ReservationItem.adult_person,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.ReservationItem,
+                                        "adult_person",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "ReservationItem.adult_person"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "", sm6: "", md4: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "아이 인원", required: "" },
+                                  model: {
+                                    value: _vm.ReservationItem.child_person,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.ReservationItem,
+                                        "child_person",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "ReservationItem.child_person"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
                 _vm._v(" "),
-                _c("b-button", { attrs: { variant: "outline-danger" } }, [
-                  _vm._v("1개월")
-                ]),
-                _vm._v(" "),
-                _c("b-button", { attrs: { variant: "outline-danger" } }, [
-                  _vm._v("6개월")
-                ])
+                _c(
+                  "v-card-actions",
+                  [
+                    _c("v-spacer"),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "blue darken-1", flat: "" },
+                        nativeOn: {
+                          click: function($event) {
+                            _vm.dialog = false
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "blue darken-1", flat: "" },
+                        nativeOn: {
+                          click: function($event) {
+                            return _vm.save($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  ],
+                  1
+                )
               ],
               1
             )
@@ -73014,111 +71552,82 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "reservationlist_table" },
+          { staticClass: "coupon_table" },
           [
-            _c("b-table", {
-              attrs: { items: _vm.items, fields: _vm.fields },
+            _c("v-data-table", {
+              staticClass: "elevation-1",
+              attrs: {
+                headers: _vm.headers,
+                items: _vm.items,
+                "hide-actions": ""
+              },
               scopedSlots: _vm._u([
                 {
-                  key: "index",
-                  fn: function(data) {
+                  key: "items",
+                  fn: function(props) {
                     return [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(data.index + 1) +
-                          "\n                "
-                      )
-                    ]
-                  }
-                },
-                {
-                  key: "date",
-                  fn: function(row) {
-                    return [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(row.item.date) +
-                          " - " +
-                          _vm._s(row.item.hour) +
-                          "시 " +
-                          _vm._s(row.item.minute) +
-                          "분\n                "
-                      )
-                    ]
-                  }
-                },
-                {
-                  key: "show_details",
-                  fn: function(row) {
-                    return [
+                      _c("td", [_vm._v(_vm._s(props.index + 1))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(props.item.CouponName))]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.usernum))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.start_date))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.time))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.adult_person))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.child_person))
+                      ]),
+                      _vm._v(" "),
                       _c(
-                        "b-button",
-                        {
-                          staticClass: "mr-2",
-                          attrs: { size: "sm" },
-                          on: {
-                            click: function($event) {
-                              $event.stopPropagation()
-                              return row.toggleDetails($event)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(row.detailsShowing ? "Hide" : "Show") +
-                              " Details\n                    "
-                          )
-                        ]
-                      )
-                    ]
-                  }
-                },
-                {
-                  key: "row-details",
-                  fn: function(row) {
-                    return [
-                      _c(
-                        "b-card",
+                        "td",
+                        { staticClass: "justify-center layout px-0" },
                         [
                           _c(
-                            "b-row",
-                            { staticClass: "mb-2" },
+                            "v-btn",
+                            {
+                              staticClass: "mx-0",
+                              attrs: { icon: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.editItem(props.item)
+                                }
+                              }
+                            },
                             [
-                              _c(
-                                "b-col",
-                                {
-                                  staticClass: "text-sm-right",
-                                  attrs: { sm: "3" }
-                                },
-                                [_c("b", [_vm._v("인원")])]
-                              ),
-                              _vm._v(" "),
-                              _c("b-col", [
-                                _vm._v(
-                                  "어른 : " + _vm._s(row.item.adult) + " "
-                                ),
-                                _c("br"),
-                                _vm._v("아이 : " + _vm._s(row.item.adult))
+                              _c("v-icon", { attrs: { color: "teal" } }, [
+                                _vm._v("edit")
                               ])
                             ],
                             1
                           ),
                           _vm._v(" "),
                           _c(
-                            "b-row",
-                            { staticClass: "mb-2" },
+                            "v-btn",
+                            {
+                              staticClass: "mx-0",
+                              attrs: { icon: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteItem(props.item)
+                                }
+                              }
+                            },
                             [
-                              _c(
-                                "b-col",
-                                {
-                                  staticClass: "text-sm-right",
-                                  attrs: { sm: "3" }
-                                },
-                                [_c("b", [_vm._v("메뉴 선택 여부")])]
-                              ),
-                              _vm._v(" "),
-                              _c("b-col", [_vm._v(_vm._s(row.item.menu))])
+                              _c("v-icon", { attrs: { color: "pink" } }, [
+                                _vm._v("delete")
+                              ])
                             ],
                             1
                           )
@@ -73127,38 +71636,8 @@ var render = function() {
                       )
                     ]
                   }
-                },
-                {
-                  key: "cancel",
-                  fn: function(data) {
-                    return [
-                      _c("b-button", { attrs: { variant: "danger" } }, [
-                        _vm._v("예약 취소")
-                      ])
-                    ]
-                  }
                 }
               ])
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "pagenation" },
-          [
-            _c("b-pagination", {
-              attrs: { align: "center", "total-rows": 100, "per-page": 10 },
-              model: {
-                value: _vm.currentPage,
-                callback: function($$v) {
-                  _vm.currentPage = $$v
-                },
-                expression: "currentPage"
-              }
             })
           ],
           1
@@ -73179,18 +71658,18 @@ if (false) {
 }
 
 /***/ }),
-/* 537 */
+/* 535 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerReservationSetting_vue__ = __webpack_require__(177);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6f29484b_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationSetting_vue__ = __webpack_require__(541);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6f29484b_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationSetting_vue__ = __webpack_require__(538);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(538)
+  __webpack_require__(536)
 }
 /* script */
 
@@ -73237,13 +71716,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 538 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(539);
+var content = __webpack_require__(537);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -73264,7 +71743,7 @@ if(false) {
 }
 
 /***/ }),
-/* 539 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -73272,20 +71751,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 폰트 컬러 */\n.fontColor_white {\n    color: white;\n}\n.reservationlist {\n    padding-left: 24%;\n}\n\n/* 달력 */\n.dateCalendar {\n    float:left; \n    margin-left:7%; \n    margin-right: 10%;\n    margin-bottom:5%;\n}\n.SelectDate {\n    font-size: 20px;\n    font-weight: bolder;\n    text-align: center;\n}\n.dateSetting {\n    background-color: #353535;\n    height: 55px;\n    width: 330px;\n    float: left;\n    margin-right: 8%;\n    text-align: center;\n}\n\n/* 저장 */\n.reservationSettingSave {\n    float: right;\n    margin-right: 15%;\n    background-color: #353535;\n    color: white;\n    width: 200px;\n    height: 30px;\n}\n", ""]);
+exports.push([module.i, "\n.create_coupon {\n    padding-left: 5%;\n    padding-right: 5%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 540 */
-/***/ (function(module, exports, __webpack_require__) {
-
-!function(e,t){if(true)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var i=t();for(var n in i)("object"==typeof exports?exports:e)[n]=i[n]}}(this,function(){return function(e){function t(n){if(i[n])return i[n].exports;var r=i[n]={exports:{},id:n,loaded:!1};return e[n].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t,i){var n,r;i(1),n=i(5),r=i(6),e.exports=n||{},e.exports.__esModule&&(e.exports=e.exports["default"]),r&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=r)},function(e,t,i){var n=i(2);"string"==typeof n&&(n=[[e.id,n,""]]);i(4)(n,{});n.locals&&(e.exports=n.locals)},function(e,t,i){t=e.exports=i(3)(),t.push([e.id,".vue-time-picker-panel[_v-98eb7a12]{display:inline-block}.vue-time-picker-panel-inner[_v-98eb7a12]{position:relative;outline:none;border:1px solid #ccc;font-size:12px;text-align:left;background-color:#fff;box-shadow:0 0 4px rgba(0,0,0,.17)}.vue-time-picker-panel-input-wrap[_v-98eb7a12]{position:relative;padding:6px;border-bottom:1px solid #e9e9e9}.vue-time-picker-panel-input-wrap input[_v-98eb7a12]{outline:none;border:0;margin:0;padding:0;line-height:1.5;width:100%}.vue-time-picker-panel-combobox[_v-98eb7a12]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.vue-time-picker-panel-select[_v-98eb7a12]{position:relative;font-size:12px;border:1px solid #e9e9e9;-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;overflow:hidden}.vue-time-picker-panel-select[_v-98eb7a12]:hover{overflow-y:auto}.vue-time-picker-panel-select ul[_v-98eb7a12]{list-style:none;max-height:144px;margin:0;padding:0;box-sizing:border-box}.vue-time-picker-panel-select li[_v-98eb7a12]{margin:0;padding:0;height:24px;line-height:24px;text-align:center;cursor:pointer}.vue-time-picker-panel-select li.selected[_v-98eb7a12]{background-color:#d5f1fd}.vue-time-picker-panel-select li[_v-98eb7a12]:hover{background-color:#eaf8fe}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var i=this[t];i[2]?e.push("@media "+i[2]+"{"+i[1]+"}"):e.push(i[1])}return e.join("")},e.i=function(t,i){"string"==typeof t&&(t=[[null,t,""]]);for(var n={},r=0;r<this.length;r++){var o=this[r][0];"number"==typeof o&&(n[o]=!0)}for(r=0;r<t.length;r++){var a=t[r];"number"==typeof a[0]&&n[a[0]]||(i&&!a[2]?a[2]=i:i&&(a[2]="("+a[2]+") and ("+i+")"),e.push(a))}},e}},function(e,t,i){function n(e,t){for(var i=0;i<e.length;i++){var n=e[i],r=d[n.id];if(r){r.refs++;for(var o=0;o<r.parts.length;o++)r.parts[o](n.parts[o]);for(;o<n.parts.length;o++)r.parts.push(u(n.parts[o],t))}else{for(var a=[],o=0;o<n.parts.length;o++)a.push(u(n.parts[o],t));d[n.id]={id:n.id,refs:1,parts:a}}}}function r(e){for(var t=[],i={},n=0;n<e.length;n++){var r=e[n],o=r[0],a=r[1],s=r[2],l=r[3],u={css:a,media:s,sourceMap:l};i[o]?i[o].parts.push(u):t.push(i[o]={id:o,parts:[u]})}return t}function o(e,t){var i=m(),n=g[g.length-1];if("top"===e.insertAt)n?n.nextSibling?i.insertBefore(t,n.nextSibling):i.appendChild(t):i.insertBefore(t,i.firstChild),g.push(t);else{if("bottom"!==e.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");i.appendChild(t)}}function a(e){e.parentNode.removeChild(e);var t=g.indexOf(e);t>=0&&g.splice(t,1)}function s(e){var t=document.createElement("style");return t.type="text/css",o(e,t),t}function l(e){var t=document.createElement("link");return t.rel="stylesheet",o(e,t),t}function u(e,t){var i,n,r;if(t.singleton){var o=x++;i=b||(b=s(t)),n=p.bind(null,i,o,!1),r=p.bind(null,i,o,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(i=l(t),n=f.bind(null,i),r=function(){a(i),i.href&&URL.revokeObjectURL(i.href)}):(i=s(t),n=c.bind(null,i),r=function(){a(i)});return n(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;n(e=t)}else r()}}function p(e,t,i,n){var r=i?"":n.css;if(e.styleSheet)e.styleSheet.cssText=y(t,r);else{var o=document.createTextNode(r),a=e.childNodes;a[t]&&e.removeChild(a[t]),a.length?e.insertBefore(o,a[t]):e.appendChild(o)}}function c(e,t){var i=t.css,n=t.media;if(n&&e.setAttribute("media",n),e.styleSheet)e.styleSheet.cssText=i;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(i))}}function f(e,t){var i=t.css,n=t.sourceMap;n&&(i+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(n))))+" */");var r=new Blob([i],{type:"text/css"}),o=e.href;e.href=URL.createObjectURL(r),o&&URL.revokeObjectURL(o)}var d={},v=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},h=v(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),m=v(function(){return document.head||document.getElementsByTagName("head")[0]}),b=null,x=0,g=[];e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=h()),"undefined"==typeof t.insertAt&&(t.insertAt="bottom");var i=r(e);return n(i,t),function(e){for(var o=[],a=0;a<i.length;a++){var s=i[a],l=d[s.id];l.refs--,o.push(l)}if(e){var u=r(e);n(u,t)}for(var a=0;a<o.length;a++){var l=o[a];if(0===l.refs){for(var p=0;p<l.parts.length;p++)l.parts[p]();delete d[l.id]}}}};var y=function(){var e=[];return function(t,i){return e[t]=i,e.filter(Boolean).join("\n")}}()},function(e,t){"use strict";function i(e,t){for(var i=[],n=e;t>=n;n++)i.push(n);return i}Object.defineProperty(t,"__esModule",{value:!0}),t["default"]={props:{time:String,twoWay:!0},data:function(){return{isActive:!1,hour:"",minute:"",hourData:[],minuteData:[]}},methods:{},computed:{time:function(){return this.hour||this.minute?this.hour+" : "+this.minute:""}},created:function(){var e=this;this.hourData=i(1,24),this.minuteData=i(1,60),document.addEventListener("click",function(){e.isActive=!1})}}},function(e,t){e.exports='<div @click.stop="" class=vue-time-picker-panel _v-98eb7a12=""><div class=vue-time-picker-panel-inner _v-98eb7a12=""><div @click="isActive = !isActive" class=vue-time-picker-panel-input-wrap _v-98eb7a12=""><input v-model=time class=vue-time-picker-panel-input _v-98eb7a12=""></div><div v-show=isActive class=vue-time-picker-panel-combobox _v-98eb7a12=""><div class=vue-time-picker-panel-select _v-98eb7a12=""><ul _v-98eb7a12=""><li v-for="item in hourData" @click="hour = item" :class="{\'selected\': item === hour}" v-text=item _v-98eb7a12=""></li></ul></div><div class=vue-time-picker-panel-select _v-98eb7a12=""><ul _v-98eb7a12=""><li v-for="item in minuteData" @click="minute = item" :class="{\'selected\': item === minute}" v-text=item _v-98eb7a12=""></li></ul></div></div></div></div>'}])});
-
-
-/***/ }),
-/* 541 */
+/* 538 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73295,128 +71767,545 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "reservationlist" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c("h3", [_c("B", [_vm._v("예약 설정")])], 1),
-      _vm._v("\n        예약에 대한 설정을 할 수 있습니다.\n        "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "div",
-          { staticClass: "dateCalendar" },
-          [
-            _c("datepicker", {
-              attrs: { inline: true, format: _vm.YYYY - _vm.MM - _vm.DD },
-              model: {
-                value: _vm.datepicker,
-                callback: function($$v) {
-                  _vm.datepicker = $$v
-                },
-                expression: "datepicker"
-              }
-            })
-          ],
-          1
-        ),
+  return _c("v-app", [
+    _c(
+      "div",
+      { staticClass: "create_coupon" },
+      [
+        _c("br"),
+        _vm._v(" "),
+        _c("h3", [_c("B", [_vm._v("예약 설정")])], 1),
+        _vm._v("\r\n        예약에 관련 설정 할 수 있습니다.\r\n        "),
+        _c("hr"),
+        _c("br"),
         _vm._v(" "),
         _c(
-          "form",
+          "v-dialog",
+          {
+            attrs: { persistent: "", "max-width": "500px" },
+            model: {
+              value: _vm.dialog,
+              callback: function($$v) {
+                _vm.dialog = $$v
+              },
+              expression: "dialog"
+            }
+          },
           [
-            _c("div", { staticClass: "dateSetting" }, [
-              _c(
-                "h2",
-                {
-                  staticClass: "fontColor_white",
-                  staticStyle: { "margin-top": "3%" }
-                },
-                [_c("B", [_vm._v(_vm._s(_vm.datepicker))])],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _c("br"),
-            _c("br"),
-            _c("br"),
-            _vm._v(" "),
-            _c("h5", [_c("B", [_vm._v("예약 가능 여부")])], 1),
+            _c(
+              "v-btn",
+              {
+                attrs: { slot: "activator", color: "#424242", dark: "" },
+                slot: "activator"
+              },
+              [_vm._v("예약 설정 추가")]
+            ),
             _vm._v(" "),
             _c(
-              "div",
+              "v-card",
               [
+                _c("v-card-title", [
+                  _c("span", { staticClass: "headline" }, [
+                    _vm._v("예약 설정 추가")
+                  ])
+                ]),
+                _vm._v(" "),
                 _c(
-                  "b-form-group",
+                  "v-card-text",
                   [
-                    _c("b-form-radio-group", {
-                      attrs: {
-                        options: _vm.options,
-                        name: "reservation_select"
+                    _c(
+                      "v-container",
+                      { attrs: { "grid-list-md": "" } },
+                      [
+                        _c(
+                          "v-layout",
+                          { attrs: { wrap: "" } },
+                          [
+                            _c(
+                              "v-flex",
+                              { attrs: { xs11: "" } },
+                              [
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "min-width": "290px",
+                                      "return-value":
+                                        _vm.ReservationSettingItem.pick_date
+                                    },
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.$set(
+                                          _vm.ReservationSettingItem,
+                                          "pick_date",
+                                          $event
+                                        )
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.menu,
+                                      callback: function($$v) {
+                                        _vm.menu = $$v
+                                      },
+                                      expression: "menu"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "pick Date",
+                                        "prepend-icon": "event",
+                                        readonly: "",
+                                        hint: "예약 설정할 날짜 선택",
+                                        "persistent-hint": ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value:
+                                          _vm.ReservationSettingItem.pick_date,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationSettingItem,
+                                            "pick_date",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "ReservationSettingItem.pick_date"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-date-picker",
+                                      {
+                                        attrs: {
+                                          "no-title": "",
+                                          scrollable: ""
+                                        },
+                                        model: {
+                                          value:
+                                            _vm.ReservationSettingItem
+                                              .pick_date,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.ReservationSettingItem,
+                                              "pick_date",
+                                              $$v
+                                            )
+                                          },
+                                          expression:
+                                            "ReservationSettingItem.pick_date"
+                                        }
+                                      },
+                                      [
+                                        _c("v-spacer"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.menu = false
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Cancel")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.$refs.menu.save(
+                                                  _vm.ReservationSettingItem
+                                                    .pick_date
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("OK")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs11: "", sm5: "" } },
+                              [
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "start_menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "max-width": "290px",
+                                      "min-width": "290px",
+                                      "return-value":
+                                        _vm.ReservationSettingItem.start_time
+                                    },
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.$set(
+                                          _vm.ReservationSettingItem,
+                                          "start_time",
+                                          $event
+                                        )
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.start_menu,
+                                      callback: function($$v) {
+                                        _vm.start_menu = $$v
+                                      },
+                                      expression: "start_menu"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "start Time",
+                                        "prepend-icon": "access_time",
+                                        readonly: "",
+                                        hint: "예약 설정 시간대 선택",
+                                        "persistent-hint": ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value:
+                                          _vm.ReservationSettingItem.start_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationSettingItem,
+                                            "start_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "ReservationSettingItem.start_time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("v-time-picker", {
+                                      on: {
+                                        change: function($event) {
+                                          _vm.$refs.start_menu.save(
+                                            _vm.ReservationSettingItem
+                                              .start_time
+                                          )
+                                        }
+                                      },
+                                      model: {
+                                        value:
+                                          _vm.ReservationSettingItem.start_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationSettingItem,
+                                            "start_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "ReservationSettingItem.start_time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs300: "", sm5: "" } },
+                              [
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "end_menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "max-width": "290px",
+                                      "min-width": "290px",
+                                      "return-value":
+                                        _vm.ReservationSettingItem.end_time
+                                    },
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.$set(
+                                          _vm.ReservationSettingItem,
+                                          "end_time",
+                                          $event
+                                        )
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.end_menu,
+                                      callback: function($$v) {
+                                        _vm.end_menu = $$v
+                                      },
+                                      expression: "end_menu"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "end Time",
+                                        "prepend-icon": "access_time",
+                                        readonly: ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value:
+                                          _vm.ReservationSettingItem.end_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationSettingItem,
+                                            "end_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "ReservationSettingItem.end_time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("v-time-picker", {
+                                      on: {
+                                        change: function($event) {
+                                          _vm.$refs.end_menu.save(
+                                            _vm.ReservationSettingItem.end_time
+                                          )
+                                        }
+                                      },
+                                      model: {
+                                        value:
+                                          _vm.ReservationSettingItem.end_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.ReservationSettingItem,
+                                            "end_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "ReservationSettingItem.end_time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("br"),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "", sm6: "" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    label: "예약 가능 여부",
+                                    required: "",
+                                    items: ["예약 가능", "예약 불가능"]
+                                  },
+                                  model: {
+                                    value:
+                                      _vm.ReservationSettingItem.impossible,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.ReservationSettingItem,
+                                        "impossible",
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "ReservationSettingItem.impossible"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-card-actions",
+                  [
+                    _c("v-spacer"),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "blue darken-1", flat: "" },
+                        nativeOn: {
+                          click: function($event) {
+                            _vm.dialog = false
+                          }
+                        }
                       },
-                      model: {
-                        value: _vm.selected,
-                        callback: function($$v) {
-                          _vm.selected = $$v
-                        },
-                        expression: "selected"
-                      }
-                    })
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "blue darken-1", flat: "" },
+                        nativeOn: {
+                          click: function($event) {
+                            return _vm.save($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Save")]
+                    )
                   ],
                   1
                 )
               ],
               1
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("h5", [_c("B", [_vm._v("예약 가능 시간")])], 1),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "app" },
-              [
-                _c("time-picker", {
-                  attrs: { format: _vm.YYYY - _vm.MM - _vm.DD },
-                  model: {
-                    value: _vm.start_time,
-                    callback: function($$v) {
-                      _vm.start_time = $$v
-                    },
-                    expression: "start_time"
-                  }
-                }),
-                _vm._v(" "),
-                _c("h1", [_vm._v(_vm._s(_vm.start_time))]),
-                _vm._v(" "),
-                _c("span", [_vm._v("    to    ")])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "b-button",
-              {
-                on: {
-                  click: function($event) {
-                    _vm.SpendData()
-                  }
-                }
-              },
-              [_vm._v("저장하기")]
             )
           ],
           1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "coupon_table" },
+          [
+            _c("v-data-table", {
+              staticClass: "elevation-1",
+              attrs: {
+                headers: _vm.headers,
+                items: _vm.items,
+                "hide-actions": ""
+              },
+              scopedSlots: _vm._u([
+                {
+                  key: "items",
+                  fn: function(props) {
+                    return [
+                      _c("td", [_vm._v(_vm._s(props.index + 1))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(props.item.CouponName))]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.pick_date))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.start_time))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.end_time))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-xs-right" }, [
+                        _vm._v(_vm._s(props.item.impossible))
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "justify-center layout px-0" },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mx-0",
+                              attrs: { icon: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.editItem(props.item)
+                                }
+                              }
+                            },
+                            [
+                              _c("v-icon", { attrs: { color: "teal" } }, [
+                                _vm._v("edit")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              staticClass: "mx-0",
+                              attrs: { icon: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteItem(props.item)
+                                }
+                              }
+                            },
+                            [
+                              _c("v-icon", { attrs: { color: "pink" } }, [
+                                _vm._v("delete")
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  }
+                }
+              ])
+            })
+          ],
+          1
         )
-      ])
-    ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -73430,18 +72319,18 @@ if (false) {
 }
 
 /***/ }),
-/* 542 */
+/* 539 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCreateCoupon_vue__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCreateCoupon_vue__ = __webpack_require__(178);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a2858b2a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerCreateCoupon_vue__ = __webpack_require__(545);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a2858b2a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerCreateCoupon_vue__ = __webpack_require__(542);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(543)
+  __webpack_require__(540)
 }
 /* script */
 
@@ -73488,13 +72377,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 543 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(544);
+var content = __webpack_require__(541);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -73515,7 +72404,7 @@ if(false) {
 }
 
 /***/ }),
-/* 544 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -73523,13 +72412,13 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 반응형 웹 만들기 */ \n/* 모바일 */\n@media all and (max-width: 320px) {\n}\n/* 태블릿*/\n@media all and (min-width: 321px) and (max-width: 768px) {\n}\n/* 웹 */\n@media all and (min-width: 769px) {\n}\n.sid_right {\n  padding-left: 24%;\n}\n\n/* 쿠폰 */\n.cupon_add {\n  margin-left: 80%;\n}\n.cuponInput {\n  width: 250px;\n}\n.cuponDiscount {\n  width: 100px;\n}\n.cuponadd {\n  width: 100px;\n  float: left;\n}\n.cuponCondition {\n  width: 100px;\n}\n.cupon_select {\n  height: 30px;\n}\n.Coupon_setting_name {\n  font-size: 14px;\n}\n.coupon_explanation {\n  height: 70px;\n} \n\n/* Datepicker */\n.start_date {\nfloat: left;\nmargin-right: 3%;\n}\n.and {\n  float: left;\n}\n.end_date {\n  float: left;\n  margin-left: 3%;\n}\n", ""]);
+exports.push([module.i, "\n.create_coupon {\n    padding-left: 5%;\n    padding-right: 5%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 545 */
+/* 542 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73539,301 +72428,555 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "ownerCreteCupon" } }, [
-    _c("meta", { attrs: { name: "viewport", content: "width=device-width" } }),
-    _vm._v(" "),
-    _c("div", { staticClass: "sid_right" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "div",
-        [
-          _c("h3", [_c("B", [_vm._v(" 쿠폰 ")])], 1),
-          _vm._v("\n      쿠폰을 추가할 수 있습니다.\n      "),
-          _c("hr"),
-          _vm._v(" "),
-          _c(
-            "b-btn",
-            {
-              directives: [
-                {
-                  name: "b-modal",
-                  rawName: "v-b-modal.modal1",
-                  modifiers: { modal1: true }
-                }
-              ],
-              staticClass: "cupon_add"
-            },
-            [_c("B", [_vm._v(" 쿠폰 추가 ")])],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        [
-          _c(
-            "b-modal",
-            {
-              attrs: { id: "modal1", title: "쿠폰 추가" },
-              on: { ok: _vm.SpendData }
-            },
-            [
-              _c("B", { staticClass: "Coupon_setting_name" }, [
-                _vm._v("쿠폰명")
-              ]),
-              _vm._v(" "),
-              _c("b-form-input", {
-                staticClass: "cuponName",
-                attrs: { type: "text", placeholder: "Enter Cupon name" },
-                model: {
-                  value: _vm.CouponName,
-                  callback: function($$v) {
-                    _vm.CouponName = $$v
-                  },
-                  expression: "CouponName"
-                }
-              }),
-              _c("br"),
-              _vm._v(" "),
-              _c("B", { staticClass: "Coupon_setting_name" }, [
-                _vm._v("쿠폰종류")
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.CouponType,
-                      expression: "CouponType"
-                    }
-                  ],
-                  staticClass: "cupon_select",
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.CouponType = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    }
-                  }
-                },
-                [
-                  _c("option", [_c("B", [_vm._v("가격 할인")])], 1),
-                  _vm._v(" "),
-                  _c("option", [_c("B", [_vm._v("상품 제공")])], 1)
-                ]
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("B", { staticClass: "Coupon_setting_name" }, [
-                _vm._v("할인 가격")
-              ]),
-              _vm._v(" "),
-              _c("b-form-input", {
-                staticClass: "cuponDiscount",
-                attrs: { type: "text" },
-                model: {
-                  value: _vm.Discount,
-                  callback: function($$v) {
-                    _vm.Discount = $$v
-                  },
-                  expression: "Discount"
-                }
-              }),
-              _c("br"),
-              _vm._v(" "),
-              _c("B", { staticClass: "Coupon_setting_name" }, [
-                _vm._v("제공 상품 이름")
-              ]),
-              _c("br"),
-              _vm._v(" "),
-              _c("b-form-input", {
-                staticClass: "cuponadd",
-                attrs: { type: "text" },
-                model: {
-                  value: _vm.addproduct,
-                  callback: function($$v) {
-                    _vm.addproduct = $$v
-                  },
-                  expression: "addproduct"
-                }
-              }),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("B", { staticClass: "Coupon_setting_name" }, [
-                _vm._v("쿠폰 조건")
-              ]),
-              _vm._v(" "),
-              _c("b-form-input", {
-                staticClass: "cuponCondition",
-                attrs: { type: "text" },
-                model: {
-                  value: _vm.Condition,
-                  callback: function($$v) {
-                    _vm.Condition = $$v
-                  },
-                  expression: "Condition"
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                [
-                  _c("b-form-radio-group", {
-                    attrs: { options: _vm.options, plain: "" },
-                    model: {
-                      value: _vm.selected,
-                      callback: function($$v) {
-                        _vm.selected = $$v
-                      },
-                      expression: "selected"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("B", { staticClass: "Coupon_setting_name" }, [
-                _vm._v("쿠폰 설명")
-              ]),
-              _vm._v(" "),
-              _c("b-form-input", {
-                staticClass: "coupon_explanation",
-                attrs: { type: "text" },
-                model: {
-                  value: _vm.explanation,
-                  callback: function($$v) {
-                    _vm.explanation = $$v
-                  },
-                  expression: "explanation"
-                }
-              }),
-              _c("br"),
-              _vm._v(" "),
-              _c("B", { staticClass: "Coupon_setting_name" }, [
-                _vm._v("날짜 설정")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                [
-                  _c("Datepicker", {
-                    staticClass: "start_date",
-                    model: {
-                      value: _vm.start_date,
-                      callback: function($$v) {
-                        _vm.start_date = $$v
-                      },
-                      expression: "start_date"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "and" }, [_vm._v(" ~ ")]),
-                  _vm._v(" "),
-                  _c("Datepicker", {
-                    staticClass: "end_date",
-                    model: {
-                      value: _vm.end_date,
-                      callback: function($$v) {
-                        _vm.end_date = $$v
-                      },
-                      expression: "end_date"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "cupon_table" },
-        [
-          _c("B", [_vm._v(" 제공중인 쿠폰 ")]),
-          _vm._v(" "),
-          _c("b-table", {
-            attrs: { fields: _vm.fields, items: _vm.items },
-            scopedSlots: _vm._u([
-              {
-                key: "index",
-                fn: function(data) {
-                  return [
-                    _vm._v(
-                      "\n          " + _vm._s(data.index + 1) + "\n        "
-                    )
-                  ]
-                }
+  return _c("v-app", [
+    _c(
+      "div",
+      { staticClass: "create_coupon" },
+      [
+        _c("br"),
+        _vm._v(" "),
+        _c("h3", [_c("B", [_vm._v("쿠폰 추가")])], 1),
+        _vm._v("\r\n      원하는 쿠폰을 제작하여 등록할 수 있습니다.\r\n    "),
+        _c("hr"),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "v-dialog",
+          {
+            attrs: { "max-width": "500px" },
+            model: {
+              value: _vm.dialog,
+              callback: function($$v) {
+                _vm.dialog = $$v
               },
+              expression: "dialog"
+            }
+          },
+          [
+            _c(
+              "v-btn",
               {
-                key: "cupon_date",
-                fn: function(data) {
-                  return [
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(data.item.cupon_date.start) +
-                        " ~ " +
-                        _vm._s(data.item.cupon_date.end) +
-                        "\n        "
-                    )
-                  ]
-                }
+                attrs: { slot: "activator", color: "#424242", dark: "" },
+                slot: "activator"
               },
-              {
-                key: "delete",
-                fn: function(data) {
-                  return [
+              [_vm._v("쿠폰 추가")]
+            ),
+            _vm._v(" "),
+            _c(
+              "v-card",
+              [
+                _c("v-card-title", [
+                  _c("span", { staticClass: "headline" }, [_vm._v("쿠폰 추가")])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "v-card-text",
+                  [
                     _c(
-                      "b-button",
-                      { attrs: { variant: "danger", name: "delete" } },
-                      [_vm._v("삭제")]
+                      "v-container",
+                      { attrs: { "grid-list-md": "" } },
+                      [
+                        _c(
+                          "v-layout",
+                          { attrs: { wrap: "" } },
+                          [
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "", sm6: "", md4: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "쿠폰 이름", required: "" },
+                                  model: {
+                                    value: _vm.CouponItem.CouponName,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.CouponItem,
+                                        "CouponName",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "CouponItem.CouponName"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    label: "쿠폰 종류",
+                                    required: "",
+                                    items: ["가격 할인", "상품 제공"]
+                                  },
+                                  model: {
+                                    value: _vm.CouponItem.CouponType,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.CouponItem,
+                                        "CouponType",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "CouponItem.CouponType"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "", sm6: "", md4: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "할인 가격", required: "" },
+                                  model: {
+                                    value: _vm.CouponItem.Discount,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.CouponItem, "Discount", $$v)
+                                    },
+                                    expression: "CouponItem.Discount"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "", sm6: "", md4: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "제공 상품", required: "" },
+                                  model: {
+                                    value: _vm.CouponItem.addproduct,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.CouponItem,
+                                        "addproduct",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "CouponItem.addproduct"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "쿠폰 조건", required: "" },
+                                  model: {
+                                    value: _vm.CouponItem.Condition,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.CouponItem, "Condition", $$v)
+                                    },
+                                    expression: "CouponItem.Condition"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "쿠폰 설명", required: "" },
+                                  model: {
+                                    value: _vm.CouponItem.explanation,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.CouponItem,
+                                        "explanation",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "CouponItem.explanation"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs11: "", sm5: "" } },
+                              [
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "start_menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "min-width": "290px",
+                                      "return-value": _vm.CouponItem.start_date
+                                    },
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.$set(
+                                          _vm.CouponItem,
+                                          "start_date",
+                                          $event
+                                        )
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.start_menu,
+                                      callback: function($$v) {
+                                        _vm.start_menu = $$v
+                                      },
+                                      expression: "start_menu"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "pick start Date",
+                                        "prepend-icon": "event",
+                                        readonly: ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value: _vm.CouponItem.start_date,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.CouponItem,
+                                            "start_date",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "CouponItem.start_date"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-date-picker",
+                                      {
+                                        attrs: {
+                                          "no-title": "",
+                                          scrollable: ""
+                                        },
+                                        model: {
+                                          value: _vm.CouponItem.start_date,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.CouponItem,
+                                              "start_date",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "CouponItem.start_date"
+                                        }
+                                      },
+                                      [
+                                        _c("v-spacer"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.start_menu = false
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Cancel")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.$refs.start_menu.save(
+                                                  _vm.CouponItem.start_date
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("OK")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs11: "", sm5: "" } },
+                              [
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "end_menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "min-width": "290px",
+                                      "return-value": _vm.CouponItem.end_date
+                                    },
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.$set(
+                                          _vm.CouponItem,
+                                          "end_date",
+                                          $event
+                                        )
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.end_menu,
+                                      callback: function($$v) {
+                                        _vm.end_menu = $$v
+                                      },
+                                      expression: "end_menu"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "pick end Date",
+                                        "prepend-icon": "event",
+                                        readonly: ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value: _vm.CouponItem.end_date,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.CouponItem,
+                                            "end_date",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "CouponItem.end_date"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-date-picker",
+                                      {
+                                        attrs: {
+                                          "no-title": "",
+                                          scrollable: ""
+                                        },
+                                        model: {
+                                          value: _vm.CouponItem.end_date,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.CouponItem,
+                                              "end_date",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "CouponItem.end_date"
+                                        }
+                                      },
+                                      [
+                                        _c("v-spacer"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.end_menu = false
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Cancel")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              color: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.$refs.end_menu.save(
+                                                  _vm.CouponItem.end_date
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("OK")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
                     )
-                  ]
-                }
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-card-actions",
+                  [
+                    _c("v-spacer"),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "blue darken-1", flat: "" },
+                        nativeOn: {
+                          click: function($event) {
+                            _vm.dialog = false
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { color: "blue darken-1", flat: "" },
+                        nativeOn: {
+                          click: function($event) {
+                            return _vm.save($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("v-data-table", {
+          staticClass: "elevation-1",
+          attrs: { headers: _vm.headers, items: _vm.items, "hide-actions": "" },
+          scopedSlots: _vm._u([
+            {
+              key: "items",
+              fn: function(props) {
+                return [
+                  _c("td", [_vm._v(_vm._s(props.index + 1))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(props.item.CouponName))]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-xs-right" }, [
+                    _vm._v(_vm._s(props.item.CouponType))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-xs-right" }, [
+                    _vm._v(_vm._s(props.item.start_date))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-xs-right" }, [
+                    _vm._v(_vm._s(props.item.end_date))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "justify-center layout px-0" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-0",
+                          attrs: { icon: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.editItem(props.item)
+                            }
+                          }
+                        },
+                        [
+                          _c("v-icon", { attrs: { color: "teal" } }, [
+                            _vm._v("edit")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          staticClass: "mx-0",
+                          attrs: { icon: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteItem(props.item)
+                            }
+                          }
+                        },
+                        [
+                          _c("v-icon", { attrs: { color: "pink" } }, [
+                            _vm._v("delete")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]
               }
-            ])
-          })
-        ],
-        1
-      ),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "cupon_pagenation" },
-        [
-          _c("b-pagination", {
-            attrs: { align: "center", "total-rows": 100, "per-page": 10 }
-          }),
-          _vm._v(" "),
-          _c("br")
-        ],
-        1
-      )
-    ])
+            }
+          ])
+        })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -73847,10 +72990,2175 @@ if (false) {
 }
 
 /***/ }),
-/* 546 */
+/* 543 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+var num = 0; // 갤러리 이미지 갯수 카운트
+var formData = new FormData(document.getElementById("upload_info")); // 입력 값들을 담아 전송함.
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    methods: {
+        // 타이틀 이미지 업로드 메서드
+        title_img_load: function title_img_load(evnet) {
+            var titleImg = document.getElementById("TitleImg"); // 타이틀 이미지
+            var reader = new FileReader();
+
+            // 이미지 미리보기 띄우기
+            reader.onload = function () {
+                titleImg.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        },
+
+        // 갤러리 이미지 업로드 메서드
+        // multiple는 추 후 고려
+        gallery_img_load: function gallery_img_load(event) {
+            var GalleryDiv = document.getElementById("GalleryDiv");
+            var GalleryImgUpload = document.getElementById("GalleryImgUpload");
+            var reader = new FileReader();
+
+            // 추가된 이미지가 3개 이하면 기존의 div 속 img src 변경,
+            if (GalleryDiv.children.length === 3 && GalleryDiv.children[2].children[0].alt === "yet") {
+                (function () {
+                    var i = 0;
+                    while (i < GalleryDiv.children.length) {
+                        if (GalleryDiv.children[i].children[0].alt === "yet") {
+                            reader.onload = function () {
+                                GalleryDiv.children[i].children[0].src = reader.result;
+                            };
+                            GalleryDiv.children[i].children[0].alt = "changed";
+                            break;
+                        }
+                        i++;
+                    }
+                })();
+            }
+            // 추가된 이미지가 3개 초과면 새 div를 추가한 후 img 추가
+            else {
+                    var createdDiv = document.createElement("div"); // 새 div 생성
+                    var createdImg = document.createElement("img"); // 새 img 생성
+
+                    reader.onload = function () {
+                        createdImg.src = reader.result;
+                    };
+
+                    createdDiv.classList.add("gallery_div"); // css 적용
+                    createdImg.alt = "changed"; // 새 img alt 속성 추가
+
+                    createdDiv.appendChild(createdImg); // 갤러리 추가하기.          
+                    GalleryDiv.appendChild(createdDiv);
+                }
+            reader.readAsDataURL(event.target.files[0]);
+            formData.append('galleryImg' + num, GalleryImgUpload.files[0]);num++; // 파일 저장
+        },
+
+        // 입력한 데이터 저장하기 TitleImgUpload
+        save_data: function save_data() {
+            var _this = this;
+
+            var TitleImgUpload = document.getElementById("TitleImgUpload"); // 타이틀 input file
+            var send_datas = document.getElementsByClassName('send_datas'); // 입력 값들
+
+            // 입력 값 formdata에 append 하기 
+            for (var i = 0; i < send_datas.length; i++) {
+                formData.append(send_datas[i].getAttribute('name'), send_datas[i].value);
+            }
+            // 타이틀 이미지 append
+            if (TitleImgUpload.files.length !== 0) {
+                formData.append('titleImg', TitleImgUpload.files[0]);
+            }
+            // 갤러리 이미지 숫자 보내기
+            formData.append('num', num);
+
+            // 콘솔창에 띄우기
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = formData.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var pair = _step.value;
+
+                    console.log(pair[0] + ', ' + pair[1]);
+                }
+
+                // 값 보내기
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/test', formData).then(function (response) {
+                _this.result = response.data;
+                document.write(_this.result);
+            }).catch(function (ex) {
+                console.lg('updatePhoto failed', ex);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 552 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerRestaurant_vue__ = __webpack_require__(551);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_515ac086_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerRestaurant_vue__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(553)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerRestaurant_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_515ac086_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerRestaurant_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_515ac086_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerRestaurant_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_restaurant\\OwnerRestaurant.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-515ac086", Component.options)
+  } else {
+    hotAPI.reload("data-v-515ac086", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 553 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(554);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(5).default
+var update = add("ea416284", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerRestaurant.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerRestaurant.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 554 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nselect {\r\n    width: 95%;\n}\n.input_info_frame {\r\n    width: 100%;\r\n    margin-bottom: 5%;\r\n    border : 1px solid;\r\n    display: table;\n}\n.info_row {\r\n    border: 1px solid;\r\n    display : table-row;\n}\n.info_column {\r\n    width: 25%;\r\n    padding: 3px;\r\n    font-size: 25px;\r\n    text-align: center; \r\n    border: 1px solid;\r\n    vertical-align: middle;\r\n    background: #d8d8d8;\r\n    color: black;\r\n    display : table-cell;\n}\n.info_value_75 {\r\n    width: 75%;\r\n    padding: 3px; \r\n    font-size: 20px;\r\n    text-align: center; \r\n    border: 1px solid;\r\n    vertical-align: middle;\r\n    display : table-cell;\n}\n.info_value_25 {\r\n    width: 25%; \r\n    padding: 3px;\r\n    text-align: center; \r\n    vertical-align: middle;\r\n    display : table-cell;\r\n    font-size: 20px;\r\n    border: 1px solid;\n}\n.upload_btn {\r\n    width: 60%;\r\n    font-size: 70%;\r\n    position: relative; \r\n    background: #A4A4A4;\n}\n.upload_btn_hidden {\r\n    width: 0%;\r\n    font-size: 0px;\r\n    position: relative; \r\n    opacity: 0;\n}\n.gallery_div {\r\n    width :30%;  \r\n    height: 190px;\r\n    margin: 1.5%;\r\n    float: left;\r\n    border :2px solid;\r\n    position: relative;\n}\n.gallery_img {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    /* object-fit:fill; */\n}\nimg {\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\r\n    -o-object-fit: cover;\r\n       object-fit: cover;\n}\n.timePicker {\r\n    width: 98%; \r\n    text-align: center\n}\n.submit_btn{\r\n    width:15%; height: 15%; font-size:200%; float:right;\n}\n.send_datas{\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 555 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container", staticStyle: { border: "1px solid" } },
+    [
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: {
+            id: "upload_info",
+            enctype: "multipart/form-data",
+            action: "/test",
+            method: "post"
+          }
+        },
+        [
+          _c("div", { staticClass: "frame" }, [
+            _c("h1", { staticStyle: { "font-size": "60px" } }, [
+              _vm._v(" 가게 정보 입력 ")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "submit_btn",
+              attrs: { type: "button", value: "저장하기" },
+              on: { click: _vm.save_data }
+            })
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("h2", [_vm._v(" 가게 기본 정보")]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("h2", [_vm._v("  영업 시간 정보 ")]),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c("h2", [_vm._v(" 기타 정보 ")]),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _c("h2", [_vm._v(" 이미지 등록 ")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input_info_frame" }, [
+            _c("div", { staticClass: "info_row" }, [
+              _c("div", { staticClass: "info_column" }, [
+                _vm._v(" 타이틀 이미지 "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "upload_btn",
+                    attrs: { for: "TitleImgUpload" }
+                  },
+                  [_vm._v(" 이미지 업로드 ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "upload_btn_hidden",
+                  attrs: {
+                    type: "file",
+                    id: "TitleImgUpload",
+                    accept: ".png, .jpg, .jpeg"
+                  },
+                  on: { change: _vm.title_img_load }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(4)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "info_row" }, [
+              _c("div", { staticClass: "info_column" }, [
+                _vm._v(" 이미지 갤러리 "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "upload_btn",
+                    attrs: { for: "GalleryImgUpload" }
+                  },
+                  [_vm._v(" 이미지 업로드 ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "upload_btn_hidden",
+                  attrs: {
+                    type: "file",
+                    id: "GalleryImgUpload",
+                    accept: ".png, .jpg, .jpeg"
+                  },
+                  on: { change: _vm.gallery_img_load }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(5)
+            ])
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "input_info_frame",
+        staticStyle: { "border-bottom": "0px", "margin-bottom": "0%" }
+      },
+      [
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [_vm._v("가게 명")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_75" }, [
+            _c("input", {
+              staticClass: "send_datas",
+              staticStyle: { width: "98%" },
+              attrs: { type: "text", name: "name" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [_vm._v("가게 설명")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_75" }, [
+            _c("textarea", {
+              staticClass: "send_datas",
+              staticStyle: { width: "98%", "min-height": "100px" },
+              attrs: { name: "explanation" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [_vm._v("주소")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_75" }, [
+            _c(
+              "select",
+              {
+                staticClass: "send_datas",
+                staticStyle: { width: "30%", margin: "1%" },
+                attrs: { name: "dodobuken" }
+              },
+              [
+                _c("option", { attrs: { value: "도쿄" } }, [_vm._v(" 도쿄 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "훗카이도" } }, [
+                  _vm._v(" 훗카이도 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "교코" } }, [_vm._v(" 교코 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "오사카" } }, [
+                  _vm._v(" 오사카 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "아오모리" } }, [
+                  _vm._v(" 아오모리 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "이와테" } }, [
+                  _vm._v(" 이와테 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "미야기" } }, [
+                  _vm._v(" 미야기 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "아키타no" } }, [
+                  _vm._v(" 아키타 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "야마가타" } }, [
+                  _vm._v(" 야마가타 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "후쿠시마" } }, [
+                  _vm._v(" 후쿠시마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "이바라키" } }, [
+                  _vm._v(" 이바라키 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "토치기no" } }, [
+                  _vm._v(" 토치기 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "군마" } }, [_vm._v(" 군마 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "사이타마" } }, [
+                  _vm._v(" 사이타마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "치바" } }, [_vm._v(" 치바 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "카나가와" } }, [
+                  _vm._v(" 카나가와 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "니가타" } }, [
+                  _vm._v(" 니가타 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "토야마" } }, [
+                  _vm._v(" 토야마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "이시카와" } }, [
+                  _vm._v(" 이시카와 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "후쿠이" } }, [
+                  _vm._v(" 후쿠이 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "야마나시" } }, [
+                  _vm._v(" 야마나시 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "나가노" } }, [
+                  _vm._v(" 나가노 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "기후" } }, [_vm._v(" 기후 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "시즈오카" } }, [
+                  _vm._v(" 시즈오카 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "아이치" } }, [
+                  _vm._v(" 아이치 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "미에" } }, [_vm._v(" 미에 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "시가" } }, [_vm._v(" 시가 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "효고" } }, [_vm._v(" 효고 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "나라" } }, [_vm._v(" 나라 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "와카야마" } }, [
+                  _vm._v(" 와카야마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "톳토리" } }, [
+                  _vm._v(" 톳토리 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "시마네" } }, [
+                  _vm._v(" 시마네 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "오카야마" } }, [
+                  _vm._v(" 오카야마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "히로시마" } }, [
+                  _vm._v(" 히로시마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "야마구찌" } }, [
+                  _vm._v(" 야마구찌 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "토쿠시마" } }, [
+                  _vm._v(" 토쿠시마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "카가와" } }, [
+                  _vm._v(" 카가와 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "에히메" } }, [
+                  _vm._v(" 에히메 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "코치" } }, [_vm._v(" 코치 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "후쿠오카" } }, [
+                  _vm._v(" 후쿠오카 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "사가" } }, [_vm._v(" 사가 ")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "나가사끼" } }, [
+                  _vm._v(" 나가사끼 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "쿠마모토" } }, [
+                  _vm._v(" 쿠마모토 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "오이타" } }, [
+                  _vm._v(" 오이타 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "미야자키" } }, [
+                  _vm._v(" 미야자키 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "카고시마" } }, [
+                  _vm._v(" 카고시마 ")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "오키나와" } }, [
+                  _vm._v(" 오키나와 ")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "send_datas",
+              staticStyle: { width: "30%", margin: "1%" },
+              attrs: { type: "text", name: "address1", value: "상세주소1" }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "send_datas",
+              staticStyle: { width: "30%", margin: "1%" },
+              attrs: { type: "text", name: "address2", value: "상세주소2" }
+            })
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "input_info_frame", staticStyle: { "border-top": "0px" } },
+      [
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [_vm._v("업종")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "send_datas",
+              staticStyle: { width: "98%", "text-align": "center" },
+              attrs: { type: "text", name: "type" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_column" }, [_vm._v("전화번호")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "send_datas",
+              staticStyle: { width: "98%", "text-align": "center" },
+              attrs: { type: "text", name: "phone" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [_vm._v("결제 방법")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c(
+              "select",
+              { staticClass: "send_datas", attrs: { name: "payment" } },
+              [
+                _c("option", { attrs: { value: "card" } }, [
+                  _vm._v("카드 가능")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "cashe" } }, [
+                  _vm._v("현금 결제")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_column" }, [_vm._v("좌석 수")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "send_datas",
+              staticStyle: { width: "70%", "text-align": "center" },
+              attrs: { type: "text", name: "seat_num" }
+            }),
+            _vm._v(" 석 \n                ")
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "input_info_frame", attrs: { id: "OperationTime" } },
+      [
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [_vm._v(" 런치 오픈 ")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "timePicker send_datas",
+              attrs: { type: "time", name: "lunch_open" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_column" }, [_vm._v(" 디너 오픈 ")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "timePicker send_datas",
+              attrs: { type: "time", name: "dinner_open" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [_vm._v(" 런치 종료 ")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "timePicker send_datas",
+              attrs: { type: "time", name: "lunch_close" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_column" }, [_vm._v(" 디너 종료 ")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "timePicker send_datas",
+              attrs: { type: "time", name: "dinner_close" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_row" }, [
+          _c("div", { staticClass: "info_column" }, [
+            _vm._v(" 런치 라스트 오더 ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "timePicker send_datas",
+              attrs: { type: "time", name: "lunch_lo" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_column" }, [
+            _vm._v(" 디너 라스트 오더 ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info_value_25" }, [
+            _c("input", {
+              staticClass: "timePicker send_datas",
+              attrs: { type: "time", name: "dinner_lo" }
+            })
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input_info_frame" }, [
+      _c("div", { staticClass: "info_row" }, [
+        _c("div", { staticClass: "info_column" }, [_vm._v(" 아이 동반")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_value_25" }, [
+          _c(
+            "select",
+            { staticClass: "send_datas", attrs: { name: "children" } },
+            [
+              _c("option", { attrs: { value: "yes" } }, [_vm._v(" 예    ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "no" } }, [_vm._v(" 아니오 ")])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_column" }, [_vm._v(" 애완동물 동반")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_value_25" }, [
+          _c("select", { staticClass: "send_datas", attrs: { name: "pet" } }, [
+            _c("option", { attrs: { value: "yes" } }, [_vm._v(" 예    ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "no" } }, [_vm._v(" 아니오 ")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info_row" }, [
+        _c("div", { staticClass: "info_column" }, [_vm._v(" 주차 공간")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_value_25" }, [
+          _c(
+            "select",
+            { staticClass: "send_datas", attrs: { name: "parking" } },
+            [
+              _c("option", { attrs: { value: "yes" } }, [_vm._v(" 예    ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "no" } }, [_vm._v(" 아니오 ")])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_column" }, [_vm._v(" 흡연석")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_value_25" }, [
+          _c(
+            "select",
+            { staticClass: "send_datas", attrs: { name: "smoking" } },
+            [
+              _c("option", { attrs: { value: "yes" } }, [_vm._v(" 예    ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "no" } }, [_vm._v(" 아니오 ")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info_row" }, [
+        _c("div", { staticClass: "info_column" }, [_vm._v(" 개인실 ")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "info_value_25" }, [
+          _c(
+            "select",
+            { staticClass: "send_datas", attrs: { name: "privateroom" } },
+            [
+              _c("option", { attrs: { value: "yes" } }, [_vm._v(" 예    ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "no" } }, [_vm._v(" 아니오 ")])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "info_value_75" }, [
+      _c(
+        "div",
+        {
+          staticStyle: {
+            width: "95%",
+            height: "300px",
+            border: "1px solid",
+            margin: "auto"
+          },
+          attrs: { id: "TitleDiv" }
+        },
+        [_c("img", { attrs: { id: "TitleImg" } })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "info_value_75",
+        staticStyle: { "min-height": "100px" },
+        attrs: { id: "GalleryDiv" }
+      },
+      [
+        _c("div", { staticClass: "gallery_div" }, [
+          _c("img", { attrs: { src: __webpack_require__(556), alt: "yet" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "gallery_div" }, [
+          _c("img", { attrs: { src: __webpack_require__(556), alt: "yet" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "gallery_div" }, [
+          _c("img", { attrs: { src: __webpack_require__(556), alt: "yet" } })
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-515ac086", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 556 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/null.png?6bfa3560c77b778f5592e86ab216244e";
+
+/***/ }),
+/* 557 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({});
+
+/***/ }),
+/* 558 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenu_vue__ = __webpack_require__(557);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_677cbc81_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenu_vue__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(559)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenu_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_677cbc81_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenu_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_677cbc81_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenu_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_menu\\OwnerMenu.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-677cbc81", Component.options)
+  } else {
+    hotAPI.reload("data-v-677cbc81", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 559 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(560);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(5).default
+var update = add("16b301b8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenu.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenu.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 560 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.link {\n    width: 20%; \n    margin-right:5%;  \n    font-size: 20px;\n}\nhr {\n    width: 100%;\n    border:1.3px solid;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 561 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container", staticStyle: { border: "1px solid" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticStyle: { width: "98%", margin: "auto", "margin-bottom": "1%" }
+        },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "link",
+              attrs: { to: "/ownerPage/OwnerMenu/operate" }
+            },
+            [_vm._v(" 메뉴 추가 ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { staticClass: "link", attrs: { to: "/ownerPage/OwnerMenu/list" } },
+            [_vm._v(" 메뉴 보기 ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "link",
+              attrs: { to: "/ownerPage/OwnerMenu/layout" }
+            },
+            [_vm._v(" 메뉴판 레이아웃 설정 ")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("transition", [_c("router-view")], 1),
+      _vm._v(" "),
+      _c("div", { staticStyle: { "margin-bottom": "5%" } })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { width: "98%", margin: "auto" } }, [
+      _c("h1", { staticStyle: { float: "left" } }, [_vm._v(" 메뉴 관리 ")]),
+      _vm._v(" "),
+      _c("hr")
+    ])
+  }
+]
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-677cbc81", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 562 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+var option_num = 0;
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    methods: {
+        // 저장
+        save_data: function save_data() {
+            var formData = new FormData(document.getElementById('form_el'));
+            var get_img = document.getElementById('img_upload_btn'); // 등록한 이미지 
+            var get_data = document.getElementsByClassName('values'); // 등록한 데이터들
+            var check = true; // 유효성 검사용
+
+            // 업로드한 이미지가 있는지 체크 후 진행함
+            if (get_img.files[0] !== undefined) {
+                formData.append('menu_img', get_img.files[0]);
+
+                for (var i = 0; i < get_data.length; i++) {
+                    // 입력한 값이 있는지 체크 후 배열에 저장
+                    var ipt = get_data[i].value.replace(/ /gi, "");
+
+                    if (ipt === "" || ipt === "입력또는선택") {
+                        alert('값을 모두 입력 해주세요!');
+                        check = false;
+                        break;
+                    }
+                }
+                // 모든 값이 입력 되었다면 전송함.
+                if (check === true) {
+
+                    // 콘솔창에 띄우기
+                    var _iteratorNormalCompletion = true;
+                    var _didIteratorError = false;
+                    var _iteratorError = undefined;
+
+                    try {
+                        for (var _iterator = formData.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                            var pair = _step.value;
+
+                            console.log(pair[0] + ', ' + pair[1]);
+                        }
+                    } catch (err) {
+                        _didIteratorError = true;
+                        _iteratorError = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion && _iterator.return) {
+                                _iterator.return();
+                            }
+                        } finally {
+                            if (_didIteratorError) {
+                                throw _iteratorError;
+                            }
+                        }
+                    }
+
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/test', formData).then(function (response) {
+                        alert('메뉴 등록 성공');
+
+                        var get_options = document.getElementById('options');
+                        while (get_options.children.length > 0) {
+                            get_options.removeChild(get_options.children[get_options.children.length - 1]);
+                        }
+
+                        document.getElementById('menu_img').src = '';
+
+                        for (var _i = 0; _i < get_data.length; _i++) {
+                            get_data[_i].value = '';
+                        }
+                        get_img.value = '';
+                    }).catch(function (ex) {
+                        console.log('failed', ex);
+                    });
+                }
+            }
+            // 등록된 이미지가 없는 경우 경고 메세지 출력
+            else {
+                    alert('이미지 등록 해 주세요');
+                }
+        },
+
+        // 이미지 업로드하기.
+        img_upload: function img_upload() {
+            var menu_img = document.getElementById("menu_img"); // 메뉴 이미지
+            var reader = new FileReader();
+
+            // 이미지 미리보기 띄우기
+            reader.onload = function () {
+                menu_img.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        },
+
+        // 카테고리 선택 창 클릭 시 호출되는 메소드. 카테고리 선택 리스트 띄우기
+        click_category: function click_category() {
+            var category_list = document.getElementById('category_list');
+            category_list.classList.add("active");
+            category_list.style.top = event.y + "px";
+            category_list.style.left = event.x + "px";
+        },
+
+        // 카테고리 리스트를 클릭하면 호출되는 메소드
+        select_finish: function select_finish() {
+            var category_list = document.getElementById('category_list');
+            var category = document.getElementsByName('category')[0];
+            var clicked_v = event.target;
+
+            // 직접 입력이 아닌 다른 것을 선택하면 선택 값을 카테고리 값으로 지정함.
+            if (clicked_v.innerText !== '직접입력') {
+                category.value = clicked_v.innerText;
+            }
+            // 직접 입력 선택 시 카테고리 값 지우고 커서 이동시킴.
+            else if (clicked_v.innerText === '직접입력') {
+                    category.value = '';
+                    category.focus();
+                }
+            // css 제거
+            category_list.classList.remove("active");
+        },
+
+        // 옵션 값 만들기.(하위 옵션)
+        create_option: function create_option() {
+            var created_h5 = document.createElement('h5');
+            var created_div = document.createElement('div');
+            var created_ipt = document.createElement('input');
+            var get_options = document.getElementById('options');
+
+            created_div.classList.add("option_box");
+            created_h5.classList.add("option_column");
+            created_ipt.classList.add("option_input");
+            created_ipt.classList.add("values");
+
+            created_h5.innerText = '옵션 값';
+            created_ipt.name = 'option_value' + option_num;option_num++;
+
+            created_div.appendChild(created_h5);
+            created_div.appendChild(created_ipt);
+            get_options.appendChild(created_div);
+        }
+    }
+});
+
+/***/ }),
+/* 563 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({});
+
+/***/ }),
+/* 564 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuOperate_vue__ = __webpack_require__(562);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b2eaff3_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuOperate_vue__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(565)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuOperate_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b2eaff3_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuOperate_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b2eaff3_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuOperate_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_menu\\OwnerMenuOperate.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7b2eaff3", Component.options)
+  } else {
+    hotAPI.reload("data-v-7b2eaff3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 565 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(566);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(5).default
+var update = add("8dccc5cc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenuOperate.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenuOperate.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 566 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.header_btn{\n    width: 10%;\n    margin:0.5%; \n    margin-top: 1%; \n    font-size: 130%;\n    float: right; \n    overflow: hidden;\n}\nh4 {\n    margin-top: 7%;\n    margin-bottom: 1%;\n}\nhr {\n    width: 100%;\n    border:1.3px solid;\n}\n.inner_div{\n    width: 30%;\n    min-height: 450px; \n    background:white;\n    float: left;\n    margin: 1%;\n    padding: 3%;\n}\n#menu_img{\n    width: 100%;\n    height: 60%;    \n    -o-object-fit: contain;    \n       object-fit: contain;\n}\n.values{\n    width: 98%;\n    font-size: 17px;\n}\n#img_upload_btn{\n    width: 0%;\n    font-size: 0px;\n    opacity: 0;\n    position: relative;\n}\nlabel{\n    color: cadetblue; \n    float:right;\n    font-size: 17px;\n    margin-top: 3%;\n}\n.select_category {\n    position: absolute;\n    display: none;\n    border: 1px solid black;\n    width: auto;\n    text-align: center;\n}\n.select_category.active {\n    display: block;\n    background-color: white;\n}\n.select_category.active>ul>li {\n    list-style: none;\n    padding: 10px;\n}\n.select_category.active>ul>li:hover {\n    background-color: lightgreen;\n}\nul {\n    margin: 0px;\n    padding: 0px;\n}\n.input_text{\n    border: 0;\n    border-bottom: 1px solid;\n}\n.option_column {\n    width: 30%;\n    float: left;\n}\n.option_input {\n    width: 70%;\n    border: 0;\n    border-bottom: 1px solid; \n    float: left;\n}\n.option_box {\n    width: 100%; \n    margin-top: 7%; \n    overflow: hidden;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 567 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [
+      _c("h3", { staticStyle: { float: "left" } }, [_vm._v(" 메뉴추가 ")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "header_btn",
+        attrs: { type: "button", id: "save", value: "저장" },
+        on: { click: _vm.save_data }
+      }),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticStyle: { width: "95%", margin: "auto", "margin-top": "1%" },
+          attrs: { id: "form_el" }
+        },
+        [
+          _c("div", { staticClass: "inner_div" }, [
+            _c("div", { staticStyle: { width: "90%" } }, [
+              _c("h4", { staticStyle: { float: "left" } }, [
+                _vm._v(" 이미지 ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  type: "file",
+                  id: "img_upload_btn",
+                  accept: ".png, .jpg, .jpeg"
+                },
+                on: { change: _vm.img_upload }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "img_upload_btn" } }, [
+                _vm._v("이미지 추가")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("img", { attrs: { id: "menu_img" } })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "inner_div" }, [
+            _c("h4", [_vm._v(" 메뉴 명 ")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "values input_text",
+              attrs: { type: "text", name: "name" }
+            }),
+            _vm._v(" "),
+            _c("h4", [_vm._v(" 가격 ")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "values input_text",
+              attrs: { type: "text", name: "price" }
+            }),
+            _vm._v(" "),
+            _c("h4", [_vm._v(" 카테고리 ")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "values input_text",
+              attrs: {
+                type: "text",
+                name: "category",
+                value: "입력 또는 선택"
+              },
+              on: { click: _vm.click_category }
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "select_category",
+                attrs: { id: "category_list" }
+              },
+              [
+                _c("ul", [
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 직접입력 ")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 특선 ")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 추천메뉴 ")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 식사류 ")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 안주류 ")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 주류 ")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 디저트 ")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.select_finish } }, [
+                    _vm._v(" 음료 ")
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("h4", [_vm._v(" 메뉴 설명")]),
+            _vm._v(" "),
+            _c("textarea", {
+              staticClass: "values",
+              staticStyle: { height: "30%" },
+              attrs: { name: "explanation" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "inner_div" }, [
+            _c("h4", [_vm._v(" 런치 디너 구분 ")]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticStyle: { width: "100%", "margin-top": "7%" } }, [
+              _c("h4", { staticStyle: { float: "left" } }, [
+                _vm._v(" 옵션 설정 ")
+              ]),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "create_option_value" } }, [
+                _vm._v(" 옵션 값 생성 ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticStyle: { opacity: "0" },
+                attrs: { type: "button", id: "create_option_value" },
+                on: { click: _vm.create_option }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "options" } })
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("select", { staticClass: "values", attrs: { name: "remark" } }, [
+      _c("option", { attrs: { value: "default" } }, [_vm._v(" 상관 없음 ")]),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "lunch" } }, [_vm._v(" 런치 메뉴 ")]),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "dinner" } }, [_vm._v(" 디너 메뉴 ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "option_box" }, [
+      _c("h5", { staticClass: "option_column" }, [_vm._v(" 옵션 명 ")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "values option_input",
+        attrs: { type: "text", name: "option_name", value: "없으면 입력 x" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7b2eaff3", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 568 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuList_vue__ = __webpack_require__(563);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_240b35bf_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuList_vue__ = __webpack_require__(571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(569)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuList_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_240b35bf_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuList_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_240b35bf_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuList_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_menu\\OwnerMenuList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-240b35bf", Component.options)
+  } else {
+    hotAPI.reload("data-v-240b35bf", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 569 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(570);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(5).default
+var update = add("404df9c0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenuList.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenuList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 570 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 571 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [_vm._v("\n    메뉴판 리스트 출력\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-240b35bf", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 572 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({});
+
+/***/ }),
+/* 573 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuSelectLayout_vue__ = __webpack_require__(572);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2471c767_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuSelectLayout_vue__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(4);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(574)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuSelectLayout_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2471c767_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuSelectLayout_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2471c767_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuSelectLayout_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_menu\\OwnerMenuSelectLayout.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2471c767", Component.options)
+  } else {
+    hotAPI.reload("data-v-2471c767", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 574 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(575);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(5).default
+var update = add("7e1f7770", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenuSelectLayout.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./OwnerMenuSelectLayout.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 575 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 576 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [_vm._v("\n    메뉴판 레이아웃 선택\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2471c767", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
 
 /***/ })
 /******/ ]);

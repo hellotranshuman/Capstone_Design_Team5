@@ -11,7 +11,7 @@
         </ul>
     </div>
     <div>
-      <router-view  to="/ownerReservationlist"></router-view>
+      <router-view  to="/ownerPage/ownerReservationlist"></router-view>
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@
     /* 사이드바 */
 
   #sidebar_wrapper {
-    width: 200px;
+    width: 190px;
     height: 600px; 
     float: left;
 

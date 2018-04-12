@@ -16,13 +16,11 @@
               </b-collapse>
             </b-navbar>
         </div>
-
     </div>
 </template>
 
 <script>
     export default {
-
     }
 
 </script>

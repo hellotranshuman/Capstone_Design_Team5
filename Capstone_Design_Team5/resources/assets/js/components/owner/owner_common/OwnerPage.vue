@@ -1,22 +1,24 @@
 <template>
-    <div class="ownerPage">
-        <div>
-            <ownerPageTop></ownerPageTop>
+    <v-app>
+        <div class="ownerPage">
+            <div>
+                <OwnerPageTop></OwnerPageTop>
+            </div>
+            <div>
+                <router-view to="/ownerPage/ownerPageSideSetting"></router-view>
+            </div>
         </div>
-        <div>
-            <router-view to="/ownerPage/ownerPageSide_Setting"></router-view>
-        </div>
-    </div>
+    </v-app>
 </template>
 <script>
-    import ownerPageTop from './ownerPageTop.vue';
+import OwnerPageTop from './OwnerPageTop.vue';
 
-    export default {
-        components : {
-            'ownerPageTop' : ownerPageTop
-        }
-
+export default {
+    components : {
+        'OwnerPageTop' : OwnerPageTop
     }
+
+}
 </script>
 <style>
 

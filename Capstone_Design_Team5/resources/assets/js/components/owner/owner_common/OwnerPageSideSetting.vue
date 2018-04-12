@@ -5,12 +5,12 @@
         <ul class="sidebar_nav">
             <li class="sidebar_brand"><B>설정</B></li>
             <li class="sidebar_brand"><B>가게 관리</B></li>
-            <li><router-link to="/">가게 정보</router-link></li>
+            <li><router-link to="/ownerPage/ownerRestaurant">가게 정보</router-link></li>
             <li><router-link to="/">홈페이지 디자인</router-link></li>
             <li><router-link to="/ownerPage/ownerCreateCoupon">쿠폰</router-link></li>
             <li class="sidebar_brand"><B>메뉴 관리</B></li>
             <li><router-link to="/">전자 메뉴판</router-link></li>
-            <li><router-link to="/">전자 메뉴판 설정</router-link></li>
+            <li><router-link to="/ownerPage/OwnerMenu">전자 메뉴판 설정</router-link></li>
         </ul>
     </div>
     <div>
@@ -37,7 +37,7 @@ export default {
     /* 사이드바 */
 
   #sidebar_wrapper {
-    width: 200px;
+    width: 190px;
     height: 600px; 
     float: left;
 

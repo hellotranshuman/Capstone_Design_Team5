@@ -13,8 +13,13 @@
     }
 </style>
 <body>
-@foreach($res as $re)
-  <p> {{ $re->name }} </p>
+@foreach($totalRating as $total)
+<p> {{ $total->totalRating}}</p>
+@endforeach
+@foreach($review as $re)
+  <p> {{ $re->id }} </p>
+  <p> {{ $re->content }} </p>
+  <p> {{ $re->rating}}</p>
 @endforeach
 </body>
 </html>

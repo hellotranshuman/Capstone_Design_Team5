@@ -4,10 +4,8 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import VueAxios from 'vue-axios';
-
 import axios    from 'axios';
 Vue.use(VueAxios, axios);
-Vue.use(BootstrapVue);
 
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
@@ -16,20 +14,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // vuetify import
-import Vuetify from 'vuetify'
-Vue.use(Vuetify)
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
 
-import 'vuetify/dist/vuetify.min.css'
+import 'vuetify/dist/vuetify.min.css';
 // main.sty
 
-
 import App from './App.vue';
-
-// icon API
-import VueIco, {icoMenu} from 'vue-ico';
-Vue.use(VueIco, {
-    "menu": icoMenu
-});
 
 // SNS 공유 API
 var SocialSharing = require('vue-social-sharing');
@@ -42,6 +33,7 @@ import UserRestaurantMain   from './components/user/user_common/UserRestaurantMa
 
 // 가게 정보 페이지 컴포넌트 import
 import UserMenu         from './components/user/user_menu/UserMenu.vue';
+
 // 메뉴판 페이지 컴포넌트 import
 import UserReview       from './components/user/user_review/UserReview.vue';
 // 리뷰 페이지 컴포넌트 import
@@ -62,8 +54,21 @@ import OwnerReservationlist     from './components/owner/owner_reservation/Owner
 // Reservation Setting
 import OwnerReservationSetting  from './components/owner/owner_reservation/OwnerReservationSetting.vue';
 
+// 가게 정보 입력 페이지 컴포넌트 import
+import OwnerRestaurant from './components/owner/owner_restaurant/OwnerRestaurant.vue';
+
 // Coupon Page, 쿠폰 제작 페이지 컴포넌트 import
-import OwnerCreateCoupon from './components/owner/owner_coupon/OwnerCreateCoupon.vue'
+import OwnerCreateCoupon from './components/owner/owner_coupon/OwnerCreateCoupon.vue';
+
+// 전자메뉴판 설정 페이지 컴포넌트 import
+import OwnerMenu from './components/owner/owner_menu/OwnerMenu.vue';
+// 전자메뉴판 설정 페이지 컴포넌트 import
+import OwnerMenuOperate from './components/owner/owner_menu/OwnerMenuOperate.vue';
+// 전자메뉴판 설정 페이지 컴포넌트 import
+import OwnerMenuList from './components/owner/owner_menu/OwnerMenuList.vue';
+// 전자메뉴판 설정 페이지 컴포넌트 import
+import OwnerMenuSelectLayout from './components/owner/owner_menu/OwnerMenuSelectLayout.vue';
+
 
 
 const routes = [
@@ -71,13 +76,11 @@ const routes = [
         name: 'UserMain',                                   // root 페이지
         path: '/',
         component: UserMain
-
     },
     {
         name: 'UserRestaurantMain',                         // 가게 페이지
         path: '/userRestaurantMain',
         component: UserRestaurantMain,
-
         // 네스티드 라우터
         children:[
             {
@@ -95,7 +98,6 @@ const routes = [
                 path: '/userRestaurantMain/review',
                 component: UserReview
             }
-
         ]
     },
     {
@@ -135,10 +137,38 @@ const routes = [
             component: OwnerPageSideSetting,
 
             children: [{
+                name: 'OwnerRestaurant',                  // 사장님 페이지 가게 정보 입력 
+                path: '/ownerPage/ownerRestaurant',
+                component: OwnerRestaurant
+            },
+            {
                 name: 'OwnerCreateCoupon',                  // 사장님 페이지 쿠폰 제작     
                 path: '/ownerPage/ownerCreateCoupon',
                 component: OwnerCreateCoupon
-            }]
+            },
+        
+            {
+                name: 'OwnerMenu',  // 전자 메뉴판 설정
+                path: '/ownerPage/OwnerMenu',
+                component: OwnerMenu,
+                children: [{
+                        name: 'OwnerMenuOperate', // 메뉴 추가
+                        path: '/ownerPage/OwnerMenu/operate',
+                        component: OwnerMenuOperate
+                    },
+                    {
+                        name: 'OwnerMenuList',      // 메뉴 리스트
+                        path: '/ownerPage/OwnerMenu/list',
+                        component: OwnerMenuList
+                    },
+                    {
+                        name: 'OwnerMenuSelectLayout',  // 메뉴 레이아웃 설정
+                        path: '/ownerPage/OwnerMenu/layout',
+                        component: OwnerMenuSelectLayout
+                    },
+                ]
+            }
+        ]
         }],
     }
 ];

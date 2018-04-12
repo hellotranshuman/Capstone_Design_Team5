@@ -20,6 +20,7 @@
 <script> 
     // 유저 화면 상단 컴포넌트 import
     import UserHeader       from '../user_common/UserHeader.vue';
+    // import UserHeader from '../user_common/UserNavbar.vue';
     // 유저 화면 상단 컴포넌트 import
     import UserSelectBar    from '../user_common/UserSelectBar.vue';
 
