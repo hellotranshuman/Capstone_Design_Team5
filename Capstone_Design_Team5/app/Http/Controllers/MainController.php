@@ -14,8 +14,10 @@ class MainController extends Controller
         //     return redirect('login');
 
         // return view('main');
+        // return view('welcome');
 
-        return view('welcome');
+        return view('user.navbar');
+
     }
 
     public function test() {

@@ -1,5 +1,4 @@
 import Vue from 'vue';
-
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
@@ -26,6 +25,7 @@ import App from './App.vue';
 var SocialSharing = require('vue-social-sharing');
 Vue.use(SocialSharing);
 
+
 // 유저 메인 페이지 컴포넌트 import
 import UserMain     from './components/user/user_main/UserMain.vue';
 // 유저 리뷰 페이지 컴포넌트 import
@@ -39,6 +39,7 @@ import UserReview       from './components/user/user_review/UserReview.vue';
 // 리뷰 페이지 컴포넌트 import
 import UserRestaurant   from './components/user/user_restaurant/UserRestaurant.vue';
 // 리뷰 작성 페이지 컴포넌트 import
+
 import UserWriteReview  from './components/user/user_review/UserWriteReview.vue';
 
 // Common Page, 사장님 페이지 공통 컴포넌트 import
@@ -81,6 +82,7 @@ const routes = [
         name: 'UserRestaurantMain',                         // 가게 페이지
         path: '/userRestaurantMain',
         component: UserRestaurantMain,
+        
         // 네스티드 라우터
         children:[
             {

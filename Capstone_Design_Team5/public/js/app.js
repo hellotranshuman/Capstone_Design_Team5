@@ -28360,7 +28360,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_owner_owner_menu_OwnerMenuSelectLayout_vue__ = __webpack_require__(563);
 
 
-
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 
@@ -28401,6 +28400,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(SocialSharing);
 // 리뷰 작성 페이지 컴포넌트 import
 
 
+
 // Common Page, 사장님 페이지 공통 컴포넌트 import
 
 
@@ -28437,6 +28437,7 @@ var routes = [{
     name: 'UserRestaurantMain', // 가게 페이지
     path: '/userRestaurantMain',
     component: __WEBPACK_IMPORTED_MODULE_11__components_user_user_common_UserRestaurantMain_vue__["a" /* default */],
+
     // 네스티드 라우터
     children: [{
         name: 'UserRestaurant', // 가게 페이지 안의 정보

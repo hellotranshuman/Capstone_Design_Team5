@@ -35,7 +35,7 @@ class ReviewController extends Controller
     }
 
     public function createReview(Request $request) {
-
+        // 현재 시간 불러오기
         $currentDate = date("Y-m-d H:i:s");
 
         // create Review column in Review Table
@@ -52,6 +52,7 @@ class ReviewController extends Controller
             'img_num' => $request->get('imgNum'),
         ]);
 
+        // <-- current Review Id 가져오기
         $review =  DB::table('review')
                     ->select('id')
                     ->where('writer', auth()->user()->id)
@@ -60,6 +61,7 @@ class ReviewController extends Controller
 
         $reviewId = $review->id;
 
+        // <-- hash Tag column create in HashTag Table
         $hashtag = str_replace('#', '',$request->get('HASHTAG'));
         $hashTags = explode(',', $hashtag);
 
@@ -93,14 +95,11 @@ class ReviewController extends Controller
                    'filename' => $imgName,
                 ]);
 
-
-
             }
 
-           
 
             return response()->json([
-                'content' => 'dddd',
+                'content' => '리뷰 작성이 완료되었습니다.',
             ]);
 
         }
