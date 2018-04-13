@@ -1,19 +1,21 @@
 <template>
-    <!-- Setting Main -->
+    <!-- Setting Main 
+        04.13.04:08 작업
+        사이드 네비게이션과 라우터 네비게이션 비율 퍼센트로 맞춤. 
+        설정 - 사이드 네비게이션에서 안쓰는 li 삭제 : 전자 메뉴판 관리, 홈페이지 디자인 삭제함.
+    -->
   <div>
     <div id="sidebar_wrapper">
         <ul class="sidebar_nav">
             <li class="sidebar_brand"><B>설정</B></li>
             <li class="sidebar_brand"><B>가게 관리</B></li>
             <li><router-link to="/ownerPage/ownerRestaurant">가게 정보</router-link></li>
-            <li><router-link to="/">홈페이지 디자인</router-link></li>
             <li><router-link to="/ownerPage/ownerCreateCoupon">쿠폰</router-link></li>
-            <li class="sidebar_brand"><B>메뉴 관리</B></li>
-            <li><router-link to="/">전자 메뉴판</router-link></li>
-            <li><router-link to="/ownerPage/OwnerMenu">전자 메뉴판 설정</router-link></li>
+            <li class="sidebar_brand"><B>메뉴 관리</B></li> 
+            <li><router-link to="/ownerPage/OwnerMenu">전자 메뉴판</router-link></li>
         </ul>
     </div>
-    <div>
+    <div id="router_view">
       <router-view></router-view>
     </div>
   </div>
@@ -34,26 +36,33 @@ export default {
     color: white;
   }
 
-    /* 사이드바 */
-
+  /* 사이드바 */
   #sidebar_wrapper {
-    width: 190px;
-    height: 600px; 
-    float: left;
-
+    width: 20%; 
+    height: 100vh;
+    float: left; 
     background: #000;
+    display: table-column;
   }
 
   #page-content_wrapper {
     width: 100%;
   }
 
-    /* 사이드바 스타일 */
+  #router_view {
+    width:80%;  
+    float: left; 
+    position:relative; 
+    display: table-column;
+  }
+
+  /* 사이드바 스타일 */
   .sidebar_nav {
-    width: 250px;
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
+    margin-bottom: 10%;
   }
 
   .sidebar_nav li {

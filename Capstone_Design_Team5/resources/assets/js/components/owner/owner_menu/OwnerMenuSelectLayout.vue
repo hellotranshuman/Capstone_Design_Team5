@@ -7,10 +7,13 @@
 <script type="text/javascript"> 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
-
+// import test from './test';
  
 export default {
     
+    created () {
+        // alert( test.aaa() );
+    }
 
 }
 

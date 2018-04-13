@@ -20,57 +20,63 @@
 -->
 
 <template>
-    <b-container fluid>
+    <v-container>
         <!-- 아이디 이미지, 아이디, 사용자 국적, 공뷰 버튼 -->
-        <b-row>
-            <b-col>아이디 이미지</b-col>
-            <b-col>{{ userID }}</b-col>
-            <b-col>사용자 국기(국적)</b-col>
-            <b-col>
-            </b-col>
-        </b-row>
+        <v-layout>
+            <!-- <v-card>
+                <v-card-title>
+                
+                </v-card-title>
+            </v-card> -->
+
+            <v-flex>사용자 이미지</v-flex>
+            <v-flex>{{this.userID}}</v-flex>
+            <v-flex>사용자 국기(국적)</v-flex>
+        </v-layout>
         <!-- 작성 날짜, 리뷰 좋아요 갯수 -->
-        <b-row>
-            <b-col>{{ writeDate }}</b-col>
-            <b-col>리뷰 좋아요 갯수</b-col>
-        </b-row>
+        <v-layout>
+            <v-flex>
+                {{this.writeDate}}
+            </v-flex>
+            <v-flex>리뷰 좋아요 갯수</v-flex>
+        </v-layout>
         <!-- 총점 -->
-        <b-row>
-            <b-col>총점</b-col>
-            <b-col>별점 개수</b-col>
-        </b-row>
+        <v-layout>
+            <v-flex>총점</v-flex>
+            <v-flex>{{this.rating}}</v-flex>
+        </v-layout>
         <!-- 맛 -->
-        <b-row>
-            <b-col>맛</b-col>
-            <b-col>별점 개수</b-col>
-        </b-row>
+        <v-layout>
+            <v-flex>맛</v-flex>
+            <v-flex>{{this.taste}}</v-flex>
+        </v-layout>
         <!-- 서비스 -->
-        <b-row>
-            <b-col>서비스</b-col>
-            <b-col>별점 개수</b-col>
-        </b-row>
+        <v-layout>
+            <v-flex>서비스</v-flex>
+            <v-flex>{{this.service}}</v-flex>
+        </v-layout>
         <!-- 분위기 -->
-        <b-row>
-            <b-col>분위기</b-col>
-            <b-col>별점 개수</b-col>
-        </b-row>
+        <v-layout>
+            <v-flex>분위기</v-flex>
+            <v-flex>{{this.mood}}</v-flex>
+        </v-layout>
         <!-- 가격 -->
-        <b-row>
-            <b-col>가격</b-col>
-            <b-col>별점 개수</b-col>
-        </b-row>
+        <v-layout>
+            <v-flex>가격</v-flex>
+            <v-flex>{{this.price}}</v-flex>
+        </v-layout>
         <!-- 이미지 -->
         <!-- 이미지 개수에 따라 반복문으로 출력 -->
-        <b-row>
-            <b-col>이미지1</b-col>
-            <b-col>이미지2</b-col>
-            <b-col>이미지3</b-col>
-        </b-row>
+        <v-layout>
+            <v-flex>이미지1</v-flex>
+            <v-flex>이미지2</v-flex>
+            <v-flex>이미지3</v-flex>
+        </v-layout>
         <!-- 리뷰 내용 -->
-        <b-row>
-            <b-col>{{ content }}</b-col>
-        </b-row>
-    </b-container>
+        <v-layout>
+            <v-flex>{{this.content}}</v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -157,13 +163,18 @@ export default {
 
     data() {
         return {
-            
+
         }
     },
 
     methods: {
 
-    }
+    },
+
+    // mounted() {
+    //     alert(this.userID);
+    //     alert(this.writeDate);
+    // }
 }
 </script>
 

@@ -3,11 +3,18 @@
 
 1. 작성된 리뷰를 보는 페이지, 리뷰기능의 메인페이지에 해당
 2. 작성일, 인기, 국가 3개로 정렬
+
+
+문제점 
+1. 국적, 사용자 이미지 데이터 현재 저장하는거 및 보내는거 미구현 상태
+2. 해쉬태그, 이미지 저장은 되지만 보내지는거 미구현
+
+
 -->
 
 <template>
     <transition name="fade">
-        <v-container>
+        <v-container grid-list-md text-xs-center>
             <v-layout>
                 <!-- 리뷰 작성 버튼 -->
                 <v-flex>
@@ -55,20 +62,28 @@
             <!-- 리뷰 내용 출력 -->
             <v-layout>
                 <v-flex>
+                    평점 : {{this.totalRating}}
+                <hr>
+                </v-flex>
+                
+            </v-layout>
+            <v-layout>
+                <v-flex>
                     리뷰 출력
                     <!-- 리뷰 갯수 만큼 반복 -->
-                    <!-- <ul>
-                        <li v-for= "reviewData in reviewDataList" :key= "reviewDataList.reviewID">
-                            <UserCreateReview userID="reviewData.userID"  nationality="reviewData.nationality" 
-                            writeDate="reviewData.date" reviewLike="reviewData.reviewLike"
-                            rating="reviewData.rating" taste="reviewData.taste"
-                            service="reviewData.service" mood="reviewData.mood"
-                            price="reviewData.price" image1="reviewData.image1"
-                            image2="reviewData.image2" image3="reviewData.image3"
-                            content="reviewData.content" hashTag="" >
+                    <ul>
+                        <li v-for= "reviewData in reviewDataList" :key="reviewData['id']" v-if="reviewData['id']">
+                            <UserCreateReview :userID="reviewData['name']"  nationality="reviewData.nationality" 
+                            :writeDate="reviewData['reg_date']" reviewLike="reviewData.reviewLike"
+                            :rating="reviewData['rating']" :taste="reviewData['taste']"
+                            :service="reviewData['service']" :mood="reviewData['mood']"
+                            :price="reviewData['price']" :image1="reviewData['image3']"
+                            :image2="reviewData['image2']" :image3="reviewData.image3"
+                            :content="reviewData['content']" hashTag="" >
                             </UserCreateReview> 
+                           
                         </li>
-                    </ul> -->
+                    </ul>
                 </v-flex>
             </v-layout>
         </v-container>
@@ -95,6 +110,24 @@ export default {
             reviewDataList  : null,    // DB에서 가져온 리뷰 데이터목록이 저장되는 변수
             // reviewData      : null,    // 리뷰 데이터가 저장되는 변수
             url : "https://www.naver.com/", // 리뷰를 하는 페이지 URL
+            totalRating : 0,                // 가게별 평균 평점
+
+        }
+    },
+
+    methods: {
+        // 반올림 함수
+        round(number, precision) {
+            var numArray = 0;
+
+            var shift = function (number, precision, reverseShift) {
+                if (reverseShift) {
+                    precision = -precision;
+                }  
+                numArray = ("" + number).split("e");
+                return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+            };
+            return shift(Math.round(shift(number, precision, false)), precision, true);
         }
     },
 
@@ -104,14 +137,21 @@ export default {
         axios.post('/review',
         {
             // 식당 id를 전송
-            shopID : this.shopID
+            // shopID : this.shopID
         }
         ).then((response)=>{
-            // reviewDataList변수에 리뷰 데이터목록을 저장합니다.
-            this.reviewDataList = response.data,
+            // reviewDataList변수에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
+            this.reviewDataList = response.data['review'],
+            
+            console.log(this.reviewDataList),
 
-            console.log('response.data: '),
-            console.log(this.reviewDataList)
+            // 리뷰 평점
+            this.totalRating = this.reviewDataList.shift(),
+
+            // 소수점 셋째자리에서 반올림 (둘째짜리까지 출력되도록)
+            this.totalRating = this.round(this.totalRating['totalRating'], 2)
+
+
         }).catch(console.log('Oh my god!!, Failed'));
     }
 }

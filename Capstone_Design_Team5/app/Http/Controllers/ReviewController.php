@@ -11,22 +11,30 @@ class ReviewController extends Controller
     public function getReviewData() {
 
         $review = Review::join('users', 'users.id', '=', 'review.writer')
-                    ->select('review.*', 'users.name')
-                    ->where('shop_id', 13)
+                    ->select('review.*', 'users.name', 'users.country')
+                    ->where('shop_id', 1)
                     ->orderByRaw('reg_date DESC')
                     ->get()
                     ->toArray();
 
         $totalRating = Review::select(DB::raw('AVG(rating) as totalRating'))
-                        ->where('shop_id', 13)
+                        ->where('shop_id', 1)
                         ->orderByRaw('reg_date DESC')
                         ->get()
                         ->toArray();
 
-        $reviewData = array_merge($totalRating, $review);
+        $reviewImage = Review::join('review_image', 'review_image.review_id', '=', 'review.id')
+                        ->select('review_image.filename')
+                        ->where('shop_id', 1)
+                        ->get()
+                        ->toArray();
+
+
+        $reviewData = array_merge($totalRating, $review, $reviewImage);
 
         return response()->json([
-            'review' => $reviewData
+            'review' => $reviewData,
+            'address' => 'images/review/',
         ]);
     }
 
@@ -37,10 +45,10 @@ class ReviewController extends Controller
     public function createReview(Request $request) {
         // 현재 시간 불러오기
         $currentDate = date("Y-m-d H:i:s");
-
+        
         // create Review column in Review Table
         \App\Review::create([
-            'shop_id' => 13,
+            'shop_id' => 1,
             'content'=> $request->get('CONTENT'),
             'reg_date' => $currentDate,
             'writer' => auth()->user()->id,
@@ -50,29 +58,33 @@ class ReviewController extends Controller
             'mood' => $request->get('MOOD'),
             'price' => $request->get('PRICE'),
             'img_num' => $request->get('imgNum'),
-        ]);
-
+        ]);  
+    
         // <-- current Review Id 가져오기
         $review =  DB::table('review')
                     ->select('id')
                     ->where('writer', auth()->user()->id)
                     ->orderByRaw('id DESC')
-                    ->first();
+                    ->first(); 
 
         $reviewId = $review->id;
-
+        
+        
+        
+    
         // <-- hash Tag column create in HashTag Table
-        $hashtag = str_replace('#', '',$request->get('HASHTAG'));
+        $tags     = implode(",", $request->get('HASHTAG'));
+        $hashtag  = str_replace('#', '',$tags);
         $hashTags = explode(',', $hashtag);
-
+        
         for( $num = 0 ; $num < count($hashTags) ; $num++)
         {
             \App\Hashtag::create([
                 'tag' => $hashTags[$num],
                 'review_id' => $reviewId
             ]);
-        }
-
+        }  
+        
         /*
          * 1. 리뷰 이미지 갯수 확인
          * 2. 리뷰 이미지 있으면 갯수 만큼 저장후 테이블에도 저장 
@@ -97,9 +109,8 @@ class ReviewController extends Controller
 
             }
 
-
             return response()->json([
-                'content' => '리뷰 작성이 완료되었습니다.',
+                'content' => '등록이 완료 되었습니다',
             ]);
 
         }

@@ -12,7 +12,7 @@
                     </v-btn>
                 </v-flex>
                 <v-flex>
-                    <v-btn color="info" class="main-button-style" to="/ownerPage">
+                    <v-btn color="info" class="main-button-style" to="/ownerPage/ownerPageSideSetting">
                     사장님 여기로~~
                     </v-btn>
                 </v-flex>

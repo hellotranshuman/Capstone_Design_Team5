@@ -264,10 +264,15 @@ export default {
             var settings = { headers: { 'content-type': 'multipart/form-data' } }
 
             // axios http 라이브러리
-            axios.post('/review', 
+            axios.post('/review/writeReview', 
                 // 리뷰 관련 데이터
                 reviewData
-            , settings).then(console.log('is success')).catch(console.log('is catch'));
+            , settings).then(
+                function (response) {
+                console.log(response.data.content);
+                alert(response.data.content);
+            }
+                ).catch(console.log('is catch'));
         }
     },
 }

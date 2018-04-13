@@ -6,6 +6,7 @@
 -->
 <template>
     <div class="container" style="border:1px solid"> 
+    <v-container>
     <br>
     <form id="upload_info" enctype="multipart/form-data" action="/test" method="post"> 
         <div class="frame">
@@ -106,7 +107,7 @@
                 <div class="info_value_25"> 
                     <select name="payment" class="send_datas">
                         <option value="card">카드 가능</option>
-                        <option value="cashe">현금 결제</option>
+                        <option value="cash">현금 결제</option>
                     </select> 
                 </div>
 
@@ -245,6 +246,7 @@
             </div>
         </div>  
     </form>
+    </v-container>
     </div> 
 </template>
 

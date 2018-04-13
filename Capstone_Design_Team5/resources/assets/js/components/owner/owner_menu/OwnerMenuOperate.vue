@@ -4,7 +4,7 @@
         <input type="button" id="save"   value="저장" class="header_btn" @click="save_data">
         <hr>  
 
-        <form id="form_el" style="width:95%; margin:auto; margin-top:1%;">
+        <form id="form_el" style="width:95%; margin:auto; margin-top:1%; overflow:hidden">
             <div class="inner_div"> 
                 <div style="width: 90%">
                     <h4 style="float:left"> 이미지 </h4>     
@@ -87,6 +87,7 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 
 var option_num = 0;
+var shop_id =''; 
  
 export default {
     methods : {
@@ -100,6 +101,8 @@ export default {
             // 업로드한 이미지가 있는지 체크 후 진행함
             if(get_img.files[0] !== undefined){   
                 formData.append('menu_img',get_img.files[0]);
+                
+                formData.append('shop_id',shop_id);
  
                 for(let i=0; i < get_data.length; i++){
                     // 입력한 값이 있는지 체크 후 배열에 저장
@@ -164,8 +167,8 @@ export default {
         click_category : function() {
             var category_list = document.getElementById('category_list');
             category_list.classList.add("active");
-            category_list.style.top  = event.y + "px";
-            category_list.style.left = event.x + "px";
+            // category_list.style.top  = event.y + "px";
+            // category_list.style.left = event.x + "px";
         },
 
         // 카테고리 리스트를 클릭하면 호출되는 메소드
@@ -231,6 +234,7 @@ export default {
         width: 30%;
         min-height: 450px; 
         background:white;
+        border:1px solid;
         float: left;
         margin: 1%;
         padding: 3%;  
@@ -260,7 +264,7 @@ export default {
         position: absolute;
         display: none;
         border: 1px solid black;
-        width: auto;
+        width: 20%;
         text-align: center;
     }
     .select_category.active {
@@ -291,6 +295,7 @@ export default {
         border: 0;
         border-bottom: 1px solid; 
         float: left;
+        text-align: right;
     }
     .option_box {
         width: 100%; 

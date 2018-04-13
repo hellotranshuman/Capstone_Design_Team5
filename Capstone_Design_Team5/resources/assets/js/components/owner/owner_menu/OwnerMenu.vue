@@ -1,8 +1,7 @@
 <template>
     <div class="container" style="border:1px solid">
-
-        <div style="width:98%; margin: auto;">
-            <h1 style="float:left"> 메뉴 관리 </h1> 
+        <div id="operator_head">
+            <h1 style="float:left; margin-top:4%;"> 메뉴 관리 </h1> 
             <hr>  
         </div>
         <div style="width:98%; margin: auto; margin-bottom:1%;">
@@ -24,10 +23,7 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
  
 export default {
-
-
 }
-
 </script>
 
 <style>
@@ -35,10 +31,17 @@ export default {
         width: 20%; 
         margin-right:5%;  
         font-size: 20px;
+        overflow: hidden;
     }
-    
     hr {
         width: 100%;
         border:1.3px solid;
+        margin-bottom: 3%;
+        overflow: hidden;
+    }
+    #operator_head{
+        width:98%; 
+        margin: auto;
+        overflow: hidden;
     }
 </style>

@@ -3,7 +3,7 @@
     가게 주인이 입력한 정보, 업로드한 이미지를 바탕으로 가게 페이지를 동적으로 제작함.
 --> 
 <template>
-    <div class="container">
+    <div class="container"> 
         <!-- 타이틀 이미지와 가게 명이 들어갈 div -->
         <div id="title_img" class="title_frame">          
             <br>
@@ -22,22 +22,19 @@
                    방문객 평점 :  
                 </h2> 
             </div>
-            <input type="button" id="reserve" value="예약하기" @click="reserve"/>
+            <!-- <input type="button" id="reserve" value="예약하기" @click="reserve"/> -->
+
+            <router-link to="/userRestaurantMain/restaurant/CustomerAddReservation">예약하기</router-link>
+
         </div> 
         
         <div id="explanation" class="frame" style="padding:2%;"> 
-            가게 설명    
+                
         </div>
 
         <!-- 갤러리 이미지가 들어갈 div -->
         <h2> 갤러리 </h2> 
         <div id="gallery_div" class="frame" style="text-align:center;"> 
-            <!-- <div class="gallery"> <img src="./gallery_img0.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img1.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img2.jpg" class="gallery_img"> </div> 
-            <div class="gallery"> <img src="./gallery_img3.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img4.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img5.jpg" class="gallery_img"> </div>    -->
         </div>
 
         <!-- 구글 맵스, 텍스트 주소가 출력 될 div -->
@@ -47,9 +44,9 @@
 
             <div id="address">
                 <b class="address_values"> 상세 주소 : </b>
-                <div id="dodobuken"class="address_values"></div>
-                <div id="cities" class="address_values"></div>
-                <div id="address" class="address_values"></div>
+                <div id="dodobuken" class="address_values"></div>
+                <div id="cities"    class="address_values"></div>
+                <div id="address"   class="address_values"></div>
             </div>
         </div>
  
@@ -96,13 +93,14 @@
         <div class="frame_small"> 
             <div class="column"> <b>이용 안내</b> </div> 
             <div class="column_value">  
-                <div id="children"   class="others"> 아이 동반 : </div>
-                <div id="pet"        class="others"> 애완 동물 동반 : </div>
-                <div id="parking"    class="others"> 주차 : </div> <br>
-                <div id="smoking"    class="others"> 흡연 : </div>
-                <div id="privateroom"class="others"> 개인실 : </div>
+                <div id="children"    class="others"> 아이 동반 : </div>
+                <div id="pet"         class="others"> 애완 동물 동반 : </div>
+                <div id="parking"     class="others"> 주차 : </div> <br>
+                <div id="smoking"     class="others"> 흡연 : </div>
+                <div id="privateroom" class="others"> 개인실 : </div>
             </div>
         </div> 
+ 
     </div> 
 </template> 
  
@@ -128,18 +126,31 @@ export default{
 
         // 값 보내기
         this.shop_id = this.$route.params.shop_id;
-        url = '/restaurant/' + this.shop_id + '/getInfo';
+        // url = '/restaurant/' + this.shop_id + '/getInfo';
+
+        url = '/restaurant/1/getInfo';
 
         axios.get(url)
         .then( (response) => {
             get_datas = response.data.restaurant;
-            console.log();
+            console.log(get_datas);
 
-            this.enter_data(Object.keys(get_datas[0]));        // 데이터 바인딩
-            this.geoCoder(); // 지도 생성
-            console.log("url('" + get_datas[1].path + get_datas[1].filename + "')");
-            this.enter_title();                             // 타이틀 이미지 삽입
-            this.enter_galley();       // 갤러리 이미지 출력
+            // 데이터 바인딩-기본정보
+            this.enter_data(get_datas[0]);        
+
+            // 데이터 바인딩-평점
+            this.enter_data(get_datas[1]);      
+            
+            // 지도 생성
+            this.geoCoder(get_datas[0]);          
+            
+            console.log("url('" + get_datas[2].path + get_datas[2].filename + "')");
+            
+            // 타이틀 이미지 삽입
+            this.enter_title(get_datas[2]);                             
+            
+            // 갤러리 이미지 출력
+            this.enter_galley();       
         })
         .catch((ex)=>{
             // alert('왜 안대');
@@ -147,45 +158,51 @@ export default{
     },
     methods : {
         // 각 공간에 해당 값들을 삽입함.
-        enter_data : function(argIterator){
-            // var iterator = Object.keys(get_datas[0]);
+        enter_data : function(argArray){
+            var iterator = Object.keys(argArray);
 
-            for (let key of argIterator){ 
+            for (let key of iterator){ 
 
                 if(document.getElementById(key) !== null){
                     var get_div = document.getElementById(key);
 
                     // 데이터 입력
-                    if(get_datas[0][key] === 1){
+                    if(argArray[key] === 1){
                         get_div.innerText += '가능';
                     } 
-                    else if (get_datas[0][key] === 0){
+                    else if (argArray[key] === 0){
                         get_div.innerText += '불가';
                     } 
+                    else if (argArray[key] === 'card'){
+                        get_div.innerText += '카드 가능';
+                    } 
+                    else if (argArray[key] === 'cash'){
+                        get_div.innerText += '현금 결제';
+                    } 
                     else{ 
-                        get_div.innerText += get_datas[0][key];
+                        get_div.innerText += argArray[key];
                     }
                 }  
             }
         },
 
         // 타이틀 이미지 삽입하기
-        enter_title : function(){
+        enter_title : function(argImgArray){
             var title_div = document.getElementById('title_img');
-            title_div.style.backgroundImage = "url(" + get_datas[1].path + get_datas[1].filename + ")";
+            title_div.style.backgroundImage = "url(" + argImgArray.path + argImgArray.filename + ")";
         },
 
         // 갤러리에 이미지 추가하기.
-        enter_galley : function(argNum){
+        enter_galley : function(){
             var gallery_div = document.getElementById('gallery_div');
-            var argNum = get_datas.length;                              // 넘어온 데이터 배열 갯수 0은 기본 데이터 , 1은 타이틀 이미지 
+            var argNum = get_datas.length; // 넘어온 데이터 배열 갯수 :  0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지 
              
             // 등록된 이미지가 없으면 메세지 출력 
-            if(argNum == 0) {
+            if(argNum -3 == 0) {
                 gallery_div.innerText = "등록된 이미지가 없습니다.";
             }
             else {
-                for (let i=2; i < argNum; i++){
+                for (let i=3; i < argNum; i++){
                     // div, img 생성
                     let createdDiv = document.createElement('div');
                     let createdImg = document.createElement('img');
@@ -243,20 +260,27 @@ export default{
             //         gallery_div.appendChild(createdDiv);
             //     }
             // }
+        
+            // show_gallery : function (){
+            //     alert('아직 : 갤러리 보여주기');
+            // },
         }, 
 
-        show_gallery : function (){
-            alert('아직 : 갤러리 보여주기');
-        },
+
+
         // 예약하기
-        reserve : function (){
-            alert('아직 : 예약하기');
-        },
-        geoCoder : function () { 
+        // reserve : function (){
+        //     alert('아직 : 예약하기');
+        // },
+
+
+
+        // 구글 맵스 설정하기.
+        geoCoder : function (argAddress) { 
             var map      = new google.maps.Map(document.getElementById('map'), {zoom: 18}); // 구글 맵스 생성
-            var address  = get_datas[0].dodobuken + 
-                           get_datas[0].cities + 
-                           get_datas[0].address;   // 사장이 입력한 주소 값 더하기
+            var address  = argAddress.dodobuken + 
+                           argAddress.cities + 
+                           argAddress.address;   // 사장이 입력한 주소 값 더하기
             var geocoder = new google.maps.Geocoder();                                      // 지오 코더 
             
             // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
@@ -301,6 +325,7 @@ export default{
         font-size: 180%;
         display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤. */
         margin-bottom: 5%; 
+        border: 1px;
     }   
     #title_img{
         background-size: 100% 100%;

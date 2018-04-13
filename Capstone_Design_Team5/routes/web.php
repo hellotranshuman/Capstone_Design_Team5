@@ -141,6 +141,11 @@ Route::post('review/writeReview', [
     'uses' => 'ReviewController@createReview'
 ]);
 
+Route::post('review/writeReview', [
+    'as' =>  'review.createReview',
+    'uses' => 'ReviewController@createReview'
+]);
+
 // <-- Test
 Route::get('test',[
     'as' =>  'main.test',

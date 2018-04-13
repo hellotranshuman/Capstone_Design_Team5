@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 class MainController extends Controller
 {
     public function showMainPage() {
-        // if( !auth()->check())
-        //     return redirect('login');
+        if( !auth()->check())
+            return redirect('login');
 
         // return view('main');
         // return view('welcome');
