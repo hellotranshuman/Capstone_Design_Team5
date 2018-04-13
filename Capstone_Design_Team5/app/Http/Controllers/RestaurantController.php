@@ -8,12 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Restaurant;
 use App\Upload;
 use App\Review;
-use phpDocumentor\Reflection\Types\Self_;
 
 class RestaurantController extends Controller
 {
-    static $shopId = 0;
-
     public function showRestaurantForm() {
         if(auth()->user()->category == true)
             return 'failed!!!!!@@@';
@@ -23,13 +20,10 @@ class RestaurantController extends Controller
 
     public function showRestaurantInfoForm() {
 
-
         return view('user.userRestaurant');
     }
 
     public function showRestaurantInfo($shop_id) {
-
-        // $restaurantId = $request->get('restaurant_id');
 
         $restaurant = Restaurant::join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
                         '=', 'restaurants.id')
@@ -38,18 +32,17 @@ class RestaurantController extends Controller
                         ->get()
                         ->toArray();
 
+        $totalRating = Review::select(DB::raw('ROUND(AVG(rating), 2) as totalRating'))
+                        ->where('shop_id', $shop_id)
+                        ->get()
+                        ->toArray();
+
         $file = Upload::select('path', 'filename')
                         ->where('shop_id', $shop_id)
                         ->get()
                         ->toArray();
 
-        $totalRating = Review::select(DB::raw('AVG(rating) as totalRating'))
-                        ->where('shop_id', $shop_id)
-                        ->get()
-                        ->toArray();
-
-        $restaurantInfo = array_merge($restaurant, $file, $totalRating); //, $totalRating);
-
+        $restaurantInfo = array_merge($restaurant, $totalRating, $file); //, $totalRating);
 
          return response()->json([
             // 'test' => RestaurantController::$shopId,
@@ -90,8 +83,6 @@ class RestaurantController extends Controller
 
         $currentShopId = $shopId->id;
 
-        echo $currentShopId;
-
         \App\LunchDinnerTime::create([
             'shop_id' => $currentShopId,
             'lunch_open' => $request->input('lunch_open'),
@@ -110,11 +101,8 @@ class RestaurantController extends Controller
         $dbPath = '/images/'. $currentShopId . '/';
 
         // Check Shop Path
-        if(is_dir($path))
-            echo 'ok';
-
-        // Make Shop Image SavePath
-        else
+        if(!is_dir($path))
+            // Make Shop Image SavePath
             Storage::makeDirectory($currentShopId);
 
         $number = $request->get('num');
@@ -136,11 +124,6 @@ class RestaurantController extends Controller
                 'path'       => $dbPath
             ]);
         }
-        else {
-            echo '파일이 없습니다';
-        }
-
-        echo $number;
 
         if($number != 0) {
             for( $num = 0 ; $num < $number ; $num++ ) {
@@ -164,13 +147,16 @@ class RestaurantController extends Controller
                     'path'      => $dbPath
                 ]);
             }
+
         }
-        else
-            echo '파일이 없습니다';
 
-        // return redirect()->intended('main');
+        $link = route('restaurant.showRestaurantInfoForm' , ['shop_id' => $currentShopId]);
 
-       // return var_dump($request->all());
+         return response()->json([
+             'msg'  => '등록이 완료되었습니다.',
+             'link' => $link,
+         ]);
 
     }
+
 }

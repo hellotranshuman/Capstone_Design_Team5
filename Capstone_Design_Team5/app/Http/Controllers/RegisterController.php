@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    public function showRegisterForm() {
+        return view('user.userRegisterForm');
+    }
+
     // <-- create Member in Users Table
     public function createMember(Request $request) {
         // <-- 유효성 검사 규칙 정의

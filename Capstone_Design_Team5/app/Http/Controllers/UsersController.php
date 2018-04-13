@@ -52,7 +52,7 @@ class UsersController extends Controller
 
             // <-- Login 정보 확인
             if (! auth()->attempt($userData, true)) {
-                return Redirect::to('user.login');
+                return Redirect::to('login');
             }
             else {
                 return redirect()->intended('main');

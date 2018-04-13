@@ -6,8 +6,9 @@
 -->
 <template>
     <div class="container" style="border:1px solid"> 
+    <v-container>
     <br>
-    <form id="upload_info" enctype="multipart/form-data" action="/createRestaurant" method="post">
+    <form id="upload_info" enctype="multipart/form-data" action="/test" method="post"> 
         <div class="frame">
             <h1 style="font-size:60px;"> 가게 정보 입력 </h1>    
             <input type="button" class="submit_btn" @click="save_data" value="저장하기">
@@ -106,7 +107,7 @@
                 <div class="info_value_25"> 
                     <select name="payment" class="send_datas">
                         <option value="card">카드 가능</option>
-                        <option value="cashe">현금 결제</option>
+                        <option value="cash">현금 결제</option>
                     </select> 
                 </div>
 
@@ -216,9 +217,9 @@
                     <input 
                         type    = "file" 
                         id      = "TitleImgUpload"
-                        accept  = ".png, .jpg, .jpeg"
-                        class   = "upload_btn_hidden"
-                        @change = "title_img_load"/>
+                        accept  = ".png, .jpg, .jpeg" 
+                        class   = "upload_btn_hidden" 
+                        @change = "title_img_load"> 
                 </div>
                 <div class="info_value_75" >  
                     <div id="TitleDiv" style="width:95%; height:300px; border:1px solid; margin:auto; ">  
@@ -229,13 +230,13 @@
 
             <div class="info_row">
                 <div class="info_column"> 이미지 갤러리 <br>
-                    <label for="GalleryImgUpload" class="upload_btn"> 이미지 업로드 </label>
+                    <label for="GalleryImgUpload" class="upload_btn"> 이미지 업로드 </label> 
                     <input 
                         type    = "file" 
                         id      = "GalleryImgUpload"
-                        accept  = ".png, .jpg, .jpeg"
-                        class   = "upload_btn_hidden"
-                        @change = "gallery_img_load"  />
+                        accept  = ".png, .jpg, .jpeg" 
+                        class   = "upload_btn_hidden" 
+                        @change = "gallery_img_load"  >  
                 </div>
                 <div id="GalleryDiv" class="info_value_75" style="min-height:100px;">  
                     <div class="gallery_div"> <img src="./null.png" alt="yet"> </div>
@@ -245,6 +246,7 @@
             </div>
         </div>  
     </form>
+    </v-container>
     </div> 
 </template>
 
@@ -252,16 +254,17 @@
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 
-var num      = 0;
-var formData = new FormData(document.getElementById("upload_info"));
+var num      = 0;                                                           // 갤러리 이미지 갯수 카운트
+var formData = new FormData(document.getElementById("upload_info"));        // 입력 값들을 담아 전송함.
 
 export default {
     methods : {
         // 타이틀 이미지 업로드 메서드
-        title_img_load : function(evnet){ 
+        title_img_load : function(event){
             var titleImg = document.getElementById("TitleImg");  // 타이틀 이미지
             var reader   = new FileReader();
 
+            // 이미지 미리보기 띄우기
             reader.onload = function() {
                 titleImg.src = reader.result;
             };
@@ -302,42 +305,44 @@ export default {
                 createdDiv.classList.add("gallery_div");            // css 적용
                 createdImg.alt = "changed";                         // 새 img alt 속성 추가
 
-                createdDiv.appendChild(createdImg);                 
+                createdDiv.appendChild(createdImg);                 // 갤러리 추가하기.          
                 GalleryDiv.appendChild(createdDiv);
             }
             reader.readAsDataURL(event.target.files[0]);
-            formData.append('galleryImg'+num, GalleryImgUpload.files[0]); num++;    // 파일 저장
+            formData.append('galleryImg'+ num, GalleryImgUpload.files[0]); num++;    // 파일 저장
         },
 
         // 입력한 데이터 저장하기 TitleImgUpload
         save_data :function() {       
-            var TitleImgUpload   = document.getElementById("TitleImgUpload");       // 타이틀 input file
-            var send_datas       = document.getElementsByClassName('send_datas');   // 입력 값들
+            var TitleImgUpload = document.getElementById("TitleImgUpload");       // 타이틀 input file
+            var send_datas     = document.getElementsByClassName('send_datas');   // 입력 값들
              
             // 입력 값 formdata에 append 하기 
             for (let i=0; i < send_datas.length; i++){
                  formData.append(send_datas[i].getAttribute('name'), send_datas[i].value);
             }
-            
             // 타이틀 이미지 append
             if(TitleImgUpload.files.length !== 0) { 
                 formData.append( 'titleImg', TitleImgUpload.files[0] );
             }
-            
+            // 갤러리 이미지 숫자 보내기
+            formData.append('num', num);
+
             // 콘솔창에 띄우기
             for(var pair of formData.entries()) {
                 console.log(pair[0]+ ', '+ pair[1]); 
             }
 
-            formData.append('num', num);
-
-            axios.post('/createRestaurant',formData)
+            // 값 보내기
+            axios.post('/owner/createRestaurant',formData)
             .then( (response) => {
-                this.result = response.data; 
-                document.write(this.result);
+                alert(response.data.msg);
+
+                this.link = response.data.link;
+                window.location.href = this.link;
             })
             .catch((ex)=>{
-                console.lg('updataPhoto failed',ex);
+                console.lg('updatePhoto failed',ex);
             })
 
         }

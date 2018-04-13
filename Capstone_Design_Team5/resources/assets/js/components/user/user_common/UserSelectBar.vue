@@ -13,13 +13,13 @@
                 <!-- 정보, 메뉴, 리뷰 중 선택합니다. -->
                 <b-nav justified tabs>
                     <b-nav-item>
-                        <router-link to="/restaurant" class="btn btn-block selectFontStyle">정보</router-link>
+                        <router-link to="info" class="btn btn-block selectFontStyle">정보</router-link>
                     </b-nav-item>
                     <b-nav-item>
-                        <router-link to="/menu" class="btn btn-block selectFontStyle">메뉴</router-link>
+                        <router-link to="menu" class="btn btn-block selectFontStyle">메뉴</router-link>
                     </b-nav-item>
                     <b-nav-item>
-                        <router-link to="/review" class="btn btn-block selectFontStyle">리뷰</router-link>
+                        <router-link to="review" class="btn btn-block selectFontStyle">리뷰</router-link>
                     </b-nav-item>
                 </b-nav>
             </b-col>

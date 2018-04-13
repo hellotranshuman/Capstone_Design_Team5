@@ -3,7 +3,7 @@
     가게 주인이 입력한 정보, 업로드한 이미지를 바탕으로 가게 페이지를 동적으로 제작함.
 --> 
 <template>
-    <div class="container">
+    <div class="container"> 
         <!-- 타이틀 이미지와 가게 명이 들어갈 div -->
         <div id="title_img" class="title_frame">          
             <br>
@@ -14,30 +14,132 @@
 
         <!-- 가게 설명이 들어갈 div -->
         <div style="width:100%; ">
-            <div style="width:40%; float:left; "> 
+            <div style="width:40%; float:left;"> 
                 <h2 style="font-size:200%;">  소개 </h2> 
             </div>
-            <div style="width:40%; float:left; "> 
-                <h2 id="rating" style="text-align: right;font-size:200%;">
-                   방문객 평점 :  
+            <div style="width:40%; float:left; margin-right:3%;"> 
+                <h2 id="totalRating" style="text-align:right;font-size:200%;">
+                   방문객 평점 :
                 </h2> 
             </div>
-            <input type="button" id="reserve" value="예약하기" @click="reserve"/>
+            
+            <!-- 예약하기 --> 
+            <v-dialog v-model="dialog" persistent max-width="500px" style="float:right;">
+                <v-btn color="#424242" dark slot="activator" class="addReservation_btn">예약 하기</v-btn>
+                <v-card>
+                    <!-- v-card title -->
+                    <v-card-title>
+                        <span class="headline">예약 하기</span>
+                    </v-card-title>
+                    <!-- v-card 본문 -->
+                    <v-card-text>
+                        <v-container grid-list-md>
+                            <v-layout wrap>
+                                <!-- 예약자 이름 -->
+                                <v-flex xs12>
+                                <v-text-field label="예약자 명" required v-model="usernum"></v-text-field>
+                                </v-flex>
+                                <!-- 예약 날짜 -->
+                                <v-flex xs11 sm5 >
+                                    <!-- datepicker -->
+                                    <v-menu
+                                        ref="reservation_menu"
+                                        lazy
+                                        :close-on-content-click="false"
+                                        v-model="reservation_menu"
+                                        transition="scale-transition"
+                                        offset-y
+                                        full-width
+                                        :nudge-right="40"
+                                        min-width="290px"
+                                        :return-value.sync="start_date"
+                                    >
+                                        <v-text-field
+                                        slot="activator"
+                                        label="pick Date"
+                                        v-model="start_date"
+                                        prepend-icon="event"
+                                        readonly
+                                        ></v-text-field>
+
+                                        <v-date-picker v-model="start_date" no-title scrollable>
+                                            <v-spacer></v-spacer>
+                                            <v-btn flat color="primary" @click="reservation_menu = false">Cancel</v-btn>
+                                            <v-btn flat color="primary" @click="$refs.reservation_menu.save(start_date)">OK</v-btn>
+                                        </v-date-picker>
+                                    </v-menu>
+                                </v-flex>
+                                <!-- 예약 시간 -->
+                                <v-flex xs11 sm5>
+                                    <v-menu
+                                        ref="menu"
+                                        lazy
+                                        :close-on-content-click="false"
+                                        v-model="menu2"
+                                        transition="scale-transition"
+                                        offset-y
+                                        full-width
+                                        :nudge-right="40"
+                                        max-width="290px"
+                                        min-width="290px"
+                                        :return-value.sync="time"
+                                    >
+                                        <v-text-field
+                                        slot="activator"
+                                        label="pick Time"
+                                        v-model="time"
+                                        prepend-icon="access_time"
+                                        readonly
+                                        ></v-text-field>
+                                        <v-time-picker v-model="time" @change="$refs.menu.save(time)"></v-time-picker>
+                                    </v-menu>
+                                </v-flex>
+                                <!-- 인원수 -->
+                                <v-flex xs12 sm6 md4>
+                                    <v-text-field label="어른 인원" required v-model="adult_person"></v-text-field>
+                                </v-flex>
+                                <v-flex xs12 sm6 md4>
+                                    <v-text-field label="아이 인원" required v-model="child_person"></v-text-field>
+                                </v-flex>
+                            </v-layout>
+                        </v-container>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="blue darken-1" flat @click.native="dialog = false">닫기</v-btn>
+                        <v-btn color="blue darken-1" flat  @click.stop="dialog_ok = true">예약 하기</v-btn>
+                        <!-- 확인 버튼 -->
+                        <v-dialog v-model="dialog_ok" max-width="500px">
+                          <v-card>
+                            <v-card-title>
+                              <div class="reservationCheck">
+                                  <h2><B>예약 확인</B></h2>
+                                  <br><hr><br>
+                                  <h3><B> 예약자 명 : </B> {{usernum}} </h3>
+                                  <h3><B> 예약 날짜 : </B> {{start_date}} </h3>
+                                  <h3><B> 예약 시간 : </B> {{time}} </h3>
+                                  <h3><B> 어른 인원 : </B> {{adult_person}} </h3>
+                                  <h3><B> 아이 인원 : </B>{{child_person}} </h3>
+                              </div>
+                            </v-card-title>
+                            <v-card-actions>
+                              <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData(), Okey()">확인</v-btn>
+                              <v-btn color="primary" flat @click.native="dialog_ok = false, dialog = false">취소</v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
         </div> 
         
         <div id="explanation" class="frame" style="padding:2%;"> 
-            가게 설명    
+                
         </div>
 
         <!-- 갤러리 이미지가 들어갈 div -->
         <h2> 갤러리 </h2> 
         <div id="gallery_div" class="frame" style="text-align:center;"> 
-            <!-- <div class="gallery"> <img src="./gallery_img0.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img1.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img2.jpg" class="gallery_img"> </div> 
-            <div class="gallery"> <img src="./gallery_img3.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img4.jpg" class="gallery_img"> </div>
-            <div class="gallery"> <img src="./gallery_img5.jpg" class="gallery_img"> </div>    -->
         </div>
 
         <!-- 구글 맵스, 텍스트 주소가 출력 될 div -->
@@ -47,9 +149,9 @@
 
             <div id="address">
                 <b class="address_values"> 상세 주소 : </b>
-                <div id="dodobuken"class="address_values"></div>
-                <div id="cities" class="address_values"></div>
-                <div id="address" class="address_values"></div>
+                <div id="dodobuken" class="address_values"></div>
+                <div id="cities"    class="address_values"></div>
+                <div id="address"   class="address_values"></div>
             </div>
         </div>
  
@@ -96,13 +198,14 @@
         <div class="frame_small"> 
             <div class="column"> <b>이용 안내</b> </div> 
             <div class="column_value">  
-                <div id="children"   class="others"> 아이 동반 : </div>
-                <div id="pet"        class="others"> 애완 동물 동반 : </div>
-                <div id="parking"    class="others"> 주차 : </div> <br>
-                <div id="smoking"    class="others"> 흡연 : </div>
-                <div id="privateroom"class="others"> 개인실 : </div>
+                <div id="children"    class="others"> 아이 동반 : </div>
+                <div id="pet"         class="others"> 애완 동물 동반 : </div>
+                <div id="parking"     class="others"> 주차 : </div> <br>
+                <div id="smoking"     class="others"> 흡연 : </div>
+                <div id="privateroom" class="others"> 개인실 : </div>
             </div>
         </div> 
+ 
     </div> 
 </template> 
  
@@ -119,27 +222,60 @@ Vue.use(VueGoogleMaps, {
     }
 });
 
-var restaurant_id = '';           // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
 var get_datas  = null;           // 요청한 데이터들이 담길 변수 JSON으로 받을 예정
 var url = '';
 
 export default{
+    data() {
+        return {
+            dialog: false,
+            dialog_ok : false,
+
+            /* reservation */
+            usernum             : '',       
+            adult_person        : '',
+            child_person        : '',
+            menuselect          : '',
+
+            /* date picker */
+            start_date: null,
+            reservation_menu: false,
+            modal: false,
+
+            /* time picker */
+            time: null,
+            menu2: false,
+            modal2: false
+        }
+    },
     created() {
 
-        // 값 보내기
+        // <-- 값 보내기
+        // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
         this.shop_id = this.$route.params.shop_id;
         url = '/restaurant/' + this.shop_id + '/getInfo';
 
         axios.get(url)
         .then( (response) => {
             get_datas = response.data.restaurant;
-            console.log();
+            console.log(get_datas);
 
-            this.enter_data(Object.keys(get_datas[0]));        // 데이터 바인딩
-            this.geoCoder(); // 지도 생성
-            console.log("url('" + get_datas[1].path + get_datas[1].filename + "')");
-            this.enter_title();                             // 타이틀 이미지 삽입
-            this.enter_galley();       // 갤러리 이미지 출력
+            // 데이터 바인딩-기본정보
+            this.enter_data(get_datas[0]);        
+
+            // 데이터 바인딩-평점
+            this.enter_data(get_datas[1]);      
+            
+            // 지도 생성
+            this.geoCoder(get_datas[0]);          
+            
+            console.log("url('" + get_datas[2].path + get_datas[2].filename + "')");
+            
+            // 타이틀 이미지 삽입
+            this.enter_title(get_datas[2]);                             
+            
+            // 갤러리 이미지 출력
+            this.enter_galley();       
         })
         .catch((ex)=>{
             // alert('왜 안대');
@@ -147,45 +283,51 @@ export default{
     },
     methods : {
         // 각 공간에 해당 값들을 삽입함.
-        enter_data : function(argIterator){
-            // var iterator = Object.keys(get_datas[0]);
+        enter_data : function(argArray){
+            var iterator = Object.keys(argArray);
 
-            for (let key of argIterator){ 
+            for (let key of iterator){ 
 
                 if(document.getElementById(key) !== null){
                     var get_div = document.getElementById(key);
 
                     // 데이터 입력
-                    if(get_datas[0][key] === 1){
+                    if(argArray[key] === 1){
                         get_div.innerText += '가능';
                     } 
-                    else if (get_datas[0][key] === 0){
+                    else if (argArray[key] === 0){
                         get_div.innerText += '불가';
                     } 
+                    else if (argArray[key] === 'card'){
+                        get_div.innerText += '카드 가능';
+                    } 
+                    else if (argArray[key] === 'cash'){
+                        get_div.innerText += '현금 결제';
+                    } 
                     else{ 
-                        get_div.innerText += get_datas[0][key];
+                        get_div.innerText += argArray[key];
                     }
                 }  
             }
         },
 
         // 타이틀 이미지 삽입하기
-        enter_title : function(){
+        enter_title : function(argImgArray){
             var title_div = document.getElementById('title_img');
-            title_div.style.backgroundImage = "url(" + get_datas[1].path + get_datas[1].filename + ")";
+            title_div.style.backgroundImage = "url(" + argImgArray.path + argImgArray.filename + ")";
         },
 
         // 갤러리에 이미지 추가하기.
-        enter_galley : function(argNum){
+        enter_galley : function(){
             var gallery_div = document.getElementById('gallery_div');
-            var argNum = get_datas.length;                              // 넘어온 데이터 배열 갯수 0은 기본 데이터 , 1은 타이틀 이미지 
+            var argNum = get_datas.length; // 넘어온 데이터 배열 갯수 :  0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지 
              
             // 등록된 이미지가 없으면 메세지 출력 
-            if(argNum == 0) {
+            if(argNum -3 == 0) {
                 gallery_div.innerText = "등록된 이미지가 없습니다.";
             }
             else {
-                for (let i=2; i < argNum; i++){
+                for (let i=3; i < argNum; i++){
                     // div, img 생성
                     let createdDiv = document.createElement('div');
                     let createdImg = document.createElement('img');
@@ -243,20 +385,27 @@ export default{
             //         gallery_div.appendChild(createdDiv);
             //     }
             // }
+        
+            // show_gallery : function (){
+            //     alert('아직 : 갤러리 보여주기');
+            // },
         }, 
 
-        show_gallery : function (){
-            alert('아직 : 갤러리 보여주기');
-        },
+
+
         // 예약하기
-        reserve : function (){
-            alert('아직 : 예약하기');
-        },
-        geoCoder : function () { 
+        // reserve : function (){
+        //     alert('아직 : 예약하기');
+        // },
+
+
+
+        // 구글 맵스 설정하기.
+        geoCoder : function (argAddress) { 
             var map      = new google.maps.Map(document.getElementById('map'), {zoom: 18}); // 구글 맵스 생성
-            var address  = get_datas[0].dodobuken + 
-                           get_datas[0].cities + 
-                           get_datas[0].address;   // 사장이 입력한 주소 값 더하기
+            var address  = argAddress.dodobuken + 
+                           argAddress.cities + 
+                           argAddress.address;   // 사장이 입력한 주소 값 더하기
             var geocoder = new google.maps.Geocoder();                                      // 지오 코더 
             
             // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
@@ -271,6 +420,21 @@ export default{
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
             });
+        },
+
+        Okey() {
+          confirm('예약이 완료 되었습니다.')
+        },
+        
+        SpendData() {
+        // axios http 라이브러리
+            axios.post('/addReservation', {
+                usernum        : this.usernum,
+                adult_person   : this.adult_person,
+                child_person   : this.child_person,
+                start_date     : this.start_date, 
+                time           : this.time,
+            }).then(console.log('success')).catch(console.log('test '));
         }
 
     }
@@ -301,6 +465,7 @@ export default{
         font-size: 180%;
         display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤. */
         margin-bottom: 5%; 
+        border: 1px;
     }   
     #title_img{
         background-size: 100% 100%;

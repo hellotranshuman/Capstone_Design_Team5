@@ -6,31 +6,45 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Review;
 
+
 class ReviewController extends Controller
 {
-    public function getReviewData() {
+    public function showReviewForm() {
+        return view('user.review');
+    }
+
+    public function getReviewData(Request $request) {
 
         $review = Review::join('users', 'users.id', '=', 'review.writer')
-                    ->select('review.*', 'users.name')
-                    ->where('shop_id', 13)
+                    ->select('review.*', 'users.name', 'users.country')
+                    ->where('shop_id', $request->get('shop_id'))
                     ->orderByRaw('reg_date DESC')
                     ->get()
                     ->toArray();
 
         $totalRating = Review::select(DB::raw('AVG(rating) as totalRating'))
-                        ->where('shop_id', 13)
+                        ->where('shop_id', $request->get('shop_id'))
                         ->orderByRaw('reg_date DESC')
                         ->get()
                         ->toArray();
 
-        $reviewData = array_merge($totalRating, $review);
+        $reviewImage = Review::join('review_image', 'review_image.review_id', '=', 'review.id')
+                        ->select('review_image.filename')
+                        ->orderByRaw('review.reg_date DESC')
+                        ->where('shop_id', $request->get('shop_id'))
+                        ->get()
+                        ->toArray();
+
+        $reviewData = array_merge($totalRating, $review, $reviewImage);
 
         return response()->json([
-            'review' => $reviewData
+            'test' => $request->get('shop_id'),
+            'review' => $reviewData,
+            'path'   => 'images/review/',
         ]);
     }
 
-    public function showReviewForm() {
+    public function showWriteReviewForm() {
         return view('user.writeReview');
     }
 
@@ -40,7 +54,7 @@ class ReviewController extends Controller
 
         // create Review column in Review Table
         \App\Review::create([
-            'shop_id' => 13,
+            'shop_id' => $request->get('shop_id'),
             'content'=> $request->get('CONTENT'),
             'reg_date' => $currentDate,
             'writer' => auth()->user()->id,
@@ -62,8 +76,9 @@ class ReviewController extends Controller
         $reviewId = $review->id;
 
         // <-- hash Tag column create in HashTag Table
-        $hashtag = str_replace('#', '',$request->get('HASHTAG'));
-        $hashTags = explode(',', $hashtag);
+        $tags = implode(',' , $request->get('HASHTAG'));
+        $hashTag = str_replace('#', '', $tags);
+        $hashTags = explode(',', $hashTag);
 
         for( $num = 0 ; $num < count($hashTags) ; $num++)
         {
@@ -79,29 +94,41 @@ class ReviewController extends Controller
          * */
 
         $imgNum = $request->get('imgNum');
+        $fileIndex = 1;
 
+        // <-- Image Save
         if($imgNum != 0) {
-            for( $num = 1 ; $num <= $imgNum ; $num++ )
+            for( $num = 1 ; $num <= 3 ; $num++ )
             {
 
+                // 해당 번호의 Image 있는지 확인
                 $fileName = 'imgFile' . $num;
-                $file = $request->file($fileName);
 
-                $imgName = $reviewId . '_reviewImg_' . $num . '.' . $file->getClientOriginalExtension();
-                $file->storeAs('review', $imgName);
+                if ($request->file($fileName))
+                {
+                    // image file Save
+                    $file = $request->file($fileName);
 
-                \App\Review_Image::create ([
-                   'review_id' => $reviewId,
-                   'filename' => $imgName,
-                ]);
+                    $imgName = $reviewId . '_reviewImg_' . $fileIndex . '.' . $file->getClientOriginalExtension();
+                    $file->storeAs('review', $imgName);
+
+                    $fileIndex++;
+
+                    // create reviewImage column in Review_Image Table
+                    \App\Review_Image::create ([
+                        'review_id' => $reviewId,
+                        'filename' => $imgName,
+                    ]);
+
+                }
 
             }
 
-            return response()->json([
-                'content' => '리뷰 작성이 완료되었습니다.',
-            ]);
-
         }
+
+        return response()->json([
+            'content' => '리뷰 작성이 완료되었습니다.',
+        ]);
 
     }
 }
