@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLunchDinnerTimeTable extends Migration
+class CreateMenuImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateLunchDinnerTimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('lunchDinnerTime', function (Blueprint $table) {
+        Schema::create('menu_image', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('filename');
+            $table->string('path');
             $table->unsignedInteger('shop_id');
-            $table->time('lunch_open');
-            $table->time('lunch_close');
-            $table->time('lunch_lo');
-            $table->time('dinner_open');
-            $table->time('dinner_close');
-            $table->time('dinner_lo');
-            $table->timestamps();
             $table->foreign('shop_id')
                 ->references('id')->on('restaurants')
                 ->onDelete('cascade');
+            $table->unsignedInteger('menu_id');
+            $table->foreign('menu_id')
+                ->references('id')->on('menu')
+                ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -36,6 +36,6 @@ class CreateLunchDinnerTimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lunch_dinner_time');
+        Schema::dropIfExists('menu_image');
     }
 }

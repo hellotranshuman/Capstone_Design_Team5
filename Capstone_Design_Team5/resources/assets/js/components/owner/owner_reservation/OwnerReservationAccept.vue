@@ -2,8 +2,8 @@
 <v-app>
     <div class="create_coupon">
         <br>
-        <h3><B>예약 설정</B></h3>
-        예약에 관련 설정 할 수 있습니다.
+        <h3><B>예약 수락</B></h3>
+        신청받은 예약을 확인하고 수락 할 수 있습니다.
         <hr><br>
       <div class="coupon_table">
         <v-data-table

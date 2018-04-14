@@ -1,10 +1,12 @@
 
 <!-- 회원가입 -->
 <template>
+    <v-app>
     <v-container text-xs-center>
         <v-btn round color="success" style="width: 30vw; height: 50vh"><span>개인 회원</span></v-btn>
         <v-btn round color="error" style="width: 30vw; height: 50vh">사업자 회원</v-btn>
     </v-container>
+    </v-app>
 </template>
 
 <script>

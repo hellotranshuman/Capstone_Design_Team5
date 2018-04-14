@@ -189,6 +189,49 @@ export default {
             }
         }
     },
+    created: function () {
+        axios.post('/owner/getCouponList', {
+            shop_id  : this.$route.params.shop_id
+        }).then((response) => {
+            // Key
+
+            var couponData = Object.values(response.data.coupon);
+            var couponNum = response.data.couponNum;
+
+            console.log(couponData);
+            console.log(couponNum);
+
+
+            for(var index = 0 ; index < couponNum ; index++ )
+            {
+                console.log(this.CouponIndex);
+                this.CouponItem.CouponName   = couponData[index].name;
+                this.CouponItem.CouponType   = couponData[index].category;
+                this.CouponItem.Discount     = couponData[index].discount;
+                this.CouponItem.addproduct   = couponData[index].add_product;
+                this.CouponItem.Condition    = couponData[index].price_condition;
+                this.CouponItem.start_date   = couponData[index].start_date;
+                this.CouponItem.end_date     = couponData[index].expiry_date;
+
+            }
+
+            // Object.assign(this.items[this.CouponIndex], this.CouponItem)
+            if (this.CouponIndex > -1) {
+                Object.assign(this.items[this.CouponIndex], this.CouponItem)
+
+            } else {
+                this.items.push(this.CouponItem)
+            }
+
+
+                // this.save();
+
+                // this.index++;
+
+
+
+        })
+    },
     computed: {
       formTitle () {
         return this.CouponIndex === -1 ? '쿠폰 추가' : '쿠폰 변경'
@@ -230,7 +273,7 @@ export default {
         }
         
         /* Data 송신 */
-          axios.post('/restaurant/createCoupon', {
+          axios.post('/owner/createCoupon', {
             name                : this.CouponItem.CouponName,
             shop_id             : this.$route.params.shop_id,
             category            : this.CouponItem.CouponType,

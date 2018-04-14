@@ -11,33 +11,6 @@
 |
 */
 
-/* Route Test
-Route::get('login', function () {
-
-    $user = [
-        'id' => 'aaa',
-        'password' => 'aaa'
-    ];
-
-    if( !auth()->attempt($user)) {
-        return 'false';
-    }
-
-});
-
-Route::get('main', function () {
-    if( !auth()->check())
-        return 'false';
-
-    return auth()->user()->name . '님 환영합니다';
-});
-*/
-
-Route::get('createRestaurant', array(
-    'as' => 'restaurant.showRestaurantForm',
-    'uses' => 'RestaurantController@showRestaurantForm'
-));
-
 // <-- Show Main Page
 Route::get('main', array(
     'as' => 'main.showMainPage',
@@ -66,6 +39,11 @@ Route::get('logout', [
     'as' => 'users.doLogout',
     'uses' => 'UsersController@doLogout'
 ]);
+/*
+Route::get('register', [
+    'as' => 'register.showRegisterForm',
+    'uses' => 'RegisterController@showRegisterForm'
+]); */
 
 // <-- select Type
 Route::get('register/selectType', function (){
@@ -86,12 +64,18 @@ Route::post('register', [
     'uses' => 'RegisterController@createMember'
 ]);
 
-Route::get('createRestaurant', array(
+// <-- User Restaurant Route
+Route::get('owner/createRestaurant', array(
     'as' => 'restaurant.showRestaurantForm',
     'uses' => 'RestaurantController@showRestaurantForm'
 ));
 
-Route::post('createRestaurant', [
+Route::get('owner/{shop_id}/editRestaurant', array(
+    'as' => 'restaurant.showRestaurantForm',
+    'uses' => 'RestaurantController@showRestaurantForm'
+));
+
+Route::post('owner/createRestaurant', [
     'as' => 'restaurant.createRestaurant',
     'uses' => 'RestaurantController@createRestaurant'
 ]);
@@ -106,24 +90,58 @@ Route::get('restaurant/{shop_id}/getInfo', [
     'uses' => 'RestaurantController@showRestaurantInfo'
 ]);
 
-/*
-Route::get('restaurant/createCoupon', function () {
-    return view('restaurant.createCoupon');
-});*/
+// <-- Owner Menu Setting
 
-Route::get('restaurant/{shop_id}/createCoupon', [
+Route::get('owner/{shop_id}/menu',[
+    'as' => 'menu.showMenuForm',
+    'uses' => 'MenuController@showMenuForm'
+]);
+
+Route::get('owner/{shop_id}/menuOperate',[
+    'as' => 'menu.showCreateMenuForm',
+    'uses' => 'MenuController@showCreateMenuForm'
+]);
+
+Route::post('owner/createMenu',[
+    'as' => 'menu.createMenu',
+    'uses' => 'MenuController@createMenu'
+]);
+
+Route::get('owner/{shop_id}/menuList', [
+    'as' => 'menu.showMenuList',
+    'uses' => 'MenuController@showMenuList'
+]);
+
+// <-- Owner Coupon Page
+Route::get('owner/{shop_id}/createCoupon', [
     'as' => 'coupon.showCouponForm',
     'uses' => 'CouponController@showCouponForm'
 ]);
 
-Route::post('restaurant/createCoupon', [
+Route::post('owner/createCoupon', [
     'as' => 'coupon.createCoupon',
     'uses' => 'CouponController@createCoupon'
 ]);
 
-Route::get('review', [
-   'as' =>  'review.showReviewData',
-    'uses' => 'ReviewController@getReviewData'
+Route::post('owner/getCouponList', [
+    'as' => 'coupon.getCouponList',
+    'uses' => 'CouponController@getCouponList'
+]);
+
+// <-- User Review Route
+Route::get('restaurant/{shop_id}/review', [
+    'as' => 'review.showReviewForm',
+    'uses' => 'ReviewController@showReviewForm'
+]);
+
+Route::get('restaurant/{shop_id}/writeReview', [
+    'as' =>  'review.showWriteReviewForm',
+    'uses' => 'ReviewController@showWriteReviewForm'
+]);
+
+Route::post('review/writeReview', [
+    'as' =>  'review.createReview',
+    'uses' => 'ReviewController@createReview'
 ]);
 
 Route::post('review', [
@@ -131,20 +149,30 @@ Route::post('review', [
     'uses' => 'ReviewController@getReviewData'
 ]);
 
-Route::get('review/writeReview', [
-    'as' =>  'review.showReviewForm',
-    'uses' => 'ReviewController@showReviewForm'
+// <-- User Reservation Route
+
+Route::get('/restaurant/{shop_id}/addReservation',[
+    'as' => 'reservation.showAddReservationForm',
+    'uses' => 'ReservationController@showAddReservationForm'
 ]);
 
-Route::post('review/writeReview', [
-    'as' =>  'review.createReview',
-    'uses' => 'ReviewController@createReview'
+// <-- Owner Reservation List
+
+Route::get('/owner/{shop_id}/ownerReservationList', [
+   'as' => 'reservation.showReservationList',
+   'uses' => 'ReservationController@showReservationList'
 ]);
 
-Route::post('review/writeReview', [
-    'as' =>  'review.createReview',
-    'uses' => 'ReviewController@createReview'
+Route::get('/owner/{shop_id}/ownerReservationAccept', [
+    'as' => 'reservation.showReservationAccept',
+    'uses' => 'ReservationController@showReservationAccept'
 ]);
+
+Route::get('/owner/{shop_id}/ownerReservationSetting', [
+    'as' => 'reservation.showReservationSetting',
+    'uses' => 'ReservationController@showReservationSetting'
+]);
+
 
 // <-- Test
 Route::get('test',[
@@ -173,3 +201,5 @@ Route::get('images/review/{image}', function($image = null)
     else
         return $path;
 });
+
+

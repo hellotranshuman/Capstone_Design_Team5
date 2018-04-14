@@ -18,13 +18,13 @@
                 </v-tabs> -->
                 <v-layout>
                     <v-flex>
-                        <v-btn outline color="indigo" to="/userRestaurantMain/restaurant" class="select-font-style">정보</v-btn>
+                        <v-btn outline color="indigo" to="info" class="select-font-style">정보</v-btn>
                     </v-flex>
                     <v-flex>
-                        <v-btn outline color="indigo" to="/userRestaurantMain/menu" class="select-font-style">메뉴</v-btn>
+                        <v-btn outline color="indigo" to="menu" class="select-font-style">메뉴</v-btn>
                     </v-flex>
                     <v-flex>
-                        <v-btn outline color="indigo" to="/userRestaurantMain/review" class="select-font-style">리뷰</v-btn>
+                        <v-btn outline color="indigo" to="review" class="select-font-style">리뷰</v-btn>
                     </v-flex>
                 </v-layout>
             </v-flex>
@@ -39,24 +39,24 @@
 </template>
 
 <script>
-  export default {
+export default {
     data () {
-      return {
-        e2: 3
-      }
+        return {
+            e2: 3,
+        }
     },
 
     computed: {
-      color () {
-        switch (this.e2) {
-          case 0: return 'blue-grey'
-          case 1: return 'teal'
-          case 2: return 'brown'
-          case 3: return 'indigo'
+        color () {
+            switch (this.e2) {
+                case 0: return 'blue-grey'
+                case 1: return 'teal'
+                case 2: return 'brown'
+                case 3: return 'indigo'
+            }
         }
-      }
     }
-  }
+}
 </script>
 
 <style>

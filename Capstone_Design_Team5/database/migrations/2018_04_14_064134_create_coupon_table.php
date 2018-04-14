@@ -20,10 +20,16 @@ class CreateCouponTable extends Migration
             $table->string('name');
             $table->integer('discount')->nullable();
             $table->unsignedInteger('price_condition')->nullable();
-            $table->boolean('price_check')->nullable();
+            $table->unsignedInteger('add_product')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('expiry_date');
             $table->timestamps();
+            $table->foreign('add_product')
+                ->references('id')->on('menu')
+                ->onDelete('cascade');
+            $table->foreign('shop_id')
+                ->references('id')->on('restaurants')
+                ->onDelete('cascade');
         });
     }
 

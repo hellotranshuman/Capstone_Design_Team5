@@ -20,14 +20,17 @@ class CreateReviewTable extends Migration
             $table->dateTime('reg_date');
             $table->unsignedInteger('writer');
             $table->double('rating');
-            $table->unsignedInteger('taste');
-            $table->unsignedInteger('service');
-            $table->unsignedInteger('mood');
-            $table->unsignedInteger('price');
+            $table->unsignedInteger('taste')->nullable();
+            $table->unsignedInteger('service')->nullable();
+            $table->unsignedInteger('mood')->nullable();
+            $table->unsignedInteger('price')->nullable();
             $table->unsignedInteger('img_num')->default('0');
             $table->timestamps();
             $table->foreign('writer')
                 ->references('id')->on('users')
+                ->onDelete('cascade');
+            $table->foreign('shop_id')
+                ->references('id')->on('restaurants')
                 ->onDelete('cascade');
         });
     }

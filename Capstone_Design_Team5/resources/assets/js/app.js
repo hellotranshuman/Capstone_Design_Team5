@@ -1,71 +1,74 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import App from './App.vue';
+import VueAxios from 'vue-axios';
+import axios from 'axios';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
+import App from './App.vue';
 
-import Home from './components/user/user_main/UserMain.vue';
-import UserRegister from './components/Register.vue';
- 
-Vue.use(Vuetify);
 Vue.use(VueRouter);
+Vue.use(Vuetify);
+Vue.use(VueAxios, axios);
+
+// 이미지 확대 API
+import VuePreview from 'vue-preview'
+// defalut install
+Vue.use(VuePreview)
+
 
 // SNS 공유 API
 var SocialSharing = require('vue-social-sharing');
 Vue.use(SocialSharing);
 
-// 유저 메인 페이지 컴포넌트 import
-import UserMain     from './components/user/user_main/UserMain.vue';
-// 유저 리뷰 페이지 컴포넌트 import
+// <-- User Main Page Component Import
+import Home                 from './components/user/user_main/UserMain.vue';
+// <-- User Register Page Component Import
+import UserRegister         from './components/Register.vue';
+// <-- User Restaurant Page Component Import
 import UserRestaurantMain   from './components/user/user_common/UserRestaurantMain.vue';
 
-// 가게 정보 페이지 컴포넌트 import
-import UserMenu         from './components/user/user_menu/UserMenu.vue';
+// <-- Owner Common Page Component Import
+import OwnerPage                from './components/owner/owner_common/OwnerPage.vue';
+import OwnerPageSideReservation from './components/owner/owner_common/OwnerPageSideReservation.vue';
+import OwnerPageSideSetting     from './components/owner/owner_common/OwnerPageSideSetting.vue';
+import OwnerPageSideStatistics from './components/owner/owner_common/OwnerPageSideStatistics.vue';
 
-// 메뉴판 페이지 컴포넌트 import
-import UserReview       from './components/user/user_review/UserReview.vue';
-// 리뷰 페이지 컴포넌트 import
-import UserRestaurant   from './components/user/user_restaurant/UserRestaurant.vue';
-// 리뷰 작성 페이지 컴포넌트 import
-import UserWriteReview  from './components/user/user_review/UserWriteReview.vue';
-
-// Common Page, 사장님 페이지 공통 컴포넌트 import
-import OwnerPage                    from './components/owner/owner_common/OwnerPage.vue';
-import OwnerPageSideReservation     from './components/owner/owner_common/OwnerPageSideReservation.vue';
-import OwnerPageSideSetting         from './components/owner/owner_common/OwnerPageSideSetting.vue';
-import OwnerPageSideStatistics         from './components/owner/owner_common/OwnerPageSideStatistics.vue'; // 통계
-
-
-// Reservation Page, 예약 관련
-// Reservation Accept Page
+// <-- Owner Reservation Page
+// Owner Reservation List Import
+import OwnerReservationList     from './components/owner/owner_reservation/OwnerReservationlist.vue';
+// Owner Reservation Accept Page Import
 import OwnerReservationAccept   from './components/owner/owner_reservation/OwnerReservationAccept.vue';
-// Reservation List
-import OwnerReservationlist     from './components/owner/owner_reservation/OwnerReservationlist.vue';
-// Reservation Setting
+// Owner Reservation Setting Page Import
 import OwnerReservationSetting  from './components/owner/owner_reservation/OwnerReservationSetting.vue';
 
-// 가게 정보 입력 페이지 컴포넌트 import
+// <-- Create Restaurant Page
+// Create Restaurant Information Import
 import OwnerRestaurant from './components/owner/owner_restaurant/OwnerRestaurant.vue';
+// Create Coupon Page Import
+import OwnerCreateCoupon from './components/owner/owner_coupon/createCoupon.vue';
 
-// Coupon Page, 쿠폰 제작 페이지 컴포넌트 import
-import OwnerCreateCoupon from './components/owner/owner_coupon/OwnerCreateCoupon.vue';
-
-// 전자메뉴판 설정 페이지 컴포넌트 import
+// <-- 전자메뉴판 설정
+// 전자 메뉴판 설정 Page Component Import
 import OwnerMenu from './components/owner/owner_menu/OwnerMenu.vue';
-// 전자메뉴판 설정 페이지 컴포넌트 import
+// 전자메뉴판 메뉴 추가 Page Component Import
 import OwnerMenuOperate from './components/owner/owner_menu/OwnerMenuOperate.vue';
-// 전자메뉴판 설정 페이지 컴포넌트 import
+// 전자메뉴판 메뉴 리스트 Page Component Import
 import OwnerMenuList from './components/owner/owner_menu/OwnerMenuList.vue';
-// 전자메뉴판 설정 페이지 컴포넌트 import
+// 전자메뉴판 메뉴 레이아웃 선택 Page Component Import
 import OwnerMenuSelectLayout from './components/owner/owner_menu/OwnerMenuSelectLayout.vue';
 
+// <-- user Menu & Review
+// 가게 정보 페이지 컴포넌트 import
+import UserMenu from './components/user/user_menu/UserMenu.vue';
+// 메뉴판 페이지 컴포넌트 import
+import UserReview from './components/user/user_review/UserReview.vue';
+// 리뷰 페이지 컴포넌트 import
+import UserRestaurant from './components/user/user_restaurant/UserRestaurant.vue';
+// 리뷰 작성 페이지 컴포넌트 import
+import UserWriteReview from './components/user/user_review/UserWriteReview.vue';
 
-//////////
-// 손님페이지 예약하기
+// <-- user Reservation
 import CustomerAddReservation from './components/user/user_reservation/CustomerAddReservation.vue';
-///////////
-
-
 
 
 const router = new VueRouter({
@@ -75,131 +78,143 @@ const router = new VueRouter({
             name: 'home',
             component: Home
         },
+        // <-- 회원 가입
         {
             path: '/register',
-            name: 'userregister',
+            name: 'userRegister',
             component: UserRegister
         },
+        // <-- 가게 페이지 공통
         {
-            name: 'UserRestaurantMain',                         // 가게 페이지
-            path: '/userRestaurantMain',
+            path: '/restaurant',
+            name: 'UserRestaurantMain',
             component: UserRestaurantMain,
             // 네스티드 라우터
-            children:[
+            children: [
                 {
                     name: 'UserRestaurant',                     // 가게 페이지 안의 정보
-                    path: '/userRestaurantMain/restaurant',
+                    path: '/restaurant/:shop_id/info',
                     component: UserRestaurant
                 },
                 {
                     name: 'UserMenu',                           // 가게 페이지 안의 메뉴
-                    path: '/userRestaurantMain/menu',
+                    path: '/restaurant/:shop_id/menu',
                     component: UserMenu
                 },
                 {
                     name: 'UserReview',                         // 가게 페이지 안의 리뷰
-                    path: '/userRestaurantMain/review',
+                    path: '/restaurant/:shop_id/review',
                     component: UserReview
                 }
             ]
         },
         {
             name: 'UserWriteReview',                            // 리뷰 작성
-            path: '/userRestaurantMain/review/writeReview',
+            path: '/restaurant/:shop_id/writeReview',
             component: UserWriteReview,
         },
         {
-            name: 'OwnerPage',                                  // 사장님 페이지
-            path: '/ownerPage',
+            name: OwnerPage,                                  // 사장님 페이지
+            path: '/owner',
             component: OwnerPage,
-            // side_var
-            children: [{
-                name: 'OwnerPageSideReservation',               // 사장님 페이지 예약 관련 좌측 바
-                path: '/ownerPage/ownerPageSideReservation',
-                component: OwnerPageSideReservation,
-                // Main
-                children: [{
-                    name: 'OwnerReservationlist',               // 사장님 페이지 예약 현황
-                    path: '/ownerPage/ownerReservationlist',
-                    component: OwnerReservationlist
-                    },
-                    {
-                        name: 'OwnerReservationAccept',         // 사장님 페이지 예약 수락
-                        path: '/ownerPage/ownerReservationAccept',
-                        component: OwnerReservationAccept
-                    },
-                    {
-                        name: 'OwnerReservationSetting',        // 사장님 페이지 예약 설정
-                        path: '/ownerPage/ownerReservationSetting',
-                        component: OwnerReservationSetting
-                    }]
-            },
-            {
-                name: 'OwnerPageSideSetting',                   // 사장님 페이지 가게 설정 관련 좌측 바
-                path: '/ownerPage/ownerPageSideSetting',
-                component: OwnerPageSideSetting,
-    
-                children: [{
-                    name: 'OwnerRestaurant',                  // 사장님 페이지 가게 정보 입력 
-                    path: '/ownerPage/ownerRestaurant',
-                    component: OwnerRestaurant
-                },
+            // side bar
+            children: [
                 {
-                    name: 'OwnerCreateCoupon',                  // 사장님 페이지 쿠폰 제작     
-                    path: '/ownerPage/ownerCreateCoupon',
-                    component: OwnerCreateCoupon
-                },
-            
-                {
-                    name: 'OwnerMenu',  // 전자 메뉴판 설정
-                    path: '/ownerPage/OwnerMenu',
-                    component: OwnerMenu,
-                    children: [{
-                            name: 'OwnerMenuOperate', // 메뉴 추가
-                            path: '/ownerPage/OwnerMenu/operate',
-                            component: OwnerMenuOperate
+                    name: 'OwnerPageSideReservation',          // 사장님 페이지 예약 관련 좌측 바
+                    path: '/owner/ownerSideReservation',
+                    component: OwnerPageSideReservation,
+
+                    children: [
+                        {
+                            // 사장 예약 리스트 Page
+                            name: 'OwnerReservationList',
+                            path: '/owner/:shop_id/ownerReservationList',
+                            component: OwnerReservationList,
                         },
                         {
-                            name: 'OwnerMenuList',      // 메뉴 리스트
-                            path: '/ownerPage/OwnerMenu/list',
-                            component: OwnerMenuList
+                            // 사장 예약 수락 Page
+                            name: 'OwnerReservationAccept',
+                            path: '/owner/:shop_id/ownerReservationAccept',
+                            component: OwnerReservationAccept,
                         },
                         {
-                            name: 'OwnerMenuSelectLayout',  // 메뉴 레이아웃 설정
-                            path: '/ownerPage/OwnerMenu/layout',
-                            component: OwnerMenuSelectLayout
+                            // 사장 예약 설정 Page
+                            name: 'OwnerReservationSetting',
+                            path: '/owner/:shop_id/ownerReservationSetting',
+                            component: OwnerReservationSetting,
+                        }]
+                    },
+                    {
+                    // Owner Page 가게 설정 관련 좌측 바
+                    name: 'OwnerPageSideSetting',
+                    path: '/owner/ownerPageSideSetting',
+                    component: OwnerPageSideSetting,
+
+                    children: [
+                        {
+                            // Restaurant 수정
+                            name: 'OwnerRestaurant',
+                            path: '/owner/createRestaurant',
+                                // '/owner/:shop_id/editRestaurant',
+                            component: OwnerRestaurant
                         },
-                    ]
-                }
-            ]
-            },
-            {
-                name: 'OwnerPageSideStatistics',               // 사장님 페이지 예약 관련 좌측 바
-                path: '/ownerPage/OwnerPageSideStatistics',
-                component: OwnerPageSideStatistics,
-                // Main
-                children: [
+                        {
+                            // Owner Coupon 생성
+                            name: 'OwnerCreateCoupon',
+                            path: '/owner/:shop_id/createCoupon',
+                            component: OwnerCreateCoupon
+                        },
+                        {
+                            // 전자 메뉴판 설정
+                            name: 'OwnerMenu',
+                            path: '/owner/:shop_id/menu',
+                            component: OwnerMenu,
+                            children: [
+                                {
+                                    // 전자메뉴판 메뉴 추가
+                                    name: 'OwnerMenuOperate',
+                                    path: '/owner/:shop_id/menuOperate',
+                                    component: OwnerMenuOperate
+                                },
+                                {
+                                    // 전자메뉴판 메뉴 리스트
+                                    name: 'OwnerMenuList',
+                                    path: '/owner/:shop_id/menuList',
+                                    component: OwnerMenuList
+                                },
+                                {
+                                    // 전자메뉴판 레이아웃 설정
+                                    name: 'OwnerMenuSelectLayout',
+                                    path: '/owner/:shop_id/menuLayout',
+                                    component: OwnerMenuSelectLayout
+                                },
+                            ]
+                            }
+                        ]
+                        },
+                        {
+                            // 사장님 페이지 예약 관련 좌측 바
+                            name: 'OwnerPageSideStatistics',
+                            path: '/owner/:shop_id/ownerSideStatistics',
+                            component: OwnerPageSideSetting,
+                            children:
+                            [
 
+                            ]
 
+                        }
 
-                ]
-            }
-        ],
-        },
-
-
-
-        {
-            name: 'CustomerAddReservation.vue',
-            path: '/userRestaurantMain/restaurant/CustomerAddReservation',
-            component: CustomerAddReservation,
-        }
-
+                        ],
+                    },
+                    {
+                        name: 'CustomerAddReservation',
+                        path: '/restaurant/:shop_id/addReservation',
+                        component: CustomerAddReservation,
+                    }
 
     ],
-
-    mode: 'history'
-},
+        mode: 'history'
+    },
 );
 
 new Vue({

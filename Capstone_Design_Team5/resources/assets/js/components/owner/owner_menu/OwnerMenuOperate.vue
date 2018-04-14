@@ -87,7 +87,6 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 
 var option_num = 0;
-var shop_id =''; 
  
 export default {
     methods : {
@@ -97,11 +96,11 @@ export default {
             var get_img   = document.getElementById('img_upload_btn');  // 등록한 이미지 
             var get_data  = document.getElementsByClassName('values');  // 등록한 데이터들
             var check     = true;                                       // 유효성 검사용
+            var shop_id  = this.$route.params.shop_id;
 
             // 업로드한 이미지가 있는지 체크 후 진행함
             if(get_img.files[0] !== undefined){   
                 formData.append('menu_img',get_img.files[0]);
-                
                 formData.append('shop_id',shop_id);
  
                 for(let i=0; i < get_data.length; i++){
@@ -122,7 +121,7 @@ export default {
                         console.log(pair[0]+ ', '+ pair[1]); 
                     }
 
-                    axios.post('/test',formData)
+                    axios.post('/owner/createMenu',formData)
                     .then( (response) => { 
                         alert('메뉴 등록 성공'); 
 

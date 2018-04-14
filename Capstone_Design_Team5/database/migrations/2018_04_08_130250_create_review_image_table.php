@@ -18,6 +18,9 @@ class CreateReviewImageTable extends Migration
             $table->unsignedInteger('review_id');
             $table->string('filename');
             $table->timestamps();
+            $table->foreign('review_id')
+                    ->references('id')->on('review')
+                    ->onDelete('cascade');
         });
     }
 

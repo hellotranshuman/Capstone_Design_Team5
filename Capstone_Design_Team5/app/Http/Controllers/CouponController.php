@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Coupon;
 
 class CouponController extends Controller
 {
@@ -10,7 +11,8 @@ class CouponController extends Controller
         return view('restaurant.createCoupon');
     }
 
-    // <-- create Coupon in Coupon Table
+    // <-- create Coupon in
+    // Coupon Table
     public function createCoupon(Request $request) {
 
          \App\Coupon::create([
@@ -29,5 +31,20 @@ class CouponController extends Controller
            'content' => '등록이 완료되었습니다',
         ]);
 
+    }
+
+    public function getCouponList(Request $request) {
+
+        $couponList = Coupon::where('shop_id', $request->get('shop_id'))
+                        ->get();
+
+        $couponNum = Coupon::where('shop_id', $request->get('shop_id'))
+                        ->get()
+                        ->count();
+
+        return response()->json([
+            'coupon'      => $couponList,
+            'couponNum'   => $couponNum,
+        ]);
     }
 }

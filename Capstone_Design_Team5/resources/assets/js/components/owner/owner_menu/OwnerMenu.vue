@@ -5,9 +5,9 @@
             <hr>  
         </div>
         <div style="width:98%; margin: auto; margin-bottom:1%;">
-            <router-link to="/ownerPage/OwnerMenu/operate" class="link"> 메뉴 추가 </router-link>  
-            <router-link to="/ownerPage/OwnerMenu/list"    class="link"> 메뉴 보기 </router-link>  
-            <router-link to="/ownerPage/OwnerMenu/layout"  class="link"> 메뉴판 레이아웃 설정 </router-link>  
+            <router-link to="menuOperate" class="link"> 메뉴 추가 </router-link>
+            <router-link to="menuList"    class="link"> 메뉴 보기 </router-link>
+            <router-link to="menuLayout"  class="link"> 메뉴판 레이아웃 설정 </router-link>
         </div>
 
         <transition>

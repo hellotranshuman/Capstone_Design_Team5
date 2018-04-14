@@ -22,7 +22,7 @@
                     <v-toolbar-items class="hidden-sm-and-down">
                         <!-- 등록 버튼 -->
                         <!-- <router-link to="/userRestaurantMain/review"> -->
-                                <v-btn outline large color="grey darken-4" to="/userRestaurantMain/review" @click= "sendReviewData">
+                                <v-btn outline large color="grey darken-4" @click= "sendReviewData">
                                 <span class="submit-btn">등록</span>
                                 </v-btn>
                         <!-- </router-link> -->
@@ -161,7 +161,8 @@ export default {
             reviewContents  : '',                       // 리뷰 텍스트 값
             tagsArray       : ['#Smartさしすせそ'],     // 태그값 (태그를 입력하면 입력된 값이 배열에 저장됨)
             tagPlaceholder  : "#Tag",                   // 태그 입력 알림(무엇을 입력해야 하는지 알려주는 역할)
-            tagLimit        : 10                        // 태그 제한 개수,
+            tagLimit        : 10,                        // 태그 제한 개수,
+            shop_id         :  this.$route.params.shop_id
         }
     },
 
@@ -223,13 +224,13 @@ export default {
                 imgNum++;
             }
 
-            reviewData.append('imgNum', imgNum);                // 전송한 이미지 개수를 FormData에 저장
-
-            reviewData.append('RATING',  RATING);               // 총 평점을 FormData에 저장
-            reviewData.append('TASTE',   TASTE);                // 맛 점수를 FormData에 저장
-            reviewData.append('SERVICE', SERVICE);              // 서비스 점수를 FormData에 저장
-            reviewData.append('MOOD',    MOOD);                 // 분위기 점수를 FormData에 저장
-            reviewData.append('PRICE',   PRICE);                // 가격 점수를 FormData에 저장
+            reviewData.append('shop_id', this.shop_id); // shop_id 전송
+            reviewData.append('imgNum', imgNum);                      // 전송한 이미지 개수를 FormData에 저장
+            reviewData.append('RATING',  RATING);                     // 총 평점을 FormData에 저장
+            reviewData.append('TASTE',   TASTE);                      // 맛 점수를 FormData에 저장
+            reviewData.append('SERVICE', SERVICE);                    // 서비스 점수를 FormData에 저장
+            reviewData.append('MOOD',    MOOD);                       // 분위기 점수를 FormData에 저장
+            reviewData.append('PRICE',   PRICE);                      // 가격 점수를 FormData에 저장
 
             reviewData.append('CONTENT', this.reviewContents);  // 리뷰 텍스트를 FormData에 저장
 
@@ -239,6 +240,7 @@ export default {
             }
 
             // ***** console.log 테스트, 지워도 됨 *****
+            console.log(reviewData.get('shop_id'));
             console.log('img : ');
             console.log(reviewData.get('imgFile1'));
             console.log(reviewData.get('imgFile2'));
@@ -270,7 +272,11 @@ export default {
             , settings).then(
                 function (response) {
                 console.log(response.data.content);
-                alert(response.data.content);
+                alert(response.data.link);
+
+                var link = response.data.link;
+                window.location.href = link;
+
             }
                 ).catch(console.log('is catch'));
         }

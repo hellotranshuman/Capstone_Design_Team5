@@ -83,8 +83,8 @@
                         <option value="카고시마" > 카고시마 </option>
                         <option value="오키나와" > 오키나와 </option> 
                     </select> 
-                    <input type="text" name="address1" style="width:30%; margin:1%" value="상세주소1" class="send_datas">
-                    <input type="text" name="address2" style="width:30%; margin:1%" value="상세주소2" class="send_datas">
+                    <input type="text" name="cities" style="width:30%; margin:1%" value="상세주소1" class="send_datas">
+                    <input type="text" name="address" style="width:30%; margin:1%" value="상세주소2" class="send_datas">
                  </div>
             </div>           
         </div>
@@ -260,7 +260,7 @@ var formData = new FormData(document.getElementById("upload_info"));        // �
 export default {
     methods : {
         // 타이틀 이미지 업로드 메서드
-        title_img_load : function(evnet){ 
+        title_img_load : function(event){
             var titleImg = document.getElementById("TitleImg");  // 타이틀 이미지
             var reader   = new FileReader();
 
@@ -334,10 +334,12 @@ export default {
             }
 
             // 값 보내기
-            axios.post('/test',formData)
+            axios.post('/owner/createRestaurant',formData)
             .then( (response) => {
-                this.result = response.data; 
-                document.write(this.result);
+                alert(response.data.msg);
+
+                this.link = response.data.link;
+                window.location.href = this.link;
             })
             .catch((ex)=>{
                 console.lg('updatePhoto failed',ex);

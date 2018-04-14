@@ -15,9 +15,13 @@ class CreateUploadTable extends Migration
     {
         Schema::create('upload', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('filename');
             $table->unsignedInteger('shop_id');
+            $table->string('filename');
+            $table->string('path');
             $table->timestamps();
+            $table->foreign('shop_id')
+                ->references('id')->on('restaurants')
+                ->onDelete('cascade');
         });
     }
 

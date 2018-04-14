@@ -5,9 +5,9 @@
         <ul class="sidebar_nav">
             <li class="sidebar_brand"><B>예약</B></li>
             <li class="sidebar_brand"><B>예약 관리</B></li>
-            <li><router-link to="/ownerPage/ownerReservationlist">예약 현황</router-link></li>
-            <li><router-link to="/ownerPage/ownerReservationAccept">예약 수락</router-link></li>
-            <li><router-link to="/ownerPage/ownerReservationSetting">예약 설정</router-link></li>
+            <li><router-link to="ownerReservationlist">예약 현황</router-link></li>
+            <li><router-link to="ownerReservationAccept">예약 수락</router-link></li>
+            <li><router-link to="ownerReservationSetting">예약 설정</router-link></li>
         </ul>
     </div>
     <div>
