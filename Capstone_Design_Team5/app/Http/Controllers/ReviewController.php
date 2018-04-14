@@ -126,8 +126,12 @@ class ReviewController extends Controller
 
         }
 
+
+        $link = route('review.showReviewForm' , ['shop_id' => $request->get('shop_id')]);
+
         return response()->json([
             'content' => '리뷰 작성이 완료되었습니다.',
+            'link'    => $link,
         ]);
 
     }

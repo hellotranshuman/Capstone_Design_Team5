@@ -20,7 +20,7 @@ class CreateMenuTable extends Migration
             $table->string('explanation');
             $table->unsignedInteger('price');
             $table->string('category', 50);
-            $table->string('remark', 50);
+            $table->string('remark', 50)->nullable();
             $table->foreign('shop_id')
                     ->references('id')->on('restaurants')
                     ->onDelete('cascade');

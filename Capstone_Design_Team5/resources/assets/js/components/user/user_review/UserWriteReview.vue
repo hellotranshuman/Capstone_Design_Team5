@@ -22,7 +22,7 @@
                     <v-toolbar-items class="hidden-sm-and-down">
                         <!-- 등록 버튼 -->
                         <!-- <router-link to="/userRestaurantMain/review"> -->
-                                <v-btn outline large color="grey darken-4" to="review"  @click= "sendReviewData">
+                                <v-btn outline large color="grey darken-4" @click= "sendReviewData">
                                 <span class="submit-btn">등록</span>
                                 </v-btn>
                         <!-- </router-link> -->
@@ -272,7 +272,11 @@ export default {
             , settings).then(
                 function (response) {
                 console.log(response.data.content);
-                alert(response.data.content);
+                alert(response.data.link);
+
+                var link = response.data.link;
+                window.location.href = link;
+
             }
                 ).catch(console.log('is catch'));
         }

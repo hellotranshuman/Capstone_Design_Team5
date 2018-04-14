@@ -17,13 +17,15 @@ class CreateUserCouponTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_num');
             $table->unsignedInteger('coupon_id');
-            $table->boolean('price_check');
             $table->boolean('use_check');
             $table->dateTime('start_date');
             $table->dateTime('expiry_date');
             $table->timestamps();
             $table->foreign('user_num')
                 ->references('id')->on('users')
+                ->onDelete('cascade');
+            $table->foreign('coupon_id')
+                ->references('id')->on('coupon')
                 ->onDelete('cascade');
         });
     }

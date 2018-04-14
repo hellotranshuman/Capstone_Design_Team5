@@ -39,13 +39,12 @@ Route::get('logout', [
     'as' => 'users.doLogout',
     'uses' => 'UsersController@doLogout'
 ]);
-
+/*
 Route::get('register', [
     'as' => 'register.showRegisterForm',
     'uses' => 'RegisterController@showRegisterForm'
-]);
+]); */
 
-/*
 // <-- select Type
 Route::get('register/selectType', function (){
     return view('user.selectForm');
@@ -63,7 +62,7 @@ Route::get('register/owner', function (){
 Route::post('register', [
     'as' => 'register.createMember',
     'uses' => 'RegisterController@createMember'
-]); */
+]);
 
 // <-- User Restaurant Route
 Route::get('owner/{shop_id}/editRestaurant', array(

@@ -25,12 +25,9 @@ class RestaurantController extends Controller
 
     public function showRestaurantInfo($shop_id) {
 
-        $restaurant = Restaurant::join('lunchDinnerTime', 'lunchDinnerTime.shop_id',
-                        '=', 'restaurants.id')
-                        ->select('restaurants.*', 'lunchDinnerTime.*')
-                        ->where('lunchDinnerTime.shop_id', $shop_id)
-                        ->get()
-                        ->toArray();
+        $restaurant = Restaurant::where('id', $shop_id)
+                                 ->get()
+                                 ->toArray();
 
         $totalRating = Review::select(DB::raw('ROUND(AVG(rating), 2) as totalRating'))
                         ->where('shop_id', $shop_id)
@@ -71,7 +68,13 @@ class RestaurantController extends Controller
             'pet' => $request->input('pet') == 'yes' ? true : false,
             'parking' => $request->input('parking') == 'yes' ? true : false,
             'smoking' => $request->input('smoking') == 'yes' ? true : false,
-            'privateroom' => $request->input('privateroom') == 'yes' ? true : false
+            'privateroom' => $request->input('privateroom') == 'yes' ? true : false,
+            'lunch_open' => $request->input('lunch_open'),
+            'lunch_close' => $request->input('lunch_close'),
+            'lunch_lo' => $request->input('lunch_lo'),
+            'dinner_open' => $request->input('dinner_open'),
+            'dinner_close' => $request->input('dinner_close'),
+            'dinner_lo' => $request->input('dinner_lo'),
         ]);
 
         // check Shop Id
@@ -82,17 +85,6 @@ class RestaurantController extends Controller
                     ->first();
 
         $currentShopId = $shopId->id;
-
-        \App\LunchDinnerTime::create([
-            'shop_id' => $currentShopId,
-            'lunch_open' => $request->input('lunch_open'),
-            'lunch_close' => $request->input('lunch_close'),
-            'lunch_lo' => $request->input('lunch_lo'),
-            'dinner_open' => $request->input('dinner_open'),
-            'dinner_close' => $request->input('dinner_close'),
-            'dinner_lo' => $request->input('dinner_lo'),
-        ]);
-
 
         // <-- *** Image File Upload ***
 

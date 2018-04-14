@@ -21,6 +21,10 @@ class CreateMenuImageTable extends Migration
             $table->foreign('shop_id')
                 ->references('id')->on('restaurants')
                 ->onDelete('cascade');
+            $table->unsignedInteger('menu_id');
+            $table->foreign('menu_id')
+                ->references('id')->on('menu')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
