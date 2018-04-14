@@ -20385,7 +20385,8 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
             children: [{
                 // Restaurant 수정
                 name: 'OwnerRestaurant',
-                path: '/owner/:shop_id/editRestaurant',
+                path: '/owner/createRestaurant',
+                // '/owner/:shop_id/editRestaurant',
                 component: __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_restaurant_OwnerRestaurant_vue__["a" /* default */]
             }, {
                 // Owner Coupon 생성

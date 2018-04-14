@@ -65,6 +65,11 @@ Route::post('register', [
 ]);
 
 // <-- User Restaurant Route
+Route::get('owner/createRestaurant', array(
+    'as' => 'restaurant.showRestaurantForm',
+    'uses' => 'RestaurantController@showRestaurantForm'
+));
+
 Route::get('owner/{shop_id}/editRestaurant', array(
     'as' => 'restaurant.showRestaurantForm',
     'uses' => 'RestaurantController@showRestaurantForm'

@@ -149,7 +149,8 @@ const router = new VueRouter({
                         {
                             // Restaurant 수정
                             name: 'OwnerRestaurant',
-                            path: '/owner/:shop_id/editRestaurant',
+                            path: '/owner/createRestaurant',
+                                // '/owner/:shop_id/editRestaurant',
                             component: OwnerRestaurant
                         },
                         {
