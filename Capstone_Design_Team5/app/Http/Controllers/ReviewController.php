@@ -28,6 +28,11 @@ class ReviewController extends Controller
                         ->get()
                         ->toArray();
 
+        $hashtag = Review::join('hashtag', 'hashtag.review_id', '=', 'review.id')
+                        ->select('hashtag.tag_num', 'hashtag.tag')
+                        ->get()
+                        ->toArray();
+
         $reviewImage = Review::join('review_image', 'review_image.review_id', '=', 'review.id')
                         ->select('review_image.filename')
                         ->orderByRaw('review.reg_date DESC')
@@ -35,11 +40,12 @@ class ReviewController extends Controller
                         ->get()
                         ->toArray();
 
-        $reviewData = array_merge($totalRating, $review, $reviewImage);
+        $reviewData = array_merge($totalRating, $review, $hashtag, $reviewImage);
 
         return response()->json([
             'test' => $request->get('shop_id'),
             'review' => $reviewData,
+            'hashtag' => $hashtag,
             'path'   => 'images/review/',
         ]);
     }
@@ -120,11 +126,11 @@ class ReviewController extends Controller
                         'filename' => $imgName,
                     ]);
 
-                }
+                } // file if end
 
-            }
+            } // for end
 
-        }
+        } // img if end
 
 
         $link = route('review.showReviewForm' , ['shop_id' => $request->get('shop_id')]);

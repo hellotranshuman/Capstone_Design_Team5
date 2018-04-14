@@ -16514,7 +16514,7 @@ var option_num = 0;
 
         // axios http 라이브러리 with Send shopData
         __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/review', shopData).then(function (response) {
-
+            console.log(response.data.hashtag);
             // reviewDataList변수에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
             _this.reviewDataList = response.data['review'], console.log(_this.reviewDataList),
 
@@ -48841,7 +48841,7 @@ var render = function() {
                                     _c("img", {
                                       staticClass: "snsMark",
                                       attrs: {
-                                        src: __webpack_require__(399)
+                                        src: __webpack_require__(233)
                                       }
                                     })
                                   ]
@@ -48860,7 +48860,7 @@ var render = function() {
                                     _c("img", {
                                       staticClass: "snsMark",
                                       attrs: {
-                                        src: __webpack_require__(400)
+                                        src: __webpack_require__(234)
                                       }
                                     })
                                   ]
@@ -48876,7 +48876,7 @@ var render = function() {
                                   _c("img", {
                                     staticClass: "snsMark",
                                     attrs: {
-                                      src: __webpack_require__(401)
+                                      src: __webpack_require__(235)
                                     }
                                   })
                                 ])
@@ -49011,9 +49011,24 @@ if (false) {
 }
 
 /***/ }),
-/* 233 */,
-/* 234 */,
-/* 235 */,
+/* 233 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/facebook.png?2010674d616a388e4f797f2fb63e879a";
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/twitter.png?9124798790b4aa093dde2f936aeaf653";
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/weibo.png?53bacedc88430caa8dd5ced5ba6760c4";
+
+/***/ }),
 /* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -58138,31 +58153,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */,
-/* 399 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/facebook.png?2010674d616a388e4f797f2fb63e879a";
-
-/***/ }),
-/* 400 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/twitter.png?9124798790b4aa093dde2f936aeaf653";
-
-/***/ }),
-/* 401 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/weibo.png?53bacedc88430caa8dd5ced5ba6760c4";
 
 /***/ })
 /******/ ]);

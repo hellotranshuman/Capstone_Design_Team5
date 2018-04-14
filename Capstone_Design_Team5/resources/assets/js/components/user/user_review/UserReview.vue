@@ -138,7 +138,7 @@ export default {
         // axios http 라이브러리 with Send shopData
         axios.post('/review', shopData).
         then((response)=>{
-
+            console.log(response.data.hashtag);
             // reviewDataList변수에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
             this.reviewDataList = response.data['review'],
             
