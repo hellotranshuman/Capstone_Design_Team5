@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Validator;
 use Input;
+use \App\Restaurant;
 
 class UsersController extends Controller
 {
@@ -52,16 +53,35 @@ class UsersController extends Controller
 
             // <-- Login 정보 확인
             if (! auth()->attempt($userData, true)) {
+
+
+
+
                 return Redirect::to('login');
             }
             else {
+                if(!auth()->user()->category)
+                {
+                    $userId = auth()->user()->id;
+
+                    $restaurant = Restaurant::where('user_num', $userId)
+                                    ->get()
+                                    ->first();
+
+                    $restaurantId = $restaurant->id;
+
+                    $request->session()->put('restaurantId', $restaurantId);
+                }
                 return redirect()->intended('main');
             }
 
         }
     }
 
-    public function doLogout() {
+    public function doLogout(Request $request) {
+
+        $request->session()->flush();
+
         auth()->logout();
 
         return '또봐요~~';

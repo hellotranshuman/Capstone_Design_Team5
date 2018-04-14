@@ -5,14 +5,27 @@ namespace App\Http\Controllers;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 
 class MainController extends Controller
 {
-    public function showMainPage() {
+
+    public function showMainPage(Request $request) {
        /*
         if( !auth()->check())
             return redirect('login');*/
+
+       if($request->session()->has('restaurantId'))
+       {
+           // 사장일 경우 레스토랑 페이지로 자동 이동
+           $restaurantId = $request->session()->get('restaurantId');
+
+            $link = 'owner/' . $restaurantId . '/menu';
+
+            return Redirect::to($link);
+       }
+
 
         return view('user.userMain');
     }
