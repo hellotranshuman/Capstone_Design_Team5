@@ -43932,7 +43932,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 클릭하지 않은 링크 */\na:link { \n    color: black; \n    text-decoration: none;\n}\n/* 한번 클릭했던 혹은 다녀갔던 링크 */\na:visited { \n    color: black; \n    text-decoration: none;\n}\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: white; \n    text-decoration: none;\n}\n.select-font-style {\n    font-size: 2em;\n    font-weight: bold;   \n    width: 100%;\n    height: 100;\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 클릭하지 않은 링크 */\na:link { \n    color: black; \n    text-decoration: none;\n}\n/* 한번 클릭했던 혹은 다녀갔던 링크 */\na:visited { \n    color: black; \n    text-decoration: none;\n}\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: white; \n    text-decoration: none;\n}\n.select-font-style {\n    font-size: 2em;\n    font-weight: bold;   \n    width: 95%;\n    height: 100;\n    color: white;\n}\n", ""]);
 
 // exports
 
@@ -43962,12 +43962,13 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
+                    { attrs: { xs4: "" } },
                     [
                       _c(
                         "v-btn",
                         {
                           staticClass: "select-font-style",
-                          attrs: { outline: "", color: "indigo", to: "info" }
+                          attrs: { large: "", color: "error", to: "info" }
                         },
                         [_vm._v("정보")]
                       )
@@ -43977,12 +43978,13 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-flex",
+                    { attrs: { xs4: "" } },
                     [
                       _c(
                         "v-btn",
                         {
                           staticClass: "select-font-style",
-                          attrs: { outline: "", color: "indigo", to: "menu" }
+                          attrs: { large: "", color: "error", to: "menu" }
                         },
                         [_vm._v("메뉴")]
                       )
@@ -43992,12 +43994,13 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-flex",
+                    { attrs: { xs4: "" } },
                     [
                       _c(
                         "v-btn",
                         {
                           staticClass: "select-font-style",
-                          attrs: { outline: "", color: "indigo", to: "review" }
+                          attrs: { large: "", color: "error", to: "review" }
                         },
                         [_vm._v("리뷰")]
                       )

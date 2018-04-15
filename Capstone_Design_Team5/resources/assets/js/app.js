@@ -15,7 +15,6 @@ import VuePreview from 'vue-preview'
 // defalut install
 Vue.use(VuePreview)
 
-
 // SNS 공유 API
 var SocialSharing = require('vue-social-sharing');
 Vue.use(SocialSharing);

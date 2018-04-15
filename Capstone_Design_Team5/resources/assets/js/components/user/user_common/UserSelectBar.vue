@@ -17,14 +17,14 @@
                     <v-tab exact-active-class to="/userRestaurantMain/review" class="select-font-style">리뷰</v-tab>
                 </v-tabs> -->
                 <v-layout>
-                    <v-flex>
-                        <v-btn outline color="indigo" to="info" class="select-font-style">정보</v-btn>
+                    <v-flex xs4>
+                        <v-btn large color="error" to="info" class="select-font-style">정보</v-btn>
                     </v-flex>
-                    <v-flex>
-                        <v-btn outline color="indigo" to="menu" class="select-font-style">메뉴</v-btn>
+                    <v-flex xs4>
+                        <v-btn large color="error" to="menu" class="select-font-style">메뉴</v-btn>
                     </v-flex>
-                    <v-flex>
-                        <v-btn outline color="indigo" to="review" class="select-font-style">리뷰</v-btn>
+                    <v-flex xs4>
+                        <v-btn large color="error" to="review" class="select-font-style">리뷰</v-btn>
                     </v-flex>
                 </v-layout>
             </v-flex>
@@ -79,7 +79,7 @@ export default {
     .select-font-style {
         font-size: 2em;
         font-weight: bold;   
-        width: 100%;
+        width: 95%;
         height: 100;
         color: white;
     }
