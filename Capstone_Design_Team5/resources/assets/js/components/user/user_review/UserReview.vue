@@ -28,17 +28,17 @@
                         <v-layout>
                             <v-flex>
                                 <network network="facebook">
-                                    <img src= "../../../../../../public/images/review/facebook.png" class="snsMark">
+                                    <img src= "../../../../../../storage/app/public/img/review/facebook.png" class="snsMark">
                                 </network>
                             </v-flex>
                             <v-flex>
                                 <network network="twitter">
-                                    <img src= "../../../../../../public/images/review/twitter.png" class="snsMark">
+                                    <img src= "../../../../../../storage/app/public/img/review/twitter.png" class="snsMark">
                                 </network>                                
                             </v-flex>
                             <v-flex>
                                 <network network="weibo">
-                                    <img src= "../../../../../../public/images/review/weibo.png" class="snsMark">
+                                    <img src= "../../../../../../storage/app/public/img/review/weibo.png" class="snsMark">
                                 </network>
                             </v-flex>
                         </v-layout>         
