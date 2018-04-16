@@ -36,6 +36,7 @@ class CreateRestaurentTable extends Migration
             $table->boolean('parking');
             $table->boolean('smoking');
             $table->boolean('privateroom');
+            $table->unsignedInteger('selectLayout');
             $table->timestamps();
             $table->foreign('user_num')
                 ->references('id')->on('users')

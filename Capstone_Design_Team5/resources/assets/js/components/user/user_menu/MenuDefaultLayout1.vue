@@ -70,13 +70,16 @@ export default {
 
     created() {
         // 메뉴 카테고리 받아오기
-        var url = '이것 *************좀/************** 채워주셈';
+        var url = '/menu/getCategory';
         var get_categorys = null;
+        var shopData = new FormData();
+
+        shopData.append('shop_id', this.$route.params.shop_id);
 
         // 카테고리 요청하기.
-        axios.post(url)
+        axios.post(url, shopData)
         .then( (response) => {
-            get_categorys = response.data 
+            get_categorys = response.data.category;
             this.categorys = this.unique(get_categorys) // 카테고리 중복 값 제거.
         })
         .catch((ex)=>{
@@ -97,26 +100,32 @@ export default {
     methods : {
         // 메뉴 카테고리 클릭
         click_category : function() {
-            var category = event.target;                     // 선택한 카테고리 
-            var url      = "선주야 부탁한다!"                   // 서버에 요청할 주소 
+            var category = event.target;                     // 선택한 카테고리
+            var url      = '/menu/getCategory'; // 서버에 요청할 주소
+            var data = new FormData();
 
             // 클릭한 값 검사
             if(category.value === undefined) {
                 category = category.parentNode.value;
             } else {
                 category = category.value;
+                data.append('test', 'dddd');
+                // data.append('category', category);
             }
 
             // 클릭한 카테고리의 메뉴 호출
-            axios.post(url, category)
+            axios.post(url, data)
             .then( (response) => {
+                console.log(data);
+                console.log(response.data);
+                /*
                 this.get_menus = response.data 
 
                 // 출력할 v-layout 개수 설정
                 if( this.get_menus.length%3 === 0 )
                     this.menu_row_num = this.get_menus.length / 3;
                 else 
-                    this.menu_row_num = Math.floor(this.get_menus.length / 3) + 1;
+                    this.menu_row_num = Math.floor(this.get_menus.length / 3) + 1;*/
             })
             .catch((ex)=>{
                 alert('메뉴 로드 실패');

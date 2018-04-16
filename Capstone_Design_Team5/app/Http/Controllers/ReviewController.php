@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Review;
-
+use App\Review_like;
 
 class ReviewController extends Controller
 {
@@ -16,11 +16,16 @@ class ReviewController extends Controller
     public function getReviewData(Request $request) {
 
         $review = Review::join('users', 'users.id', '=', 'review.writer')
-                    ->select('review.*', 'users.name', 'users.country')
-                    ->where('shop_id', $request->get('shop_id'))
-                    ->orderByRaw('reg_date DESC')
+                    ->leftJoin('review_like', 'review.id', '=' , 'review_like.review_id')
+                    ->select('review.*', 'users.name', 'users.country',
+                        DB::raw('count(review_like.review_id) as likeNum'))
+                    ->where('review.shop_id', $request->get('shop_id'))
+                    ->groupBy('review.id')
+                    ->orderByRaw('review.id desc')
                     ->get()
                     ->toArray();
+
+
 
         $totalRating = Review::select(DB::raw('AVG(rating) as totalRating'))
                         ->where('shop_id', $request->get('shop_id'))
@@ -31,6 +36,11 @@ class ReviewController extends Controller
         $hashtag = Review::join('hashtag', 'hashtag.review_id', '=', 'review.id')
                         ->select('hashtag.tag_num', 'hashtag.tag', 'hashtag.review_id')
                         ->orderByRaw('review.reg_date DESC')
+                        ->get()
+                        ->toArray();
+
+        $reviewLike = Review_like::select('review_id')
+                        ->where('user_num', auth()->user()->id)
                         ->get()
                         ->toArray();
 
@@ -46,6 +56,7 @@ class ReviewController extends Controller
         return response()->json([
             'test' => $request->get('shop_id'),
             'review' => $reviewData,
+            'reviewLike' => $reviewLike,
             'hashtag' => $hashtag,
             'path'   => 'images/review/',
         ]);

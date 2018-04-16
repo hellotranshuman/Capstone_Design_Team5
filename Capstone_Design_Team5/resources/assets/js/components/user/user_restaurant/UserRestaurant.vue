@@ -303,7 +303,10 @@ export default{
                     } 
                     else if (argArray[key] === 'cash'){
                         get_div.innerText += '현금 결제';
-                    } 
+                    }
+                    else if (argArray[key] === null){
+                        get_div.innerText += 0;
+                    }
                     else{ 
                         get_div.innerText += argArray[key];
                     }

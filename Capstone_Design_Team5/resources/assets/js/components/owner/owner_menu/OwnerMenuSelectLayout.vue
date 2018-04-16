@@ -195,7 +195,25 @@ export default {
             selected_template : "없음" 
         }
     }, 
-    methods : { 
+    methods : {
+        created() {
+            // 메뉴 레이아웃 가져오기
+            var url = '/menu/getCategory';
+            var get_categorys = null;
+            var shopData = new FormData();
+
+            shopData.append('shop_id', this.$route.params.shop_id);
+
+            // 카테고리 요청하기.
+            axios.post(url, shopData)
+                .then( (response) => {
+                    get_categorys = response.data.category;
+                    this.categorys = this.unique(get_categorys) // 카테고리 중복 값 제거.
+                })
+                .catch((ex)=>{
+                    alert('메뉴 로드 실패');
+                });
+        },
         // 저장하기
         save_data : function () { 
             var slt_tem = this.selected_template; // 선택한 템플릿

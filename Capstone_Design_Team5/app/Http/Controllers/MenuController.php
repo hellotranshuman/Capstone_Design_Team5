@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use \App\Menu;
 
+
 class MenuController extends Controller
 {
     public function showMenuForm() {
@@ -22,6 +23,35 @@ class MenuController extends Controller
 
     public function showMenuLayout() {
         return view('restaurant.ownerMenuLayout');
+    }
+
+    public function showUserMenuForm() {
+        return view('user.userMenu');
+    }
+
+    public function getCategory(Request $request) {
+        $shop_id = $request->get('shop_id');
+
+       $category =  Menu::select('category')
+                    ->where('shop_id', $request->get('shop_id'))
+                    ->get()
+                    ->toArray();
+
+        return response()->json([
+           'category' =>  $category,
+        ]);
+    }
+
+    public function getMenu(Request $request) {
+        // $shopId = $request->get('shop_id');
+
+        $category = $request->get('test');
+
+        return response()->json([
+           // 'shopId' => $shopId,
+            'category' => $category,
+        ]);
+
     }
 
     public function createMenu(Request $request) {
@@ -47,12 +77,32 @@ class MenuController extends Controller
 
         $currentMenuId = $menuId->id;
 
-
-
         \App\Option::create([
             'menu_id' => $currentMenuId,
             'name' => $request->get('option_name'),
         ]);
+
+        $optionNum = DB::table('option')
+            ->select('opnum')
+            ->where('menu_id', $currentMenuId)
+            ->orderByRaw('opnum DESC')
+            ->first();
+
+        $currentOpNum = $optionNum->opnum;
+
+        $subOpNum = $request->get('op_num');
+
+        $subOpNum--;
+
+        for($num = 1 ; $num <= $subOpNum ; $num++)
+        {
+            $opName = 'option_value' . $num;
+
+            \App\Suboption::create([
+               'opnum' => $currentOpNum,
+               'name'  => $request->get($opName),
+            ]);
+        }
 
         // Current Save Shop Image Route
         $path = storage_path() . '/app/public/img/menu/' . $shopId;

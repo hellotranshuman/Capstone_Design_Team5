@@ -71,7 +71,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'RegisterController@createMember'
     ]);
 
-// <-- User Restaurant Route
+// <-- Owner Restaurant Route
     Route::get('owner/createRestaurant', array(
         'as' => 'restaurant.showRestaurantForm',
         'uses' => 'RestaurantController@showRestaurantForm'
@@ -87,6 +87,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'RestaurantController@createRestaurant'
     ]);
 
+// <-- user Restaurant Route
     Route::get('restaurant/{shop_id}/info', [
         'as' => 'restaurant.showRestaurantInfoForm',
         'uses' => 'RestaurantController@showRestaurantInfoForm'
@@ -96,6 +97,19 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'restaurant.showRestaurantInfo',
         'uses' => 'RestaurantController@showRestaurantInfo'
     ]);
+
+    Route::get('restaurant/{shop_id}/menu', [
+        'as' => 'menu.showUserMenuForm',
+        'uses' => 'MenuController@showUserMenuForm'
+    ]);
+
+    Route::post('menu/getCategory', [
+        'as' => 'menu.getCategory',
+        'uses' => 'MenuController@getCategory'
+    ]);
+
+
+
 
 // <-- Owner Menu Setting
 

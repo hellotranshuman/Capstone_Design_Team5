@@ -35057,7 +35057,7 @@ module.exports = {
     },
     data: function data() {
         return {
-            test: [[], ["도쿄 아게야", 1, "/restaurant/1/info", "/restaurant/1/menu", "/restaurant/1/review"], ["시부야 텐야", 2, "/restaurant/2/info", "/restaurant/2/menu", "/restaurant/2/review"], ["오사카 우동", 3, "/restaurant/3/info", "/restaurant/3/menu", "/restaurant/3/review"]],
+            test: [[], ["도쿄 아게야", 1, "/restaurant/3/info", "/restaurant/3/menu", "/restaurant/3/review"], ["시부야 텐야", 2, "/restaurant/4/info", "/restaurant/4/menu", "/restaurant/4/review"], ["오사카 우동", 3, "/restaurant/5/info", "/restaurant/5/menu", "/restaurant/5/review"]],
             test2: [[], ["오사카 요시노야", 4, "/restaurant/4/info", "/restaurant/4/menu", "/restaurant/4/review"], ["주부국제공항 오하기", 5, "/restaurant/5/info", "/restaurant/5/menu", "/restaurant/5/review"], ["도쿄 소바신", 6, "/restaurant/6/info", "/restaurant/6/menu", "/restaurant/6/review"]],
             key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo"
         };
@@ -36832,11 +36832,12 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
 //
 //
 //
+//
 
 
 
 
-var option_num = 0;
+var option_num = 1;
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     methods: {
@@ -36893,19 +36894,20 @@ var option_num = 0;
                     }
 
                     __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/createMenu', formData).then(function (response) {
-                        alert('메뉴 등록 성공');
+                        alert(response.data.content);
 
-                        var get_options = document.getElementById('options');
-                        while (get_options.children.length > 0) {
-                            get_options.removeChild(get_options.children[get_options.children.length - 1]);
-                        }
+                        location.reload();
 
-                        document.getElementById('menu_img').src = '';
-
-                        for (var _i = 0; _i < get_data.length; _i++) {
-                            get_data[_i].value = '';
-                        }
-                        get_img.value = '';
+                        /*
+                         var get_options = document.getElementById('options');
+                         while(get_options.children.length > 0) {
+                             get_options.removeChild(get_options.children[get_options.children.length-1]);
+                         }
+                          document.getElementById('menu_img').src ='';
+                          for(let i=0; i < get_data.length; i++){
+                             get_data[i].value = '';
+                         }
+                         get_img.value = '';*/
                     }).catch(function (ex) {
                         console.log('failed', ex);
                     });
@@ -36962,6 +36964,7 @@ var option_num = 0;
             var created_div = document.createElement('div');
             var created_ipt = document.createElement('input');
             var get_options = document.getElementById('options');
+            var op_num = document.getElementsByName('op_num')[0];
 
             created_div.classList.add("option_box");
             created_h5.classList.add("option_column");
@@ -36969,7 +36972,9 @@ var option_num = 0;
             created_ipt.classList.add("values");
 
             created_h5.innerText = '옵션 값';
-            created_ipt.name = 'option_value' + option_num;option_num++;
+            created_ipt.name = 'option_value' + option_num;
+            option_num++;
+            op_num.value = option_num;
 
             created_div.appendChild(created_h5);
             created_div.appendChild(created_ipt);
@@ -37207,6 +37212,25 @@ var option_num = 0;
     },
 
     methods: {
+        created: function created() {
+            var _this = this;
+
+            // 메뉴 레이아웃 가져오기
+            var url = '/menu/getCategory';
+            var get_categorys = null;
+            var shopData = new FormData();
+
+            shopData.append('shop_id', this.$route.params.shop_id);
+
+            // 카테고리 요청하기.
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, shopData).then(function (response) {
+                get_categorys = response.data.category;
+                _this.categorys = _this.unique(get_categorys); // 카테고리 중복 값 제거.
+            }).catch(function (ex) {
+                alert('메뉴 로드 실패');
+            });
+        },
+
         // 저장하기
         save_data: function save_data() {
             var slt_tem = this.selected_template; // 선택한 템플릿
@@ -37429,12 +37453,15 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
         var _this = this;
 
         // 메뉴 카테고리 받아오기
-        var url = '이것 *************좀/************** 채워주셈';
+        var url = '/menu/getCategory';
         var get_categorys = null;
+        var shopData = new FormData();
+
+        shopData.append('shop_id', this.$route.params.shop_id);
 
         // 카테고리 요청하기.
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url).then(function (response) {
-            get_categorys = response.data;
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, shopData).then(function (response) {
+            get_categorys = response.data.category;
             _this.categorys = _this.unique(get_categorys); // 카테고리 중복 값 제거.
         }).catch(function (ex) {
             alert('메뉴 로드 실패');
@@ -37454,24 +37481,30 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
     methods: {
         // 메뉴 카테고리 클릭
         click_category: function click_category() {
-            var _this2 = this;
-
-            var category = event.target; // 선택한 카테고리 
-            var url = "선주야 부탁한다!"; // 서버에 요청할 주소 
+            var category = event.target; // 선택한 카테고리
+            var url = '/menu/getCategory'; // 서버에 요청할 주소
+            var data = new FormData();
 
             // 클릭한 값 검사
             if (category.value === undefined) {
                 category = category.parentNode.value;
             } else {
                 category = category.value;
+                data.append('test', 'dddd');
+                // data.append('category', category);
             }
 
             // 클릭한 카테고리의 메뉴 호출
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, category).then(function (response) {
-                _this2.get_menus = response.data;
-
-                // 출력할 v-layout 개수 설정
-                if (_this2.get_menus.length % 3 === 0) _this2.menu_row_num = _this2.get_menus.length / 3;else _this2.menu_row_num = Math.floor(_this2.get_menus.length / 3) + 1;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, data).then(function (response) {
+                console.log(data);
+                console.log(response.data);
+                /*
+                this.get_menus = response.data 
+                 // 출력할 v-layout 개수 설정
+                if( this.get_menus.length%3 === 0 )
+                    this.menu_row_num = this.get_menus.length / 3;
+                else 
+                    this.menu_row_num = Math.floor(this.get_menus.length / 3) + 1;*/
             }).catch(function (ex) {
                 alert('메뉴 로드 실패');
             });
@@ -38490,6 +38523,8 @@ var url = '';
                             get_div.innerText += '카드 가능';
                         } else if (argArray[key] === 'cash') {
                             get_div.innerText += '현금 결제';
+                        } else if (argArray[key] === null) {
+                            get_div.innerText += 0;
                         } else {
                             get_div.innerText += argArray[key];
                         }
@@ -87670,7 +87705,9 @@ var render = function() {
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
-            _c("div", { attrs: { id: "options" } })
+            _c("div", { attrs: { id: "options" } }),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "hidden", name: "op_num" } })
           ])
         ]
       )
