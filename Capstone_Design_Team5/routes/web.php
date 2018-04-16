@@ -22,6 +22,12 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
+    Route::get('/test', array(
+        'as' => 'main.getReviewData',
+        'uses' => 'MainController@getReviewData'
+    ));
+
+
 // <-- Show Login Form
     Route::get('login', [
         'as' => 'users.showLogin',
@@ -113,6 +119,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MenuController@showMenuList'
     ]);
 
+    Route::get('owner/{shop_id}/menuLayout', [
+        'as' => 'menu.showMenuLayout',
+        'uses' => 'MenuController@showMenuLayout'
+    ]);
+
 // <-- Owner Coupon Page
     Route::get('owner/{shop_id}/createCoupon', [
         'as' => 'coupon.showCouponForm',
@@ -176,11 +187,12 @@ Route::group(['middleware' => 'web'], function () {
 
 });
 
+/*
 // <-- Test
 Route::get('test',[
     'as' =>  'main.test',
     'uses' => 'MainController@test'
-]);
+]);*/
 
 // <-- Image Route
 

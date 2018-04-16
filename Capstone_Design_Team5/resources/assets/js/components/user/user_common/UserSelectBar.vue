@@ -7,52 +7,80 @@
 -->
 
 <template>
-    <b-container fluid>
-        <b-row>
-            <b-col>  
+    <v-container>
+        <v-layout>
+            <v-flex>
                 <!-- 정보, 메뉴, 리뷰 중 선택합니다. -->
-                <b-nav justified tabs>
-                    <b-nav-item>
-                        <router-link to="info" class="btn btn-block selectFontStyle">정보</router-link>
-                    </b-nav-item>
-                    <b-nav-item>
-                        <router-link to="menu" class="btn btn-block selectFontStyle">메뉴</router-link>
-                    </b-nav-item>
-                    <b-nav-item>
-                        <router-link to="review" class="btn btn-block selectFontStyle">리뷰</router-link>
-                    </b-nav-item>
-                </b-nav>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col>
+                <!-- <v-tabs centered color="red lighten-2" slider-color="yellow" show-arrows>
+                    <v-tab exact-active-class to="/userRestaurantMain/restaurant" class="select-font-style">정보</v-tab>
+                    <v-tab exact-active-classv to="/userRestaurantMain/menu" class="select-font-style">메뉴</v-tab>
+                    <v-tab exact-active-class to="/userRestaurantMain/review" class="select-font-style">리뷰</v-tab>
+                </v-tabs> -->
+                <v-layout>
+                    <v-flex xs4>
+                        <v-btn large color="error" to="info" class="select-font-style">정보</v-btn>
+                    </v-flex>
+                    <v-flex xs4>
+                        <v-btn large color="error" to="menu" class="select-font-style">메뉴</v-btn>
+                    </v-flex>
+                    <v-flex xs4>
+                        <v-btn large color="error" to="review" class="select-font-style">리뷰</v-btn>
+                    </v-flex>
+                </v-layout>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex>
                 <!-- 내용을 출력합니다. -->
                 <router-view></router-view>
-            </b-col>
-        </b-row>
-    </b-container>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
-
 export default {
+    data () {
+        return {
+            e2: 3,
+        }
+    },
 
+    computed: {
+        color () {
+            switch (this.e2) {
+                case 0: return 'blue-grey'
+                case 1: return 'teal'
+                case 2: return 'brown'
+                case 3: return 'indigo'
+            }
+        }
+    }
 }
 </script>
 
 <style>
-    .selectFontStyle {
-        font-size: 1.3em;
-        font-weight: bold;
-        background-color: rgba(255, 127, 127, 0.404);        
+    /* 클릭하지 않은 링크 */
+    a:link { 
+        color: black; 
+        text-decoration: none;
+    }
+    /* 한번 클릭했던 혹은 다녀갔던 링크 */
+    a:visited { 
+        color: black; 
+        text-decoration: none;
+    }
+    /* 링크를 클릭하려고 마우스를 가져갔을 때 */
+    a:hover { 
+        color: white; 
+        text-decoration: none;
     }
 
-    #selectBarWidth {
-        width: 90%
+    .select-font-style {
+        font-size: 2em;
+        font-weight: bold;   
+        width: 95%;
+        height: 100;
+        color: white;
     }
-
-    /* .sticky {
-        position: sticky;
-    } */
-
 </style>

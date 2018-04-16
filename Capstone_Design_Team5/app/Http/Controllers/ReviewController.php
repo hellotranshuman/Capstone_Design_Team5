@@ -29,7 +29,8 @@ class ReviewController extends Controller
                         ->toArray();
 
         $hashtag = Review::join('hashtag', 'hashtag.review_id', '=', 'review.id')
-                        ->select('hashtag.tag_num', 'hashtag.tag')
+                        ->select('hashtag.tag_num', 'hashtag.tag', 'hashtag.review_id')
+                        ->orderByRaw('review.reg_date DESC')
                         ->get()
                         ->toArray();
 

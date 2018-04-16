@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use \App\Menu;
 
 class MenuController extends Controller
 {
@@ -16,7 +17,11 @@ class MenuController extends Controller
     }
 
     public function showMenuList() {
-        return view('restaurant.showMenuList');
+        return view('restaurant.ownerMenuList');
+    }
+
+    public function showMenuLayout() {
+        return view('restaurant.ownerMenuLayout');
     }
 
     public function createMenu(Request $request) {
@@ -33,8 +38,6 @@ class MenuController extends Controller
             'remark' => $request->get('remark')
         ]);
 
-        // ** Menu Image 업로드 구현 필요.. !!
-
         // check menu Id
         $menuId = DB::table('menu')
                 ->select('id')
@@ -43,6 +46,13 @@ class MenuController extends Controller
                 ->first();
 
         $currentMenuId = $menuId->id;
+
+
+
+        \App\Option::create([
+            'menu_id' => $currentMenuId,
+            'name' => $request->get('option_name'),
+        ]);
 
         // Current Save Shop Image Route
         $path = storage_path() . '/app/public/img/menu/' . $shopId;

@@ -14,6 +14,24 @@ Vue.use(VueAxios, axios);
 // SNS 공유 API
 var SocialSharing = require('vue-social-sharing');
 Vue.use(SocialSharing);
+// 이미지 확대 API
+import VuePreview from 'vue-preview'
+// google Maps API
+import * as VueGoogleMaps from "vue2-google-maps";
+
+// defalut install
+Vue.use(VuePreview);
+// google Maps install
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo",
+        libraries: "places" // necessary for places input
+    }
+});
+// chartjs
+import VueCharts from 'vue-chartjs'
+import { Bar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
+
 
 // <-- User Main Page Component Import
 import Home                 from './components/user/user_main/UserMain.vue';
@@ -54,7 +72,7 @@ import OwnerMenuSelectLayout from './components/owner/owner_menu/OwnerMenuSelect
 
 // <-- user Menu & Review
 // 가게 정보 페이지 컴포넌트 import
-import UserMenu from './components/user/user_menu/UserMenu.vue';
+import MenuMain from './components/user/user_menu/MenuMain.vue';
 // 메뉴판 페이지 컴포넌트 import
 import UserReview from './components/user/user_review/UserReview.vue';
 // 리뷰 페이지 컴포넌트 import
@@ -65,14 +83,23 @@ import UserWriteReview from './components/user/user_review/UserWriteReview.vue';
 // <-- user Reservation
 import CustomerAddReservation from './components/user/user_reservation/CustomerAddReservation.vue';
 
+// <-- owner statistics
+import OwnerTotalStatistics from './components/owner/owner_statistics/OwnerTotalStatistics.vue';
 
 const router = new VueRouter({
     routes: [
+        // <-- main Page
         {
             path: '/',
             name: 'home',
             component: Home
         },
+        {
+            path: '/main',
+            name: 'home',
+            component: Home
+        }
+        ,
         // <-- 회원 가입
         {
             path: '/register',
@@ -94,7 +121,7 @@ const router = new VueRouter({
                 {
                     name: 'UserMenu',                           // 가게 페이지 안의 메뉴
                     path: '/restaurant/:shop_id/menu',
-                    component: UserMenu
+                    component: MenuMain
                 },
                 {
                     name: 'UserReview',                         // 가게 페이지 안의 리뷰
@@ -187,17 +214,23 @@ const router = new VueRouter({
                             }
                         ]
                         },
-                        {
-                            // 사장님 페이지 예약 관련 좌측 바
-                            name: 'OwnerPageSideStatistics',
-                            path: '/owner/:shop_id/ownerSideStatistics',
-                            component: OwnerPageSideSetting,
-                            children:
-                            [
+                {
+                    // 사장님 페이지 통계 좌측 바
+                    name: 'OwnerPageSideStatistics',
+                    path: '/owner/:shop_id/OwnerPageSideStatistics',
+                    // path: '/owner/:shop_id/OwnerPageSideStatistics',
+                    component: OwnerPageSideStatistics,
+                    children:
+                        [
+                            {
+                                // 사장님페이지 통계
+                                name: 'OwnerTotalStatistics',
+                                path: '/owner/:shop_id/OwnerTotalStatistics',
+                                component: OwnerTotalStatistics
+                            }
+                        ]
 
-                            ]
-
-                        }
+                }
 
                         ],
                     },
@@ -209,7 +242,7 @@ const router = new VueRouter({
 
     ],
         mode: 'history'
-    },
+    }
 );
 
 new Vue({

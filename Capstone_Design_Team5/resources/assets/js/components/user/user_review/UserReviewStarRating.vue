@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import UserStar from './UserStar.vue'
+import UserStar from './UserStar.vue';
+
 export default {
     components: {
         'UserStar' : UserStar
