@@ -23,6 +23,7 @@ class AlterUsersTable extends Migration
             $table->string('favorite_1')->nullable();
             $table->string('favorite_2')->nullable();
             $table->string('favorite_3')->nullable();
+            $table->string('favorite_region')->nullable();
         });
     }
 

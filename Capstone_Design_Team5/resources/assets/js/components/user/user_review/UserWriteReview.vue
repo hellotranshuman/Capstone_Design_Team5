@@ -17,16 +17,20 @@
             <v-flex>
                 <!-- 상단바 -->
                 <v-toolbar flat color="grey darken-3">
-                    <v-toolbar-title class="white--text">리뷰 작성하기</v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-toolbar-items class="hidden-sm-and-down">
-                        <!-- 등록 버튼 -->
-                        <!-- <router-link to="/userRestaurantMain/review"> -->
-                                <v-btn outline large color="grey darken-4" @click= "sendReviewData">
+                    <v-layout justify-space-between align-center>
+                        <v-flex xs10>
+                            <v-toolbar-title class="white--text">리뷰 작성하기</v-toolbar-title>
+                        </v-flex>
+                        <v-spacer></v-spacer>
+                        <v-flex>
+                            <!-- 등록 버튼 -->
+                            <!-- <router-link to="/userRestaurantMain/review"> -->
+                            <v-btn outline large color="grey darken-4" @click= "sendReviewData">
                                 <span class="submit-btn">등록</span>
-                                </v-btn>
-                        <!-- </router-link> -->
-                    </v-toolbar-items>
+                            </v-btn>
+                            <!-- </router-link> -->
+                        </v-flex>
+                    </v-layout>
                 </v-toolbar>
             </v-flex>
         </v-layout>
@@ -269,15 +273,14 @@ export default {
             axios.post('/review/writeReview', 
                 // 리뷰 관련 데이터
                 reviewData
-            , settings).then(
+            , settings).then( 
                 function (response) {
-                console.log(response.data.content);
-                alert(response.data.link);
+                    console.log(response.data.content);
+                    alert(response.data.link);
 
-                var link = response.data.link;
-                window.location.href = link;
-
-            }
+                    var link = response.data.link;
+                    window.location.href = link;
+                }
                 ).catch(console.log('is catch'));
         }
     },

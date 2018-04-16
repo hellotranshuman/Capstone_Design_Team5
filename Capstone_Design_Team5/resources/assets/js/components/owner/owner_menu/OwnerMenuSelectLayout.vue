@@ -181,9 +181,9 @@ export default {
         return { 
             // 이미지 주소 주소 설정 좀여
             exImg1 : '',
-            exImg2 : '',
-            exImg3 : '',
-            exImg4 : '',
+            exImg2 : '/images/template/template2.png',
+            exImg3 : '/images/template/template3.png',
+            exImg4 : '/images/template/template4.png',
 
             // 모달 용 
             tem1: false,
@@ -194,26 +194,27 @@ export default {
             // 선택한 템플릿
             selected_template : "없음" 
         }
-    }, 
+    },
+    created() {
+        // 메뉴 레이아웃 가져오기
+        var url = '';
+        var layoutNum = null;
+        var shop_id = this.$route.params.shop_id;
+
+        url = '/owner/' + shop_id + '/getLayout';
+
+        // 카테고리 요청하기.
+        axios.get(url)
+            .then( (response) => {
+                layoutNum = response.data.layoutNum;
+                this.selected_template = "기본 템플릿" + layoutNum;
+            })
+            .catch((ex)=>{
+                alert('레이아웃 로드 실패');
+            });
+    },
     methods : {
-        created() {
-            // 메뉴 레이아웃 가져오기
-            var url = '/menu/getCategory';
-            var get_categorys = null;
-            var shopData = new FormData();
 
-            shopData.append('shop_id', this.$route.params.shop_id);
-
-            // 카테고리 요청하기.
-            axios.post(url, shopData)
-                .then( (response) => {
-                    get_categorys = response.data.category;
-                    this.categorys = this.unique(get_categorys) // 카테고리 중복 값 제거.
-                })
-                .catch((ex)=>{
-                    alert('메뉴 로드 실패');
-                });
-        },
         // 저장하기
         save_data : function () { 
             var slt_tem = this.selected_template; // 선택한 템플릿

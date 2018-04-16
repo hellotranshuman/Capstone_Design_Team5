@@ -198,13 +198,12 @@ export default {
             var couponData = Object.values(response.data.coupon);
             var couponNum = response.data.couponNum;
 
+            alert(response.data.couponNum);
             console.log(couponData);
             console.log(couponNum);
 
-
             for(var index = 0 ; index < couponNum ; index++ )
             {
-                console.log(this.CouponIndex);
                 this.CouponItem.CouponName   = couponData[index].name;
                 this.CouponItem.CouponType   = couponData[index].category;
                 this.CouponItem.Discount     = couponData[index].discount;
@@ -213,15 +212,18 @@ export default {
                 this.CouponItem.start_date   = couponData[index].start_date;
                 this.CouponItem.end_date     = couponData[index].expiry_date;
 
+                Object.assign(this.items[this.CouponIndex], this.CouponItem);
+                // this.CouponIndex++;
             }
 
-            // Object.assign(this.items[this.CouponIndex], this.CouponItem)
+            /*
+            //
             if (this.CouponIndex > -1) {
                 Object.assign(this.items[this.CouponIndex], this.CouponItem)
 
             } else {
                 this.items.push(this.CouponItem)
-            }
+            }*/
 
 
                 // this.save();

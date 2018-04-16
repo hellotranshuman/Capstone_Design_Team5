@@ -17,6 +17,11 @@
     2-11. 리뷰 좋아요 갯수
     2-12. 리뷰 이미지
 
+3. 남은 작업
+    3-1. 리뷰 좋아요를 누른 리뷰인지 구분할 수 있는 값이 오면 그것에 맞게 처음 버튼 모양 출력시키기
+    3-2. 리뷰 좋아요를 누르면 숫자 1증가, 리뷰 좋아요를 취소하면 1감소 
+        이때 [증가 또는 감소 여부], [리뷰 번호]를 post로 전달
+
 -->
 
 <template>
@@ -36,11 +41,14 @@
                         <v-flex>{{this.writeDate}}</v-flex>
                         <!-- 좋아요를 눌렀을 경우 하트 모양이 채워진 이미지를 출력 하도록 변경하기 -->
                         <v-flex>
-                            <v-btn outline color="pink lighten-3">
-                                리뷰 좋아요 갯수
+                            <v-btn flat color="pink lighten-3" v-if="!(this.reviewLikeBut)"
+                            v-on:click="likeButClick">
+                                <h2>{{this.reviewLikeNum}}</h2>
                                 <v-icon x-large>favorite_border</v-icon>
                             </v-btn>
-                            <v-btn outline color="pink lighten-3" v-if="false">
+                            <v-btn flat color="pink lighten-3" v-if="(this.reviewLikeBut)"
+                            v-on:click="likeButClick">
+                                <h2>{{this.reviewLikeNum}}</h2>
                                 <v-icon x-large>favorite</v-icon>
                             </v-btn>
                         </v-flex>
@@ -124,11 +132,15 @@
 <script>
 import UserStar from './UserStar.vue';
 
+// axios 라이브러리 import
+import VueAxios from 'vue-axios';
+import axios    from 'axios';
+
 export default {
     props : {
         // 리뷰 번호
         reviewID:{
-            type: [String, Number],
+            type: Number,
             default: 0
         },
         // 사용자 아이디
@@ -148,7 +160,7 @@ export default {
         },
         //리뷰 좋아요
         reviewLike: {
-            type: [String, Number],
+            type: Number,
             default: 0
         },
         // 총 평점
@@ -227,11 +239,56 @@ export default {
                 h: 400
                 },
             ],
+            reviewLikeBut : false,              // 리뷰 좋아요 버튼을 눌렸는지 아닌지 구분하는 값을 저장하는 변수
+            reviewLikeNum : this.reviewLike,    // 전달 받은 리뷰 좋아요를 받은 개수값을 변수에 저장합니다.
 
             starColor : "#ffd055",
             inactiveStarColor : "#ffd055",
 
             flag : "../../../../../../../../storage/app/public/img/flag/" + this.country + ".png",  // 국적에 맞는 깃발 이미지 주소
+        }
+    },
+
+    methods: {
+        // 좋아요 버튼을 눌렸을 때 사용되는 함수
+        likeButClick(){
+            this.reviewLikeBut = !this.reviewLikeBut;
+
+
+        }
+    },
+
+    // watch 속성은 데이터 변화를 감지해서 자동으로 특정 로직을 수행함
+    watch: {
+        // 리뷰 좋아요 버튼의 상태값을 나타내는 변수 reviewLikeBut의 값이 변경했을때 해당 정보를 post로 전송
+        reviewLikeBut: function(){
+            // this.reviewLikeBut = !this.reviewLikeBut;
+
+            // 리뷰 좋아요 버튼을 눌려 상태값을 나타내는 변수의 값이 값이 true가 되면 
+            // 리뷰 좋아요 받은 수를 1증가합니다, 반대로 취소하면 1 감소 시킵니다.
+            if(this.reviewLikeBut == true)
+                this.reviewLikeNum++;
+            else
+                this.reviewLikeNum--;
+
+            console.log("리뷰 좋아요버튼 상태 : ");
+            console.log(this.reviewLikeBut);
+            console.log("리뷰 좋아요 값 : ");
+            console.log(this.reviewLikeNum);
+            console.log("리뷰 글 번호 : ");
+            console.log(this.reviewID);
+
+            // 리뷰id값, 리뷰 좋아요 상태를 post로 전송합니다.
+            axios.post('/review/like',{
+                "review_id"     : this.reviewID,        // 리뷰 id값
+                "review_status" : this.reviewLikeBut    // 리뷰 좋아요 상태 (true : 누름, false : 안누름)
+            }).then(function (response) {
+
+                alert(response.data.msg);
+
+            }).catch(console.log('is catch'));
+
+            
         }
     },
 

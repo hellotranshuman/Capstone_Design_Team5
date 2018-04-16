@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use \App\Menu;
+use \App\Menu_Option;
+use \App\Suboption;
 
 
 class MenuController extends Controller
@@ -32,7 +35,7 @@ class MenuController extends Controller
     public function getCategory(Request $request) {
         $shop_id = $request->get('shop_id');
 
-       $category =  Menu::select('category')
+        $category =  Menu::select('category')
                     ->where('shop_id', $request->get('shop_id'))
                     ->get()
                     ->toArray();
@@ -42,14 +45,67 @@ class MenuController extends Controller
         ]);
     }
 
-    public function getMenu(Request $request) {
-        // $shopId = $request->get('shop_id');
+    public function getMenu($shop_id, $category) {
 
-        $category = $request->get('test');
+        // <-- 메뉴정보를 저장할 Array
+        $totalMenuArray = array();
+        // <-- 메뉴 Data Select
+        $menuData = Menu::join('menu_image', 'menu.id', '=', 'menu_image.menu_id')
+                    ->select('menu.id as id', 'menu.name as name', 'menu.explanation as explanation',
+                            'menu.price as price', 'menu.remark as remark',
+                            'menu_image.filename as filename', 'menu_image.path as path')
+                    ->where('menu.shop_id', $shop_id)
+                    ->where('category', $category)
+                    ->get();
+
+        // <-- Menu Data Save in Array
+        foreach ($menuData as $menu)
+        {
+           $menuArray = array();
+
+           $menuArray['id'] = $menu->id;
+           $menuArray['name'] = $menu->name;
+           $menuArray['explanation'] = $menu->explanation;
+           $menuArray['price'] = $menu->price;
+           $menuArray['remark'] = $menu->remark;
+           $menuArray['path'] = $menu->path;
+           $menuArray['filename'] = $menu->filename;
+
+           // <-- Option Data Select
+           $optionData  = Menu_Option::where('menu_id', $menuArray['id'])
+                                        ->get();
+
+           foreach ($optionData as $option)
+           {
+               // <-- Option Data Save in Array
+               $optionKey = 1;
+               $opNum = $option->opnum;
+               $keyName = 'optionName' . $optionKey;
+               $menuArray[$keyName] = $option->name;
+
+               // <-- SubOption Data Select
+               $subOptionData = Suboption::where('opnum', $opNum)
+                                            ->get();
+
+               $subOpKey = 1;
+               foreach ($subOptionData as $subOption)
+               {
+                   // <-- SubOption Data Save in Array
+                   $subOpKeyName = 'optionValue' . $subOpKey;
+                   $menuArray[$subOpKeyName]  = $subOption->name;
+                   $subOpKey++;
+               }
+                   $menuArray['subOpNum'] = --$subOpKey;
+           }
+
+           array_push($totalMenuArray, $menuArray);
+
+        }
 
         return response()->json([
-           // 'shopId' => $shopId,
+            'shopId' => $shop_id,
             'category' => $category,
+            'menu'  => $totalMenuArray,
         ]);
 
     }
@@ -77,12 +133,12 @@ class MenuController extends Controller
 
         $currentMenuId = $menuId->id;
 
-        \App\Option::create([
+        \App\Menu_Option::create([
             'menu_id' => $currentMenuId,
             'name' => $request->get('option_name'),
         ]);
 
-        $optionNum = DB::table('option')
+        $optionNum = DB::table('menu_option')
             ->select('opnum')
             ->where('menu_id', $currentMenuId)
             ->orderByRaw('opnum DESC')

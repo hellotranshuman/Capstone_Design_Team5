@@ -36,7 +36,7 @@ import { Bar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
 // <-- User Main Page Component Import
 import Home                 from './components/user/user_main/UserMain.vue';
 // <-- User Register Page Component Import
-import UserRegister         from './components/Register.vue';
+import Register         from './components/Register.vue';
 // <-- User Restaurant Page Component Import
 import UserRestaurantMain   from './components/user/user_common/UserRestaurantMain.vue';
 
@@ -86,6 +86,8 @@ import CustomerAddReservation from './components/user/user_reservation/CustomerA
 // <-- owner statistics
 import OwnerTotalStatistics from './components/owner/owner_statistics/OwnerTotalStatistics.vue';
 
+
+
 const router = new VueRouter({
     routes: [
         // <-- main Page
@@ -103,8 +105,13 @@ const router = new VueRouter({
         // <-- 회원 가입
         {
             path: '/register',
-            name: 'userRegister',
-            component: UserRegister
+            name: 'register',
+            component: Register
+        },
+        {
+            path: '/owner/createRestaurant',
+            name: 'createRestaurant',
+            component: OwnerRestaurant
         },
         // <-- 가게 페이지 공통
         {
@@ -176,8 +183,7 @@ const router = new VueRouter({
                         {
                             // Restaurant 수정
                             name: 'OwnerRestaurant',
-                            path: '/owner/createRestaurant',
-                                // '/owner/:shop_id/editRestaurant',
+                            path: '/owner/:shop_id/editRestaurant',
                             component: OwnerRestaurant
                         },
                         {
@@ -225,7 +231,7 @@ const router = new VueRouter({
                             {
                                 // 사장님페이지 통계
                                 name: 'OwnerTotalStatistics',
-                                path: '/owner/:shop_id/OwnerTotalStatistics',
+                                path: '/owner/:shop_id/totalStatistics',
                                 component: OwnerTotalStatistics
                             }
                         ]

@@ -46,14 +46,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'UsersController@doLogout'
     ]);
 
-    /*
+/*
     Route::get('register', [
         'as' => 'register.showRegisterForm',
         'uses' => 'RegisterController@showRegisterForm'
     ]); */
 
 // <-- select Type
-    Route::get('register/selectType', function (){
+    Route::get('register', function (){
         return view('user.selectForm');
     });
 
@@ -107,8 +107,17 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'menu.getCategory',
         'uses' => 'MenuController@getCategory'
     ]);
+/*
+    // Test
+    Route::get('menu/getMenu', [
+        'as' => 'menu.getMenu',
+        'uses' => 'MenuController@getMenu'
+    ]); */
 
-
+    Route::get('menu/getMenu/{shop_id}/{category}', [
+        'as' => 'menu.getMenu',
+        'uses' => 'MenuController@getMenu'
+    ]);
 
 
 // <-- Owner Menu Setting
@@ -136,6 +145,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('owner/{shop_id}/menuLayout', [
         'as' => 'menu.showMenuLayout',
         'uses' => 'MenuController@showMenuLayout'
+    ]);
+
+    Route::get('owner/{shop_id}/getLayout', [
+        'as' => 'layout.getSelectedLayout',
+        'uses' => 'LayoutController@getSelectedLayout'
     ]);
 
 // <-- Owner Coupon Page
@@ -175,6 +189,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReviewController@getReviewData'
     ]);
 
+    Route::post('review/like', [
+        'as' =>  'review.getReviewLike',
+        'uses' => 'ReviewController@getReviewLike'
+    ]);
+
 // <-- User Reservation Route
 
     Route::get('/restaurant/{shop_id}/addReservation',[
@@ -199,6 +218,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReservationController@showReservationSetting'
     ]);
 
+
+// <-- Owner Statistics Page
+    Route::get('/owner/{shop_id}/totalStatistics', [
+        'as' => 'reservation.showReservationSetting',
+        'uses' => 'ReservationController@showReservationSetting'
+    ]);
+
+
 });
 
 /*
@@ -214,6 +241,17 @@ Route::get('test',[
 Route::get('images/{shop_id}/{image}', function($shop_id, $image = null)
 {
     $path = storage_path().'/app/public/img/' . $shop_id.'/' .$image;
+    if (file_exists($path)) {
+        return Response::download($path);
+    }
+    else
+        return $path;
+});
+
+// 메뉴 이미지 Route
+Route::get('images/menu/{shop_id}/{image}', function($shop_id, $image = null)
+{
+    $path = storage_path().'/app/public/img/menu/' . $shop_id.'/' .$image;
     if (file_exists($path)) {
         return Response::download($path);
     }
@@ -237,6 +275,19 @@ Route::get('images/review/{image}', function($image = null)
 Route::get('images/flag/{image}', function($image = null)
 {
     $path = storage_path().'/app/public/img/flag' .$image;
+
+    if (file_exists($path)) {
+        return Response::download($path);
+    }
+    else
+        return $path;
+});
+
+// Template 이미지 Route
+
+Route::get('images/template/{image}', function($image = null)
+{
+    $path = storage_path().'/app/public/img/template' .$image;
 
     if (file_exists($path)) {
         return Response::download($path);

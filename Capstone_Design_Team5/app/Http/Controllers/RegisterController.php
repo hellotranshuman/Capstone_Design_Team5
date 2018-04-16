@@ -17,6 +17,8 @@ class RegisterController extends Controller
 
     // <-- create Member in Users Table
     public function createMember(Request $request) {
+
+        /*
         // <-- 유효성 검사 규칙 정의
         $rules = array(
             'id' =>  'required|unique:users,user_id|max:255',
@@ -43,10 +45,12 @@ class RegisterController extends Controller
                     ->withErrors($validator)
                     ->withInput($request->except('password'));
         }
-        else {
+        else { */
             // <-- user Category 처리
-            $category = $request->input('category') == 'user' ? true : false;
+           //  $category = $request->get('category') == 'user' ? true : false;
 
+
+            /*
             // <-- Date Format 처리
             if($request->input('month') < 10 )
                 $month = '0' . $request->input('month');
@@ -59,27 +63,55 @@ class RegisterController extends Controller
                 $day = $request->input('day');
 
             $date = $request->input('year') . "-" .  $month . "-" .
-                $day;
+                $day; */
 
-            // <-- db에 Create Column
-            $user = \App\User::create([
-                'password' => Hash::make($request->input('password')),
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'gender'=> $request->input('gender') == 'male' ? true : false,
-                'country' => $request->input('country'),
-                'birthday' => $date,
-                'category' => $category,
-                'user_id' => $request->input('id'),
-                'favorite_1' => $request->input('favorite_1'),
-                'favorite_2' => $request->input('favorite_2'),
-                'favorite_3' => $request->input('favorite_3')
-            ]);
+            /*
+        $user = \App\User::create([
+            'password' => Hash::make('abc'),
+            'name' => 'aaaaa',
+            'email' => 'lllll@example.com',
+            'gender'=> true,
+            'country' => '한국',
+            'birthday' => '1994-10-12',
+            'category' => true,
+            'user_id' => '123123456',
+            'favorite_1' => '',
+            'favorite_2' => '',
+            'favorite_3' => '',
+            'favorite_region' => '',
+        ]); */
+
+         $category = $request->get('category') == 'user' ? true : false;
 
 
-            auth()->login($user);
+        // <-- db에 Create Column
+        $user = \App\User::create([
+            'password' => Hash::make($request->get('password')),
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'gender'=> $request->get('gender') == 'male' ? true : false,
+            'country' => $request->get('country'),
+            'birthday' => $request->get('birthday'),
+            'category' => $category,
+            'user_id' => $request->get('user_id'),
+            'favorite_1' => $request->get('favorite_1'),
+            'favorite_2' => $request->get('favorite_2'),
+            'favorite_3' => $request->get('favorite_3'),
+            'favorite_region' => $request->get('favorite_region'),
+        ]);
 
-            return redirect()->intended('main');
+
+
+        auth()->login($user);
+
+          if(! $category)
+                return response()->json([
+                    'url' => '/owner/createRestaurant'
+                ]);
+            else
+                return response()->json([
+                    'url' => '/main'
+                ]);
         }
-    }
+   // }
 }

@@ -48,9 +48,9 @@
             <!-- 구분 -->
             <br><br>
             <v-layout>
-                <v-flex>
+                <v-flex justify-space-between>
                     <!-- 리뷰 정렬 -->
-                    <v-tabs centered hide-slider>
+                    <v-tabs centered color="grey lighten-5" slider-color="pink lighten-1">
                         <v-tab class="review-arrayBar-font">작성일순</v-tab>
                         <v-tab class="review-arrayBar-font">인기순</v-tab>
                         <v-tab class="review-arrayBar-font">국가순</v-tab>
@@ -74,12 +74,11 @@
                     <!--  :image2="reviewData['image2']['filename']" :image3="reviewData['image3']['filename']" -->
                     <ul>
                         <li v-for= "reviewData in reviewDataList" :key="reviewData['id']" v-if="reviewData['id']">
-                            <UserCreateReview :userID="reviewData['name']"  :country="reviewData['country']" 
-                            :writeDate="reviewData['reg_date']" reviewLike="reviewData.reviewLike"
-                            :rating="reviewData['rating']" :taste="reviewData['taste']"
-                            :service="reviewData['service']" :mood="reviewData['mood']"
+                            <UserCreateReview :userID="reviewData['name']" :reviewID="reviewData['id']" 
+                            :country="reviewData['country']" :writeDate="reviewData['reg_date']" 
+                            :reviewLike="reviewData['reviewLike']" :rating="reviewData['rating']" 
+                            :taste="reviewData['taste']" :service="reviewData['service']" :mood="reviewData['mood']"
                             :price="reviewData['price']" :image="reviewData['image']" 
-
                             :content="reviewData['content']" hashTag="" >
                             </UserCreateReview>
                         </li>
@@ -179,6 +178,8 @@ export default {
 
     // 라이프 사이클의 created 단계, DB에서 작성되어 있는 리뷰 데이터를 가지고 옵니다.
     created() {
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@");
+
         // Add shop_id in shopData
         var shopData = new FormData();
         shopData.append('shop_id', this.shop_id);
@@ -186,6 +187,16 @@ export default {
         // axios http 라이브러리 with Send shopData
         axios.post('/review', shopData).
         then((response)=>{
+
+            console.log("-----review value get-----");
+            console.log(response.data['review']);
+            // 리뷰 좋아요 데이터
+            console.log("-----review like get-----");
+            console.log(response.data.reviewLike);
+            // 해시태그
+            console.log("-----hashtag get-----");
+            console.log(response.data.hashTag);
+
             // reviewDataList변수에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
             this.reviewDataList = response.data['review'],
 
@@ -236,6 +247,13 @@ export default {
         font-weight: bold;   
         width: 100%;
         height: 100;
-        color: black;
     }
+
+    /* 링크를 클릭하려고 마우스를 가져갔을 때 */
+    a:hover { 
+        color: #FF6666; 
+        text-decoration: none;
+    }
+
+
 </style>
