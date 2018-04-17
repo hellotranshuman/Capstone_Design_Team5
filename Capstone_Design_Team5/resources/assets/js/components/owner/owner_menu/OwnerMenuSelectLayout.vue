@@ -180,7 +180,7 @@ export default {
     data () {
         return { 
             // 이미지 주소 주소 설정 좀여
-            exImg1 : '',
+            exImg1 : '/images/template/template1.jpeg',
             exImg2 : '/images/template/template2.png',
             exImg3 : '/images/template/template3.png',
             exImg4 : '/images/template/template4.png',
