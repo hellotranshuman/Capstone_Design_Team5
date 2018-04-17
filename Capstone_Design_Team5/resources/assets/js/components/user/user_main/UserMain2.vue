@@ -1,191 +1,77 @@
 <template>
     <div>
-        <v-app>
-            <v-navigation-drawer
-                    app
-                    v-model="menu"
-                    disable-resize-watcher
-                    temporary
-                    hide-overlay
-            ><!-- disable-resize-watcher: 화면 크기가 재조정 될 경우 자동으로 서랍을 열거나 닫는 것을 막음-->
-                <v-toolbar flat class="transparent">
-                    <v-list class="pa-0">
-                        <v-list-tile avatar>
-                            <v-list-tile-avatar>
-                                <v-icon large>account_circle</v-icon>
-                            </v-list-tile-avatar>
-                            <v-list-tile-content>
-                                <v-list-tile-title>김성준 님</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </v-list>
-                </v-toolbar>
-                <v-list>
-                    <v-divider></v-divider>
-                    <v-list-tile @click="">
-                        <v-list-tile-action>
-                            <v-icon large>assignment</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>주문 내역</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                    <v-list-tile @click="">
-                        <v-list-tile-action>
-                            <v-icon large>rate_review</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>리뷰 내역</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                    <v-list-tile @click="">
-                        <v-list-tile-action>
-                            <v-icon large>loyalty</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>쿠폰함</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                    <v-list-tile @click="">
-                        <v-list-tile-action>
-                            <v-icon large>favorite</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>찜목록</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                    <v-list-tile @click="">
-                        <v-list-tile-action>
-                            <v-icon large>settings</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>설정</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                </v-list>
-
-            </v-navigation-drawer>
-            <v-toolbar
-                    app
-                    color='grey darken-3'
-                    dark
-                    scroll-off-screen
-            ><!-- scroll-off-screen: 스크롤을 내리면 toolbar가 숨겨짐 -->
-                <v-btn icon @click.native="menu = !menu">
-                    <v-icon large>menu</v-icon>
-                </v-btn>
-                <v-toolbar-title style='width: 20vw'><router-link to="/main" style="text-decoration: none" class="white--text">AIOF</router-link> <router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">Restaurant</router-link></v-toolbar-title>
-                <v-text-field
-                        flat
-                        solo-inverted
-                        prepend-icon="search"
-                        label="Search"
-                        class="hidden-sm-and-down"
-                ></v-text-field>
-                <v-btn icon @click.native.stop="gps_modal = true">
-                    <v-icon large color="red">gps_fixed</v-icon>
-                </v-btn>
-                <v-dialog v-model="gps_modal" max-width="400">
-                    <v-card>
-                        <v-card-title class="headline">GPS 위치 지정<v-spacer></v-spacer>
-                            <v-btn icon @click.native.stop="gps_modal = false">
-                                <v-icon large color="red">close</v-icon>
-                            </v-btn>
-                        </v-card-title>
-                        <v-card-text>위치를 기반으로 식당을 검색하거나 추천해 드립니다 ^^</v-card-text>
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <v-btn color="amber lighten-1" @click.native="gps_search = true">직접 입력</v-btn>
-                            <v-dialog v-model="gps_search" max-width="290">
-                                <v-card>
-                                    <v-card-title class="headline">위치를 입력하세요</v-card-title>
-                                    <v-card-actions>
-                                        <v-flex xs16>
-                                            <v-text-field placeholder="place" required></v-text-field>
-                                        </v-flex>
-                                        <v-spacer></v-spacer>
-                                        <v-btn color="amber lighten-1" to="/search" @click.native="gps_search = false; gps_modal = false">검색</v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                            <v-btn color="red" @click.native="gps_modal = false">GPS로 위치 찾기</v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-dialog>
-                <v-spacer></v-spacer><!-- 간격 -->
-                <v-btn icon @click="loginForm = true">
-                    <v-icon large color="blue">account_circle</v-icon>
-                </v-btn>
-            </v-toolbar>
-            <v-content>
-                <v-container fluid>
-                    <router-view></router-view>
-                </v-container>
-            </v-content>
-            <v-footer app></v-footer>
-            <v-dialog
-                    v-model='loginForm'
-                    max-width='290'
-            >
+        <v-flex xs12 sm8 offset-sm2>
+            <v-card>
+                <v-subheader><h1>현재 위치 : 후쿠오카 텐진</h1></v-subheader>
+                <v-flex xs12 sm6 offset-sm3>
+                    <template>
+                        <div id="app">
+                            <google-map :testCenter=testCenter></google-map>
+                        </div>
+                    </template>
+                </v-flex>
+            </v-card>
+        </v-flex>
+        <br>
+        <v-layout row>
+            <v-flex xs12 sm8 offset-sm2>
                 <v-card>
-                    <v-card-title>
-                        <span class="headline">Login</span>
-                    </v-card-title>
-                    <v-card-text>
-                        <v-form>
-                            <v-text-field
-                                    label="ID"
-                                    required
-                                    v-model='idValue'
-                            ></v-text-field>
-                            <v-text-field
-                                    label="Password"
-                                    type="password"
-                                    required
-                                    v-model='pwValue'
-                            ></v-text-field>
-                        </v-form>
-                    </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat @click="login()">로그인</v-btn>
-                        <router-link :to="{name: 'register'}" style="text-decoration: none;">
-                            <v-btn color="blue darken-1" flat @click="loginForm=false">회원가입</v-btn>
-                        </router-link>
-                    </v-card-actions>
+                    <v-subheader><h1>최근 리뷰</h1></v-subheader>
+                    <v-container fluid grid-list-sm>
+                        <v-layout row wrap v-if="test">
+                            <v-flex xs4 v-for="i in 3" :key="i">
+                                <v-card-title primary-title>
+                                    <h3 class="headline mb-0">{{test[i][0]}}</h3>
+                                </v-card-title>
+                                <v-card-media :src="`/images/${test[i][1]}.jpg`" height="200px"></v-card-media>
+                                <v-card-actions>
+                                    <v-btn flat color="orange" :to="`${test[i][2]}`" style="width: 33%">Info</v-btn>
+                                    <v-btn flat color="orange" :to="`${test[i][3]}`" style="width: 33%">Menu</v-btn>
+                                    <v-btn flat color="orange" :to="`${test[i][4]}`" style="width: 33%">Review</v-btn>
+                                </v-card-actions>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                    <v-subheader><h1>나에게 맞는 가게</h1></v-subheader>
+                    <v-container fluid grid-list-sm>
+                        <v-layout row wrap v-if="test2">
+                            <v-flex xs4 v-for="i in 3" :key="i">
+                                <v-card-title primary-title>
+                                    <h3 class="headline mb-0">{{test2[i][0]}}</h3>
+                                </v-card-title>
+                                <v-card-media :src="`/images/${test2[i][1]}.jpg`" height="200px"></v-card-media>
+                                <v-card-actions>
+                                    <v-btn flat color="orange" :to="`${test2[i][2]}`" style="width: 33%">Info</v-btn>
+                                    <v-btn flat color="orange" :to="`${test2[i][3]}`" style="width: 33%">Menu</v-btn>
+                                    <v-btn flat color="orange" :to="`${test2[i][4]}`" style="width: 33%">Review</v-btn>
+                                </v-card-actions>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
                 </v-card>
-            </v-dialog>
-        </v-app>
+            </v-flex>
+        </v-layout>
     </div>
 </template>
 
 <script>
-    import axios  from 'axios';
+    import GoogleMap from "./../../GoogleMap";
     export default {
-        data: () => ({
-            menu: false,
-            loginForm: false,
-            loginStatus: false,
-            gps_modal: false,
-            gps_search: false,
-            idValue: '',
-            pwValue: ''
-        }),
-
-        methods: {
-            login() {
-                var url = "/login";
-                axios.post(url, {
-                    user_id     : this.idValue,
-                    password    : this.pwValue
-                })
-                    .then(function (response) {
-                        alert(response.data.msg);
-                    })
-                    .catch(function (error) {
-                        alert('error!');
-                    });
+        name: "App",
+        components: {
+            GoogleMap
+        },
+        data(){
+            return {
+                test: [[], ["도쿄 아게야", 1, "/restaurant/1/info", "/restaurant/1/menu", "/restaurant/1/review"], ["시부야 텐야", 2, "/restaurant/2/info", "/restaurant/2/menu", "/restaurant/2/review"], ["오사카 우동", 3, "/restaurant/3/info", "/restaurant/3/menu", "/restaurant/3/review"]],
+                test2: [[], ["오사카 요시노야", 4, "/restaurant/4/info", "/restaurant/4/menu", "/restaurant/4/review"], ["주부국제공항 오하기", 5, "/restaurant/5/info", "/restaurant/5/menu", "/restaurant/5/review"], ["도쿄 소바신", 6, "/restaurant/6/info", "/restaurant/6/menu", "/restaurant/6/review"]],
+                key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo",
+                testCenter: {lat: 33.5882038, lng: 130.3989663}
             }
         }
     }
 </script>
+
+<style>
+
+</style>

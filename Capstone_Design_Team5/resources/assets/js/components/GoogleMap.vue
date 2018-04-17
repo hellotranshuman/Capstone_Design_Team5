@@ -20,16 +20,36 @@
 <script>
     export default {
         name: "GoogleMap",
+        props: ['testCenter'],
         data() {
             return {
                 // default to Montreal to keep it simple
                 // change this to whatever makes sense
-                center: { lat: 33.5862667, lng: 130.4022408 },
+                center: this.testCenter,
                 markers: [{
-                    position: {lat: 33.5862667, lng: 130.4022408},
+                    position: {lat: 33.5905447, lng: 130.3965094},
                     icon: "/images/restaurant.png",
-                    infoText: "나는 가게요",
                     restaurantId: "1"
+                }, {
+                    position: {lat: 33.5865284, lng: 130.3965383},
+                    icon: "/images/restaurant.png",
+                    restaurantId: "2"
+                }, {
+                    position: {lat: 33.5884537, lng: 130.4014961},
+                    icon: "/images/restaurant.png",
+                    restaurantId: "3"
+                }, {
+                    position: {lat: 33.5905139, lng: 130.4021478},
+                    icon: "/images/restaurant.png",
+                    restaurantId: "4"
+                }, {
+                    position: {lat: 33.5898338, lng: 130.4003132},
+                    icon: "/images/restaurant.png",
+                    restaurantId: "5"
+                }, {
+                    position: {lat: 33.589412, lng: 130.401871},
+                    icon: "/images/restaurant.png",
+                    restaurantId: "6"
                 }],
 
                 places: [],

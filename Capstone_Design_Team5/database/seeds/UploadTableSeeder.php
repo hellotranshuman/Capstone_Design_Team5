@@ -12,26 +12,56 @@ class UploadTableSeeder extends Seeder
     public function run()
     {
         \App\Upload::create([
+            'shop_id' => 1,
+            'filename' => '1_titleImg.jpg',
+            'path' => '/images/1/'
+        ]);
+
+        \App\Upload::create([
+            'shop_id' => 1,
+            'filename' => '1_gallaryImg_0.jpg',
+            'path' => '/images/1/'
+        ]);
+
+        \App\Upload::create([
+            'shop_id' => 1,
+            'filename' => '1_gallaryImg_1.jpg',
+            'path' => '/images/1/'
+        ]);
+
+        \App\Upload::create([
+            'shop_id' => 1,
+            'filename' => '1_gallaryImg_1.jpg',
+            'path' => '/images/1/'
+        ]);
+
+        \App\Upload::create([
             'shop_id' => 2,
             'filename' => '2_titleImg.jpg',
             'path' => '/images/2/'
         ]);
 
         \App\Upload::create([
-            'shop_id' => 2,
-            'filename' => '2_gallaryImg_0.jpg',
-            'path' => '/images/2/'
-        ]);
-
-        \App\Upload::create([
-            'shop_id' => 2,
-            'filename' => '2_gallaryImg_1.jpg',
-            'path' => '/images/2/'
+            'shop_id' => 3,
+            'filename' => '3_titleImg.jpg',
+            'path' => '/images/3/'
         ]);
 
         \App\Upload::create([
             'shop_id' => 3,
-            'filename' => '3_titleImg.jpg',
+            'filename' => '3_gallaryImg_0.jpg',
+            'path' => '/images/3/'
+        ]);
+
+        \App\Upload::create([
+            'shop_id' => 3,
+            'filename' => '3_gallaryImg_1.jpg',
+            'path' => '/images/3/'
+        ]);
+
+        \App\Upload::create([
+            'shop_id' => 3,
+            'filename' => '3_gallaryImg_2.jpg',
             'path' => '/images/3/'
         ]);
 
@@ -50,12 +80,6 @@ class UploadTableSeeder extends Seeder
         \App\Upload::create([
             'shop_id' => 4,
             'filename' => '4_gallaryImg_1.jpg',
-            'path' => '/images/4/'
-        ]);
-
-        \App\Upload::create([
-            'shop_id' => 4,
-            'filename' => '4_gallaryImg_2.jpg',
             'path' => '/images/4/'
         ]);
 
@@ -96,33 +120,15 @@ class UploadTableSeeder extends Seeder
         ]);
 
         \App\Upload::create([
-            'shop_id' => 7,
-            'filename' => '7_titleImg.jpg',
-            'path' => '/images/7/'
+            'shop_id' => 6,
+            'filename' => '6_gallaryImg_2.jpg',
+            'path' => '/images/6/'
         ]);
 
         \App\Upload::create([
-            'shop_id' => 7,
-            'filename' => '7_gallaryImg_0.jpg',
-            'path' => '/images/7/'
-        ]);
-
-        \App\Upload::create([
-            'shop_id' => 7,
-            'filename' => '7_gallaryImg_1.jpg',
-            'path' => '/images/7/'
-        ]);
-
-        \App\Upload::create([
-            'shop_id' => 7,
-            'filename' => '7_gallaryImg_2.jpg',
-            'path' => '/images/7/'
-        ]);
-
-        \App\Upload::create([
-            'shop_id' => 7,
-            'filename' => '7_gallaryImg_3.jpg',
-            'path' => '/images/7/'
+            'shop_id' => 6,
+            'filename' => '6_gallaryImg_3.jpg',
+            'path' => '/images/6/'
         ]);
     }
 }

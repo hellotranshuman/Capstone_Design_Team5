@@ -93,13 +93,6 @@ class ReviewController extends Controller
                 'msg' => '좋아요가 취소되었습니다.',
             ]);
         }
-        /*
-        \App\Review_like::create([
-            'review_id' => $request->get('review_id'),
-            'user_num' => auth()->user()->id,
-        ]);*/
-
-
 
     }
 

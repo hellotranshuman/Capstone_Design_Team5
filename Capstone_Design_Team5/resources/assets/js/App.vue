@@ -74,7 +74,7 @@
                 <v-btn icon @click.native="menu = !menu">
                     <v-icon large>menu</v-icon>
                 </v-btn>
-                <v-toolbar-title style='width: 20vw'><router-link to="/main" style="text-decoration: none" class="white--text">AIOF</router-link> <router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">Restaurant</router-link></v-toolbar-title>
+                <v-toolbar-title style='width: 20vw'><router-link to="/" style="text-decoration: none" class="white--text">AIOF</router-link> <router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">Restaurant</router-link></v-toolbar-title>
                 <v-text-field
                         flat
                         solo-inverted
@@ -96,11 +96,11 @@
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn color="amber lighten-1" @click.native="gps_search = true">직접 입력</v-btn>
-                            <v-dialog v-model="gps_search" max-width="290">
+                            <v-dialog v-model="gps_search" max-width="500">
                                 <v-card>
                                     <v-card-title class="headline">위치를 입력하세요</v-card-title>
                                     <v-card-actions>
-                                        <v-flex xs16>
+                                        <v-flex>
                                             <v-text-field placeholder="place" required></v-text-field>
                                         </v-flex>
                                         <v-spacer></v-spacer>

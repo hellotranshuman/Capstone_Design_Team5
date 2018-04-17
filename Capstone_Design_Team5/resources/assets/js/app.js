@@ -111,6 +111,13 @@ const router = new VueRouter({
                 name: 'register',
                 component: Register
             },
+            {
+                name: 'OwnerRestaurant',
+                path: '/owner/createRestaurant',
+                // '/owner/createRestaurant',
+                // '/owner/:shop_id/editRestaurant',
+                component: OwnerRestaurant
+            },
             // <-- 가게 페이지 공통
             {
                 path: '/restaurant',
@@ -181,7 +188,8 @@ const router = new VueRouter({
                             {
                                 // Restaurant 수정
                                 name: 'OwnerRestaurant',
-                                path: '/owner/createRestaurant',
+                                path: '/owner/:shop_id/editRestaurant',
+                                    // '/owner/createRestaurant',
                                 // '/owner/:shop_id/editRestaurant',
                                 component: OwnerRestaurant
                             },
@@ -223,14 +231,13 @@ const router = new VueRouter({
                         // 사장님 페이지 통계 좌측 바
                         name: 'OwnerPageSideStatistics',
                         path: '/owner/:shop_id/OwnerPageSideStatistics',
-                        // path: '/owner/:shop_id/OwnerPageSideStatistics',
                         component: OwnerPageSideStatistics,
                         children:
                             [
                                 {
                                     // 사장님페이지 통계
                                     name: 'OwnerTotalStatistics',
-                                    path: '/owner/:shop_id/OwnerTotalStatistics',
+                                    path: '/owner/:shop_id/totalStatistics',
                                     component: OwnerTotalStatistics
                                 }
                             ]

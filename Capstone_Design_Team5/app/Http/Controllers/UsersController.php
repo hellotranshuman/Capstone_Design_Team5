@@ -70,13 +70,18 @@ class UsersController extends Controller
                     $restaurantId = $restaurant->id;
 
                     $request->session()->put('restaurantId', $restaurantId);
+
+                    $link = '/owner/' . $restaurantId . '/menu';
                 }
+                else
+                    $link = '/';
 
                 // auth()->user()->id
                 // auth()->user()->name
                 return response()->json([
                     'login' => 'true',
                     'msg' => '로그인 되었습니다.',
+                    'link' => $link,
                 ]);
             }
 

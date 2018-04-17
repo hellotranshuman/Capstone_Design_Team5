@@ -275,8 +275,7 @@ export default {
                 reviewData
             , settings).then( 
                 function (response) {
-                    console.log(response.data.content);
-                    alert(response.data.link);
+                    alert(response.data.content);
 
                     var link = response.data.link;
                     window.location.href = link;
