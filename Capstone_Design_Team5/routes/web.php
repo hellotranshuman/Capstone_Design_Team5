@@ -22,6 +22,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
+    Route::get('/search', array(
+        'as' => 'main.showMainPage',
+        'uses' => 'MainController@showMainPage'
+    ));
+
     Route::get('/test', array(
         'as' => 'main.getReviewData',
         'uses' => 'MainController@getReviewData'

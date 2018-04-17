@@ -20009,6 +20009,33 @@ module.exports = Cancel;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -20017,6 +20044,8 @@ module.exports = Cancel;
             menu: false,
             loginForm: false,
             loginStatus: false,
+            gps_modal: false,
+            gps_search: false,
             idValue: '',
             pwValue: ''
         };
@@ -35108,53 +35137,64 @@ module.exports = {
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "GoogleMap",
-  data: function data() {
-    return {
-      // default to Montreal to keep it simple
-      // change this to whatever makes sense
-      center: { lat: 35.8963134, lng: 128.6198624 },
-      markers: [],
-      places: [],
-      currentPlace: null
-    };
-  },
-  mounted: function mounted() {
-    this.geolocate();
-  },
+    name: "GoogleMap",
+    data: function data() {
+        return {
+            // default to Montreal to keep it simple
+            // change this to whatever makes sense
+            center: { lat: 33.5862667, lng: 130.4022408 },
+            markers: [{
+                position: { lat: 33.5862667, lng: 130.4022408 },
+                icon: "/images/restaurant.png",
+                infoText: "나는 가게요",
+                restaurantId: "1"
+            }],
 
-
-  methods: {
-    // receives a place object via the autocomplete component
-    setPlace: function setPlace(place) {
-      this.currentPlace = place;
-    },
-    addMarker: function addMarker() {
-      if (this.currentPlace) {
-        var marker = {
-          lat: this.currentPlace.geometry.location.lat(),
-          lng: this.currentPlace.geometry.location.lng()
+            places: [],
+            currentPlace: null
         };
-        this.markers.push({ position: marker });
-        this.places.push(this.currentPlace);
-        this.center = marker;
-        this.currentPlace = null;
-      }
+    },
+    mounted: function mounted() {
+        this.geolocate();
     },
 
-    geolocate: function geolocate() {
-      var _this = this;
 
-      navigator.geolocation.getCurrentPosition(function (position) {
-        _this.center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      });
+    methods: {
+        // receives a place object via the autocomplete component
+        setPlace: function setPlace(place) {
+            this.currentPlace = place;
+        },
+        addMarker: function addMarker() {
+            if (this.currentPlace) {
+                var marker = {
+                    lat: this.currentPlace.geometry.location.lat(),
+                    lng: this.currentPlace.geometry.location.lng()
+                };
+                this.markers.push({ position: marker });
+                this.places.push(this.currentPlace);
+                this.center = marker;
+                this.currentPlace = null;
+            }
+        },
+
+        geolocate: function geolocate() {
+            var _this = this;
+
+            navigator.geolocation.getCurrentPosition(function (position) {
+                _this.center = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+            });
+        },
+        getRestaurant: function getRestaurant(restaurantId) {
+            alert(restaurantId + "번 가게 띄어봐라~");
+        }
     }
-  }
 });
 
 /***/ }),
@@ -37969,6 +38009,8 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
             shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
             reviewDataList: [], // DB에서 가져온 리뷰 데이터목록이 저장되는 배열
             reviewImgList: [], // 이미지명이 들어가는 배열
+            reviewLikeList: [], // 리뷰 좋아요 목록이 저장되는 배열
+            hashTagList: [], // 해시태그 목록이 저장되는 배열
             url: "https://www.naver.com/", // 리뷰를 하는 페이지 URL
             totalRating: 0 // 가게별 평균 평점
         };
@@ -38009,12 +38051,12 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
 
 
         // 리뷰 데이터 값을 가지는 배열의 하나하나에 해당하는 이미지 값을 추가하는 메서드
-        arrayPushImg: function arrayPushImg(dataArr, ImgArr) {
+        arrayPushImg: function arrayPushImg() {
             var review_id = null;
 
             // [ _ ] 언더바를 기준으로 문자열을 분리합니다.
-            for (var iCount = 0; iCount < ImgArr.length; iCount++) {
-                review_id = ImgArr[iCount]['filename'].split('_');
+            for (var iCount = 0; iCount < this.reviewImgList.length; iCount++) {
+                review_id = this.reviewImgList[iCount]['filename'].split('_');
 
                 // 이미지가 포함되는 리뷰 id를 이미지배열에 저장합니다.
                 this.reviewImgList[iCount]['id'] = parseInt(review_id[0]);
@@ -38025,7 +38067,6 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
             for (var iCount = 0; iCount < this.reviewDataList.length; iCount++) {
                 var imageArr = []; // 리뷰별로 이미지를 저장할 배열
 
-
                 // 리뷰 데이터 배열의 id와 리뷰 이미지 배열의 id가 일치할때 리뷰 이미지 배열을 리뷰 데이터 배열안에 넣습니다.
                 for (var jCount = 0; jCount < this.reviewImgList.length; jCount++) {
                     this.reviewDataList[iCount]["image"] = []; // image를 key로 배는 배열 생성
@@ -38034,6 +38075,41 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
                         imageArr.push(this.reviewImgList[jCount]["filename"]);
                     }
                     this.reviewDataList[iCount]["image"] = imageArr;
+                }
+            }
+        },
+
+
+        // 리뷰 데이터 값을 가지는 배열에 해시태그를 추가하는 함수
+        arrayPushHashTag: function arrayPushHashTag() {
+            // 리뷰 데이터에 이미지 데이터를 저장
+            for (var iCount = 0; iCount < this.reviewDataList.length; iCount++) {
+                var hashTagArr = []; // 리뷰별로 이미지를 저장할 배열
+
+                // 리뷰 데이터 배열의 id와 해시태그 배열의 id가 일치할때 해시태그 배열을 리뷰 데이터 배열안에 넣습니다.
+                for (var jCount = 0; jCount < this.hashTagList.length; jCount++) {
+                    this.reviewDataList[iCount]["hashTag"] = []; // image를 key로 배는 배열 생성
+
+                    if (this.reviewDataList[iCount]['id'] === this.hashTagList[jCount]['review_id']) {
+                        hashTagArr.push(this.hashTagList[jCount]['tag']);
+                    }
+                    this.reviewDataList[iCount]["hashTag"] = hashTagArr;
+                }
+            }
+        },
+
+
+        // 좋아요 버튼이 눌려져 있는지 여부를 가지는 값을 리뷰 데이터 배열에 저장합니다.
+        addReviewLike: function addReviewLike() {
+            for (var iCount = 0; iCount < this.reviewDataList.length; iCount++) {
+                // reviewLike를 key값으로 하여 fasle를 값을 등록합니다.
+                this.reviewDataList[iCount]['reviewLike'] = false;
+
+                for (var jCount = 0; jCount < this.reviewLikeList.length; jCount++) {
+                    if (this.reviewDataList[iCount]['id'] === this.reviewLikeList[jCount]['review_id']) {
+                        // 좋아요버튼이 눌러져 있는 리뷰의 경우 위에서 등록된 reviewLike에 true값을 저장합니다.
+                        this.reviewDataList[iCount]['reviewLike'] = true;
+                    }
                 }
             }
         }
@@ -38056,10 +38132,16 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
             console.log(response.data['review']);
             // 리뷰 좋아요 데이터
             console.log("-----review like get-----");
-            console.log(response.data.reviewLike);
+            console.log(response.data['reviewLike']);
             // 해시태그
             console.log("-----hashtag get-----");
-            console.log(response.data.hashTag);
+            console.log(response.data['hashTag']);
+
+            // hashTagList배열에 해쉬태그 목록이 저장됩니다.
+            _this.hashTagList = response.data['hashTag'];
+
+            // reviewLikeList배열에 리뷰 좋아요 목록이 저장됩니다.
+            _this.reviewLikeList = response.data['reviewLike'],
 
             // reviewDataList변수에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
             _this.reviewDataList = response.data['review'],
@@ -38074,7 +38156,11 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
             _this.arrayClassification(_this.reviewDataList),
 
             // arrayPushImg메서드를 호출하여 리뷰 데이터 값을 가지는 배열에 해당하는 이미지 값을 추가
-            _this.arrayPushImg(_this.reviewDataList, _this.reviewImgList),
+            _this.arrayPushImg(),
+            // 좋아요 버튼이 눌려져 있는지 여부를 가지는 값을 리뷰 데이터 배열에 저장하는 함수를 호출합니다.
+            _this.addReviewLike();
+            // 리뷰 데이터 값을 가지는 배열에 해시태그를 추가하는 함수
+            _this.arrayPushHashTag();
 
             // console.log 출력
             console.log("----- 최종 처리 배열 값  -----"), console.log(_this.reviewDataList);
@@ -38092,6 +38178,16 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38252,10 +38348,15 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
             type: String,
             default: ""
         },
-        //리뷰 좋아요
-        reviewLike: {
+        //리뷰 좋아요 개수
+        likeNum: {
             type: Number,
             default: 0
+        },
+        // 리뷰 좋아요가 선택된 리뷰인지 여부
+        reviewLike: {
+            type: Boolean,
+            default: false
         },
         // 총 평점
         rating: {
@@ -38294,8 +38395,8 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
         },
         // 해시 태그
         hashTag: {
-            type: String,
-            default: ""
+            type: Array,
+            default: []
         }
     },
     // 컴포넌트 선언
@@ -38330,14 +38431,18 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
                 w: 600,
                 h: 400
             }],
-            reviewLikeBut: false, // 리뷰 좋아요 버튼을 눌렸는지 아닌지 구분하는 값을 저장하는 변수
-            reviewLikeNum: this.reviewLike, // 전달 받은 리뷰 좋아요를 받은 개수값을 변수에 저장합니다.
+            reviewLikeBut: this.reviewLike, // 리뷰 좋아요 버튼을 눌렸는지 아닌지 구분하는 값을 저장하는 변수
+            reviewLikeNum: this.likeNum, // 전달 받은 리뷰 좋아요를 받은 개수값을 변수에 저장합니다.
 
             starColor: "#ffd055",
             inactiveStarColor: "#ffd055",
 
-            flag: "../../../../../../../../storage/app/public/img/flag/" + this.country + ".png" // 국적에 맞는 깃발 이미지 주소
+            flag: "../../images/flag/" + this.country + ".png" // 국적에 맞는 깃발 이미지 주소
         };
+    },
+    created: function created() {
+        console.log("&&&&&&&&&&&&&&&&&&&&&&&&&");
+        console.log(this.flag);
     },
 
 
@@ -38374,10 +38479,6 @@ var layout = __WEBPACK_IMPORTED_MODULE_0__MenuDefaultLayout1_vue__["a" /* defaul
                 alert(response.data.msg);
             }).catch(console.log('is catch'));
         }
-    },
-
-    created: function created() {
-        console.log(this.flag);
     }
 });
 
@@ -40663,27 +40764,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue2_google_maps__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue_chartjs__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_user_user_main_UserMain_vue__ = __webpack_require__(485);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Register_vue__ = __webpack_require__(491);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_user_user_common_UserRestaurantMain_vue__ = __webpack_require__(493);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_owner_owner_common_OwnerPage_vue__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_owner_owner_common_OwnerPageSideReservation_vue__ = __webpack_require__(507);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_owner_owner_common_OwnerPageSideSetting_vue__ = __webpack_require__(511);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPageSideStatistics_vue__ = __webpack_require__(515);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_reservation_OwnerReservationlist_vue__ = __webpack_require__(519);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_reservation_OwnerReservationAccept_vue__ = __webpack_require__(523);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationSetting_vue__ = __webpack_require__(527);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_restaurant_OwnerRestaurant_vue__ = __webpack_require__(531);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_coupon_createCoupon_vue__ = __webpack_require__(535);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_menu_OwnerMenu_vue__ = __webpack_require__(539);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_menu_OwnerMenuOperate_vue__ = __webpack_require__(543);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenuList_vue__ = __webpack_require__(547);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuSelectLayout_vue__ = __webpack_require__(551);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_user_user_menu_MenuMain_vue__ = __webpack_require__(555);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_user_user_review_UserReview_vue__ = __webpack_require__(564);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_user_user_restaurant_UserRestaurant_vue__ = __webpack_require__(576);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_user_user_review_UserWriteReview_vue__ = __webpack_require__(580);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_user_user_reservation_CustomerAddReservation_vue__ = __webpack_require__(593);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_owner_owner_statistics_OwnerTotalStatistics_vue__ = __webpack_require__(597);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain2_vue__ = __webpack_require__(616);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Register_vue__ = __webpack_require__(491);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_user_user_common_UserRestaurantMain_vue__ = __webpack_require__(493);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_owner_owner_common_OwnerPage_vue__ = __webpack_require__(501);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_owner_owner_common_OwnerPageSideReservation_vue__ = __webpack_require__(507);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPageSideSetting_vue__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPageSideStatistics_vue__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_reservation_OwnerReservationlist_vue__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationAccept_vue__ = __webpack_require__(523);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationSetting_vue__ = __webpack_require__(527);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_restaurant_OwnerRestaurant_vue__ = __webpack_require__(531);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_coupon_createCoupon_vue__ = __webpack_require__(535);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_menu_OwnerMenu_vue__ = __webpack_require__(539);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenuOperate_vue__ = __webpack_require__(543);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuList_vue__ = __webpack_require__(547);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_owner_owner_menu_OwnerMenuSelectLayout_vue__ = __webpack_require__(551);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_user_user_menu_MenuMain_vue__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_user_user_review_UserReview_vue__ = __webpack_require__(564);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_user_user_restaurant_UserRestaurant_vue__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_user_user_review_UserWriteReview_vue__ = __webpack_require__(580);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_user_user_reservation_CustomerAddReservation_vue__ = __webpack_require__(593);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_owner_owner_statistics_OwnerTotalStatistics_vue__ = __webpack_require__(597);
 
 
 
@@ -40718,6 +40820,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_8_vue2
 
 
 // <-- User Main Page Component Import
+
 
 // <-- User Register Page Component Import
 
@@ -40781,102 +40884,103 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: '/main',
         name: 'home',
         component: __WEBPACK_IMPORTED_MODULE_10__components_user_user_main_UserMain_vue__["a" /* default */]
+    }, {
+        path: '/search',
+        name: 'home2',
+        component: __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain2_vue__["a" /* default */]
     },
     // <-- 회원 가입
     {
         path: '/register',
         name: 'register',
-        component: __WEBPACK_IMPORTED_MODULE_11__components_Register_vue__["a" /* default */]
-    }, {
-        path: '/owner/createRestaurant',
-        name: 'createRestaurant',
-        component: __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_restaurant_OwnerRestaurant_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_12__components_Register_vue__["a" /* default */]
     },
     // <-- 가게 페이지 공통
     {
         path: '/restaurant',
         name: 'UserRestaurantMain',
-        component: __WEBPACK_IMPORTED_MODULE_12__components_user_user_common_UserRestaurantMain_vue__["a" /* default */],
+        component: __WEBPACK_IMPORTED_MODULE_13__components_user_user_common_UserRestaurantMain_vue__["a" /* default */],
         // 네스티드 라우터
         children: [{
             name: 'UserRestaurant', // 가게 페이지 안의 정보
             path: '/restaurant/:shop_id/info',
-            component: __WEBPACK_IMPORTED_MODULE_28__components_user_user_restaurant_UserRestaurant_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_29__components_user_user_restaurant_UserRestaurant_vue__["a" /* default */]
         }, {
             name: 'UserMenu', // 가게 페이지 안의 메뉴
             path: '/restaurant/:shop_id/menu',
-            component: __WEBPACK_IMPORTED_MODULE_26__components_user_user_menu_MenuMain_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_27__components_user_user_menu_MenuMain_vue__["a" /* default */]
         }, {
             name: 'UserReview', // 가게 페이지 안의 리뷰
             path: '/restaurant/:shop_id/review',
-            component: __WEBPACK_IMPORTED_MODULE_27__components_user_user_review_UserReview_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_28__components_user_user_review_UserReview_vue__["a" /* default */]
         }]
     }, {
         name: 'UserWriteReview', // 리뷰 작성
         path: '/restaurant/:shop_id/writeReview',
-        component: __WEBPACK_IMPORTED_MODULE_29__components_user_user_review_UserWriteReview_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_30__components_user_user_review_UserWriteReview_vue__["a" /* default */]
     }, {
-        name: __WEBPACK_IMPORTED_MODULE_13__components_owner_owner_common_OwnerPage_vue__["a" /* default */], // 사장님 페이지
+        name: __WEBPACK_IMPORTED_MODULE_14__components_owner_owner_common_OwnerPage_vue__["a" /* default */], // 사장님 페이지
         path: '/owner',
-        component: __WEBPACK_IMPORTED_MODULE_13__components_owner_owner_common_OwnerPage_vue__["a" /* default */],
+        component: __WEBPACK_IMPORTED_MODULE_14__components_owner_owner_common_OwnerPage_vue__["a" /* default */],
         // side bar
         children: [{
             name: 'OwnerPageSideReservation', // 사장님 페이지 예약 관련 좌측 바
             path: '/owner/ownerSideReservation',
-            component: __WEBPACK_IMPORTED_MODULE_14__components_owner_owner_common_OwnerPageSideReservation_vue__["default"],
+            component: __WEBPACK_IMPORTED_MODULE_15__components_owner_owner_common_OwnerPageSideReservation_vue__["default"],
 
             children: [{
                 // 사장 예약 리스트 Page
                 name: 'OwnerReservationList',
                 path: '/owner/:shop_id/ownerReservationList',
-                component: __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_reservation_OwnerReservationlist_vue__["a" /* default */]
+                component: __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_reservation_OwnerReservationlist_vue__["a" /* default */]
             }, {
                 // 사장 예약 수락 Page
                 name: 'OwnerReservationAccept',
                 path: '/owner/:shop_id/ownerReservationAccept',
-                component: __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_reservation_OwnerReservationAccept_vue__["a" /* default */]
+                component: __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationAccept_vue__["a" /* default */]
             }, {
                 // 사장 예약 설정 Page
                 name: 'OwnerReservationSetting',
                 path: '/owner/:shop_id/ownerReservationSetting',
-                component: __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationSetting_vue__["a" /* default */]
+                component: __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationSetting_vue__["a" /* default */]
             }]
         }, {
             // Owner Page 가게 설정 관련 좌측 바
             name: 'OwnerPageSideSetting',
             path: '/owner/ownerPageSideSetting',
-            component: __WEBPACK_IMPORTED_MODULE_15__components_owner_owner_common_OwnerPageSideSetting_vue__["a" /* default */],
+            component: __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPageSideSetting_vue__["a" /* default */],
 
             children: [{
                 // Restaurant 수정
                 name: 'OwnerRestaurant',
-                path: '/owner/:shop_id/editRestaurant',
-                component: __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_restaurant_OwnerRestaurant_vue__["a" /* default */]
+                path: '/owner/createRestaurant',
+                // '/owner/:shop_id/editRestaurant',
+                component: __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_restaurant_OwnerRestaurant_vue__["a" /* default */]
             }, {
                 // Owner Coupon 생성
                 name: 'OwnerCreateCoupon',
                 path: '/owner/:shop_id/createCoupon',
-                component: __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_coupon_createCoupon_vue__["a" /* default */]
+                component: __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_coupon_createCoupon_vue__["a" /* default */]
             }, {
                 // 전자 메뉴판 설정
                 name: 'OwnerMenu',
                 path: '/owner/:shop_id/menu',
-                component: __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_menu_OwnerMenu_vue__["a" /* default */],
+                component: __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_menu_OwnerMenu_vue__["a" /* default */],
                 children: [{
                     // 전자메뉴판 메뉴 추가
                     name: 'OwnerMenuOperate',
                     path: '/owner/:shop_id/menuOperate',
-                    component: __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_menu_OwnerMenuOperate_vue__["a" /* default */]
+                    component: __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenuOperate_vue__["a" /* default */]
                 }, {
                     // 전자메뉴판 메뉴 리스트
                     name: 'OwnerMenuList',
                     path: '/owner/:shop_id/menuList',
-                    component: __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenuList_vue__["a" /* default */]
+                    component: __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuList_vue__["a" /* default */]
                 }, {
                     // 전자메뉴판 레이아웃 설정
                     name: 'OwnerMenuSelectLayout',
                     path: '/owner/:shop_id/menuLayout',
-                    component: __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuSelectLayout_vue__["a" /* default */]
+                    component: __WEBPACK_IMPORTED_MODULE_26__components_owner_owner_menu_OwnerMenuSelectLayout_vue__["a" /* default */]
                 }]
             }]
         }, {
@@ -40884,19 +40988,19 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
             name: 'OwnerPageSideStatistics',
             path: '/owner/:shop_id/OwnerPageSideStatistics',
             // path: '/owner/:shop_id/OwnerPageSideStatistics',
-            component: __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPageSideStatistics_vue__["a" /* default */],
+            component: __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPageSideStatistics_vue__["a" /* default */],
             children: [{
                 // 사장님페이지 통계
                 name: 'OwnerTotalStatistics',
-                path: '/owner/:shop_id/totalStatistics',
-                component: __WEBPACK_IMPORTED_MODULE_31__components_owner_owner_statistics_OwnerTotalStatistics_vue__["a" /* default */]
+                path: '/owner/:shop_id/OwnerTotalStatistics',
+                component: __WEBPACK_IMPORTED_MODULE_32__components_owner_owner_statistics_OwnerTotalStatistics_vue__["a" /* default */]
             }]
 
         }]
     }, {
         name: 'CustomerAddReservation',
         path: '/restaurant/:shop_id/addReservation',
-        component: __WEBPACK_IMPORTED_MODULE_30__components_user_user_reservation_CustomerAddReservation_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_31__components_user_user_reservation_CustomerAddReservation_vue__["a" /* default */]
     }],
     mode: 'history'
 });
@@ -63140,11 +63244,179 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { icon: "" } },
+                {
+                  attrs: { icon: "" },
+                  nativeOn: {
+                    click: function($event) {
+                      $event.stopPropagation()
+                      _vm.gps_modal = true
+                    }
+                  }
+                },
                 [
                   _c("v-icon", { attrs: { large: "", color: "red" } }, [
                     _vm._v("gps_fixed")
                   ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-dialog",
+                {
+                  attrs: { "max-width": "400" },
+                  model: {
+                    value: _vm.gps_modal,
+                    callback: function($$v) {
+                      _vm.gps_modal = $$v
+                    },
+                    expression: "gps_modal"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-title",
+                        { staticClass: "headline" },
+                        [
+                          _vm._v("GPS 위치 지정"),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "" },
+                              nativeOn: {
+                                click: function($event) {
+                                  $event.stopPropagation()
+                                  _vm.gps_modal = false
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "v-icon",
+                                { attrs: { large: "", color: "red" } },
+                                [_vm._v("close")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-card-text", [
+                        _vm._v(
+                          "위치를 기반으로 식당을 검색하거나 추천해 드립니다 ^^"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "amber lighten-1" },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.gps_search = true
+                                }
+                              }
+                            },
+                            [_vm._v("직접 입력")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-dialog",
+                            {
+                              attrs: { "max-width": "290" },
+                              model: {
+                                value: _vm.gps_search,
+                                callback: function($$v) {
+                                  _vm.gps_search = $$v
+                                },
+                                expression: "gps_search"
+                              }
+                            },
+                            [
+                              _c(
+                                "v-card",
+                                [
+                                  _c(
+                                    "v-card-title",
+                                    { staticClass: "headline" },
+                                    [_vm._v("위치를 입력하세요")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-actions",
+                                    [
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs16: "" } },
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              placeholder: "place",
+                                              required: ""
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            color: "amber lighten-1",
+                                            to: "/search"
+                                          },
+                                          nativeOn: {
+                                            click: function($event) {
+                                              _vm.gps_search = false
+                                              _vm.gps_modal = false
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("검색")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "red" },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.gps_modal = false
+                                }
+                              }
+                            },
+                            [_vm._v("GPS로 위치 찾기")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
@@ -83234,15 +83506,15 @@ var render = function() {
         "gmap-map",
         {
           staticStyle: { width: "100%", height: "400px" },
-          attrs: { center: _vm.center, zoom: 15 }
+          attrs: { center: _vm.center, zoom: 16 }
         },
         _vm._l(_vm.markers, function(m, index) {
           return _c("gmap-marker", {
             key: index,
-            attrs: { position: m.position },
+            attrs: { position: m.position, icon: m.icon, label: m.infoText },
             on: {
               click: function($event) {
-                _vm.center = m.position
+                _vm.getRestaurant(m.restaurantId)
               }
             }
           })
@@ -90576,7 +90848,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* ul 태그 CSS */\nul {\n    list-style: none;\n}\n\n/* SNS 마크 이미지 CSS */\n.snsMark {\n    width: 50px;\n    height: 50px;\n    cursor: pointer;\n}\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s\n}\n.fade-enter, .fade-leave-active {\n    opacity: 0\n}\n\n/* 리뷰 정렬 바 CSS */\n.review-arrayBar-font {\n    font-size: 2em;\n    font-weight: bold;   \n    width: 100%;\n    height: 100;\n}\n\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: #FF6666; \n    text-decoration: none;\n}\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* ul 태그 CSS */\nul {\n    list-style: none;\n}\n\n/* SNS 마크 이미지 CSS */\n.snsMark {\n    width: 50px;\n    height: 50px;\n    cursor: pointer;\n}\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s\n}\n.fade-enter, .fade-leave-active {\n    opacity: 0\n}\n\n/* 리뷰 정렬 바 CSS */\n.review-arrayBar-font {\n    font-size: 2em;\n    font-weight: bold;   \n    width: 100%;\n    height: 100;\n}\n\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: #FF6666; \n    text-decoration: none;\n}\n\n\n", ""]);
 
 // exports
 
@@ -90769,6 +91041,7 @@ var render = function() {
             [
               _c(
                 "v-layout",
+                { attrs: { "align-center": "" } },
                 [
                   _c("v-flex", { attrs: { xs3: "" } }, [
                     _vm._v("사용자이미지")
@@ -90778,7 +91051,23 @@ var render = function() {
                     _vm._v(_vm._s(this.userID))
                   ]),
                   _vm._v(" "),
-                  _c("v-flex", [_c("img", { attrs: { src: "flag" } })])
+                  _c(
+                    "v-flex",
+                    { attrs: { xs2: "" } },
+                    [
+                      _c(
+                        "v-card",
+                        { attrs: { flat: "" } },
+                        [
+                          _c("v-card-media", {
+                            attrs: { src: _vm.flag, height: "50px" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
@@ -90982,7 +91271,27 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("v-layout", [_c("v-flex", [_vm._v(_vm._s(this.content))])], 1)
+              _c("v-layout", [_c("v-flex", [_vm._v(_vm._s(this.content))])], 1),
+              _vm._v(" "),
+              _c(
+                "v-layout",
+                [
+                  _c(
+                    "v-flex",
+                    { attrs: { xs4: "" } },
+                    _vm._l(this.hashTag, function(tag, index) {
+                      return _c("a", { key: index }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s("#" + tag + " ") +
+                            "\n                        "
+                        )
+                      ])
+                    })
+                  )
+                ],
+                1
+              )
             ],
             1
           ),
@@ -91266,6 +91575,7 @@ var render = function() {
                                 reviewID: reviewData["id"],
                                 country: reviewData["country"],
                                 writeDate: reviewData["reg_date"],
+                                likeNum: reviewData["likeNum"],
                                 reviewLike: reviewData["reviewLike"],
                                 rating: reviewData["rating"],
                                 taste: reviewData["taste"],
@@ -91274,7 +91584,7 @@ var render = function() {
                                 price: reviewData["price"],
                                 image: reviewData["image"],
                                 content: reviewData["content"],
-                                hashTag: ""
+                                hashTag: reviewData["hashTag"]
                               }
                             })
                           ],
@@ -94619,6 +94929,869 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            menu: false,
+            loginForm: false,
+            loginStatus: false,
+            gps_modal: false,
+            gps_search: false,
+            idValue: '',
+            pwValue: ''
+        };
+    },
+
+    methods: {
+        login: function login() {
+            var url = "/login";
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, {
+                user_id: this.idValue,
+                password: this.pwValue
+            }).then(function (response) {
+                alert(response.data.msg);
+            }).catch(function (error) {
+                alert('error!');
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 616 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserMain2_vue__ = __webpack_require__(615);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d3908542_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain2_vue__ = __webpack_require__(620);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserMain2_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d3908542_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain2_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d3908542_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain2_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/user_main/UserMain2.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d3908542", Component.options)
+  } else {
+    hotAPI.reload("data-v-d3908542", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "v-app",
+        [
+          _c(
+            "v-navigation-drawer",
+            {
+              attrs: {
+                app: "",
+                "disable-resize-watcher": "",
+                temporary: "",
+                "hide-overlay": ""
+              },
+              model: {
+                value: _vm.menu,
+                callback: function($$v) {
+                  _vm.menu = $$v
+                },
+                expression: "menu"
+              }
+            },
+            [
+              _c(
+                "v-toolbar",
+                { staticClass: "transparent", attrs: { flat: "" } },
+                [
+                  _c(
+                    "v-list",
+                    { staticClass: "pa-0" },
+                    [
+                      _c(
+                        "v-list-tile",
+                        { attrs: { avatar: "" } },
+                        [
+                          _c(
+                            "v-list-tile-avatar",
+                            [
+                              _c("v-icon", { attrs: { large: "" } }, [
+                                _vm._v("account_circle")
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-tile-content",
+                            [_c("v-list-tile-title", [_vm._v("김성준 님")])],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list",
+                [
+                  _c("v-divider"),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile",
+                    { on: { click: function($event) {} } },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [
+                          _c("v-icon", { attrs: { large: "" } }, [
+                            _vm._v("assignment")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v("주문 내역")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile",
+                    { on: { click: function($event) {} } },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [
+                          _c("v-icon", { attrs: { large: "" } }, [
+                            _vm._v("rate_review")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v("리뷰 내역")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile",
+                    { on: { click: function($event) {} } },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [
+                          _c("v-icon", { attrs: { large: "" } }, [
+                            _vm._v("loyalty")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v("쿠폰함")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile",
+                    { on: { click: function($event) {} } },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [
+                          _c("v-icon", { attrs: { large: "" } }, [
+                            _vm._v("favorite")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v("찜목록")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile",
+                    { on: { click: function($event) {} } },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [
+                          _c("v-icon", { attrs: { large: "" } }, [
+                            _vm._v("settings")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v("설정")])],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-toolbar",
+            {
+              attrs: {
+                app: "",
+                color: "grey darken-3",
+                dark: "",
+                "scroll-off-screen": ""
+              }
+            },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { icon: "" },
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.menu = !_vm.menu
+                    }
+                  }
+                },
+                [_c("v-icon", { attrs: { large: "" } }, [_vm._v("menu")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-toolbar-title",
+                { staticStyle: { width: "20vw" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "white--text",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: { to: "/main" }
+                    },
+                    [_vm._v("AIOF")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "red--text",
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: { to: { name: "home" } }
+                    },
+                    [_vm._v("Restaurant")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-text-field", {
+                staticClass: "hidden-sm-and-down",
+                attrs: {
+                  flat: "",
+                  "solo-inverted": "",
+                  "prepend-icon": "search",
+                  label: "Search"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { icon: "" },
+                  nativeOn: {
+                    click: function($event) {
+                      $event.stopPropagation()
+                      _vm.gps_modal = true
+                    }
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { large: "", color: "red" } }, [
+                    _vm._v("gps_fixed")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-dialog",
+                {
+                  attrs: { "max-width": "400" },
+                  model: {
+                    value: _vm.gps_modal,
+                    callback: function($$v) {
+                      _vm.gps_modal = $$v
+                    },
+                    expression: "gps_modal"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-title",
+                        { staticClass: "headline" },
+                        [
+                          _vm._v("GPS 위치 지정"),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "" },
+                              nativeOn: {
+                                click: function($event) {
+                                  $event.stopPropagation()
+                                  _vm.gps_modal = false
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "v-icon",
+                                { attrs: { large: "", color: "red" } },
+                                [_vm._v("close")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-card-text", [
+                        _vm._v(
+                          "위치를 기반으로 식당을 검색하거나 추천해 드립니다 ^^"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "amber lighten-1" },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.gps_search = true
+                                }
+                              }
+                            },
+                            [_vm._v("직접 입력")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-dialog",
+                            {
+                              attrs: { "max-width": "290" },
+                              model: {
+                                value: _vm.gps_search,
+                                callback: function($$v) {
+                                  _vm.gps_search = $$v
+                                },
+                                expression: "gps_search"
+                              }
+                            },
+                            [
+                              _c(
+                                "v-card",
+                                [
+                                  _c(
+                                    "v-card-title",
+                                    { staticClass: "headline" },
+                                    [_vm._v("위치를 입력하세요")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-actions",
+                                    [
+                                      _c(
+                                        "v-flex",
+                                        { attrs: { xs16: "" } },
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              placeholder: "place",
+                                              required: ""
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("v-spacer"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            color: "amber lighten-1",
+                                            to: "/search"
+                                          },
+                                          nativeOn: {
+                                            click: function($event) {
+                                              _vm.gps_search = false
+                                              _vm.gps_modal = false
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("검색")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "red" },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.gps_modal = false
+                                }
+                              }
+                            },
+                            [_vm._v("GPS로 위치 찾기")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { icon: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.loginForm = true
+                    }
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { large: "", color: "blue" } }, [
+                    _vm._v("account_circle")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-content",
+            [
+              _c(
+                "v-container",
+                { attrs: { fluid: "" } },
+                [_c("router-view")],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-footer", { attrs: { app: "" } }),
+          _vm._v(" "),
+          _c(
+            "v-dialog",
+            {
+              attrs: { "max-width": "290" },
+              model: {
+                value: _vm.loginForm,
+                callback: function($$v) {
+                  _vm.loginForm = $$v
+                },
+                expression: "loginForm"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c("v-card-title", [
+                    _c("span", { staticClass: "headline" }, [_vm._v("Login")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c(
+                        "v-form",
+                        [
+                          _c("v-text-field", {
+                            attrs: { label: "ID", required: "" },
+                            model: {
+                              value: _vm.idValue,
+                              callback: function($$v) {
+                                _vm.idValue = $$v
+                              },
+                              expression: "idValue"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: {
+                              label: "Password",
+                              type: "password",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.pwValue,
+                              callback: function($$v) {
+                                _vm.pwValue = $$v
+                              },
+                              expression: "pwValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c("v-spacer"),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "blue darken-1", flat: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.login()
+                            }
+                          }
+                        },
+                        [_vm._v("로그인")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "router-link",
+                        {
+                          staticStyle: { "text-decoration": "none" },
+                          attrs: { to: { name: "register" } }
+                        },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  _vm.loginForm = false
+                                }
+                              }
+                            },
+                            [_vm._v("회원가입")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d3908542", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
 
 /***/ })
 /******/ ]);

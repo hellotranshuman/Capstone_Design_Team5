@@ -29,11 +29,13 @@
             <v-card>
                 <v-card-title>
                     <!-- 아이디 이미지, 아이디, 사용자 국적, 공뷰 버튼 -->
-                    <v-layout>
+                    <v-layout align-center>
                         <v-flex xs3>사용자이미지</v-flex>
                         <v-flex xs2>{{this.userID}}</v-flex>
-                        <v-flex>
-                            <img src="flag">
+                        <v-flex xs2>
+                            <v-card flat>
+                                <v-card-media v-bind:src= "flag" height="50px"></v-card-media>
+                            </v-card>
                         </v-flex>
                     </v-layout>
                     <!-- 작성 날짜, 리뷰 좋아요 갯수 -->
@@ -104,6 +106,14 @@
                     <v-layout>
                         <v-flex>{{this.content}}</v-flex>
                     </v-layout>
+                    <!-- 해시 태그 -->
+                    <v-layout>
+                        <v-flex xs4>
+                            <a v-for="(tag, index) in this.hashTag" :key="index">
+                                {{"#"+tag+" "}}
+                            </a>
+                        </v-flex>
+                    </v-layout>
                 </v-card-text>
                 <!-- 이미지 -->
                 <v-card-media>
@@ -158,10 +168,15 @@ export default {
             type: String,
             default: ""
         },
-        //리뷰 좋아요
-        reviewLike: {
+        //리뷰 좋아요 개수
+        likeNum: {
             type: Number,
             default: 0
+        },
+        // 리뷰 좋아요가 선택된 리뷰인지 여부
+        reviewLike: {
+            type: Boolean,
+            default: false
         },
         // 총 평점
         rating: {
@@ -200,8 +215,8 @@ export default {
         },
         // 해시 태그
         hashTag: {
-            type: String,
-            default: ""
+            type: Array,
+            default: []
         },
     },
     // 컴포넌트 선언
@@ -239,22 +254,26 @@ export default {
                 h: 400
                 },
             ],
-            reviewLikeBut : false,              // 리뷰 좋아요 버튼을 눌렸는지 아닌지 구분하는 값을 저장하는 변수
-            reviewLikeNum : this.reviewLike,    // 전달 받은 리뷰 좋아요를 받은 개수값을 변수에 저장합니다.
+            reviewLikeBut : this.reviewLike,    // 리뷰 좋아요 버튼을 눌렸는지 아닌지 구분하는 값을 저장하는 변수
+            reviewLikeNum : this.likeNum,       // 전달 받은 리뷰 좋아요를 받은 개수값을 변수에 저장합니다.
 
             starColor : "#ffd055",
             inactiveStarColor : "#ffd055",
 
-            flag : "../../../../../../../../storage/app/public/img/flag/" + this.country + ".png",  // 국적에 맞는 깃발 이미지 주소
+            flag : "../../images/flag/" + this.country + ".png",  // 국적에 맞는 깃발 이미지 주소
         }
+    },
+
+    created(){
+        console.log("&&&&&&&&&&&&&&&&&&&&&&&&&");
+        console.log(this.flag);
+
     },
 
     methods: {
         // 좋아요 버튼을 눌렸을 때 사용되는 함수
         likeButClick(){
             this.reviewLikeBut = !this.reviewLikeBut;
-
-
         }
     },
 
@@ -287,20 +306,12 @@ export default {
                 alert(response.data.msg);
 
             }).catch(console.log('is catch'));
-
-            
         }
     },
-
-    created() {
-        console.log(this.flag);
-    }
-
 }
 </script>
 
 <style>
-    
     .image-div {
         position: relative;
         width: 100%;
