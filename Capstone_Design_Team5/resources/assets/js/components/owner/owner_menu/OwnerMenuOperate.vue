@@ -76,7 +76,8 @@
                     >
                 </div>
 
-                <div id="options"> </div>
+                <div id="options"></div>
+                <input type="hidden" name="op_num">
             </div>
         </form>
     </div>
@@ -86,7 +87,7 @@
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 
-var option_num = 0;
+var option_num = 1;
  
 export default {
     methods : {
@@ -123,19 +124,22 @@ export default {
 
                     axios.post('/owner/createMenu',formData)
                     .then( (response) => { 
-                        alert('메뉴 등록 성공'); 
+                        alert(response.data.content);
 
+                       location.reload();
+
+                       /*
                         var get_options = document.getElementById('options');
                         while(get_options.children.length > 0) {
                             get_options.removeChild(get_options.children[get_options.children.length-1]);
                         }
- 
+
                         document.getElementById('menu_img').src ='';
 
                         for(let i=0; i < get_data.length; i++){
                             get_data[i].value = '';
                         }
-                        get_img.value = '';
+                        get_img.value = '';*/
 
                     })
                     .catch((ex)=>{
@@ -195,6 +199,7 @@ export default {
             var created_div = document.createElement('div');
             var created_ipt = document.createElement('input');
             var get_options = document.getElementById('options');
+            var op_num      = document.getElementsByName('op_num')[0];
 
             created_div.classList.add("option_box");
             created_h5.classList.add("option_column");
@@ -202,7 +207,9 @@ export default {
             created_ipt.classList.add("values"); 
 
             created_h5.innerText = '옵션 값';
-            created_ipt.name     = 'option_value' + option_num; option_num++;
+            created_ipt.name     = 'option_value' + option_num;
+            option_num++;
+            op_num.value = option_num;
 
             created_div.appendChild(created_h5);
             created_div.appendChild(created_ipt);

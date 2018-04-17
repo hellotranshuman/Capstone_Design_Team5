@@ -1,14 +1,19 @@
-@extends('master')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
 
-@section('content')
+    <title>Smart さしすせそ</title>
 
-    <h1>회원 가입 유형을 선택하세요</h1>
-
-    <button onclick="location.href='{{ URL::to('register/user') }}'" class="btn btn-light">
-        개인회원
-    </button>
-
-    <button onclick="location.href='{{ URL::to('register/owner') }}'" class="btn btn-light">
-        사장회원
-    </button>
-@endsection
+</head>
+<body>
+<div id="app">
+    <Register></Register>
+</div>
+<script src="{{ mix('js/app.js') }}"></script>
+</body>
+</html>

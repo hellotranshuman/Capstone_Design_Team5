@@ -28,17 +28,17 @@
                         <v-layout>
                             <v-flex>
                                 <network network="facebook">
-                                    <img src= "../../../../../../storage/app/public/img/review/facebook.png" class="snsMark">
+                                    <img src= "../../../../../../storage/app/public/img/sns/facebook.png" class="snsMark">
                                 </network>
                             </v-flex>
                             <v-flex>
                                 <network network="twitter">
-                                    <img src= "../../../../../../storage/app/public/img/review/twitter.png" class="snsMark">
+                                    <img src= "../../../../../../storage/app/public/img/sns/twitter.png" class="snsMark">
                                 </network>                                
                             </v-flex>
                             <v-flex>
                                 <network network="weibo">
-                                    <img src= "../../../../../../storage/app/public/img/review/weibo.png" class="snsMark">
+                                    <img src= "../../../../../../storage/app/public/img/sns/weibo.png" class="snsMark">
                                 </network>
                             </v-flex>
                         </v-layout>         
@@ -48,9 +48,9 @@
             <!-- 구분 -->
             <br><br>
             <v-layout>
-                <v-flex>
+                <v-flex justify-space-between>
                     <!-- 리뷰 정렬 -->
-                    <v-tabs centered hide-slider>
+                    <v-tabs centered color="grey lighten-5" slider-color="pink lighten-1">
                         <v-tab class="review-arrayBar-font">작성일순</v-tab>
                         <v-tab class="review-arrayBar-font">인기순</v-tab>
                         <v-tab class="review-arrayBar-font">국가순</v-tab>
@@ -74,13 +74,12 @@
                     <!--  :image2="reviewData['image2']['filename']" :image3="reviewData['image3']['filename']" -->
                     <ul>
                         <li v-for= "reviewData in reviewDataList" :key="reviewData['id']" v-if="reviewData['id']">
-                            <UserCreateReview :userID="reviewData['name']"  :country="reviewData['country']" 
-                            :writeDate="reviewData['reg_date']" reviewLike="reviewData.reviewLike"
-                            :rating="reviewData['rating']" :taste="reviewData['taste']"
-                            :service="reviewData['service']" :mood="reviewData['mood']"
-                            :price="reviewData['price']" :image="reviewData['image']" 
-
-                            :content="reviewData['content']" hashTag="" >
+                            <UserCreateReview :userID="reviewData['name']" :reviewID="reviewData['id']" 
+                            :country="reviewData['country']" :writeDate="reviewData['reg_date']" 
+                            :likeNum="reviewData['likeNum']" :reviewLike="reviewData['reviewLike']" 
+                            :rating="reviewData['rating']" :taste="reviewData['taste']" :service="reviewData['service']" 
+                            :mood="reviewData['mood']" :price="reviewData['price']" :image="reviewData['image']"
+                            :content="reviewData['content']" :hashTag="reviewData['hashTag']" >
                             </UserCreateReview>
                         </li>
                     </ul>
@@ -105,9 +104,11 @@ export default {
 
     data() {
         return {
-            shop_id          : this.$route.params.shop_id,                            // 식당 아이디를 저장하는 변수
-            reviewDataList  : [],                         // DB에서 가져온 리뷰 데이터목록이 저장되는 배열
-            reviewImgList   : [],                         // 이미지명이 들어가는 배열
+            shop_id          : this.$route.params.shop_id,  // 식당 아이디를 저장하는 변수
+            reviewDataList  : [],                           // DB에서 가져온 리뷰 데이터목록이 저장되는 배열
+            reviewImgList   : [],                           // 이미지명이 들어가는 배열
+            reviewLikeList  : [],                           // 리뷰 좋아요 목록이 저장되는 배열
+            hashTagList     : [],                           // 해시태그 목록이 저장되는 배열
             url             : "https://www.naver.com/",     // 리뷰를 하는 페이지 URL
             totalRating     : 0,                            // 가게별 평균 평점
         }
@@ -145,12 +146,12 @@ export default {
         },
 
         // 리뷰 데이터 값을 가지는 배열의 하나하나에 해당하는 이미지 값을 추가하는 메서드
-        arrayPushImg(dataArr, ImgArr){
+        arrayPushImg(){
             var review_id = null;
 
             // [ _ ] 언더바를 기준으로 문자열을 분리합니다.
-            for(var iCount = 0; iCount < ImgArr.length; iCount++){
-                review_id = ImgArr[iCount]['filename'].split('_');
+            for(var iCount = 0; iCount < this.reviewImgList.length; iCount++){
+                review_id = this.reviewImgList[iCount]['filename'].split('_');
 
                 // 이미지가 포함되는 리뷰 id를 이미지배열에 저장합니다.
                 this.reviewImgList[iCount]['id'] = parseInt(review_id[0]);
@@ -160,9 +161,6 @@ export default {
             // 리뷰 데이터에 이미지 데이터를 저장
             for(var iCount = 0; iCount < this.reviewDataList.length; iCount++){
                 var imageArr = [];  // 리뷰별로 이미지를 저장할 배열
-
-
-
 
                 // 리뷰 데이터 배열의 id와 리뷰 이미지 배열의 id가 일치할때 리뷰 이미지 배열을 리뷰 데이터 배열안에 넣습니다.
                 for(var jCount = 0; jCount < this.reviewImgList.length; jCount++){
@@ -174,11 +172,47 @@ export default {
                      this.reviewDataList[iCount]["image"] = imageArr;
                 }
             }
+        },
+
+        // 리뷰 데이터 값을 가지는 배열에 해시태그를 추가하는 함수
+        arrayPushHashTag(){
+            // 리뷰 데이터에 이미지 데이터를 저장
+            for(var iCount = 0; iCount < this.reviewDataList.length; iCount++){
+                var hashTagArr = [];  // 리뷰별로 이미지를 저장할 배열
+
+                // 리뷰 데이터 배열의 id와 해시태그 배열의 id가 일치할때 해시태그 배열을 리뷰 데이터 배열안에 넣습니다.
+                for(var jCount = 0; jCount < this.hashTagList.length; jCount++){
+                    this.reviewDataList[iCount]["hashTag"] = []; // image를 key로 배는 배열 생성
+
+                    if(this.reviewDataList[iCount]['id'] === this.hashTagList[jCount]['review_id']){
+                        hashTagArr.push(this.hashTagList[jCount]['tag']);
+                    }
+                     this.reviewDataList[iCount]["hashTag"] = hashTagArr;
+                }
+            }
+        },
+
+        // 좋아요 버튼이 눌려져 있는지 여부를 가지는 값을 리뷰 데이터 배열에 저장합니다.
+        addReviewLike(){
+            for(var iCount = 0; iCount < this.reviewDataList.length; iCount++){
+                // reviewLike를 key값으로 하여 fasle를 값을 등록합니다.
+                this.reviewDataList[iCount]['reviewLike'] = false
+
+                for(var jCount = 0; jCount < this.reviewLikeList.length; jCount++){
+                    if(this.reviewDataList[iCount]['id'] === this.reviewLikeList[jCount]['review_id']){
+                        // 좋아요버튼이 눌러져 있는 리뷰의 경우 위에서 등록된 reviewLike에 true값을 저장합니다.
+                        this.reviewDataList[iCount]['reviewLike'] = true
+                    }
+                }
+            }
+
         }
     },
 
     // 라이프 사이클의 created 단계, DB에서 작성되어 있는 리뷰 데이터를 가지고 옵니다.
     created() {
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@");
+
         // Add shop_id in shopData
         var shopData = new FormData();
         shopData.append('shop_id', this.shop_id);
@@ -186,6 +220,22 @@ export default {
         // axios http 라이브러리 with Send shopData
         axios.post('/review', shopData).
         then((response)=>{
+
+            console.log("-----review value get-----");
+            console.log(response.data['review']);
+            // 리뷰 좋아요 데이터
+            console.log("-----review like get-----");
+            console.log(response.data['reviewLike']);
+            // 해시태그
+            console.log("-----hashtag get-----");
+            console.log(response.data['hashTag']);
+
+            // hashTagList배열에 해쉬태그 목록이 저장됩니다.
+            this.hashTagList = response.data['hashTag'];
+
+            // reviewLikeList배열에 리뷰 좋아요 목록이 저장됩니다.
+            this.reviewLikeList = response.data['reviewLike'],
+
             // reviewDataList변수에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
             this.reviewDataList = response.data['review'],
 
@@ -199,7 +249,11 @@ export default {
             this.arrayClassification(this.reviewDataList),
 
             // arrayPushImg메서드를 호출하여 리뷰 데이터 값을 가지는 배열에 해당하는 이미지 값을 추가
-            this.arrayPushImg(this.reviewDataList, this.reviewImgList),
+            this.arrayPushImg(),
+            // 좋아요 버튼이 눌려져 있는지 여부를 가지는 값을 리뷰 데이터 배열에 저장하는 함수를 호출합니다.
+            this.addReviewLike();
+            // 리뷰 데이터 값을 가지는 배열에 해시태그를 추가하는 함수
+            this.arrayPushHashTag();
 
             // console.log 출력
             console.log("----- 최종 처리 배열 값  -----"),
@@ -236,6 +290,13 @@ export default {
         font-weight: bold;   
         width: 100%;
         height: 100;
-        color: black;
     }
+
+    /* 링크를 클릭하려고 마우스를 가져갔을 때 */
+    a:hover { 
+        color: #FF6666; 
+        text-decoration: none;
+    }
+
+
 </style>

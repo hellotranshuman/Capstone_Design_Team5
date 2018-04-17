@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Review;
-
+use App\Review_like;
 
 class ReviewController extends Controller
 {
@@ -15,19 +15,39 @@ class ReviewController extends Controller
 
     public function getReviewData(Request $request) {
 
+        // <-- select Review Data
         $review = Review::join('users', 'users.id', '=', 'review.writer')
-                    ->select('review.*', 'users.name', 'users.country')
-                    ->where('shop_id', $request->get('shop_id'))
-                    ->orderByRaw('reg_date DESC')
+                    ->leftJoin('review_like', 'review.id', '=' , 'review_like.review_id')
+                    ->select('review.*', 'users.name', 'users.country',
+                        DB::raw('count(review_like.review_id) as likeNum'))
+                    ->where('review.shop_id', $request->get('shop_id'))
+                    ->groupBy('review.id')
+                    ->orderByRaw('review.id desc')
                     ->get()
                     ->toArray();
 
+        // <-- select Total Rating
         $totalRating = Review::select(DB::raw('AVG(rating) as totalRating'))
                         ->where('shop_id', $request->get('shop_id'))
                         ->orderByRaw('reg_date DESC')
                         ->get()
                         ->toArray();
 
+        // <-- select Hash Tag
+        $hashtag = Review::join('hashtag', 'hashtag.review_id', '=', 'review.id')
+                        ->select('hashtag.tag_num', 'hashtag.tag', 'hashtag.review_id')
+                        ->orderByRaw('review.reg_date DESC')
+                        ->get()
+                        ->toArray();
+
+        // <-- 현재 유저의 리뷰 좋아요한 리뷰 게시글번호
+        $reviewLike = Review_like::select('review_id')
+                        ->where('user_num', auth()->user()->id)
+                        ->orderByRaw('review_id desc')
+                        ->get()
+                        ->toArray();
+
+        // <-- Review Image
         $reviewImage = Review::join('review_image', 'review_image.review_id', '=', 'review.id')
                         ->select('review_image.filename')
                         ->orderByRaw('review.reg_date DESC')
@@ -40,12 +60,40 @@ class ReviewController extends Controller
         return response()->json([
             'test' => $request->get('shop_id'),
             'review' => $reviewData,
+            'reviewLike' => $reviewLike,
+            'hashTag' => $hashtag,
             'path'   => 'images/review/',
         ]);
     }
 
     public function showWriteReviewForm() {
         return view('user.writeReview');
+    }
+
+    public function getReviewLike(Request $request) {
+
+        if($request->get('review_status'))
+        {
+            Review_like::create([
+                'review_id' => $request->get('review_id'),
+                'user_num' => auth()->user()->id,
+            ]);
+
+            return response()->json([
+                'msg' => '좋아요 했습니다.',
+            ]);
+        }
+        else
+        {
+            Review_like::where('user_num', auth()->user()->id)
+                    ->where('review_id', $request->get('review_id'))
+                    ->delete();
+
+            return response()->json([
+                'msg' => '좋아요가 취소되었습니다.',
+            ]);
+        }
+
     }
 
     public function createReview(Request $request) {
@@ -120,11 +168,11 @@ class ReviewController extends Controller
                         'filename' => $imgName,
                     ]);
 
-                }
+                } // file if end
 
-            }
+            } // for end
 
-        }
+        } // img if end
 
 
         $link = route('review.showReviewForm' , ['shop_id' => $request->get('shop_id')]);

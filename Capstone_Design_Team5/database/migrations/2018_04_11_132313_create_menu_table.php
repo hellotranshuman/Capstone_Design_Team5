@@ -17,7 +17,7 @@ class CreateMenuTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('shop_id');
             $table->string('name');
-            $table->string('explanation');
+            $table->string('explanation')->nullable();
             $table->unsignedInteger('price');
             $table->string('category', 50);
             $table->string('remark', 50)->nullable();

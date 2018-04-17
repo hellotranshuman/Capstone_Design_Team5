@@ -18,7 +18,7 @@ class CreateSuboptionTable extends Migration
             $table->unsignedInteger('opnum');
             $table->string('name');
             $table->foreign('opnum')
-                ->references('opnum')->on('option')
+                ->references('opnum')->on('menu_option')
                 ->onDelete('cascade');
             $table->timestamps();
         });

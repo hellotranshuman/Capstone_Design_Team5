@@ -30,6 +30,8 @@
         "babelify": "^8.0.0",
         "bootstrap-vue": "^2.0.0-rc.6",
         "browserify": "^16.1.1",
+        "chart.js": "^2.7.2",
+        "vue-chartjs": "^3.3.1",
         "vue-hotel-datepicker": "^2.2.0",
         "vue-input-tag": "^1.0.3",
         "vue-picture-input": "^2.1.5",

@@ -7,22 +7,10 @@
         <ul class="sidebar_nav">
             <li class="sidebar_brand"><B>통계</B></li>
             <li class="sidebar_brand"><B>종합 통계</B></li>
-            <li><router-link to="">종합 통계</router-link></li>
-            <li class="sidebar_brand"><B>손님 통계</B></li>
-            <li><router-link to="">전체 손님 통계</router-link></li>
-            <li><router-link to="">국적별 손님 통계</router-link></li>
-            <li><router-link to="">연령별 손님 통계</router-link></li>
-            <li><router-link to="">성별별 손님 통계</router-link></li>
-            <li class="sidebar_brand"><B>매출 통계</B></li> 
-            <li><router-link to="">전체 매출 통계</router-link></li>
-            <li><router-link to="">국적별 매출 통계</router-link></li>
-            <li><router-link to="">연령별 매출 통계</router-link></li>
-            <li><router-link to="">성별별 매출 통계</router-link></li>
-            <li class="sidebar_brand"><B>메뉴 통계</B></li> 
-            <li><router-link to="">전체 메뉴 통계</router-link></li>
-            <li><router-link to="">국적별 메뉴 통계</router-link></li>
-            <li><router-link to="">연령별 메뉴 통계</router-link></li>
-            <li><router-link to="">성별별 메뉴 통계</router-link></li>
+            <li><router-link to="OwnerTotalStatistics">종합 통계</router-link></li>
+            <li><router-link to="">손님 통계</router-link></li>
+            <li><router-link to="">매출 통계</router-link></li>
+            <li><router-link to="">메뉴 통계</router-link></li>
         </ul>
     </div>
     <div id="router_view">

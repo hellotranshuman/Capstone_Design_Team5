@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOptionTable extends Migration
+class CreateMenuOptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOptionTable extends Migration
      */
     public function up()
     {
-        Schema::create('option', function (Blueprint $table) {
+        Schema::create('menu_option', function (Blueprint $table) {
             $table->increments('opnum');
             $table->unsignedInteger('menu_id');
             $table->string('name');
