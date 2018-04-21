@@ -197,8 +197,7 @@ export default {
 
             var couponData = Object.values(response.data.coupon);
             var couponNum = response.data.couponNum;
-
-            alert(response.data.couponNum);
+            
             console.log(couponData);
             console.log(couponNum);
 

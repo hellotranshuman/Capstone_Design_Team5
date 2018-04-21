@@ -181,6 +181,8 @@
                 })
                     .then(function (response) {
                         alert(response.data.msg);
+
+                        location.replace(response.data.link);
                     })
                     .catch(function (error) {
                         alert('error!');

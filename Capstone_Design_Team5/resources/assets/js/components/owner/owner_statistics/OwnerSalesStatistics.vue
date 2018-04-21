@@ -1,11 +1,7 @@
 <!-- 
-종합 통계 페이지
+손님 통계 페이지
 
-1. 통계 제공 종류
-  1-1. 종합 통계 (손님수, )
-  1-2. 손님 통계 ()
-  1-3. 매출 통계 ()
-  1-4. 메뉴 통계 ()
+1. 통계 제공 종류 (전체, 국적, 연령, 성별), (당일, 일,주,월 단위)
 
   
 손님,매출,메뉴에 대해서
@@ -19,8 +15,8 @@
       <v-layout>
         <v-flex>
           <br> 
-          <h3><B>종합 통계</B></h3>
-          종합적인 통계를 볼 수 있습니다.
+          <h3><B>매출 통계</B></h3>
+          매출 통계를 볼 수 있습니다.
           <hr><br>
         </v-flex>
       </v-layout>
@@ -221,8 +217,5 @@ import MenuRankingChart         from './MenuRankingChart.vue';
 </script>
 
 <style>
-    /* .statistics-line {
-        padding-left: 5%;
-        padding-right: 5%;
-    } */
+
 </style>

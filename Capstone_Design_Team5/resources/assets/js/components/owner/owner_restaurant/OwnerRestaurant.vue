@@ -20,14 +20,14 @@
             <div class="info_row">
                 <div class="info_column">가게 명</div>
                 <div class="info_value_75"> 
-                    <input type="text" name="name" style="width:98%" class="send_datas"> 
+                    <input type="text" name="name" style="width:98%" class="send_datas" value="일본에 진출한 영진전문대학 맛집"> 
                 </div>
             </div>
 
             <div class="info_row">
                 <div class="info_column">가게 설명</div>
                 <div class="info_value_75"> 
-                    <textarea name="explanation" style="width:98%; min-height : 100px;" class="send_datas"></textarea>
+                    <textarea name="explanation" style="width:98%; min-height : 100px;" class="send_datas">영진의 특별 비법으로 맛을 낸 식당</textarea>
                 </div>
             </div>
 
@@ -83,8 +83,8 @@
                         <option value="카고시마" > 카고시마 </option>
                         <option value="오키나와" > 오키나와 </option> 
                     </select> 
-                    <input type="text" name="cities" style="width:30%; margin:1%" value="상세주소1" class="send_datas">
-                    <input type="text" name="address" style="width:30%; margin:1%" value="상세주소2" class="send_datas">
+                    <input type="text" name="cities" style="width:30%; margin:1%" value="미나토 구" class="send_datas">
+                    <input type="text" name="address" style="width:30%; margin:1%" value="아카사카 1-11-6" class="send_datas">
                  </div>
             </div>           
         </div>
@@ -93,12 +93,13 @@
             <div class="info_row">
                 <div class="info_column">업종</div>
                 <div class="info_value_25"> 
-                    <input type="text" name="type" style="width:98%; text-align: center;" class="send_datas"> 
+                    <input type="text" name="type" style="width:98%; text-align: center;" class="send_datas" value="중화 요리"> 
                 </div>
 
                 <div class="info_column">전화번호</div>
                 <div class="info_value_25"> 
-                    <input type="text" name="phone" style="width:98%; text-align: center;" class="send_datas"> 
+                    <input type="text" name="phone" style="width:98%; text-align: center;" class="send_datas" value="
+053-940-5114"> 
                 </div>
             </div>
 
@@ -113,7 +114,7 @@
 
                 <div class="info_column">좌석 수</div>
                 <div class="info_value_25"> 
-                    <input type="text" name="seat_num" style="width:70%; text-align: center;" class="send_datas"> 석 
+                    <input type="text" name="seat_num" style="width:70%; text-align: center;" class="send_datas" value="1500"> 석 
                 </div>
             </div> 
         </div>
@@ -124,36 +125,36 @@
             <div class="info_row">
                 <div class="info_column"> 런치 오픈 </div>
                 <div class="info_value_25">  
-                    <input type="time" name="lunch_open" class="timePicker send_datas"/>
+                    <input type="time" name="lunch_open" value="12:00" class="timePicker send_datas"/>
                 </div>
 
                 <div class="info_column"> 디너 오픈 </div>
                 <div class="info_value_25">  
-                    <input type="time" name="dinner_open" class="timePicker send_datas"/>
+                    <input type="time" name="dinner_open" value="18:00" class="timePicker send_datas"/>
                 </div>
             </div>
 
             <div class="info_row">
                 <div class="info_column"> 런치 종료 </div>
                 <div class="info_value_25">  
-                    <input type="time" name="lunch_close" class="timePicker send_datas" />
+                    <input type="time" name="lunch_close" value="16:00" class="timePicker send_datas" />
                 </div>
 
                 <div class="info_column"> 디너 종료 </div>
                 <div class="info_value_25">  
-                    <input type="time" name="dinner_close" class="timePicker send_datas"/>
+                    <input type="time" name="dinner_close" value="21:00" class="timePicker send_datas"/>
                 </div>
             </div>
 
             <div class="info_row">
                 <div class="info_column"> 런치 라스트 오더 </div>
                 <div class="info_value_25">  
-                    <input type="time" name="lunch_lo" class="timePicker send_datas"/>
+                    <input type="time" name="lunch_lo" value="15:00" class="timePicker send_datas"/>
                 </div>
 
                 <div class="info_column"> 디너 라스트 오더 </div>
                 <div class="info_value_25">  
-                    <input type="time" name="dinner_lo" class="timePicker send_datas"/>
+                    <input type="time" name="dinner_lo" value="20:00" class="timePicker send_datas"/>
                 </div>
             </div>
         </div>

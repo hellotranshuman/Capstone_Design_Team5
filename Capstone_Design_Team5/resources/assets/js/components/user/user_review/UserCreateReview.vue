@@ -264,12 +264,6 @@ export default {
         }
     },
 
-    created(){
-        console.log("&&&&&&&&&&&&&&&&&&&&&&&&&");
-        console.log(this.flag);
-
-    },
-
     methods: {
         // 좋아요 버튼을 눌렸을 때 사용되는 함수
         likeButClick(){

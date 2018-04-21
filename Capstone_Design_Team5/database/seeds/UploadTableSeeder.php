@@ -30,12 +30,6 @@ class UploadTableSeeder extends Seeder
         ]);
 
         \App\Upload::create([
-            'shop_id' => 1,
-            'filename' => '1_gallaryImg_1.jpg',
-            'path' => '/images/1/'
-        ]);
-
-        \App\Upload::create([
             'shop_id' => 2,
             'filename' => '2_titleImg.jpg',
             'path' => '/images/2/'

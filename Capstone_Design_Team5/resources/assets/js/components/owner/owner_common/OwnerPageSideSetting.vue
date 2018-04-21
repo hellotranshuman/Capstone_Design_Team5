@@ -7,7 +7,8 @@
   <div>
     <div id="sidebar_wrapper">
         <ul class="sidebar_nav">
-            <li class="sidebar_brand"><B>설정</B></li>
+            <li class="sidebar_brand"><B>MY Restaurant</B></li>
+            <li @click="myhome()"><span style="color: grey; cursor:pointer">내 페이지</span></li>
             <li class="sidebar_brand"><B>가게 관리</B></li>
             <li><router-link to="editRestaurant">가게 정보</router-link></li>
             <li><router-link to="createCoupon">쿠폰</router-link></li>
@@ -23,7 +24,12 @@
 
 <script>
 export default {
-
+  methods: {
+    myhome() {
+      var link = '/restaurant/' + this.$route.params.shop_id + '/info';
+      location.replace(link);
+    }
+  }
 }
 </script>
 

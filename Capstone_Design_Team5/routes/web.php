@@ -199,14 +199,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReviewController@getReviewLike'
     ]);
 
-// <-- User Reservation Route
+// <— User Reservation Route
 
     Route::get('/restaurant/{shop_id}/addReservation',[
         'as' => 'reservation.showAddReservationForm',
         'uses' => 'ReservationController@showAddReservationForm'
     ]);
 
-// <-- Owner Reservation List
+// <— Owner Reservation List
 
     Route::get('/owner/{shop_id}/ownerReservationList', [
         'as' => 'reservation.showReservationList',
@@ -224,7 +224,7 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
 
-// <-- Owner Statistics Page
+// <— Owner Statistics Page
     Route::get('/owner/{shop_id}/totalStatistics', [
         'as' => 'reservation.showReservationSetting',
         'uses' => 'ReservationController@showReservationSetting'
@@ -234,13 +234,13 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 /*
-// <-- Test
+// <— Test
 Route::get('test',[
     'as' =>  'main.test',
     'uses' => 'MainController@test'
 ]);*/
 
-// <-- Image Route
+// <— Image Route
 
 // 가게 타이틀, 갤러리 이미지 Route
 Route::get('images/{shop_id}/{image}', function($shop_id, $image = null)

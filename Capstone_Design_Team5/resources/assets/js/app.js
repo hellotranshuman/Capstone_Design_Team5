@@ -86,6 +86,12 @@ import CustomerAddReservation from './components/user/user_reservation/CustomerA
 
 // <-- owner statistics
 import OwnerTotalStatistics from './components/owner/owner_statistics/OwnerTotalStatistics.vue';
+// 손님 통계
+import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCustomerStatistics.vue';   
+// 매출 통계
+import OwnerSalesStatistics from './components/owner/owner_statistics/OwnerSalesStatistics.vue';
+// 메뉴 통계
+import OwnerMenuStatistics from './components/owner/owner_statistics/OwnerMenuStatistics.vue';
 
 const router = new VueRouter({
         routes: [
@@ -239,11 +245,29 @@ const router = new VueRouter({
                                     name: 'OwnerTotalStatistics',
                                     path: '/owner/:shop_id/totalStatistics',
                                     component: OwnerTotalStatistics
+                                },
+                                {
+                                    // 손님 통계
+                                    name: 'OwnerCustomerStatistic',
+                                    path: '/owner/:shop_id/customerStatistic',
+                                    component: OwnerCustomerStatistic
+                                },
+                                {
+                                    // 매출 통계
+                                    name: 'OwnerSalesStatistics',
+                                    path: '/owner/:shop_id/salesStatistics',
+                                    component: OwnerSalesStatistics
+                                }
+                                ,
+                                {
+                                    // 메뉴 통계
+                                    name: 'OwnerMenuStatistics',
+                                    path: '/owner/:shop_id/menuStatistics',
+                                    component: OwnerMenuStatistics
                                 }
                             ]
-
                     }
-
+                    
                 ],
             },
             {

@@ -256,7 +256,9 @@ export default {
                 };
             }
             this.select_menus.push(array); 
-            EventBus.$emit('select_menus', this.select_menus);
+            EventBus.$emit('select_menus', this.select_menus)
+
+            alert('선택하신 메뉴가 추가 되었습니다.');
         }
 
     }// end of method

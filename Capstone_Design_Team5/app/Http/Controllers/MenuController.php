@@ -45,6 +45,10 @@ class MenuController extends Controller
         ]);
     }
 
+    public function translate(Request $request) {
+
+    }
+
     public function getMenu($shop_id, $category) {
 
         // <-- 메뉴정보를 저장할 Array

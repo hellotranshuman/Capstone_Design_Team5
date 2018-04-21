@@ -3,13 +3,14 @@
         <v-flex xs12 sm8 offset-sm2>
             <v-card>
                 <v-subheader><h1>현재 위치 : 후쿠오카 텐진</h1></v-subheader>
-                <v-flex xs12 sm6 offset-sm3>
-                    <template>
-                        <div id="app">
-                            <google-map :testCenter=testCenter></google-map>
-                        </div>
-                    </template>
-                </v-flex>
+                    <v-flex xs12 sm6 offset-sm3>
+                        <template>
+                            <div id="app">
+                                <google-map :testCenter=testCenter></google-map>
+                            </div>
+                        </template>
+                    </v-flex>
+                    <br><br>
             </v-card>
         </v-flex>
         <br>
@@ -63,8 +64,8 @@
         },
         data(){
             return {
-                test: [[], ["도쿄 아게야", 1, "/restaurant/1/info", "/restaurant/1/menu", "/restaurant/1/review"], ["시부야 텐야", 2, "/restaurant/2/info", "/restaurant/2/menu", "/restaurant/2/review"], ["오사카 우동", 3, "/restaurant/3/info", "/restaurant/3/menu", "/restaurant/3/review"]],
-                test2: [[], ["오사카 요시노야", 4, "/restaurant/4/info", "/restaurant/4/menu", "/restaurant/4/review"], ["주부국제공항 오하기", 5, "/restaurant/5/info", "/restaurant/5/menu", "/restaurant/5/review"], ["도쿄 소바신", 6, "/restaurant/6/info", "/restaurant/6/menu", "/restaurant/6/review"]],
+                test: [[], ["Umecchaga", "./1/1_titleImg", "/restaurant/1/info", "/restaurant/1/menu", "/restaurant/1/review"], ["Jukuseihanamidoritokamameshi", "./2/2_titleImg", "/restaurant/2/info", "/restaurant/2/menu", "/restaurant/2/review"], ["Kushiagetokisetsunooryouri", "./3/3_titleImg", "/restaurant/3/info", "/restaurant/3/menu", "/restaurant/3/review"]],
+                test2: [[], ["Hakatanaginoki", "./4/4_titleImg", "/restaurant/4/info", "/restaurant/4/menu", "/restaurant/4/review"], ["Wafuukushiagetenzen", "./5/5_titleImg", "/restaurant/5/info", "/restaurant/5/menu", "/restaurant/5/review"], ["Kado-no-Casshiwa", "./6/6_titleImg", "/restaurant/6/info", "/restaurant/6/menu", "/restaurant/6/review"]],
                 key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo",
                 testCenter: {lat: 33.5882038, lng: 130.3989663}
             }
