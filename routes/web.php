@@ -12,11 +12,6 @@
 */
 Route::group(['middleware' => 'web'], function () {
     // <-- Show Main Page
-    Route::get('main', array(
-        'as' => 'main.showMainPage',
-        'uses' => 'MainController@showMainPage'
-    ));
-
     Route::get('/', array(
         'as' => 'main.showMainPage',
         'uses' => 'MainController@showMainPage'

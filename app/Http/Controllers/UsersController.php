@@ -94,6 +94,6 @@ class UsersController extends Controller
 
         auth()->logout();
 
-        return redirect('main');
+        return redirect('/');
     }
 }

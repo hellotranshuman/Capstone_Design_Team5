@@ -96,11 +96,6 @@ const router = new VueRouter({
                 component: Home
             },
             {
-                path: '/main',
-                name: 'home',
-                component: Home
-            },
-            {
                 path: '/search',
                 name: 'home2',
                 component: Home2
@@ -184,12 +179,13 @@ const router = new VueRouter({
 
                         children: [
                             {
+                                /*
                                 // Restaurant 수정
                                 name: 'OwnerRestaurant',
                                 path: '/owner/:shop_id/editRestaurant',
                                     // '/owner/createRestaurant',
                                 // '/owner/:shop_id/editRestaurant',
-                                component: OwnerRestaurant
+                                component: OwnerRestaurant*/
                             },
                             {
                                 // Owner Coupon 생성
