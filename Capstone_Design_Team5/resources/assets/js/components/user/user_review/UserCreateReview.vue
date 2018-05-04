@@ -170,7 +170,7 @@ export default {
         },
         //리뷰 좋아요 개수
         likeNum: {
-            type: Number,
+            type: [String, Number],
             default: 0
         },
         // 리뷰 좋아요가 선택된 리뷰인지 여부
@@ -180,27 +180,27 @@ export default {
         },
         // 총 평점
         rating: {
-            type: [String, Number],
+            type: Number,
             default: 0
         },
         // 맛
         taste: {
-            type: [String, Number],
+            type: Number,
             default: 0
         },
         // 서비스
         service: {
-            type: [String, Number],
+            type: Number,
             default: 0
         },
         // 분위기
         mood: {
-            type: [String, Number],
+            type: Number,
             default: 0
         },
         // 가격
         price: {
-            type: [String, Number],
+            type: Number,
             default: 0
         },
         // 이미지배열
@@ -271,6 +271,11 @@ export default {
         }
     },
 
+    created(){
+        if((typeof this.likeNum) != Number)
+            reviewLikeBut = parseInt(this.likeNum);
+    },
+
     // watch 속성은 데이터 변화를 감지해서 자동으로 특정 로직을 수행함
     watch: {
         // 리뷰 좋아요 버튼의 상태값을 나타내는 변수 reviewLikeBut의 값이 변경했을때 해당 정보를 post로 전송
@@ -286,8 +291,10 @@ export default {
 
             console.log("리뷰 좋아요버튼 상태 : ");
             console.log(this.reviewLikeBut);
+            console.log(typeof this.reviewLikeBut);
             console.log("리뷰 좋아요 값 : ");
             console.log(this.reviewLikeNum);
+            console.log(typeof this.reviewLikeNum);
             console.log("리뷰 글 번호 : ");
             console.log(this.reviewID);
 
@@ -301,6 +308,10 @@ export default {
 
             }).catch(console.log('is catch'));
         }
+    },
+
+    created(){
+
     },
 }
 </script>

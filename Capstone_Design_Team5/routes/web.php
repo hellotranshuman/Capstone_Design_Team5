@@ -288,6 +288,18 @@ Route::get('images/flag/{image}', function($image = null)
         return $path;
 });
 
+// 커뮤니케이션 버튼 이미지 Route
+Route::get('images/emoticon/{image}', function($image = null)
+{
+    $path = storage_path().'/app/public/img/emoticon' .$image;
+
+    if (file_exists($path)) {
+        return Response::download($path);
+    }
+    else
+        return $path;
+});
+
 // Template 이미지 Route
 
 Route::get('images/template/{image}', function($image = null)

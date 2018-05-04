@@ -100,20 +100,32 @@
                 class="elevation-1"
             >
             <template slot="items" slot-scope="props">
-                <td>{{ props.index + 1 }}</td>
-                <td>{{ props.item.CouponName }}</td>
-                <td class="text-xs-right">{{ props.item.usernum }}</td>
-                <td class="text-xs-right">{{ props.item.start_date }}</td>
-                <td class="text-xs-right">{{ props.item.time }}</td>
-                <td class="text-xs-right">{{ props.item.adult_person }}</td>
-                <td class="text-xs-right">{{ props.item.child_person }}</td>
+                <td class="text-xs-left">{{ props.item.username }}</td>
+                <td class="text-xs-left">{{ props.item.start_date }}</td>
+                <td class="text-xs-left">{{ props.item.time }}</td>
                 <td class="justify-center layout px-0">
-                <v-btn icon class="mx-0" @click="editItem(props.item)">
-                    <v-icon color="teal">edit</v-icon>
+                <v-btn icon class="mx-0"  @click.stop="Dialog = true"
+                                        @click="clickId = props.item.id"
+                >
+                    <v-icon color="primary">상세보기</v-icon>
                 </v-btn>
-                <v-btn icon class="mx-0" @click="deleteItem(props.item)">
-                    <v-icon color="pink">delete</v-icon>
-                </v-btn>
+                    <!-- 상세보기 -->
+                    <v-dialog v-model="Dialog" max-width="500px">
+                        <v-card>
+                            <v-card-text>
+                                이름 : {{items[0].username}}<br>
+                                예약 날짜 : {{items[0].start_date}}<br>
+                                예약 시간 : {{items[0].time}}<br>
+                                어른 인원 : {{items[0].adult_person}}<br>
+                                아이 인원 : {{items[0].child_person}}<br>
+                                메뉴 선정 : {{items[0].menuList}}  <br>
+                            </v-card-text>
+                            <v-btn icon class="mx-0"  @click.stop="Dialog = false"
+                            >
+                                <v-icon color="primary">확인</v-icon>
+                            </v-btn>
+                        </v-card>
+                    </v-dialog>
                 </td>
             </template>
         </v-data-table>
@@ -129,6 +141,9 @@ import axios            from 'axios';
 export default {
     data() {
         return {
+            /* dialog */
+            Dialog : false,
+
             /* date picker */
             start_date: null,
             reservation_menu: false,
@@ -139,91 +154,80 @@ export default {
             menu2: false,
             modal2: false,
 
+            /* clickItem */
+            clickId : 0,
+
             /* table */
             dialog: false,
             headers: [
-                {
-                text: 'index',
-                align: 'left',
-                sortable: false,
-                value: 'name'
-                },
-                { text: '예약자 명', value: 'usernum' },
+                { text: '예약자 명', value: 'username' },
                 { text: '예약 날짜', value: 'start_date' },
                 { text: '예약 시간', value: 'time' },
-                { text: '어른 인원', value: 'adult_person' },
-                { text: '아이 인원', value: 'child_person' },
-                { text: 'Actions', value: 'name', sortable: false }
+                { text: '상세보기', value: 'name', sortable: false }
             ],
 
             /* 저장 & 편집 & 삭제 */
-            items: [],
-            ReservationIndex: -1,
+            items: [
+                {
+                    id : 1,
+                    username: '윤진주',
+                    start_date: '2018-01-02',
+                    time: '11:00',
+                    adult_person: 1,
+                    child_person: 1,
+                    menuList : '갈비찜 1개'   
+                },
+                {
+                    id : 2,
+                    username: '가나다',
+                    start_date: '12-01-02',
+                    time: '13:00',
+                    adult_person: 2,
+                    child_person: 1,
+                    menuList : '갈비찜21개' 
+                }
+            ],
             ReservationItem: {
-                usernum: '',
+                username: '',
                 start_date: '',
-                time: null,
+                time: '',
                 adult_person: 0,
                 child_person: 0,
-            },
-            defaultItem: {
-                usernum: '',
-                start_date: '',
-                time: null,
-                adult_person: 0,
-                child_person: 0,
+                menuList : ''
             }
         }
     },
-    computed: {
-      formTitle () {
-        return this.ReservationIndex === -1 ? '예약 추가' : '예약 변경'
-      }
-    },
+    // DB에서 값 받기
+    created: function () {
+        axios.post('/owner/getreservationList', {
+            'shop_id' : this.$route.params.shop_id
+        }).then((response) => {
+            alert(response.data.getreservationList);
+            /* DB Coupon Data */
+            console.log(response.data.coupon);
 
-    watch: {
-      dialog (val) {
-        val || this.close()
-      }
-    },
+            var ReservationListData = response.data.getreservationList;
 
+            this.items = ReservationListData;
+        })
+    },
     methods: {
-      editItem (item) {
-        this.ReservationIndex = this.items.indexOf(item)
-        this.ReservationItem = Object.assign({}, item)
-        this.dialog = true
-      },
-
-      deleteItem (item) {
-        const index = this.items.indexOf(item)
-        confirm('예약을 취소 하시겠습니까?') && this.items.splice(index, 1)
-      },
-
       close () {
         this.dialog = false
-        setTimeout(() => {
-          this.ReservationItem = Object.assign({}, this.defaultItem)
-          this.ReservationIndex = -1
-        }, 300)
       },
 
-      save () {
-        if (this.ReservationIndex > -1) {
-          Object.assign(this.items[this.ReservationIndex], this.ReservationItem)
-
-        } else {
-          this.items.push(this.ReservationItem)
-        }
-        
+      save () {        
         /* Data 송신 */
           axios.post('/addReservation', {
-           usernum         : this.ReservationItem.usernum,
+            username        : this.ReservationItem.username,
             start_date      : this.ReservationItem.start_date,
-            Discount        : this.ReservationItem.Discount,
             time            : this.ReservationItem.time, 
             adult_person    : this.ReservationItem.adult_person,
             child_person    : this.ReservationItem.child_person
-          }).then(console.log('success')).catch(console.log('test '));
+          }).then((response) => {
+              location.reload();
+          })
+          .catch(console.log('test'));
 
         this.close()
       }

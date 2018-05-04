@@ -30,7 +30,7 @@ Vue.use(VueGoogleMaps, {
 });
 // chartjs
 import VueCharts from 'vue-chartjs'
-import { Bar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
+import { Bar, HorizontalBar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
 
 
 // <-- User Main Page Component Import
@@ -90,8 +90,6 @@ import OwnerTotalStatistics from './components/owner/owner_statistics/OwnerTotal
 import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCustomerStatistics.vue';   
 // 매출 통계
 import OwnerSalesStatistics from './components/owner/owner_statistics/OwnerSalesStatistics.vue';
-// 메뉴 통계
-import OwnerMenuStatistics from './components/owner/owner_statistics/OwnerMenuStatistics.vue';
 
 const router = new VueRouter({
         routes: [
@@ -257,13 +255,6 @@ const router = new VueRouter({
                                     name: 'OwnerSalesStatistics',
                                     path: '/owner/:shop_id/salesStatistics',
                                     component: OwnerSalesStatistics
-                                }
-                                ,
-                                {
-                                    // 메뉴 통계
-                                    name: 'OwnerMenuStatistics',
-                                    path: '/owner/:shop_id/menuStatistics',
-                                    component: OwnerMenuStatistics
                                 }
                             ]
                     }

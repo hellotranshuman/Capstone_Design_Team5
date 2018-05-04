@@ -10,7 +10,6 @@
             <li><router-link to="totalStatistics">종합 통계</router-link></li>
             <li><router-link to="customerStatistic">손님 통계</router-link></li>
             <li><router-link to="salesStatistics">매출 통계</router-link></li>
-            <li><router-link to="menuStatistics">메뉴 통계</router-link></li>
         </ul>
     </div>
     <div id="router_view">

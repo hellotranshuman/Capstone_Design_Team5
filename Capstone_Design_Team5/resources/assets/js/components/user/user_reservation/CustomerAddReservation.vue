@@ -14,7 +14,7 @@
                             <v-layout wrap>
                                 <!-- 예약자 이름 -->
                                 <v-flex xs12>
-                                <v-text-field label="예약자 명" required v-model="usernum"></v-text-field>
+                                <v-text-field label="예약자 명" required v-model="username"></v-text-field>
                                 </v-flex>
                                 <!-- 예약 날짜 -->
                                 <v-flex xs11 sm5 >
@@ -39,9 +39,10 @@
                                         readonly
                                         ></v-text-field>
 
-                                        <v-date-picker v-model="start_date" no-title scrollable>
+                                        <!-- 예약 날짜 -->
+                                        <v-date-picker v-model="start_date" no-title scrollable :allowed-dates="allowedDates">
                                             <v-spacer></v-spacer>
-                                            <v-btn flat color="primary" @click="reservation_menu = false">Cancel</v-btn>
+                                            <v-btn flat color="primary" @click.stop="reservation_menu = false">Cancel</v-btn>
                                             <v-btn flat color="primary" @click="$refs.reservation_menu.save(start_date)">OK</v-btn>
                                         </v-date-picker>
                                     </v-menu>
@@ -68,7 +69,11 @@
                                         prepend-icon="access_time"
                                         readonly
                                         ></v-text-field>
-                                        <v-time-picker v-model="time" @change="$refs.menu.save(time)"></v-time-picker>
+                                        <!-- <v-time-picker 
+                                                    v-model="time" 
+                                                    :allowed-hours="allowedHours"
+                                                    :allowed-minutes="allowedMinutes"                                                
+                                        ></v-time-picker> -->
                                     </v-menu>
                                 </v-flex>
                                 <!-- 인원수 -->
@@ -86,17 +91,17 @@
                         <v-btn color="blue darken-1" flat @click.native="dialog = false">닫기</v-btn>
                         <v-btn color="blue darken-1" flat  @click.stop="dialog_ok = true">예약 하기</v-btn>
                         <!-- 확인 버튼 -->
-                        <v-dialog v-model="dialog_ok" max-width="500px">
+                        <v-dialog v-model="dialog_ok" max-width="50%">
                           <v-card>
                             <v-card-title>
                               <div class="reservationCheck">
                                   <h2><B>예약 확인</B></h2>
                                   <br><hr><br>
-                                  <h3><B> 예약자 명 : </B> {{usernum}} </h3>
-                                  <h3><B> 예약 날짜 : </B> {{start_date}} </h3>
-                                  <h3><B> 예약 시간 : </B> {{time}} </h3>
-                                  <h3><B> 어른 인원 : </B> {{adult_person}} </h3>
-                                  <h3><B> 아이 인원 : </B>{{child_person}} </h3>
+                                  <h3><B> 예약자 명 : </B> {{this.username}} </h3>
+                                  <h3><B> 예약 날짜 : </B> {{this.start_date}} </h3>
+                                  <h3><B> 예약 시간 : </B> {{this.time}} </h3>
+                                  <h3><B> 어른 인원 : </B> {{this.adult_person}} </h3>
+                                  <h3><B> 아이 인원 : </B> {{this.child_person}} </h3>
                               </div>
                             </v-card-title>
                             <v-card-actions>
@@ -122,7 +127,7 @@ import axios from 'axios';
             dialog_ok : false,
 
             /* reservation */
-            usernum             : '',       
+            username            : '',       
             adult_person        : '',
             child_person        : '',
             menuselect          : '',
@@ -135,18 +140,125 @@ import axios from 'axios';
             /* time picker */
             time: null,
             menu2: false,
-            modal2: false
-          }
-      },
-      methods : {
+            modal2: false,
+
+            /* 가능한 시간대 */
+            owner_start_hour    : 0,
+            owner_end_hour      : 0,
+            owner_start_minute  : 0,
+            owner_end_minute    : 0,
+
+            /* DatePicker*/
+
+            items:[
+                {
+                    impossible : '예약 불가능',
+                    pick_date: '2018-05-03',   
+                },
+                {
+                    impossible : '예약 가능',
+                    pick_date: '2018-05-04'   
+                },
+                {
+                    impossible : '예약 불가능',
+                    pick_date: '2018-05-05'   
+                },
+                {
+                    impossible : '예약 불가능',
+                    pick_date: '2018-05-07'   
+                }
+            ]
+
+        }
+    },
+
+    /* Data값 받기 */
+    // created: function () {
+    //     axios.post('/reservationSetting', {
+    //         'shop_id' : this.$route.params.shop_id
+    //     }).then((response) => {
+    //         /* 그 가게의 예약설정된 Data */
+    //         var reservationSettingData = response.data.reservationSetting;
+
+    //         /* item안에 넣기 */
+    //         this.items = reservationSettingData;
+    //     })
+    //     checkDate();
+    // },
+
+    methods : {
+        allowedDates(val)
+        {
+            var index = 0;
+            var maxlength = this.items.length;
+
+            var dateCheck = "";
+
+            for(var $i = 0; $i < maxlength; $i++)
+            {
+                if(!(val != this.items[$i].pick_date)){
+                    dateCheck += this.items[$i].pick_date + "&&"
+                }
+            }
+
+            return dateCheck;
+        }, 
+
+        /* timeset(timeIndex) {  
+            var start_time  = this.items[timeIndex].start_time;
+            var end_time    = this.items[timeIndex].end_time;
+
+            // 시작 시간
+            if(start_time.substr(0,1) != 0)
+            {
+                this.owner_start_hour = parseInt(start_time.substr(0,2));
+            }
+            else {
+                this.owner_start_hour = parseInt(start_time.substr(1,1));
+            }
+            
+            // 시작 분
+            if(start_time.substr(3,1) != 0)
+            {
+                this.owner_start_minute = parseInt(start_time.substr(3,2));
+            }
+            else {
+                this.owner_start_minute = parseInt(start_time.substr(4,1));
+            }
+
+            // 끝 시간
+            if(end_time.substr(0,1) != 0)
+            {
+                this.owner_end_hour = parseInt(end_time.substr(0,2));
+            }
+            else {
+                this.owner_end_hour = parseInt(end_time.substr(1,1));
+            }
+            
+            // 시작 분
+            if(end_time.substr(3,1) != 0)
+            {
+                this.owner_end_minute = parseInt(end_time.substr(3,2));
+            }
+            else {
+                this.owner_end_minute = parseInt(end_time.substr(4,1));
+            }
+ */
+        },  
+
+        /* 가능한 시간대 */
+        //allowedHours: v => v >= this.owner_start_hour && v <= this.owner_end_hour,
+        //allowedMinutes: v => v >= this.owner_start_minute && v <= this.owner_start_minute,
+
         Okey() {
           confirm('예약이 완료 되었습니다.')
         },
         
         SpendData() {
         // axios http 라이브러리
+        // -- 사장님 수락 리스트에 등록 --
             axios.post('/addReservation', {
-                usernum        : this.usernum,
+                username       : this.username,
                 adult_person   : this.adult_person,
                 child_person   : this.child_person,
                 start_date     : this.start_date, 
@@ -154,7 +266,6 @@ import axios from 'axios';
             }).then(console.log('success')).catch(console.log('test '));
         }
     }
-  }
 </script>
 <style>
   .addReservation_btn {

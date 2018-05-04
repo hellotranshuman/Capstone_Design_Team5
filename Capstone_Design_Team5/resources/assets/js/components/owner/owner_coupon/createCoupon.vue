@@ -38,8 +38,7 @@
                     <v-flex xs12>
                          <v-text-field label="쿠폰 조건" required v-model="CouponItem.Condition"></v-text-field>
                     </v-flex>
-
-                    <v-flex xs11 sm5>
+                                        <v-flex xs11 sm5>
                         <!-- datepicker -->
                         <v-menu
                             ref="start_menu"
@@ -107,27 +106,28 @@
                 </v-card-actions>
             </v-card>
     </v-dialog>
+
+    <!-- table -->
     <v-data-table
       :headers="headers"
       :items="items"
       hide-actions
-      class="elevation-1"
+      class="createCouponTable"
     >
-      <template slot="items" slot-scope="props">
-        <td>{{ props.index + 1 }}</td>
-        <td>{{ props.item.CouponName }}</td>
-        <td class="text-xs-right">{{ props.item.CouponType }}</td>
-        <td class="text-xs-right">{{ props.item.start_date }}</td>
-        <td class="text-xs-right">{{ props.item.end_date }}</td>
+    <template slot="items" slot-scope="data">
+        <td>{{ data.item.name }}</td>
+        <td class="text-xs-right">{{ data.item.category }}</td>
+        <td class="text-xs-right">{{ data.item.discount }}</td>
+        <td class="text-xs-right">{{ data.item.add_product }}</td>
+        <td class="text-xs-right">{{ data.item.price_condition }}</td>
+        <td class="text-xs-right">{{ data.item.start_date }}</td>
+        <td class="text-xs-right">{{ data.item.expiry_date }}</td>
         <td class="justify-center layout px-0">
-          <v-btn icon class="mx-0" @click="editItem(props.item)">
-            <v-icon color="teal">edit</v-icon>
-          </v-btn>
-          <v-btn icon class="mx-0" @click="deleteItem(props.item)">
+          <v-btn icon class="mx-0" @click="deleteItem(data.item), clickCouponid = data.item.id">
             <v-icon color="pink">delete</v-icon>
           </v-btn>
         </td>
-      </template>
+    </template>
     </v-data-table>
   </div>
 </v-app>
@@ -136,7 +136,6 @@
 <script>
 import VueAxios         from 'vue-axios';
 import axios            from 'axios';
-
 
 export default {
     data() {
@@ -149,143 +148,85 @@ export default {
             end_date: null,
             end_menu: false,
 
+            clickCouponid : null,
             /* table */
             dialog: false,
             headers: [
-                {
-                text: 'index',
-                align: 'left',
-                sortable: false,
-                value: 'name'
-                },
-                { text: '쿠폰 이름', value: 'CouponName' },
-                { text: '쿠폰 종류', value: 'CouponType' },
-                { text: '사용 시작일', value: 'start_date' },
-                { text: '사용 종료일', value: 'end_date' },
-                { text: 'Actions', value: 'name', sortable: false }
+                { text: '쿠폰 이름',    value: 'name' },
+                { text: '쿠폰 종류',    value: 'category' },
+                { text: '할인율',    value: 'discount' },
+                { text: '제공 상품',    value: 'add_product' },
+                { text: '쿠폰 조건',    value: 'price_condition' },
+                { text: '사용 시작일',   value: 'start_date' },
+                { text: '사용 종료일',   value: 'end_date' },
+                { text: 'Actions',    value: 'name', sortable: false }
             ],
 
             /* 저장 & 편집 & 삭제 */
             items: [],
-            CouponIndex: -1,
             CouponItem: {
-                CouponName: '',
-                CouponType: '',
-                Discount: null,
-                addproduct: null,
-                Condition: null,
+                name: '',
+                category: '',
+                discount: null,
+                add_product: null,
+                price_condition: null,
                 start_date: null,
-                end_date: null
-            },
-            defaultItem: {
-                CouponName: '',
-                CouponType: '',
-                Discount: null,
-                addproduct: null,
-                Condition: null,
-                start_date: null,
-                end_date: null
-
+                expiry_date: null
             }
         }
     },
+
+    /* 데이터 값 받기 */
     created: function () {
         axios.post('/owner/getCouponList', {
-            shop_id  : this.$route.params.shop_id
+            'shop_id' : this.$route.params.shop_id
         }).then((response) => {
-            // Key
+            alert(response.data.coupon);
+            /* DB Coupon Data */
+            var Index = response.data.couponNum;
+            console.log(response.data.coupon);
+           // var Coupondata = Object.values(response.data.coupon);
 
-            var couponData = Object.values(response.data.coupon);
-            var couponNum = response.data.couponNum;
-            
-            console.log(couponData);
-            console.log(couponNum);
+            var Coupondata = response.data.coupon;
 
-            for(var index = 0 ; index < couponNum ; index++ )
-            {
-                this.CouponItem.CouponName   = couponData[index].name;
-                this.CouponItem.CouponType   = couponData[index].category;
-                this.CouponItem.Discount     = couponData[index].discount;
-                this.CouponItem.addproduct   = couponData[index].add_product;
-                this.CouponItem.Condition    = couponData[index].price_condition;
-                this.CouponItem.start_date   = couponData[index].start_date;
-                this.CouponItem.end_date     = couponData[index].expiry_date;
-
-                Object.assign(this.items[this.CouponIndex], this.CouponItem);
-                // this.CouponIndex++;
-            }
-
-            /*
-            //
-            if (this.CouponIndex > -1) {
-                Object.assign(this.items[this.CouponIndex], this.CouponItem)
-
-            } else {
-                this.items.push(this.CouponItem)
-            }*/
-
-
-                // this.save();
-
-                // this.index++;
-
-
-
+            this.items = Coupondata;
         })
-    },
-    computed: {
-      formTitle () {
-        return this.CouponIndex === -1 ? '쿠폰 추가' : '쿠폰 변경'
-      }
-    },
-
-    watch: {
-      dialog (val) {
-        val || this.close()
-      }
     },
 
     methods: {
-      editItem (item) {
-        this.CouponIndex = this.items.indexOf(item)
-        this.CouponItem = Object.assign({}, item)
-        this.dialog = true
-      },
+
 
       deleteItem (item) {
-        const index = this.items.indexOf(item)
-        confirm('쿠폰을 삭제 하시겠습니까?') && this.items.splice(index, 1)
+        const index = this.items.indexOf(item);
+        confirm('쿠폰을 삭제 하시겠습니까?');
+        axios.post('/owner/createCoupon', {
+            shop_id         : this.$route.params.shop_id,
+            id              : this.clickCouponid
+          }).then((response) => {
+              location.reload();
+          })
+          .catch(console.log('test'));
       },
 
       close () {
         this.dialog = false
-        setTimeout(() => {
-          this.CouponItem = Object.assign({}, this.defaultItem)
-          this.CouponIndex = -1
-        }, 300)
       },
 
-      save () {
-        if (this.CouponIndex > -1) {
-          Object.assign(this.items[this.CouponIndex], this.CouponItem)
-
-        } else {
-          this.items.push(this.CouponItem)
-        }
-        
+      save () {        
         /* Data 송신 */
           axios.post('/owner/createCoupon', {
-            name                : this.CouponItem.CouponName,
-            shop_id             : this.$route.params.shop_id,
-            category            : this.CouponItem.CouponType,
-            discount            : this.CouponItem.Discount,
-            add_product         : this.CouponItem.addproduct,
-            price_condition     : this.CouponItem.Condition,
-            start_date          : this.CouponItem.start_date,
-            expiry_date         : this.CouponItem.end_date
-          }).then(function (response) {
-              alert(response.data.content);
-          });
+              name                : this.CouponItem.CouponName,
+              shop_id             : this.$route.params.shop_id,
+              category            : this.CouponItem.CouponType,
+              discount            : this.CouponItem.Discount,
+              add_product         : this.CouponItem.addproduct,
+              price_condition     : this.CouponItem.Condition,
+              start_date          : this.CouponItem.start_date,
+              expiry_date         : this.CouponItem.end_date
+          }).then((response) => {
+              location.reload();
+          })
+          .catch(console.log('test'));
 
         this.close()
       }

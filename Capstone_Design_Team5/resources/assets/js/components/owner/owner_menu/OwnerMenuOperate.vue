@@ -1,151 +1,162 @@
 <template>
-    <div class="container" style="width:100%; border:1px solid; "> 
-        <h3 style="float:left"> 메뉴추가 </h3>
-        <input type="button" id="save"   value="저장" class="header_btn" @click="save_data">
-        <hr>  
+    <div class="container" style="border:2px solid;"> 
+    <v-container>
+        <v-layout>
+            <v-flex xs10> 
+                <b style="font-size:2rem"> 메뉴추가 </b>
+            </v-flex>  
+            <v-flex xs2>
+                <v-btn color="error" @click="save_data"> 저장 </v-btn>
+            </v-flex> 
+        </v-layout>
+         
+        <v-layout mt-4> 
+            <!-- 메뉴 이미지 영역 -->
+            <v-flex xs4 mr-4>                         
+                <v-card elevation-24 class="card" >
+                    <h2 class="card_title"> 메뉴 이미지 </h2>
+                    <input type="file" id="img_upload_btn" accept=".png, .jpg, .jpeg" @change="img_upload">    
+                    <label for="img_upload_btn"><b>이미지 추가</b></label>
 
-        <form id="form_el" style="width:95%; margin:auto; margin-top:1%; overflow:hidden">
-            <div class="inner_div"> 
-                <div style="width: 90%">
-                    <h4 style="float:left"> 이미지 </h4>     
-                    <input 
-                        type    = "file" 
-                        id      = "img_upload_btn" 
-                        accept  = ".png, .jpg, .jpeg" 
-                        @change = "img_upload"
-                    >    
-                    <label for="img_upload_btn">이미지 추가</label>
-                </div>
-                <img id="menu_img">
-            </div>
+                    <div class="img_div">
+                        <img id="menu_img">
+                    </div>
+                </v-card>
+            </v-flex>
 
-            <div class="inner_div"> 
-                <h4> 메뉴 명 </h4>
-                <input type="text" name="name" class="values input_text">
+            <!-- 메뉴 정보 입력 -->
+            <v-flex xs4 mr-4>
+                <v-card elevation-24 class="card">
+                    <h2 class="card_title"> 메뉴 정보 입력 </h2>
 
-                <h4> 가격 </h4>
-                <input type="text" name="price" class="values input_text">
+                    <v-text-field label="메뉴명" v-model="name" :rules="nameRule"></v-text-field>
+                        
+                    <v-text-field label="가격" v-model="price" :rules="priceRule"></v-text-field>
 
-                <h4> 카테고리 </h4>
-                
-                <input 
-                    type   = "text" 
-                    name   = "category" 
-                    class  = "values input_text" 
-                    value  = "입력 또는 선택"
-                    @click = "click_category"
-                > 
-                <div id="category_list" class="select_category">
-                    <ul>
-                        <li @click="select_finish"> 직접입력 </li>
-                        <li @click="select_finish"> 특선 </li>
-                        <li @click="select_finish"> 추천메뉴 </li>
-                        <li @click="select_finish"> 식사류 </li>
-                        <li @click="select_finish"> 안주류 </li>
-                        <li @click="select_finish"> 주류 </li>
-                        <li @click="select_finish"> 디저트 </li>
-                        <li @click="select_finish"> 음료 </li>
-                    </ul>
-                </div>
+                    <v-select v-model="category" :items="states" item-text="name" autocomplete
+                        :filter="customFilter" label="카테고리 설정 (직접입력 가능)"></v-select>
 
-                <h4> 메뉴 설명</h4>
-                <textarea name="explanation" class="values" style="height:30%;"></textarea>
-            </div>
-            
-            <div class="inner_div"> 
-                <h4> 런치 디너 구분 </h4>
-                <select name="remark" class="values">
-                    <option value="default"> 상관 없음 </option>
-                    <option value="lunch"> 런치 메뉴 </option>
-                    <option value="dinner"> 디너 메뉴 </option>
-                </select>
+                    <v-select v-model="remark" :items="remarkList" label="런치 / 디너 메뉴 구분"></v-select>                   
 
-                <div style="width: 100%; margin-top: 7%;">
-                    <h4 style="float: left"> 옵션 설정 </h4> 
-                    <label for="create_option_value"> 옵션 값 생성 </label>
-                    <input type="button" id="create_option_value" @click="create_option" style="opacity: 0;">
-                </div>
-
-                <div class="option_box">
-                    <h5 class="option_column"> 옵션 명 </h5>
-                    <input 
-                        type  = "text" 
-                        name  = "option_name" 
-                        class = "values option_input" 
-                        value = "없으면 입력 x"
-                    >
-                </div>
-
-                <div id="options"></div>
-                <input type="hidden" name="op_num">
-            </div>
-        </form>
+                    <v-text-field v-model="explanation" label="메뉴 설명" multi-line></v-text-field>
+                </v-card>
+            </v-flex>
+ 
+            <!-- 메뉴 옵션 추가하기 -->
+            <v-flex xs4>
+                <v-card elevation-24 class="card">
+                    <h2 class="card_title"> 옵션 설정 </h2> 
+                    <label for="create_option"> <b>옵션 생성</b> </label>
+                    <input type="button" id="create_option" @click="create_option" style="opacity:0;">
+                    <div id="options"></div>                
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <input type="hidden" name="op_num" value="0">
+        
+    </v-container>
     </div>
 </template>
         
 <script type="text/javascript"> 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
-
-var option_num = 1;
+ 
+// var shop_id = this.$route.params.shop_id; 
+var num = 0;                                    // 옵션 갯수
  
 export default {
+    data() {
+        return { 
+            // 입력 받을 거
+            name        : null,
+            category    : null,
+            price       : null,
+            remark      : null,
+            explanation : null,
+
+            // 입력하지 않으면 경고 메세지 출력
+            nameRule        : [ v => !!v || '메뉴 명을 입력해주세요!' ],            
+            categoryRule    : [ v => !!v || '카테고리를 입력해주세요!' ],
+            priceRule       : [ v => !!v || '가격을 입력해주세요!' ], 
+
+            states: [
+                { name: '특선'}, { name: '추천메뉴'}, { name: '식사류'},
+                { name: '탕류'}, { name: '찜류'}, { name: '안주류'},
+                { name: '주류'}, { name: '음료'}, { name: '추가 메뉴'},
+            ],
+            customFilter (item, queryText, itemText) {
+                const hasValue = val => val != null ? val : ''
+                const text = hasValue(item.name)
+                const query = hasValue(queryText)
+                return text.toString()
+                .toLowerCase()
+                .indexOf(query.toString().toLowerCase()) > -1
+            },
+
+            // 점심, 저녁 메뉴 구분
+            remarkList : [{ text: '상관 없음'},{ text: '런치 메뉴'},{ text: '디너 메뉴'}],
+            
+        }
+    },
+
     methods : {
         // 저장
         save_data : function () {
-            var formData  = new FormData(document.getElementById('form_el')); 
-            var get_img   = document.getElementById('img_upload_btn');  // 등록한 이미지 
-            var get_data  = document.getElementsByClassName('values');  // 등록한 데이터들
-            var check     = true;                                       // 유효성 검사용
-            var shop_id  = this.$route.params.shop_id;
-
+            let formData = new FormData(); 
+            let menu_img = document.getElementById('img_upload_btn');   // 등록한 이미지 
+            let options  = document.getElementById('options');          // 카테고리 리스트 가져오기
+            let op_array = [];
+            
             // 업로드한 이미지가 있는지 체크 후 진행함
-            if(get_img.files[0] !== undefined){   
-                formData.append('menu_img',get_img.files[0]);
-                formData.append('shop_id',shop_id);
- 
-                for(let i=0; i < get_data.length; i++){
-                    // 입력한 값이 있는지 체크 후 배열에 저장
-                    let ipt = get_data[i].value.replace(/ /gi, "");
+            if(menu_img.files[0] !== undefined){   
+                formData.append('menu_img',menu_img.files[0]);
+                // formData.append('shop_id',shop_id);
 
-                    if(ipt === "" || ipt === "입력또는선택"){   
-                        alert('값을 모두 입력 해주세요!');
-                        check = false;
-                        break;   
+                if( this.name !== null && this.price !== null && this.category !== null && 
+                    this.explanation !== null && this.remark !== null) {
+                    
+                    formData.append('name', this.name);
+                    formData.append('price', this.price);
+                    formData.append('category', this.category.name);
+                    formData.append('remark', this.remark.text);
+                    formData.append('explanation', this.explanation); 
+ 
+                    for(let i=0; i < options.children.length; i++){
+                        let optionName   = document.getElementById('optionName' + i);
+                        let optionValues = document.getElementsByName('option' + i + 'values');
+
+                        op_array[i] = []; 
+
+                        formData.append('option['+ i +'][name]', optionName.children[0].innerText);
+
+                        for(let j=0; j < optionValues.length; j++){
+                            formData.append('option['+ i +'][value' + j+']', 
+                                optionValues[j].children[0].innerText);
+                        }
+                        formData.append('option['+ i +'][num]', optionValues.length);
                     }
-                }
-                // 모든 값이 입력 되었다면 전송함.
-                if (check === true){    
 
                     // 콘솔창에 띄우기
-                    for(var pair of formData.entries()) {
-                        console.log(pair[0]+ ', '+ pair[1]); 
-                    }
-
-                    axios.post('/owner/createMenu',formData)
+                    // for(var pair of formData.entries()) {
+                    //     console.log(pair[0]+ ', '+ pair[1]); 
+                    // }
+                      
+                    axios.post('/test',formData)
                     .then( (response) => { 
-                        alert(response.data.content);
-
-                       location.reload();
-
-                       /*
-                        var get_options = document.getElementById('options');
-                        while(get_options.children.length > 0) {
-                            get_options.removeChild(get_options.children[get_options.children.length-1]);
-                        }
-
-                        document.getElementById('menu_img').src ='';
-
-                        for(let i=0; i < get_data.length; i++){
-                            get_data[i].value = '';
-                        }
-                        get_img.value = '';*/
+                        alert('메뉴 등록 성공'); 
+                        console.log(response.data.ddd);
 
                     })
                     .catch((ex)=>{
                         console.log('failed',ex);
                     })
+                    
                 }
+                // 메뉴 정보가 모두 입력되지 않은 경우 경고 메세지 출력
+                else {
+                    alert('메뉴 정보를 모두 입력해 주세요');
+                } 
             }
             // 등록된 이미지가 없는 경우 경고 메세지 출력
             else {
@@ -156,8 +167,8 @@ export default {
 
         // 이미지 업로드하기.
         img_upload: function(){
-            var menu_img = document.getElementById("menu_img");  // 메뉴 이미지
-            var reader   = new FileReader();
+            let menu_img = document.getElementById("menu_img");  // 메뉴 이미지
+            let reader   = new FileReader();
 
             // 이미지 미리보기 띄우기
             reader.onload = function() {
@@ -166,146 +177,227 @@ export default {
             reader.readAsDataURL(event.target.files[0]);
         },
 
-        // 카테고리 선택 창 클릭 시 호출되는 메소드. 카테고리 선택 리스트 띄우기
-        click_category : function() {
-            var category_list = document.getElementById('category_list');
-            category_list.classList.add("active");
-            // category_list.style.top  = event.y + "px";
-            // category_list.style.left = event.x + "px";
-        },
-
-        // 카테고리 리스트를 클릭하면 호출되는 메소드
-        select_finish : function() {
-            var category_list = document.getElementById('category_list');
-            var category      = document.getElementsByName('category')[0];
-            var clicked_v     = event.target;
- 
-            // 직접 입력이 아닌 다른 것을 선택하면 선택 값을 카테고리 값으로 지정함.
-            if(clicked_v.innerText !== '직접입력'){
-                category.value = clicked_v.innerText;
-            } 
-            // 직접 입력 선택 시 카테고리 값 지우고 커서 이동시킴.
-            else if(clicked_v.innerText === '직접입력'){
-                category.value = '';
-                category.focus(); 
-            }
-            // css 제거
-            category_list.classList.remove("active");
-        },
-
-        // 옵션 값 만들기.(하위 옵션)
+        // 옵션 만들기.
         create_option : function() {
-            var created_h5  = document.createElement('h5');
-            var created_div = document.createElement('div');
-            var created_ipt = document.createElement('input');
-            var get_options = document.getElementById('options');
-            var op_num      = document.getElementsByName('op_num')[0];
+            let options         = document.getElementById('options');       // 옵션들이 들어갈 div
+            let options_box     = document.createElement('div');            // 옵션 명, 옵션 값을 담을 div
+            let created_option  = document.createElement('div');            // 옵션 명이 될 div  
+            let created_b       = document.createElement('b');              // 옵션 명
+            let created_btns    = [                                         // 옵션 명 div에 들어갈 버튼들.
+                                    document.createElement('input'),       
+                                    document.createElement('input'),        
+                                    document.createElement('input')       
+                                ]
+            created_b.innerText = "옵션" + num;                             // 옵션 초기 이름 값 설정.
+            created_b.classList.add('op_b'); 
 
-            created_div.classList.add("option_box");
-            created_h5.classList.add("option_column");
-            created_ipt.classList.add("option_input"); 
-            created_ipt.classList.add("values"); 
+            created_option.id = 'optionName' + num;
+            created_option.classList.add('optionName');                     // 옵션 명에 css 추가
+            created_option.prepend(created_b);                               
 
-            created_h5.innerText = '옵션 값';
-            created_ipt.name     = 'option_value' + option_num;
-            option_num++;
-            op_num.value = option_num;
+            // 들어갈 버튼들 값 설정, css 추가, 메소드 설정
+            for (let i=0; i < created_btns.length; i++){                   
+                created_btns[i].setAttribute('type','button');
+                created_btns[i].classList.add('optionBtn');
 
-            created_div.appendChild(created_h5);
-            created_div.appendChild(created_ipt);
-            get_options.appendChild(created_div);
-        }
-    }
+                switch(i){
+                    case 0:
+                        created_btns[i].value   = '삭제';
+                        created_btns[i].onclick = this.delete_option; break;
+                    case 1:
+                        created_btns[i].value   = '옵션 값 생성';
+                        created_btns[i].onclick = this.add_opionValue; break;
+                    case 2: 
+                        created_btns[i].value   = '수정';
+                        created_btns[i].onclick = this.rename_option; break;
+                }
+                created_option.appendChild(created_btns[i]);
+            }
+            // 옵션 목록 div에 옵션 삽입
+            options_box.id = 'option' + num; num++;
+            options_box.classList.add('box');
+            options_box.appendChild(created_option);
+            options.appendChild (options_box);
+
+        }, // end of create_option
+
+        // 옵션 명 수정하기
+        rename_option : function(event){
+            let get_option      = event.target.parentNode;             // 해당 옵션 가져오기
+            let get_rename_btn  = event.target                         // 수정 버튼 가져오기 
+            let created_input   = document.createElement('input');     // 카테고리 명 입력 창 만들기.
+
+            get_rename_btn.value   = "완료";                           // 수정 버튼을 완료 버튼으로 변경
+            get_rename_btn.onclick = this.rename_complete;
+ 
+            created_input.classList.add('op_ipt'); 
+
+            get_option.removeChild(get_option.children[0]);             // 기본 카테고리명 지우기.
+            get_option.prepend(created_input);                          // 첫번째 자식으로 넣음
+        }, 
+
+        // 이름 수정 완료
+        rename_complete : function(){
+            let get_option  = event.target.parentNode;          // 해당 카테고리 가져오기
+            let get_cpt_btn = event.target;                     // 완료 버튼 가져오기.
+            let get_iptText = get_option.children[0];           // input 태그 가져오기
+            let created_b   = document.createElement('b');      // 카테고리 명 생성.
+ 
+            created_b.innerText = get_iptText.value;                                                   
+            created_b.classList.add('op_b');
+            
+            get_cpt_btn.value   = "수정";                       // 완료 버튼을 수정 버튼으로 변경시킴. 
+            get_cpt_btn.onclick = this.rename_option;   
+ 
+            get_option.removeChild(get_iptText);              // input 태그 삭제.
+            get_option.prepend(created_b);                    // 첫번째 자식으로 넣음
+        },
+
+        // 옵션 값 생성
+        add_opionValue : function(event){  
+            let get_box         = event.target.parentNode.parentNode;      // 해당 카테고리 박스 가져오기
+            let optionValue     = document.createElement('div');           // 하위 카테고리 div 생성
+            let created_b       = document.createElement('b');             // 카테고리 명 입력할 b 태그
+            let created_btns    = [
+                                    document.createElement('input'), 
+                                    document.createElement('input')
+                                ]; 
+            // 들어갈 버튼들 값 설정, css 추가.
+            for (let i=0; i < created_btns.length; i++){                   
+                created_btns[i].setAttribute('type','button');
+                created_btns[i].classList.add('optionBtn');
+
+                switch(i){
+                    case 0:
+                        created_btns[i].value   = '삭제';
+                        created_btns[i].onclick = this.delete_optionValue; break;
+                    case 1:
+                        created_btns[i].value   = '수정';
+                        created_btns[i].onclick = this.rename_option; break; 
+                }
+                optionValue.appendChild(created_btns[i]);
+            }
+            
+            created_b.innerText = '옵션 값';
+            created_b.classList.add('op_b');
+
+            optionValue.setAttribute('name', get_box.id + "values"); 
+            optionValue.prepend(created_b);
+            optionValue.classList.add('optionValue');
+
+            get_box.appendChild(optionValue);
+        }, // end of add_opionValue
+
+        // 클릭한 옵션 삭제 
+        delete_option : function(){
+            let option = event.target.parentNode;
+            option.parentNode.parentNode.removeChild(option.parentNode);   
+        },
+
+        // 클릭한 옵션 값 삭제 
+        delete_optionValue : function(){
+            let op_value = event.target.parentNode;
+            op_value.parentNode.removeChild(op_value);          
+        },
+
+    }, // end of method
 }
 </script>
 
 <style>
-    .header_btn{
-        width: 10%;
-        margin:0.5%; 
-        margin-top: 1%; 
-        font-size: 130%;
-        float: right; 
-        overflow: hidden;
-    }
-    h4 {
-        margin-top: 7%;
-        margin-bottom: 1%;
-    }
-    hr {
-        width: 100%;
-        border:1.3px solid;
-    } 
-    .inner_div{
-        width: 30%;
-        min-height: 450px; 
-        background:white;
-        border:1px solid;
-        float: left;
-        margin: 1%;
-        padding: 3%;  
-    }
-    #menu_img{
-        width: 100%;
-        height: 60%;    
-        object-fit: contain; 
-    }
-    .values{
-        width: 98%;
-        font-size: 17px;
-    }
-    #img_upload_btn{
-        width: 0%;
-        font-size: 0px;
-        opacity: 0;
-        position: relative; 
-    }
-    label{
-        color: cadetblue; 
-        float:right;
-        font-size: 17px;
-        margin-top: 3%;
-    }
-    .select_category {
-        position: absolute;
-        display: none;
-        border: 1px solid black;
-        width: 20%;
-        text-align: center;
-    }
-    .select_category.active {
-        display: block;
-        background-color: white;
-    }
-    .select_category.active>ul>li {
-        list-style: none;
-        padding: 10px;
-    }
-    .select_category.active>ul>li:hover {
-        background-color: lightgreen;
-    }
-    ul {
-        margin: 0px;
-        padding: 0px;
-    } 
-    .input_text{
-        border: 0;
-        border-bottom: 1px solid; 
-    } 
-    .option_column {
-        width: 30%;
-        float: left;
-    }
-    .option_input {
-        width: 70%;
-        border: 0;
-        border-bottom: 1px solid; 
-        float: left;
-        text-align: right;
-    }
-    .option_box {
-        width: 100%; 
-        margin-top: 7%; 
-        overflow: hidden;
-    }
+
+/* v-card padding 값 통일 */
+.card{
+    padding: 5%;
+}
+.card_title{
+    float:left; 
+    margin-bottom: 3%;
+}
+
+/* input file 안보이게 하기 */
+#img_upload_btn{
+    width: 0%;
+    font-size: 0px;
+    opacity: 0;
+    position: relative; 
+}
+/* 메뉴 이미지 업로드 라벨 */
+label{
+    color: cadetblue; 
+    float:right;
+    font-size: 1.5rem;
+    margin-right: 3%; 
+}
+/* 메뉴 이미지 비율 고정용 */
+.img_div {
+    position: relative;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 70%;
+}
+/* 메뉴 이미지 스타일 */
+#menu_img { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 105%;
+    height: 105%; 
+    object-fit: cover; 
+} 
+/* 옵션들이 출력될 div 스타일 */
+#options{
+    width:100%;
+    height: auto;
+    overflow: hidden;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /* border: 1px solid black; */
+}
+/* 하나의 옵션명과 그 옵션 값들을 감싸는 div */
+.box {
+    width: 100%;
+    height: auto; 
+    overflow:hidden; 
+    margin-top: 10%;
+}
+/* 옵션명 */
+.optionName {
+    width: 100%; 
+    margin-top: 1%;
+    border-bottom: 1px solid;
+    position: relative; 
+    overflow:hidden; 
+}
+/* 옵션명의 버튼들 */
+.optionBtn {
+    min-width: 10%;
+    margin: 1%;
+    float: right;
+    position: relative;
+    color: cadetblue; 
+}
+/* 옵션의 값 */
+.optionValue {
+    width: 95%; 
+    margin-top: 1%;
+    border-bottom: 1px solid;
+    position: relative;
+    overflow:hidden; 
+    float: right; 
+}
+/* 옵션 명을 출력할 b태그 */
+.op_b {
+    float: left; 
+    margin-left: 1%;
+}
+/* 옵션 수정에 사용할 input text 태그 */
+.op_ipt {
+    float: left; 
+    width: 40%; 
+    margin-left: 1%;
+    /*border: 1px solid;*/
+    background-color: rgb(135, 194, 196);  
+}
 </style>
