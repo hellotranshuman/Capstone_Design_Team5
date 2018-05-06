@@ -219,7 +219,7 @@ export default {
             {url : 'images/emoticon/chopsticks.svg', number : 11},          // 젓가락
             {url : 'images/emoticon/spoon.svg', number : 12},               // 숟가락
             {url : 'images/emoticon/fork.svg', number : 13},                // 포크
-            {url : 'images/emoticon/cutlery.svg', number : 14},             // 식기 주세요
+            {url : '/images/emoticon/cutlery.svg', number : 14},             // 식기 주세요
             {url : 'images/emoticon/bowl.svg', number : 15},                // 그릇 주세요
             {url : 'images/emoticon/dish.svg', number : 16},                // 접시 주세요
             {url : 'images/emoticon/seasoning.svg', number : 17},           // 소스 더 주세요.

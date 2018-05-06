@@ -26,23 +26,21 @@
 
 <template>
     <v-container fluid grid-list-md>
-            <v-card>
-                <v-card-title>
+            <v-card>  
+                <v-container>
                     <!-- 아이디 이미지, 아이디, 사용자 국적, 공뷰 버튼 -->
                     <v-layout align-center>
-                        <v-flex xs3>사용자이미지</v-flex>
-                        <v-flex xs2>{{this.userID}}</v-flex>
-                        <v-flex xs2>
-                            <v-card flat>
-                                <v-card-media v-bind:src= "flag" height="50px"></v-card-media>
-                            </v-card>
+                        <v-flex xs4 sm1>사용자이미지</v-flex>
+                        <v-flex xs3 sm1>{{this.userID}}</v-flex>
+                        <v-flex xs2 sm1>
+                            <img v-bind:src= "flag" onmousedown="return false;">
                         </v-flex>
                     </v-layout>
                     <!-- 작성 날짜, 리뷰 좋아요 갯수 -->
-                    <v-layout>
-                        <v-flex>{{this.writeDate}}</v-flex>
+                    <v-layout align-center>
+                        <v-flex xs9 sm10>{{this.writeDate}}</v-flex>
                         <!-- 좋아요를 눌렀을 경우 하트 모양이 채워진 이미지를 출력 하도록 변경하기 -->
-                        <v-flex>
+                        <v-flex xs3 sm2>
                             <v-btn flat color="pink lighten-3" v-if="!(this.reviewLikeBut)"
                             v-on:click="likeButClick">
                                 <h2>{{this.reviewLikeNum}}</h2>
@@ -55,51 +53,65 @@
                             </v-btn>
                         </v-flex>
                     </v-layout>
-                </v-card-title>
-                <v-card-text>
                     <!-- 총점 -->
                     <v-layout align-start align-center>
                         <v-flex xs2>총점</v-flex>
-                        <v-flex xs3 class="star-align">
-                            <span v-for= "count in this.rating" :key="count">
-                                <v-icon x-large color="yellow accent-4">star</v-icon>
-                            </span>
-                        </v-flex>
+                        <v-flex xs6 sm4>
+                            <v-layout>
+                                <v-flex xs2 sm1 class="star-align" 
+                                v-for= "count in this.rating" :key="count">
+                                    <v-icon x-large color="yellow accent-4">star</v-icon>
+                                </v-flex>
+                            </v-layout>
+                        </v-flex>                        
+                        <v-spacer></v-spacer>
                     </v-layout><br>
                     <!-- 맛 -->
                     <v-layout align-start align-center>
                         <v-flex xs2>맛</v-flex>
-                        <v-flex xs3 class="star-align">
-                            <span v-for= "count in this.taste" :key="count">
-                                <v-icon large color="yellow accent-4">star</v-icon>
-                            </span>
-                        </v-flex>
+                        <v-flex xs6 sm4>
+                            <v-layout>
+                                <v-flex xs2 sm1 class="star-align" 
+                                v-for= "count in this.taste" :key="count">
+                                    <v-icon large color="yellow accent-4">star</v-icon>
+                                </v-flex>
+                            </v-layout>
+                        </v-flex> 
                     </v-layout>
                     <!-- 서비스 -->
                     <v-layout align-start align-center>
                         <v-flex xs2>서비스</v-flex>
-                        <v-flex xs3 class="star-align">
-                            <span v-for= "count in this.service" :key="count">
-                                <v-icon large color="yellow accent-4">star</v-icon>
-                            </span>
-                        </v-flex>
+                        <v-flex xs6 sm4>
+                            <v-layout>
+                                <v-flex xs2 sm1 class="star-align" 
+                                v-for= "count in this.service" :key="count">
+                                    <v-icon large color="yellow accent-4">star</v-icon>
+                                </v-flex>
+                            </v-layout>
+                        </v-flex> 
                     </v-layout>
                     <!-- 분위기 -->
                     <v-layout align-start align-center>
                         <v-flex xs2>분위기</v-flex>
-                        <v-flex xs3 class="star-align">
-                            <span v-for= "count in this.mood" :key="count">
-                                <v-icon large color="yellow accent-4">star</v-icon>
-                            </span>
+                        <v-flex xs6 sm4>
+                            <v-layout>
+                                <v-flex xs2 sm1 class="star-align" 
+                                v-for= "count in this.mood" :key="count">
+                                    <v-icon large color="yellow accent-4">star</v-icon>
+                                </v-flex>
+                            </v-layout>
                         </v-flex>
                     </v-layout>
                     <!-- 가격 -->
                     <v-layout align-start align-center>
                         <v-flex xs2>가격</v-flex>
-                        <v-flex xs3 class="star-align">
-                            <span v-for= "count in this.price" :key="count">
-                                <v-icon large color="yellow accent-4">star</v-icon>
-                            </span>
+                        <v-flex xs6 sm4>
+                            <v-layout>
+                                <v-flex xs2 sm1 class="star-align" 
+                                v-for= "count in this.price" :key="count">
+                                    <v-icon large color="yellow accent-4">star</v-icon>
+                                </v-flex>
+                            </v-layout>
                         </v-flex>
                     </v-layout>
                     <!-- 리뷰 내용 -->
@@ -108,33 +120,33 @@
                     </v-layout>
                     <!-- 해시 태그 -->
                     <v-layout>
-                        <v-flex xs4>
+                        <v-flex xs6 sm6>
                             <a v-for="(tag, index) in this.hashTag" :key="index">
-                                {{"#"+tag+" "}}
+                                {{"#" + tag}}&nbsp;
                             </a>
                         </v-flex>
                     </v-layout>
-                </v-card-text>
-                <!-- 이미지 -->
-                <v-card-media>
-                    <v-layout justify-space-around wrap>
-                        <v-flex xs4 v-if="this.image.length > 0">
-                            <div class="image-div">
-                                <vue-preview :slides="slide1" class="review-image"></vue-preview>
-                            </div>
-                        </v-flex>
-                        <v-flex xs4 v-if="this.image.length > 1">
-                            <div class="image-div">
-                            <vue-preview :slides="slide2" class="review-image"></vue-preview>
-                            </div>
-                        </v-flex>
-                        <v-flex xs4 v-if="this.image.length > 2">
-                            <div class="image-div">
-                            <vue-preview :slides="slide3" class="review-image"></vue-preview>
-                            </div>
-                        </v-flex>
-                    </v-layout>
-                </v-card-media>
+                    <!-- 이미지 -->
+                    <v-card-media>
+                        <v-layout justify-space-around wrap>
+                            <v-flex xs6 sm4 v-if="this.image.length > 0">
+                                <div class="image-div">
+                                    <vue-preview :slides="slide1" class="review-image"></vue-preview>
+                                </div>
+                            </v-flex>
+                            <v-flex xs6 sm4 v-if="this.image.length > 1">
+                                <div class="image-div">
+                                <vue-preview :slides="slide2" class="review-image"></vue-preview>
+                                </div>
+                            </v-flex>
+                            <v-flex xs12 sm4 v-if="this.image.length > 2">
+                                <div class="image-div">
+                                <vue-preview :slides="slide3" class="review-image"></vue-preview>
+                                </div>
+                            </v-flex>
+                        </v-layout>
+                    </v-card-media>
+                </v-container>
             </v-card>
     </v-container>
 </template>

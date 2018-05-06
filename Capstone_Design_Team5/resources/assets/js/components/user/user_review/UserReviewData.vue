@@ -4,16 +4,25 @@
 -->
 <template>
     <transition name="fade">
-        <v-container grid-list-md text-xs-center>
+        <v-content>
             <!-- 리뷰 내용 출력 -->
             <v-layout>
-                <v-flex>
+                <v-spacer></v-spacer>
+                <v-flex xs4 sm2 offset-sm1>
                     <h1>평점 : {{this.totalRating}}</h1>
-                <hr>
                 </v-flex>
+                <v-spacer></v-spacer>
             </v-layout>
             <v-layout>
-                <v-flex>
+                <v-spacer></v-spacer>
+                <v-flex xs12 sm10>
+                    <hr>
+                </v-flex>
+                <v-spacer></v-spacer>
+            </v-layout>
+            <v-layout>
+                <v-spacer></v-spacer>
+                <v-flex xs12 sm10>
                     <!-- 리뷰 갯수 만큼 반복 -->
                     <ul>
                         <li v-for= "reviewData in reviewDataList" :key="reviewData['id']" v-if="reviewData['id']">
@@ -27,8 +36,9 @@
                         </li>
                     </ul>
                 </v-flex>
+                <v-spacer></v-spacer>
             </v-layout>
-        </v-container>
+        </v-content>
     </transition>
 </template>
 

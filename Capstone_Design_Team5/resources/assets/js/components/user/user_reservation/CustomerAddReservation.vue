@@ -33,7 +33,7 @@
                                     >
                                         <v-text-field
                                         slot="activator"
-                                        label="pick Date"
+                                        label="예약 날짜"
                                         v-model="start_date"
                                         prepend-icon="event"
                                         readonly
@@ -43,38 +43,18 @@
                                         <v-date-picker v-model="start_date" no-title scrollable :allowed-dates="allowedDates">
                                             <v-spacer></v-spacer>
                                             <v-btn flat color="primary" @click.stop="reservation_menu = false">Cancel</v-btn>
-                                            <v-btn flat color="primary" @click="$refs.reservation_menu.save(start_date)">OK</v-btn>
+                                            <v-btn flat color="primary" @click="$refs.reservation_menu.save(start_date), setTime()">OK</v-btn>
                                         </v-date-picker>
                                     </v-menu>
                                 </v-flex>
-                                <!-- 예약 시간 -->
-                                <v-flex xs11 sm5>
-                                    <v-menu
-                                        ref="menu"
-                                        lazy
-                                        :close-on-content-click="false"
-                                        v-model="menu2"
-                                        transition="scale-transition"
-                                        offset-y
-                                        full-width
-                                        :nudge-right="40"
-                                        max-width="290px"
-                                        min-width="290px"
-                                        :return-value.sync="time"
-                                    >
-                                        <v-text-field
-                                        slot="activator"
-                                        label="pick Time"
-                                        v-model="time"
-                                        prepend-icon="access_time"
-                                        readonly
-                                        ></v-text-field>
-                                        <!-- <v-time-picker 
-                                                    v-model="time" 
-                                                    :allowed-hours="allowedHours"
-                                                    :allowed-minutes="allowedMinutes"                                                
-                                        ></v-time-picker> -->
-                                    </v-menu>
+                                <v-flex>
+                                    <!-- 예약 시간 -->
+                                    <v-select
+                                        :items="states"
+                                        v-model="pick_time"
+                                        label="예약 시간"
+                                        single-line
+                                    ></v-select>
                                 </v-flex>
                                 <!-- 인원수 -->
                                 <v-flex xs12 sm6 md4>
@@ -99,7 +79,7 @@
                                   <br><hr><br>
                                   <h3><B> 예약자 명 : </B> {{this.username}} </h3>
                                   <h3><B> 예약 날짜 : </B> {{this.start_date}} </h3>
-                                  <h3><B> 예약 시간 : </B> {{this.time}} </h3>
+                                  <h3><B> 예약 시간 : </B> {{this.pick_time}} </h3>
                                   <h3><B> 어른 인원 : </B> {{this.adult_person}} </h3>
                                   <h3><B> 아이 인원 : </B> {{this.child_person}} </h3>
                               </div>
@@ -137,56 +117,62 @@ import axios from 'axios';
             reservation_menu: false,
             modal: false,
 
-            /* time picker */
-            time: null,
-            menu2: false,
-            modal2: false,
+            /* timePicker*/
+            /* 예약 시간 배열 */
+            states : [],
+            /* 선택한 시간 */
+            pick_time : '',
 
-            /* 가능한 시간대 */
-            owner_start_hour    : 0,
-            owner_end_hour      : 0,
-            owner_start_minute  : 0,
-            owner_end_minute    : 0,
+            /* 기본 식당 시간 */
+            basic_info: {
+                lunch_open  : '09:00',
+                lunch_close : '14:00',
+                dinner_open : '17:00',
+                dinner_close : '22:00',
+            },
 
-            /* DatePicker*/
-
+            /* DB에서 받아 온 값 - reservation_set */
             items:[
                 {
-                    impossible : '예약 불가능',
-                    pick_date: '2018-05-03',   
+                    impossible  : '예약 불가능',
+                    pick_date   : '2018-05-03',   
                 },
                 {
-                    impossible : '예약 가능',
-                    pick_date: '2018-05-04'   
+                    impossible  : '예약 가능',
+                    pick_date   : '2018-05-04',
+                    set_time : [
+                        "11:00", "12:00", "13:30"
+                    ]
+
                 },
                 {
-                    impossible : '예약 불가능',
-                    pick_date: '2018-05-05'   
+                    impossible  : '예약 불가능',
+                    pick_date   : '2018-05-05'   
                 },
                 {
-                    impossible : '예약 불가능',
-                    pick_date: '2018-05-07'   
+                    impossible  : '예약 불가능',
+                    pick_date   : '2018-05-07'   
                 }
             ]
-
         }
     },
 
     /* Data값 받기 */
-    // created: function () {
-    //     axios.post('/reservationSetting', {
-    //         'shop_id' : this.$route.params.shop_id
-    //     }).then((response) => {
-    //         /* 그 가게의 예약설정된 Data */
-    //         var reservationSettingData = response.data.reservationSetting;
+    created: function () {
+        var set_time_data;
+        axios.post('/reservationSetting', {
+            'shop_id' : this.$route.params.shop_id
+        }).then((response) => {
+            /* 그 가게의 예약설정된 Data */
+            var reservationSettingData = response.data.reservationSetting;
 
-    //         /* item안에 넣기 */
-    //         this.items = reservationSettingData;
-    //     })
-    //     checkDate();
-    // },
+            /* item안에 넣기 */
+            this.items = reservationSettingData;
+        })
+    },
 
     methods : {
+        // 불가능 한 날짜 반환.
         allowedDates(val)
         {
             var index = 0;
@@ -196,59 +182,33 @@ import axios from 'axios';
 
             for(var $i = 0; $i < maxlength; $i++)
             {
-                if(!(val != this.items[$i].pick_date)){
+                // impossible이 예약 불가능일 경우 달력에 표시되지 않습니다.
+                if(val == this.items[$i].pick_date && this.items[$i].impossible == '예약 불가능'){
                     dateCheck += this.items[$i].pick_date + "&&"
                 }
             }
-
-            return dateCheck;
+            return !(dateCheck);
         }, 
 
-        /* timeset(timeIndex) {  
-            var start_time  = this.items[timeIndex].start_time;
-            var end_time    = this.items[timeIndex].end_time;
+        setTime() {
+            /* date가 클릭시 item안의 set_time[]을 select 문에 넣기 */
+            var maxIndex = this.items.length;
 
-            // 시작 시간
-            if(start_time.substr(0,1) != 0)
-            {
-                this.owner_start_hour = parseInt(start_time.substr(0,2));
-            }
-            else {
-                this.owner_start_hour = parseInt(start_time.substr(1,1));
-            }
-            
-            // 시작 분
-            if(start_time.substr(3,1) != 0)
-            {
-                this.owner_start_minute = parseInt(start_time.substr(3,2));
-            }
-            else {
-                this.owner_start_minute = parseInt(start_time.substr(4,1));
-            }
+            confirm(maxIndex)
 
-            // 끝 시간
-            if(end_time.substr(0,1) != 0)
+            for(var i = 0; i < maxIndex; i++) 
             {
-                this.owner_end_hour = parseInt(end_time.substr(0,2));
+                // 배열안의 예약 가능 시간 빼오기
+                if(this.start_date == this.items[i].pick_date)
+                {
+                    confirm('adasdfadf');
+                    for(var j = 0; j < this.items[i].set_time.length; j++)
+                    {
+                        this.states.push(this.items[i].set_time[j])
+                    }
+                }
             }
-            else {
-                this.owner_end_hour = parseInt(end_time.substr(1,1));
-            }
-            
-            // 시작 분
-            if(end_time.substr(3,1) != 0)
-            {
-                this.owner_end_minute = parseInt(end_time.substr(3,2));
-            }
-            else {
-                this.owner_end_minute = parseInt(end_time.substr(4,1));
-            }
- */
-        },  
-
-        /* 가능한 시간대 */
-        //allowedHours: v => v >= this.owner_start_hour && v <= this.owner_end_hour,
-        //allowedMinutes: v => v >= this.owner_start_minute && v <= this.owner_start_minute,
+        },
 
         Okey() {
           confirm('예약이 완료 되었습니다.')
@@ -261,11 +221,12 @@ import axios from 'axios';
                 username       : this.username,
                 adult_person   : this.adult_person,
                 child_person   : this.child_person,
-                start_date     : this.start_date, 
-                time           : this.time,
+                start_date     : this.start_date,
+                time           : this.pick_time
             }).then(console.log('success')).catch(console.log('test '));
         }
     }
+  }
 </script>
 <style>
   .addReservation_btn {

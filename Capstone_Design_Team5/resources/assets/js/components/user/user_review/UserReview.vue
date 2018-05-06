@@ -9,20 +9,23 @@
 
 <template>
     <transition name="fade">
-        <v-container grid-list-md text-xs-center>
+        <v-content grid-list-md text-xs-center>
             <v-layout>
+                <v-spacer></v-spacer>
                 <!-- 리뷰 작성 버튼 -->
-                <v-flex>
+                <v-flex xs10 sm10>
                     <v-btn outline color="red lighten-2" to="writeReview" block>리뷰 작성</v-btn>
                 </v-flex>
+                <v-spacer></v-spacer>
             <!-- SNS 공유 -->
             </v-layout>
             <v-layout align-center>
-                <v-flex>
+                <v-spacer></v-spacer>
+                <v-flex xs10 sm10>
                     <social-sharing v-bind:url= "url" inline-template>
                         <v-layout>
                             <v-spacer></v-spacer>
-                            <v-flex xs2>
+                            <v-flex xs4 sm2 offset-xs1>
                                 <network network="facebook">
                                     <!-- facebook svg태그 -->
                                     <svg viewBox="0 0 448 512" width="70%" height="70%">
@@ -35,7 +38,7 @@
                                     </svg>
                                 </network>
                             </v-flex>
-                            <v-flex xs2>
+                            <v-flex xs4 sm2 align-content-center>
                                 <network network="twitter">
                                     <!-- twitter svg태그 -->
                                     <svg viewBox="0 0 512 512" width="70%" height="70%">
@@ -55,7 +58,7 @@
                                     </svg>
                                 </network>                                
                             </v-flex>
-                            <v-flex xs2>
+                            <v-flex xs4 sm2 justify-center>
                                 <network network="weibo">
                                     <!-- weibo svg태그 -->
                                     <svg version="1.1" width="70%" height="70%" id="Layer_1" x="0px" y="0px" 
@@ -102,11 +105,12 @@
                         </v-layout>         
                     </social-sharing>
                 </v-flex>
+                <v-spacer></v-spacer>
             </v-layout>
             <!-- 구분 -->
             <br><br>
             <v-layout>
-                <v-flex xs3>
+                <v-flex xs4 sm2 offset-sm1 offset-xs1>
                     <!-- 정렬 기준 선택 -->
                     <v-select 
                     :items      ="sortItems" 
@@ -118,7 +122,7 @@
                     return-object>
                     </v-select> 
                 </v-flex>
-                <v-flex xs3>
+                <v-flex xs4 sm2>
                     <!-- 국가 필터링 기준 선택 -->
                     <v-select 
                     :items      ="filterItems" 
@@ -142,7 +146,7 @@
                     </UserReviewData>
                 </v-flex>
             </v-layout>
-        </v-container>
+        </v-content>
     </transition>
 </template>
 

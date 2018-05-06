@@ -2,11 +2,11 @@
     <div>
         <v-app>
             <v-navigation-drawer
-                    app
-                    v-model="menu"
-                    disable-resize-watcher
-                    temporary
-                    hide-overlay
+            app
+            v-model="menu"
+            disable-resize-watcher
+            temporary
+            hide-overlay
             ><!-- disable-resize-watcher: 화면 크기가 재조정 될 경우 자동으로 서랍을 열거나 닫는 것을 막음-->
                 <v-toolbar flat class="transparent">
                     <v-list class="pa-0">
@@ -63,11 +63,6 @@
                         </v-list-tile-content>
                     </v-list-tile>
 
-
-
-
-
-
                     <!-- 커뮤니케이션 버튼 -->
                     <v-dialog v-model="communicationDialog" fullscreen hide-overlay transition="dialog-bottom-transition" full-width>
                         <v-list-tile @click="" slot="activator">
@@ -98,11 +93,6 @@
                         </v-card>
                     </v-dialog>
                     <!-- 커뮤니케이션 버튼 끝 -->
-
-
-
-                    
-
 
                 </v-list>
             </v-navigation-drawer>
@@ -158,14 +148,17 @@
                 </v-btn>
             </v-toolbar>
             </v-container>
+            <!-- 컴포넌트 출력 -->
             <v-content>
-                <v-container fluid>
-                    <router-view></router-view>
-                </v-container>
+                <v-layout>
+                    <v-flex>
+                        <router-view></router-view>
+                    </v-flex>
+                </v-layout>          
             </v-content>
             <v-dialog
-                    v-model='loginForm'
-                    max-width='290'
+                v-model='loginForm'
+                max-width='290'
             >
                 <v-card v-if="!getLoginStatus()">
                     <v-card-title>
