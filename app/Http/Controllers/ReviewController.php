@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 class ReviewController extends Controller
 {
     public function showReviewForm() {
-        // return view('user.review');
+         return view('user.review');
     }
 
     public function getReviewData(Request $request) {

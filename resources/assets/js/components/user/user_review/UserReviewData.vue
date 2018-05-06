@@ -233,6 +233,38 @@ export default {
                 }
             }
         },
+
+        // 해시태그값 중 review_id, tag_num 에 해당하는 값의 타입을 String에서 Number로 변경하는 함수
+        hashTagDataTypeChange(){
+            for(var iCount = 0; iCount < this.hashTagList.length; iCount++){
+                this.hashTagList[iCount]['review_id']   = Number(this.hashTagList[iCount]['review_id']);
+                this.hashTagList[iCount]['tag_num']     = Number(this.hashTagList[iCount]['tag_num ']);
+            }
+
+        },
+
+        // 리뷰좋아요 값 중 review_id 에 해당하는 값의 타입을 String에서 Number로 변경하는 함수
+        reviewLikeDataTypeChange(){
+            for(var iCount = 0; iCount < this.reviewLikeList.length; iCount++){
+                this.reviewLikeList[iCount]['review_id'] = Number(this.reviewLikeList[iCount]['review_id']);
+            }
+        },
+
+        // 리뷰데이터 값 중 9가지 값의 타입을 String에서 Number로 변경하는 함수
+        reviewDataTypeChange(){
+            for(var iCount = 0; iCount < this.reviewDataList.length; iCount++){
+                this.reviewDataList[iCount]['img_num']  = Number(this.reviewDataList[iCount]['img_num']);
+                this.reviewDataList[iCount]['likeNum'] = Number(this.reviewDataList[iCount]['likeNum']);
+                this.reviewDataList[iCount]['mood']    = Number(this.reviewDataList[iCount]['mood']);
+                this.reviewDataList[iCount]['price']   = Number(this.reviewDataList[iCount]['price']);
+                this.reviewDataList[iCount]['rating']  = Number(this.reviewDataList[iCount]['rating']);
+                this.reviewDataList[iCount]['service'] = Number(this.reviewDataList[iCount]['service']);
+                this.reviewDataList[iCount]['shop_id'] = Number(this.reviewDataList[iCount]['shop_id']);
+                this.reviewDataList[iCount]['taste']   = Number(this.reviewDataList[iCount]['taste']);
+                this.reviewDataList[iCount]['writer']  = Number(this.reviewDataList[iCount]['writer']);
+            }
+
+        },
     },
 
     // 라이프 사이클의 created 단계, DB에서 작성되어 있는 리뷰 데이터를 가지고 옵니다.
@@ -254,24 +286,29 @@ export default {
             console.log("-----hashtag get-----");
             console.log(response.data['hashTag']);
 
+            // ********************   리뷰목록 사용 데이터 get 및 자료형 변경   ********************
             // hashTagList배열에 해쉬태그 목록이 저장됩니다.
             this.hashTagList = response.data['hashTag'];
+            // hashTagList배열 값 타입 변경
+            this.hashTagDataTypeChange();
 
             // reviewLikeList배열에 리뷰 좋아요 목록이 저장됩니다.
             this.reviewLikeList = response.data['reviewLike'],
+            // reviewLikeList배열 값 타입 변경
+            this.reviewLikeDataTypeChange();
 
-            // reviewDataList변수에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
+            // reviewDataList배열에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
             this.reviewDataList = response.data['review'],
-
-            // 리뷰 평점
+            // 리뷰 평점의 값을 reviewDataList배열에서 shift하여 대입합니다.
             this.totalRating = this.reviewDataList.shift(),
-
             // 소수점 셋째자리에서 반올림 (둘째짜리까지 출력되도록)
             this.totalRating = this.round(this.totalRating['totalRating'], 2),
+            // reviewDataList배열 값 타입 변경
+            this.reviewDataTypeChange();
+            // ********************   리뷰목록 사용 데이터 get 및 자료형 변경 끝   ********************
 
             // arrayClassification메서드를 호출하여 리뷰 데이터 값과 이미지 값을 분리
             this.arrayClassification(this.reviewDataList),
-
             // arrayPushImg메서드를 호출하여 리뷰 데이터 값을 가지는 배열에 해당하는 이미지 값을 추가
             this.arrayPushImg(),
             // 좋아요 버튼이 눌려져 있는지 여부를 가지는 값을 리뷰 데이터 배열에 저장하는 함수를 호출합니다.

@@ -53,7 +53,7 @@ import OwnerReservationList     from './components/owner/owner_reservation/Owner
 // Owner Reservation Accept Page Import
 import OwnerReservationAccept   from './components/owner/owner_reservation/OwnerReservationAccept.vue';
 // Owner Reservation Setting Page Import
-import OwnerReservationSetting  from './components/owner/owner_reservation/OwnerReservationSetting.vue';
+import OwnerReservationSetting  from './components/owner/owner_reservation/ownerReservationSetting.vue';
 
 // <-- Create Restaurant Page
 // Create Restaurant Information Import
@@ -105,11 +105,6 @@ const router = new VueRouter({
                 path: '/register',
                 name: 'register',
                 component: Register
-            },
-            {
-                name: 'OwnerRestaurant',
-                path: '/owner/createRestaurant',
-                component: OwnerRestaurant
             },
             // <-- 가게 페이지 공통
             {
@@ -179,13 +174,12 @@ const router = new VueRouter({
 
                         children: [
                             {
-                                /*
                                 // Restaurant 수정
                                 name: 'OwnerRestaurant',
-                                path: '/owner/:shop_id/editRestaurant',
-                                    // '/owner/createRestaurant',
+                                path: '/owner/createRestaurant',
+                                // '/owner/createRestaurant',
                                 // '/owner/:shop_id/editRestaurant',
-                                component: OwnerRestaurant*/
+                                component: OwnerRestaurant
                             },
                             {
                                 // Owner Coupon 생성

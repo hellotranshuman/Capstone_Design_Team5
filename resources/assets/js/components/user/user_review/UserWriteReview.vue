@@ -23,12 +23,16 @@
                         </v-flex>
                         <v-spacer></v-spacer>
                         <v-flex>
-                            <!-- 등록 버튼 -->
-                            <!-- <router-link to="/userRestaurantMain/review"> -->
-                            <v-btn outline large color="grey darken-4" @click= "sendReviewData">
+                            <!-- 활성 등록 버튼 -->
+                            <v-btn outline large color="grey darken-4" @click= "sendReviewData" 
+                            v-on:click="loading" v-if="this.nowLoading">
                                 <span class="submit-btn">등록</span>
                             </v-btn>
-                            <!-- </router-link> -->
+                            <!-- 비활성 등록 버튼 -->
+                            <v-btn outline large color="grey darken-4" @click= "sendReviewData" disabled
+                            v-on:click="loading" v-if="!(this.nowLoading)">
+                                <span class="submit-btn">등록</span>
+                            </v-btn>
                         </v-flex>
                     </v-layout>
                 </v-toolbar>
@@ -162,15 +166,25 @@ export default {
 
     data () {
         return {
-            reviewContents  : '',                       // 리뷰 텍스트 값
-            tagsArray       : ['#Smartさしすせそ'],     // 태그값 (태그를 입력하면 입력된 값이 배열에 저장됨)
-            tagPlaceholder  : "#Tag",                   // 태그 입력 알림(무엇을 입력해야 하는지 알려주는 역할)
-            tagLimit        : 10,                        // 태그 제한 개수,
-            shop_id         :  this.$route.params.shop_id
+            reviewContents  : '',                           // 리뷰 텍스트 값
+            tagsArray       : ['#Smartさしすせそ'],         // 태그값 (태그를 입력하면 입력된 값이 배열에 저장됨)
+            tagPlaceholder  : "#Tag",                       // 태그 입력 알림(무엇을 입력해야 하는지 알려주는 역할)
+            tagLimit        : 10,                           // 태그 제한 개수,
+            shop_id         :  this.$route.params.shop_id,  // 가게 아이디
+            nowLoading      : true,                         // 리뷰 작성 버튼 클릭 여부를 확인하는 변수
+
+            
         }
     },
 
     methods: {
+        // 리뷰 작성 버튼의 활성 상태를 변경하는 함수,
+        // 즉 리뷰 작성 버튼을 누르면 중복 클릭이 안되게 합니다.
+        loading(){
+            this.nowLoading = !this.nowLoading;
+        },
+
+
         //이미지 관련 메서드
         onChange(image) {
             console.log('New picture selected!')
@@ -228,7 +242,7 @@ export default {
                 imgNum++;
             }
 
-            reviewData.append('shop_id', this.shop_id); // shop_id 전송
+            reviewData.append('shop_id', this.shop_id);               // shop_id 전송
             reviewData.append('imgNum', imgNum);                      // 전송한 이미지 개수를 FormData에 저장
             reviewData.append('RATING',  RATING);                     // 총 평점을 FormData에 저장
             reviewData.append('TASTE',   TASTE);                      // 맛 점수를 FormData에 저장
@@ -237,7 +251,7 @@ export default {
             reviewData.append('PRICE',   PRICE);                      // 가격 점수를 FormData에 저장
 
             reviewData.append('CONTENT', this.reviewContents);  // 리뷰 텍스트를 FormData에 저장
-
+            
             // 태그를 배열로 FormData에 저장
             for(var iCount = 0; iCount < this.tagsArray.length; iCount++){
                 reviewData.append('HASHTAG[]', this.tagsArray[iCount]);

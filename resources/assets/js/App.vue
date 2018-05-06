@@ -62,8 +62,38 @@
                             <v-list-tile-title>설정</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                </v-list>
 
+                    <!-- 커뮤니케이션 버튼 -->
+                    <v-dialog v-model="communicationDialog" fullscreen hide-overlay transition="dialog-bottom-transition" full-width>
+                        <v-list-tile @click="" slot="activator">
+                            <v-list-tile-action>
+                                <v-icon large>sentiment_very_satisfied</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title>
+                                    Communication
+                                </v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                        <!-- 출력될 modal창 내용-->
+                        <v-card>
+                            <v-toolbar dark color="grey darken-3">
+                                <v-toolbar-title>Communication</v-toolbar-title>
+                                <v-spacer></v-spacer>
+                                <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어
+                                출력된 모달창을 사라지도록 한다는 것 -->
+                                <v-btn icon @click.native="communicationDialog = false" dark>
+                                    <v-icon>close</v-icon>
+                                </v-btn>
+                            </v-toolbar>
+                            <v-list three-line subheader>
+                                <!-- 커뮤니케이션 버튼 기능 -->
+                                <UserCommunication></UserCommunication>
+                            </v-list>
+                        </v-card>
+                    </v-dialog>
+                    <!-- 커뮤니케이션 버튼 끝 -->
+                </v-list>
             </v-navigation-drawer>
             <v-toolbar
                     app
@@ -161,7 +191,14 @@
 
 <script>
     import axios  from 'axios';
+    // 커뮤니케이션 버튼
+    import UserCommunication from './components/user/user_communication/UserCommunication.vue';
+
     export default {
+        components : {
+            'UserCommunication' : UserCommunication,            //  커뮤니케이션 버튼
+        },
+
         data: () => ({
             menu: false,
             loginForm: false,
@@ -169,7 +206,9 @@
             gps_modal: false,
             gps_search: false,
             idValue: '',
-            pwValue: ''
+            pwValue: '',
+
+            communicationDialog: false,     // 커뮤니케이션 버튼을 통해 모달창을 출력하는데 사용
         }),
 
         methods: {
@@ -181,10 +220,8 @@
                 })
                     .then(function (response) {
                         alert(response.data.msg);
-                        var loginFlag = response.data.login;
 
-                        if(loginFlag)
-                            location.replace(response.data.link);
+                        location.replace(response.data.link);
                     })
                     .catch(function (error) {
                         alert('error!');
@@ -193,3 +230,6 @@
         }
     }
 </script>
+<style>
+
+</style>

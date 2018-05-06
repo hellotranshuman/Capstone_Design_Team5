@@ -137,31 +137,40 @@ class MenuController extends Controller
 
         $currentMenuId = $menuId->id;
 
-        \App\Menu_Option::create([
-            'menu_id' => $currentMenuId,
-            'name' => $request->get('option_name'),
-        ]);
+        // add Option Value in Option table
+        if($request->has('option')) {
+            $opArr = $request->get('option');
 
-        $optionNum = DB::table('menu_option')
-            ->select('opnum')
-            ->where('menu_id', $currentMenuId)
-            ->orderByRaw('opnum DESC')
-            ->first();
+            for( $opNum = 0 ; $opNum <  count($opArr) ; $opNum++) {
+                $opName = $opArr[$opNum]['name'];
 
-        $currentOpNum = $optionNum->opnum;
+                \App\Menu_Option::create([
+                    'menu_id' => $currentMenuId,
+                    'name' => $opName,
+                ]);
 
-        $subOpNum = $request->get('op_num');
+                $optionNum = DB::table('menu_option')
+                    ->select('opnum')
+                    ->where('menu_id', $currentMenuId)
+                    ->orderByRaw('opnum DESC')
+                    ->first();
 
-        $subOpNum--;
+                $currentOpNum = $optionNum->opnum;
 
-        for($num = 1 ; $num <= $subOpNum ; $num++)
-        {
-            $opName = 'option_value' . $num;
+                // add SubOption Value in SubOption Table
+                $subOpNum = $opArr[$opNum]['num'];
 
-            \App\Suboption::create([
-               'opnum' => $currentOpNum,
-               'name'  => $request->get($opName),
-            ]);
+                for($num = 0 ; $num < $subOpNum ; $num++)
+                {
+                    $opName = 'value' . $num;
+
+                    \App\Suboption::create([
+                        'opnum' => $currentOpNum,
+                        'name'  => $opArr[$opNum][$opName],
+                    ]);
+                }
+
+            }
         }
 
         // Current Save Shop Image Route

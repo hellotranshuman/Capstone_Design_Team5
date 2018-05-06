@@ -161,7 +161,7 @@ export default {
 
     data() {
         return {
-            url         : "https://www.naver.com/",             // 리뷰를 하는 페이지 URL
+            url         : "",             // 리뷰를 하는 페이지 URL
             sortSelect  : { sort: '작성일순', sortNum: 1 },     // 선택된 정렬 기준
             sortItems   : [                                     // 정렬 기준들
                 { sort: '작성일순', sortNum: 1 },
@@ -177,6 +177,15 @@ export default {
             ]
         }
     },
+
+    methods:{
+        
+    },
+
+    created() {
+        // url 주소를 현재 페이지로 url로 변경합니다.
+        this.url = window.location.href;
+    }
 }
 </script>
 

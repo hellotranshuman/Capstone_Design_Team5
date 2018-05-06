@@ -46,26 +46,12 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'UsersController@doLogout'
     ]);
 
-/*
-    Route::get('register', [
-        'as' => 'register.showRegisterForm',
-        'uses' => 'RegisterController@showRegisterForm'
-    ]); */
-
 // <-- select Type
     Route::get('register', function (){
         return view('user.selectForm');
     });
 
 // <-- show Register Form
-    Route::get('register/user', function (){
-        return view('user.userRegisterForm');
-    });
-
-    Route::get('register/owner', function (){
-        return view('user.ownerRegisterForm');
-    });
-
     Route::post('register', [
         'as' => 'register.createMember',
         'uses' => 'RegisterController@createMember'
@@ -168,6 +154,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CouponController@getCouponList'
     ]);
 
+    Route::post('owner/deleteCoupon', [
+        'as' => 'coupon.deleteCoupon',
+        'uses' => 'CouponController@deleteCoupon'
+    ]);
+
 // <-- User Review Route
     Route::get('restaurant/{shop_id}/review', [
         'as' => 'review.showReviewForm',
@@ -201,6 +192,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReservationController@showAddReservationForm'
     ]);
 
+    Route::post('/requestReservation',[
+        'as' => 'reservation.requestReservation',
+        'uses' => 'ReservationController@requestReservation'
+    ]);
+
 // <— Owner Reservation List
 
     Route::get('/owner/{shop_id}/ownerReservationList', [
@@ -218,6 +214,40 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReservationController@showReservationSetting'
     ]);
 
+    Route::post('/getReservationRequestList', [
+        'as' => 'reservation.getReservationRequestList',
+        'uses' => 'ReservationController@getReservationRequestList'
+    ]);
+
+    Route::post('/acceptReservation', [
+        'as' => 'reservation.acceptReservation',
+        'uses' => 'ReservationController@acceptReservation'
+    ]);
+
+    Route::post('/getReservationList', [
+        'as' => 'reservation.getReservationList',
+        'uses' => 'ReservationController@getReservationList'
+    ]);
+
+    Route::post('/setReservationSetting', [
+       'as' => 'reservation.setReservationSetting',
+       'uses' =>  'ReservationController@setReservationSetting'
+    ]);
+
+    Route::post('/getReservationSettingList', [
+        'as' => 'reservation.getReservationSettingList',
+        'uses' =>  'ReservationController@getReservationSettingList'
+    ]);
+
+    Route::post('/deleteReservationSetting', [
+        'as' => 'reservation.deleteReservationSetting',
+        'uses' =>  'ReservationController@deleteReservationSetting'
+    ]);
+
+    Route::post('/getReservationSettingByDate', [
+        'as' => 'reservation.getReservationSettingByDate',
+        'uses' =>  'ReservationController@getReservationSettingByDate'
+    ]);
 
 // <— Owner Statistics Page
     Route::get('/owner/{shop_id}/totalStatistics', [
@@ -225,6 +255,17 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReservationController@showReservationSetting'
     ]);
 
+    Route::get('/owner/{shop_id}/getRatingScore', [
+        'as' => 'statistic.getRatingScore',
+        'uses' => 'StatisticController@getRatingScore'
+    ]);
+
+// <-- Communication Routes
+
+    Route::get('/getEmoticonList', [
+        'as' => 'communication.getEmoticonList',
+        'uses' => 'CommunicationController@getEmoticonList'
+    ]);
 
 });
 
@@ -288,6 +329,18 @@ Route::get('images/flag/{image}', function($image = null)
 Route::get('images/template/{image}', function($image = null)
 {
     $path = storage_path().'/app/public/img/template' .$image;
+
+    if (file_exists($path)) {
+        return Response::download($path);
+    }
+    else
+        return $path;
+});
+
+// 커뮤니케이션 버튼 이미지 Route
+Route::get('images/emoticon/{image}', function($image = null)
+{
+    $path = storage_path().'/app/public/img/emoticon' .$image;
 
     if (file_exists($path)) {
         return Response::download($path);
