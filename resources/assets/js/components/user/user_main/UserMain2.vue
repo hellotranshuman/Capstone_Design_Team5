@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-flex xs12 sm8 offset-sm2>
+        <v-flex xs12 sm10 offset-sm1>
             <v-card>
                 <v-subheader><h1>현재 위치 : 후쿠오카 텐진</h1></v-subheader>
                     <v-flex xs12 sm6 offset-sm3>
@@ -15,7 +15,7 @@
         </v-flex>
         <br>
         <v-layout row>
-            <v-flex xs12 sm8 offset-sm2>
+            <v-flex xs12 sm10 offset-sm1>
                 <v-card>
                     <v-subheader><h1>최근 리뷰</h1></v-subheader>
                     <v-container fluid grid-list-sm>

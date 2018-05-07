@@ -262,11 +262,15 @@ Route::group(['middleware' => 'web'], function () {
 
 // <-- Communication Routes
 
-    Route::get('/getEmoticonList', [
+    Route::post('/getEmoticonList', [
         'as' => 'communication.getEmoticonList',
         'uses' => 'CommunicationController@getEmoticonList'
     ]);
 
+    Route::post('/addUserBookmark', [
+        'as' => 'communication.addUserBookmark',
+        'uses' => 'CommunicationController@addUserBookmark'
+    ]);
 });
 
 /*

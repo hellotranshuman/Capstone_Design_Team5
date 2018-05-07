@@ -100,8 +100,6 @@ class RegisterController extends Controller
             'favorite_region' => $request->get('favorite_region'),
         ]);
 
-
-
         auth()->login($user);
 
           if(! $category)
@@ -110,7 +108,7 @@ class RegisterController extends Controller
                 ]);
             else
                 return response()->json([
-                    'url' => '/main'
+                    'url' => '/'
                 ]);
         }
    // }
