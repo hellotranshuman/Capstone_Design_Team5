@@ -41130,10 +41130,29 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__);
-var _data$created$created;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41342,39 +41361,28 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue2
 var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받을 예정
 var url = '';
 
-/* harmony default export */ __webpack_exports__["a"] = (_data$created$created = {
+/* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
             dialog: false,
             dialog_ok: false,
 
             /* reservation */
+            message: '',
+            usernum: '',
             adult_person: '',
             child_person: '',
             menuselect: '',
-            message: '',
 
             /* date picker */
             start_date: null,
             reservation_menu: false,
             modal: false,
 
-            /* timePicker*/
-            /* 예약 시간 배열 */
-            states: [],
-            /* 선택한 시간 */
-            pick_time: '',
-
-            /* 기본 식당 시간 */
-            basic_info: {
-                lunch_open: '09:00',
-                lunch_close: '14:00',
-                dinner_open: '17:00',
-                dinner_close: '22:00'
-            },
-
-            /* DB에서 받아 온 값 - reservation_set */
-            items: []
+            /* time picker */
+            time: null,
+            menu2: false,
+            modal2: false
         };
     },
     created: function created() {
@@ -41408,224 +41416,180 @@ var url = '';
         }).catch(function (ex) {
             // alert('왜 안대');
         });
-    }
-}, _defineProperty(_data$created$created, 'created', function created() {
-    var _this2 = this;
+    },
 
-    var set_time_data;
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/getReservationSettingList', {
-        'shop_id': this.$route.params.shop_id
-    }).then(function (response) {
-        /* 그 가게의 예약설정된 Data */
-        var reservationSettingData = response.data.reservationSetting;
+    methods: {
+        // 각 공간에 해당 값들을 삽입함.
+        enter_data: function enter_data(argArray) {
+            var iterator = Object.keys(argArray);
 
-        /* item안에 넣기 */
-        _this2.items = reservationSettingData;
-    });
-}), _defineProperty(_data$created$created, 'methods', {
-    // 각 공간에 해당 값들을 삽입함.
-    enter_data: function enter_data(argArray) {
-        var iterator = Object.keys(argArray);
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
 
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-            for (var _iterator = iterator[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var key = _step.value;
+            try {
+                for (var _iterator = iterator[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var key = _step.value;
 
 
-                if (document.getElementById(key) !== null) {
-                    var get_div = document.getElementById(key);
+                    if (document.getElementById(key) !== null) {
+                        var get_div = document.getElementById(key);
 
-                    // 데이터 입력
-                    if (argArray[key] === 1) {
-                        get_div.innerText += '가능';
-                    } else if (argArray[key] === 0) {
-                        get_div.innerText += '불가';
-                    } else if (argArray[key] === 'card') {
-                        get_div.innerText += '카드 가능';
-                    } else if (argArray[key] === 'cash') {
-                        get_div.innerText += '현금 결제';
-                    } else if (argArray[key] === null) {
-                        get_div.innerText += 0;
-                    } else {
-                        get_div.innerText += argArray[key];
+                        // 데이터 입력
+                        if (argArray[key] === 1) {
+                            get_div.innerText += '가능';
+                        } else if (argArray[key] === 0) {
+                            get_div.innerText += '불가';
+                        } else if (argArray[key] === 'card') {
+                            get_div.innerText += '카드 가능';
+                        } else if (argArray[key] === 'cash') {
+                            get_div.innerText += '현금 결제';
+                        } else if (argArray[key] === null) {
+                            get_div.innerText += 0;
+                        } else {
+                            get_div.innerText += argArray[key];
+                        }
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
                     }
                 }
             }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
-    },
+        },
 
-    // 타이틀 이미지 삽입하기
-    enter_title: function enter_title(argImgArray) {
-        var title_div = document.getElementById('title_img');
-        title_div.style.backgroundImage = "url(" + argImgArray.path + argImgArray.filename + ")";
-    },
+        // 타이틀 이미지 삽입하기
+        enter_title: function enter_title(argImgArray) {
+            var title_div = document.getElementById('title_img');
+            title_div.style.backgroundImage = "url(" + argImgArray.path + argImgArray.filename + ")";
+        },
 
-    // 갤러리에 이미지 추가하기.
-    enter_galley: function enter_galley() {
-        var gallery_div = document.getElementById('gallery_div');
-        var argNum = get_datas.length; // 넘어온 데이터 배열 갯수 :  0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지 
+        // 갤러리에 이미지 추가하기.
+        enter_galley: function enter_galley() {
+            var gallery_div = document.getElementById('gallery_div');
+            var argNum = get_datas.length; // 넘어온 데이터 배열 갯수 :  0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지 
 
-        // 등록된 이미지가 없으면 메세지 출력 
-        if (argNum - 3 == 0) {
-            gallery_div.innerText = "등록된 이미지가 없습니다.";
-        } else {
-            for (var i = 3; i < argNum; i++) {
-                // div, img 생성
-                var createdDiv = document.createElement('div');
-                var createdImg = document.createElement('img');
-
-                // 생성한 div와 img에 css와 src를 추가함.
-                createdImg.src = get_datas[i].path + get_datas[i].filename;
-                createdImg.classList.add('gallery_img');
-                createdDiv.classList.add('gallery');
-
-                // 생성한 div와 img를 갤러리 div에 추가.
-                createdDiv.appendChild(createdImg);
-                gallery_div.appendChild(createdDiv);
-            }
-        }
-
-        // // 등록된 이미지가 6개 이하인 경우 div와 img 생성 후 갤러리에 출력.
-        // else if (argNum <= 6) {
-        //     for (let i=0; i < argNum; i++){
-        //         // div, img 생성
-        //         let createdDiv = document.createElement('div');
-        //         let createdImg = document.createElement('img');
-
-        //         // 생성한 div와 img에 css와 src를 추가함.
-        //         createdImg.src = get_datas.gallery_img + i;
-        //         createdImg.classList.add('gallery_img');
-        //         createdDiv.classList.add('gallery');
-
-        //         // 생성한 div와 img를 갤러리 div에 추가.
-        //         createdDiv.appendChild(createdImg);
-        //         gallery_div.appendChild(createdDiv);
-        //     }
-        // }
-        // // 등록된 이미지가 6개 초과인 경우 5개 div는 그대로 이미지 출력,
-        // // 마지막 div를 더보기 클릭 창으로 만듬
-        // else if (argNum > 6) {
-        //     for (let i=0; i < 6; i++){
-        //         let createdDiv = document.createElement('div');
-        //         createdDiv.classList.add('gallery');
-
-        //         // div 5개까지는 이미지 출력
-        //         if(i !== 5){
-        //             let createdImg = document.createElement('img');
-        //             createdImg.classList.add('gallery_img');
-        //             createdImg.src = get_datas.gallery_img + i;        
-        //             createdDiv.appendChild(createdImg);
-        //         } 
-        //         // 6번째 div에 더보기 버튼 생성.
-        //         else if (i === 5){
-        //             createdDiv.id        = 'show_gallery';
-        //             createdDiv.innerText = '더 보기';
-        //             createdDiv.onclick   = this.show_gallery;
-        //         }
-        //         // 갤러리 div에 생성한 div 추가하기
-        //         gallery_div.appendChild(createdDiv);
-        //     }
-        // }
-
-        // show_gallery : function (){
-        //     alert('아직 : 갤러리 보여주기');
-        // },
-    },
-
-    // 예약하기
-    // reserve : function (){
-    //     alert('아직 : 예약하기');
-    // },
-
-
-    // 구글 맵스 설정하기.
-    geoCoder: function geoCoder(argAddress) {
-        var map = new google.maps.Map(document.getElementById('map'), { zoom: 18 }); // 구글 맵스 생성
-        var address = argAddress.dodobuken + argAddress.cities + argAddress.address; // 사장이 입력한 주소 값 더하기
-        var geocoder = new google.maps.Geocoder(); // 지오 코더 
-
-        // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status == 'OK') {
-                map.setCenter(results[0].geometry.location); // 지도 중앙 값 설정
-                var marker = new google.maps.Marker({ // 마크 설정
-                    map: map,
-                    position: results[0].geometry.location
-                });
+            // 등록된 이미지가 없으면 메세지 출력 
+            if (argNum - 3 == 0) {
+                gallery_div.innerText = "등록된 이미지가 없습니다.";
             } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-    },
+                for (var i = 3; i < argNum; i++) {
+                    // div, img 생성
+                    var createdDiv = document.createElement('div');
+                    var createdImg = document.createElement('img');
 
-    // 예약하기
-    // 불가능 한 날짜 반환.
-    allowedDates: function allowedDates(val) {
-        var index = 0;
-        var maxlength = this.items.length;
+                    // 생성한 div와 img에 css와 src를 추가함.
+                    createdImg.src = get_datas[i].path + get_datas[i].filename;
+                    createdImg.classList.add('gallery_img');
+                    createdDiv.classList.add('gallery');
 
-        var dateCheck = "";
-
-        for (var $i = 0; $i < maxlength; $i++) {
-            // impossible이 예약 불가능일 경우 달력에 표시되지 않습니다.
-            if (val == this.items[$i].pick_date && this.items[$i].impossible == false) {
-                dateCheck += this.items[$i].pick_date + "&&";
-            }
-        }
-        return !dateCheck;
-    },
-    setTime: function setTime() {
-        /* date가 클릭시 item안의 set_time[]을 select 문에 넣기 */
-        var maxIndex = this.items.length;
-
-        confirm(maxIndex);
-
-        for (var i = 0; i < maxIndex; i++) {
-            // 배열안의 예약 가능 시간 빼오기
-            if (this.start_date == this.items[i].pick_date) {
-                confirm('adasdfadf');
-                for (var j = 0; j < this.items[i].set_time.length; j++) {
-                    this.states.push(this.items[i].set_time[j]);
+                    // 생성한 div와 img를 갤러리 div에 추가.
+                    createdDiv.appendChild(createdImg);
+                    gallery_div.appendChild(createdDiv);
                 }
             }
+
+            // // 등록된 이미지가 6개 이하인 경우 div와 img 생성 후 갤러리에 출력.
+            // else if (argNum <= 6) {
+            //     for (let i=0; i < argNum; i++){
+            //         // div, img 생성
+            //         let createdDiv = document.createElement('div');
+            //         let createdImg = document.createElement('img');
+
+            //         // 생성한 div와 img에 css와 src를 추가함.
+            //         createdImg.src = get_datas.gallery_img + i;
+            //         createdImg.classList.add('gallery_img');
+            //         createdDiv.classList.add('gallery');
+
+            //         // 생성한 div와 img를 갤러리 div에 추가.
+            //         createdDiv.appendChild(createdImg);
+            //         gallery_div.appendChild(createdDiv);
+            //     }
+            // }
+            // // 등록된 이미지가 6개 초과인 경우 5개 div는 그대로 이미지 출력,
+            // // 마지막 div를 더보기 클릭 창으로 만듬
+            // else if (argNum > 6) {
+            //     for (let i=0; i < 6; i++){
+            //         let createdDiv = document.createElement('div');
+            //         createdDiv.classList.add('gallery');
+
+            //         // div 5개까지는 이미지 출력
+            //         if(i !== 5){
+            //             let createdImg = document.createElement('img');
+            //             createdImg.classList.add('gallery_img');
+            //             createdImg.src = get_datas.gallery_img + i;        
+            //             createdDiv.appendChild(createdImg);
+            //         } 
+            //         // 6번째 div에 더보기 버튼 생성.
+            //         else if (i === 5){
+            //             createdDiv.id        = 'show_gallery';
+            //             createdDiv.innerText = '더 보기';
+            //             createdDiv.onclick   = this.show_gallery;
+            //         }
+            //         // 갤러리 div에 생성한 div 추가하기
+            //         gallery_div.appendChild(createdDiv);
+            //     }
+            // }
+
+            // show_gallery : function (){
+            //     alert('아직 : 갤러리 보여주기');
+            // },
+        },
+
+        // 예약하기
+        // reserve : function (){
+        //     alert('아직 : 예약하기');
+        // },
+
+
+        // 구글 맵스 설정하기.
+        geoCoder: function geoCoder(argAddress) {
+            var map = new google.maps.Map(document.getElementById('map'), { zoom: 18 }); // 구글 맵스 생성
+            var address = argAddress.dodobuken + argAddress.cities + argAddress.address; // 사장이 입력한 주소 값 더하기
+            var geocoder = new google.maps.Geocoder(); // 지오 코더 
+
+            // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == 'OK') {
+                    map.setCenter(results[0].geometry.location); // 지도 중앙 값 설정
+                    var marker = new google.maps.Marker({ // 마크 설정
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        },
+
+        Okey: function Okey() {
+            confirm('예약이 완료 되었습니다.');
+        },
+        SpendData: function SpendData() {
+            // axios http 라이브러리
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/requestReservation', {
+                shop_id: this.$route.params.shop_id,
+                adult_person: this.adult_person,
+                child_person: this.child_person,
+                date: this.start_date,
+                time: this.time,
+                message: this.message,
+                menu_select: false
+            }).then(function (response) {
+                alert(response.data.msg);
+            }).catch(console.log('test '));
         }
-    },
-    Okey: function Okey() {
-        confirm('예약이 완료 되었습니다.');
-    },
-    SpendData: function SpendData() {
-        // axios http 라이브러리
-        // -- 사장님 수락 리스트에 등록 --
-        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/requestReservation', {
-            shop_id: this.$route.params.shop_id,
-            adult_person: this.adult_person,
-            child_person: this.child_person,
-            date: this.start_date,
-            time: this.time,
-            message: this.message,
-            menu_select: false
-        }).then(function (response) {
-            alert(response.data.msg);
-        }).catch(console.log('test '));
     }
-}), _data$created$created);
+});
 
 /***/ }),
 /* 271 */
@@ -98575,7 +98539,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.frame {\n      width: 100%; \n      border-top: 1px solid;\n      font-size: 180%;\n      color: #6E6E6E;\n      display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n      margin-bottom: 5%;\n}\n.frame_small {\n      width: 100%;  \n      height: auto;\n      border-top: 1px solid;    \n      font-size: 180%; \n      padding-top: 1%;\n      color: #6E6E6E;\n      margin-bottom: 3%; \n      display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n}\n.title_frame {\n      width: 100%;   \n      font-size: 180%;\n      display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤. */\n      margin-bottom: 5%; \n      border: 1px;\n}\n#title_img{\n      background-size: 100% 100%;\n      padding-top: 5%;\n      padding-bottom: 5%;\n      padding-left: 30%;\n      padding-right: 5%;\n}\n#name_area { \n      background: black;\n      color: white; \n      text-align: center;\n      opacity: 0.6;\n      display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n}\n#reserve {\n      width: 15%;\n      height: 50px;\n      float: left;\n      margin-left: 3%;\n      font-size: 200%;\n}\n.gallery{\n      width: 31%; \n      min-height: 250px;\n      float: left;\n      margin: 1%;\n}\n.gallery_img {\n      width: 100%;\n      height: 100%;\n      -o-object-fit: cover;\n         object-fit: cover;\n      position: relative; \n      border: 1px solid;\n}\n#show_gallery {\n      text-align: center;\n      padding: 5%;\n      font-size: 200%;\n      border: 1px solid;\n}\n.column{\n      width: 20%;\n      text-align: center;\n      float: left;  \n      font-size: 120%; \n      position: relative;\n}\n.column_value{\n      width: 80%;\n      float: left;  \n      padding: 3px; \n      position: relative;\n}\n#map {\n      width: 100%;\n      height: 400px;\n      border: 1px solid;\n      margin-top: 1%;\n}\n#address { \n      display:inline-block;      /*  안에 들어올 요소의 크기에 div를 맞춤. */\n      margin-top: 1%; \n      margin-left: 3%;\n}\n.address_values{ \n      display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n      margin-right: 3px;\n}\n.others{\n      display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n      margin-right: 3%;\n}\n#pop_up {\n}\n.addReservation_btn {\n  width: 200px;\n  height: 30px;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.frame {\n    width: 100%; \n    border-top: 1px solid;\n    font-size: 180%;\n    color: #6E6E6E;\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n    margin-bottom: 5%;\n}\n.frame_small {\n    width: 100%;  \n    height: auto;\n    border-top: 1px solid;    \n    font-size: 180%; \n    padding-top: 1%;\n    color: #6E6E6E;\n    margin-bottom: 3%; \n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n}\n.title_frame {\n    width: 100%;   \n    font-size: 180%;\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤. */\n    margin-bottom: 5%; \n    border: 1px;\n}\n#title_img{\n    background-size: 100% 100%;\n    padding-top: 5%;\n    padding-bottom: 5%;\n    padding-left: 30%;\n    padding-right: 5%;\n}\n#name_area { \n    background: black;\n    color: white; \n    text-align: center;\n    opacity: 0.6;\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n}\n#reserve {\n    width: 15%;\n    height: 50px;\n    float: left;\n    margin-left: 3%;\n    font-size: 200%;\n}\n.gallery{\n    width: 31%; \n    min-height: 250px;\n    float: left;\n    margin: 1%;\n}\n.gallery_img {\n    width: 100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    position: relative; \n    border: 1px solid;\n}\n#show_gallery {\n    text-align: center;\n    padding: 5%;\n    font-size: 200%;\n    border: 1px solid;\n}\n.column{\n    width: 20%;\n    text-align: center;\n    float: left;  \n    font-size: 120%; \n    position: relative;\n}\n.column_value{\n    width: 80%;\n    float: left;  \n    padding: 3px; \n    position: relative;\n}\n#map {\n    width: 100%;\n    height: 400px;\n    border: 1px solid;\n    margin-top: 1%;\n}\n#address { \n    display:inline-block;      /*  안에 들어올 요소의 크기에 div를 맞춤. */\n    margin-top: 1%; \n    margin-left: 3%;\n}\n.address_values{ \n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n    margin-right: 3px;\n}\n.others{\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n    margin-right: 3%;\n}\n#pop_up {\n}\n", ""]);
 
 // exports
 
@@ -98607,6 +98571,7 @@ var render = function() {
         _c(
           "v-dialog",
           {
+            staticStyle: { float: "right" },
             attrs: { persistent: "", "max-width": "500px" },
             model: {
               value: _vm.dialog,
@@ -98647,6 +98612,24 @@ var render = function() {
                           [
                             _c(
                               "v-flex",
+                              { attrs: { xs12: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "예약자 명", required: "" },
+                                  model: {
+                                    value: _vm.usernum,
+                                    callback: function($$v) {
+                                      _vm.usernum = $$v
+                                    },
+                                    expression: "usernum"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
                               { attrs: { xs11: "", sm5: "" } },
                               [
                                 _c(
@@ -98680,7 +98663,7 @@ var render = function() {
                                     _c("v-text-field", {
                                       attrs: {
                                         slot: "activator",
-                                        label: "예약 날짜",
+                                        label: "pick Date",
                                         "prepend-icon": "event",
                                         readonly: ""
                                       },
@@ -98699,8 +98682,7 @@ var render = function() {
                                       {
                                         attrs: {
                                           "no-title": "",
-                                          scrollable: "",
-                                          "allowed-dates": _vm.allowedDates
+                                          scrollable: ""
                                         },
                                         model: {
                                           value: _vm.start_date,
@@ -98722,7 +98704,6 @@ var render = function() {
                                             },
                                             on: {
                                               click: function($event) {
-                                                $event.stopPropagation()
                                                 _vm.reservation_menu = false
                                               }
                                             }
@@ -98741,8 +98722,7 @@ var render = function() {
                                               click: function($event) {
                                                 _vm.$refs.reservation_menu.save(
                                                   _vm.start_date
-                                                ),
-                                                  _vm.setTime()
+                                                )
                                               }
                                             }
                                           },
@@ -98760,21 +98740,71 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-flex",
+                              { attrs: { xs11: "", sm5: "" } },
                               [
-                                _c("v-select", {
-                                  attrs: {
-                                    items: _vm.states,
-                                    label: "예약 시간",
-                                    "single-line": ""
-                                  },
-                                  model: {
-                                    value: _vm.pick_time,
-                                    callback: function($$v) {
-                                      _vm.pick_time = $$v
+                                _c(
+                                  "v-menu",
+                                  {
+                                    ref: "menu",
+                                    attrs: {
+                                      lazy: "",
+                                      "close-on-content-click": false,
+                                      transition: "scale-transition",
+                                      "offset-y": "",
+                                      "full-width": "",
+                                      "nudge-right": 40,
+                                      "max-width": "290px",
+                                      "min-width": "290px",
+                                      "return-value": _vm.time
                                     },
-                                    expression: "pick_time"
-                                  }
-                                })
+                                    on: {
+                                      "update:returnValue": function($event) {
+                                        _vm.time = $event
+                                      }
+                                    },
+                                    model: {
+                                      value: _vm.menu2,
+                                      callback: function($$v) {
+                                        _vm.menu2 = $$v
+                                      },
+                                      expression: "menu2"
+                                    }
+                                  },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        slot: "activator",
+                                        label: "pick Time",
+                                        "prepend-icon": "access_time",
+                                        readonly: ""
+                                      },
+                                      slot: "activator",
+                                      model: {
+                                        value: _vm.time,
+                                        callback: function($$v) {
+                                          _vm.time = $$v
+                                        },
+                                        expression: "time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("v-time-picker", {
+                                      on: {
+                                        change: function($event) {
+                                          _vm.$refs.menu.save(_vm.time)
+                                        }
+                                      },
+                                      model: {
+                                        value: _vm.time,
+                                        callback: function($$v) {
+                                          _vm.time = $$v
+                                        },
+                                        expression: "time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
                               ],
                               1
                             ),
@@ -98809,6 +98839,27 @@ var render = function() {
                                       _vm.child_person = $$v
                                     },
                                     expression: "child_person"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs12: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    label: "요청사항(선택)",
+                                    required: ""
+                                  },
+                                  model: {
+                                    value: _vm.message,
+                                    callback: function($$v) {
+                                      _vm.message = $$v
+                                    },
+                                    expression: "message"
                                   }
                                 })
                               ],
@@ -98859,7 +98910,7 @@ var render = function() {
                     _c(
                       "v-dialog",
                       {
-                        attrs: { "max-width": "50%" },
+                        attrs: { "max-width": "500px" },
                         model: {
                           value: _vm.dialog_ok,
                           callback: function($$v) {
@@ -98883,8 +98934,17 @@ var render = function() {
                                 _c(
                                   "h3",
                                   [
+                                    _c("B", [_vm._v(" 예약자 명 : ")]),
+                                    _vm._v(" " + _vm._s(_vm.usernum) + " ")
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "h3",
+                                  [
                                     _c("B", [_vm._v(" 예약 날짜 : ")]),
-                                    _vm._v(" " + _vm._s(this.start_date) + " ")
+                                    _vm._v(" " + _vm._s(_vm.start_date) + " ")
                                   ],
                                   1
                                 ),
@@ -98893,7 +98953,7 @@ var render = function() {
                                   "h3",
                                   [
                                     _c("B", [_vm._v(" 예약 시간 : ")]),
-                                    _vm._v(" " + _vm._s(this.pick_time) + " ")
+                                    _vm._v(" " + _vm._s(_vm.time) + " ")
                                   ],
                                   1
                                 ),
@@ -98902,9 +98962,7 @@ var render = function() {
                                   "h3",
                                   [
                                     _c("B", [_vm._v(" 어른 인원 : ")]),
-                                    _vm._v(
-                                      " " + _vm._s(this.adult_person) + " "
-                                    )
+                                    _vm._v(" " + _vm._s(_vm.adult_person) + " ")
                                   ],
                                   1
                                 ),
@@ -98913,9 +98971,16 @@ var render = function() {
                                   "h3",
                                   [
                                     _c("B", [_vm._v(" 아이 인원 : ")]),
-                                    _vm._v(
-                                      " " + _vm._s(this.child_person) + " "
-                                    )
+                                    _vm._v(" " + _vm._s(_vm.child_person) + " ")
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "h3",
+                                  [
+                                    _c("B", [_vm._v(" 요청 사항 : ")]),
+                                    _vm._v(" " + _vm._s(_vm.message) + " ")
                                   ],
                                   1
                                 )

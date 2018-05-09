@@ -200,7 +200,15 @@ class ReviewController extends Controller
                                     'upload.path as path', 'upload.filename as filename','review.reg_date as reg_date')
                         ->where('review.writer', auth()->user()->id)
                         ->where('upload.filename', 'like', '%title%')
+                        ->orderByRaw('review.reg_date DESC')
                         ->get();
+
+
+        $likeData = Review::join('review_like', 'review.id', '=' , 'review_like.review_id')
+                    ->select(DB::raw('count(review_like.review_id) as likeNum'))
+                    ->where('review.writer', auth()->user()->id)
+                    ->orderByRaw('review.reg_date desc')
+                    ->get();
 
        $reviewData = array();
 
@@ -222,6 +230,7 @@ class ReviewController extends Controller
 
         return response()->json([
            'userReviewList' => $reviewData,
+            'likeNum'       => $likeData,
         ]);
 
 
