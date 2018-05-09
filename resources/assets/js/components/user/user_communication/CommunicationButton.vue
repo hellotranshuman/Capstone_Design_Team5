@@ -19,7 +19,7 @@
               <v-flex xs4 class="emoticon" v-for="(emoticon, index) in emoticonData" :key="index">
                 <v-card flat tile @click.native.stop="dialog = true">
                   <img v-bind:src="emoticon['path']+emoticon['img_name']" 
-                  v-on:click="changeDialogsData(emoticon['path']+emoticon['img_name'], emoticon['id'])" onmousedown="return false;">
+                  v-on:click="changeDialogsData(emoticon['path']+emoticon['img_name'], emoticon)" onmousedown="return false;">
                 </v-card>
               </v-flex>
               <!-- 출력할 모달창 -->
@@ -120,7 +120,6 @@
         </v-card>
       </v-flex>
     </v-layout>
-
   </v-app>
 </template>
 
@@ -208,13 +207,12 @@ export default {
           ],
            
             clickImgURL     : "",             // 모달창에 출력해야 하는 클릭한 이미지의 URL을 저장하는 변수
-            clickImgNumber  : 0,              // 모달창에 출력해야 하는 클릭한 이미지의 번호를 저장하는 변수
+            clickImg        : null,           // 모달창에 출력해야 하는 이미지 객체
             dialog          : false,          // 작은 모달창의 출력 여부를 나타내는 값
             secondDialog    : false,          // 마지막 모달창의 출력 여부를 나타내는 값
             bookmarkCheck   : false,          // 이모티콘을 즐겨찾기를 등록했는지 여부가 저장되는 변수
             getBookmarkList : [],             // 전송받은 즐겨찾기 목록이 저장되는 배열         
             emoticonData    : [],             // 현재 선택한 카테고리의 즐겨찾기 목록이 저장되는 배열
-
             basicsList      : [],             // 기본 이모티콘 목록을 저장하는 배열
             getOrderList    : [],             // 주문 이모티콘 목록을 저장하는 배열
             getPayList      : [],             // 계산 이모티콘 목록을 저장하는 배열
@@ -222,61 +220,81 @@ export default {
     },
 
     methods:{
-        // 출력할 Dialogs 이미지의 URL 및 즐겨찾기 등록 여부를 변경합니다.
-        changeDialogsData(imgName, imgNumber){
-          this.clickImgURL    = imgName;
-          this.clickImgNumber = imgNumber;
-          
-          // 현재 클릭한 이모티콘이 즐겨찾기에 등록되어 있으면 bookmarkCheck의 값을 true를
-          // 등록되어 있지 않으면 false를 대입합니다.
-          if(this.getBookmarkList.includes(imgNumber)){
-            this.bookmarkCheck = true
-          } 
-          else {
-            this.bookmarkCheck = false
-          }
+      // 이모티콘 즐겨찾기 취소에 사용되는 필터 함수
+      emoticonFilter(emoticonList, exceptEmoticon){
+        return emoticonList.filter(function(emoticon){
+          for(var iCount = 0; iCount < emoticonList.length; iCount++){
+            return emoticon['id'] != exceptEmoticon['id'];
+          };
+        });
+      },
 
-          // 세션에 저장된 사용자 id를 불러옵니다.
-          // sessionStorage.getItem('userId');
-          // console.log(sessionStorage.getItem('userId'));
+      // 출력할 Dialogs 이미지의 URL 및 즐겨찾기 등록 여부를 변경합니다.
+      changeDialogsData(imgName, imgObj){
+        this.clickImgURL    = imgName;
+        this.clickImg       = imgObj;
 
-        },    
-        
-        // 즐겨찾기 버튼을 클릭하면 실행되는 함수
-        bookmarkClick(){
-          // 즐겨찾기 등록 여부를 나타내는 값을 반대로 합니다.
-          this.bookmarkCheck = !this.bookmarkCheck;
+        var includeCheck    = null;
 
-          // axios로 즐겨찾기 등록을 한 이모티콘의 번호를 전송합니다.
-          axios.post('/addUserBookmark', {
-            "emoticon_num"    : this.clickImgNumber,  // 이모티콘 번호
-            "bookmark_status" : this.bookmarkCheck,   // 즐겨찾기 등록 상태 (true : 누름, false : 안누름)
-          }).
-          then((response)=>{
-
-              alert(response.data.msg);
-
-          }).catch(console.log('Oh my god!!, Failed'));
-
-          // console.log('이모티콘 번호');
-          // console.log(this.clickImgNumber);
-          // console.log('즐겨찾기 등록 버튼 상태');
-          // console.log(this.bookmarkCheck);
-
-        },
-
-        // 카테고리별로 이모티콘을 분류하는 함수 (1:기본, 2:주문, 3:계산)
-        emoticonGrouping(){
-          for(var iCount = 0; iCount < this.emoticonInfo.length; iCount++){
-            if(this.emoticonInfo[iCount]["category"] == 1)
-              this.basicsList.push(this.emoticonInfo[iCount]);
-            else if(this.emoticonInfo[iCount]["category"] == 2)
-              this.getOrderList.push(this.emoticonInfo[iCount]);
-            else if(this.emoticonInfo[iCount]["category"] == 3)
-              this.getPayList.push(this.emoticonInfo[iCount]);
-          }
+        // 현재 클릭한 이미지가 즐겨찾기에 추가되어 있는지 여부를 확인하는 함수
+        for (var iCount = 0; iCount < this.getBookmarkList.length; iCount++){
+          if(this.getBookmarkList[iCount]['id'] == this.clickImg['id']){
+            includeCheck = true;
+          }    
         }
 
+        // 현재 클릭한 이모티콘이 즐겨찾기에 등록되어 있으면 bookmarkCheck의 값을 true를
+        // 등록되어 있지 않으면 false를 대입합니다.
+        if(includeCheck){
+          this.bookmarkCheck = true
+          console.log('포함');
+        } 
+        else {
+          this.bookmarkCheck = false
+            console.log('미포함');
+        }
+        // 세션에 저장된 사용자 id를 불러옵니다.
+        // sessionStorage.getItem('userId');
+        // console.log(sessionStorage.getItem('userId'));
+      },    
+
+      // 즐겨찾기 버튼을 클릭하면 실행되는 함수
+      bookmarkClick(){
+        // 즐겨찾기 등록 여부를 나타내는 값을 반대로 합니다.
+        this.bookmarkCheck = !this.bookmarkCheck;
+
+        // axios로 즐겨찾기 등록을 한 이모티콘의 번호를 전송합니다.
+        axios.post('/addUserBookmark', {
+          "emoticon_num"    : this.clickImg['id'],  // 이모티콘 번호
+          "bookmark_status" : this.bookmarkCheck,   // 즐겨찾기 등록 상태 (true : 누름, false : 안누름)
+        }).
+        then((response)=>{
+          alert(response.data['msg']);
+          // 즐겨찾기에 추가한 이모티콘을 배열에 저장합니다.
+          if(this.bookmarkCheck){
+            this.getBookmarkList.push(this.clickImg);
+          } 
+          // 즐겨찾기에 등록된 이모티콘을 배열에서 제거합니다.
+          else {
+            // 즐겨찾기를 제외한 이모티콘 배열을 구하는 함수를 실행합니다.
+            this.getBookmarkList  = this.emoticonFilter(this.getBookmarkList, this.clickImg);
+            // 출력하는 이모티콘 배열을 가지는 변수의 값에 즐겨찾기 리스트를 대입합니다.
+            this.emoticonData     = this.getBookmarkList;
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+      },
+
+      // 카테고리별로 이모티콘을 분류하는 함수 (1:기본, 2:주문, 3:계산)
+      emoticonGrouping(){
+        for(var iCount = 0; iCount < this.emoticonInfo.length; iCount++){
+          if(this.emoticonInfo[iCount]["category"] == 1)
+            this.basicsList.push(this.emoticonInfo[iCount]);
+          else if(this.emoticonInfo[iCount]["category"] == 2)
+            this.getOrderList.push(this.emoticonInfo[iCount]);
+          else if(this.emoticonInfo[iCount]["category"] == 3)
+            this.getPayList.push(this.emoticonInfo[iCount]);
+        }
+      }
     },
 
     created() { 
@@ -288,10 +306,10 @@ export default {
         // 이모티콘 목록을 배열에 저장합니다.
         this.emoticonInfo     = response.data['emoticonList'];
 
-        // console.log('즐겨찾기 리스트');
-        // console.log(this.getBookmarkList);
-        // console.log('이모티콘 리스트');
-        // console.log(this.emoticonInfo);
+        console.log('즐겨찾기 리스트');
+        console.log(this.getBookmarkList);
+        console.log('이모티콘 리스트');
+        console.log(this.emoticonInfo);
 
         // 이모티콘을 카테고리별로 분류합니다.
         this.emoticonGrouping();
@@ -300,7 +318,7 @@ export default {
         // 처음 커뮤니케이션 버튼에 들어갔을때 보이는 페이지가 즐겨찾기 카테고리이기 때문.
         this.emoticonData = this.getBookmarkList;
 
-      }).catch(console.log('Oh my god!!, Failed'));
+      }).catch(console.log('emoticon Oh my god!!, Failed'));
     }
 }
 </script>

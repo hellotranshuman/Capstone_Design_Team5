@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
+import VueSession from 'vue-session';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import App from './App.vue';
@@ -9,7 +10,7 @@ import App from './App.vue';
 Vue.use(VueRouter);
 Vue.use(Vuetify);
 Vue.use(VueAxios, axios);
-
+Vue.use(VueSession);
 
 // SNS 공유 API
 var SocialSharing = require('vue-social-sharing');
@@ -30,7 +31,7 @@ Vue.use(VueGoogleMaps, {
 });
 // chartjs
 import VueCharts from 'vue-chartjs'
-import { Bar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
+import { Bar, HorizontalBar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
 
 
 // <-- User Main Page Component Import
@@ -53,7 +54,7 @@ import OwnerReservationList     from './components/owner/owner_reservation/Owner
 // Owner Reservation Accept Page Import
 import OwnerReservationAccept   from './components/owner/owner_reservation/OwnerReservationAccept.vue';
 // Owner Reservation Setting Page Import
-import OwnerReservationSetting  from './components/owner/owner_reservation/ownerReservationSetting.vue';
+import OwnerReservationSetting  from './components/owner/owner_reservation/OwnerReservationSetting.vue';
 
 // <-- Create Restaurant Page
 // Create Restaurant Information Import
@@ -86,12 +87,21 @@ import CustomerAddReservation from './components/user/user_reservation/CustomerA
 
 // <-- owner statistics
 import OwnerTotalStatistics from './components/owner/owner_statistics/OwnerTotalStatistics.vue';
+// 손님 통계
+import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCustomerStatistics.vue';   
+// 매출 통계
+import OwnerSalesStatistics from './components/owner/owner_statistics/OwnerSalesStatistics.vue';
 
 const router = new VueRouter({
         routes: [
             // <-- main Page
             {
                 path: '/',
+                name: 'home',
+                component: Home
+            },
+            {
+                path: '/main',
                 name: 'home',
                 component: Home
             },
@@ -105,6 +115,13 @@ const router = new VueRouter({
                 path: '/register',
                 name: 'register',
                 component: Register
+            },
+            {
+                name: 'OwnerRestaurant',
+                path: '/owner/createRestaurant',
+                // '/owner/createRestaurant',
+                // '/owner/:shop_id/editRestaurant',
+                component: OwnerRestaurant
             },
             // <-- 가게 페이지 공통
             {
@@ -169,15 +186,15 @@ const router = new VueRouter({
                     {
                         // Owner Page 가게 설정 관련 좌측 바
                         name: 'OwnerPageSideSetting',
-                        path: '/owner/:shop_id/ownerPageSideSetting',
+                        path: '/owner/ownerPageSideSetting',
                         component: OwnerPageSideSetting,
 
                         children: [
                             {
                                 // Restaurant 수정
                                 name: 'OwnerRestaurant',
-                                path: '/owner/createRestaurant',
-                                // '/owner/createRestaurant',
+                                path: '/owner/:shop_id/editRestaurant',
+                                    // '/owner/createRestaurant',
                                 // '/owner/:shop_id/editRestaurant',
                                 component: OwnerRestaurant
                             },
@@ -227,11 +244,22 @@ const router = new VueRouter({
                                     name: 'OwnerTotalStatistics',
                                     path: '/owner/:shop_id/totalStatistics',
                                     component: OwnerTotalStatistics
+                                },
+                                {
+                                    // 손님 통계
+                                    name: 'OwnerCustomerStatistic',
+                                    path: '/owner/:shop_id/customerStatistic',
+                                    component: OwnerCustomerStatistic
+                                },
+                                {
+                                    // 매출 통계
+                                    name: 'OwnerSalesStatistics',
+                                    path: '/owner/:shop_id/salesStatistics',
+                                    component: OwnerSalesStatistics
                                 }
                             ]
-
                     }
-
+                    
                 ],
             },
             {

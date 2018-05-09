@@ -185,6 +185,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReviewController@getReviewLike'
     ]);
 
+    Route::post('getUserReviewList', [
+        'as' =>  'review.getUserReviewList',
+        'uses' => 'ReviewController@getUserReviewList'
+    ]);
+
 // <— User Reservation Route
 
     Route::get('/restaurant/{shop_id}/addReservation',[

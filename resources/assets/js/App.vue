@@ -2,11 +2,11 @@
     <div>
         <v-app>
             <v-navigation-drawer
-                    app
-                    v-model="menu"
-                    disable-resize-watcher
-                    temporary
-                    hide-overlay
+            app
+            v-model="menu"
+            disable-resize-watcher
+            temporary
+            hide-overlay
             ><!-- disable-resize-watcher: 화면 크기가 재조정 될 경우 자동으로 서랍을 열거나 닫는 것을 막음-->
                 <v-toolbar flat class="transparent">
                     <v-list class="pa-0">
@@ -72,7 +72,7 @@
                             <v-list-tile-content>
                                 <v-list-tile-title>
                                     Communication
-                                </v-list-tile-title>
+                                </v-list-tile-title> 
                             </v-list-tile-content>
                         </v-list-tile>
                         <!-- 출력될 modal창 내용-->
@@ -80,7 +80,7 @@
                             <v-toolbar dark color="grey darken-3">
                                 <v-toolbar-title>Communication</v-toolbar-title>
                                 <v-spacer></v-spacer>
-                                <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어
+                                <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어 
                                 출력된 모달창을 사라지도록 한다는 것 -->
                                 <v-btn icon @click.native="communicationDialog = false" dark>
                                     <v-icon>close</v-icon>
@@ -95,16 +95,20 @@
                     <!-- 커뮤니케이션 버튼 끝 -->
                 </v-list>
             </v-navigation-drawer>
+            <v-container>
             <v-toolbar
-                    app
-                    color='grey darken-3'
-                    dark
-                    scroll-off-screen
+                app
+                color='orange lighten-3'
+                dark
+                dense
+                scroll-off-screen
+                :scroll-threshold="30"
             ><!-- scroll-off-screen: 스크롤을 내리면 toolbar가 숨겨짐 -->
+            <!-- scroll-threshold: 스크롤 민감도 -->
                 <v-btn icon @click.native="menu = !menu">
                     <v-icon large>menu</v-icon>
                 </v-btn>
-                <v-toolbar-title style='width: 20vw'><router-link to="/" style="text-decoration: none" class="white--text">AIOF</router-link> <router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">Restaurant</router-link></v-toolbar-title>
+                <v-toolbar-title><router-link to="/" style="text-decoration: none" class="white--text">AIOF</router-link> <router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">Restaurant</router-link></v-toolbar-title>
                 <v-text-field
                         flat
                         solo-inverted
@@ -112,6 +116,7 @@
                         label="Search"
                         class="hidden-sm-and-down"
                 ></v-text-field>
+                <v-spacer></v-spacer><!-- 간격 -->
                 <v-btn icon @click.native.stop="gps_modal = true">
                     <v-icon large color="red">gps_fixed</v-icon>
                 </v-btn>
@@ -142,22 +147,24 @@
                         </v-card-actions>
                     </v-card>
                 </v-dialog>
-                <v-spacer></v-spacer><!-- 간격 -->
                 <v-btn icon @click="loginForm = true">
                     <v-icon large color="blue">account_circle</v-icon>
                 </v-btn>
             </v-toolbar>
+            </v-container>
+            <!-- 컴포넌트 출력 -->
             <v-content>
-                <v-container fluid>
-                    <router-view></router-view>
-                </v-container>
+                <v-layout>
+                    <v-flex>
+                        <router-view></router-view>
+                    </v-flex>
+                </v-layout>          
             </v-content>
-            <v-footer app></v-footer>
             <v-dialog
-                    v-model='loginForm'
-                    max-width='290'
+                v-model='loginForm'
+                max-width='290'
             >
-                <v-card>
+                <v-card v-if='!checkLogin()'>
                     <v-card-title>
                         <span class="headline">Login</span>
                     </v-card-title>
@@ -184,6 +191,19 @@
                         </router-link>
                     </v-card-actions>
                 </v-card>
+                <v-card v-else>
+                    <v-card-title>
+                        <span class="headline">User Information</span>
+                    </v-card-title>
+                    <v-card-text>
+                        Hello, {{ user_name }}
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn v-if="checkRestaurantId()" color="blue darken-1" flat @click="moveMyRestaurant()">go to my restaurant</v-btn>
+                        <v-btn color="blue darken-1" flat @click="logout()">Logout</v-btn>
+                    </v-card-actions>
+                </v-card>
             </v-dialog>
         </v-app>
     </div>
@@ -199,17 +219,21 @@
             'UserCommunication' : UserCommunication,            //  커뮤니케이션 버튼
         },
 
-        data: () => ({
-            menu: false,
-            loginForm: false,
-            loginStatus: false,
-            gps_modal: false,
-            gps_search: false,
-            idValue: '',
-            pwValue: '',
+        data() {
+            return {
+                menu: false,
+                loginForm: false,
+                gps_modal: false,
+                gps_search: false,
+                idValue: '',
+                pwValue: '',
 
-            communicationDialog: false,     // 커뮤니케이션 버튼을 통해 모달창을 출력하는데 사용
-        }),
+                user_id: this.$session.get('user_id'),
+                user_name: this.$session.get('user_name'),
+
+                communicationDialog: false,     // 커뮤니케이션 버튼을 통해 모달창을 출력하는데 사용
+            }
+        },
 
         methods: {
             login() {
@@ -218,14 +242,39 @@
                     user_id     : this.idValue,
                     password    : this.pwValue
                 })
-                    .then(function (response) {
-                        alert(response.data.msg);
+                    .then(response => {
+                        alert(response.data.msg); // 로그인 메시지
 
-                        location.replace(response.data.link);
+                        if(response.data.link != "/") { // 사장인지 손님인지 체크
+                            this.$session.set('restaurant_link', response.data.link); // 사장이라면 가게 주소 set
+                        }
+
+                        this.$session.set('loginStatus', true);                     // 로그인 상태 true
+                        this.$session.set('user_id', response.data.user_id);        // user_id set
+                        this.$session.set('user_name', response.data.user_name);    // user_name set
+
+                        location.replace(response.data.link); // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
                     })
                     .catch(function (error) {
                         alert('error!');
                     });
+            },
+
+            logout() {
+                this.$session.clear();
+                location.replace('/');
+            },
+
+            checkLogin() {
+                return this.$session.get('loginStatus');
+            },
+
+            checkRestaurantId() {
+                return this.$session.get('restaurant_link');
+            },
+
+            moveMyRestaurant() {
+                location.replace(this.$session.get('restaurant_link'));
             }
         }
     }

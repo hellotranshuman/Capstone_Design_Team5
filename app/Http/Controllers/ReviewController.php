@@ -190,4 +190,40 @@ class ReviewController extends Controller
         ]);
 
     }
+
+    // 유저 리뷰 리스트
+    public function getUserReviewList() {
+
+       $userReviewData =  Review::join('restaurants', 'restaurants.id', '=', 'review.shop_id')
+                        ->join('upload', 'upload.shop_id', '=', 'review.shop_id')
+                        ->select('review.id as reviewid', 'review.rating as rating', 'restaurants.id as shopid', 'restaurants.name as shopname',
+                                    'upload.path as path', 'upload.filename as filename','review.reg_date as reg_date')
+                        ->where('review.writer', auth()->user()->id)
+                        ->where('upload.filename', 'like', '%title%')
+                        ->get();
+
+       $reviewData = array();
+
+       foreach($userReviewData as $listData) {
+
+           $reviewArray = array();
+
+           $reviewArray['id']        = $listData->reviewid;
+           $reviewArray['shop_name'] = $listData->shopname;
+           $reviewArray['rating']    = $listData->rating;
+           $reviewArray['reg_date']  = $listData->reg_date;
+           $reviewArray['filename']  = $listData->path . $listData->filename;
+
+           $currentShopId = $listData->shopid;
+           $reviewArray['reviewLink'] = '/restaurants/' . $currentShopId . '/review';
+
+           array_push($reviewData, $reviewArray);
+       }
+
+        return response()->json([
+           'userReviewList' => $reviewData,
+        ]);
+
+
+    }
 }
