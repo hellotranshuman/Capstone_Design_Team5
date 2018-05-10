@@ -116,7 +116,21 @@
                     </v-layout>
                     <!-- 리뷰 내용 -->
                     <v-layout>
-                        <v-flex>{{this.content}}</v-flex>
+                        <v-flex>
+                            <v-layout>
+                                <v-spacer></v-spacer>
+                                <v-flex xs12 sm8>
+                                    <v-text-field
+                                    :value="this.content"
+                                    flat
+                                    solo
+                                    multi-line
+                                    readonly>
+                                </v-text-field>
+                                </v-flex>
+                                <v-spacer></v-spacer>
+                            </v-layout>
+                        </v-flex>
                     </v-layout>
                     <!-- 해시 태그 -->
                     <v-layout>

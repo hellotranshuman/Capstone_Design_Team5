@@ -1,4 +1,4 @@
-<template>
+  <template>
 <v-app>
   <div class="create_coupon">
     <br>
@@ -114,16 +114,16 @@
       hide-actions
       class="createCouponTable"
     >
-    <template slot="items" slot-scope="data">
-        <td>{{ data.item.name }}</td>
-        <td class="text-xs-right">{{ data.item.category }}</td>
-        <td class="text-xs-right">{{ data.item.discount }}</td>
-        <td class="text-xs-right">{{ data.item.add_product }}</td>
-        <td class="text-xs-right">{{ data.item.price_condition }}</td>
-        <td class="text-xs-right">{{ data.item.start_date }}</td>
-        <td class="text-xs-right">{{ data.item.expiry_date }}</td>
+    <template slot="items" slot-scope="props">
+        <td>{{ props.item.name }}</td>
+        <td class="text-xs-left">{{ props.item.category }}</td>
+        <td class="text-xs-left">{{ props.item.discount }}</td>
+        <td class="text-xs-left">{{ props.item.add_product }}</td>
+        <td class="text-xs-left">{{ props.item.price_condition }}</td>
+        <td class="text-xs-left">{{ props.item.start_date }}</td>
+        <td class="text-xs-left">{{ props.item.expiry_date }}</td>
         <td class="justify-center layout px-0">
-          <v-btn icon class="mx-0" @click="deleteItem(data.item), clickCouponid = data.item.id">
+          <v-btn icon class="mx-0" @click="deleteItem(props.item)">
             <v-icon color="pink">delete</v-icon>
           </v-btn>
         </td>
@@ -148,7 +148,7 @@ export default {
             end_date: null,
             end_menu: false,
 
-            clickCouponid : null,
+            clickCouponid: 0,
             /* table */
             dialog: false,
             headers: [
@@ -181,7 +181,6 @@ export default {
         axios.post('/owner/getCouponList', {
             'shop_id' : this.$route.params.shop_id
         }).then((response) => {
-            alert(response.data.coupon);
             /* DB Coupon Data */
             var Index = response.data.couponNum;
             console.log(response.data.coupon);
@@ -194,16 +193,19 @@ export default {
     },
 
     methods: {
+        data() {
 
-
+        },
       deleteItem (item) {
         const index = this.items.indexOf(item);
-        confirm('쿠폰을 삭제 하시겠습니까?');
-        axios.post('/owner/createCoupon', {
-            shop_id         : this.$route.params.shop_id,
-            id              : this.clickCouponid
+        this.clickCouponid = this.items[index].id;
+        axios.post('/owner/deleteCoupon', {
+            'coupon_id'         : this.clickCouponid
           }).then((response) => {
+              console.log(this.clickCouponid);
+              alert(response.data.msg);
               location.reload();
+
           })
           .catch(console.log('test'));
       },

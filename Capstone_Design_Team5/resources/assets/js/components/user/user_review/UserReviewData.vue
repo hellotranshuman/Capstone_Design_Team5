@@ -52,7 +52,7 @@ import axios    from 'axios';
 
 export default {
     props : {
-        // 국적을 나타내는 숫자 (0:all, 1:china, 2:japanm 3:korea)
+        // 국적을 나타내는 숫자 (0:all, 1:china, 2:japan 3:korea, 3:USA)
         countryNum:{
             type: Number,
             default: 0

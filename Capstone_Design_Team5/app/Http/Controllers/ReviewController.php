@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Review;
 use App\Review_like;
+use Illuminate\Support\Facades\Redirect;
 
 class ReviewController extends Controller
 {
     public function showReviewForm() {
-        return view('user.review');
+         return view('user.review');
     }
 
     public function getReviewData(Request $request) {
@@ -40,12 +41,18 @@ class ReviewController extends Controller
                         ->get()
                         ->toArray();
 
-        // <-- 현재 유저의 리뷰 좋아요한 리뷰 게시글번호
-        $reviewLike = Review_like::select('review_id')
-                        ->where('user_num', auth()->user()->id)
-                        ->orderByRaw('review_id desc')
-                        ->get()
-                        ->toArray();
+        if(auth()->check()) {
+            // <-- 현재 유저의 리뷰 좋아요한 리뷰 게시글번호
+            $reviewLike = Review_like::select('review_id')
+                ->where('user_num', auth()->user()->id)
+                ->orderByRaw('review_id desc')
+                ->get()
+                ->toArray();
+        }
+
+        else {
+            $reviewLike = '';
+        }
 
         // <-- Review Image
         $reviewImage = Review::join('review_image', 'review_image.review_id', '=', 'review.id')
@@ -67,7 +74,7 @@ class ReviewController extends Controller
     }
 
     public function showWriteReviewForm() {
-        return view('user.writeReview');
+       return view('user.writeReview');
     }
 
     public function getReviewLike(Request $request) {
@@ -123,7 +130,7 @@ class ReviewController extends Controller
 
         $reviewId = $review->id;
 
-        // <-- hash Tag column create in HashTag Table
+        // <— hash Tag column create in HashTag Table
         $tags = implode(',' , $request->get('HASHTAG'));
         $hashTag = str_replace('#', '', $tags);
         $hashTags = explode(',', $hashTag);
@@ -144,7 +151,7 @@ class ReviewController extends Controller
         $imgNum = $request->get('imgNum');
         $fileIndex = 1;
 
-        // <-- Image Save
+        // <— Image Save
         if($imgNum != 0) {
             for( $num = 1 ; $num <= 3 ; $num++ )
             {
@@ -180,6 +187,50 @@ class ReviewController extends Controller
         return response()->json([
             'content' => '리뷰 작성이 완료되었습니다.',
             'link'    => $link,
+        ]);
+
+    }
+
+    // 유저 리뷰 리스트
+    public function getUserReviewList() {
+
+       $userReviewData =  Review::join('restaurants', 'restaurants.id', '=', 'review.shop_id')
+                        ->join('upload', 'upload.shop_id', '=', 'review.shop_id')
+                        ->select('review.id as reviewid', 'review.rating as rating', 'restaurants.id as shopid', 'restaurants.name as shopname',
+                                    'upload.path as path', 'upload.filename as filename','review.reg_date as reg_date')
+                        ->where('review.writer', auth()->user()->id)
+                        ->where('upload.filename', 'like', '%title%')
+                        ->orderByRaw('review.reg_date DESC')
+                        ->get();
+
+
+        $likeData = Review::join('review_like', 'review.id', '=' , 'review_like.review_id')
+                    ->select(DB::raw('count(review_like.review_id) as likeNum'))
+                    ->where('review.writer', auth()->user()->id)
+                    ->orderByRaw('review.reg_date desc')
+                    ->get();
+
+       $reviewData = array();
+
+       foreach($userReviewData as $listData) {
+
+           $reviewArray = array();
+
+           $reviewArray['id']        = $listData->reviewid;
+           $reviewArray['shop_name'] = $listData->shopname;
+           $reviewArray['rating']    = $listData->rating;
+           $reviewArray['reg_date']  = $listData->reg_date;
+           $reviewArray['filename']  = $listData->path . $listData->filename;
+
+           $currentShopId = $listData->shopid;
+           $reviewArray['reviewLink'] = '/restaurant/' . $currentShopId . '/review';
+
+           array_push($reviewData, $reviewArray);
+       }
+
+        return response()->json([
+           'userReviewList' => $reviewData,
+            'likeNum'       => $likeData,
         ]);
 
     }

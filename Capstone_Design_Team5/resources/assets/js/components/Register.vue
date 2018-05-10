@@ -37,7 +37,7 @@
                                     <v-select v-model="F_country"
                                               placeholder="Country"
                                               required
-                                              :items="['한국', '日本', 'USA']"
+                                              :items="['한국', '日本', '中国', 'USA']"
                                     ></v-select>
                                 </v-flex>
                                 <v-flex xs12 sm3>
@@ -105,7 +105,7 @@
                                     <v-select v-model="F_country"
                                               placeholder="Country"
                                               required
-                                              :items="['한국', '日本', 'USA']"
+                                              :items="['한국', '日本', '中国', 'USA']"
                                     ></v-select>
                                 </v-flex>
                                 <v-flex xs12 sm3>
@@ -155,14 +155,35 @@
             F_user_name: "",
             F_password: "",
             F_C_password: "",
-            F_country: "한국",
+            F_country: "한국",  // 국적종류 (china, japan, korea, USA)
             F_year: "",
             F_month: "",
             F_day: ""
         }),
 
         methods: {
+            // 입력한 국적에 맞는 값을 저장하는 함수
+            setCountry(){
+                switch(this.F_country){
+                    case '한국':
+                        this.F_country = 'korea';
+                    break;
+                    case '日本':
+                        this.F_country = 'japan';
+                    break;
+                    case '中国':
+                        this.F_country = 'china';
+                    break;
+                    case 'USA':
+                        this.F_country = 'USA';
+                    break;
+                }
+            },
+
             register() {
+                // 입력한 국적에 맞는 값을 대입합니다.
+                this.setCountry();
+
                 var url = "/register";
                 axios.post(url, {
                     user_id     : this.F_user_id,
@@ -183,6 +204,9 @@
                     });
             },
             register2() {
+                // 입력한 국적에 맞는 값을 대입합니다.
+                this.setCountry();
+
                 var url = "/register";
                 axios.post(url, {
                     user_id     : this.F_user_id,

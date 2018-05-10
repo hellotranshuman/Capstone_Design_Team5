@@ -11,7 +11,7 @@
     </v-app>
 </template>
 <script>
-import OwnerPageTop from './OwnerPageTop.vue';
+import OwnerPageTop from './ownerPageTop.vue';
 
 export default {
     components : {

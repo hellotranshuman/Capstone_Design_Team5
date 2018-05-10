@@ -83,14 +83,14 @@
                                         </v-card-title>
                                         <v-card-actions>
                                             <v-spacer></v-spacer>
-                                            <v-btn color="error" dark @click.stop="dialog = true" @click="this.clickshopName = StandBycards[index].shopName, TypeChange(StandBycards[index].id)">예약 취소
+                                            <v-btn color="error" dark @click.stop="dialog = true" @click="this.clickshopid = StandBycards[index].id, TypeChange(StandBycards[index].id)">예약 취소
                                                 <v-icon dark right>check_circle</v-icon>
                                             </v-btn>
                                             <!-- 예약 취소 Dialog -->
                                             <v-dialog v-model="dialog" max-width="500px">
                                                 <v-card>
                                                 <v-card-title>
-                                                    <span><B>가게이름 : {{this.clickshopName}}</B></span>
+                                                    <span><B>가게이름 : {{this.clickshopid}}</B></span>
                                                 </v-card-title>
                                                 <v-card-text>
                                                     예약을 취소하는 이유가 무엇입니까? <br>
@@ -178,8 +178,6 @@ import axios from 'axios';
                     }
                 ],
 
-                /* clickshop */
-                cilckshopName : '',
                 clickshopid : 0,
             }
         },

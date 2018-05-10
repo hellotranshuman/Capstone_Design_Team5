@@ -1,34 +1,38 @@
 <template>
     <div>
-        <v-flex xs12 sm10 offset-sm1>
-            <v-card>
-                <v-subheader><h1>현재 위치 : 영진전문대학</h1></v-subheader>
-                    <v-flex xs12 sm6 offset-sm3>
-                        <template>
-                            <div id="app">
-                                <google-map :testCenter=testCenter></google-map>
-                            </div>
-                        </template>
-                    </v-flex>
-                    <br><br>
-            </v-card>
-        </v-flex>
+        <br>
+        <v-card>
+            <v-flex>
+                <template>
+                    <div id="app">
+                        <google-map :testCenter=testCenter></google-map>
+                    </div>
+                </template>
+            </v-flex>
+        </v-card>
         <br>
         <v-layout row>
             <v-flex xs12 sm10 offset-sm1>
                 <v-card>
                     <v-subheader><h1>최근 리뷰</h1></v-subheader>
                     <v-container fluid grid-list-sm>
-                        <v-layout row wrap v-if="test">
-                            <v-flex xs4 v-for="i in 3" :key="i">
+                        <v-layout row wrap>
+                            <v-flex>
                                 <v-card-title primary-title>
-                                    <h3 class="headline mb-0">{{test[i][0]}}</h3>
+                                    <h3 class="headline mb-0">{{test[1][0]}}</h3>
                                 </v-card-title>
-                                <v-card-media :src="`/images/${test[i][1]}.jpg`" height="200px"></v-card-media>
+                                <v-card-media :src="`/images/${test[1][1]}.jpg`" height="200px"></v-card-media>
                                 <v-card-actions>
-                                    <v-btn flat color="orange" :to="`${test[i][2]}`" style="width: 33%">Info</v-btn>
-                                    <v-btn flat color="orange" :to="`${test[i][3]}`" style="width: 33%">Menu</v-btn>
-                                    <v-btn flat color="orange" :to="`${test[i][4]}`" style="width: 33%">Review</v-btn>
+                                    
+                                </v-card-actions>
+                            </v-flex>
+                            <v-flex>
+                                <v-card-title primary-title>
+                                    <h3 class="headline mb-0">{{test[1][0]}}</h3>
+                                </v-card-title>
+                                <v-card-media :src="`/images/${test[1][1]}.jpg`" height="200px"></v-card-media>
+                                <v-card-actions>
+                                    
                                 </v-card-actions>
                             </v-flex>
                         </v-layout>
@@ -42,9 +46,7 @@
                                 </v-card-title>
                                 <v-card-media :src="`/images/${test2[i][1]}.jpg`" height="200px"></v-card-media>
                                 <v-card-actions>
-                                    <v-btn flat color="orange" :to="`${test2[i][2]}`" style="width: 33%">Info</v-btn>
-                                    <v-btn flat color="orange" :to="`${test2[i][3]}`" style="width: 33%">Menu</v-btn>
-                                    <v-btn flat color="orange" :to="`${test2[i][4]}`" style="width: 33%">Review</v-btn>
+                                    
                                 </v-card-actions>
                             </v-flex>
                         </v-layout>
@@ -74,5 +76,7 @@
 </script>
 
 <style>
-
+#page-content_wrapper {
+    width: 100%;
+  }
 </style>

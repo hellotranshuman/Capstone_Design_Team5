@@ -12,7 +12,7 @@ use App\Review;
 class RestaurantController extends Controller
 {
     public function showRestaurantForm() {
-        if(auth()->user()->category == true)
+        if(!auth()->check() || auth()->user()->category == true)
             return 'failed!!!!!@@@';
         else
             return view('restaurant.createRestaurant');

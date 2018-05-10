@@ -1,15 +1,16 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import VueAxios from 'vue-axios';
-import axios from 'axios';
-import Vuetify from 'vuetify';
+import Vue          from 'vue';
+import VueRouter    from 'vue-router';
+import VueAxios     from 'vue-axios';
+import axios        from 'axios';
+import VueSession   from 'vue-session';
+import App          from './App.vue';
+import Vuetify      from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
-import App from './App.vue';
 
 Vue.use(VueRouter);
 Vue.use(Vuetify);
 Vue.use(VueAxios, axios);
-
+Vue.use(VueSession);
 
 // SNS 공유 API
 var SocialSharing = require('vue-social-sharing');
@@ -31,7 +32,6 @@ Vue.use(VueGoogleMaps, {
 // chartjs
 import VueCharts from 'vue-chartjs'
 import { Bar, HorizontalBar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
-
 
 // <-- User Main Page Component Import
 import Home                 from './components/user/user_main/UserMain.vue';
@@ -91,6 +91,16 @@ import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCus
 // 매출 통계
 import OwnerSalesStatistics from './components/owner/owner_statistics/OwnerSalesStatistics.vue';
 
+// 쿠폰함
+import UserCoupon from './components/user/user_coupon/UserCoupon.vue';
+// 예약내역
+import UserPageReservation from './components/user/user_reservation/UserPageReservation.vue';
+// 리뷰내역
+import UserReviewHistory from './components/user/user_review/UserReviewHistory.vue';
+
+
+
+
 const router = new VueRouter({
         routes: [
             // <-- main Page
@@ -114,6 +124,24 @@ const router = new VueRouter({
                 path: '/register',
                 name: 'register',
                 component: Register
+            },
+            {
+                // 쿠폰함
+                name: 'UserCoupon',
+                path: '/UserCoupon',
+                component: UserCoupon,
+            },
+            {
+                // 예약내역
+                name: 'UserPageReservation',
+                path: '/UserPageReservation',
+                component: UserPageReservation,
+            },
+            {
+                // 리뷰내역
+                name: 'UserReviewHistory',
+                path: '/UserReviewHistory',
+                component: UserReviewHistory,
             },
             {
                 name: 'OwnerRestaurant',
@@ -257,8 +285,7 @@ const router = new VueRouter({
                                     component: OwnerSalesStatistics
                                 }
                             ]
-                    }
-                    
+                    }              
                 ],
             },
             {

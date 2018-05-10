@@ -178,6 +178,7 @@ export default {
                 { country: 'china', countryNum: 1 },
                 { country: 'japan', countryNum: 2 },
                 { country: 'korea', countryNum: 3 },
+                { country: 'USA',   countryNum: 4 },
             ]
         }
     },

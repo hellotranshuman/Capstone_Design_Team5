@@ -30,8 +30,8 @@
             <v-card color="white" style="color:black;">
                 
                 <div class="tem_img">
-                    <img :src="get_menus[n].path + get_menus[n].filename">
-                    <!-- <img src="./example6.jpg"> -->
+                    <!-- <img :src="get_menus[n].path + get_menus[n].filename"> -->
+                    <img src="">
                 </div>
 
                 <v-card-title primary-title>
@@ -87,33 +87,70 @@ import { EventBus } from './eventBus.js';
 export default {
 
     created() {
-        var url = '/menu/getCategory';
+        var url = '';
         var get_categorys = null;
         this.shop_id = this.$route.params.shop_id;      // 샵 아이디 
-        var shopData = new FormData();
-        shopData.append('shop_id', this.shop_id);
 
         // 카테고리 요청하기.
-        axios.post(url, shopData)
-        .then( (response) => {
-            get_categorys = response.data.category;
-            this.categorys = this.unique(get_categorys) // 카테고리 중복 값 제거.
-        })
-        .catch((ex)=>{
-            alert('메뉴 로드 실패');
-        });
+        // axios.post(url, this.shop_id)
+        // .then( (response) => {
+        //     get_categorys = response.data 
+        //     this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+        // })
+        // .catch((ex)=>{
+        //     alert('메뉴 로드 실패');
+        // });
          
-        // get_categorys = [   
-        //     {"category" : '특식'},
-        //     {"category" : '추천 메뉴'},
-        //     {"category" : '식사류'},
-        //     {"category" : '찌개류'},
-        //     {"category" : '안주류'},
-        //     {"category" : '음료'},
-        //     {"category" : '커피'},
-        //     {"category" : '디저트'},  
-        // ]
-        
+        get_categorys = [   
+            {"category" : '특식'},
+            {"category" : '추천 메뉴'},
+            {"category" : '식사류'},
+            {"category" : '찌개류'},
+            {"category" : '안주류'},
+            {"category" : '음료'},
+            {"category" : '커피'},
+            {"category" : '디저트'},  
+            {"category" : '특식'},
+            {"category" : '추천 메뉴'},
+            {"category" : '식사류'},
+            {"category" : '찌개류'},
+            {"category" : '안주류'},
+            {"category" : '음료'},
+            {"category" : '커피'},
+            {"category" : '디저트'},  
+            {"category" : '특식'},
+            {"category" : '추천 메뉴'},
+            {"category" : '식사류'},
+            {"category" : '찌개류'},
+            {"category" : '안주류'},
+            {"category" : '음료'},
+            {"category" : '커피'},
+            {"category" : '디저트'},  
+            {"category" : '특식'},
+            {"category" : '추천 메뉴'},
+            {"category" : '식사류'},
+            {"category" : '찌개류'},
+            {"category" : '안주류'},
+            {"category" : '음료'},
+            {"category" : '커피'},
+            {"category" : '디저트'},  
+            {"category" : '특식'},
+            {"category" : '추천 메뉴'},
+            {"category" : '식사류'},
+            {"category" : '찌개류'},
+            {"category" : '안주류'},
+            {"category" : '음료'},
+            {"category" : '커피'},
+            {"category" : '디저트'},  
+            {"category" : '특식'},
+            {"category" : '추천 메뉴'},
+            {"category" : '식사류'},
+            {"category" : '찌개류'},
+            {"category" : '안주류'},
+            {"category" : '음료'},
+            {"category" : '커피'},
+            {"category" : '디저트'},  
+        ]
         this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
     },
     
@@ -133,30 +170,87 @@ export default {
         // 메뉴 카테고리 클릭
         click_category : function() {
             var category = event.target;                        // 선택한 카테고리 
-            var url = "";                          // 서버에 요청할 주소
+            var url = "선주야 부탁한다!"                          // 서버에 요청할 주소 
             var send_data = [];
-            var categoryData = '';
 
-            // 클릭한 값  검사
+            // 클릭한 값 검사
             if(category.value === undefined) {
-                categoryData = category.parentNode.value;
+                category = category.parentNode.value;
             } else {
-                categoryData = category.value;
+                category = category.value;
             }
-
-            url = '/menu/getMenu/' + this.shop_id + '/' + categoryData;
 
             // 보낼 데이터 초기화
             send_data['shop_id']  = this.shop_id;
             send_data['category'] = category;
  
             // 클릭한 카테고리의 메뉴 호출
-            axios.get(url)
-            .then( (response) => {
-                this.get_menus = response.data.menu;
-                console.log(this.get_menus);
+            // axios.post(url, send_data)
+            // .then( (response) => {
+            //     this.get_menus = response.data 
 
-                // 출력할 v-layout 개수 설정
+            //     // 출력할 v-layout 개수 설정
+            //     if( this.get_menus.length%3 === 0 ){
+            //         this.menu_row_num = this.get_menus.length / 3;
+            //     }
+            //     else {
+            //         this.menu_row_num = Math.floor(this.get_menus.length / 3) + 1;
+            //     }
+
+            //     // 옵션 값 뽑아내기
+            //     for(let i=0; i < this.get_menus.length; i++) {   
+            //         this.options[i] = [];
+            //         for(let j=1; j <= this.get_menus[i].subOpNum; j++){
+            //             this.options[i].push(this.get_menus[i]['optionValue'+j] );
+            //         }
+            //     }    
+            // })
+            // .catch((ex)=>{
+            //     alert('메뉴 로드 실패');
+            // });
+
+            this.get_menus = [
+                { 
+                    "id"            : 1, 
+                    "name"          : "짬뽕" ,
+                    "explanation"   : "짬뽕입니다." ,
+                    "price"         : 9000 ,
+                    "remark"        : "default" ,
+                    "path"          : "/images/menu/1/" ,
+                    "filename"      : "1_menuImg_1.jpeg" ,
+                    "optionName1"   : "맵기 조절" ,
+                    "optionValue1"  : "순한맛" ,
+                    "optionValue2"  : "보통맛" ,
+                    "optionValue3"  : "매운맛" ,
+                    "subOpNum"      : 3
+                }, 
+                { 
+                    "id"            : 2,
+                    "name"          : "연두부", 
+                    "explanation"   : "연두부" ,
+                    "price"         : 5000,
+                    "remark"        : "default", 
+                    "path"          : "/images/menu/1/", 
+                    "filename"      : "1_menuImg_2.jpeg" ,
+                    "optionName1"   : "소스" ,
+                    "optionValue1"  : "특제 소스" ,
+                    "optionValue2"  : "간장 소스" ,
+                    "subOpNum"      : 2,
+                },                 
+                { 
+                    "id"            : 3 ,
+                    "name"          : "케이크" ,
+                    "explanation"   : "123123" ,
+                    "price"         : 9999,
+                    "remark"        : "default",
+                    "path"          : "/images/menu/1/" ,
+                    "filename"      : "1_menuImg_3.jpeg",
+                    "optionName1"   : "없으면 입력 x" ,
+                    "subOpNum"      : 0
+                },   
+            ];
+
+            // 출력할 v-layout 개수 설정
                 if( this.get_menus.length%3 === 0 ){
                     this.menu_row_num = this.get_menus.length / 3;
                 }
@@ -170,52 +264,7 @@ export default {
                     for(let j=1; j <= this.get_menus[i].subOpNum; j++){
                         this.options[i].push(this.get_menus[i]['optionValue'+j] );
                     }
-                }    
-            })
-            .catch((ex)=>{
-                alert('메뉴 로드 실패');
-            });
-
-            // this.get_menus = [
-            //     { 
-            //         "id"            : 1, 
-            //         "name"          : "짬뽕" ,
-            //         "explanation"   : "짬뽕입니다." ,
-            //         "price"         : 9000 ,
-            //         "remark"        : "default" ,
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_1.jpeg" ,
-            //         "optionName1"   : "맵기 조절" ,
-            //         "optionValue1"  : "순한맛" ,
-            //         "optionValue2"  : "보통맛" ,
-            //         "optionValue3"  : "매운맛" ,
-            //         "subOpNum"      : 3
-            //     }, 
-            //     { 
-            //         "id"            : 2,
-            //         "name"          : "연두부", 
-            //         "explanation"   : "연두부" ,
-            //         "price"         : 5000,
-            //         "remark"        : "default", 
-            //         "path"          : "/images/menu/1/", 
-            //         "filename"      : "1_menuImg_2.jpeg" ,
-            //         "optionName1"   : "소스" ,
-            //         "optionValue1"  : "특제 소스" ,
-            //         "optionValue2"  : "간장 소스" ,
-            //         "subOpNum"      : 2,
-            //     },                 
-            //     { 
-            //         "id"            : 3 ,
-            //         "name"          : "케이크" ,
-            //         "explanation"   : "123123" ,
-            //         "price"         : 9999,
-            //         "remark"        : "default",
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_3.jpeg",
-            //         "optionName1"   : "없으면 입력 x" ,
-            //         "subOpNum"      : 0
-            //     },   
-            // ]
+                }   
 
         }, // end of click_category
 
@@ -243,20 +292,22 @@ export default {
             var array = [];
 
             // 클릭한 메뉴 테두리 붉게
-            menu.parentNode.parentNode.parentNode.parentNode.style = "border: 3px solid red;"   
+            // menu.parentNode.parentNode.parentNode.parentNode.style = "border: 3px solid red;"   
 
             array['menu'] = this.get_menus[menu.id];
 
-            if(this.get_menus[menu.id].optionValue1 !== undefined){
+            console.log(this.get_menus[menu.id]);
+
+            if( this.get_menus[menu.id].optionValue1 !== undefined){
                 var op_val = document.getElementById('value'+menu.id);  // 선택한 옵션 값 가져오기.
-            
-                array['option'] = {
-                    'name' : this.get_menus[menu.id].optionName1 ,
-                    'value' : op_val.value,
-                };
+
+                array['option'] = { 'value' : op_val.value };
             }
             this.select_menus.push(array); 
-            EventBus.$emit('select_menus', this.select_menus);
+            // console.log( this.select_menus );
+
+            EventBus.$emit('select_menus', this.select_menus)
+            alert('선택하신 메뉴가 추가 되었습니다.');
         }
 
     }// end of method

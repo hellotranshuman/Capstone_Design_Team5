@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style>ㅇ
     /* 폰트 컬러 */
   .fontColor_red {
     color: red;

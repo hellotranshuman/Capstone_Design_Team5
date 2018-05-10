@@ -54,7 +54,7 @@ class UsersController extends Controller
             // <-- Login 정보 확인
             if (! auth()->attempt($userData, true)) {
                 return response()->json([
-                    'login' => 'false',
+                    'login' => false,
                     'msg' => '아이디나 비밀번호가 일치하지 않습니다!',
                 ]);
             }
@@ -67,25 +67,20 @@ class UsersController extends Controller
                                     ->get()
                                     ->first();
 
-                    $restaurantId = $restaurant->id;
-
-                    $request->session()->put('restaurantId', $restaurantId);
-
-                    $link = '/owner/' . $restaurantId . '/menu';
+                    $restaurant_id = $restaurant->id;
                 }
-                else
-                    $link = '/';
+                else 
+                    $restaurant_id = '/';
 
                 // auth()->user()->id
                 // auth()->user()->name
                 return response()->json([
-                    'login' => 'true',
-                    'msg' => '로그인 되었습니다.',
-                    'link' => $link,
+                    'login' => true,
+                    'restaurant_id' => $restaurant_id,
+                    'user_id' => auth()->user()->user_id,
+                    'user_name' => auth()->user()->name
                 ]);
             }
-
-
     }
 
     public function doLogout(Request $request) {
@@ -94,6 +89,6 @@ class UsersController extends Controller
 
         auth()->logout();
 
-        return '또봐요~~';
+        return redirect('/');
     }
 }

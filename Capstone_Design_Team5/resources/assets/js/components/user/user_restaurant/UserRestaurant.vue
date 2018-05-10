@@ -101,6 +101,9 @@
                                 <v-flex xs12 sm6 md4>
                                     <v-text-field label="아이 인원" required v-model="child_person"></v-text-field>
                                 </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field label="요청사항(선택)" required v-model="message"></v-text-field>
+                                </v-flex>
                             </v-layout>
                         </v-container>
                     </v-card-text>
@@ -119,7 +122,8 @@
                                   <h3><B> 예약 날짜 : </B> {{start_date}} </h3>
                                   <h3><B> 예약 시간 : </B> {{time}} </h3>
                                   <h3><B> 어른 인원 : </B> {{adult_person}} </h3>
-                                  <h3><B> 아이 인원 : </B>{{child_person}} </h3>
+                                  <h3><B> 아이 인원 : </B> {{child_person}} </h3>
+                                  <h3><B> 요청 사항 : </B> {{message}} </h3>
                               </div>
                             </v-card-title>
                             <v-card-actions>
@@ -232,6 +236,7 @@ export default{
             dialog_ok : false,
 
             /* reservation */
+            message             : '',
             usernum             : '',       
             adult_person        : '',
             child_person        : '',
@@ -431,13 +436,17 @@ export default{
         
         SpendData() {
         // axios http 라이브러리
-            axios.post('/addReservation', {
-                usernum        : this.usernum,
+            axios.post('/requestReservation', {
+                shop_id        : this.$route.params.shop_id,
                 adult_person   : this.adult_person,
                 child_person   : this.child_person,
-                start_date     : this.start_date, 
+                date           : this.start_date,
                 time           : this.time,
-            }).then(console.log('success')).catch(console.log('test '));
+                message        : this.message,
+                menu_select    : false
+            }).then((response) => {
+                alert(response.data.msg);
+            }).catch(console.log('test '));
         }
 
     }

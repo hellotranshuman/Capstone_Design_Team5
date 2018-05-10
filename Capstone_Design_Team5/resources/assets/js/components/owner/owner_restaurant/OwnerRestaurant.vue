@@ -357,14 +357,17 @@ export default {
             }
 
             // // 값 보내기
-            // axios.post('/test',formData)
-            // .then( (response) => {
-            //     this.result = response.data; 
-            //     document.write(this.result);
-            // })
-            // .catch((ex)=>{
-            //     console.lg('updatePhoto failed',ex);
-            // })
+            axios.post('/owner/createRestaurant',formData)
+            .then( (response) => {
+
+                 alert(response.data.msg);
+
+                 this.link = response.data.link;
+                 window.location.href = this.link;
+             })
+             .catch((ex)=>{
+                 console.lg('updatePhoto failed',ex);
+             })
         }
     }
 };

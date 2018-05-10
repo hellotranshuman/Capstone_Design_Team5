@@ -12,10 +12,10 @@
         <v-toolbar color="grey darken-3">
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn flat color="white" class="toolbar-style" v-on:click="selectCategory(0)">즐겨찾기</v-btn>
-            <v-btn flat color="white" class="toolbar-style" v-on:click="selectCategory(1)">기본</v-btn>
-            <v-btn flat color="white" class="toolbar-style" v-on:click="selectCategory(2)">주문</v-btn>
-            <v-btn flat color="white" class="toolbar-style" v-on:click="selectCategory(3)">계산</v-btn>
+            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(0)">즐겨찾기</v-btn>
+            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(1)">기본</v-btn>
+            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(2)">주문</v-btn>
+            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(3)">계산</v-btn>
           </v-toolbar-items>
           <v-spacer></v-spacer>
         </v-toolbar>
@@ -72,7 +72,7 @@ export default {
     cursor: pointer;
   }
   .toolbar-style{
-    font-size: 2em;
+    font-size: 1.2em;
     font-weight: bold;
   }
 </style>
