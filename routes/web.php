@@ -138,6 +138,12 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'LayoutController@getSelectedLayout'
     ]);
 
+    Route::post('saveCustomLayout', [
+        'as' => 'layout.saveCustomLayout',
+        'uses' => 'LayoutController@saveCustomLayout'
+    ]);
+
+
 // <-- Owner Coupon Page
     Route::get('owner/{shop_id}/createCoupon', [
         'as' => 'coupon.showCouponForm',
@@ -256,13 +262,38 @@ Route::group(['middleware' => 'web'], function () {
 
 // <— Owner Statistics Page
     Route::get('/owner/{shop_id}/totalStatistics', [
-        'as' => 'reservation.showReservationSetting',
-        'uses' => 'ReservationController@showReservationSetting'
+        'as' => 'statistic.showStatisticsForm',
+        'uses' => 'StatisticController@showStatisticsForm'
     ]);
 
     Route::get('/owner/{shop_id}/getRatingScore', [
         'as' => 'statistic.getRatingScore',
         'uses' => 'StatisticController@getRatingScore'
+    ]);
+
+    Route::get('/owner/{shop_id}/getCustomerScore', [
+        'as' => 'statistic.getCustomerScore',
+        'uses' => 'StatisticController@getCustomerScore'
+    ]);
+
+    Route::get('/owner/{shop_id}/getGenderScore', [
+        'as' => 'statistic.getGenderScore',
+        'uses' => 'StatisticController@getGenderScore'
+    ]);
+
+    Route::get('/owner/{shop_id}/getAgeScore', [
+        'as' => 'statistic.getAgeScore',
+        'uses' => 'StatisticController@getAgeScore'
+    ]);
+
+    Route::get('/owner/{shop_id}/getCountryScore', [
+        'as' => 'statistic.getCountryScore',
+        'uses' => 'StatisticController@getCountryScore'
+    ]);
+
+    Route::get('/owner/{shop_id}/getMenuData', [
+        'as' => 'statistic.getMenuData',
+        'uses' => 'StatisticController@getMenuData'
     ]);
 
 // <-- Communication Routes

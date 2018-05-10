@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Layout extends Model
 {
     //
-    protected $table = 'order';
+    protected $table = 'layout';
 
     protected $fillable = [
-        'shop_id', 'user_num', 'order_date'
+        'shop_id', 'layout_data'
     ];
 }

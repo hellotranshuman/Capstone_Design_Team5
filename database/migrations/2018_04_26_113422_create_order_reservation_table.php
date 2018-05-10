@@ -31,7 +31,7 @@ class CreateOrderReservationTable extends Migration
                 ->references('id')->on('restaurants')
                 ->onDelete('cascade');
             $table->foreign('order_num')
-                ->references('order_num')->on('order')
+                ->references('order_num')->on('order_list')
                 ->onDelete('cascade');
 
             $table->timestamps();

@@ -223,7 +223,7 @@ class ReviewController extends Controller
            $reviewArray['filename']  = $listData->path . $listData->filename;
 
            $currentShopId = $listData->shopid;
-           $reviewArray['reviewLink'] = '/restaurants/' . $currentShopId . '/review';
+           $reviewArray['reviewLink'] = '/restaurant/' . $currentShopId . '/review';
 
            array_push($reviewData, $reviewArray);
        }
@@ -232,7 +232,6 @@ class ReviewController extends Controller
            'userReviewList' => $reviewData,
             'likeNum'       => $likeData,
         ]);
-
 
     }
 }

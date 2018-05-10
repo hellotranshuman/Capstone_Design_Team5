@@ -78,11 +78,16 @@ class MenuController extends Controller
            // <-- Option Data Select
            $optionData  = Menu_Option::where('menu_id', $menuArray['id'])
                                         ->get();
+           $optionCount = Menu_Option::where('menu_id', $menuArray['id'])
+                            ->count();
+            $menuArray['opNum'] = $optionCount;
+            $optionKey = 1;
 
            foreach ($optionData as $option)
            {
+
                // <-- Option Data Save in Array
-               $optionKey = 1;
+
                $opNum = $option->opnum;
                $keyName = 'optionName' . $optionKey;
                $menuArray[$keyName] = $option->name;
@@ -92,25 +97,34 @@ class MenuController extends Controller
                                             ->get();
 
                $subOpKey = 1;
+
                foreach ($subOptionData as $subOption)
                {
                    // <-- SubOption Data Save in Array
-                   $subOpKeyName = 'optionValue' . $subOpKey;
+                   $subOpKeyName = $optionKey .'optionValue' . $subOpKey;
                    $menuArray[$subOpKeyName]  = $subOption->name;
                    $subOpKey++;
-               }
-                   $menuArray['subOpNum'] = --$subOpKey;
-           }
 
-           array_push($totalMenuArray, $menuArray);
+               }
+               $subOpNumName = 'subOpNum' . $optionKey;
+               $menuArray[$subOpNumName] = --$subOpKey;
+
+               $optionKey++;
+
+           }
+            array_push($totalMenuArray, $menuArray);
 
         }
+        echo $shop_id;
+        echo $category;
+        echo var_dump($totalMenuArray);
 
+        /*
         return response()->json([
             'shopId' => $shop_id,
             'category' => $category,
             'menu'  => $totalMenuArray,
-        ]);
+        ]);*/
 
     }
 

@@ -38958,6 +38958,9 @@ var num = 0; // 옵션 갯수
 //
 //
 //
+//
+//
+//
 
 
 
@@ -38975,23 +38978,7 @@ var palet_cntxt = null; // palette context
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     created: function created() {
-        var _this = this;
-
-        // this.dragSelect();
-        // 메뉴 레이아웃 가져오기
-        var url = '';
-        var layoutNum = null;
-        var shop_id = this.$route.params.shop_id;
-
-        url = '/owner/' + shop_id + '/getLayout';
-
-        // 템플릿 가져오기
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (response) {
-            layoutNum = response.data.layoutNum;
-            _this.selected_template = "기본 템플릿" + layoutNum;
-        }).catch(function (ex) {
-            alert('레이아웃 로드 실패');
-        });
+        // this.dragSelect();     
     },
     data: function data() {
         return {
@@ -39015,7 +39002,6 @@ var palet_cntxt = null; // palette context
             sideToolBar: null, // 사이드 툴바 용 
             item: null, // 사이드 툴바에서 선택한 리스트 값 저장
             Resizer: null, // 엘리먼트 리사이즈 용 
-            RCmenu: 'item',
 
             // 선 색 || 영역 색상 구분용
             appColor: null
@@ -39049,66 +39035,86 @@ var palet_cntxt = null; // palette context
 
         // 메뉴판 제작 - 작업 내용 저장하기.
         createSave: function createSave() {
-            var MenuNum = document.getElementById('MenuNum');
-            var MenuMargin = document.getElementById('MenuMargin');
-            var workSpace = document.getElementById('workSpace'); // 작업 공간 div 가져오기
             var formData = new FormData(); // 엘리먼트들을 담음
+            var browser_w = window.outerWidth; // 브라우저의 width
+            var browser_h = window.outerHeight; // 브라우저의 height
+            var MenuNum = document.getElementById('MenuNum'); // 한줄에 표시될 메뉴 갯수
+            var MenuMargin = document.getElementById('MenuMargin'); // 메뉴들 간격 설정
+            var workSpace = document.getElementById('workSpace'); // 작업 공간 div 가져오기
+            var array = {}; // 요소들의 css 값을 담을 배열, json으로 변환
 
-            for (var i = 0; i < workSpace.children.length; i++) {
-                var className = workSpace.children[i].getAttribute('class').split(' ')[0]; // 클래스 명 찾기
-                var item_w = workSpace.children[i].style.width.replace('px', ''); // 엘리먼트의 width
-                var item_h = workSpace.children[i].style.height.replace('px', ''); // 엘리먼트의 height
-                var browser_w = window.outerWidth; // 브라우저의 width
-                var browser_h = window.outerHeight; // 브라우저의 height
+            // 메뉴 영역
+            var menu = document.getElementsByClassName('createdMenu')[0];
+            var menu_w = menu.style.width.replace('px', '');
+            var menu_h = menu.style.height.replace('px', '');
+            var menu_t = menu.style.top.replace('px', '');
+            var menu_l = menu.style.left.replace('px', '');
 
-                // 퍼센트로 바꾸기
-                var set_width = Math.ceil(item_w / browser_w * 100) + "%";
-                var set_height = Math.ceil(item_h / browser_h * 100) + "%";
+            // 메뉴 영역 스타일 값 페센트로 바꾸기.
+            menu.style.width = Math.ceil(menu_w / browser_w * 100) + "%";
+            menu.style.height = Math.ceil(menu_h / browser_h * 100) + "%";
+            menu.style.top = Math.ceil(menu_t / browser_h * 100) + "%";
+            menu.style.left = Math.ceil(menu_l / browser_w * 100) + "%";
 
-                workSpace.children[i].style.width = set_width;
-                workSpace.children[i].style.height = set_height;
+            // 배열에 style 값 담기
+            array['createdMenu'] = {
+                'width': menu.style.width,
+                'height': menu.style.height,
+                'top': menu.style.top,
+                'left': menu.style.left,
+                'border': menu.style.border,
+                'borderRadius': menu.style.borderRadius,
+                'color': menu.style.color
+            };
 
-                formData.append(className, workSpace.children[i]);
+            // 메뉴 안의 요소들 가공하기 & 배열에 담기.
+            for (var i = 0; i < menu.children.length; i++) {
+                if (menu.children[i].getAttribute('class') !== 'resizer') {
+                    // 메뉴 영역 안의 메뉴 요소들 스타일 값, 클래스
+                    var element = menu.children[i];
+                    var item_w = element.style.width.replace('px', '');
+                    var item_h = element.style.height.replace('px', '');
+                    var item_t = element.style.top.replace('px', '');
+                    var item_l = element.style.left.replace('px', '');
+                    var className = element.getAttribute('class').split(' ')[0]; // 클래스 명 찾기
+
+                    // width, height, top, left 픽셀 값에서 퍼센트로 바꾸기 
+                    element.style.width = Math.ceil(item_w / menu_w * 100) + "%";
+                    element.style.height = Math.ceil(item_h / menu_h * 100) + "%";
+                    element.style.top = Math.ceil(item_t / menu_h * 100) + "%";
+                    element.style.left = Math.ceil(item_l / menu_w * 100) + "%";
+
+                    // 배열에 style 값 담기
+                    array[className] = {
+                        'width': element.style.width,
+                        'height': element.style.height,
+                        'top': element.style.top,
+                        'left': element.style.left,
+                        'border': element.style.border,
+                        'borderRadius': element.style.borderRadius,
+                        'color': element.style.color
+                    };
+                    //formData.append(className, element.style); 
+                }
             }
+
+            array['MenuNum'] = MenuNum.value; // 한 줄에 출력 될 메뉴의 갯수 
+            array['MenuMargin'] = MenuMargin.value + 'px'; // 메뉴 간의 간격 설정
 
             // 메뉴 출력 설정 사항 저장하기.
-            formData.append('MenuNum', MenuNum.value); // 한 줄에 출력 될 메뉴의 갯수 
-            formData.append('MenuMargin', MenuMargin.value + 'px'); // 메뉴 간의 간격 설정
+            formData.append('Menu', JSON.stringify(array)); // 메뉴 스타일.
+            formData.append('shop_id', this.$route.params.shop_id);
+            // formData 확인하기
+            // for(var pair of formData.entries()) {
+            //     console.log(pair[0]+ ': '+ pair[1]); 
+            // }
 
-            // formData 확인
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = formData.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var pair = _step.value;
-
-                    console.log(pair[0] + ': ' + pair[1]);
-                }
-
-                // 저장하기.
-                // axios.post('선주야 부탁해', formData )
-                // .then( (response) => {
-                //     
-                // })
-                // .catch((ex)=>{
-                //     alert('저장 실패');
-                // });
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
+            // 저장하기.
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/saveCustomLayout', formData).then(function (response) {
+                alert(response.data.msg);
+            }).catch(function (ex) {
+                alert('저장 실패');
+            });
         },
 
         // 드래그로 엘리먼트 다중 선택하기. 
@@ -39195,44 +39201,68 @@ var palet_cntxt = null; // palette context
             var createdThing = document.createElement('div'); // 생성할 element
             var workSpace = document.getElementById('workSpace'); // 작업 공간 div 가져오기
             var click_menu = document.getElementById("click_menu"); // 마우스 우 클릭 시 나타나는 메뉴
+            var menu = null;
+
+            // 메뉴판 요소는 각각 하나씩만 생성할 수 있다.
+            if (workSpace.children.length !== 0) {
+                var created = null;
+                menu = document.getElementsByClassName('createdMenu')[0];
+
+                if (menu.getAttribute('class').split(' ')[0] == this.item) {
+                    return alert('이미 생성한 요소입니다.');
+                }
+
+                for (var i = 0; i < menu.children.length; i++) {
+                    created = menu.children[i].getAttribute('class').split(' ')[0];
+                    if (created == this.item) {
+                        return alert('이미 생성한 요소입니다.');
+                    }
+                }
+            }
+            // 메뉴 영역을 가장 먼저 만들어야함.
+            else if (workSpace.children.length == 0) {
+                    if (this.item !== 'createdMenu') {
+                        return alert('메뉴 영역이 없습니다.');
+                    }
+                }
 
             switch (this.item) {
                 // 메뉴 영역 만들기
-                case 'createMenu':
+                case 'createdMenu':
                     createdThing.innerText = '메뉴 영역';
-                    createdThing.style.width = '300px';
-                    createdThing.style.height = '200px';
-                    createdThing.classList.add('createdMenu');break;
+                    createdThing.style.width = '400px';
+                    createdThing.style.height = '300px';
+                    createdThing.classList.add('createdMenu');break;createdMenu;
 
                 // 메뉴 이미지 만들기
-                case 'createImg':
+                case 'createdImg':
                     createdThing.style.width = '200px';
                     createdThing.style.height = '200px';
                     createdThing.classList.add('createdImg');break;
 
                 // 메뉴 이름 만들기
-                case 'createName':
+                case 'createdName':
                     createdThing.innerText = '메뉴명';
                     createdThing.style.width = '200px';
                     createdThing.style.height = '50px';
                     createdThing.classList.add('createdName');break;
 
                 // 메뉴 설명 만들기
-                case 'createExpl':
+                case 'createdExpl':
                     createdThing.innerText = '메뉴 설명';
                     createdThing.style.width = '200px';
                     createdThing.style.height = '80px';
                     createdThing.classList.add('createdExpl');break;
 
                 // 메뉴 가격
-                case 'createPrice':
+                case 'createdPrice':
                     createdThing.innerText = '메뉴 가격';
                     createdThing.style.width = '100px';
                     createdThing.style.height = '50px';
                     createdThing.classList.add('createdPrice');break;
 
                 // 메뉴 선택 
-                case 'createSelect':
+                case 'createdSelect':
                     createdThing.innerText = '메뉴 선택';
                     createdThing.style.width = '100px';
                     createdThing.style.height = '50px';
@@ -39241,32 +39271,24 @@ var palet_cntxt = null; // palette context
 
             // 마우스 오른쪽 클릭 시 메뉴 창 열기.
             createdThing.addEventListener("contextmenu", function () {
-                event.preventDefault();
-                target_Obj = createdThing;
-                this.RCmenu = 'item';
+                target_Obj = event.target;
+                target_Obj.classList.add("click_color");
 
-                // if(target_Obj.style.border !== '2px solid red'){
-                //     target_Obj.style.border = '2px solid blue';
-                // }
-                click_menu.classList.add("active");
                 click_menu.style.top = event.y + "px";
                 click_menu.style.left = event.x + "px";
+                click_menu.classList.add("active");
+                event.preventDefault();
             });
 
             // 마우스 왼쪽 클릭 시 메뉴 창 닫기.
             workSpace.addEventListener("click", function () {
-                // if(target_Obj.classList[0] !== 'groupDiv' && target_Obj.style.border == '2px solid blue'){
-                //     target_Obj.style.border = '2px solid black';
-                // }
-                // else if(target_Obj.classList[0] === 'groupDiv'){ 
-                //     target_Obj.style.border = '1px solid lightgreen';
-                // }
+                target_Obj.classList.remove('click_color');
                 click_menu.classList.remove("active");
             });
 
             // 생성된 element                         
-            createdThing.style.top = '100px';
-            createdThing.style.left = '100px';
+            createdThing.style.top = '1px';
+            createdThing.style.left = '1px';
             createdThing.style.zIndex = 10;
             createdThing.onmousedown = this.startDrag;
             createdThing.classList.add('dragElement');
@@ -39278,9 +39300,14 @@ var palet_cntxt = null; // palette context
             resizer.onmousedown = this.initResize;
             resizer.classList.add('resizer');
 
-            // 포함 시키기 ( 크기 조절기 -> 생성된 element -> 작업 공간 )
+            // 포함 시키기 
             createdThing.appendChild(resizer);
-            workSpace.appendChild(createdThing);
+
+            if (this.item === 'createdMenu') {
+                workSpace.appendChild(createdThing);
+            } else {
+                menu.appendChild(createdThing);
+            }
         }, // end of createSomething
 
         // 엘리먼트 더블 클릭 시 테두리 색을 빨간색으로 바꿈.
@@ -39297,8 +39324,8 @@ var palet_cntxt = null; // palette context
             // 클릭한 리스트에 맞춰서 z-index 값 변경하기
             if (event.target.id === 'goFont') target_Obj.style.zIndex++;else if (event.target.id === 'goBack') target_Obj.style.zIndex--;
 
-            // 테두리 색 되돌리기.
-            if (target_Obj.classList[0] !== 'groupDiv') target_Obj.style.border = '2px solid black';else if (target_Obj.classList[0] === 'groupDiv') target_Obj.style.border = '1px solid lightgreen';
+            // 테두리 없애기
+            target_Obj.classList.remove('click_color');
 
             // 우클릭 메뉴창 닫기
             click_menu.classList.remove("active");
@@ -39329,11 +39356,8 @@ var palet_cntxt = null; // palette context
                 target_Obj.style.border = 0;
             }
 
-            // 글자 색 설정.
-            target_Obj.style.color = textColor;
-
-            // 영역 색상 설정.
-            target_Obj.style.backgroundColor = areaColor;
+            target_Obj.style.color = textColor; // 글자 색 설정.            
+            target_Obj.style.backgroundColor = areaColor; // 영역 색상 설정.
 
             // 영역 모양 설정
             switch (areaStyle) {
@@ -39345,19 +39369,15 @@ var palet_cntxt = null; // palette context
                     target_Obj.style.borderRadius = '100%';break;
             }
             designSet.classList.remove('active');
+            target_Obj.classList.remove('click_color');
         },
         // 우클릭 메뉴창 : 영역 서식 창 닫기.
         CloseDesignSet: function CloseDesignSet() {
             var designSet = document.getElementById('designSet'); // 영역 서식 메뉴창
 
-            // 테두리 색 되돌리기.
-            // if(target_Obj.classList[0] !== 'groupDiv')            
-            //     target_Obj.style.border = '2px solid black';  
-            // else if(target_Obj.classList[0] === 'groupDiv') 
-            //     target_Obj.style.border = '1px solid lightgreen';
-
             // 영역 서식 메뉴창 닫기. 
             designSet.classList.remove('active');
+            target_Obj.classList.remove('click_color');
         },
 
         // 우클릭 메뉴창 : 색 없음
@@ -94634,12 +94654,13 @@ if(false) {
 /* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(642);
 exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 이미지 비율용 스타일 */\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n/* 메뉴 제작 작업 공간 */\n#workSpace {\n    width: 100%; \n    height: 90%; \n    position:absolute; \n    overflow:hidden;\n}\n\n/* 메뉴 출력 설정 */\n#MenuPrt {\n    width: 30%;  \n    z-index:100;\n    margin-top: 5%;\n    border: 3px solid #585858; \n    background-color: #EFF5FB; \n    position: absolute;\n    display: none;\n}\n#MenuPrt.active { \n    display: block;  \n    left : 35%;\n}\n\n/* 리스트 스타일 */\n.list-style{\n    font-size: 1.5rem;\n}\n\n/* 메뉴 영역 */\n.createdMenu { \n    border: 2px solid black; \n    font-size: 1.5rem;\n    text-align: center;\n    background-color:white;\n}\n/* 메뉴 이미지 영역 */\n.createdImg { \n    border: 2px solid black; \n   /* background-image: url('./image.jpg');*/\n    background-size: 100% 100%;\n}\n/* 메뉴 이름 영역 */\n.createdName { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n    background-color:white;\n} \n/* 메뉴 설명 영역 */\n.createdExpl { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n    background-color:white;\n}\n/* 메뉴 가격 영역 */\n.createdPrice { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n    background-color:white;\n}\n/* 메뉴 선택 영역 */\n.createdSelect { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n\n/* 엘리먼트 움직이기 용 */\n.dragElement { \n    position: absolute;\n    cursor: pointer;\n}\n/* div 크기 조절기 */\n.resizer {\n    width: 10px;\n    height: 10px; \n    right: 0;\n    bottom: 0;\n    z-index: 90;\n    position: absolute;\n    cursor: se-resize;\n    background-color:salmon;\n}\n\n/* 마우스 메뉴 */\nul {\n    margin: 0px;\n    padding: 0px;\n    font-size: 1.2rem;\n}\nhr {\n    margin: 3%;\n    border: thin solid #D8D8D8;\n}\n.context-menus {\n    width: 20%;\n    border: 1px solid black;\n    z-index:100;\n    position: absolute;\n    display: none;\n    text-align: center;\n}\n.context-menus.active {\n    display: block;\n    background-color: #EFF5FB;\n}\n.context-menus.active>ul>li {\n    list-style: none;\n    padding: 10px;\n    color: #424242;\n}\n.context-menus.active>ul>li:hover {\n    background-color: lightgreen;\n}\n\n/* 영역 서식 메뉴창 */\n#designSet {\n    width: 40%; \n    max-height: 80%;\n    z-index:100;\n    border: 3px dashed #585858; \n    padding-bottom: 3%;\n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#designSet.active {\n    top : 15%;\n    left: 30%;\n    display: block;\n    overflow: scroll;\n}\n.designSet_title {\n    font-size: 2rem;\n    margin-left: 3%;\n    color: cadetblue;\n}\n.designSet_tr {\n    width: 90%;\n    font-size: 1.3rem;\n    margin: auto;\n    margin-top: 6%;\n}\n.designSet_name {color: #6E6E6E;\n}\n.designSet_ipt{\n    width: 50%;\n    font-size: 1.3rem;\n    margin-left: 5%;\n    text-align: center;\n    color: #6E6E6E; \n    border-bottom: 1.5px solid #6E6E6E;\n}\n.designSet_color {\n    width: 10%; \n    height: 0;\n    border: 1px solid black;\n    margin-left: 5%;\n    margin-right: 3%; \n    position: relative; \n    float: left;\n    overflow: hidden;\n    padding-bottom: 9%;\n}\n.designSet_color_inner{\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    position: absolute;\n}\n.designSet_color_btn {\n    font-size: 1.5rem;\n    margin-left: 5%;\n    float: left;\n    color: cadetblue;\n} \n\n/* color-picker */\n#colorPicker{\n    width: auto; \n    z-index:100;\n    border: 3px solid #585858; \n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#colorPicker.active {\n    top : 15%;\n    left: 40%;\n    display:inline-block; \n    overflow: hidden;\n}\n#palette { width:256px; height:256px;\n}\n#bar { width:20px; height:256px;\n}\n#click_color {\n    width: 100%; \n    height: 40px;\n    font-size: 1.5rem;\n    border-bottom: 3px solid #585858;  \n    color: #6E6E6E; \n    text-align: center;\n}\n.color_btn {\n    width: 50%;\n    font-size: 1.5rem;\n    text-align: center;\n    float: left;\n    color: #6E6E6E;\n}\n\n/* 그룹화 div */\n.groupDiv {\n    width: auto;\n    height: auto;\n    min-width: 10px;\n    min-height: 10px;\n    overflow: hidden; \n    border: 1px solid lightgreen;\n}\n\n/* 드래그로 div 선택 */\n.selecter {\n    width: 100px;\n    height: 100px;\n    opacity: 0.2;\n    z-index: 100;\n    background-color: aqua;\n    position: absolute;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 이미지 비율용 스타일 */\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n/* 메뉴 제작 작업 공간 */\n#workSpace {\n    width: 100%; \n    height: 100%; \n    position:relative; \n    overflow:hidden;\n    margin: auto;\n    background-color: rgb(238, 238, 238);\n}\n\n/* 메뉴 출력 설정 */\n#MenuPrt {\n    width: 30%;  \n    z-index:100;\n    margin-top: 5%;\n    border: 3px solid #585858; \n    background-color: #EFF5FB; \n    position: absolute;\n    display: none;\n}\n#MenuPrt.active { \n    display: block;  \n    left : 35%;\n}\n\n/* 리스트 스타일 */\n.list-style{\n    font-size: 1.5rem;\n}\n\n/* 메뉴 영역 */\n.createdMenu { \n    border: 2px dashed black; \n    font-size: 1.5rem;\n    text-align: center; \n    overflow: hidden;\n    background-color: white;\n}\n/* 메뉴 이미지 영역 */\n.createdImg { \n    background-image: url(" + escape(__webpack_require__(648)) + ");\n    background-size: 100% 100%;\n}\n/* 메뉴 이름 영역 */\n.createdName { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n} \n/* 메뉴 설명 영역 */\n.createdExpl { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 가격 영역 */\n.createdPrice { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 선택 영역 */\n.createdSelect { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n\n/* 엘리먼트 움직이기 용 */\n.dragElement { \n    position: absolute;\n    cursor: pointer;\n}\n/* div 크기 조절기 */\n.resizer {\n    width: 10px;\n    height: 10px; \n    right: 0;\n    bottom: 0;\n    z-index: 90;\n    position: absolute;\n    cursor: se-resize;\n    background-color:salmon;\n}\n\n/* 마우스 메뉴 */\nul {\n    margin: 0px;\n    padding: 0px;\n    font-size: 1.2rem;\n}\nhr {\n    margin: 3%;\n    border: thin solid #D8D8D8;\n}\n.context-menus {\n    width: 20%;\n    border: 1px solid black;\n    z-index:100;\n    position: absolute;\n    display: none;\n    text-align: center;\n}\n.context-menus.active {\n    display: block;\n    background-color: #EFF5FB;\n}\n.context-menus.active>ul>li {\n    list-style: none;\n    padding: 10px;\n    color: #424242;\n}\n.context-menus.active>ul>li:hover {\n    background-color: lightgreen;\n}\n.click_color {\n    border:2px solid blue;\n}\n\n/* 영역 서식 메뉴창 */\n#designSet {\n    width: 40%; \n    max-height: 80%;\n    z-index:100;\n    border: 3px dashed #585858; \n    padding-bottom: 3%;\n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#designSet.active {\n    top : 15%;\n    left: 30%;\n    display: block;\n    overflow: scroll;\n}\n.designSet_title {\n    font-size: 2rem;\n    margin-left: 3%;\n    color: cadetblue;\n}\n.designSet_tr {\n    width: 90%;\n    font-size: 1.3rem;\n    margin: auto;\n    margin-top: 6%;\n}\n.designSet_name {color: #6E6E6E;\n}\n.designSet_ipt{\n    width: 50%;\n    font-size: 1.3rem;\n    margin-left: 5%;\n    text-align: center;\n    color: #6E6E6E; \n    border-bottom: 1.5px solid #6E6E6E;\n}\n.designSet_color {\n    width: 10%; \n    height: 0;\n    border: 1px solid black;\n    margin-left: 5%;\n    margin-right: 3%; \n    position: relative; \n    float: left;\n    overflow: hidden;\n    padding-bottom: 9%;\n}\n.designSet_color_inner{\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    position: absolute;\n}\n.designSet_color_btn {\n    font-size: 1.5rem;\n    margin-left: 5%;\n    float: left;\n    color: cadetblue;\n} \n\n/* color-picker */\n#colorPicker{\n    width: auto; \n    z-index:100;\n    border: 3px solid #585858; \n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#colorPicker.active {\n    top : 15%;\n    left: 40%;\n    display:inline-block; \n    overflow: hidden;\n}\n#palette { width:256px; height:256px;\n}\n#bar { width:20px; height:256px;\n}\n#click_color {\n    width: 100%; \n    height: 40px;\n    font-size: 1.5rem;\n    border-bottom: 3px solid #585858;  \n    color: #6E6E6E; \n    text-align: center;\n}\n.color_btn {\n    width: 50%;\n    font-size: 1.5rem;\n    text-align: center;\n    float: left;\n    color: #6E6E6E;\n}\n\n/* 그룹화 div */\n.groupDiv {\n    width: auto;\n    height: auto;\n    min-width: 10px;\n    min-height: 10px;\n    overflow: hidden; \n    border: 1px solid lightgreen;\n}\n\n/* 드래그로 div 선택 */\n.selecter {\n    width: 100px;\n    height: 100px;\n    opacity: 0.2;\n    z-index: 100;\n    background-color: aqua;\n    position: absolute;\n}\n\n", ""]);
 
 // exports
 
@@ -95574,7 +95595,7 @@ var render = function() {
                                       }
                                     ],
                                     "!click": function($event) {
-                                      _vm.item = "createMenu"
+                                      _vm.item = "createdMenu"
                                     }
                                   }
                                 },
@@ -95613,7 +95634,7 @@ var render = function() {
                                       }
                                     ],
                                     "!click": function($event) {
-                                      _vm.item = "createImg"
+                                      _vm.item = "createdImg"
                                     }
                                   }
                                 },
@@ -95652,7 +95673,7 @@ var render = function() {
                                       }
                                     ],
                                     "!click": function($event) {
-                                      _vm.item = "createName"
+                                      _vm.item = "createdName"
                                     }
                                   }
                                 },
@@ -95691,7 +95712,7 @@ var render = function() {
                                       }
                                     ],
                                     "!click": function($event) {
-                                      _vm.item = "createExpl"
+                                      _vm.item = "createdExpl"
                                     }
                                   }
                                 },
@@ -95730,7 +95751,7 @@ var render = function() {
                                       }
                                     ],
                                     "!click": function($event) {
-                                      _vm.item = "createPrice"
+                                      _vm.item = "createdPrice"
                                     }
                                   }
                                 },
@@ -95769,7 +95790,7 @@ var render = function() {
                                       }
                                     ],
                                     "!click": function($event) {
-                                      _vm.item = "createSelect"
+                                      _vm.item = "createdSelect"
                                     }
                                   }
                                 },
@@ -96154,7 +96175,17 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { attrs: { id: "workSpace" } })
+                      _c(
+                        "div",
+                        {
+                          staticStyle: {
+                            width: "100%",
+                            height: "90%",
+                            position: "absolute"
+                          }
+                        },
+                        [_c("div", { attrs: { id: "workSpace" } })]
+                      )
                     ],
                     1
                   )
@@ -103754,6 +103785,40 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 641 */,
+/* 642 */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
+}
+
+
+/***/ }),
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/image.jpg?69d511a17ca04bc041e9bbf9a9765895";
 
 /***/ })
 /******/ ]);

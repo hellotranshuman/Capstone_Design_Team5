@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
-use App\Order;
+use App\OrderList;
 use App\Order_Menu;
 use App\Order_Option;
 use App\Resset;
@@ -36,14 +36,14 @@ class ReservationController extends Controller
 
        if($request->get('menu_select') == 'true') {
            /*
-           // 먼저 Order Table에 Order 추가 후 Reservation Table에 등록
-           Order::create([
+           // 먼저 OrderList Table에 OrderList 추가 후 Reservation Table에 등록
+           OrderList::create([
               'shop_id' => $request->get('shop_id'),
                'user_num' => auth()->user()->id,
                'order_date' => $request->get('reservation_date')
            ]);
 
-           $orderData = Order::where('shop_id', $request->get('shop_id'))
+           $orderData = OrderList::where('shop_id', $request->get('shop_id'))
                         ->where('user_num', auth()->user()->id)
                         ->orderByRaw('order_num DESC')
                         ->first();

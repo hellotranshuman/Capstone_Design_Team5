@@ -17,6 +17,7 @@
                 </v-flex>
             </v-layout>
 
+            <!-- 기본 메뉴판 템플릿 선택하기. -->
             <v-layout text-xs-center mb-5>
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿1 -->
                 <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
@@ -154,7 +155,7 @@
                 </v-flex>
             </v-layout>
 
-            <!-- 제작 툴로 이동. -->
+            <!-- 제작 툴로 이동하기 -->
             <v-layout elevation-3>
                 <v-flex xs12>
                     <v-card>
@@ -249,7 +250,7 @@
                                 <v-divider></v-divider>
                                 <!-- 메뉴 영역 div 생성 -->
                                 <v-list-tile @click="createSomething" class='mt-4'
-                                    @click.capture="item = 'createMenu'"
+                                    @click.capture="item = 'createdMenu'"
                                     @click.stop="sideToolBar = !sideToolBar">
                                     <v-list-tile-action>
                                         <v-icon>subtitles</v-icon>
@@ -261,7 +262,7 @@
 
                                 <!-- 메뉴 이미지 -->
                                 <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createImg'"
+                                    @click.capture="item = 'createdImg'"
                                     @click.stop="sideToolBar = !sideToolBar">
                                     <v-list-tile-action>
                                         <v-icon>image</v-icon>
@@ -273,7 +274,7 @@
 
                                 <!-- 메뉴 명 생성 -->
                                 <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createName'"
+                                    @click.capture="item = 'createdName'"
                                     @click.stop="sideToolBar = !sideToolBar">
                                     <v-list-tile-action>
                                         <v-icon>title</v-icon>
@@ -285,7 +286,7 @@
 
                                 <!-- 메뉴 설명 생성 -->
                                 <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createExpl'"
+                                    @click.capture="item = 'createdExpl'"
                                     @click.stop="sideToolBar = !sideToolBar">
                                     <v-list-tile-action>
                                         <v-icon>assignment</v-icon>
@@ -297,7 +298,7 @@
 
                                 <!-- 메뉴 가격 -->
                                 <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createPrice'"
+                                    @click.capture="item = 'createdPrice'"
                                     @click.stop="sideToolBar = !sideToolBar">
                                     <v-list-tile-action>
                                         <v-icon>attach_money</v-icon>
@@ -309,7 +310,7 @@
 
                                 <!-- 메뉴 선택 버튼 -->
                                 <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createSelect'"
+                                    @click.capture="item = 'createdSelect'"
                                     @click.stop="sideToolBar = !sideToolBar">
                                     <v-list-tile-action>
                                         <v-icon>check_circle</v-icon>
@@ -443,7 +444,9 @@
                         </div>
 
                         <!-- 작업 공간 @mousedown="dragSelect"-->
-                        <div id="workSpace"></div>
+                        <div style="width:100%; height:90%; position:absolute;">
+                            <div id="workSpace"></div>
+                        </div>
                     </v-card>
                 </v-dialog>
             </v-layout>
@@ -469,23 +472,7 @@ var palet_cntxt = null;             // palette context
 export default {  
 
     created(){
-        // this.dragSelect();
-        // 메뉴 레이아웃 가져오기
-        var url = '';
-        var layoutNum = null;
-        var shop_id = this.$route.params.shop_id;
-
-        url = '/owner/' + shop_id + '/getLayout';
-
-        // 템플릿 가져오기
-        axios.get(url)
-            .then( (response) => {
-                layoutNum = response.data.layoutNum;
-                this.selected_template = "기본 템플릿" + layoutNum;
-            })
-            .catch((ex)=>{
-                alert('레이아웃 로드 실패');
-            });
+        // this.dragSelect();     
     },
 
     data () {
@@ -510,8 +497,7 @@ export default {
             sideToolBar : null,                      // 사이드 툴바 용 
             item        : null,                      // 사이드 툴바에서 선택한 리스트 값 저장
             Resizer     : null,                      // 엘리먼트 리사이즈 용 
-            RCmenu      : 'item',
- 
+             
             // 선 색 || 영역 색상 구분용
             appColor : null,
         }
@@ -546,45 +532,88 @@ export default {
  
         // 메뉴판 제작 - 작업 내용 저장하기.
         createSave : function() {
-            let MenuNum    = document.getElementById('MenuNum');
-            let MenuMargin = document.getElementById('MenuMargin');
-            let workSpace  = document.getElementById('workSpace');                     // 작업 공간 div 가져오기
-            let formData   = new FormData();                                           // 엘리먼트들을 담음
+            let formData   = new FormData();                                // 엘리먼트들을 담음
+            let browser_w  = window.outerWidth;                             // 브라우저의 width
+            let browser_h  = window.outerHeight;                            // 브라우저의 height
+            let MenuNum    = document.getElementById('MenuNum');            // 한줄에 표시될 메뉴 갯수
+            let MenuMargin = document.getElementById('MenuMargin');         // 메뉴들 간격 설정
+            let workSpace  = document.getElementById('workSpace');          // 작업 공간 div 가져오기
+            let array      = {};                                            // 요소들의 css 값을 담을 배열, json으로 변환
+
+            // 메뉴 영역
+            let menu   = document.getElementsByClassName('createdMenu')[0];
+            let menu_w = menu.style.width.replace('px', '');
+            let menu_h = menu.style.height.replace('px', '');
+            let menu_t = menu.style.top.replace('px', '');
+            let menu_l = menu.style.left.replace('px', '');
+
+            // 메뉴 영역 스타일 값 페센트로 바꾸기.
+            menu.style.width  = Math.ceil( menu_w / browser_w * 100 ) + "%";
+            menu.style.height = Math.ceil( menu_h / browser_h * 100 ) + "%"; 
+            menu.style.top    = Math.ceil( menu_t / browser_h * 100 ) + "%";
+            menu.style.left   = Math.ceil( menu_l / browser_w * 100 ) + "%";
             
-            for(let i = 0; i < workSpace.children.length; i++){
-                let className = workSpace.children[i].getAttribute('class').split(' ')[0];  // 클래스 명 찾기
-                let item_w    = workSpace.children[i].style.width.replace('px', '');        // 엘리먼트의 width
-                let item_h    = workSpace.children[i].style.height.replace('px', '');       // 엘리먼트의 height
-                let browser_w = window.outerWidth;                                          // 브라우저의 width
-                let browser_h = window.outerHeight;                                         // 브라우저의 height
-                
-                // 퍼센트로 바꾸기
-                let set_width  = Math.ceil( item_w / browser_w * 100 ) + "%";          
-                let set_height = Math.ceil( item_h / browser_h * 100 ) + "%";
+            // 배열에 style 값 담기
+            array['createdMenu'] ={ 
+                'width'         : menu.style.width,
+                'height'        : menu.style.height,
+                'top'           : menu.style.top,
+                'left'          : menu.style.left,
+                'border'        : menu.style.border,
+                'borderRadius'  : menu.style.borderRadius,
+                'color'         : menu.style.color,
+            };
 
-                workSpace.children[i].style.width  = set_width;
-                workSpace.children[i].style.height = set_height;
+            // 메뉴 안의 요소들 가공하기 & 배열에 담기.
+            for(let i = 0; i < menu.children.length; i++){
+                if( menu.children[i].getAttribute('class') !== 'resizer' ){
+                    // 메뉴 영역 안의 메뉴 요소들 스타일 값, 클래스
+                    let element   = menu.children[i];
+                    let item_w    = element.style.width.replace('px', '');         
+                    let item_h    = element.style.height.replace('px', '');        
+                    let item_t    = element.style.top.replace('px', '');
+                    let item_l    = element.style.left.replace('px', '');
+                    let className = element.getAttribute('class').split(' ')[0];         // 클래스 명 찾기
+                    
+                    // width, height, top, left 픽셀 값에서 퍼센트로 바꾸기 
+                    element.style.width  = Math.ceil( item_w / menu_w * 100 ) + "%"; 
+                    element.style.height = Math.ceil( item_h / menu_h * 100 ) + "%";
+                    element.style.top    = Math.ceil( item_t / menu_h * 100 ) + "%"; 
+                    element.style.left   = Math.ceil( item_l / menu_w * 100 ) + "%";
 
-                formData.append(className, workSpace.children[i]);    
-            } 
+                    // 배열에 style 값 담기
+                    array[className] ={ 
+                        'width'         : element.style.width,
+                        'height'        : element.style.height,
+                        'top'           : element.style.top,
+                        'left'          : element.style.left,
+                        'border'        : element.style.border,
+                        'borderRadius'  : element.style.borderRadius,
+                        'color'         : element.style.color,
+                    };
+                    //formData.append(className, element.style); 
+                }
+            }  
+
+            array['MenuNum']    = MenuNum.value;                        // 한 줄에 출력 될 메뉴의 갯수 
+            array['MenuMargin'] = MenuMargin.value + 'px';              // 메뉴 간의 간격 설정
 
             // 메뉴 출력 설정 사항 저장하기.
-            formData.append('MenuNum', MenuNum.value);                      // 한 줄에 출력 될 메뉴의 갯수 
-            formData.append('MenuMargin', MenuMargin.value + 'px');         // 메뉴 간의 간격 설정
-
-            // formData 확인
-            for(var pair of formData.entries()) {
-                console.log(pair[0]+ ': '+ pair[1]); 
-            }
+            formData.append('Menu', JSON.stringify(array));            // 메뉴 스타일.
+            formData.append('shop_id', this.$route.params.shop_id)
+            // formData 확인하기
+            // for(var pair of formData.entries()) {
+            //     console.log(pair[0]+ ': '+ pair[1]); 
+            // }
  
             // 저장하기.
-            // axios.post('선주야 부탁해', formData )
-            // .then( (response) => {
-            //     
-            // })
-            // .catch((ex)=>{
-            //     alert('저장 실패');
-            // });
+             axios.post('/saveCustomLayout', formData )
+             .then( (response) => {
+                 alert(response.data.msg);
+             })
+             .catch((ex)=>{
+                 alert('저장 실패');
+             });
         },  
 
         // 드래그로 엘리먼트 다중 선택하기. 
@@ -668,86 +697,102 @@ export default {
 
         // 사이드 메뉴 : 영역(엘리먼트) 생성
         createSomething : function() { 
-            let resizer      = document.createElement('div');               // element 크기 조절기
-            let createdThing = document.createElement('div');               // 생성할 element
-            let workSpace    = document.getElementById('workSpace');        // 작업 공간 div 가져오기
-            let click_menu   = document.getElementById("click_menu");       // 마우스 우 클릭 시 나타나는 메뉴
+            let resizer      = document.createElement('div');           // element 크기 조절기
+            let createdThing = document.createElement('div');           // 생성할 element
+            let workSpace    = document.getElementById('workSpace');    // 작업 공간 div 가져오기
+            let click_menu   = document.getElementById("click_menu");   // 마우스 우 클릭 시 나타나는 메뉴
+            let menu         = null;
+ 
+            // 메뉴판 요소는 각각 하나씩만 생성할 수 있다.
+            if(workSpace.children.length !== 0){
+                let created = null;
+                menu = document.getElementsByClassName('createdMenu')[0];
+            
+                if(menu.getAttribute('class').split(' ')[0] == this.item){
+                    return alert('이미 생성한 요소입니다.');
+                }
+
+                for(let i=0; i < menu.children.length; i++) {
+                    created = menu.children[i].getAttribute('class').split(' ')[0];                     
+                    if(created == this.item){
+                        return alert('이미 생성한 요소입니다.');
+                    }
+                }
+            }
+            // 메뉴 영역을 가장 먼저 만들어야함.
+            else if(workSpace.children.length == 0) {
+                if(this.item !== 'createdMenu'){
+                    return alert('메뉴 영역이 없습니다.');
+                }
+            } 
 
             switch(this.item){
                 // 메뉴 영역 만들기
-                case 'createMenu' :          
+                case 'createdMenu' :          
                     createdThing.innerText    = '메뉴 영역'; 
-                    createdThing.style.width  = '300px'; 
-                    createdThing.style.height = '200px';
-                    createdThing.classList.add('createdMenu'); break;                    
+                    createdThing.style.width  = '400px'; 
+                    createdThing.style.height = '300px';
+                    createdThing.classList.add('createdMenu'); break; createdMenu                   
 
                 // 메뉴 이미지 만들기
-                case 'createImg' :                      
+                case 'createdImg' :                      
                     createdThing.style.width  = '200px'; 
                     createdThing.style.height = '200px';
                     createdThing.classList.add('createdImg'); break;
  
                 // 메뉴 이름 만들기
-                case 'createName' :             
+                case 'createdName' :             
                     createdThing.innerText    = '메뉴명'; 
                     createdThing.style.width  = '200px'; 
                     createdThing.style.height = '50px';  
                     createdThing.classList.add('createdName'); break;                   
 
                 // 메뉴 설명 만들기
-                case 'createExpl' :  
+                case 'createdExpl' :  
                     createdThing.innerText    = '메뉴 설명'; 
                     createdThing.style.width  = '200px'; 
                     createdThing.style.height = '80px';
                     createdThing.classList.add('createdExpl'); break;                    
 
                 // 메뉴 가격
-                case 'createPrice' :   
-                    createdThing.innerText = '메뉴 가격'; 
+                case 'createdPrice' :   
+                    createdThing.innerText    = '메뉴 가격'; 
                     createdThing.style.width  = '100px'; 
                     createdThing.style.height = '50px';
                     createdThing.classList.add('createdPrice'); break;                    
 
                 // 메뉴 선택 
-                case 'createSelect' :  
-                    createdThing.innerText = '메뉴 선택'; 
+                case 'createdSelect' :  
+                    createdThing.innerText    = '메뉴 선택'; 
                     createdThing.style.width  = '100px'; 
                     createdThing.style.height = '50px';
                     createdThing.classList.add('createdSelect'); break;                           
             }
 
             // 마우스 오른쪽 클릭 시 메뉴 창 열기.
-            createdThing.addEventListener("contextmenu", function() {
-                event.preventDefault();
-                target_Obj  = createdThing;
-                this.RCmenu = 'item'; 
+            createdThing.addEventListener("contextmenu", function() {     
+                target_Obj = event.target;      
+                target_Obj.classList.add("click_color");            
 
-                // if(target_Obj.style.border !== '2px solid red'){
-                //     target_Obj.style.border = '2px solid blue';
-                // }
-                click_menu.classList.add("active");
                 click_menu.style.top  = event.y +"px";
-                click_menu.style.left = event.x +"px";             
+                click_menu.style.left = event.x +"px"; 
+                click_menu.classList.add("active");              
+                event.preventDefault();        
             });  
             
             // 마우스 왼쪽 클릭 시 메뉴 창 닫기.
-            workSpace.addEventListener("click", function() {
-                // if(target_Obj.classList[0] !== 'groupDiv' && target_Obj.style.border == '2px solid blue'){
-                //     target_Obj.style.border = '2px solid black';
-                // }
-                // else if(target_Obj.classList[0] === 'groupDiv'){ 
-                //     target_Obj.style.border = '1px solid lightgreen';
-                // }
+            workSpace.addEventListener("click", function() { 
+                target_Obj.classList.remove('click_color');            
                 click_menu.classList.remove("active");
-            });
-            
-            // 생성된 element                         
-            createdThing.style.top    = '100px';
-            createdThing.style.left   = '100px';
-            createdThing.style.zIndex = 10; 
-            createdThing.onmousedown  = this.startDrag;       
-            createdThing.classList.add('dragElement');
+            }); 
 
+            // 생성된 element                         
+            createdThing.style.top    = '1px';
+            createdThing.style.left   = '1px';           
+            createdThing.style.zIndex = 10;    
+            createdThing.onmousedown  = this.startDrag;                
+            createdThing.classList.add('dragElement');
+  
             // double click method
             // createdThing.addEventListener('dblclick', this.dblclickMethod);
 
@@ -755,10 +800,14 @@ export default {
             resizer.onmousedown = this.initResize;
             resizer.classList.add('resizer');
             
-            // 포함 시키기 ( 크기 조절기 -> 생성된 element -> 작업 공간 )
+            // 포함 시키기 
             createdThing.appendChild(resizer);
-            workSpace.appendChild(createdThing);  
 
+            if(this.item === 'createdMenu' ){
+                workSpace.appendChild(createdThing);  
+            }else {
+                menu.appendChild(createdThing);
+            }
         }, // end of createSomething
 
         // 엘리먼트 더블 클릭 시 테두리 색을 빨간색으로 바꿈.
@@ -780,12 +829,9 @@ export default {
                 target_Obj.style.zIndex++;                      
             else if (event.target.id === 'goBack')
                 target_Obj.style.zIndex--;                     
-
-            // 테두리 색 되돌리기.
-            if(target_Obj.classList[0] !== 'groupDiv')            
-                target_Obj.style.border = '2px solid black';  
-            else if(target_Obj.classList[0] === 'groupDiv') 
-                target_Obj.style.border = '1px solid lightgreen';            
+ 
+            // 테두리 없애기
+            target_Obj.classList.remove('click_color');            
 
             // 우클릭 메뉴창 닫기
             click_menu.classList.remove("active");                         
@@ -808,7 +854,7 @@ export default {
             let textColor = document.getElementById('text_color').style.backgroundColor;    // 글자 색
             let areaColor = document.getElementById('area_color').style.backgroundColor;    // 영역 색
             let areaStyle = document.getElementById('area_style').value;                    // 영역 스타일
-
+  
             // 선 스타일 설정(굵기, 색, 형식)
             if(lineStyle !== 'none' && lineColor !== '') {
                 target_Obj.style.border = lineWidth + 'px ' + lineStyle + ' '  + lineColor;
@@ -816,12 +862,9 @@ export default {
             else if(lineStyle === 'none' || lineColor === ''){
                 target_Obj.style.border = 0;
             }
-
-            // 글자 색 설정.
-            target_Obj.style.color = textColor;
-
-            // 영역 색상 설정.
-            target_Obj.style.backgroundColor = areaColor;
+            
+            target_Obj.style.color = textColor;                 // 글자 색 설정.            
+            target_Obj.style.backgroundColor = areaColor;       // 영역 색상 설정.
             
             // 영역 모양 설정
             switch(areaStyle){
@@ -830,19 +873,15 @@ export default {
                 case 'circle'       : target_Obj.style.borderRadius = '100%';   break; 
             }
             designSet.classList.remove('active');
+            target_Obj.classList.remove('click_color');
         },
         // 우클릭 메뉴창 : 영역 서식 창 닫기.
         CloseDesignSet : function(){ 
             let designSet  = document.getElementById('designSet');          // 영역 서식 메뉴창
 
-            // 테두리 색 되돌리기.
-            // if(target_Obj.classList[0] !== 'groupDiv')            
-            //     target_Obj.style.border = '2px solid black';  
-            // else if(target_Obj.classList[0] === 'groupDiv') 
-            //     target_Obj.style.border = '1px solid lightgreen';
-            
             // 영역 서식 메뉴창 닫기. 
             designSet.classList.remove('active');
+            target_Obj.classList.remove('click_color');
         },
 
         // 우클릭 메뉴창 : 색 없음
@@ -1026,9 +1065,11 @@ img {
 /* 메뉴 제작 작업 공간 */
 #workSpace {
     width: 100%; 
-    height: 90%; 
-    position:absolute; 
+    height: 100%; 
+    position:relative; 
     overflow:hidden;
+    margin: auto;
+    background-color: rgb(238, 238, 238);
 }
 
 /* 메뉴 출력 설정 */
@@ -1053,37 +1094,34 @@ img {
 
 /* 메뉴 영역 */
 .createdMenu { 
-    border: 2px solid black; 
+    border: 2px dashed black; 
     font-size: 1.5rem;
-    text-align: center;
-    background-color:white;
+    text-align: center; 
+    overflow: hidden;
+    background-color: white;   
 }
 /* 메뉴 이미지 영역 */
 .createdImg { 
-    border: 2px solid black; 
-   /* background-image: url('./image.jpg');*/
+    background-image: url('./image.jpg');
     background-size: 100% 100%;
 }
 /* 메뉴 이름 영역 */
 .createdName { 
     border: 2px solid black;
     font-size: 1.5rem;
-    text-align: center;
-    background-color:white;
+    text-align: center; 
 } 
 /* 메뉴 설명 영역 */
 .createdExpl { 
     border: 2px solid black;
     font-size: 1.5rem;
-    text-align: center;
-    background-color:white;
+    text-align: center; 
 }
 /* 메뉴 가격 영역 */
 .createdPrice { 
     border: 2px solid black;
     font-size: 1.5rem;
-    text-align: center;
-    background-color:white;
+    text-align: center; 
 }
 /* 메뉴 선택 영역 */
 .createdSelect { 
@@ -1138,6 +1176,9 @@ hr {
 }
 .context-menus.active>ul>li:hover {
     background-color: lightgreen;
+}
+.click_color {
+    border:2px solid blue;
 }
 
 /* 영역 서식 메뉴창 */

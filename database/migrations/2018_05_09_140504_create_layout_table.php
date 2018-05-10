@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRessetTable extends Migration
+class CreateLayoutTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateRessetTable extends Migration
      */
     public function up()
     {
-        Schema::create('resset', function (Blueprint $table) {
-            $table->increments('resset_num');
+        Schema::create('layout', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('shop_id');
-            $table->date('setting_date');
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
-            $table->boolean('remark');
+            $table->text('layout_data');
             $table->foreign('shop_id')
                 ->references('id')->on('restaurants')
                 ->onDelete('cascade');
@@ -34,6 +31,6 @@ class CreateRessetTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resset');
+        Schema::dropIfExists('layout');
     }
 }

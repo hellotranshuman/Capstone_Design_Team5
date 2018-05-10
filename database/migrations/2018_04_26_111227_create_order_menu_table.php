@@ -20,7 +20,7 @@ class CreateOrderMenuTable extends Migration
             $table->foreign('menu_id')
                 ->references('id')->on('menu');
             $table->foreign('order_num')
-                ->references('order_num')->on('order')
+                ->references('order_num')->on('order_list')
                 ->onDelete('cascade');
             $table->timestamps();
         });
