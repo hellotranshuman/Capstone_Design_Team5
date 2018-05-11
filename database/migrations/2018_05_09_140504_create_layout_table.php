@@ -16,7 +16,7 @@ class CreateLayoutTable extends Migration
         Schema::create('layout', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('shop_id');
-            $table->text('layout_data');
+            $table->json('layout_data');
             $table->foreign('shop_id')
                 ->references('id')->on('restaurants')
                 ->onDelete('cascade');

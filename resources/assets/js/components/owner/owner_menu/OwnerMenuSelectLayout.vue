@@ -472,7 +472,24 @@ var palet_cntxt = null;             // palette context
 export default {  
 
     created(){
-        // this.dragSelect();     
+        // 메뉴 레이아웃 가져오기
+        var url = '';
+        var layoutNum = null;
+        var shop_id = this.$route.params.shop_id;
+        url = '/owner/' + shop_id + '/getLayout';
+        // 카테고리 요청하기.
+        axios.get(url)
+            .then( (response) => {
+                layoutNum = response.data.layoutNum;
+
+                if(layoutNum != 0)
+                    this.selected_template = "기본 템플릿" + layoutNum;
+                else
+                    this.selected_template = "사용자 제작 템플릿";
+            })
+            .catch((ex)=>{
+                alert('레이아웃 로드 실패');
+            });
     },
 
     data () {
@@ -512,11 +529,20 @@ export default {
             }
             else { 
                 // 선택한 템플릿 설정 저장하기.
-                let url = '선주야 부탁한다!';
+                let url = '/saveSelectedLayout';
             
-                axios.post(url, slt_tem)
+                axios.post(url, {
+                    'slt_tem' : slt_tem,
+                    'shop_id' : this.$route.params.shop_id,
+                })
                 .then( (response) => {
-                    get_datas = response.data 
+
+                    if(response.data.msg) {
+                        alert('저장이 완료 되었습니다');
+                        location.reload();
+                    }
+
+                    // get_datas = response.data
                 })
                 .catch((ex)=>{
                     alert('저장 실패');
@@ -600,7 +626,7 @@ export default {
 
             // 메뉴 출력 설정 사항 저장하기.
             formData.append('Menu', JSON.stringify(array));            // 메뉴 스타일.
-            formData.append('shop_id', this.$route.params.shop_id)
+            formData.append('shop_id', this.$route.params.shop_id);
             // formData 확인하기
             // for(var pair of formData.entries()) {
             //     console.log(pair[0]+ ': '+ pair[1]); 
@@ -609,7 +635,8 @@ export default {
             // 저장하기.
              axios.post('/saveCustomLayout', formData )
              .then( (response) => {
-                 alert(response.data.msg);
+                 if(response.data.msg)
+                    alert('저장이 완료되었습니다');
              })
              .catch((ex)=>{
                  alert('저장 실패');

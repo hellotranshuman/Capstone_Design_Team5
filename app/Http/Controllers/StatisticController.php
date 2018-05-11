@@ -35,6 +35,8 @@ class StatisticController extends Controller
 
     // <-- 해당 가게 손님 수
     public function getCustomerScore(Request $request) {
+
+        
         // get Shop Id
         $shopId = $request->get('shop_id');
 

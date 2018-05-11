@@ -143,6 +143,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'LayoutController@saveCustomLayout'
     ]);
 
+    Route::post('saveSelectedLayout', [
+        'as' => 'layout.saveSelectedLayout',
+        'uses' => 'LayoutController@saveSelectedLayout'
+    ]);
 
 // <-- Owner Coupon Page
     Route::get('owner/{shop_id}/createCoupon', [
@@ -266,32 +270,32 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'StatisticController@showStatisticsForm'
     ]);
 
-    Route::get('/owner/{shop_id}/getRatingScore', [
+    Route::post('/owner/getRatingScore', [
         'as' => 'statistic.getRatingScore',
         'uses' => 'StatisticController@getRatingScore'
     ]);
 
-    Route::get('/owner/{shop_id}/getCustomerScore', [
+    Route::post('/owner/getCustomerScore', [
         'as' => 'statistic.getCustomerScore',
         'uses' => 'StatisticController@getCustomerScore'
     ]);
 
-    Route::get('/owner/{shop_id}/getGenderScore', [
+    Route::post('/owner/getGenderScore', [
         'as' => 'statistic.getGenderScore',
         'uses' => 'StatisticController@getGenderScore'
     ]);
 
-    Route::get('/owner/{shop_id}/getAgeScore', [
+    Route::post('/owner/getAgeScore', [
         'as' => 'statistic.getAgeScore',
         'uses' => 'StatisticController@getAgeScore'
     ]);
 
-    Route::get('/owner/{shop_id}/getCountryScore', [
+    Route::post('/owner/getCountryScore', [
         'as' => 'statistic.getCountryScore',
         'uses' => 'StatisticController@getCountryScore'
     ]);
 
-    Route::get('/owner/{shop_id}/getMenuData', [
+    Route::post('/owner/getMenuData', [
         'as' => 'statistic.getMenuData',
         'uses' => 'StatisticController@getMenuData'
     ]);
