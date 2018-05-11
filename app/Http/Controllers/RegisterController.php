@@ -46,42 +46,30 @@ class RegisterController extends Controller
                     ->withInput($request->except('password'));
         }
         else { */
-            // <-- user Category 처리
-           //  $category = $request->get('category') == 'user' ? true : false;
+        // <-- user Category 처리
+        //  $category = $request->get('category') == 'user' ? true : false;
 
 
-            /*
-            // <-- Date Format 처리
-            if($request->input('month') < 10 )
-                $month = '0' . $request->input('month');
-            else
-                $month = $request->input('month');
+        /*
+        // <-- Date Format 처리
+        if($request->input('month') < 10 )
+            $month = '0' . $request->input('month');
+        else
+            $month = $request->input('month');
 
-            if($request->input('day') < 10 )
-                $day = '0' . $request->input('day');
-            else
-                $day = $request->input('day');
+        if($request->input('day') < 10 )
+            $day = '0' . $request->input('day');
+        else
+            $day = $request->input('day');
 
-            $date = $request->input('year') . "-" .  $month . "-" .
-                $day; */
+        $date = $request->input('year') . "-" .  $month . "-" .
+            $day; */
 
-            /*
-        $user = \App\User::create([
-            'password' => Hash::make('abc'),
-            'name' => 'aaaaa',
-            'email' => 'lllll@example.com',
-            'gender'=> true,
-            'country' => '한국',
-            'birthday' => '1994-10-12',
-            'category' => true,
-            'user_id' => '123123456',
-            'favorite_1' => '',
-            'favorite_2' => '',
-            'favorite_3' => '',
-            'favorite_region' => '',
-        ]); */
+        /*
 
-         $category = $request->get('category') == 'user' ? true : false;
+    ]); */
+
+        $category = $request->get('category') == 'true' ? true : false;
 
 
         // <-- db에 Create Column
@@ -89,27 +77,27 @@ class RegisterController extends Controller
             'password' => Hash::make($request->get('password')),
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'gender'=> $request->get('gender') == 'male' ? true : false,
+            'gender'=> $request->get('gender') == 'true' ? true : false,
             'country' => $request->get('country'),
             'birthday' => $request->get('birthday'),
             'category' => $category,
             'user_id' => $request->get('user_id'),
-            'favorite_1' => $request->get('favorite_1'),
-            'favorite_2' => $request->get('favorite_2'),
-            'favorite_3' => $request->get('favorite_3'),
+            'favorite_1' => $request->get('favorite1'),
+            'favorite_2' => $request->get('favorite2'),
+            'favorite_3' => $request->get('favorite3'),
             'favorite_region' => $request->get('favorite_region'),
         ]);
 
         auth()->login($user);
 
-          if(! $category)
-                return response()->json([
-                    'url' => '/owner/createRestaurant'
-                ]);
-            else
-                return response()->json([
-                    'url' => '/'
-                ]);
-        }
-   // }
+        if(! $category)
+            return response()->json([
+                'url' => '/owner/createRestaurant'
+            ]);
+        else
+            return response()->json([
+                'url' => '/'
+            ]);
+    }
+    // }
 }

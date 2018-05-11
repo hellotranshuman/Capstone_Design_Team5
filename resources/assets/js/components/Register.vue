@@ -2,144 +2,124 @@
 <!-- 회원가입 -->
 <template>
     <v-app>
-        <v-layout row justify-center>
-            <v-dialog v-model="dialog" persistent max-width="500px">
-                <v-btn round color="success" slot="activator" style="width: 30vw; height: 50vh">개인 회원</v-btn>
+        <v-container>
+            <v-flex xs12 sm6 offset-sm3>
+                <v-btn color="green" outline block large @click="user_categoty = true">개인 회원</v-btn>
+                <v-btn color="red" outline block large @click="user_categoty = false">사업자 회원</v-btn>
+            </v-flex>
+            <br>
+            <v-flex xs12 sm6 offset-sm3>
                 <v-card>
-                    <v-card-title>
-                        <span class="headline">개인 회원 가입</span>
-                    </v-card-title>
                     <v-card-text>
-                        <v-container grid-list-md>
-                            <v-layout wrap>
-                                <v-flex xs12>
-                                    <v-text-field v-model="F_user_id" placeholder="ID" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field v-model="F_user_email" placeholder="Email" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field v-model="F_user_name" placeholder="Name" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12 sm6>
-                                    <v-text-field v-model="F_password" placeholder="Password" type="password" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12 sm6>
-                                    <v-text-field v-model="F_C_password" placeholder="Confirm Password" type="password" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-radio-group v-model="F_sexValue" :mandatory="false">
-                                        <v-radio label="Male" value="male" default></v-radio>
-                                        <v-radio label="Female" value="female"></v-radio>
-                                    </v-radio-group>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-select v-model="F_country"
-                                              placeholder="Country"
-                                              required
-                                              :items="['한국', '日本', '中国', 'USA']"
-                                    ></v-select>
-                                </v-flex>
-                                <v-flex xs12 sm3>
-                                    <v-select v-model="F_year"
-                                              placeholder="Year"
-                                              required
-                                              :items="['1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007']"
-                                    ></v-select>
-                                </v-flex>
-                                <v-flex xs12 sm3>
-                                    <v-select v-model="F_month"
-                                              placeholder="Month"
-                                              required
-                                              :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']"
-                                    ></v-select>
-                                </v-flex>
-                                <v-flex xs12 sm3>
-                                    <v-select v-model="F_day"
-                                              placeholder="Day"
-                                              required
-                                              :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']"
-                                    ></v-select>
-                                </v-flex>
-                            </v-layout>
-                        </v-container>
+                        <v-text-field
+                                v-model="user_id"
+                                placeholder="ID"
+                                required
+                                color="green"
+                                :rules="idRules"
+                        ></v-text-field>
+                        <v-text-field
+                                v-model="user_pw1"
+                                :append-icon="hidePw1 ? 'visibility' : 'visibility_off'"
+                                :append-icon-cb="() => (hidePw1 = !hidePw1)"
+                                :type="hidePw1 ? 'password' : 'text'"
+                                label="Enter your password"
+                                color="green"
+                                :rules="pwRules"
+                        ></v-text-field>
+                        <v-text-field
+                                v-model="user_pw2"
+                                :append-icon="hidePw2 ? 'visibility' : 'visibility_off'"
+                                :append-icon-cb="() => (hidePw2 = !hidePw2)"
+                                :type="hidePw2 ? 'password' : 'text'"
+                                label="Enter your password confirm"
+                                color="green"
+                                :rules="pwRules"
+                        ></v-text-field>
                     </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                        <v-btn color="blue darken-1" flat @click.native="register()">Register</v-btn>
-                    </v-card-actions>
                 </v-card>
-            </v-dialog>
-            <v-dialog v-model="dialog2" persistent max-width="500px">
-                <v-btn round color="error" slot="activator" style="width: 30vw; height: 50vh">사업자 회원</v-btn>
+                <br>
                 <v-card>
-                    <v-card-title>
-                        <span class="headline">사업자 회원 가입</span>
-                    </v-card-title>
                     <v-card-text>
-                        <v-container grid-list-md>
-                            <v-layout wrap>
-                                <v-flex xs12>
-                                    <v-text-field v-model="F_user_id" placeholder="ID" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field v-model="F_user_email" placeholder="Email" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field v-model="F_user_name" placeholder="Name" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12 sm6>
-                                    <v-text-field v-model="F_password" placeholder="Password" type="password" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12 sm6>
-                                    <v-text-field v-model="F_C_password" placeholder="Confirm Password" type="password" required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-radio-group v-model="F_sexValue" :mandatory="false">
-                                        <v-radio label="Male" value="male" default></v-radio>
-                                        <v-radio label="Female" value="famale"></v-radio>
-                                    </v-radio-group>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-select v-model="F_country"
-                                              placeholder="Country"
-                                              required
-                                              :items="['한국', '日本', '中国', 'USA']"
-                                    ></v-select>
-                                </v-flex>
-                                <v-flex xs12 sm3>
-                                    <v-select v-model="F_year"
-                                              placeholder="Year"
-                                              required
-                                              :items="['1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007']"
-                                    ></v-select>
-                                </v-flex>
-                                <v-flex xs12 sm3>
-                                    <v-select v-model="F_month"
-                                              placeholder="Month"
-                                              required
-                                              :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']"
-                                    ></v-select>
-                                </v-flex>
-                                <v-flex xs12 sm3>
-                                    <v-select v-model="F_day"
-                                              placeholder="Day"
-                                              required
-                                              :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']"
-                                    ></v-select>
-                                </v-flex>
-                            </v-layout>
-                        </v-container>
+                        <v-text-field
+                                v-model="user_name"
+                                placeholder="Name"
+                                required
+                                color="green"
+                        ></v-text-field>
+                        <v-radio-group v-model="user_gender" row>
+                            <v-radio label="Male" value=true color="green"></v-radio>
+                            <v-radio label="Female" value=false color="green"></v-radio>
+                        </v-radio-group>
+                        <v-layout row wrap>
+                            <v-flex xs4>
+                                <v-text-field
+                                        v-model="user_year"
+                                        placeholder="Year"
+                                        required
+                                        color="green"
+                                ></v-text-field>
+                            </v-flex>
+                            <v-flex xs4>
+                                <v-select
+                                        v-model="user_month"
+                                        :items="month"
+                                        label="Month"
+                                        color="green"
+                                        single-line
+                                ></v-select>
+                            </v-flex>
+                            <v-flex xs4>
+                                <v-text-field
+                                        v-model="user_day"
+                                        placeholder="Day"
+                                        required
+                                        append-icon="cake"
+                                        color="green"></v-text-field>
+                            </v-flex>
+                        </v-layout>
+                        <v-text-field
+                                v-model="user_email"
+                                placeholder="Email"
+                                required
+                                append-icon="email"
+                                color="green"></v-text-field>
+                        <v-select
+                                v-model="user_country"
+                                :items="country"
+                                label="Country"
+                                single-line
+                                auto
+                                append-icon="language"
+                                hide-details
+                                color="green"
+                        ></v-select>
                     </v-card-text>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat @click.native="dialog2 = false">Close</v-btn>
-                        <v-btn color="blue darken-1" flat @click.native="register2()">Register</v-btn>
-                    </v-card-actions>
                 </v-card>
-            </v-dialog>
-        </v-layout>
+                <br>
+                <v-card v-if="user_categoty">
+                    <v-card-text>
+                        <v-select
+                                v-model="user_favorite"
+                                :items="food"
+                                label="Favorite Food (max 3 items)"
+                                single-line
+                                auto
+                                hide-details
+                                multiple
+                                chips
+                        ></v-select>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+            <v-flex v-if="user_categoty" xs12 sm6 offset-sm3>
+                <br>
+                <v-btn color="green" block outline large @click="register()">개인 회원 가입</v-btn>
+            </v-flex>
+            <v-flex v-else xs12 sm6 offset-sm3>
+                <v-btn color="red" block outline large @click="register()">사업자 회원 가입</v-btn>
+            </v-flex>
+        </v-container>
     </v-app>
 </template>
 
@@ -147,85 +127,120 @@
     import axios  from 'axios';
     export default {
         data: () => ({
-            dialog: false,
-            dialog2: false,
-            F_sexValue: "male",
-            F_user_id: "",
-            F_user_email: "",
-            F_user_name: "",
-            F_password: "",
-            F_C_password: "",
-            F_country: "한국",  // 국적종류 (china, japan, korea, USA)
-            F_year: "",
-            F_month: "",
-            F_day: ""
+            user_categoty:  true,
+            user_id:        "",
+            user_pw1:       "",
+            user_pw2:       "",
+
+            user_name:      "",
+            user_gender:    "",
+            user_year:      "",
+            user_month:     "",
+            user_day:       "",
+
+            user_email:     "",
+            user_country:   "",
+            user_favorite:  "",
+
+            hidePw1: true,
+            hidePw2: true,
+
+            idRules: [
+                v => !!v || 'ID is required'
+            ],
+            pwRules: [
+                v => !!v || 'Password is required'
+            ],
+            month: [
+                '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
+            ],
+            country: [
+                'Korea', 'Japan', 'China', 'USA'
+            ],
+            food: [
+                '한식', '일식', '중식', '양식', '분식', '덮밥', '스시', '패스트 푸드', '찜', '탕',
+                '도시락', '카페&디저트', '술집', '면류', '제과'
+            ]
         }),
 
         methods: {
-            // 입력한 국적에 맞는 값을 저장하는 함수
-            setCountry(){
-                switch(this.F_country){
-                    case '한국':
-                        this.F_country = 'korea';
-                    break;
-                    case '日本':
-                        this.F_country = 'japan';
-                    break;
-                    case '中国':
-                        this.F_country = 'china';
-                    break;
-                    case 'USA':
-                        this.F_country = 'USA';
-                    break;
-                }
-            },
-
             register() {
-                // 입력한 국적에 맞는 값을 대입합니다.
-                this.setCountry();
+                if(this.user_id == "") {
+                    alert("아이디는 필수 입력 사항입니다.");
+                    return;
+                }
+
+                if(this.user_pw1 == "") {
+                    alert("비밀번호는 필수 입력 사항입니다.");
+                    return;
+                }
+
+                if(this.user_pw1 != this.user_pw2) {
+                    alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+                    return;
+                }
+
+                if(this.user_name == "") {
+                    alert("이름은 필수 입력 사항입니다.");
+                    return;
+                }
+
+                if(this.user_gender == "") {
+                    alert("성별은 필수 입력 사항입니다.");
+                    return;
+                }
+
+                if(this.user_year == "" || this.user_month == "" || this.user_day == "") {
+                    alert("생년월일은 필수 입력 사항입니다.");
+                    return;
+                }
+
+                if(this.user_year < 1900 || this.user_year > 2018) {
+                    alert("년도를 확인해주세요.");
+                    return;
+                }
+
+                if(this.user_email == "") {
+                    alert("이메일은 필수 입력 사항입니다.");
+                    return;
+                }
+
+                if(this.user_country == "") {
+                    alert("국가는 필수 입력 사항입니다.");
+                    return;
+                }
+
+                if(this.user_categoty) {
+                    var temp = this.user_favorite;
+                    if(temp[3]) {
+                        alert("선호하는 음식은 최대 3가지 입니다.");
+                        return;
+                    }
+                }
 
                 var url = "/register";
-                axios.post(url, {
-                    user_id     : this.F_user_id,
-                    password    : this.F_password,
-                    c_password  : this.F_C_password,
-                    email       : this.F_user_email,
-                    name        : this.F_user_name,
-                    country     : this.F_country,
-                    birthday    : this.F_year + '-' + this.F_month + '-' + this.F_day,
-                    category    : 'user',
-                    gender      : this.F_sexValue,
-                })
+
+                var temp = {
+                    user_id     : this.user_id,
+                    password    : this.user_pw1,
+                    email       : this.user_email,
+                    name        : this.user_name,
+                    country     : this.user_country,
+                    birthday    : this.user_year + '-' + this.user_month + '-' + this.user_day,
+                    category    : this.user_categoty,
+                    gender      : this.user_gender,
+                    favorite1   : this.user_favorite[0],
+                    favorite2   : this.user_favorite[1],
+                    favorite3   : this.user_favorite[2],
+                }
+
+                axios.post(url, temp)
                     .then(function (response) {
-                       alert(response.data.msg);
+                        var url = response.data.url;
+                        location.replace(url);
                     })
                     .catch(function (error) {
-                        alert('error!');
-                    });
-            },
-            register2() {
-                // 입력한 국적에 맞는 값을 대입합니다.
-                this.setCountry();
-
-                var url = "/register";
-                axios.post(url, {
-                    user_id     : this.F_user_id,
-                    password    : this.F_password,
-                    c_password  : this.F_C_password,
-                    email       : this.F_user_email,
-                    name        : this.F_user_name,
-                    country     : this.F_country,
-                    birthday    : this.F_year + '-' + this.F_month + '-' + this.F_day,
-                    category    : 'owner',
-                    gender      : this.F_sexValue,
-                })
-                    .then(function (response) {
-                       var url = response.data.url;
-
-                       location.replace(url);
-                    })
-                    .catch(function (error) {
-                        alert('error!');
+                        alert(JSON.stringify(temp));
                     });
             }
         }

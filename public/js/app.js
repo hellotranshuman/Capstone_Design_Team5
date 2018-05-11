@@ -36384,106 +36384,117 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            dialog: false,
-            dialog2: false,
-            F_sexValue: "male",
-            F_user_id: "",
-            F_user_email: "",
-            F_user_name: "",
-            F_password: "",
-            F_C_password: "",
-            F_country: "한국", // 국적종류 (china, japan, korea, USA)
-            F_year: "",
-            F_month: "",
-            F_day: ""
+            user_categoty: true,
+            user_id: "",
+            user_pw1: "",
+            user_pw2: "",
+
+            user_name: "",
+            user_gender: "",
+            user_year: "",
+            user_month: "",
+            user_day: "",
+
+            user_email: "",
+            user_country: "",
+            user_favorite: "",
+
+            hidePw1: true,
+            hidePw2: true,
+
+            idRules: [function (v) {
+                return !!v || 'ID is required';
+            }],
+            pwRules: [function (v) {
+                return !!v || 'Password is required';
+            }],
+            month: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            country: ['Korea', 'Japan', 'China', 'USA'],
+            food: ['한식', '일식', '중식', '양식', '분식', '덮밥', '스시', '패스트 푸드', '찜', '탕', '도시락', '카페&디저트', '술집', '면류', '제과']
         };
     },
 
     methods: {
-        // 입력한 국적에 맞는 값을 저장하는 함수
-        setCountry: function setCountry() {
-            switch (this.F_country) {
-                case '한국':
-                    this.F_country = 'korea';
-                    break;
-                case '日本':
-                    this.F_country = 'japan';
-                    break;
-                case '中国':
-                    this.F_country = 'china';
-                    break;
-                case 'USA':
-                    this.F_country = 'USA';
-                    break;
-            }
-        },
         register: function register() {
-            // 입력한 국적에 맞는 값을 대입합니다.
-            this.setCountry();
+            if (this.user_id == "") {
+                alert("아이디는 필수 입력 사항입니다.");
+                return;
+            }
+
+            if (this.user_pw1 == "") {
+                alert("비밀번호는 필수 입력 사항입니다.");
+                return;
+            }
+
+            if (this.user_pw1 != this.user_pw2) {
+                alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+                return;
+            }
+
+            if (this.user_name == "") {
+                alert("이름은 필수 입력 사항입니다.");
+                return;
+            }
+
+            if (this.user_gender == "") {
+                alert("성별은 필수 입력 사항입니다.");
+                return;
+            }
+
+            if (this.user_year == "" || this.user_month == "" || this.user_day == "") {
+                alert("생년월일은 필수 입력 사항입니다.");
+                return;
+            }
+
+            if (this.user_year < 1900 || this.user_year > 2018) {
+                alert("년도를 확인해주세요.");
+                return;
+            }
+
+            if (this.user_email == "") {
+                alert("이메일은 필수 입력 사항입니다.");
+                return;
+            }
+
+            if (this.user_country == "") {
+                alert("국가는 필수 입력 사항입니다.");
+                return;
+            }
+
+            if (this.user_categoty) {
+                var temp = this.user_favorite;
+                if (temp[3]) {
+                    alert("선호하는 음식은 최대 3가지 입니다.");
+                    return;
+                }
+            }
 
             var url = "/register";
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, {
-                user_id: this.F_user_id,
-                password: this.F_password,
-                c_password: this.F_C_password,
-                email: this.F_user_email,
-                name: this.F_user_name,
-                country: this.F_country,
-                birthday: this.F_year + '-' + this.F_month + '-' + this.F_day,
-                category: 'user',
-                gender: this.F_sexValue
-            }).then(function (response) {
-                alert(response.data.msg);
-            }).catch(function (error) {
-                alert('error!');
-            });
-        },
-        register2: function register2() {
-            // 입력한 국적에 맞는 값을 대입합니다.
-            this.setCountry();
 
-            var url = "/register";
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, {
-                user_id: this.F_user_id,
-                password: this.F_password,
-                c_password: this.F_C_password,
-                email: this.F_user_email,
-                name: this.F_user_name,
-                country: this.F_country,
-                birthday: this.F_year + '-' + this.F_month + '-' + this.F_day,
-                category: 'owner',
-                gender: this.F_sexValue
-            }).then(function (response) {
+            var temp = {
+                user_id: this.user_id,
+                password: this.user_pw1,
+                email: this.user_email,
+                name: this.user_name,
+                country: this.user_country,
+                birthday: this.user_year + '-' + this.user_month + '-' + this.user_day,
+                category: this.user_categoty,
+                gender: this.user_gender,
+                favorite1: this.user_favorite[0],
+                favorite2: this.user_favorite[1],
+                favorite3: this.user_favorite[2]
+            };
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, temp).then(function (response) {
                 var url = response.data.url;
-
                 location.replace(url);
             }).catch(function (error) {
-                alert('error!');
+                alert(JSON.stringify(temp));
             });
         }
     }
@@ -89157,770 +89168,379 @@ var render = function() {
     "v-app",
     [
       _c(
-        "v-layout",
-        { attrs: { row: "", "justify-center": "" } },
+        "v-container",
         [
           _c(
-            "v-dialog",
-            {
-              attrs: { persistent: "", "max-width": "500px" },
-              model: {
-                value: _vm.dialog,
-                callback: function($$v) {
-                  _vm.dialog = $$v
-                },
-                expression: "dialog"
-              }
-            },
+            "v-flex",
+            { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
             [
               _c(
                 "v-btn",
                 {
-                  staticStyle: { width: "30vw", height: "50vh" },
-                  attrs: { slot: "activator", round: "", color: "success" },
-                  slot: "activator"
+                  attrs: { color: "green", outline: "", block: "", large: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.user_categoty = true
+                    }
+                  }
                 },
                 [_vm._v("개인 회원")]
               ),
               _vm._v(" "),
               _c(
-                "v-card",
-                [
-                  _c("v-card-title", [
-                    _c("span", { staticClass: "headline" }, [
-                      _vm._v("개인 회원 가입")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-container",
-                        { attrs: { "grid-list-md": "" } },
-                        [
-                          _c(
-                            "v-layout",
-                            { attrs: { wrap: "" } },
-                            [
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: { placeholder: "ID", required: "" },
-                                    model: {
-                                      value: _vm.F_user_id,
-                                      callback: function($$v) {
-                                        _vm.F_user_id = $$v
-                                      },
-                                      expression: "F_user_id"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Email",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_email,
-                                      callback: function($$v) {
-                                        _vm.F_user_email = $$v
-                                      },
-                                      expression: "F_user_email"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Name",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_name,
-                                      callback: function($$v) {
-                                        _vm.F_user_name = $$v
-                                      },
-                                      expression: "F_user_name"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_password,
-                                      callback: function($$v) {
-                                        _vm.F_password = $$v
-                                      },
-                                      expression: "F_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Confirm Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_C_password,
-                                      callback: function($$v) {
-                                        _vm.F_C_password = $$v
-                                      },
-                                      expression: "F_C_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c(
-                                    "v-radio-group",
-                                    {
-                                      attrs: { mandatory: false },
-                                      model: {
-                                        value: _vm.F_sexValue,
-                                        callback: function($$v) {
-                                          _vm.F_sexValue = $$v
-                                        },
-                                        expression: "F_sexValue"
-                                      }
-                                    },
-                                    [
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Male",
-                                          value: "male",
-                                          default: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Female",
-                                          value: "female"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Country",
-                                      required: "",
-                                      items: ["한국", "日本", "中国", "USA"]
-                                    },
-                                    model: {
-                                      value: _vm.F_country,
-                                      callback: function($$v) {
-                                        _vm.F_country = $$v
-                                      },
-                                      expression: "F_country"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Year",
-                                      required: "",
-                                      items: [
-                                        "1995",
-                                        "1996",
-                                        "1997",
-                                        "1998",
-                                        "1999",
-                                        "2000",
-                                        "2001",
-                                        "2002",
-                                        "2003",
-                                        "2004",
-                                        "2005",
-                                        "2006",
-                                        "2007"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_year,
-                                      callback: function($$v) {
-                                        _vm.F_year = $$v
-                                      },
-                                      expression: "F_year"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Month",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_month,
-                                      callback: function($$v) {
-                                        _vm.F_month = $$v
-                                      },
-                                      expression: "F_month"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Day",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12",
-                                        "13",
-                                        "14",
-                                        "15",
-                                        "16",
-                                        "17",
-                                        "18",
-                                        "19",
-                                        "20",
-                                        "21",
-                                        "22",
-                                        "23",
-                                        "24",
-                                        "25",
-                                        "26",
-                                        "27",
-                                        "28",
-                                        "29",
-                                        "30",
-                                        "31"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_day,
-                                      callback: function($$v) {
-                                        _vm.F_day = $$v
-                                      },
-                                      expression: "F_day"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.dialog = false
-                            }
-                          }
-                        },
-                        [_vm._v("Close")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.register()
-                            }
-                          }
-                        },
-                        [_vm._v("Register")]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
+                "v-btn",
+                {
+                  attrs: { color: "red", outline: "", block: "", large: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.user_categoty = false
+                    }
+                  }
+                },
+                [_vm._v("사업자 회원")]
               )
             ],
             1
           ),
           _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
           _c(
-            "v-dialog",
-            {
-              attrs: { persistent: "", "max-width": "500px" },
-              model: {
-                value: _vm.dialog2,
-                callback: function($$v) {
-                  _vm.dialog2 = $$v
-                },
-                expression: "dialog2"
-              }
-            },
+            "v-flex",
+            { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
             [
-              _c(
-                "v-btn",
-                {
-                  staticStyle: { width: "30vw", height: "50vh" },
-                  attrs: { slot: "activator", round: "", color: "error" },
-                  slot: "activator"
-                },
-                [_vm._v("사업자 회원")]
-              ),
-              _vm._v(" "),
               _c(
                 "v-card",
                 [
-                  _c("v-card-title", [
-                    _c("span", { staticClass: "headline" }, [
-                      _vm._v("사업자 회원 가입")
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _c(
                     "v-card-text",
                     [
-                      _c(
-                        "v-container",
-                        { attrs: { "grid-list-md": "" } },
-                        [
-                          _c(
-                            "v-layout",
-                            { attrs: { wrap: "" } },
-                            [
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: { placeholder: "ID", required: "" },
-                                    model: {
-                                      value: _vm.F_user_id,
-                                      callback: function($$v) {
-                                        _vm.F_user_id = $$v
-                                      },
-                                      expression: "F_user_id"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Email",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_email,
-                                      callback: function($$v) {
-                                        _vm.F_user_email = $$v
-                                      },
-                                      expression: "F_user_email"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Name",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_name,
-                                      callback: function($$v) {
-                                        _vm.F_user_name = $$v
-                                      },
-                                      expression: "F_user_name"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_password,
-                                      callback: function($$v) {
-                                        _vm.F_password = $$v
-                                      },
-                                      expression: "F_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Confirm Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_C_password,
-                                      callback: function($$v) {
-                                        _vm.F_C_password = $$v
-                                      },
-                                      expression: "F_C_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c(
-                                    "v-radio-group",
-                                    {
-                                      attrs: { mandatory: false },
-                                      model: {
-                                        value: _vm.F_sexValue,
-                                        callback: function($$v) {
-                                          _vm.F_sexValue = $$v
-                                        },
-                                        expression: "F_sexValue"
-                                      }
-                                    },
-                                    [
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Male",
-                                          value: "male",
-                                          default: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Female",
-                                          value: "famale"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Country",
-                                      required: "",
-                                      items: ["한국", "日本", "中国", "USA"]
-                                    },
-                                    model: {
-                                      value: _vm.F_country,
-                                      callback: function($$v) {
-                                        _vm.F_country = $$v
-                                      },
-                                      expression: "F_country"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Year",
-                                      required: "",
-                                      items: [
-                                        "1995",
-                                        "1996",
-                                        "1997",
-                                        "1998",
-                                        "1999",
-                                        "2000",
-                                        "2001",
-                                        "2002",
-                                        "2003",
-                                        "2004",
-                                        "2005",
-                                        "2006",
-                                        "2007"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_year,
-                                      callback: function($$v) {
-                                        _vm.F_year = $$v
-                                      },
-                                      expression: "F_year"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Month",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_month,
-                                      callback: function($$v) {
-                                        _vm.F_month = $$v
-                                      },
-                                      expression: "F_month"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Day",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12",
-                                        "13",
-                                        "14",
-                                        "15",
-                                        "16",
-                                        "17",
-                                        "18",
-                                        "19",
-                                        "20",
-                                        "21",
-                                        "22",
-                                        "23",
-                                        "24",
-                                        "25",
-                                        "26",
-                                        "27",
-                                        "28",
-                                        "29",
-                                        "30",
-                                        "31"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_day,
-                                      callback: function($$v) {
-                                        _vm.F_day = $$v
-                                      },
-                                      expression: "F_day"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.dialog2 = false
-                            }
-                          }
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "ID",
+                          required: "",
+                          color: "green",
+                          rules: _vm.idRules
                         },
-                        [_vm._v("Close")]
-                      ),
+                        model: {
+                          value: _vm.user_id,
+                          callback: function($$v) {
+                            _vm.user_id = $$v
+                          },
+                          expression: "user_id"
+                        }
+                      }),
                       _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.register2()
-                            }
-                          }
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-icon": _vm.hidePw1
+                            ? "visibility"
+                            : "visibility_off",
+                          "append-icon-cb": function() {
+                            return (_vm.hidePw1 = !_vm.hidePw1)
+                          },
+                          type: _vm.hidePw1 ? "password" : "text",
+                          label: "Enter your password",
+                          color: "green",
+                          rules: _vm.pwRules
                         },
-                        [_vm._v("Register")]
-                      )
+                        model: {
+                          value: _vm.user_pw1,
+                          callback: function($$v) {
+                            _vm.user_pw1 = $$v
+                          },
+                          expression: "user_pw1"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-icon": _vm.hidePw2
+                            ? "visibility"
+                            : "visibility_off",
+                          "append-icon-cb": function() {
+                            return (_vm.hidePw2 = !_vm.hidePw2)
+                          },
+                          type: _vm.hidePw2 ? "password" : "text",
+                          label: "Enter your password confirm",
+                          color: "green",
+                          rules: _vm.pwRules
+                        },
+                        model: {
+                          value: _vm.user_pw2,
+                          callback: function($$v) {
+                            _vm.user_pw2 = $$v
+                          },
+                          expression: "user_pw2"
+                        }
+                      })
                     ],
                     1
                   )
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-text",
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "Name",
+                          required: "",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_name,
+                          callback: function($$v) {
+                            _vm.user_name = $$v
+                          },
+                          expression: "user_name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-radio-group",
+                        {
+                          attrs: { row: "" },
+                          model: {
+                            value: _vm.user_gender,
+                            callback: function($$v) {
+                              _vm.user_gender = $$v
+                            },
+                            expression: "user_gender"
+                          }
+                        },
+                        [
+                          _c("v-radio", {
+                            attrs: {
+                              label: "Male",
+                              value: "true",
+                              color: "green"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-radio", {
+                            attrs: {
+                              label: "Female",
+                              value: "false",
+                              color: "green"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  placeholder: "Year",
+                                  required: "",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.user_year,
+                                  callback: function($$v) {
+                                    _vm.user_year = $$v
+                                  },
+                                  expression: "user_year"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.month,
+                                  label: "Month",
+                                  color: "green",
+                                  "single-line": ""
+                                },
+                                model: {
+                                  value: _vm.user_month,
+                                  callback: function($$v) {
+                                    _vm.user_month = $$v
+                                  },
+                                  expression: "user_month"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  placeholder: "Day",
+                                  required: "",
+                                  "append-icon": "cake",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.user_day,
+                                  callback: function($$v) {
+                                    _vm.user_day = $$v
+                                  },
+                                  expression: "user_day"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "Email",
+                          required: "",
+                          "append-icon": "email",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_email,
+                          callback: function($$v) {
+                            _vm.user_email = $$v
+                          },
+                          expression: "user_email"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: {
+                          items: _vm.country,
+                          label: "Country",
+                          "single-line": "",
+                          auto: "",
+                          "append-icon": "language",
+                          "hide-details": "",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_country,
+                          callback: function($$v) {
+                            _vm.user_country = $$v
+                          },
+                          expression: "user_country"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.user_categoty
+                ? _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-text",
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              items: _vm.food,
+                              label: "Favorite Food (max 3 items)",
+                              "single-line": "",
+                              auto: "",
+                              "hide-details": "",
+                              multiple: "",
+                              chips: ""
+                            },
+                            model: {
+                              value: _vm.user_favorite,
+                              callback: function($$v) {
+                                _vm.user_favorite = $$v
+                              },
+                              expression: "user_favorite"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _vm.user_categoty
+            ? _c(
+                "v-flex",
+                { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+                [
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color: "green",
+                        block: "",
+                        outline: "",
+                        large: ""
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.register()
+                        }
+                      }
+                    },
+                    [_vm._v("개인 회원 가입")]
+                  )
+                ],
+                1
+              )
+            : _c(
+                "v-flex",
+                { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color: "red",
+                        block: "",
+                        outline: "",
+                        large: ""
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.register()
+                        }
+                      }
+                    },
+                    [_vm._v("사업자 회원 가입")]
+                  )
+                ],
+                1
+              )
         ],
         1
       )
