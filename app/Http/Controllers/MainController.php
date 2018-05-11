@@ -35,7 +35,9 @@ class MainController extends Controller
         return var_dump($review);
     }
 
+    public function getRecommendShopData($shop_id) {
 
+    }
 
     public function test() {
         /*
@@ -68,5 +70,7 @@ class MainController extends Controller
 
        return view('test', ['ddd' => $ddd]);
     }
+
+
 
 }

@@ -10,7 +10,7 @@ use App\Order_List;
 class StatisticController extends Controller
 {
     public function showStatisticsForm() {
-        return view('restaurants.ownerStatistics');
+        return view('restaurant.ownerStatistics');
     }
 
     // <-- 해당 가게 별점 5종류

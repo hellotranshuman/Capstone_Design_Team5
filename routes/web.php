@@ -195,7 +195,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReviewController@getReviewLike'
     ]);
 
-    Route::get('getUserReviewList', [
+    Route::post('getUserReviewList', [
         'as' =>  'review.getUserReviewList',
         'uses' => 'ReviewController@getUserReviewList'
     ]);

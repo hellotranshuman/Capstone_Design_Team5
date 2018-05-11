@@ -66,7 +66,19 @@ class RegisterController extends Controller
             $day; */
 
         /*
-
+    $user = \App\User::create([
+        'password' => Hash::make('abc'),
+        'name' => 'aaaaa',
+        'email' => 'lllll@example.com',
+        'gender'=> true,
+        'country' => '한국',
+        'birthday' => '1994-10-12',
+        'category' => true,
+        'user_id' => '123123456',
+        'favorite_1' => '',
+        'favorite_2' => '',
+        'favorite_3' => '',
+        'favorite_region' => '',
     ]); */
 
         $category = $request->get('category') == 'true' ? true : false;

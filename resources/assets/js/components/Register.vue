@@ -108,6 +108,7 @@
                                 hide-details
                                 multiple
                                 chips
+                                color="green"
                         ></v-select>
                     </v-card-text>
                 </v-card>
@@ -120,6 +121,15 @@
                 <v-btn color="red" block outline large @click="register()">사업자 회원 가입</v-btn>
             </v-flex>
         </v-container>
+        <v-snackbar
+                v-model="snackbar"
+                :timeout="timeout"
+                top
+                vertical
+        >
+            {{ snackText }}
+            <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+        </v-snackbar>
     </v-app>
 </template>
 
@@ -160,60 +170,74 @@
             food: [
                 '한식', '일식', '중식', '양식', '분식', '덮밥', '스시', '패스트 푸드', '찜', '탕',
                 '도시락', '카페&디저트', '술집', '면류', '제과'
-            ]
+            ],
+
+            snackbar:   false,
+            snackText:  "",
+            timeout:    3000
         }),
 
         methods: {
             register() {
                 if(this.user_id == "") {
-                    alert("아이디는 필수 입력 사항입니다.");
+                    this.snackbar = true;
+                    this.snackText = "아이디는 필수 입력 사항입니다.";
                     return;
                 }
 
                 if(this.user_pw1 == "") {
-                    alert("비밀번호는 필수 입력 사항입니다.");
+                    this.snackbar = true;
+                    this.snackText = "비밀번호는 필수 입력 사항입니다.";
                     return;
                 }
 
                 if(this.user_pw1 != this.user_pw2) {
-                    alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+                    this.snackbar = true;
+                    this.snackText = "비밀번호와 비밀번호 확인이 서로 다릅니다.";
                     return;
                 }
 
                 if(this.user_name == "") {
-                    alert("이름은 필수 입력 사항입니다.");
+                    this.snackbar = true;
+                    this.snackText = "이름은 필수 입력 사항입니다.";
                     return;
                 }
 
                 if(this.user_gender == "") {
-                    alert("성별은 필수 입력 사항입니다.");
+                    this.snackbar = true;
+                    this.snackText = "성별은 필수 입력 사항입니다.";
                     return;
                 }
 
                 if(this.user_year == "" || this.user_month == "" || this.user_day == "") {
-                    alert("생년월일은 필수 입력 사항입니다.");
+                    this.snackbar = true;
+                    this.snackText = "생년월일은 필수 입력 사항입니다.";
                     return;
                 }
 
                 if(this.user_year < 1900 || this.user_year > 2018) {
-                    alert("년도를 확인해주세요.");
+                    this.snackbar = true;
+                    this.snackText = "년도를 확인해주세요.";
                     return;
                 }
 
                 if(this.user_email == "") {
-                    alert("이메일은 필수 입력 사항입니다.");
+                    this.snackbar = true;
+                    this.snackText = "이메일은 필수 입력 사항입니다.";
                     return;
                 }
 
                 if(this.user_country == "") {
-                    alert("국가는 필수 입력 사항입니다.");
+                    this.snackbar = true;
+                    this.snackText = "국가는 필수 입력 사항입니다.";
                     return;
                 }
 
                 if(this.user_categoty) {
                     var temp = this.user_favorite;
                     if(temp[3]) {
-                        alert("선호하는 음식은 최대 3가지 입니다.");
+                        this.snackbar = true;
+                        this.snackText = "선호하는 음식은 최대 3가지 입니다.";
                         return;
                     }
                 }

@@ -45,45 +45,42 @@ class UsersController extends Controller
         }      */
 
 
-            // <-- User Login 정보 가져오기
-            $userData = array(
-                'user_id'     => $request->get('user_id'),
-                'password'  => $request->get('password')
-            );
+        // <-- User Login 정보 가져오기
+        $userData = array(
+            'user_id'     => $request->get('user_id'),
+            'password'  => $request->get('password')
+        );
 
-            // <-- Login 정보 확인
-            if (! auth()->attempt($userData, true)) {
-                return response()->json([
-                    'login' => false,
-                    'msg' => '아이디나 비밀번호가 일치하지 않습니다!',
-                ]);
+        // <-- Login 정보 확인
+        if (! auth()->attempt($userData, true)) {
+            return response()->json([
+                'login' => false,
+                'msg' => '아이디와 비밀번호를 확인해주세요.',
+            ]);
+        }
+        else {
+            if(!auth()->user()->category)
+            {
+                $userId = auth()->user()->id;
+
+                $restaurant = Restaurant::where('user_num', $userId)
+                    ->get()
+                    ->first();
+
+                $restaurant_id = $restaurant->id;
             }
-            else {
-                if(!auth()->user()->category)
-                {
-                    $userId = auth()->user()->id;
+            else
+                $restaurant_id = '/';
 
-                    $restaurant = Restaurant::where('user_num', $userId)
-                                    ->get()
-                                    ->first();
-
-                    $restaurantId = $restaurant->id;
-
-                    $request->session()->put('restaurantId', $restaurantId);
-
-                    $link = '/owner/' . $restaurantId . '/menu';
-                }
-                else
-                    $link = '/';
-
-                // auth()->user()->id
-                // auth()->user()->name
-                return response()->json([
-                    'login' => true,
-                    'msg' => '로그인 되었습니다.',
-                    'link' => $link,
-                ]);
-            }
+            // auth()->user()->id
+            // auth()->user()->name
+            return response()->json([
+                'login' => true,
+                'restaurant_id' => $restaurant_id,
+                'user_id' => auth()->user()->user_id,
+                'user_name' => auth()->user()->name
+            ]);
+        }
 
 
     }
