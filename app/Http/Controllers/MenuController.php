@@ -89,6 +89,8 @@ class MenuController extends Controller
                // <-- Option Data Save in Array
 
                $opNum = $option->opnum;
+               $opIdName = 'optionId' . $optionKey;
+               $menuArray[$opIdName] = $opNum;
                $keyName = 'optionName' . $optionKey;
                $menuArray[$keyName] = $option->name;
 
@@ -102,7 +104,10 @@ class MenuController extends Controller
                {
                    // <-- SubOption Data Save in Array
                    $subOpKeyName = $optionKey .'optionValue' . $subOpKey;
+                   $subOpIDName = $optionKey .'subOptionId' . $subOpKey;
                    $menuArray[$subOpKeyName]  = $subOption->name;
+                   $menuArray[$subOpIDName]   = $subOption->sub_opnum;
+
                    $subOpKey++;
 
                }

@@ -270,34 +270,39 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'StatisticController@showStatisticsForm'
     ]);
 
-    Route::post('/owner/getRatingScore', [
+    Route::get('/owner/getRatingScore', [
         'as' => 'statistic.getRatingScore',
         'uses' => 'StatisticController@getRatingScore'
     ]);
 
-    Route::post('/owner/getCustomerScore', [
+    Route::get('/owner/getCustomerScore', [
         'as' => 'statistic.getCustomerScore',
         'uses' => 'StatisticController@getCustomerScore'
     ]);
 
-    Route::post('/owner/getGenderScore', [
+    Route::get('/owner/getGenderScore', [
         'as' => 'statistic.getGenderScore',
         'uses' => 'StatisticController@getGenderScore'
     ]);
 
-    Route::post('/owner/getAgeScore', [
+    Route::get('/owner/getAgeScore', [
         'as' => 'statistic.getAgeScore',
         'uses' => 'StatisticController@getAgeScore'
     ]);
 
-    Route::post('/owner/getCountryScore', [
+    Route::get('/owner/getCountryScore', [
         'as' => 'statistic.getCountryScore',
         'uses' => 'StatisticController@getCountryScore'
     ]);
 
-    Route::post('/owner/getMenuData', [
+    Route::get('/owner/getMenuData', [
         'as' => 'statistic.getMenuData',
         'uses' => 'StatisticController@getMenuData'
+    ]);
+
+    Route::get('/owner/getSalesData', [
+        'as' => 'statistic.getSalesData',
+        'uses' => 'StatisticController@getSalesData'
     ]);
 
 // <-- Communication Routes

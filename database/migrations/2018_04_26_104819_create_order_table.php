@@ -24,6 +24,7 @@ class CreateOrderTable extends Migration
             $table->foreign('shop_id')
                 ->references('id')->on('restaurants')
                 ->onDelete('cascade');
+            $table->unsignedInteger('total');
             $table->timestamps();
         });
     }
