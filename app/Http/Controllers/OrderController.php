@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
 
-    public function makeOrder() {
-
+    public function makeOrder(Request $request) {
+        echo var_dump($request->all());
     }
 
-    public function cancelOrder() {
+    public function cancelOrder(Request $request) {
 
     }
 }

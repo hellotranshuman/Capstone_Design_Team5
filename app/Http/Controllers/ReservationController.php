@@ -35,7 +35,7 @@ class ReservationController extends Controller
 
 
        if($request->get('menu_select') == 'true') {
-           /*
+
            // 먼저 OrderList Table에 OrderList 추가 후 Reservation Table에 등록
            OrderList::create([
               'shop_id' => $request->get('shop_id'),
@@ -61,7 +61,7 @@ class ReservationController extends Controller
                'child' => $request->get('child_person'),
                'menu_select' => true,
                'order_num'  => ''
-           ]); */
+           ]);
        } // if End
         else {
 

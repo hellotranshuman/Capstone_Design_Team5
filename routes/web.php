@@ -93,19 +93,18 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'menu.getCategory',
         'uses' => 'MenuController@getCategory'
     ]);
-/*
-    // Test
-    Route::get('menu/getMenu', [
-        'as' => 'menu.getMenu',
-        'uses' => 'MenuController@getMenu'
-    ]); */
 
     Route::get('menu/getMenu/{shop_id}/{category}', [
         'as' => 'menu.getMenu',
         'uses' => 'MenuController@getMenu'
     ]);
 
-
+// <-- User Order Page
+    Route::get('makeOrder', [
+        'as' => 'order.makeOrder',
+        'uses' => 'OrderController@makeOrder'
+    ]);
+    
 // <-- Owner Menu Setting
 
     Route::get('owner/{shop_id}/menu',[
@@ -270,39 +269,49 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'StatisticController@showStatisticsForm'
     ]);
 
-    Route::get('/owner/getRatingScore', [
+    Route::post('/owner/getRatingScore', [
         'as' => 'statistic.getRatingScore',
         'uses' => 'StatisticController@getRatingScore'
     ]);
 
-    Route::get('/owner/getCustomerScore', [
+    Route::post('/owner/getCustomerScore', [
         'as' => 'statistic.getCustomerScore',
         'uses' => 'StatisticController@getCustomerScore'
     ]);
 
-    Route::get('/owner/getGenderScore', [
+    Route::post('/owner/getGenderScore', [
         'as' => 'statistic.getGenderScore',
         'uses' => 'StatisticController@getGenderScore'
     ]);
 
-    Route::get('/owner/getAgeScore', [
+    Route::post('/owner/getAgeScore', [
         'as' => 'statistic.getAgeScore',
         'uses' => 'StatisticController@getAgeScore'
     ]);
 
-    Route::get('/owner/getCountryScore', [
+    Route::post('/owner/getCountryScore', [
         'as' => 'statistic.getCountryScore',
         'uses' => 'StatisticController@getCountryScore'
     ]);
 
-    Route::get('/owner/getMenuData', [
+    Route::post('/owner/getMenuData', [
         'as' => 'statistic.getMenuData',
         'uses' => 'StatisticController@getMenuData'
     ]);
 
-    Route::get('/owner/getSalesData', [
+    Route::post('/owner/getSalesData', [
         'as' => 'statistic.getSalesData',
         'uses' => 'StatisticController@getSalesData'
+    ]);
+
+    Route::post('/owner/getSalesMenuData', [
+        'as' => 'statistic.getSalesMenuData',
+        'uses' => 'StatisticController@getSalesMenuData'
+    ]);
+
+    Route::post('/owner/getCustomerNumber', [
+        'as' => 'statistic.getCustomerNumber',
+        'uses' => 'StatisticController@getCustomerNumber'
     ]);
 
 // <-- Communication Routes
