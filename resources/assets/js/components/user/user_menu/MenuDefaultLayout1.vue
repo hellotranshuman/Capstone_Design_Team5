@@ -17,64 +17,46 @@
         </v-card>
     </v-layout> 
     
-    <!-- 메뉴 영역 메뉴 비율 고정 시키기-->
-    <v-layout xs12 
-        v-if="menu_row_num !== 0" 
-        v-for="index in range(0, menu_row_num-1)" :key="index">
-        
-        <v-flex 
-            v-for="n in range( index*3, index * 3 + 2)" :key="n"  
-            v-if="n < get_menus.length"
-            xs4 elevation-20 mx-3 my-3 >
-        
-            <v-card color="white" style="color:black;">
-                
+    <!-- 메뉴 영역 -->
+        <div v-for="n in range(0, menu_num-1)" :key="n" class="menu_body">        
+            <v-card color="white" style="color: black;">                
+                <!-- 메뉴 이미지 -->
                 <div class="tem_img">
-                    <img :src="get_menus[n].path + get_menus[n].filename">
-                    <!-- <img src="./example6.jpg"> -->
+                    <img :src="get_menus[n].path + get_menus[n].filename">                    
                 </div>
 
-                <v-card-title primary-title>
-                    <div class="menu_name">
-                        <h3 class="menu_info"> {{get_menus[n].name}} </h3>
-                    </div>
-                    <div class="menu_expl">
-                        <div class="menu_info"> {{get_menus[n].explanation}} </div>
-                    </div>
+                <!-- 메뉴 정보 -->
+                <v-card-title primary-title style="padding:2%;"  elevation-20>                    
+                    <!-- 메뉴 명 -->
+                    <div class="menu-outer" style="width: 100%;">
+                        <h3 class="menu_info"> {{get_menus[n].name}}</h3>
+                    </div>                 
 
-                    <div class="menu_name" style="margin-top:5%;">
-                        <h4 v-if="get_menus[n].optionValue1 !== undefined" 
-                            style="float:left; width:50%;">
-                            옵션 : {{get_menus[n].optionName1}}
-                        </h4>
-                        <select 
-                            :id="'value'+n" v-if="get_menus[n].optionValue1 !== undefined"
-                            style="float:left; width:50%;">
-                            <!--    -->
-                            <option
-                            v-for="(value, key) in options[n]" :key="key"
-                            v-if ="value !== undefined"
-                                :value="value" >
-                                {{value}}
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="menu_price">
-                        <h4 class="menu_info"> 가격 : {{get_menus[n].price}} </h4>
+                    <!-- 메뉴 설명 -->
+                    <div class="menu_expl"><div class="menu_info"> {{get_menus[n].explanation}}</div></div>
+                                
+                    <!-- 메뉴 점심 메뉴 / 저녁 메뉴 구분 -->
+                    <div class="menu-outer" style="width: 100%;">
+                        <h4 class="menu_info"> 런치 / 디너 구분 : &nbsp;{{get_menus[n].remark}} </h4>
                     </div> 
-                    
-                    <div class="menu_price">     
-                        <v-btn color="primary" slot="activator" 
-                            width=100%; @click="select_menu" flat :id="n">
-                            주문하기
-                        </v-btn>
+                                 
+                    <!-- 메뉴 가격 -->
+                    <div class="menu-outer" style="width:50%;">
+                        <b class="menu_info" style="margin-top:2%; margin-left:2%;"> 
+                            가격 : {{get_menus[n].price}} 
+                        </b>
+                    </div> 
+                                                                                  
+                    <!-- 주문하기 버튼 -->
+                    <div class="menu-outer" style="width: 50%;">      
+                        <button :id="n" @click="select_menu"
+                            style="width:100%; padding-top:5%; color:cadetblue;">
+                            선택하기
+                        </button>
                     </div>
                 </v-card-title>
             </v-card>
-        </v-flex>
-    </v-layout>
- 
+        </div> 
 </v-container> 
 </div>
 </template>
@@ -90,31 +72,16 @@ export default {
         var url = '/menu/getCategory';
         var get_categorys = null;
         this.shop_id = this.$route.params.shop_id;      // 샵 아이디 
-        var shopData = new FormData();
-        shopData.append('shop_id', this.shop_id);
 
         // 카테고리 요청하기.
-        axios.post(url, shopData)
+        axios.post(url, {
+          'shop_id' : this.shop_id
+        })
         .then( (response) => {
             get_categorys = response.data.category;
-            this.categorys = this.unique(get_categorys) // 카테고리 중복 값 제거.
+            this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
         })
-        .catch((ex)=>{
-            alert('메뉴 로드 실패');
-        });
-         
-        // get_categorys = [   
-        //     {"category" : '특식'},
-        //     {"category" : '추천 메뉴'},
-        //     {"category" : '식사류'},
-        //     {"category" : '찌개류'},
-        //     {"category" : '안주류'},
-        //     {"category" : '음료'},
-        //     {"category" : '커피'},
-        //     {"category" : '디저트'},  
-        // ]
-        
-        this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+        .catch((ex)=>{alert('메뉴 로드 실패');});          
     },
     
     data() {
@@ -122,29 +89,27 @@ export default {
             e2           : null,       // 카테고리 클릭 값
             categorys    : null,       // 카테고리 배열
             get_menus    : null,       // 해당 카테고리 메뉴들
-            menu_row_num : 0,          // 메뉴 출력 v-layout 갯수 
+            menu_num : 0,              // 메뉴 출력 v-layout 갯수 
             select_menus : [],         // 상위 컴퍼넌트에 보낼 값
-            shop_id      : null,       // 가게 아이디 값
-            options      : []
+            shop_id      : null,       // 가게 아이디 값 
         }
     },
 
     methods : {
         // 메뉴 카테고리 클릭
         click_category : function() {
-            var category = event.target;                        // 선택한 카테고리 
-            var url = "";                          // 서버에 요청할 주소
-            var send_data = [];
-            var categoryData = '';
+            let category = event.target;                        // 선택한 카테고리 
+            let url = "";                          // 서버에 요청할 주소
+            let send_data = [];
 
-            // 클릭한 값  검사
+            // 클릭한 값 검사
             if(category.value === undefined) {
-                categoryData = category.parentNode.value;
+                category = category.parentNode.value;
             } else {
-                categoryData = category.value;
+                category = category.value;
             }
 
-            url = '/menu/getMenu/' + this.shop_id + '/' + categoryData;
+            url = '/menu/getMenu/' + this.shop_id + '/' + category;
 
             // 보낼 데이터 초기화
             send_data['shop_id']  = this.shop_id;
@@ -154,68 +119,12 @@ export default {
             axios.get(url)
             .then( (response) => {
                 this.get_menus = response.data.menu;
-                console.log(this.get_menus);
-
-                // 출력할 v-layout 개수 설정
-                if( this.get_menus.length%3 === 0 ){
-                    this.menu_row_num = this.get_menus.length / 3;
-                }
-                else {
-                    this.menu_row_num = Math.floor(this.get_menus.length / 3) + 1;
-                }
-
-                // 옵션 값 뽑아내기
-                for(let i=0; i < this.get_menus.length; i++) {   
-                    this.options[i] = [];
-                    for(let j=1; j <= this.get_menus[i].subOpNum; j++){
-                        this.options[i].push(this.get_menus[i]['optionValue'+j] );
-                    }
-                }    
+                this.menu_num  = this.get_menus.length;                  
             })
             .catch((ex)=>{
                 alert('메뉴 로드 실패');
             });
-
-            // this.get_menus = [
-            //     { 
-            //         "id"            : 1, 
-            //         "name"          : "짬뽕" ,
-            //         "explanation"   : "짬뽕입니다." ,
-            //         "price"         : 9000 ,
-            //         "remark"        : "default" ,
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_1.jpeg" ,
-            //         "optionName1"   : "맵기 조절" ,
-            //         "optionValue1"  : "순한맛" ,
-            //         "optionValue2"  : "보통맛" ,
-            //         "optionValue3"  : "매운맛" ,
-            //         "subOpNum"      : 3
-            //     }, 
-            //     { 
-            //         "id"            : 2,
-            //         "name"          : "연두부", 
-            //         "explanation"   : "연두부" ,
-            //         "price"         : 5000,
-            //         "remark"        : "default", 
-            //         "path"          : "/images/menu/1/", 
-            //         "filename"      : "1_menuImg_2.jpeg" ,
-            //         "optionName1"   : "소스" ,
-            //         "optionValue1"  : "특제 소스" ,
-            //         "optionValue2"  : "간장 소스" ,
-            //         "subOpNum"      : 2,
-            //     },                 
-            //     { 
-            //         "id"            : 3 ,
-            //         "name"          : "케이크" ,
-            //         "explanation"   : "123123" ,
-            //         "price"         : 9999,
-            //         "remark"        : "default",
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_3.jpeg",
-            //         "optionName1"   : "없으면 입력 x" ,
-            //         "subOpNum"      : 0
-            //     },   
-            // ]
+ 
 
         }, // end of click_category
 
@@ -239,76 +148,84 @@ export default {
 
         // 주문하기 클릭한 메뉴
         select_menu : function () {
-            var menu  = event.target.parentNode;                     // 클릭한 메뉴 가져오기.
-            var array = [];
+            let menu = event.target;                            // 클릭한 메뉴 가져오기. 
+            let arr  = [];
 
-            // 클릭한 메뉴 테두리 붉게
-            menu.parentNode.parentNode.parentNode.parentNode.style = "border: 3px solid red;"   
-
-            array['menu'] = this.get_menus[menu.id];
-
-            if(this.get_menus[menu.id].optionValue1 !== undefined){
-                var op_val = document.getElementById('value'+menu.id);  // 선택한 옵션 값 가져오기.
-            
-                array['option'] = {
-                    'name' : this.get_menus[menu.id].optionName1 ,
-                    'value' : op_val.value,
-                };
-            }
-            this.select_menus.push(array); 
+            arr['menu'] = this.get_menus[menu.id]
+            this.select_menus.push(arr);    // 보낼 값 배열에 담기.  
             EventBus.$emit('select_menus', this.select_menus);
+            alert('선택하신 메뉴가 추가 되었습니다.');
         }
-
     }// end of method
 
 }// end of export default
-</script>
+</script> 
 
 <style>
+/* 모바일 */
+@media (max-width: 639px){  
+    html       { font-size: 15px; } 
+    .menu_body { width:100%; margin:2%;} 
+    .menu_expl { padding-bottom: 15%; }
+}
+
+/* 테블릿 */
+@media (min-width: 640px) and (max-width: 1023px){  
+    html       { font-size: 13px; } 
+    .menu_body { width:47%; margin:1%; }
+    .menu_expl { padding-bottom: 15%; }
+}
+
+/* 데스트 탑 */
+@media (min-width: 1024px){  
+    html       { font-size: 12px; } 
+    .menu_body { width:31%; margin :1%;}
+    .menu_expl { padding-bottom: 25%; }
+} 
+
+/* 메뉴 */
+.menu_body { 
+    float: left;
+}
+
+/* 메뉴 이미지 바깥 */
 .tem_img {
-    position: relative;
     width: 100%;
     height: 0;
-    overflow: hidden;
     padding-bottom: 70%;
+    overflow: hidden;
+    position: relative;
 }
+/* 메뉴 이미지 안쪽 */
 img { 
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; 
+    position: absolute;
 } 
-.menu_name { 
-    position: relative;
-    width: 100%;
-    height: 0; 
+
+/* 메뉴 정보 길고 얇은거 */
+.menu-outer { 
+    height: 0;  
+    padding-bottom: 11%;   
     overflow: hidden;
-    padding-bottom: 10%;
+    position: relative;
 }
+/* 메뉴 설명 */
 .menu_expl { 
-    position: relative;
     width: 100%;
-    height: 0;
-    overflow: hidden;
-    padding-bottom: 15%; 
-}
-.menu_price { 
-    position: relative;
-    width: 50%;
     height: 0; 
-    overflow: hidden;
-    padding-bottom: 12%; 
+    
+    overflow: auto;
+    position: relative;
 }
+
 .menu_info {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; 
-} 
-select {
-    widows: 100%;
-    border-bottom: 1px solid;
-}
+    position: absolute;
+}  
 </style>

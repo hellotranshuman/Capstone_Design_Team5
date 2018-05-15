@@ -15,7 +15,7 @@
                             <v-icon large>account_circle</v-icon>
                         </v-list-tile-avatar>
                         <v-list-tile-content>
-                            <v-list-tile-title>{{ user_name }} 님</v-list-tile-title>
+                            <v-list-tile-title>{{ user_name+"("+user_name+")" }} 님</v-list-tile-title>
                             <v-list-tile-sub-title v-if="checkRestaurant()">사업자 회원</v-list-tile-sub-title>
                             <v-list-tile-sub-title v-else>개인 회원</v-list-tile-sub-title>
                         </v-list-tile-content>
@@ -37,6 +37,14 @@
                         </v-list-tile-action>
                         <v-list-tile-content>
                             <v-list-tile-title>리뷰 내역</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile to="/reservation">
+                        <v-list-tile-action>
+                            <v-icon large>history</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>예약 내역</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile>
@@ -65,7 +73,7 @@
                     </v-list-tile>
                     <!-- 커뮤니케이션 버튼 -->
                     <v-dialog v-model="communicationDialog" fullscreen hide-overlay transition="dialog-bottom-transition" full-width>
-                        <v-list-tile @click="" slot="activator">
+                        <v-list-tile slot="activator">
                             <v-list-tile-action>
                                 <v-icon large>sentiment_very_satisfied</v-icon>
                             </v-list-tile-action>
@@ -171,7 +179,7 @@
             </v-toolbar>
             <!-- 컴포넌트 출력 -->
             <v-content>
-                <router-view></router-view>
+                <router-view :searchAddress=searchAddress></router-view>
             </v-content>
         </v-app>
         <v-dialog v-model="gps_modal" max-width="400">
@@ -190,10 +198,10 @@
                             <v-card-title class="headline">위치를 입력하세요</v-card-title>
                             <v-card-actions>
                                 <v-flex>
-                                    <v-text-field placeholder="place" required></v-text-field>
+                                    <gmap-autocomplete @place_changed="setPlace"></gmap-autocomplete>
                                 </v-flex>
                                 <v-spacer></v-spacer>
-                                <v-btn color="amber lighten-1" to="/search" @click.native="gps_search = false; gps_modal = false">검색</v-btn>
+                                <v-btn color="amber lighten-1" @click.native="gps_search = false; gps_modal = false; searching()">검색</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -271,7 +279,10 @@
 
                 snackbar:   false,
                 snackText:  "",
-                timeout:    3000
+                timeout:    3000,
+
+                searchAddressInput: "",
+                searchAddress: ['대한민국 대구광역시 북구 복현2동 복현로 35', { lat: 35.8963134, lng: 128.6198624 }]
             }
         },
 
@@ -348,6 +359,19 @@
                     this.snackbar = true;
                     this.snackText = "로그인이 필요합니다!";
                     this.loginForm = true;
+                }
+            },
+
+            setPlace(AddressInput) {
+                this.searchAddressInput = AddressInput;
+            },
+
+            searching() {
+                if(this.searchAddressInput.formatted_address) {
+                    this.searchAddress = [this.searchAddressInput.formatted_address, {
+                        lat: this.searchAddressInput.geometry.location.lat(),
+                        lng: this.searchAddressInput.geometry.location.lng()
+                    }]
                 }
             }
         }

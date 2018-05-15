@@ -15,7 +15,7 @@ class CreateOrderOptionTable extends Migration
     {
         Schema::create('order_option', function (Blueprint $table) {
             $table->unsignedInteger('op_num');
-            $table->unsignedInteger('subop_num');
+            $table->unsignedInteger('subop_num')->nullable();
             $table->unsignedInteger('order_menu_id');
             $table->foreign('op_num')
                 ->references('opnum')->on('menu_option');

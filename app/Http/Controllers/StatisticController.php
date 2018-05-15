@@ -128,7 +128,9 @@ class StatisticController extends Controller
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.gender=true, 1, null)) as male,
                             
-                                      count(if(users.gender=false, 1, null)) as female'))
+                                      count(if(users.gender=false, 1, null)) as female
+                                      
+                                      '))
                 ->where('shop_id', $shopId)
                 ->get()
                 ->toArray();
@@ -137,7 +139,9 @@ class StatisticController extends Controller
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.gender=true, 1, null)) as male,
                             
-                                      count(if(users.gender=false, 1, null)) as female'))
+                                      count(if(users.gender=false, 1, null)) as female
+                                      
+                                      '))
                 ->where('shop_id', $shopId)
                 ->where('order_date', '<', $end_date)
                 ->get()
@@ -147,7 +151,9 @@ class StatisticController extends Controller
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.gender=true, 1, null)) as male,
                             
-                                      count(if(users.gender=false, 1, null)) as female'))
+                                      count(if(users.gender=false, 1, null)) as female
+                                      
+                                      '))
                 ->where('shop_id', $shopId)
                 ->where('order_date', '>', $start_date)
                 ->get()
@@ -157,7 +163,9 @@ class StatisticController extends Controller
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.gender=true, 1, null)) as male,
                             
-                                      count(if(users.gender=false, 1, null)) as female'))
+                                      count(if(users.gender=false, 1, null)) as female
+                                    
+                                      '))
                 ->where('shop_id', $shopId)
                 ->whereBetween('order_date', [$start_date, $end_date])
                 ->get()
@@ -192,7 +200,9 @@ class StatisticController extends Controller
                         
                         sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , 1, 0)) as 50s,
                         
-                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 69 , 1, 0)) as 60s'))
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , 1, 0)) as 60s
+                        
+                        '))
                 ->where('shop_id', $shopId)
                 ->get()
                 ->toArray();
@@ -210,7 +220,9 @@ class StatisticController extends Controller
                         
                         sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , 1, 0)) as 50s,
                         
-                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 69 , 1, 0)) as 60s'))
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , 1, 0)) as 60s
+
+                        '))
                 ->where('shop_id', $shopId)
                 ->where('order_date', '<', $end_date)
                 ->get()
@@ -229,7 +241,9 @@ class StatisticController extends Controller
                         
                         sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , 1, 0)) as 50s,
                         
-                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 69 , 1, 0)) as 60s'))
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , 1, 0)) as 60s
+                       
+                        '))
                 ->where('shop_id', $shopId)
                 ->where('order_date', '>', $start_date)
                 ->get()
@@ -248,7 +262,9 @@ class StatisticController extends Controller
                         
                         sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , 1, 0)) as 50s,
                         
-                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 69 , 1, 0)) as 60s'))
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , 1, 0)) as 60s
+     
+                        '))
                 ->where('shop_id', $shopId)
                 ->whereBetween('order_date', [$start_date, $end_date])
                 ->get()
@@ -277,7 +293,9 @@ class StatisticController extends Controller
                                 
                                 count(if(users.country=\'china\', 1, null)) as china,
                                 
-                                count(if(users.country=\'usa\', 1, null)) as usa'))
+                                count(if(users.country=\'usa\', 1, null)) as usa
+                                
+                                '))
                 ->where('shop_id', $shopId)
                 ->get()
                 ->toArray();
@@ -290,7 +308,9 @@ class StatisticController extends Controller
                                 
                                 count(if(users.country=\'china\', 1, null)) as china,
                                 
-                                count(if(users.country=\'usa\', 1, null)) as usa'))
+                                count(if(users.country=\'usa\', 1, null)) as usa
+                                
+                                '))
                 ->where('shop_id', $shopId)
                 ->where('order_date', '<', $end_date)
                 ->get()
@@ -304,7 +324,8 @@ class StatisticController extends Controller
                                 
                                 count(if(users.country=\'china\', 1, null)) as china,
                                 
-                                count(if(users.country=\'usa\', 1, null)) as usa'))
+                                count(if(users.country=\'usa\', 1, null)) as usa
+                                '))
                 ->where('shop_id', $shopId)
                 ->where('order_date', '>', $start_date)
                 ->get()
@@ -318,7 +339,8 @@ class StatisticController extends Controller
                                 
                                 count(if(users.country=\'china\', 1, null)) as china,
                                 
-                                count(if(users.country=\'usa\', 1, null)) as usa'))
+                                count(if(users.country=\'usa\', 1, null)) as usa
+                                '))
                 ->where('shop_id', $shopId)
                 ->whereBetween('order_date', [$start_date, $end_date])
                 ->get()
@@ -326,7 +348,7 @@ class StatisticController extends Controller
         }
 
         return response()->json([
-            'ageData' => $countryData,
+            'countryData' => $countryData,
         ]);
 
 
@@ -1144,4 +1166,321 @@ class StatisticController extends Controller
                 $monthData7, $monthData8, $monthData9, $monthData10, $monthData11, $monthData12]
         ]);
     }
+
+    // <-- 해당 가게 월별 매출
+    public function getSalesNumber(Request $request) {
+        // get Shop Id
+        $shopId = $request->get('shop_id');
+
+        $monthData1 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day1'), $request->get('end_date1')])
+            ->get()
+            ->toArray();
+
+        $monthData2 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day2'), $request->get('end_date2')])
+            ->get()
+            ->toArray();
+
+        $monthData3 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day3'), $request->get('end_date3')])
+            ->get()
+            ->toArray();
+
+        $monthData4 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day4'), $request->get('end_date4')])
+            ->get()
+            ->toArray();
+
+        $monthData5 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day5'), $request->get('end_date5')])
+            ->get()
+            ->toArray();
+
+        $monthData6 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day6'), $request->get('end_date6')])
+            ->get()
+            ->toArray();
+
+        $monthData7 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day7'), $request->get('end_date7')])
+            ->get()
+            ->toArray();
+
+        $monthData8 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day8'), $request->get('end_date8')])
+            ->get()
+            ->toArray();
+
+        $monthData9 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day9'), $request->get('end_date9')])
+            ->get()
+            ->toArray();
+
+        $monthData10 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day10'), $request->get('end_date10')])
+            ->get()
+            ->toArray();
+
+        $monthData11 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day11'), $request->get('end_date11')])
+            ->get()
+            ->toArray();
+
+        $monthData12 = Order_List::select(DB::raw('sum(total) as total'))
+            ->where('shop_id', $shopId)
+            ->whereBetween('order_date', [$request->get('start_day12'), $request->get('end_date12')])
+            ->get()
+            ->toArray();
+
+        return response()->json([
+            'salesData' => [$monthData1, $monthData2, $monthData3, $monthData4, $monthData5, $monthData6,
+                $monthData7, $monthData8, $monthData9, $monthData10, $monthData11, $monthData12]
+        ]);
+    }
+
+    // <-- 성별 별 매출
+    public function getGenderSalesData(Request $request){
+        // get Shop Id
+        $shopId     = $request->get('shop_id');
+
+        $start_date = $request->get('start_date');
+        $end_date = $request->get('end_date');
+
+        if($start_date == null && $end_date == null) {
+
+            $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw(' sum(if(users.gender=true, order_list.total, 0)) as maleSales,
+                          
+                          sum(if(users.gender=false, order_list.total, 0)) as femaleSales
+                          '))
+                ->where('shop_id', $shopId)
+                ->get()
+                ->toArray();
+        }
+        else if ($start_date == null) {
+            $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(users.gender=true, order_list.total, 0)) as maleSales,
+                                      
+                          sum(if(users.gender=false, order_list.total, 0)) as femaleSales
+                          '))
+                ->where('shop_id', $shopId)
+                ->where('order_date', '<', $end_date)
+                ->get()
+                ->toArray();
+        }
+        else if ($end_date == null) {
+            $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(users.gender=true, order_list.total, 0)) as maleSales,
+                                      
+                          sum(if(users.gender=false, order_list.total, 0)) as femaleSales
+                          '))
+                ->where('shop_id', $shopId)
+                ->where('order_date', '>', $start_date)
+                ->get()
+                ->toArray();
+        }
+        else {
+            $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(users.gender=true, order_list.total, 0)) as maleSales,
+                                      
+                          sum(if(users.gender=false, order_list.total, 0)) as femaleSales
+                          '))
+                ->where('shop_id', $shopId)
+                ->whereBetween('order_date', [$start_date, $end_date])
+                ->get()
+                ->toArray();
+        }
+
+        return response()->json([
+            'genderData' => $genderData,
+        ]);
+    }
+
+    // <-- 국적별 매출
+    public function getCountrySalesData(Request $request){
+        // get Shop Id
+        $shopId      = $request->get('shop_id');
+
+        $start_date = $request->get('start_date');
+        $end_date = $request->get('end_date');
+
+        if($start_date == null && $end_date == null) {
+            $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
+
+                                sum(if(users.country=\'japan\', order_list.total, 0)) as japanSales,
+                                
+                                sum(if(users.country=\'china\', order_list.total, 0)) as chinaSales,
+                                
+                                sum(if(users.country=\'usa\', order_list.total, 0)) as usaSales
+                                
+                                '))
+                ->where('shop_id', $shopId)
+                ->get()
+                ->toArray();
+        }
+        else if ($start_date == null) {
+            $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
+
+                                sum(if(users.country=\'japan\', order_list.total, 0)) as japanSales,
+                                
+                                sum(if(users.country=\'china\', order_list.total, 0)) as chinaSales,
+                                
+                                sum(if(users.country=\'usa\', order_list.total, 0)) as usaSales
+                                
+                                '))
+                ->where('shop_id', $shopId)
+                ->where('order_date', '<', $end_date)
+                ->get()
+                ->toArray();
+        }
+        else if ($end_date == null) {
+            $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
+
+                                sum(if(users.country=\'japan\', order_list.total, 0)) as japanSales,
+                                
+                                sum(if(users.country=\'china\', order_list.total, 0)) as chinaSales,
+                                
+                                sum(if(users.country=\'usa\', order_list.total, 0)) as usaSales
+                                '))
+                ->where('shop_id', $shopId)
+                ->where('order_date', '>', $start_date)
+                ->get()
+                ->toArray();
+        }
+        else {
+            $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
+                                
+                                sum(if(users.country=\'japan\', order_list.total, 0)) as japanSales,
+                                
+                                sum(if(users.country=\'china\', order_list.total, 0)) as chinaSales,
+                                
+                                sum(if(users.country=\'usa\', order_list.total, 0)) as usaSales
+                                '))
+                ->where('shop_id', $shopId)
+                ->whereBetween('order_date', [$start_date, $end_date])
+                ->get()
+                ->toArray();
+        }
+
+        return response()->json([
+            'countryData' => $countryData,
+        ]);
+
+    }
+
+    // <-- 연령별 매출
+    public function getAgesSalesData(Request $request){
+        // get Shop Id
+        $shopId = $request->get('shop_id');
+
+        $start_date = $request->get('start_date');
+        $end_date = $request->get('end_date');
+
+        if($start_date == null && $end_date == null) {
+            $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 10 and 19 , order_list.total, 0)) as 10sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 20 and 29 , order_list.total, 0)) as 20sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 30 and 39 , order_list.total, 0)) as 30sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 40 and 49 , order_list.total, 0)) as 40sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , order_list.total, 0)) as 50sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , order_list.total, 0)) as 60sSales
+                        '))
+                ->where('shop_id', $shopId)
+                ->get()
+                ->toArray();
+        }
+        else if ($start_date == null) {
+            $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
+
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 10 and 19 , order_list.total, 0)) as 10sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 20 and 29 , order_list.total, 0)) as 20sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 30 and 39 , order_list.total, 0)) as 30sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 40 and 49 , order_list.total, 0)) as 40sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , order_list.total, 0)) as 50sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , order_list.total, 0)) as 60sSales
+                        '))
+                ->where('shop_id', $shopId)
+                ->where('order_date', '<', $end_date)
+                ->get()
+                ->toArray();
+        }
+        else if ($end_date == null) {
+            $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 10 and 19 , order_list.total, 0)) as 10sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 20 and 29 , order_list.total, 0)) as 20sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 30 and 39 , order_list.total, 0)) as 30sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 40 and 49 , order_list.total, 0)) as 40sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , order_list.total, 0)) as 50sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , order_list.total, 0)) as 60sSales
+                        '))
+                ->where('shop_id', $shopId)
+                ->where('order_date', '>', $start_date)
+                ->get()
+                ->toArray();
+        }
+        else{
+            $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
+
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 10 and 19 , order_list.total, 0)) as 10sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 20 and 29 , order_list.total, 0)) as 20sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 30 and 39 , order_list.total, 0)) as 30sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 40 and 49 , order_list.total, 0)) as 40sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 50 and 59 , order_list.total, 0)) as 50sSales,
+                        
+                        sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 60 and 99 , order_list.total, 0)) as 60sSales
+                        '))
+                ->where('shop_id', $shopId)
+                ->whereBetween('order_date', [$start_date, $end_date])
+                ->get()
+                ->toArray();
+        }
+
+        return response()->json([
+            'ageData' => $ageData,
+        ]);
+
+    }
+
+
 }

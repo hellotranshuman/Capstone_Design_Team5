@@ -100,11 +100,11 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
 // <-- User Order Page
-    Route::get('makeOrder', [
+    Route::post('makeOrder', [
         'as' => 'order.makeOrder',
         'uses' => 'OrderController@makeOrder'
     ]);
-    
+
 // <-- Owner Menu Setting
 
     Route::get('owner/{shop_id}/menu',[
@@ -146,6 +146,13 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'layout.saveSelectedLayout',
         'uses' => 'LayoutController@saveSelectedLayout'
     ]);
+
+    Route::get('loadCustomLayout', [
+        'as' => 'layout.loadCustomLayout',
+        'uses' => 'LayoutController@loadCustomLayout'
+    ]);
+
+
 
 // <-- Owner Coupon Page
     Route::get('owner/{shop_id}/createCoupon', [
@@ -263,6 +270,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' =>  'ReservationController@getReservationSettingByDate'
     ]);
 
+    Route::post('/updateReservationSelectMenu', [
+        'as' => 'reservation.updateReservationSelectMenu',
+        'uses' =>  'ReservationController@updateReservationSelectMenu'
+    ]);
+
 // <— Owner Statistics Page
     Route::get('/owner/{shop_id}/totalStatistics', [
         'as' => 'statistic.showStatisticsForm',
@@ -312,6 +324,26 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/owner/getCustomerNumber', [
         'as' => 'statistic.getCustomerNumber',
         'uses' => 'StatisticController@getCustomerNumber'
+    ]);
+
+    Route::post('/owner/getSalesNumber', [
+        'as' => 'statistic.getSalesNumber',
+        'uses' => 'StatisticController@getSalesNumber'
+    ]);
+
+    Route::post('/owner/getGenderSalesData', [
+        'as' => 'statistic.getGenderSalesData',
+        'uses' => 'StatisticController@getGenderSalesData'
+    ]);
+
+    Route::post('/owner/getCountrySalesData', [
+        'as' => 'statistic.getCountrySalesData',
+        'uses' => 'StatisticController@getCountrySalesData'
+    ]);
+
+    Route::post('/owner/getAgesSalesData', [
+        'as' => 'statistic.getAgesSalesData',
+        'uses' => 'StatisticController@getAgesSalesData'
     ]);
 
 // <-- Communication Routes

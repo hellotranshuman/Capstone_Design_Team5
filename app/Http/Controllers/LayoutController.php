@@ -46,9 +46,17 @@ class LayoutController extends Controller
     public function loadCustomLayout(Request $request) {
         $shopId = $request->get('shop_id');
 
+        $layoutData = Layout::select('layout_data')
+                        ->where('shop_id', 1)
+                        ->get()
+                        ->toArray();
+
+        var_dump($layoutData);
+
         /*
-        Layout::where('shop_id', $shopId)
-            ->get();*/
+        return response()->json([
+            'layoutData' => $layoutData,
+        ]);*/
 
     }
 

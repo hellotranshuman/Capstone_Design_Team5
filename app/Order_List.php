@@ -10,6 +10,6 @@ class Order_List extends Model
     protected $table = 'order_list';
 
     protected $fillable = [
-        'shop_id', 'user_num', 'order_date'
+        'shop_id', 'user_num', 'order_date', 'total'
     ];
 }

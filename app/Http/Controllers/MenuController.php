@@ -36,7 +36,7 @@ class MenuController extends Controller
         $shop_id = $request->get('shop_id');
 
         $category =  Menu::select('category')
-                    ->where('shop_id', $request->get('shop_id'))
+                    ->where('shop_id', $shop_id)
                     ->get()
                     ->toArray();
 
@@ -120,16 +120,12 @@ class MenuController extends Controller
             array_push($totalMenuArray, $menuArray);
 
         }
-        echo $shop_id;
-        echo $category;
-        echo var_dump($totalMenuArray);
 
-        /*
         return response()->json([
             'shopId' => $shop_id,
             'category' => $category,
             'menu'  => $totalMenuArray,
-        ]);*/
+        ]);
 
     }
 

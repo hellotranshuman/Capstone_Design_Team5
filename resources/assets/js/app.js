@@ -101,11 +101,6 @@ const router = new VueRouter({
                 component: Home
             },
             {
-                path: '/main',
-                name: 'home',
-                component: Home
-            },
-            {
                 path: '/search',
                 name: 'home2',
                 component: Home2
