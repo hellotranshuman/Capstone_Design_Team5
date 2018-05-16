@@ -377,6 +377,12 @@ class StatisticController extends Controller
                $country = 'korea';
                break;
            }
+           case 4 : {
+               $country = 'usa';
+               break;
+           }
+
+
        }
 
         switch ($request->get('ranking_gender')) {
@@ -761,6 +767,11 @@ class StatisticController extends Controller
             }
             case 3 : {
                 $country = 'korea';
+                break;
+            }
+
+            case 4 : {
+                $country = 'usa';
                 break;
             }
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Menu;
 use Illuminate\Http\Request;
 use \App\Coupon;
 use \App\UserCoupon;
@@ -44,9 +45,15 @@ class CouponController extends Controller
                         ->get()
                         ->count();
 
+        $menuList = Menu::select('id', 'name')
+                    ->where('shop_id', $request->get('shop_id'))
+                    ->get()
+                    ->toArray();
+
         return response()->json([
             'coupon'      => $couponList,
             'couponNum'   => $couponNum,
+            'menuList'    => $menuList,
         ]);
     }
 

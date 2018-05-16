@@ -127,25 +127,34 @@ class OrderController extends Controller
 
         } // <-- switch end
 
-       // [0 : [메뉴1, 메뉴1옵션1, 메뉴1서브옵션1], 1 : [메뉴2, 메뉴2옵션1, 메뉴2서브옵션1]]
-
         /*
-        $orderData = $request->get('Order');
+        $menuArray      = $request->get('Menu');
+        $menuCount      = $request->get('MenuCount);
+        $opArray        = $request->get('Option');
+        $opCount        = $request->get('OpCount');
+        $subOpArray     = $request->get('subOption');
+        $subOpCount     = $request->get('subOpCount');
 
 
-        for($orderIndex = 0 ; $orderIndex < count($orderData) ; $orderIndex++ ) {
+        for($orderIndex = 0 ; $orderIndex < $menuCount ; $orderIndex++ ) {
+            $currentOpCount     = $opCount[$menuCount];
+            $currentSubOpCount  = $subOpCount[$menuCount];
+
             $transBeforeText = '';
 
-            $currentOrderData = $orderData[$orderIndex];
+            $transBeforeText = $menuArray[$orderIndex] . ' ';
 
-            $transBeforeText = $currentOrderData['name'];
 
             /*
-            for($optionIndex = 0 ; $orderIndex < $옵션개수 ; $orderIndex++) {
+            for($optionIndex = 0 ; $optionIndex < $currentOpCount ; $optionIndex++) {
+
+                $transBeforeText .= $opArray[$optionIndex] . ' : ';
+
+
 
             }*/
 
-        }
+        
 
 
 

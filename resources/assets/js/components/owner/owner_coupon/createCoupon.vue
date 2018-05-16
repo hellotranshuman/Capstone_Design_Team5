@@ -184,6 +184,7 @@ export default {
             /* DB Coupon Data */
             var Index = response.data.couponNum;
             console.log(response.data.coupon);
+            console.log(response.data.menuList);
            // var Coupondata = Object.values(response.data.coupon);
 
             var Coupondata = response.data.coupon;

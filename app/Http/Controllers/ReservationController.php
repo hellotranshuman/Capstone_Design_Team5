@@ -302,4 +302,5 @@ class ReservationController extends Controller
             'msg' => true,
         ]);
     }
+
 }
