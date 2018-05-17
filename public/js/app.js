@@ -20454,6 +20454,17 @@ module.exports = Cancel;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 // 커뮤니케이션 버튼
@@ -20488,6 +20499,13 @@ module.exports = Cancel;
     },
 
 
+    created: function created() {
+        // GoogleMap 위치 검색을 한 이력이 있으면 그 위치를 초기값으로 함
+        if (this.$session.get("searchAddressHistory")) {
+            this.searchAddress = this.$session.get("searchAddressHistory");
+        }
+    },
+
     methods: {
         login: function login() {
             var _this = this;
@@ -20505,7 +20523,9 @@ module.exports = Cancel;
                 }
                 if (response.data.restaurant_id != "/") {
                     // 사장인지 손님인지 체크
-                    _this.$session.set('restaurant_id', response.data.restaurant_id); // 사장이라면 가게 주소 set
+                    if (response.data.restaurant_id != "noneRestaurant") // 가게를 만든 사장인지 체크
+                        _this.$session.set('restaurant_id', response.data.restaurant_id); // 가게를 만든 사장이라면, 가게 id set
+                    else _this.$session.set('restaurant_id', 'needCreate');
                 }
 
                 _this.$session.set('loginStatus', true); // 로그인 상태 true
@@ -20514,12 +20534,17 @@ module.exports = Cancel;
 
                 if (_this.$session.get('restaurant_id')) {
                     // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
-                    var restaurant_id = _this.$session.get('restaurant_id');
-                    location.replace('/owner/' + restaurant_id + '/menu');
+                    if (!(_this.$session.get('restaurant_id') == 'needCreate')) {
+                        // 가게를 만들지 않은 사장인지 체크
+                        var restaurant_id = _this.$session.get('restaurant_id');
+                        location.replace('/owner/' + restaurant_id + '/menu');
+                    } else {
+                        location.replace('/owner/createRestaurant');
+                    }
                 } else location.replace(response.data.restaurant_id);
             }).catch(function (error) {
-                this.snackbar = true;
-                this.snackText = error;
+                _this.snackbar = true;
+                _this.snackText = error;
             });
         },
         logout: function logout() {
@@ -20530,7 +20555,8 @@ module.exports = Cancel;
             return this.$session.get('loginStatus');
         },
         checkRestaurant: function checkRestaurant() {
-            return this.$session.get('restaurant_id');
+            if (!this.$session.get('restaurant_id' == 'needCreate')) // 가게 등록한 사장인지 아닌지 체크
+                return this.$session.get('restaurant_id');else return "needCreate";
         },
         moveMyMenu: function moveMyMenu() {
             var restaurant_id = this.$session.get('restaurant_id');
@@ -20546,7 +20572,9 @@ module.exports = Cancel;
         },
         moveMyRestaurant: function moveMyRestaurant() {
             var restaurant_id = this.$session.get('restaurant_id');
-            location.replace('/restaurant/' + restaurant_id + '/info');
+
+            if (restaurant_id != "needCreate") // 가게를 등록했으면 가게 페이지로, 아니면 생성 페이지로
+                location.replace('/restaurant/' + restaurant_id + '/info');else location.replace('/owner/createRestaurant');
         },
         openMenu: function openMenu() {
             if (this.checkLogin()) {
@@ -20566,6 +20594,8 @@ module.exports = Cancel;
                     lat: this.searchAddressInput.geometry.location.lat(),
                     lng: this.searchAddressInput.geometry.location.lng()
                 }];
+                this.$session.set("searchAddressHistory", this.searchAddress);
+                location.replace('/');
             }
         }
     }
@@ -39763,6 +39793,7 @@ var palet_cntxt = null; // palette context
 //
 //
 //
+//
 
 
 
@@ -39809,6 +39840,7 @@ var check = 0; // 클릭한 배열 index용 변수
 
             // 번역
             TransMenu: [],
+            MenuList: [],
             translatedText: '메뉴1=고기&메뉴2=소스:마요네즈、야채추가:레타스&메뉴3=고기:많이、고기2:많이2&'
         };
     },
@@ -39906,7 +39938,7 @@ var check = 0; // 클릭한 배열 index용 변수
                 OpCount: this.OpCount,
                 subOpCount: this.subOpCount
             }).then(function (response) {
-                // document.write(response.data.msg);
+                document.write(response.data.msg);
                 // location.reload();
             });
 
@@ -39921,11 +39953,20 @@ var check = 0; // 클릭한 배열 index용 변수
             // })
 
             var Menu = this.translatedText.split('&');
-            console.log(Menu);
+
+            // db에서 받은값 문자열 자르기
             for (var i = 0; i < Menu.length - 1; i++) {
                 this.TransMenu[i] = Menu[i].split('=');
             }
-            console.log(this.TransMenu);
+
+            // 이쁘게 배열에 넣기
+            for (var i = 0; i < this.TransMenu.length; i++) {
+                this.MenuList[i] = [];
+                this.MenuList[i]['name'] = this.TransMenu[i][0];
+                this.MenuList[i]['option'] = this.TransMenu[i][1];
+            }
+
+            console.log(this.MenuList);
         },
 
 
@@ -41274,6 +41315,72 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_menu_eventBus_js__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_menu_MenuDefaultLayout1_vue__ = __webpack_require__(263);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41606,12 +41713,12 @@ if (false) {(function () {
 
 var layout = __WEBPACK_IMPORTED_MODULE_4__user_menu_MenuDefaultLayout1_vue__["a" /* default */]; // 사장이 선택한 메뉴판 탬플릿
 var obj = []; // 클릭한 배열 담기
-var check = 0; // 클릭한 배열 index용 변수    
+var check = 0; // 클릭한 배열 index용 변수
 
 // // 구글 맵스 키 값
 // Vue.use(VueGoogleMaps, {
-//     load: { 
-//         key: 'AIzaSyDeu-HoB1RsF5Vf0xjEvBwwCKodP8mkgWQ',    
+//     load: {
+//         key: 'AIzaSyDeu-HoB1RsF5Vf0xjEvBwwCKodP8mkgWQ',
 //     }
 // });
 
@@ -41621,20 +41728,22 @@ var url = '';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
-        return {
+        var _ref;
+
+        return _ref = {
             dialog: false,
             dialog_ok: false,
             menuDialog: false,
 
             Menu_Order: 0,
             click_menu: [], // 클릭한 메뉴들이 담김
-            Ordercheck: false, // 주문 확인 창 
+            Ordercheck: false, // 주문 확인 창
             sum_price: 0, // 선택한 메뉴 총 가격
-            translateText: [], // 번역한 텍스트 값이 들어갈 배열 
+            translateText: [], // 번역한 텍스트 값이 들어갈 배열
 
             // 옵션 선택
             optionselect: [],
-            optionArray: [], // 클릭한 메뉴의 옵션 값을 관리할 배열 
+            optionArray: [], // 클릭한 메뉴의 옵션 값을 관리할 배열
             optionId: [],
 
             // 메뉴 아이디 배열
@@ -41662,7 +41771,7 @@ var url = '';
             pick_time: '',
 
             /* 메뉴 선택 가능한지 안한지 */
-            reservation_selectMenu: false,
+            reservation_selectMenu: 1,
 
             /* 기본 식당 시간 */
             lunch_open: '09:00',
@@ -41687,9 +41796,30 @@ var url = '';
                 pick_date: '2018-05-07'
             }],
 
-            /* 갤러리 이미지 더 보기. */
-            ShowMoreImg: false
-        };
+            /* 쿠폰 */
+            translateTextDownDialog: false,
+            dialog2: false,
+            clickCouponid: null,
+            clickCouponname: null
+
+        }, _defineProperty(_ref, 'items', [{
+            id: '1',
+            name: '안녕fsdfsd',
+            category: '상품 제공',
+            price_condition: '1000',
+            add_product: '제공',
+            start_date: '2018-03-02',
+            expiry_date: '2019-04-03'
+        }, {
+            id: '2',
+            name: 'd',
+            category: '가격 할인',
+            price_condition: '1000',
+            discount: '200',
+            start_date: '2018-03-02',
+            expiry_date: '2019-04-03'
+
+        }]), _defineProperty(_ref, 'ShowMoreImg', false), _ref;
     },
     created: function created() {
         var _this = this;
@@ -41708,7 +41838,7 @@ var url = '';
             //         'name'          : 'Innovative Cuisine',
             //         'type'          : '한식',
             //         'explanation'   : "최고의 재료를 찾아내고 그 재료가 지닌 다양한 맛을 연구해 한식이 지낸 깊은 향과 숨은 맛을 전합니다. " +
-            //                             "최상의 식재료를 선별, 그에 걸맞는 신중한 조리를 통해 재료 본연의 맛을 극대화한 한식,"+ 
+            //                             "최상의 식재료를 선별, 그에 걸맞는 신중한 조리를 통해 재료 본연의 맛을 극대화한 한식,"+
             //                             "전통 한식 본연의 못브에 대한 셰프의 철학과 감성을 더해 궁극의 요리 예술로서 풀어낸 한식"+
             //                             "저희는 매일 바뀌는 계절과 에너지의 흐름을 되짚어가며 한식의 성숙하고 자연스러운 맛을"+
             //                             "오랜 시간의 노고가 스며든 정성스러운 손길로 표현합니다.",
@@ -41720,7 +41850,7 @@ var url = '';
             //         'lunch_close'   : '15:00',
             //         'lunch_lo'      : '14:30',
             //         'dinner_open'   : '17:30',
-            //         'dinner_close'  : '22:00', 
+            //         'dinner_close'  : '22:00',
             //         'dinner_lo'     : '21:30',
             //         'payment'       : '카드 결제 가능',
             //         'seat_num'      : '70석',
@@ -41775,7 +41905,7 @@ var url = '';
             //         'filename' : "13_galleryImg1,jpeg",
             //         'path' : '/images/13/'
             //     },
-            // ]; 
+            // ];
 
             // 예약 하기
             // 메뉴
@@ -41788,8 +41918,6 @@ var url = '';
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/getReservationSettingList', {
                 'shop_id': _this.$route.params.shop_id
             }).then(function (response) {
-                console.log(response.data.menuSelectData[0].reservation_selectMenu);
-
                 /* 그 가게의 예약설정된 Data */
                 var reservationSettingData = response.data.settingData;
 
@@ -41804,6 +41932,14 @@ var url = '';
                 _this.lunch_close = _this.resData[0].lunch_close;
                 _this.dinner_open = _this.resData[0].dinner_open;
                 _this.dinner_close = _this.resData[0].dinner_close;
+            });
+
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/getCouponList', {
+                'shop_id': _this.$route.params.shop_id
+            }).then(function (response) {
+                // 쿠폰
+                var Coupondata = response.data.coupon;
+                _this.items = Coupondata;
             });
 
             // 데이터 바인딩-기본정보
@@ -41830,7 +41966,7 @@ var url = '';
         'Layout': layout
     },
 
-    methods: {
+    methods: _defineProperty({
         // 각 공간에 해당 값들을 삽입함.
         enter_data: function enter_data(argArray) {
             var iterator = Object.keys(argArray);
@@ -41887,10 +42023,10 @@ var url = '';
         enter_galley: function enter_galley() {
             var gallery_div = document.getElementById('gallery_div');
 
-            // 넘어온 데이터 배열 갯수 : 0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지 
+            // 넘어온 데이터 배열 갯수 : 0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지
             var argNum = get_datas.length;
 
-            // 등록된 이미지가 없으면 메세지 출력 
+            // 등록된 이미지가 없으면 메세지 출력
             if (argNum - 3 == 0) {
                 gallery_div.innerText = "등록된 이미지가 없습니다.";
             }
@@ -41958,7 +42094,7 @@ var url = '';
         geoCoder: function geoCoder(argAddress) {
             var map = new google.maps.Map(document.getElementById('map'), { zoom: 18 }); // 구글 맵스 생성
             var address = argAddress.dodobuken + argAddress.cities + argAddress.address; // 사장이 입력한 주소 값 더하기
-            var geocoder = new google.maps.Geocoder(); // 지오 코더 
+            var geocoder = new google.maps.Geocoder(); // 지오 코더
 
             // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
             geocoder.geocode({ 'address': address }, function (results, status) {
@@ -42095,7 +42231,7 @@ var url = '';
             });
         },
 
-        // 메뉴 취소하기 
+        // 메뉴 취소하기
         click_cancel: function click_cancel() {
             var id = event.target.parentNode.id; // 클릭한 메뉴 click_menu의 배열 키 값
             var container = document.getElementById('menu_check_container'); // 메뉴 확인 창
@@ -42161,13 +42297,27 @@ var url = '';
                 menulength: this.menu.length, // 메뉴 개수
                 menu_id: this.menu, // 선택한 메뉴가 있는 배열
                 option: this.optionId, // 옵션 Id
-                suboption: this.optionselect, // 서브 옵션
-                sum_price: this.sum_price
+                suboption: this.optionselect // 서브 옵션
             }).then(function (response) {
                 alert(response.data.msg);
             }).catch(console.log('test '));
+        },
+
+
+        // ------ 쿠폰 ---------
+        Download: function Download(item) {
+            var index = this.items.indexOf(item);
+            this.clickCouponid = this.items[index].id;
+
+            /* Data 송신 -> 자신의 쿠폰함으로 담긴다*/
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/userCouponCreate', {
+                // 쿠폰ID
+                id: this.clickCouponid
+            }).then(console.log('success')).catch(console.log('test '));
         }
-    }
+    }, 'Okey', function Okey() {
+        alert('쿠폰함에 쿠폰이 다운되었습니다.');
+    })
 });
 
 /***/ }),
@@ -67440,7 +67590,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -68384,7 +68534,7 @@ var render = function() {
                 [
                   _c(
                     "v-list-tile",
-                    { attrs: { avatar: "" } },
+                    { attrs: { avatar: "", to: "/editInformation" } },
                     [
                       _c(
                         "v-list-tile-avatar",
@@ -68653,145 +68803,188 @@ var render = function() {
                     ],
                     1
                   )
-                : _c(
-                    "v-list",
-                    [
-                      _c("v-subheader", [_vm._v("가게 관리")]),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyMenu()
+                : _vm.checkRestaurant() != "needCreate"
+                  ? _c(
+                      "v-list",
+                      [
+                        _c("v-subheader", [_vm._v("가게 관리")]),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyMenu()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("developer_board")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [_c("v-list-tile-title", [_vm._v("메뉴")])],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyReservation()
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("developer_board")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [_c("v-list-tile-title", [_vm._v("메뉴")])],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyReservation()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("playlist_add_check")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [_c("v-list-tile-title", [_vm._v("예약")])],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyStats()
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("playlist_add_check")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [_c("v-list-tile-title", [_vm._v("예약")])],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyStats()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("timeline")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [_c("v-list-tile-title", [_vm._v("통계")])],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c("v-subheader", [_vm._v("내 가게 페이지")]),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyRestaurant()
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("timeline")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [_c("v-list-tile-title", [_vm._v("통계")])],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("v-divider"),
+                        _vm._v(" "),
+                        _c("v-subheader", [_vm._v("내 가게 페이지")]),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyRestaurant()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("restaurant")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [
-                              _c("v-list-tile-title", [
-                                _vm._v("내 가게로 이동")
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("restaurant")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [
+                                _c("v-list-tile-title", [
+                                  _vm._v("내 가게로 이동")
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  : _c(
+                      "v-list",
+                      [
+                        _c("v-subheader", [_vm._v("가게 관리")]),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyRestaurant()
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("restaurant")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [
+                                _c("v-list-tile-title", [
+                                  _vm._v("가게 생성하기")
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
             ],
             1
           ),
@@ -96752,7 +96945,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 모바일 */\n@media (max-width: 639px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 17px;\n}\n.Trans_Title {\n        font-size:16px;\n}\n.Trans_Main {\n        font-size: 13px;\n}\n}\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:18px;\n}\n.Trans_Main {\n        font-size: 14px;\n}\n}\n/* 데스트 탑 */\n@media (min-width: 1024px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:20px;\n}\n.Trans_Main {\n        font-size: 15px;\n}\n}\n", ""]);
 
 // exports
 
@@ -97280,31 +97473,17 @@ var render = function() {
                     "v-flex",
                     [
                       _c("v-card", [
-                        _c(
-                          "b",
-                          {
-                            staticStyle: {
-                              "padding-left": "5%",
-                              "font-size": "2rem"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              " 총 : " + _vm._s(_vm.click_menu.length) + " 개 "
-                            )
-                          ]
-                        ),
+                        _c("b", { staticClass: "total" }, [
+                          _vm._v(
+                            " 총 : " + _vm._s(_vm.click_menu.length) + " 개 "
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "b",
-                          {
-                            staticStyle: {
-                              "padding-left": "5%",
-                              "font-size": "2rem"
-                            }
-                          },
-                          [_vm._v(" 합계 : " + _vm._s(_vm.sum_price) + " 円 ")]
-                        )
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("b", { staticClass: "total" }, [
+                          _vm._v(" 합계 : " + _vm._s(_vm.sum_price) + " 円 ")
+                        ])
                       ])
                     ],
                     1
@@ -97354,13 +97533,30 @@ var render = function() {
                     [
                       _c(
                         "v-card-text",
-                        { staticStyle: { color: "black" } },
-                        _vm._l(_vm.range(0, _vm.TransMenu.length - 1), function(
+                        _vm._l(_vm.range(0, _vm.MenuList.length - 1), function(
                           i
                         ) {
-                          return _c("v-card", { key: i }, [
-                            _c("p", [_vm._v(_vm._s(_vm.TransMenu[i]))])
-                          ])
+                          return _c(
+                            "v-card",
+                            {
+                              key: i,
+                              staticStyle: { color: "black", padding: "7px" },
+                              attrs: { hover: "", color: "white" }
+                            },
+                            [
+                              _c("div", { staticClass: "Trans_Title" }, [
+                                _c("b", [
+                                  _vm._v(
+                                    " " + _vm._s(_vm.MenuList[i].name) + " "
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "Trans_Main" }, [
+                                _vm._v(_vm._s(_vm.MenuList[i].option))
+                              ])
+                            ]
+                          )
                         })
                       )
                     ],
@@ -98860,7 +99056,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n/* 모바일 */\n@media (max-width: 639px){\nhtml         { font-size: 10px;\n}\n#name        { font-size: 1.5rem;\n}\n#explanation {max-height: 200px; overflow: scroll;\n}\n.column      { font-size: 1.8rem;\n}\n.timeInfo    { font-size: 1.5rem;\n}\n.resInfo     { font-size: 1.5rem;\n}\n.gallery     { width: 48%; padding-bottom: 35%;\n}\n.img-outer   { width: 90%; padding-bottom: 60%;\n}\n}\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\nhtml         { font-size: 12px;\n}\n#name        { font-size: 2rem;\n}\n#explanation {max-height: 300px; overflow: scroll;\n}\n.column      { font-size: 2rem;\n}\n.timeInfo    { font-size: 1.5rem;\n}\n.resInfo     { font-size: 1.7rem;\n}\n.gallery     { width: 48%; padding-bottom: 35%;\n}\n.img-outer   { width: 90%; padding-bottom: 60%;\n}\n}\n/* 데스트 탑 */\n@media (min-width: 1024px){\nhtml        { font-size: 15px;\n}\n#name       { font-size: 2rem;\n}\n.column     { font-size: 2rem;\n}\n.timeInfo   { font-size: 1.5rem;\n}\n.resInfo    { font-size: 1.7rem;\n}\n.gallery    { width: 31%; padding-bottom: 25%;\n}\n.img-outer  { width: 46%; padding-bottom: 40%;\n}\n}  \n\n/* 가게 설명, 갤러리, 주소 */\n.frame {\n    width: 100%; \n    border-top: 1px solid;\n    font-size: 1.8rem;\n    color: #848484;\n    display:inline-block;        \n    margin-bottom: 5%;\n}   \n\n/* 요리 유형, 좌석 수, 전화번호, 이용시간, 결제 방식, 이용안내 */\n.frame_small {\n    width: 100%;  \n    height: auto; \n    padding-top: 3%;\n    padding-left: 1%;\n    border-top: 1px solid #848484;    \n    margin-bottom: 3%; \n    display:inline-block;\n}   \n\n/* 가게 메인 이미지 */\n.title_div {\n    width: 100%;\n    height: 0;\n    padding-bottom: 40%;\n    margin-bottom: 5%; \n    overflow: hidden;\n    position: relative;\n}\n#title_img{ \n    top: 0;\n    left: 0;\n    width: 105%;\n    height: 105%;  \n    background-size: 100% 100%;\n    /* background-image: url('./test4.jpg'); */\n    position: absolute;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n/* 가게 명 */\n#name_area { \n    top: 0;\n    left: 0;\n    padding:4px;\n    opacity: 0.5;\n    background: black;\n    color: white; \n    text-align: center;\n    display:inline-block;\n} \n\n/*갤러리 관련.*/\n.gallery{\n    height: 0;\n    margin: 1%; \n    border: 1px solid #D8D8D8;\n    float: left;\n    overflow: hidden;\n    position: relative;\n}\n.gallery_img {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;  \n    -o-object-fit: cover;  \n       object-fit: cover;\n    position: absolute;  \n    -webkit-transition: all 0.3s ease-in-out;  \n    transition: all 0.3s ease-in-out;\n}\n/* 마우스 오버 시 이미지 확대 */\n.gallery_img:hover {\n    transform:          scale(1.2);\n    -o-transform:       scale(1.2);\n    -ms-transform:      scale(1.2);\n    -moz-transform:     scale(1.2);\n    -webkit-transform:  scale(1.2);\n} \n/* 갤러리 이미지 더 보기 */\n.MoreImg_inner { \n    font-size:2rem;  \n    padding-top: 25%;\n    text-align:center;\n}\n#prtAllImgs { \n    background-color: white;  \n    overflow: auto;\n}\n.img-outer { \n    height: 0;\n    margin: 1%; \n    border: 1px solid #D8D8D8;\n    float: left;\n    overflow: hidden;\n    position: relative;\n}\n.img-inner{\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;   \n    -o-object-fit: cover;   \n       object-fit: cover;\n    position: absolute;\n} \n  \n/* 정보 칼럼 */\n.column{ \n    margin-right: 20px;  \n    color: #6E6E6E;\n    text-align: left;\n    position: relative;\n    display:inline-block;\n}\n/* 정보 내용 */\n.column_value{\n    font-size: 1.7rem; \n    padding: 3px;  \n    position: relative;\n}\n\n/* 구글 맵스용 */\n#map {\n    top: 0;\n    left: 0;\n    width: 100%; \n    height: 100%; \n    border: 1px solid #6E6E6E;\n    position: absolute;\n} \n/* 가게 정보 */\n.resInfo{ \n    margin-right: 10px;  \n    display:inline-block;\n}  \n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 모바일 */\n@media (max-width: 639px){\nhtml         { font-size: 10px;\n}\n#name        { font-size: 1.5rem;\n}\n#explanation {max-height: 200px; overflow: scroll;\n}\n.column      { font-size: 1.8rem;\n}\n.timeInfo    { font-size: 1.5rem;\n}\n.resInfo     { font-size: 1.5rem;\n}\n.gallery     { width: 48%; padding-bottom: 35%;\n}\n.img-outer   { width: 90%; padding-bottom: 60%;\n}\n\n    /* 예약하기 */\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 17px;\n}\n.reservationCheck_title {\n        font-size: 17px;\n        padding-bottom: 1%;\n}\n.reservationCheck_main {\n        padding-top: 1%;\n        font-size: 15px;\n}\n\n    /* 쿠폰 */\n.CouponDownTitle {\n        font-size: 14px;\n        text-align: center;\n}\n.CouponDownMain {\n        font-size: 20px;\n        text-align: center;\n}\n}\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\nhtml         { font-size: 12px;\n}\n#name        { font-size: 2rem;\n}\n#explanation {max-height: 300px; overflow: scroll;\n}\n.column      { font-size: 2rem;\n}\n.timeInfo    { font-size: 1.5rem;\n}\n.resInfo     { font-size: 1.7rem;\n}\n.gallery     { width: 48%; padding-bottom: 35%;\n}\n.img-outer   { width: 90%; padding-bottom: 60%;\n}\n\n    /* 예약하기 */\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.reservationCheck_title {\n        font-size: 20px;\n        padding-bottom: 1%;\n}\n.reservationCheck_main {\n        padding-top: 1%;\n        font-size: 18px;\n}\n\n    /* 쿠폰 */\n.CouponDownTitle {\n        font-size: 20px;\n        text-align: center;\n}\n}\n/* 데스트 탑 */\n@media (min-width: 1024px){\nhtml        { font-size: 15px;\n}\n#name       { font-size: 2rem;\n}\n.column     { font-size: 2rem;\n}\n.timeInfo   { font-size: 1.5rem;\n}\n.resInfo    { font-size: 1.7rem;\n}\n.gallery    { width: 31%; padding-bottom: 25%;\n}\n.img-outer  { width: 46%; padding-bottom: 40%;\n}\n\n    /* 예약하기 */\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.reservationCheck_title {\n        font-size: 20px;\n        padding-bottom: 1%;\n}\n.reservationCheck_main {\n        padding-top: 1%;\n        font-size: 18px;\n}\n\n    /* 쿠폰 */\n.CouponDownTitle {\n        font-size: 20px;\n        text-align: center;\n}\n}\n\n/* 가게 설명, 갤러리, 주소 */\n.frame {\n    width: 100%;\n    border-top: 1px solid;\n    font-size: 1.8rem;\n    color: #848484;\n    display:inline-block;\n    margin-bottom: 5%;\n}\n\n/* 요리 유형, 좌석 수, 전화번호, 이용시간, 결제 방식, 이용안내 */\n.frame_small {\n    width: 100%;\n    height: auto;\n    padding-top: 3%;\n    padding-left: 1%;\n    border-top: 1px solid #848484;\n    margin-bottom: 3%;\n    display:inline-block;\n}\n\n/* 가게 메인 이미지 */\n.title_div {\n    width: 100%;\n    height: 0;\n    padding-bottom: 40%;\n    margin-bottom: 5%;\n    overflow: hidden;\n    position: relative;\n}\n#title_img{\n    top: 0;\n    left: 0;\n    width: 105%;\n    height: 105%;\n    background-size: 100% 100%;\n    /* background-image: url('./test4.jpg'); */\n    position: absolute;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n/* 가게 명 */\n#name_area {\n    top: 0;\n    left: 0;\n    padding:4px;\n    opacity: 0.5;\n    background: black;\n    color: white;\n    text-align: center;\n    display:inline-block;\n}\n\n/*갤러리 관련.*/\n.gallery{\n    height: 0;\n    margin: 1%;\n    border: 1px solid #D8D8D8;\n    float: left;\n    overflow: hidden;\n    position: relative;\n}\n.gallery_img {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    position: absolute;\n    -webkit-transition: all 0.3s ease-in-out;\n    transition: all 0.3s ease-in-out;\n}\n/* 마우스 오버 시 이미지 확대 */\n.gallery_img:hover {\n    transform:          scale(1.2);\n    -o-transform:       scale(1.2);\n    -ms-transform:      scale(1.2);\n    -moz-transform:     scale(1.2);\n    -webkit-transform:  scale(1.2);\n}\n/* 갤러리 이미지 더 보기 */\n.MoreImg_inner {\n    font-size:2rem;\n    padding-top: 25%;\n    text-align:center;\n}\n#prtAllImgs {\n    background-color: white;\n    overflow: auto;\n}\n.img-outer {\n    height: 0;\n    margin: 1%;\n    border: 1px solid #D8D8D8;\n    float: left;\n    overflow: hidden;\n    position: relative;\n}\n.img-inner{\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    position: absolute;\n}\n\n/* 정보 칼럼 */\n.column{\n    margin-right: 20px;\n    color: #6E6E6E;\n    text-align: left;\n    position: relative;\n    display:inline-block;\n}\n/* 정보 내용 */\n.column_value{\n    font-size: 1.7rem;\n    padding: 3px;\n    position: relative;\n}\n\n/* 구글 맵스용 */\n#map {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    border: 1px solid #6E6E6E;\n    position: absolute;\n}\n/* 가게 정보 */\n.resInfo{\n    margin-right: 10px;\n    display:inline-block;\n}\n", ""]);
 
 // exports
 
@@ -99137,7 +99333,7 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(" "),
-                                  this.reservation_selectMenu === 1
+                                  this.reservation_selectMenu == 1
                                     ? _c(
                                         "div",
                                         [
@@ -99270,9 +99466,26 @@ var render = function() {
                                                             },
                                                             [
                                                               _vm._v(
-                                                                "\n                                                        확인\n                                                    "
+                                                                "\n                                                            확인\n                                                        "
                                                               )
                                                             ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                flat: ""
+                                                              },
+                                                              on: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  _vm.menuDialog = false
+                                                                }
+                                                              }
+                                                            },
+                                                            [_vm._v("취소")]
                                                           )
                                                         ],
                                                         1
@@ -99581,12 +99794,8 @@ var render = function() {
                                                                 _c(
                                                                   "b",
                                                                   {
-                                                                    staticStyle: {
-                                                                      "padding-left":
-                                                                        "5%",
-                                                                      "font-size":
-                                                                        "2rem"
-                                                                    }
+                                                                    staticClass:
+                                                                      "total"
                                                                   },
                                                                   [
                                                                     _vm._v(
@@ -99601,15 +99810,13 @@ var render = function() {
                                                                   ]
                                                                 ),
                                                                 _vm._v(" "),
+                                                                _c("br"),
+                                                                _vm._v(" "),
                                                                 _c(
                                                                   "b",
                                                                   {
-                                                                    staticStyle: {
-                                                                      "padding-left":
-                                                                        "5%",
-                                                                      "font-size":
-                                                                        "2rem"
-                                                                    }
+                                                                    staticClass:
+                                                                      "total"
                                                                   },
                                                                   [
                                                                     _vm._v(
@@ -99649,7 +99856,7 @@ var render = function() {
                                                             },
                                                             [
                                                               _vm._v(
-                                                                "\n                                                        메뉴 선택\n                                                    "
+                                                                "\n                                                            메뉴 선택\n                                                        "
                                                               )
                                                             ]
                                                           ),
@@ -99748,6 +99955,7 @@ var render = function() {
                           _c(
                             "v-dialog",
                             {
+                              attrs: { "max-width": "500px" },
                               model: {
                                 value: _vm.dialog_ok,
                                 callback: function($$v) {
@@ -99761,82 +99969,65 @@ var render = function() {
                                 "v-card",
                                 [
                                   _c("v-card-title", [
-                                    _c(
-                                      "div",
-                                      { staticClass: "reservationCheck" },
-                                      [
-                                        _c(
-                                          "h2",
-                                          [_c("B", [_vm._v("예약 확인")])],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c("br"),
-                                        _c("hr"),
-                                        _c("br"),
-                                        _vm._v(" "),
-                                        _c(
-                                          "h3",
-                                          [
-                                            _c("B", [_vm._v(" 예약 날짜 : ")]),
-                                            _vm._v(
-                                              " " +
-                                                _vm._s(this.start_date) +
-                                                " "
-                                            )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "h3",
-                                          [
-                                            _c("B", [_vm._v(" 예약 시간 : ")]),
-                                            _vm._v(
-                                              " " + _vm._s(this.pick_time) + " "
-                                            )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "h3",
-                                          [
-                                            _c("B", [_vm._v(" 어른 인원 : ")]),
-                                            _vm._v(
-                                              " " +
-                                                _vm._s(this.adult_person) +
-                                                " "
-                                            )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "h3",
-                                          [
-                                            _c("B", [_vm._v(" 아이 인원 : ")]),
-                                            _vm._v(
-                                              " " +
-                                                _vm._s(this.child_person) +
-                                                " "
-                                            )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "h3",
-                                          [
-                                            _c("B", [_vm._v(" 요구 사항 : ")]),
-                                            _vm._v(
-                                              " " + _vm._s(this.message) + " "
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ]
-                                    )
+                                    _c("div", [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "reservationCheck_title"
+                                        },
+                                        [_c("b", [_vm._v("예약 확인")])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("hr"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "reservationCheck_main"
+                                        },
+                                        [
+                                          _c("B", [_vm._v(" 예약 날짜 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.start_date) +
+                                              "    "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 예약 시간 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.pick_time) +
+                                              "     "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 어른 인원 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.adult_person) +
+                                              "  "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 아이 인원 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.child_person) +
+                                              "  "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 요구 사항 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.message) +
+                                              "\n                                            "
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ])
                                   ]),
                                   _vm._v(" "),
                                   _c(
@@ -99887,6 +100078,201 @@ var render = function() {
                         ],
                         1
                       )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  staticStyle: { color: "white" },
+                  attrs: { small: "", color: "cyan darken-1" },
+                  on: {
+                    click: function($event) {
+                      _vm.dialog2 = true
+                    }
+                  }
+                },
+                [_c("B", [_vm._v("쿠폰 다운")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-dialog",
+                {
+                  attrs: { fullscreen: "", "hide-overlay": "" },
+                  model: {
+                    value: _vm.dialog2,
+                    callback: function($$v) {
+                      _vm.dialog2 = $$v
+                    },
+                    expression: "dialog2"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-toolbar",
+                        {
+                          attrs: { card: "", dark: "", color: "cyan darken-1" }
+                        },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "", dark: "" },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.dialog2 = false
+                                }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("close")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-toolbar-title"),
+                          _vm._v(" "),
+                          _c("v-spacer")
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-card-text", [
+                        _c(
+                          "div",
+                          { staticClass: "CouponDownTitle" },
+                          [_c("B", [_vm._v("쿠폰 다운 받기")])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("hr"),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "CouponDownMain" },
+                          [
+                            _vm._l(_vm.items, function(item, index) {
+                              return [
+                                _c(
+                                  "v-list-tile",
+                                  {
+                                    key: item.name,
+                                    attrs: { avatar: "", ripple: "" }
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-tile-content",
+                                      {
+                                        staticStyle: {
+                                          height: "700px",
+                                          "padding-top": "2%",
+                                          "padding-bottom": "2%"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-list-tile-title",
+                                          [
+                                            _c("B", [
+                                              _vm._v(
+                                                " " + _vm._s(item.name) + " "
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-tile-sub-title",
+                                          { staticClass: "text--primary" },
+                                          [
+                                            _vm._v(
+                                              "\n                                                " +
+                                                _vm._s(item.category) +
+                                                "\n                                            "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        item.category == "상품 제공"
+                                          ? _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "\n                                                " +
+                                                  _vm._s(item.price_condition) +
+                                                  "이상일 경우,   " +
+                                                  _vm._s(item.add_product) +
+                                                  " 제공\n                                            "
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        item.category == "가격 할인"
+                                          ? _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "\n                                                " +
+                                                  _vm._s(item.price_condition) +
+                                                  "이상일 경우,   " +
+                                                  _vm._s(item.discount) +
+                                                  " 할인\n                                            "
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c("v-list-tile-sub-title", [
+                                          _vm._v(
+                                            "\n                                                [ " +
+                                              _vm._s(item.start_date) +
+                                              " ~ " +
+                                              _vm._s(item.expiry_date) +
+                                              " ]\n                                            "
+                                          )
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-action",
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              flat: "",
+                                              icon: "",
+                                              color: "error"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.Download(item)
+                                              }
+                                            }
+                                          },
+                                          [_c("v-icon", [_vm._v("get_app")])],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                index + 1 < _vm.items.length
+                                  ? _c("v-divider", { key: index })
+                                  : _vm._e()
+                              ]
+                            })
+                          ],
+                          2
+                        )
+                      ])
                     ],
                     1
                   )

@@ -157,6 +157,16 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'LayoutController@loadCustomLayout'
     ]);
 
+// <-- User Coupon Page
+    Route::post('userCouponCreate', [
+        'as' => 'coupon.userCouponCreate',
+        'uses' => 'CouponController@userCouponCreate'
+    ]);
+
+    Route::post('getCouponList', [
+        'as' => 'coupon.getCouponList',
+        'uses' => 'CouponController@getCouponList'
+    ]);
 
 
 // <-- Owner Coupon Page

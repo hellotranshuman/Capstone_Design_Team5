@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Validator;
 use Input;
 use \App\Restaurant;
+use \App\User;
 
 class UsersController extends Controller
 {
@@ -67,7 +70,10 @@ class UsersController extends Controller
                     ->get()
                     ->first();
 
-                $restaurant_id = $restaurant->id;
+                if($restaurant)
+                    $restaurant_id = $restaurant->id;
+                else
+                    $restaurant_id = "noneRestaurant";
             }
             else
                 $restaurant_id = '/';
@@ -92,5 +98,15 @@ class UsersController extends Controller
         auth()->logout();
 
         return redirect('/');
+    }
+
+    public function getInfo(Request $request) {
+        $user_id = $request->get('user_id');
+
+        $userInfo = DB::table('users')
+            ->where('user_id','=', $user_id)
+            ->get();
+
+        return $userInfo;
     }
 }

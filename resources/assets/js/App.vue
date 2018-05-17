@@ -10,7 +10,7 @@
                     hide-overlay
             >
                 <v-list>
-                    <v-list-tile avatar>
+                    <v-list-tile avatar to="/editInformation">
                         <v-list-tile-avatar>
                             <v-icon large>account_circle</v-icon>
                         </v-list-tile-avatar>
@@ -102,7 +102,7 @@
                     </v-dialog>
                     <!-- 커뮤니케이션 버튼 끝 -->
                 </v-list>
-                <v-list v-else>
+                <v-list v-else-if="checkRestaurant() != 'needCreate'">
                     <v-subheader>가게 관리</v-subheader>
                     <v-list-tile @click="moveMyMenu()">
                         <v-list-tile-action>
@@ -136,6 +136,17 @@
                         </v-list-tile-action>
                         <v-list-tile-content>
                             <v-list-tile-title>내 가게로 이동</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </v-list>
+                <v-list v-else>
+                    <v-subheader>가게 관리</v-subheader>
+                    <v-list-tile @click="moveMyRestaurant()">
+                        <v-list-tile-action>
+                            <v-icon large color="green">restaurant</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>가게 생성하기</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list>
@@ -286,6 +297,13 @@
             }
         },
 
+        created: function() {
+            // GoogleMap 위치 검색을 한 이력이 있으면 그 위치를 초기값으로 함
+            if(this.$session.get("searchAddressHistory")) {
+                this.searchAddress = this.$session.get("searchAddressHistory");
+            }
+        },
+
         methods: {
             login() {
                 var url = "/login";
@@ -300,7 +318,10 @@
                             return;
                         }
                         if(response.data.restaurant_id != "/") { // 사장인지 손님인지 체크
-                            this.$session.set('restaurant_id', response.data.restaurant_id); // 사장이라면 가게 주소 set
+                            if(response.data.restaurant_id != "noneRestaurant") // 가게를 만든 사장인지 체크
+                                this.$session.set('restaurant_id', response.data.restaurant_id); // 가게를 만든 사장이라면, 가게 id set
+                            else
+                                this.$session.set('restaurant_id', 'needCreate');
                         }
 
                         this.$session.set('loginStatus', true);                     // 로그인 상태 true
@@ -308,12 +329,16 @@
                         this.$session.set('user_name', response.data.user_name);    // user_name set
 
                         if(this.$session.get('restaurant_id')) { // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
-                            var restaurant_id = this.$session.get('restaurant_id');
-                            location.replace('/owner/' + restaurant_id + '/menu');
+                            if(!(this.$session.get('restaurant_id') == 'needCreate')) { // 가게를 만들지 않은 사장인지 체크
+                                var restaurant_id = this.$session.get('restaurant_id');
+                                location.replace('/owner/' + restaurant_id + '/menu');
+                            } else {
+                                location.replace('/owner/createRestaurant');
+                            }
                         } else
                             location.replace(response.data.restaurant_id);
                     })
-                    .catch(function (error) {
+                    .catch(error => {
                         this.snackbar = true;
                         this.snackText = error;
                     });
@@ -329,7 +354,10 @@
             },
 
             checkRestaurant() {
-                return this.$session.get('restaurant_id');
+                if(!this.$session.get('restaurant_id' == 'needCreate')) // 가게 등록한 사장인지 아닌지 체크
+                    return this.$session.get('restaurant_id');
+                else
+                    return "needCreate";
             },
 
             moveMyMenu() {
@@ -349,7 +377,11 @@
 
             moveMyRestaurant() {
                 var restaurant_id = this.$session.get('restaurant_id');
-                location.replace('/restaurant/' + restaurant_id + '/info');
+
+                if(restaurant_id != "needCreate") // 가게를 등록했으면 가게 페이지로, 아니면 생성 페이지로
+                    location.replace('/restaurant/' + restaurant_id + '/info');
+                else
+                    location.replace('/owner/createRestaurant');
             },
 
             openMenu() {
@@ -372,6 +404,8 @@
                         lat: this.searchAddressInput.geometry.location.lat(),
                         lng: this.searchAddressInput.geometry.location.lng()
                     }]
+                    this.$session.set("searchAddressHistory", this.searchAddress);
+                    location.replace('/');
                 }
             }
         }
