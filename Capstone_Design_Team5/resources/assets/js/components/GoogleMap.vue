@@ -1,7 +1,7 @@
 <template>
   <div>
     <gmap-map
-      :center="center"
+      :center=currentCenter
       :zoom="16"
       style="width:100%;  height: 400px;"
     >
@@ -35,7 +35,7 @@
 <script>
 export default {
   name: "GoogleMap",
-  props: ['testCenter'],
+  props: ['currentCenter'],
   data() {
     return {
       restaurantInfo: false,
@@ -46,7 +46,6 @@ export default {
       toReview: "",
       // default to Montreal to keep it simple
       // change this to whatever makes sense
-      center: this.testCenter,
       markers: [{
           position: {lat: 33.5905447, lng: 130.3965094},
           icon: "/images/restaurant.png",
@@ -82,7 +81,7 @@ export default {
         }],
         
       places: [],
-      currentPlace: null
+      currentPlace: null,
     };
   },
 
@@ -95,6 +94,7 @@ export default {
     setPlace(place) {
       this.currentPlace = place;
     },
+
     addMarker() {
       if (this.currentPlace) {
         const marker = {
@@ -107,6 +107,18 @@ export default {
         this.currentPlace = null;
       }
     },
+
+    searchAddress(searchAddressInput) {
+      if (searchAddressInput) {
+        const marker = {
+          lat: searchAddressInput.geometry.location.lat(),
+          lng: searchAddressInput.geometry.location.lng()
+        };
+        this.center = marker;
+        this.currentPlace = null;
+      }
+    },
+
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {

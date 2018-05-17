@@ -81,7 +81,7 @@ class RegisterController extends Controller
             'favorite_region' => '',
         ]); */
 
-         $category = $request->get('category') == 'user' ? true : false;
+        $category = $request->get('category') == 'true' ? true : false;
 
 
         // <-- db에 Create Column
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->get('password')),
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'gender'=> $request->get('gender') == 'male' ? true : false,
+            'gender'=> $request->get('gender') == 'Female' ? true : false,
             'country' => $request->get('country'),
             'birthday' => $request->get('birthday'),
             'category' => $category,

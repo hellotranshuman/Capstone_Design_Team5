@@ -1,48 +1,67 @@
 <template>
     <v-app>
         <div>
-        <v-btn color="error" dark @click.stop="dialog2 = true">쿠폰 다운 받기</v-btn>
-        <v-dialog v-model="dialog2" max-width="700px">
-            <v-card>
-                <v-card-title>
-                    <h3><B>쿠폰 다운 받기</B></h3>
-                    <br>
-                </v-card-title>
-                <v-card-text>
-                    <v-data-table
-                        :headers="headers"
-                        :items="items"
-                        hide-actions
-                        class="elevation-1"
-                    >
-                        <template slot="items" slot-scope="props">
-                            <td>{{ props.item.name }}</td>
-                            <td class="text-xs-left">{{ props.item.category }}</td>
-                            <td class="text-xs-left">{{ props.item.discount }}</td>
-                            <td class="text-xs-left">{{ props.item.add_product }}</td>
-                            <td class="text-xs-left">{{ props.item.price_condition }}</td>
-                            <td class="justify-center layout px-0">
-                            <v-btn flat icon color="red lighten-2"   @click.stop="DownDialog = true" @click="clickCouponname = props.item.name">
-                                <v-icon dark right>file_download</v-icon>
-                            </v-btn>
-                            </td>
-                            <!-- Download 아이콘을 눌렀으때 -->
-                            <v-dialog v-model="DownDialog" max-width="500px">
-                                <v-card>
-                                <v-card-title>
-                                    {{ clickCouponname }} 을 다운 받으시겠습니까?
-                                </v-card-title>
-                                <v-card-actions>
-                                    <v-btn color="primary" flat @click.stop="DownDialog=false, Download(props.item),Okey()">확인</v-btn>
-                                    <v-btn color="primary" flat @click.stop="DownDialog=false" @click=" clickCouponname = null">취소</v-btn>
-                                </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </template>
-                    </v-data-table>
-                </v-card-text>
-            </v-card>
-        </v-dialog>
+            <div class="CouponDownBtn">
+                <v-btn 
+                    small 
+                    color="cyan darken-1" 
+                    @click="dialog2 = true"
+                    style="color:white"
+                ><B>쿠폰 다운</B></v-btn>
+            </div>
+            <v-dialog 
+                v-model="dialog2" 
+                fullscreen
+                hide-overlay
+            >
+                <v-card>
+                     <v-toolbar card dark color="cyan darken-1">
+                        <v-btn icon dark @click.native="dialog2 = false">
+                            <v-icon>close</v-icon>
+                        </v-btn>
+                    <v-toolbar-title></v-toolbar-title>
+                        <v-spacer></v-spacer>
+                    </v-toolbar>
+                    
+                    <v-card-text>
+                        <div class="CouponDownTitle"><B>쿠폰 다운 받기</B></div>
+                        <hr>
+                        <div class="CouponDownMain">
+                            <template v-for="(item, index) in items">
+                                    <!-- 쿠폰 리스트 -->
+                                    <v-list-tile :key="item.name" avatar ripple >
+                                        <v-list-tile-content>
+                                            <v-list-tile-title>
+                                                <B> {{ item.name }} </B>
+                                            </v-list-tile-title>
+                                            <!-- 카테고리 -->
+                                            <v-list-tile-sub-title class="text--primary">
+                                                {{ item.category }}
+                                            </v-list-tile-sub-title>
+                                            <v-list-tile-sub-title v-if="item.category == '상품 제공'">
+                                                {{item.price_condition}}이상일 경우, &nbsp; {{ item.add_product }} 제공
+                                            </v-list-tile-sub-title>
+                                            <v-list-tile-sub-title v-if="item.category == '가격 할인'">
+                                                {{item.price_condition}}이상일 경우, &nbsp; {{ item.discount }} 할인
+                                            </v-list-tile-sub-title>
+                                            <v-list-tile-sub-title>
+                                                [ {{ item.start_date }} ~ {{ item.expiry_date}} ]
+                                            </v-list-tile-sub-title>
+                                        </v-list-tile-content>
+                                        <!-- 아이콘 -->
+                                        <v-list-tile-action>
+                                            <!-- 쿠폰 다운 -->
+                                            <v-btn flat icon color="error" @click="Download(item)">
+                                                <v-icon>get_app</v-icon>
+                                            </v-btn>
+                                        </v-list-tile-action>
+                                    </v-list-tile>
+                                <v-divider v-if="index + 1 < items.length" :key="index"></v-divider>
+                            </template>
+                        </div>
+                    </v-card-text>
+                </v-card>
+            </v-dialog>
         </div>
     </v-app>
 </template>
@@ -58,34 +77,36 @@ export default {
             clickCouponid : null,
             clickCouponname : null,
 
-            /* table */
-            headers: [
-                { text: '쿠폰 이름',    value: 'name' },
-                { text: '쿠폰 종류',    value: 'category' },
-                { text: '할인율',    value: 'discount' },
-                { text: '제공 상품',    value: 'add_product' },
-                { text: '쿠폰 조건',    value: 'price_condition' },
-                { text: 'Actions', value: 'name', sortable: false }
-            ],
-
             items: [
-                
+                {
+                    id : '1',
+                    name : '안녕fsdfsd',
+                    category : '상품 제공',
+                    price_condition : '1000',
+                    add_product : '제공',
+                    start_date : '2018-03-02',
+                    expiry_date : '2019-04-03'
+                },
+                {
+                    id : '2',
+                    name : 'd',
+                    category : '가격 할인',
+                    price_condition : '1000',
+                    discount : '200',
+                     start_date : '2018-03-02',
+                    expiry_date : '2019-04-03'
+                    
+                }    
             ]
         }
-    },
-    created : {
-        /* CounponData 받기 */
-        userCouponList() {
-            axios.post('/userCoupon');
-            this.axios.then((response) => {
-                /* DB Coupon Data */
-                console.log(response.Coupondata);
-
-                var Coupondata = response.data.coupon;
-                
-                this.items = Coupondata;
-            }      
-        )}
+    },  
+    created: function () {
+        axios.post('/userCoupon').then((response) => {
+            /* DB Coupon Data */
+           var Coupondata = response.data.coupon;
+                    
+           this.items = Coupondata;
+        })
     },
     methods : {
         Download(item) {
@@ -99,11 +120,36 @@ export default {
             }).then(console.log('success')).catch(console.log('test '));     
         },
         Okey() {
-          confirm('쿠폰함에 쿠폰이 다운되었습니다.')
+          alert('쿠폰함에 쿠폰이 다운되었습니다.');
         }
     }
 }
 </script>
 <style>
-
+    /* 반응형 웹 */
+    /* 모바일 */
+    @media (max-width: 639px){ 
+        .CouponDownTitle {
+            font-size: 14px;
+            text-align: center;
+        }
+        .CouponDownMain {
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+    /* 테블릿 */
+    @media (min-width: 640px) and (max-width: 1023px){ 
+       .CouponDownTitle {
+            font-size: 20px;
+            text-align: center;
+        }  
+    }
+    /* 데스트 탑 */
+    @media (min-width: 1024px){ 
+        .CouponDownTitle {
+            font-size: 20px;
+            text-align: center;
+        }  
+    }
 </style>

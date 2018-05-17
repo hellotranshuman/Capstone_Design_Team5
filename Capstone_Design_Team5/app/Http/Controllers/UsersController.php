@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Validator;
 use Input;
 use \App\Restaurant;
+use \App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -55,7 +59,7 @@ class UsersController extends Controller
             if (! auth()->attempt($userData, true)) {
                 return response()->json([
                     'login' => false,
-                    'msg' => '아이디나 비밀번호가 일치하지 않습니다!',
+                    'msg' => '아이디와 비밀번호를 확인해주세요.',
                 ]);
             }
             else {
@@ -67,7 +71,10 @@ class UsersController extends Controller
                                     ->get()
                                     ->first();
 
-                    $restaurant_id = $restaurant->id;
+                    if($restaurant) 
+                        $restaurant_id = $restaurant->id;
+                    else
+                        $restaurant_id = "noneRestaurant";
                 }
                 else 
                     $restaurant_id = '/';
@@ -81,6 +88,8 @@ class UsersController extends Controller
                     'user_name' => auth()->user()->name
                 ]);
             }
+
+
     }
 
     public function doLogout(Request $request) {
@@ -90,5 +99,31 @@ class UsersController extends Controller
         auth()->logout();
 
         return redirect('/');
+    }
+
+    public function getInfo(Request $request) {
+        $user_id = $request->get('user_id');
+
+        $userInfo = DB::table('users')
+        ->where('user_id','=', $user_id)
+        ->get();
+
+        return $userInfo;
+    }
+
+    public function editInfo(Request $request) {
+        $userInfo = DB::table('users')
+        ->where('user_id','=', $request->get('user_id'))
+        ->update([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+            'gender' => $request->get('gender') == 'Female' ? true : false,
+            'country' => $request->get('country'),
+            'birthday' => $request->get('birthday'),
+            'favorite_1' => $request->get('favorite_1'),
+            'favorite_2' => $request->get('favorite_2'),
+            'favorite_2' => $request->get('favorite_3')
+        ]);
     }
 }

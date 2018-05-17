@@ -88,7 +88,7 @@
                   </v-menu>
                 </v-flex>
                 <v-flex>
-                  <v-btn large color="error">
+                  <v-btn large color="error" v-on:click="dateSearch">
                     <b>조회</b>
                   </v-btn>
                 </v-flex>
@@ -126,7 +126,7 @@
           <v-layout justify-space-around>
             <v-spacer></v-spacer>
             <v-flex xs7>
-              <CustomerRatingChart :height="300"></CustomerRatingChart>
+              <CustomerRatingChart :height="300" :chart-data="ratingData"></CustomerRatingChart>
             </v-flex>
             <v-flex xs3 class="card-text-style">
               <br><br>
@@ -142,35 +142,35 @@
                   <v-layout>
                     <v-spacer></v-spacer>
                     <v-flex xs5>총점 : </v-flex>
-                    <v-flex xs2> 00</v-flex>
+                    <v-flex xs2> {{ this.getRatingScore[0]['totalRating'] }} </v-flex>
                     <v-spacer></v-spacer>
                   </v-layout>
                   <br>
                   <v-layout>
                     <v-spacer></v-spacer>
                     <v-flex xs5>맛 : </v-flex>
-                    <v-flex xs2> 00</v-flex>
+                    <v-flex xs2> {{ this.getRatingScore[0]['taste'] }} </v-flex>
                     <v-spacer></v-spacer>
                   </v-layout>
                   <br>
                   <v-layout>
                     <v-spacer></v-spacer>
                     <v-flex xs5>서비스 : </v-flex>
-                    <v-flex xs2> 00</v-flex>
+                    <v-flex xs2> {{ this.getRatingScore[0]['service'] }} </v-flex>
                     <v-spacer></v-spacer>
                   </v-layout>
                   <br>
                   <v-layout>
                     <v-spacer></v-spacer>
                     <v-flex xs5>분위기 : </v-flex>
-                    <v-flex xs2> 00</v-flex>
+                    <v-flex xs2> {{ this.getRatingScore[0]['mood'] }} </v-flex>
                     <v-spacer></v-spacer>
                   </v-layout>
                   <br>
                   <v-layout>
                     <v-spacer></v-spacer>
                     <v-flex xs5>가격 : </v-flex>
-                    <v-flex xs2> 00</v-flex>
+                    <v-flex xs2> {{ this.getRatingScore[0]['price'] }} </v-flex>
                     <v-spacer></v-spacer>
                   </v-layout>
                 </v-card-text>
@@ -190,7 +190,7 @@
       </v-layout>
       <v-layout>
         <v-flex xs9>
-          <CustomerNumberChart :height="200"></CustomerNumberChart>
+          <CustomerNumberChart :height="200" :startDay="startDate" :endDay="endDatePlusOne"></CustomerNumberChart>
         </v-flex>
 
 
@@ -246,7 +246,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <CustomerGenderChart :height="350"></CustomerGenderChart>
+              <CustomerGenderChart :height="350" :chart-data="customerGenderData"></CustomerGenderChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -259,7 +259,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <CustomerAgeChart :height="350"></CustomerAgeChart>
+              <CustomerAgeChart :height="350" :chart-data="customerAgeData"></CustomerAgeChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -272,7 +272,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <CustomerNationalityChart :height="350"></CustomerNationalityChart>
+              <CustomerCountryChart :height="350" :chart-data="customerCountryData"></CustomerCountryChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -298,7 +298,8 @@
                     label       ="국가 선택"  
                     item-text   ="country"
                     single-line
-                    return-object>
+                    return-object
+                    >
                   </v-select>
                 </v-flex>
                 <v-flex xs2>
@@ -317,7 +318,6 @@
                     v-model     ="rankingAgeSelect" 
                     label       ="연령 선택"  
                     item-text   ="age"
-                    multiple
                     single-line
                     return-object>
                   </v-select>
@@ -341,7 +341,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <MenuRankingChart :height="200"></MenuRankingChart>
+              <MenuRankingChart :height="200" :chart-data="menuRankData"></MenuRankingChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -365,7 +365,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <SalesProfitChart :height="200"></SalesProfitChart>
+              <SalesProfitChart :height="200" :startDay="startDate" :endDay="endDatePlusOne"></SalesProfitChart>
             </v-flex>
             <v-flex xs3 class="card-text-style">
               <br><br>
@@ -418,7 +418,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <SalesGenderChart :height="350"></SalesGenderChart>
+              <SalesGenderChart :height="350" :chart-data="salesGenderData"></SalesGenderChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -431,7 +431,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <SalesAgeChart :height="350"></SalesAgeChart>
+              <SalesAgeChart :height="350" :chart-data="salesAgeData"></SalesAgeChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -444,7 +444,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <SalesNationalityChart :height="350"></SalesNationalityChart>
+              <SalesCountryChart :height="350" :chart-data="salesCountryData"></SalesCountryChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -514,7 +514,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <MenuSalesChart :height="200"></MenuSalesChart>
+              <MenuSalesChart :height="200" :chart-data="menuSalesData"></MenuSalesChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -525,13 +525,17 @@
 <script>
 // LineChart.js
 // import { Line } from 'vue-chartjs';
-import CustomerNumberChart      from './CustomerNumberChart.vue';
-import CustomerGenderChart      from './CustomerGenderChart.vue';
-import CustomerAgeChart         from './CustomerAgeChart.vue';
-import CustomerNationalityChart from './CustomerNationalityChart.vue';
-import CustomerRatingChart      from './CustomerRatingChart.vue';
-import MenuRankingChart         from './MenuRankingChart.vue';
-import MenuSalesChart           from './MenuSalesChart.vue';
+// axios 라이브러리 import
+import VueAxios from 'vue-axios';
+import axios    from 'axios';
+
+import CustomerNumberChart      from './CustomerNumberChart.vue';       // 월별 손님수 그래프
+import CustomerGenderChart      from './CustomerGenderChart.vue';       //
+import CustomerAgeChart         from './CustomerAgeChart.vue';          //
+import CustomerCountryChart     from './CustomerCountryChart.vue';      // 손님 국적 그래프
+import CustomerRatingChart      from './CustomerRatingChart.vue';       // 손님 평점 그래프
+import MenuRankingChart         from './MenuRankingChart.vue';          //
+import MenuSalesChart           from './MenuSalesChart.vue';            //
 
 // 전체 매출을 그리는 그래프
 import SalesProfitChart         from './SalesProfitChart.vue';
@@ -540,16 +544,31 @@ import SalesGenderChart         from './SalesGenderChart.vue';
 // 매출 연령대를 그리는 차트
 import SalesAgeChart            from './SalesAgeChart.vue';
 // 매출 국적을 그리는 차트
-import SalesNationalityChart    from './SalesNationalityChart.vue';
+import SalesCountryChart    from './SalesCountryChart.vue';
 
   export default {
+    components:{
+      'CustomerNumberChart'     : CustomerNumberChart,
+      'CustomerGenderChart'     : CustomerGenderChart,
+      'CustomerAgeChart'        : CustomerAgeChart,
+      'CustomerCountryChart'    : CustomerCountryChart,
+      'CustomerRatingChart'     : CustomerRatingChart,
+      'MenuRankingChart'        : MenuRankingChart,
+      'SalesProfitChart'        : SalesProfitChart,
+      'SalesGenderChart'        : SalesGenderChart,
+      'SalesAgeChart'           : SalesAgeChart,
+      'SalesCountryChart'   : SalesCountryChart,
+      'MenuSalesChart'          : MenuSalesChart
+    },
+
     data(){
       return {
-        shop_id   : this.$route.params.shop_id,  // 식당 아이디를 저장하는 변수
-        startDate : null,
-        startMenu : false,
-        endDate   : null,
-        endMenu   : false,
+        shop_id         : this.$route.params.shop_id,  // 식당 아이디를 저장하는 변수
+        startDate       : null,
+        startMenu       : false,
+        endDate         : null,
+        endDatePlusOne  : null,    // 마지막 날짜 + 1일 값이 저장되는 변수 (날짜까지만 있으면 00시00분00초가 기준이 되기 떄문에, 해당날의 모든 데이터를 포함하기 위해서는 다음날짜가 필요)
+        endMenu         : false,
 
         rankingCountrySelect    : { country: '국가 선택', countryNum: 0 },  // 선택된 국가 필터링 기준
         rankingCountryItems     : [                                         // 국가 필터링 기준들
@@ -557,6 +576,7 @@ import SalesNationalityChart    from './SalesNationalityChart.vue';
           { country: 'china', countryNum: 1 },
           { country: 'japan', countryNum: 2 },
           { country: 'korea', countryNum: 3 },
+          { country: 'usa',   countryNum: 4 },
         ],
 
         rankingGenderSelect    : { gender: '성별 선택', genderNum: 0 }, // 선택된 국가 필터링 기준
@@ -566,14 +586,15 @@ import SalesNationalityChart    from './SalesNationalityChart.vue';
           { gender: 'female', genderNum: 2 },
         ],
 
-        rankingAgeSelect    : [{ age: '연령 선택', ageNum: 0 }],  // 선택된 국가 필터링 기준
+        rankingAgeSelect    : { age: '연령 선택', ageNum: 0 },  // 선택된 국가 필터링 기준
         rankingAgeItems     : [                                   // 국가 필터링 기준들
-          { age: '0~9세', ageNum: 1 },
-          { age: '10대',  ageNum: 2 },
-          { age: '20대',  ageNum: 3 },
-          { age: '30대',  ageNum: 4 },
-          { age: '40대',  ageNum: 5 },
-          { age: '50대',  ageNum: 6 },
+          { age: 'all',       ageNum: 0 },
+          { age: '0~9세',     ageNum: 1 },
+          { age: '10대',      ageNum: 2 },
+          { age: '20대',      ageNum: 3 },
+          { age: '30대',      ageNum: 4 },
+          { age: '40대',      ageNum: 5 },
+          { age: '50대',      ageNum: 6 },
           { age: '60세 이상', ageNum: 7 },
         ],
 
@@ -584,6 +605,7 @@ import SalesNationalityChart    from './SalesNationalityChart.vue';
           { country: 'china', countryNum: 1 },
           { country: 'japan', countryNum: 2 },
           { country: 'korea', countryNum: 3 },
+          { country: 'usa',   countryNum: 4 },
         ],
 
 
@@ -596,19 +618,133 @@ import SalesNationalityChart    from './SalesNationalityChart.vue';
 
         salesAgeSelect    : [{ age: '연령 선택', ageNum: 0 }],  // 선택된 국가 필터링 기준
         salesAgeItems     : [                                   // 국가 필터링 기준들
-          { age: '0~9세', ageNum: 1 },
-          { age: '10대',  ageNum: 2 },
-          { age: '20대',  ageNum: 3 },
-          { age: '30대',  ageNum: 4 },
-          { age: '40대',  ageNum: 5 },
-          { age: '50대',  ageNum: 6 },
+          { age: 'all',       ageNum: 0 },
+          { age: '0~9세',     ageNum: 1 },
+          { age: '10대',      ageNum: 2 },
+          { age: '20대',      ageNum: 3 },
+          { age: '30대',      ageNum: 4 },
+          { age: '40대',      ageNum: 5 },
+          { age: '50대',      ageNum: 6 },
           { age: '60세 이상', ageNum: 7 },
         ],
 
+        menuRankData    : null,     // 그래프를 그리기 위한 메뉴 판매수 데이터가 저장될 변수
+        menuSalesData   : null,     // 그래프를 그리기 위한 메뉴 판매금액 데이터가 저장될 변수  
+        ratingData   : [],       // 가게평점 5종류의 값을 전달 받을 변수
+        customerGenderData : [], // 그래프를 그리기 위한 판매량 대비 방문 손님 성비 데이터가 저장될 변수
+        customerAgeData : [], // 그래프를 그리기 위한 판매량 대비 방문 손님 연령대 데이터가 저장될 변수
+        customerCountryData : [], // 그래프를 그리기 위한 판매량 대비 방문 손님 국적 데이터가 저장될 변수
+        salesGenderData : [], // 그래프를 그리기 위한 매출 대비 방문 손님 성비 데이터가 저장될 변수
+        salesAgeData : [],        // 그래프를 그리기 위한 매출 대비 방문 손님 연령대 데이터가 저장될 변수
+        salesCountryData : [], // 그래프를 그리기 위한 매출 대비 방문 손님 국적 데이터가 저장될 변수
+
+        getRatingScore  : [         // 그래프를 그리기 위한 평점 배열을 저장할 배열, 값을 초기화 해둡니다.
+          {'totalRating'  : 0},
+          {'taste'        : 0},
+          {'service'      : 0},
+          {'mood'         : 0},
+          {'price'        : 0}
+        ],
       }
     },
 
+    watch: {
+      // 판매량 대비 메뉴 필터링에서 선택된 국가
+      rankingCountrySelect : function(){
+        this.getMenuRankData();
+      },
+
+      // 판매량 대비 메뉴 필터링에서 선택된 성별
+      rankingGenderSelect : function(){
+        this.getMenuRankData();
+      },
+      // 판매량 대비 메뉴 필터링에서 선택된 연령
+      rankingAgeSelect : function(){
+        this.getMenuRankData();
+      },
+
+      // 판매금액 대비 메뉴 필터링에서 선택된 국가
+      salesCountrySelect : function(){
+        this.getMenuSalesData();
+      },
+      // 판매금액 대비 메뉴 필터링에서 선택된 성별
+      salesGenderSelect : function(){
+        this.getMenuSalesData();
+      },
+      // 판매금액 대비 메뉴 필터링에서 선택된 연령
+      salesAgeSelect : function(){
+        this.getMenuSalesData();
+      },
+    },
+
     methods : {
+      //************************* 그래프 조회 날짜를 갱신하는 함수 *************************
+      dateSearch(){
+        console.log('---------- startDate ----------');
+        console.log(this.startDate);
+        console.log('---------- endDate ----------');
+        console.log(this.endDate);
+        console.log('---------- endDatePlusOne ----------');
+        console.log(this.endDatePlusOne);
+
+        // 마지막 날짜의 + 1일 값을 구하는 함수
+        this.endDatePlusOneDate();
+
+        // 유저평점 데이터를 받아 그래프를 그리는 함수를 실행합니다.
+        this.getCustomerRating();
+
+        // 메뉴 주문 그래프 생성 함수를 실행합니다.
+        this.getMenuRankData();
+
+        // 메뉴 매출대비 주문 그래프 생성 함수를 실행합니다.
+        this.getMenuSalesData();
+
+        // 판매량 대비 방문 손님 성비를 갱신하는 함수를 실행합니다.
+        this.getCustomerGenderData();
+
+        // 판매량 대비 방문 손님 연령을 갱신하는 함수
+        this.getCustomerAgeData();
+
+        // 판매량 대비 방문 손님 국적을 갱신하는 함수
+        this.getCustomerCountryData();
+
+        // 매출 대비 방문 손님 성비를 갱신하는 함수
+        this.getSalesGenderData();
+
+        // 매출 대비 방문 손님 연령을 갱신하는 함수
+        this.getSalesAgeData();
+
+        // 매출 대비 방문 손님 국적을 갱신하는 함수
+        this.getSalesCountryData();
+      },
+
+      // 반올림 함수 (반올림 대상값, 반올림 자릿수)
+      round(number, precision) {
+        var numArray = 0;
+
+        if(number != null){
+          var shift = function (number, precision, reverseShift) {
+            if (reverseShift) {
+              precision = -precision;
+            }  
+            numArray = ("" + number).split("e");
+            return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+          };
+          return shift(Math.round(shift(number, precision, false)), precision, true);
+        }
+
+        return 0;
+      },
+
+
+      // 마지막 날짜의 + 1일 값을 구하는 함수
+      endDatePlusOneDate(){
+        var dateArr = this.endDate.split("-");      // 마지막 날짜 문자열을 -를 기준으로 구분합니다.
+        var date    = Number(dateArr[2]) + 1;       // 마지막 날짜값에서 1 값을 더합니다.
+
+        this.endDatePlusOne = dateArr[0] + '-' + dateArr[1] + '-' + date; // 마지막 날짜 +1일 에해당하는 날짜를 대입합니다.
+      },
+
       // 통계 기간 선택을 자동으로 오늘로 지정해주는 함수
       setToday(){
         var today = new Date().toISOString().substr(0, 10).replace('T', ' ');
@@ -647,70 +783,575 @@ import SalesNationalityChart    from './SalesNationalityChart.vue';
         // 오늘 날짜
         var today = new Date().toISOString().substr(0, 10).replace('T', ' ');
         this.endDate = today;
-      }
+      },
 
+      //************************* 유저평점 데이터를 받아 그래프를 그리는 함수 *************************
+      getCustomerRating(){
+        // axios http 라이브러리 
 
+        axios.post('/owner/getRatingScore', {
+          'shop_id'     : this.shop_id,       // 가게 id
+          'start_date'  : this.startDate,      // 처음 날짜
+          'end_date'    : this.endDatePlusOne // 마지막 날짜
+        }).
+        then((response)=>{
+          // console.log('????? 맞나???????');
+          // console.log(this.startDate);
+
+          this.getRatingScore = response.data['ratingData'];  // 가게평점 5종류를 대입합니다.
+
+          // console.log('가게 평점 배열');
+          // console.log(this.getRatingScore);
+
+          // Overwriting base render method with actual data.
+          this.ratingData = {
+            labels: ['총점', '맛', '서비스', '분위기', '가격'],
+            datasets: [
+              {
+                label: '평점',
+                backgroundColor: ['rgba(54, 162, 235, 0.5)'],
+                borderColor: ['#0099FF'],
+                fill: true,
+                // borderWidth: 1,
+                data                  : [this.getRatingScore[0]['totalRating'], this.getRatingScore[0]['taste'],
+                this.getRatingScore[0]['service'],this.getRatingScore[0]['mood'],this.getRatingScore[0]['price']],
+                pointRadius           : 7,                          // 포인터의 반지름 크기 값
+                pointHoverRadius      : 20,                         // 가리킨 포인터의 반지름
+                pointBorderColor      : '#3366CC  ',                // 포인터의 색깔
+                pointBackgroundColor  : 'rgba(000,102,255,0.7)',    // 포인터의 배경색깔
+              },
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+      },
+
+      //************************* 판매량 대비 방문 손님 성비를 갱신하는 함수 *************************
+      getCustomerGenderData(){
+        // axios http 라이브러리 
+        axios.post('/owner/getGenderScore', {
+          'shop_id'     : this.shop_id,         // 가게 id
+          'start_date'  : this.startDate,       // 처음 날짜
+          'end_date'    : this.endDatePlusOne   // 마지막 날짜
+        }).
+        then((response)=>{
+          var getGenderData = response.data['genderData'];  // 전달받은 월별 손님수를 대입합니다.
+
+          // console.log('성비');
+          // console.log(getGenderData);
+
+          var maleNumber   = Number(getGenderData[0]['male']);
+          var femaleNumber = Number(getGenderData[0]['female']);
+
+          // 손님 성비를 계산합니다.
+          // (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+          var maleRatio   = this.round(maleNumber / (maleNumber + femaleNumber) * 100, 2);
+          var femaleRatio = this.round(femaleNumber / (maleNumber + femaleNumber) * 100, 2);
+
+          var genderRatioData = [];
+          genderRatioData.push(maleRatio);
+          genderRatioData.push(femaleRatio);
+
+          // console.log('성비값 변경');
+          // console.log(genderRatioData);
+
+          // Overwriting base render method with actual data.
+          this.customerGenderData = {
+            labels: ['남성 손님', '여성 손님'],
+            datasets: [
+              {
+                label: '손님 성비',
+                backgroundColor: ['#3399FF','#FF6666'],
+                data: genderRatioData
+              }
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+      },
+
+      //************************* 판매량 대비 방문 손님 연령을 갱신하는 함수 *************************
+      getCustomerAgeData(){
+        // axios http 라이브러리 
+        axios.post('/owner/getAgeScore', {
+          'shop_id'     : this.shop_id,         // 가게 id
+          'start_date'  : this.startDate,       // 처음 날짜
+          'end_date'    : this.endDatePlusOne   // 마지막 날짜
+        }).
+        then((response)=>{
+          var getAgeData = response.data['ageData'];  // 전달받은 월별 손님수를 대입합니다.
+
+          // console.log('연령비 ');
+          // console.log(getAgeData);
+
+          // 전달받은 연령대 값을 대입합니다. (퍼센트가 아니라 연령대별 주문횟수)
+          var ageArray      = getAgeData[0];
+          // 전달받은 연령대 값의 value값 배열을 대입합니다.
+          var ageValueArray = Object.values(ageArray);
+
+          // 전체 연령의 주문횟수의 총합이 저장되는 변수
+          var totalNumber = 0;
+
+          // 전체 연령별 주문횟수 총합을 구합니다.
+          for(var iCount = 0; iCount < ageValueArray.length; iCount++){
+            totalNumber += Number(ageValueArray[iCount]);
+          }
+
+          // 전달받은 연령대별 주문횟수를 비율로 계산한 값을 저장하는 배열
+          var ageRatioData = [];
+
+          // 전체 연령별 방문 손님 비율을 구합니다.
+          for (var iCount = 0; iCount < ageValueArray.length; iCount++){
+            ageRatioData.push(this.round(ageValueArray[iCount] / totalNumber * 100, 2));
+          }   
+
+          // console.log('연령대별 ~~ 개꿀 ~~');
+          // console.log(ageRatioData);
+
+          // Overwriting base render method with actual data.
+          this.customerAgeData = {
+            labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
+            datasets: [
+              {
+                label: '매출 연령대',
+                backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300'],
+                data: ageRatioData
+              },
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+
+      },
+
+      //************************* 판매량 대비 방문 손님 국적을 갱신하는 함수 *************************
+      getCustomerCountryData(){
+        // axios http 라이브러리 
+        axios.post('/owner/getCountryScore', {
+          'shop_id'     : this.shop_id,         // 가게 id
+          'start_date'  : this.startDate,       // 처음 날짜
+          'end_date'    : this.endDatePlusOne   // 마지막 날짜
+        }).
+        then((response)=>{
+          var getCountryData = response.data['countryData'];  // 전달받은 월별 손님수를 대입합니다.
+
+          // console.log('국적값');
+          // console.log(getCountryData); 
+
+          // 전달받은 국적 값을 대입합니다. (퍼센트가 아니라 연령대별 주문횟수)
+          var countryArray      = JSON.parse(JSON.stringify(getCountryData[0]));
+          // 전달받은 국적 값의 value값 배열을 대입합니다.
+          var countryValueArray = Object.values(countryArray);
+
+          // 전체 국적별 주문횟수의 총합이 저장되는 변수
+          var totalNumber = 0;
+          
+          // console.log('전달받은 값');
+          // console.log(countryArray);
+          // console.log('전달받은 값의 values');
+          // console.log(countryValueArray);
+          // console.log('전달받은 값의 keys');
+          // console.log(nationalityKeysArray);
+          
+          // 전체 국적별 주문횟수 총합을 구합니다.
+          for(var iCount = 0; iCount < countryValueArray.length; iCount++){
+            totalNumber += Number(countryValueArray[iCount]);
+          }
+
+          // 전달받은 국적별 주문횟수를 비율로 계산한 값을 저장하는 배열
+          var countryRatioData = [];
+
+          // 전체 국적별 방문 손님 비율을 구합니다.
+          for (var iCount = 0; iCount < countryValueArray.length; iCount++){
+            countryRatioData.push(this.round(countryValueArray[iCount] / totalNumber * 100, 2));
+          }
+
+          // Overwriting base render method with actual data.
+          this.customerCountryData = {
+            labels: ['한국', '일본', '중국', '미국'],
+            datasets: [
+              {
+                label: '방문 손님 국적',
+                backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300','#FF6666', '#66FFFF'],
+                data: countryRatioData
+              }
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+
+      },
+
+      //************************* 매출 대비 방문 손님 성비를 갱신하는 함수 *************************
+      getSalesGenderData(){
+        // axios http 라이브러리 
+        axios.post('/owner/getGenderSalesData', {
+          'shop_id'    : this.shop_id,         // 가게 id
+          'start_date' : this.startDate,       // 처음 날짜
+          'end_date'   : this.endDatePlusOne   // 마지막 날짜
+        }).
+        then((response)=>{
+          var getSalesGenderData = response.data['genderData'];  // 전달받은 월별 손님수를 대입합니다.
+
+          // console.log('매출 성비');
+          // console.log(getSalesGenderData);
+
+          var maleNumber   = Number(getSalesGenderData[0]['maleSales']);
+          var femaleNumber = Number(getSalesGenderData[0]['femaleSales']);
+
+          // 손님 성비를 계산 (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+          var maleRatio   = this.round(maleNumber / (maleNumber + femaleNumber) * 100, 2);
+          var femaleRatio = this.round(femaleNumber / (maleNumber + femaleNumber) * 100, 2);
+
+          // 전달받은 성별 주문횟수를 성비로 계산한 값을 저장하는 배열
+          var genderSalesRatioData = [];
+
+          genderSalesRatioData.push(maleRatio);
+          genderSalesRatioData.push(femaleRatio);
+
+          console.log('성비값 변경');
+          console.log(genderSalesRatioData);
+
+          // Overwriting base render method with actual data.
+          this.salesGenderData = {
+            labels: ['남성 손님', '여성 손님'],
+            datasets: [
+              {
+                label: '손님 성비',
+                backgroundColor: ['#3399FF','#FF6666'],
+                data: genderSalesRatioData
+              }
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+      },
+
+      //************************* 매출 대비 방문 손님 연령을 갱신하는 함수 *************************
+      getSalesAgeData(){
+        // axios http 라이브러리 
+        axios.post('/owner/getAgesSalesData', {
+          'shop_id'     : this.shop_id,         // 가게 id
+          'start_date'  : this.startDate,       // 처음 날짜
+          'end_date'    : this.endDatePlusOne   // 마지막 날짜
+        }).
+        then((response)=>{
+          var getSalesAgeData = response.data['ageData'];  // 전달받은 월별 손님수를 대입합니다.
+
+          // console.log('매출별 연령비');
+          // console.log(getSalesAgeData);
+
+          // 전달받은 연령대 값을 대입합니다. (퍼센트가 아니라 연령대별 매출금액)
+          var ageArray      = getSalesAgeData[0];
+          // 전달받은 연령대 값의 value값 배열을 대입합니다.
+          var ageValueArray = Object.values(ageArray);
+
+          // console.log('매출별 연령대 ~~ 개꿀 ~~');
+          // console.log(ageArray);
+
+          // 전체 연령의 매출금액의 총합이 저장되는 변수
+          var totalNumber = 0;
+
+          // 전체 연령별 주문금액 총합을 구합니다.
+          for(var iCount = 0; iCount < ageValueArray.length; iCount++){
+            totalNumber += Number(ageValueArray[iCount]);
+          }
+
+          var ageSalesRatioData = [];
+
+          // 전체 연령별 매출대비 방문 손님 비율을 구합니다. (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+          for (var iCount = 0; iCount < ageValueArray.length; iCount++){
+            ageSalesRatioData.push(this.round(ageValueArray[iCount] / totalNumber * 100, 2));
+          }    
+
+          // Overwriting base render method with actual data.
+          this.salesAgeData = {
+            labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
+            datasets: [
+              {
+                label: '매출 연령대',
+                backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300'],
+                data: ageSalesRatioData
+              }
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+      },
+
+      //************************* 매출 대비 방문 손님 국적을 갱신하는 함수 *************************
+      getSalesCountryData(){
+        // axios http 라이브러리 
+        axios.post('/owner/getCountrySalesData', {
+          'shop_id'    : this.shop_id,   // 가게 id
+          'start_date' : this.startDate,  // 처음 날짜
+          'end_date'   : this.endDatePlusOne     // 마지막 날짜
+        }).
+        then((response)=>{
+          var getSalesCountryData = response.data['countryData'];  // 전달받은 월별 손님수를 대입합니다.
+
+          console.log('매출별 국적값');
+          console.log(getSalesCountryData); 
+
+          // 전달받은 국적 값을 대입합니다. (퍼센트가 아니라 연령대별 매출금액)
+          var countrySalesArray      = JSON.parse(JSON.stringify(getSalesCountryData[0]));
+          // 전달받은 국적 값의 value값 배열을 대입합니다.
+          var countrySalesValueArray = Object.values(countrySalesArray);
+
+          // 전체 국적별 매출금액의 총합이 저장되는 변수
+          var totalNumber = 0;
+          
+          // console.log('전달받은 값');
+          // console.log(countrySalesArray);
+          // console.log('전달받은 값의 values');
+          // console.log(countrySalesValueArray);
+          // console.log('전달받은 값의 keys');
+          // console.log(nationalityKeysArray);
+          
+          // 전체 국적별 매출금액 총합을 구합니다.
+          for(var iCount = 0; iCount < countrySalesValueArray.length; iCount++){
+            totalNumber += Number(countrySalesValueArray[iCount]);
+          }
+
+          // 전달받은 국적별 주문횟수를 비율로 계산한 값을 저장하는 배열
+          var countrySalesRatioData = [];
+
+          // 전체 국적별 매출금액 비율을 구합니다.
+          for (var iCount = 0; iCount < countrySalesValueArray.length; iCount++){
+            countrySalesRatioData.push(this.round(countrySalesValueArray[iCount] / totalNumber * 100, 2));
+          }
+
+          // Overwriting base render method with actual data.
+          this.salesCountryData = {
+            labels: ['한국', '일본', '중국', '미국'],
+            datasets: [
+              {
+                label: '방문 손님 국적',
+                backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300','#FF6666', '#66FFFF'],
+                data: countrySalesRatioData
+              }
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+
+      },
+
+      //************************* 판매량 대비 메뉴 데이터를 받아 그래프를 그리는 함수 *************************
+       getMenuRankData(){
+        // console.log('국가');
+        // console.log(this.rankingCountrySelect['countryNum']);
+        // console.log('성별');
+        // console.log(this.rankingGenderSelect['genderNum']);
+        // console.log('연령');
+        // console.log(this.rankingAgeSelect['ageNum']);
+
+        // axios http 라이브러리 
+        axios.post('/owner/getMenuData', {
+          'shop_id'         : this.shop_id,   // 가게 id
+          'start_date'      : this.startDate,  // 처음 날짜
+          'end_date'        : this.endDatePlusOne,    // 마지막 날짜
+          'ranking_country' : this.rankingCountrySelect['countryNum'],   // 국적
+          'ranking_age'     : this.rankingAgeSelect['ageNum'],       // 나이
+          'ranking_gender'  : this.rankingGenderSelect['genderNum'],    // 성별
+        }).
+        then((response)=>{
+          var getMenuData = response.data['menuData'];  // 전달받은 메뉴 데이터를 대입합니다.
+
+          // console.log('메뉴 데이터');
+          // console.log(getMenuData);
+
+          var menuNameList   = [];  // 메뉴 이름 목록이 저장되는 배열
+          var menuValueList  = [];  // 메뉴 값 목록이 저장되는 배열
+
+          // 메뉴이름 및 메뉴별 주문 개수 값을 각각 배열에 저장합니다.
+          for(var iCount = 0; iCount < getMenuData.length; iCount++){
+            menuNameList.push(getMenuData[iCount]['menuName']);
+            menuValueList.push(getMenuData[iCount]['menuCount']);
+          }
+
+          // console.log(menuNameList);
+          // console.log(menuValueList);
+
+          // 그래프 색상 설정
+          this.firstBar   = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.secondBar  = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.thirdBar   = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.fourthBar  = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.fifthBar   = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+          this.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
+          this.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
+          this.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
+            
+          this.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)')
+          this.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
+          this.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
+
+          this.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)')
+          this.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
+          this.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
+
+          this.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)')
+          this.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
+          this.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
+
+          this.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)')
+          this.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
+          this.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
+
+          // 그래프 데이터
+          this.menuRankData = {
+            labels: menuNameList,
+            datasets: [
+              {
+                label: '그릇',
+                backgroundColor: [this.firstBar, this.secondBar, this.thirdBar, this.fourthBar, this.fifthBar],
+                hoverBackgroundColor:[
+                  'rgba(255,051,051,0.8)',
+                  'rgba(000,102,255,0.8)',
+                  'rgba(051,204,153,0.8)',
+                  'rgba(102,000,153,0.8)',
+                  'rgba(255,051,000,0.8)'
+                ],
+                data: menuValueList,
+              },
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+      },
+
+      //************************* 매출 대비 메뉴 데이터를 받아 그래프를 그리는 함수 *************************
+      getMenuSalesData(){
+        // console.log('국가');
+        // console.log(this.rankingCountrySelect['countryNum']);
+        // console.log('성별');
+        // console.log(this.rankingGenderSelect['genderNum']);
+        // console.log('연령');
+        // console.log(this.rankingAgeSelect['ageNum']);
+
+        // axios http 라이브러리 
+        axios.post('/owner/getSalesMenuData', {
+          'shop_id'         : this.shop_id,   // 가게 id
+          'start_date'      : this.startDate,  // 처음 날짜
+          'end_date'        : this.endDatePlusOne,    // 마지막 날짜
+          'ranking_country' : this.salesCountrySelect['countryNum'],   // 국적
+          'ranking_age'     : this.salesAgeSelect['ageNum'],       // 나이
+          'ranking_gender'  : this.salesGenderSelect['genderNum'],    // 성별
+        }).
+        then((response)=>{
+          var getMenuData = response.data['menuData'];  // 전달받은 메뉴 데이터를 대입합니다.
+
+          // console.log('메뉴 데이터');
+          // console.log(getMenuData);
+
+          var menuNameList   = [];  // 메뉴 이름 목록이 저장되는 배열
+          var menuValueList  = [];  // 메뉴 값 목록이 저장되는 배열
+
+          // 메뉴이름 및 메뉴별 주문 개수 값을 각각 배열에 저장합니다.
+          for(var iCount = 0; iCount < getMenuData.length; iCount++){
+            menuNameList.push(getMenuData[iCount]['menuName']);
+            menuValueList.push(getMenuData[iCount]['menuTotal']);
+          }
+
+          // console.log(menuNameList);
+          // console.log(menuValueList);
+
+          // 그래프 색상 설정
+          this.firstBar   = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.secondBar  = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.thirdBar   = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.fourthBar  = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+          this.fifthBar   = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+          this.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
+          this.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
+          this.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
+            
+          this.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)')
+          this.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
+          this.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
+
+          this.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)')
+          this.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
+          this.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
+
+          this.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)')
+          this.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
+          this.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
+
+          this.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)')
+          this.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
+          this.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
+
+          // 그래프 데이터
+          this.menuSalesData = {
+            labels: menuNameList,
+            datasets: [
+              {
+                label: '그릇',
+                backgroundColor: [this.firstBar, this.secondBar, this.thirdBar, this.fourthBar, this.fifthBar],
+                hoverBackgroundColor:[
+                  'rgba(255,051,051,0.8)',
+                  'rgba(000,102,255,0.8)',
+                  'rgba(051,204,153,0.8)',
+                  'rgba(102,000,153,0.8)',
+                  'rgba(255,051,000,0.8)'
+                ],
+                data: menuValueList,
+              },
+            ]
+          }
+        }).catch(console.log('Oh my god!!, Failed'));
+      },
 
     },
 
-    components:{
-      'CustomerNumberChart'     : CustomerNumberChart,
-      'CustomerGenderChart'     : CustomerGenderChart,
-      'CustomerAgeChart'        : CustomerAgeChart,
-      'CustomerNationalityChart': CustomerNationalityChart,
-      'CustomerRatingChart'     : CustomerRatingChart,
-      'MenuRankingChart'        : MenuRankingChart,
-      'SalesProfitChart'        : SalesProfitChart,
-      'SalesGenderChart'        : SalesGenderChart,
-      'SalesAgeChart'           : SalesAgeChart,
-      'SalesNationalityChart'   : SalesNationalityChart,
-      'MenuSalesChart'          : MenuSalesChart
+    mounted () {
+      // 유저평점 데이터를 받아 그래프를 그리는 함수
+      this.getCustomerRating();
+
+      // 메뉴 주문 그래프 생성 함수
+      this.getMenuRankData();
+
+      // 메뉴 매출대비 주문 그래프 생성 함수
+      this.getMenuSalesData();
+
+      // 판매량 대비 방문 손님 성비를 갱신하는 함수
+      this.getCustomerGenderData();
+
+      // 판매량 대비 방문 손님 연령을 갱신하는 함수
+      this.getCustomerAgeData();
+
+      // 판매량 대비 방문 손님 국적을 갱신하는 함수
+      this.getCustomerCountryData();
+
+      // 매출 대비 방문 손님 성비를 갱신하는 함수
+      this.getSalesGenderData();
+
+      // 매출 대비 방문 손님 연령을 갱신하는 함수
+      this.getSalesAgeData();
+
+      // 매출 대비 방문 손님 국적을 갱신하는 함수
+      this.getSalesCountryData();
     },
 
     created() {
-      console.log('test');
-      console.log(this.rankingCountrySelect.countryNum);
+      this.setMonth();  // 통계 기간을 이번달로 초기화합니다.
 
       // Add shop_id in statisticsData
       var statisticsData = new FormData();
       statisticsData.append('shop_id',    this.shop_id);        // 가게 아이디
       statisticsData.append('start_date', this.startDate);      // 시작 날짜
       statisticsData.append('end_date',   this.endDate);        // 마지막 날짜
-      statisticsData.append('ranking_country',  this.rankingCountrySelect.countryNum); // 판매량 기준 인기 메뉴 순위 국가 필터링
-      statisticsData.append('ranking_gender',   this.rankingGenderSelect.genderNum);   // 판매량 기준 인기 메뉴 순위 성별 필터링
-      statisticsData.append('ranking_age',      this.rankingAgeSelect);                // 판매량 기준 인기 메뉴 순위 연령 필터링, 배열
-      statisticsData.append('sales_country',  this.salesCountrySelect.countryNum); // 매출 기준 인기 메뉴 순위 국가 필터링
-      statisticsData.append('sales_gender',   this.salesGenderSelect.genderNum);   // 매출 기준 인기 메뉴 순위 성별 필터링
-      statisticsData.append('sales_age',      this.salesAgeSelect);                // 매출 기준 인기 메뉴 순위 연령 필터링, 배열
+      statisticsData.append('ranking_country',  this.rankingCountrySelect.countryNum);  // 판매량 기준 인기 메뉴 순위 국가 필터링
+      statisticsData.append('ranking_gender',   this.rankingGenderSelect.genderNum);    // 판매량 기준 인기 메뉴 순위 성별 필터링
+      statisticsData.append('ranking_age',      this.rankingAgeSelect);                 // 판매량 기준 인기 메뉴 순위 연령 필터링, 배열
+      statisticsData.append('sales_country',  this.salesCountrySelect.countryNum);      // 매출 기준 인기 메뉴 순위 국가 필터링
+      statisticsData.append('sales_gender',   this.salesGenderSelect.genderNum);        // 매출 기준 인기 메뉴 순위 성별 필터링
+      statisticsData.append('sales_age',      this.salesAgeSelect);                     // 매출 기준 인기 메뉴 순위 연령 필터링, 배열
 
-      console.log('-----send data-----');
-      console.log(statisticsData.get('end_date'));
-
-      // axios http 라이브러리 with Send statisticsData
-      // axios.post('/???', statisticsData).
-      // then((response)=>{
-          
-      // }).catch(console.log('Oh my god!!, Failed'));
-
-    },
-
-    beforeUpdate() {
-      // console.log('시작 날짜');
-      // console.log(this.startDate);
-      // console.log('마지막 날짜');
-      // console.log(this.endDate);
-      // console.log('test');
-      // console.log(this.rankingCountrySelect.countryNum);
+      // 마지막 날짜의 + 1일 값을 구하는 함수를 실행합니다.
+      this.endDatePlusOneDate();
+      console.log('마지막 날 짜르기 : ' + this.endDatePlusOne);
     }
   }
 </script>
 
 <style>
-    /* .statistics-line {
-        padding-left: 5%;
-        padding-right: 5%;
-    } */
-
     /* 기간 선택 구분 hr태그 CSS */
     .date-picker-line {
       border : dashed 0.1em rgba(105, 105, 105, 0.3);

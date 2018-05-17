@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Reservation;
-use App\Order;
+use App\Suboption;
+use App\Order_List;
 use App\Order_Menu;
 use App\Order_Option;
 use App\Resset;
@@ -33,35 +34,81 @@ class ReservationController extends Controller
         $resDateTime = $request->get('date') . ' ' .
                         $request->get('time');
 
+       if($request->get('menulength') != null) {
 
-       if($request->get('menu_select') == 'true') {
-           /*
-           // 먼저 Order Table에 Order 추가 후 Reservation Table에 등록
-           Order::create([
-              'shop_id' => $request->get('shop_id'),
+           // 먼저 OrderList Table에 OrderList 추가 후 Reservation Table에 등록
+           Order_List::create([
+               'shop_id' => $request->get('shop_id'),
                'user_num' => auth()->user()->id,
-               'order_date' => $request->get('reservation_date')
+               'order_date' => $resDateTime,
+               'total'     => $request->get('sum_price')
            ]);
 
-           $orderData = Order::where('shop_id', $request->get('shop_id'))
-                        ->where('user_num', auth()->user()->id)
-                        ->orderByRaw('order_num DESC')
-                        ->first();
+           $orderData = Order_List::where('shop_id', $request->get('shop_id'))
+               ->where('user_num', auth()->user()->id)
+               ->orderByRaw('order_num DESC')
+               ->first();
 
            $orderNum = $orderData->order_num;
 
            // 필요한것 : 주문 Menu 갯수 , Option
-           $menuNum = $request->get('menu_num');
+           $menuNum         = $request->get('menulength');
+           $menuArray       = $request->get('menu_id');
+           $optionArray     = $request->get('option');
+           $subOptionArray  = $request->get('suboption');
+
+           for( $menuIndex = 0 ; $menuIndex < $menuNum ; $menuIndex++) {
+               $menuId = $menuArray[$menuIndex];
+
+               Order_Menu::create([
+                   'menu_id'    => $menuId,
+                   'order_num'  => $orderNum,
+               ]);
+
+               $orderMenuData  = Order_Menu::where('order_num', $orderNum)
+                   ->orderByRaw('id DESC')
+                   ->first();
+
+               $orderMenuId = $orderMenuData->id;
+
+               $thisMenuOption = $optionArray[$menuIndex];
+               $thisSubOption = $subOptionArray[$menuIndex];
+
+               for($optionIndex = 0 ; $optionIndex < count($thisMenuOption) ; $optionIndex++) {
+
+                   $currentOption       = $thisMenuOption[$optionIndex];
+                   if(isset($thisSubOption[$optionIndex])) {
+                       $currentSubOption    = $thisSubOption[$optionIndex];
+
+                       $subOption = Suboption::where('opnum', $currentOption)
+                           ->where('name', $currentSubOption)
+                           ->first();
+
+                       $subOpNum = $subOption->sub_opnum;
+                   }
+
+                   else
+                       $subOpNum    = null;
+
+                   Order_Option::create([
+                       'op_num'          =>  $currentOption,
+                       'subop_num'       =>  $subOpNum,
+                       'order_menu_id'   =>  $orderMenuId,
+                   ]);
+
+               } // <-- option For End
+
+           }
 
            Reservation::create([
                'shop_id' => $request->get('shop_id'),
                'user_num' => auth()->user()->id,
-               'reservation_date' => $request->get('reservation_date'),
+               'reservation_date' => $resDateTime,
                'person' => $request->get('adult_person'),
                'child' => $request->get('child_person'),
                'menu_select' => true,
-               'order_num'  => ''
-           ]); */
+               'order_num'  => $orderNum,
+           ]);
        } // if End
         else {
 
@@ -201,9 +248,15 @@ class ReservationController extends Controller
                             ->get()
                             ->toArray();
 
+        $menuSelectData = Restaurant::select('reservation_selectMenu')
+                            ->where('id', $request->get('shop_id'))
+                            ->get()
+                            ->toArray();
+
         return response()->json([
             'settingData'       => $settingData,
             'restaurantData'    => $restaurantData,
+            'menuSelectData'    => $menuSelectData,
         ]);
 
     }
@@ -231,4 +284,23 @@ class ReservationController extends Controller
            'flag'   =>  'true',
         ]);
     }
+
+    // <-- 예약시 메뉴 선택 허용 & 비허용 여부
+    public function updateReservationSelectMenu(Request $request) {
+       $shop_id     = $request->get('shop_id');
+       $selectFlag  = $request->get('reservation_selectMenu');
+
+       if($selectFlag == 'true')
+           $flag = true;
+       else
+           $flag = false;
+
+        Restaurant::where('id', $shop_id)
+            ->update(['reservation_selectMenu' => $flag]);
+
+        return response()->json([
+            'msg' => true,
+        ]);
+    }
+
 }

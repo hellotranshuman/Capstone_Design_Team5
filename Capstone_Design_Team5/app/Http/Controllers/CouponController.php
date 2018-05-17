@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Menu;
 use Illuminate\Http\Request;
 use \App\Coupon;
 use \App\UserCoupon;
+use Illuminate\Support\Facades\DB;
 
 class CouponController extends Controller
 {
@@ -26,7 +28,6 @@ class CouponController extends Controller
             'add_product'     => $request->get('add_product'),
         ]);
 
-
         return response()->json([
            'content' => '등록이 완료되었습니다',
         ]);
@@ -36,7 +37,15 @@ class CouponController extends Controller
     // <-- get Coupon List in Coupon Table
     public function getCouponList(Request $request) {
 
-        $couponList = Coupon::where('shop_id', $request->get('shop_id'))
+        $couponList = Coupon::join('menu', 'menu.id', '=', 'coupon.add_product')
+                        ->select(DB::raw('coupon.id as id, coupon.category as category,
+                                           coupon.name as name, coupon.discount as discount,
+                                           coupon.price_condition as price_condition,
+                                           coupon.add_product as add_product,
+                                           coupon.start_date as start_date,
+                                           coupon.expiry_date as expiry_date,
+                                           menu.name as menu_name'))
+                        ->where('coupon.shop_id', $request->get('shop_id'))
                         ->get()
                         ->toArray();
 
@@ -44,9 +53,15 @@ class CouponController extends Controller
                         ->get()
                         ->count();
 
+        $menuList = Menu::select('id', 'name')
+                    ->where('shop_id', $request->get('shop_id'))
+                    ->get()
+                    ->toArray();
+
         return response()->json([
             'coupon'      => $couponList,
             'couponNum'   => $couponNum,
+            'menuList'    => $menuList,
         ]);
     }
 
@@ -62,12 +77,11 @@ class CouponController extends Controller
         ]);
     }
 
-    // 쿠폰 id..만 있으면 되는데..
+    // <-- Add Coupon in User Coupon Table
     public function userCouponCreate(Request $request) {
 
-        $currentCouponId = $request->get('coupon_id');
-        // case1. 기간은 넉넉하게 있고 발급후 7일 이런식일 경우...
-        // case2. 정말 유효기간까지 인 경우....
+        $currentCouponId = $request->get('id');
+
          $couponData = Coupon::where('id', $currentCouponId)
                         ->get()
                         ->first();
@@ -79,8 +93,8 @@ class CouponController extends Controller
             'user_num' => auth()->user()->id,
             'coupon_id' => $currentCouponId,
             'use_check' => false,
-            'startDate' => $startDate,
-            'expiryDate' => $expiryDate
+            'start_date' => $startDate,
+            'expiry_date' => $expiryDate
         ]);
 
         return response()->json([

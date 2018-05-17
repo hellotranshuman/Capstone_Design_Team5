@@ -4,8 +4,8 @@
     <v-app>
         <v-container>
             <v-flex xs12 sm6 offset-sm3>
-                <v-btn color="green" outline block large @click="user_categoty = true">개인 회원</v-btn>
-                <v-btn color="red" outline block large @click="user_categoty = false">사업자 회원</v-btn>
+                <v-btn v-if="user_category" color="green" outline block large>개인 회원 수정</v-btn>
+                <v-btn v-else color="red" outline block large>사업자 회원 수정</v-btn>
             </v-flex>
             <br>
             <v-flex xs12 sm6 offset-sm3>
@@ -13,10 +13,7 @@
                     <v-card-text>
                         <v-text-field
                         v-model="user_id"
-                        placeholder="ID"
-                        required
-                        color="green"
-                        :rules="idRules"
+                        disabled
                         ></v-text-field>
                         <v-text-field
                         v-model="user_pw1"
@@ -97,7 +94,7 @@
                     </v-card-text>
                 </v-card>
                 <br>
-                <v-card v-if="user_categoty">
+                <v-card v-if="user_category">
                     <v-card-text>
                         <v-select
                         v-model="user_favorite"
@@ -113,12 +110,9 @@
                     </v-card-text>
                 </v-card>
             </v-flex>
-            <v-flex v-if="user_categoty" xs12 sm6 offset-sm3>
+            <v-flex xs12 sm6 offset-sm3>
                 <br>
-                <v-btn color="green" block outline large @click="register()">개인 회원 가입</v-btn>
-            </v-flex>
-            <v-flex v-else xs12 sm6 offset-sm3>
-                <v-btn color="red" block outline large @click="register()">사업자 회원 가입</v-btn>
+                <v-btn color="green" block outline large @click="editInfo()">정보 수정</v-btn>
             </v-flex>
         </v-container>
         <v-snackbar
@@ -135,23 +129,24 @@
 
 <script>
     import axios  from 'axios';
+
     export default {
         data() {
             return {
-                user_categoty:  true,
+                user_category:  true,
                 user_id:        "",
                 user_pw1:       "",
                 user_pw2:       "",
 
                 user_name:      "",
-                user_gender:    "",
+                user_gender:    true,
                 user_year:      "",
                 user_month:     "",
                 user_day:       "",
 
                 user_email:     "",
                 user_country:   "",
-                user_favorite:  "",
+                user_favorite:  [],
 
                 hidePw1: true,
                 hidePw2: true,
@@ -179,8 +174,38 @@
             }
         },
 
+        mounted: function() {
+            var url = "/getInfo"
+
+            axios.post(url, {user_id : this.$session.get('user_id')})
+                    .then(response => {
+                        //console.log(response.data[0].category);
+                        //this.user_category = response.data[0].category;
+                        this.user_category  = response.data[0].category;
+                        this.user_id        = response.data[0].user_id;
+                        this.user_name      = response.data[0].name;
+                        this.user_gender    = response.data[0].gender == '0' ? "Male" : "Female";
+                        let user_birthday   = response.data[0].birthday.split('-');
+                        this.user_year      = user_birthday[0];
+                        this.user_month     = user_birthday[1];
+                        this.user_day       = user_birthday[2];
+                        this.user_email     = response.data[0].email;
+                        this.user_country   = response.data[0].country;
+                        if(this.user_category) {
+                            this.user_favorite = [
+                                response.data[0].favorite_1,
+                                response.data[0].favorite_2,
+                                response.data[0].favorite_3
+                            ]
+                        }
+                    })
+                    .catch(error => {
+                        alert(error);
+                    });
+        },
+
         methods: {
-            register() {
+            editInfo() {
                 if(this.user_id == "") {
                     this.snackbar = true;
                     this.snackText = "아이디는 필수 입력 사항입니다.";
@@ -235,7 +260,7 @@
                     return;
                 }
 
-                if(this.user_categoty) {
+                if(this.user_category) {
                     var temp = this.user_favorite;
                     if(temp[3]) {
                         this.snackbar = true;
@@ -244,7 +269,7 @@
                     }
                 }
 
-                var url = "/register";
+                var url = "/editInfo";
 
                 var temp = {
                     user_id     : this.user_id,
@@ -253,7 +278,7 @@
                     name        : this.user_name,
                     country     : this.user_country,
                     birthday    : this.user_year + '-' + this.user_month + '-' + this.user_day,
-                    category    : this.user_categoty,
+                    category    : this.user_category,
                     gender      : this.user_gender,
                     favorite_1  : this.user_favorite[0],
                     favorite_2  : this.user_favorite[1],
@@ -262,8 +287,7 @@
 
                 axios.post(url, temp)
                     .then(response => {
-                        var url = response.data.url;
-                        location.replace(url);
+                        location.replace("/");
                     })
                     .catch(error => {
                         alert(JSON.stringify(temp));

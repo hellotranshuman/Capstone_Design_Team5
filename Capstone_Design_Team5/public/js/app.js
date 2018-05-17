@@ -1902,7 +1902,7 @@
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(496)("./" + name);
+                __webpack_require__(497)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -5007,13 +5007,27 @@ function applyToTag (styleElement, obj) {
 
 
 module.exports = __webpack_require__(42);
-module.exports.easing = __webpack_require__(470);
-module.exports.canvas = __webpack_require__(471);
-module.exports.options = __webpack_require__(472);
+module.exports.easing = __webpack_require__(471);
+module.exports.canvas = __webpack_require__(472);
+module.exports.options = __webpack_require__(473);
 
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(297);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?"undefined":_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):window.Vue&&window.axios&&Vue.use(o,window.axios)}();
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5032,27 +5046,13 @@ module.exports = {
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(297);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o};!function(){function o(e,t){if(!o.installed){if(o.installed=!0,!t)return void console.error("You have to install axios");e.axios=t,Object.defineProperties(e.prototype,{axios:{get:function(){return t}},$http:{get:function(){return t}}})}}"object"==( false?"undefined":_typeof(exports))?module.exports=o: true?!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function(){return o}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):window.Vue&&window.axios&&Vue.use(o,window.axios)}();
-
-/***/ }),
 /* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export VueCharts */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BaseCharts__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BaseCharts__ = __webpack_require__(468);
 /* unused harmony reexport Bar */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["d"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["c"]; });
@@ -5062,7 +5062,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="fun
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["h"]; });
 /* unused harmony reexport Bubble */
 /* unused harmony reexport Scatter */
-/* unused harmony reexport mixins */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__["a"]; });
 /* unused harmony reexport generateChart */
 
 
@@ -5089,7 +5089,7 @@ var VueCharts = {
 "use strict";
 
 
-var bind = __webpack_require__(76);
+var bind = __webpack_require__(77);
 var isBuffer = __webpack_require__(298);
 
 /*global toString:true*/
@@ -5435,7 +5435,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _forIn = __webpack_require__(406);
+var _forIn = __webpack_require__(407);
 
 var _forIn2 = _interopRequireDefault(_forIn);
 
@@ -5713,7 +5713,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _forEach = __webpack_require__(403);
+var _forEach = __webpack_require__(404);
 
 var _forEach2 = _interopRequireDefault(_forEach);
 
@@ -5883,18 +5883,18 @@ exports.default = {
 
 
 module.exports = {};
-module.exports.Arc = __webpack_require__(478);
-module.exports.Line = __webpack_require__(479);
-module.exports.Point = __webpack_require__(480);
-module.exports.Rectangle = __webpack_require__(481);
+module.exports.Arc = __webpack_require__(479);
+module.exports.Line = __webpack_require__(480);
+module.exports.Point = __webpack_require__(481);
+module.exports.Rectangle = __webpack_require__(482);
 
 
 /***/ }),
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(337),
-    getValue = __webpack_require__(342);
+var baseIsNative = __webpack_require__(338),
+    getValue = __webpack_require__(343);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -5953,14 +5953,14 @@ module.exports = isObject;
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(61),
+var arrayMap = __webpack_require__(62),
     baseClone = __webpack_require__(106),
-    baseUnset = __webpack_require__(430),
+    baseUnset = __webpack_require__(431),
     castPath = __webpack_require__(25),
     copyObject = __webpack_require__(29),
-    customOmitClone = __webpack_require__(434),
-    flatRest = __webpack_require__(436),
-    getAllKeysIn = __webpack_require__(66);
+    customOmitClone = __webpack_require__(435),
+    flatRest = __webpack_require__(437),
+    getAllKeysIn = __webpack_require__(67);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_DEEP_FLAG = 1,
@@ -6017,8 +6017,8 @@ module.exports = omit;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(24),
-    getRawTag = __webpack_require__(338),
-    objectToString = __webpack_require__(339);
+    getRawTag = __webpack_require__(339),
+    objectToString = __webpack_require__(340);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -6063,9 +6063,9 @@ module.exports = Symbol;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(10),
-    isKey = __webpack_require__(59),
-    stringToPath = __webpack_require__(392),
-    toString = __webpack_require__(395);
+    isKey = __webpack_require__(60),
+    stringToPath = __webpack_require__(393),
+    toString = __webpack_require__(396);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -6089,7 +6089,7 @@ module.exports = castPath;
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(60);
+var isSymbol = __webpack_require__(61);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -6228,8 +6228,8 @@ var load = exports.load = function load(apiKey, version, libraries, loadCn) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(92),
-    baseKeys = __webpack_require__(348),
-    isArrayLike = __webpack_require__(52);
+    baseKeys = __webpack_require__(349),
+    isArrayLike = __webpack_require__(53);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -6270,8 +6270,8 @@ module.exports = keys;
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assignValue = __webpack_require__(64),
-    baseAssignValue = __webpack_require__(44);
+var assignValue = __webpack_require__(65),
+    baseAssignValue = __webpack_require__(45);
 
 /**
  * Copies properties of `source` to `object`.
@@ -17840,11 +17840,11 @@ module.exports = function(module) {
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(352),
-    listCacheDelete = __webpack_require__(353),
-    listCacheGet = __webpack_require__(354),
-    listCacheHas = __webpack_require__(355),
-    listCacheSet = __webpack_require__(356);
+var listCacheClear = __webpack_require__(353),
+    listCacheDelete = __webpack_require__(354),
+    listCacheGet = __webpack_require__(355),
+    listCacheHas = __webpack_require__(356),
+    listCacheSet = __webpack_require__(357);
 
 /**
  * Creates an list cache object.
@@ -17878,7 +17878,7 @@ module.exports = ListCache;
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(54);
+var eq = __webpack_require__(55);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -17917,7 +17917,7 @@ module.exports = nativeCreate;
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(370);
+var isKeyable = __webpack_require__(371);
 
 /**
  * Gets the data for `map`.
@@ -17941,11 +17941,11 @@ module.exports = getMapData;
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(385),
-    Map = __webpack_require__(55),
-    Promise = __webpack_require__(386),
-    Set = __webpack_require__(387),
-    WeakMap = __webpack_require__(388),
+var DataView = __webpack_require__(386),
+    Map = __webpack_require__(56),
+    Promise = __webpack_require__(387),
+    Set = __webpack_require__(388),
+    WeakMap = __webpack_require__(389),
     baseGetTag = __webpack_require__(23),
     toSource = __webpack_require__(89);
 
@@ -18491,6 +18491,17 @@ helpers.getValueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
 
 /***/ }),
 /* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventBus; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
+
+/***/ }),
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18513,10 +18524,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(77);
+    adapter = __webpack_require__(78);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(77);
+    adapter = __webpack_require__(78);
   }
   return adapter;
 }
@@ -18587,10 +18598,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(75)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(76)))
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__(86);
@@ -18621,10 +18632,10 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(345),
+var baseIsArguments = __webpack_require__(346),
     isObjectLike = __webpack_require__(17);
 
 /** Used for built-in method references. */
@@ -18663,11 +18674,11 @@ module.exports = isArguments;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(12),
-    stubFalse = __webpack_require__(346);
+    stubFalse = __webpack_require__(347);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -18708,7 +18719,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -18739,7 +18750,7 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -18780,7 +18791,7 @@ module.exports = isLength;
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -18800,7 +18811,7 @@ module.exports = baseUnary;
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(88);
@@ -18829,7 +18840,7 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -18853,11 +18864,11 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(87),
-    isLength = __webpack_require__(48);
+    isLength = __webpack_require__(49);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -18892,15 +18903,15 @@ module.exports = isArrayLike;
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(35),
-    stackClear = __webpack_require__(357),
-    stackDelete = __webpack_require__(358),
-    stackGet = __webpack_require__(359),
-    stackHas = __webpack_require__(360),
-    stackSet = __webpack_require__(361);
+    stackClear = __webpack_require__(358),
+    stackDelete = __webpack_require__(359),
+    stackGet = __webpack_require__(360),
+    stackHas = __webpack_require__(361),
+    stackSet = __webpack_require__(362);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -18925,7 +18936,7 @@ module.exports = Stack;
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports) {
 
 /**
@@ -18968,7 +18979,7 @@ module.exports = eq;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(20),
@@ -18981,14 +18992,14 @@ module.exports = Map;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(362),
-    mapCacheDelete = __webpack_require__(369),
-    mapCacheGet = __webpack_require__(371),
-    mapCacheHas = __webpack_require__(372),
-    mapCacheSet = __webpack_require__(373);
+var mapCacheClear = __webpack_require__(363),
+    mapCacheDelete = __webpack_require__(370),
+    mapCacheGet = __webpack_require__(372),
+    mapCacheHas = __webpack_require__(373),
+    mapCacheSet = __webpack_require__(374);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -19019,7 +19030,7 @@ module.exports = MapCache;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports) {
 
 /**
@@ -19045,10 +19056,10 @@ module.exports = arrayPush;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(384),
+var arrayFilter = __webpack_require__(385),
     stubArray = __webpack_require__(101);
 
 /** Used for built-in method references. */
@@ -19081,11 +19092,11 @@ module.exports = getSymbols;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(10),
-    isSymbol = __webpack_require__(60);
+    isSymbol = __webpack_require__(61);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -19116,7 +19127,7 @@ module.exports = isKey;
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(23),
@@ -19151,7 +19162,7 @@ module.exports = isSymbol;
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports) {
 
 /**
@@ -19178,7 +19189,7 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 /**
@@ -19205,12 +19216,12 @@ module.exports = identity;
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(92),
-    baseKeysIn = __webpack_require__(407),
-    isArrayLike = __webpack_require__(52);
+    baseKeysIn = __webpack_require__(408),
+    isArrayLike = __webpack_require__(53);
 
 /**
  * Creates an array of the own and inherited enumerable property names of `object`.
@@ -19243,11 +19254,11 @@ module.exports = keysIn;
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(44),
-    eq = __webpack_require__(54);
+var baseAssignValue = __webpack_require__(45),
+    eq = __webpack_require__(55);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -19277,7 +19288,7 @@ module.exports = assignValue;
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var overArg = __webpack_require__(94);
@@ -19289,12 +19300,12 @@ module.exports = getPrototype;
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetAllKeys = __webpack_require__(100),
     getSymbolsIn = __webpack_require__(107),
-    keysIn = __webpack_require__(63);
+    keysIn = __webpack_require__(64);
 
 /**
  * Creates an array of own and inherited enumerable property names and
@@ -19312,7 +19323,7 @@ module.exports = getAllKeysIn;
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Uint8Array = __webpack_require__(98);
@@ -19334,7 +19345,7 @@ module.exports = cloneArrayBuffer;
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19405,11 +19416,69 @@ exports.default = {
 };
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerNumberChart_vue__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout1_vue__ = __webpack_require__(263);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_118f3ff8_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout1_vue__ = __webpack_require__(676);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(674)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-118f3ff8"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout1_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_118f3ff8_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout1_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_118f3ff8_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout1_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\user\\user_menu\\MenuDefaultLayout1.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-118f3ff8", Component.options)
+  } else {
+    hotAPI.reload("data-v-118f3ff8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerNumberChart_vue__ = __webpack_require__(275);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -19458,11 +19527,11 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerGenderChart_vue__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerGenderChart_vue__ = __webpack_require__(276);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -19511,11 +19580,11 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerAgeChart_vue__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerAgeChart_vue__ = __webpack_require__(277);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -19564,64 +19633,11 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerNationalityChart_vue__ = __webpack_require__(279);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
-var disposed = false
-/* script */
-
-
-/* template */
-var __vue_render__, __vue_static_render_fns__
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-
-var Component = Object(__WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerNationalityChart_vue__["a" /* default */],
-  __vue_render__,
-  __vue_static_render_fns__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_statistics\\CustomerNationalityChart.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d6373286", Component.options)
-  } else {
-    hotAPI.reload("data-v-d6373286", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 73 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerRatingChart_vue__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerRatingChart_vue__ = __webpack_require__(279);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -19670,11 +19686,11 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuRankingChart_vue__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuRankingChart_vue__ = __webpack_require__(280);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -19723,7 +19739,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -19913,7 +19929,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19931,7 +19947,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19942,7 +19958,7 @@ var settle = __webpack_require__(301);
 var buildURL = __webpack_require__(303);
 var parseHeaders = __webpack_require__(304);
 var isURLSameOrigin = __webpack_require__(305);
-var createError = __webpack_require__(78);
+var createError = __webpack_require__(79);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(306);
 
 module.exports = function xhrAdapter(config) {
@@ -20118,7 +20134,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20143,7 +20159,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20155,7 +20171,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20181,13 +20197,34 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_user_user_communication_UserCommunication_vue__ = __webpack_require__(320);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20463,10 +20500,23 @@ module.exports = Cancel;
             user_name: this.$session.get('user_name'),
 
             communicationDialog: false, // 커뮤니케이션 버튼을 통해 모달창을 출력하는데 사용
-            topURL: "/" // 사이트 최상위 url
+
+            snackbar: false,
+            snackText: "",
+            timeout: 3000,
+
+            searchAddressInput: "",
+            searchAddress: ['대한민국 대구광역시 북구 복현2동 복현로 35', { lat: 35.8963134, lng: 128.6198624 }]
         };
     },
 
+
+    created: function created() {
+        // GoogleMap 위치 검색을 한 이력이 있으면 그 위치를 초기값으로 함
+        if (this.$session.get("searchAddressHistory")) {
+            this.searchAddress = this.$session.get("searchAddressHistory");
+        }
+    },
 
     methods: {
         login: function login() {
@@ -20479,12 +20529,15 @@ module.exports = Cancel;
             }).then(function (response) {
                 if (!response.data.login) {
                     // 로그인 실패시
-                    alert(response.data.msg); // 메시지 출력
+                    _this.snackbar = true;
+                    _this.snackText = response.data.msg;
                     return;
                 }
                 if (response.data.restaurant_id != "/") {
                     // 사장인지 손님인지 체크
-                    _this.$session.set('restaurant_id', response.data.restaurant_id); // 사장이라면 가게 주소 set
+                    if (response.data.restaurant_id != "noneRestaurant") // 가게를 만든 사장인지 체크
+                        _this.$session.set('restaurant_id', response.data.restaurant_id); // 가게를 만든 사장이라면, 가게 id set
+                    else _this.$session.set('restaurant_id', 'needCreate');
                 }
 
                 _this.$session.set('loginStatus', true); // 로그인 상태 true
@@ -20493,11 +20546,17 @@ module.exports = Cancel;
 
                 if (_this.$session.get('restaurant_id')) {
                     // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
-                    var restaurant_id = _this.$session.get('restaurant_id');
-                    location.replace('/owner/' + restaurant_id + '/menu');
+                    if (!(_this.$session.get('restaurant_id') == 'needCreate')) {
+                        // 가게를 만들지 않은 사장인지 체크
+                        var restaurant_id = _this.$session.get('restaurant_id');
+                        location.replace('/owner/' + restaurant_id + '/menu');
+                    } else {
+                        location.replace('/owner/createRestaurant');
+                    }
                 } else location.replace(response.data.restaurant_id);
             }).catch(function (error) {
-                alert('error!');
+                _this.snackbar = true;
+                _this.snackText = error;
             });
         },
         logout: function logout() {
@@ -20508,7 +20567,8 @@ module.exports = Cancel;
             return this.$session.get('loginStatus');
         },
         checkRestaurant: function checkRestaurant() {
-            return this.$session.get('restaurant_id');
+            if (!this.$session.get('restaurant_id' == 'needCreate')) // 가게 등록한 사장인지 아닌지 체크
+                return this.$session.get('restaurant_id');else return "needCreate";
         },
         moveMyMenu: function moveMyMenu() {
             var restaurant_id = this.$session.get('restaurant_id');
@@ -20524,21 +20584,37 @@ module.exports = Cancel;
         },
         moveMyRestaurant: function moveMyRestaurant() {
             var restaurant_id = this.$session.get('restaurant_id');
-            location.replace('/restaurant/' + restaurant_id + '/info');
+
+            if (restaurant_id != "needCreate") // 가게를 등록했으면 가게 페이지로, 아니면 생성 페이지로
+                location.replace('/restaurant/' + restaurant_id + '/info');else location.replace('/owner/createRestaurant');
         },
         openMenu: function openMenu() {
             if (this.checkLogin()) {
                 this.menu = !this.menu;
             } else {
-                alert("로그인이 필요합니다!");
+                this.snackbar = true;
+                this.snackText = "로그인이 필요합니다!";
                 this.loginForm = true;
+            }
+        },
+        setPlace: function setPlace(AddressInput) {
+            this.searchAddressInput = AddressInput;
+        },
+        searching: function searching() {
+            if (this.searchAddressInput.formatted_address) {
+                this.searchAddress = [this.searchAddressInput.formatted_address, {
+                    lat: this.searchAddressInput.geometry.location.lat(),
+                    lng: this.searchAddressInput.geometry.location.lng()
+                }];
+                this.$session.set("searchAddressHistory", this.searchAddress);
+                location.replace('/');
             }
         }
     }
 });
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20607,13 +20683,13 @@ module.exports = Cancel;
 });
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -20939,133 +21015,10 @@ module.exports = Cancel;
 });
 
 /***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MountableMixin = exports.Autocomplete = exports.MapElementMixin = exports.PlaceInput = exports.Map = exports.InfoWindow = exports.Rectangle = exports.Circle = exports.Polygon = exports.Polyline = exports.Cluster = exports.Marker = exports.loaded = exports.load = undefined;
-exports.install = install;
-
-var _manager = __webpack_require__(27);
-
-var _marker = __webpack_require__(336);
-
-var _marker2 = _interopRequireDefault(_marker);
-
-var _cluster = __webpack_require__(409);
-
-var _cluster2 = _interopRequireDefault(_cluster);
-
-var _polyline = __webpack_require__(429);
-
-var _polyline2 = _interopRequireDefault(_polyline);
-
-var _polygon = __webpack_require__(446);
-
-var _polygon2 = _interopRequireDefault(_polygon);
-
-var _circle = __webpack_require__(447);
-
-var _circle2 = _interopRequireDefault(_circle);
-
-var _rectangle = __webpack_require__(448);
-
-var _rectangle2 = _interopRequireDefault(_rectangle);
-
-var _infoWindow = __webpack_require__(449);
-
-var _infoWindow2 = _interopRequireDefault(_infoWindow);
-
-var _map = __webpack_require__(451);
-
-var _map2 = _interopRequireDefault(_map);
-
-var _streetViewPanorama = __webpack_require__(455);
-
-var _streetViewPanorama2 = _interopRequireDefault(_streetViewPanorama);
-
-var _placeInput = __webpack_require__(459);
-
-var _placeInput2 = _interopRequireDefault(_placeInput);
-
-var _autocomplete = __webpack_require__(461);
-
-var _autocomplete2 = _interopRequireDefault(_autocomplete);
-
-var _mapElementMixin = __webpack_require__(18);
-
-var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
-
-var _mountableMixin = __webpack_require__(68);
-
-var _mountableMixin2 = _interopRequireDefault(_mountableMixin);
-
-var _deferredReady = __webpack_require__(41);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// export everything
-
-
-// Vue component imports
-exports.load = _manager.load;
-exports.loaded = _manager.loaded;
-exports.Marker = _marker2.default;
-exports.Cluster = _cluster2.default;
-exports.Polyline = _polyline2.default;
-exports.Polygon = _polygon2.default;
-exports.Circle = _circle2.default;
-exports.Rectangle = _rectangle2.default;
-exports.InfoWindow = _infoWindow2.default;
-exports.Map = _map2.default;
-exports.PlaceInput = _placeInput2.default;
-exports.MapElementMixin = _mapElementMixin2.default;
-exports.Autocomplete = _autocomplete2.default;
-exports.MountableMixin = _mountableMixin2.default;
-function install(Vue, options) {
-  options = Object.assign({}, {
-    installComponents: true
-  }, options);
-
-  Vue.use(_deferredReady.DeferredReady);
-
-  var defaultResizeBus = new Vue();
-  Vue.$gmapDefaultResizeBus = defaultResizeBus;
-  Vue.mixin({
-    created: function created() {
-      this.$gmapDefaultResizeBus = defaultResizeBus;
-    }
-  });
-
-  if (options.load) {
-    (0, _manager.load)(options.load);
-  }
-
-  if (options.installComponents) {
-    Vue.component('GmapMap', _map2.default);
-    Vue.component('GmapMarker', _marker2.default);
-    Vue.component('GmapCluster', _cluster2.default);
-    Vue.component('GmapInfoWindow', _infoWindow2.default);
-    Vue.component('GmapPolyline', _polyline2.default);
-    Vue.component('GmapPolygon', _polygon2.default);
-    Vue.component('GmapCircle', _circle2.default);
-    Vue.component('GmapRectangle', _rectangle2.default);
-    Vue.component('GmapAutocomplete', _autocomplete2.default);
-    Vue.component('GmapPlaceInput', _placeInput2.default);
-    Vue.component('GmapStreetViewPanorama', _streetViewPanorama2.default);
-  }
-}
-
-/***/ }),
 /* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(44),
+var baseAssignValue = __webpack_require__(45),
     baseForOwn = __webpack_require__(90),
     baseIteratee = __webpack_require__(95);
 
@@ -21239,7 +21192,7 @@ module.exports = baseForOwn;
 /* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(343);
+var createBaseFor = __webpack_require__(344);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -21261,11 +21214,11 @@ module.exports = baseFor;
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(344),
-    isArguments = __webpack_require__(45),
+var baseTimes = __webpack_require__(345),
+    isArguments = __webpack_require__(46),
     isArray = __webpack_require__(10),
-    isBuffer = __webpack_require__(46),
-    isIndex = __webpack_require__(47),
+    isBuffer = __webpack_require__(47),
+    isIndex = __webpack_require__(48),
     isTypedArray = __webpack_require__(93);
 
 /** Used for built-in method references. */
@@ -21316,9 +21269,9 @@ module.exports = arrayLikeKeys;
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(347),
-    baseUnary = __webpack_require__(49),
-    nodeUtil = __webpack_require__(50);
+var baseIsTypedArray = __webpack_require__(348),
+    baseUnary = __webpack_require__(50),
+    nodeUtil = __webpack_require__(51);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -21370,11 +21323,11 @@ module.exports = overArg;
 /* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMatches = __webpack_require__(350),
-    baseMatchesProperty = __webpack_require__(390),
-    identity = __webpack_require__(62),
+var baseMatches = __webpack_require__(351),
+    baseMatchesProperty = __webpack_require__(391),
+    identity = __webpack_require__(63),
     isArray = __webpack_require__(10),
-    property = __webpack_require__(400);
+    property = __webpack_require__(401);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -21407,7 +21360,7 @@ module.exports = baseIteratee;
 /* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(374),
+var baseIsEqualDeep = __webpack_require__(375),
     isObjectLike = __webpack_require__(17);
 
 /**
@@ -21441,9 +21394,9 @@ module.exports = baseIsEqual;
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(375),
-    arraySome = __webpack_require__(378),
-    cacheHas = __webpack_require__(379);
+var SetCache = __webpack_require__(376),
+    arraySome = __webpack_require__(379),
+    cacheHas = __webpack_require__(380);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -21543,7 +21496,7 @@ module.exports = Uint8Array;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetAllKeys = __webpack_require__(100),
-    getSymbols = __webpack_require__(58),
+    getSymbols = __webpack_require__(59),
     keys = __webpack_require__(28);
 
 /**
@@ -21564,7 +21517,7 @@ module.exports = getAllKeys;
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(57),
+var arrayPush = __webpack_require__(58),
     isArray = __webpack_require__(10);
 
 /**
@@ -21694,7 +21647,7 @@ module.exports = arrayEach;
 /* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(62);
+var identity = __webpack_require__(63);
 
 /**
  * Casts `value` to `identity` if it's not a function.
@@ -21714,26 +21667,26 @@ module.exports = castFunction;
 /* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(53),
+var Stack = __webpack_require__(54),
     arrayEach = __webpack_require__(104),
-    assignValue = __webpack_require__(64),
-    baseAssign = __webpack_require__(410),
-    baseAssignIn = __webpack_require__(411),
-    cloneBuffer = __webpack_require__(412),
-    copyArray = __webpack_require__(413),
-    copySymbols = __webpack_require__(414),
-    copySymbolsIn = __webpack_require__(415),
+    assignValue = __webpack_require__(65),
+    baseAssign = __webpack_require__(411),
+    baseAssignIn = __webpack_require__(412),
+    cloneBuffer = __webpack_require__(413),
+    copyArray = __webpack_require__(414),
+    copySymbols = __webpack_require__(415),
+    copySymbolsIn = __webpack_require__(416),
     getAllKeys = __webpack_require__(99),
-    getAllKeysIn = __webpack_require__(66),
+    getAllKeysIn = __webpack_require__(67),
     getTag = __webpack_require__(39),
-    initCloneArray = __webpack_require__(416),
-    initCloneByTag = __webpack_require__(417),
-    initCloneObject = __webpack_require__(422),
+    initCloneArray = __webpack_require__(417),
+    initCloneByTag = __webpack_require__(418),
+    initCloneObject = __webpack_require__(423),
     isArray = __webpack_require__(10),
-    isBuffer = __webpack_require__(46),
-    isMap = __webpack_require__(424),
+    isBuffer = __webpack_require__(47),
+    isMap = __webpack_require__(425),
     isObject = __webpack_require__(21),
-    isSet = __webpack_require__(426),
+    isSet = __webpack_require__(427),
     keys = __webpack_require__(28);
 
 /** Used to compose bitmasks for cloning. */
@@ -21891,9 +21844,9 @@ module.exports = baseClone;
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(57),
-    getPrototype = __webpack_require__(65),
-    getSymbols = __webpack_require__(58),
+var arrayPush = __webpack_require__(58),
+    getPrototype = __webpack_require__(66),
+    getSymbols = __webpack_require__(59),
     stubArray = __webpack_require__(101);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -22079,7 +22032,7 @@ var _getPropsValuesMixin = __webpack_require__(13);
 
 var _getPropsValuesMixin2 = _interopRequireDefault(_getPropsValuesMixin);
 
-var _mountableMixin = __webpack_require__(68);
+var _mountableMixin = __webpack_require__(69);
 
 var _mountableMixin2 = _interopRequireDefault(_mountableMixin);
 
@@ -22345,7 +22298,7 @@ var _getPropsValuesMixin = __webpack_require__(13);
 
 var _getPropsValuesMixin2 = _interopRequireDefault(_getPropsValuesMixin);
 
-var _mountableMixin = __webpack_require__(68);
+var _mountableMixin = __webpack_require__(69);
 
 var _mountableMixin2 = _interopRequireDefault(_mountableMixin);
 
@@ -22669,7 +22622,7 @@ var _clone = __webpack_require__(16);
 
 var _clone2 = _interopRequireDefault(_clone);
 
-var _pickBy = __webpack_require__(462);
+var _pickBy = __webpack_require__(463);
 
 var _pickBy2 = _interopRequireDefault(_pickBy);
 
@@ -22771,8 +22724,8 @@ exports.default = {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var convert = __webpack_require__(474);
-var string = __webpack_require__(476);
+var convert = __webpack_require__(475);
+var string = __webpack_require__(477);
 
 var Color = function (obj) {
 	if (obj instanceof Color) {
@@ -23602,8 +23555,8 @@ module.exports = {
 
 
 var helpers = __webpack_require__(4);
-var basic = __webpack_require__(482);
-var dom = __webpack_require__(483);
+var basic = __webpack_require__(483);
+var dom = __webpack_require__(484);
 
 // @TODO Make possible to select another platform at build time.
 var implementation = dom._enabled ? dom : basic;
@@ -23682,7 +23635,7 @@ module.exports = helpers.extend({
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var helpers = __webpack_require__(4);
 
 defaults._set('global', {
@@ -35938,56 +35891,29 @@ module.exports = {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    name: "App",
     components: {
         GoogleMap: __WEBPACK_IMPORTED_MODULE_0__GoogleMap__["a" /* default */]
     },
+
+    props: ['searchAddress'],
+
     data: function data() {
         return {
             test: [[], ["tokyo ageya", 1, "/restaurant/1/info", "/restaurant/1/menu", "/restaurant/1/review"], ["tokyo tenya", 2, "/restaurant/2/info", "/restaurant/2/menu", "/restaurant/2/review"], ["tokyo udon", 3, "/restaurant/3/info", "/restaurant/3/menu", "/restaurant/3/review"]],
             test2: [[], ["yoshinoya", 4, "/restaurant/4/info", "/restaurant/4/menu", "/restaurant/4/review"], ["ohagi", 5, "/restaurant/5/info", "/restaurant/5/menu", "/restaurant/5/review"], ["sobasin", 6, "/restaurant/6/info", "/restaurant/6/menu", "/restaurant/6/review"]],
-            key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo",
-            testCenter: { lat: 35.8963134, lng: 128.6198624 }
+            key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo"
+
         };
+    },
+
+
+    methods: {
+        open_gps_dialog: function open_gps_dialog() {
+            this.$parent.$parent.$parent.gps_search = true;
+        }
     }
 });
 
@@ -35998,7 +35924,7 @@ module.exports = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_GoogleMap_vue__ = __webpack_require__(244);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_34b46d08_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_GoogleMap_vue__ = __webpack_require__(518);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_34b46d08_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_GoogleMap_vue__ = __webpack_require__(519);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 /* script */
@@ -36087,7 +36013,7 @@ if (false) {(function () {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "GoogleMap",
-  props: ['testCenter'],
+  props: ['currentCenter'],
   data: function data() {
     return {
       restaurantInfo: false,
@@ -36098,7 +36024,6 @@ if (false) {(function () {
       toReview: "",
       // default to Montreal to keep it simple
       // change this to whatever makes sense
-      center: this.testCenter,
       markers: [{
         position: { lat: 33.5905447, lng: 130.3965094 },
         icon: "/images/restaurant.png",
@@ -36159,6 +36084,17 @@ if (false) {(function () {
         this.currentPlace = null;
       }
     },
+    searchAddress: function searchAddress(searchAddressInput) {
+      if (searchAddressInput) {
+        var marker = {
+          lat: searchAddressInput.geometry.location.lat(),
+          lng: searchAddressInput.geometry.location.lng()
+        };
+        this.center = marker;
+        this.currentPlace = null;
+      }
+    },
+
 
     geolocate: function geolocate() {
       var _this = this;
@@ -36245,91 +36181,12 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 245 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GoogleMap__ = __webpack_require__(243);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    name: "App",
-    components: {
-        GoogleMap: __WEBPACK_IMPORTED_MODULE_0__GoogleMap__["a" /* default */]
-    },
-    data: function data() {
-        return {
-            test: [[], ["Umecchaga", "./1/1_titleImg", "/restaurant/1/info", "/restaurant/1/menu", "/restaurant/1/review"], ["Jukuseihanamidoritokamameshi", "./2/2_titleImg", "/restaurant/2/info", "/restaurant/2/menu", "/restaurant/2/review"], ["Kushiagetokisetsunooryouri", "./3/3_titleImg", "/restaurant/3/info", "/restaurant/3/menu", "/restaurant/3/review"]],
-            test2: [[], ["Hakatanaginoki", "./4/4_titleImg", "/restaurant/4/info", "/restaurant/4/menu", "/restaurant/4/review"], ["Wafuukushiagetenzen", "./5/5_titleImg", "/restaurant/5/info", "/restaurant/5/menu", "/restaurant/5/review"], ["Kado-no-Casshiwa", "./6/6_titleImg", "/restaurant/6/info", "/restaurant/6/menu", "/restaurant/6/review"]],
-            key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo",
-            testCenter: { lat: 33.5882038, lng: 130.3989663 }
-        };
-    }
-});
-
-/***/ }),
+/* 245 */,
 /* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -36466,96 +36323,132 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            dialog: false,
-            dialog2: false,
-            F_sexValue: "male",
-            F_user_id: "",
-            F_user_email: "",
-            F_user_name: "",
-            F_password: "",
-            F_C_password: "",
-            F_country: "한국", // 국적종류 (china, japan, korea, USA)
-            F_year: "",
-            F_month: "",
-            F_day: ""
+            user_categoty: true,
+            user_id: "",
+            user_pw1: "",
+            user_pw2: "",
+
+            user_name: "",
+            user_gender: "",
+            user_year: "",
+            user_month: "",
+            user_day: "",
+
+            user_email: "",
+            user_country: "",
+            user_favorite: "",
+
+            hidePw1: true,
+            hidePw2: true,
+
+            idRules: [function (v) {
+                return !!v || 'ID is required';
+            }],
+            pwRules: [function (v) {
+                return !!v || 'Password is required';
+            }],
+            month: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            country: ['Korea', 'Japan', 'China', 'USA'],
+            food: ['한식', '일식', '중식', '양식', '분식', '덮밥', '스시', '패스트 푸드', '찜', '탕', '도시락', '카페&디저트', '술집', '면류', '제과'],
+
+            snackbar: false,
+            snackText: "",
+            timeout: 3000
         };
     },
 
+
     methods: {
-        // 입력한 국적에 맞는 값을 저장하는 함수
-        setCountry: function setCountry() {
-            switch (this.F_country) {
-                case '한국':
-                    this.F_country = 'korea';
-                    break;
-                case '日本':
-                    this.F_country = 'japan';
-                    break;
-                case '中国':
-                    this.F_country = 'china';
-                    break;
-                case 'USA':
-                    this.F_country = 'USA';
-                    break;
-            }
-        },
         register: function register() {
-            // 입력한 국적에 맞는 값을 대입합니다.
-            this.setCountry();
+            if (this.user_id == "") {
+                this.snackbar = true;
+                this.snackText = "아이디는 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_pw1 == "") {
+                this.snackbar = true;
+                this.snackText = "비밀번호는 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_pw1 != this.user_pw2) {
+                this.snackbar = true;
+                this.snackText = "비밀번호와 비밀번호 확인이 서로 다릅니다.";
+                return;
+            }
+
+            if (this.user_name == "") {
+                this.snackbar = true;
+                this.snackText = "이름은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_gender == "") {
+                this.snackbar = true;
+                this.snackText = "성별은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_year == "" || this.user_month == "" || this.user_day == "") {
+                this.snackbar = true;
+                this.snackText = "생년월일은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_year < 1900 || this.user_year > 2018) {
+                this.snackbar = true;
+                this.snackText = "년도를 확인해주세요.";
+                return;
+            }
+
+            if (this.user_email == "") {
+                this.snackbar = true;
+                this.snackText = "이메일은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_country == "") {
+                this.snackbar = true;
+                this.snackText = "국가는 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_categoty) {
+                var temp = this.user_favorite;
+                if (temp[3]) {
+                    this.snackbar = true;
+                    this.snackText = "선호하는 음식은 최대 3가지 입니다.";
+                    return;
+                }
+            }
 
             var url = "/register";
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, {
-                user_id: this.F_user_id,
-                password: this.F_password,
-                c_password: this.F_C_password,
-                email: this.F_user_email,
-                name: this.F_user_name,
-                country: this.F_country,
-                birthday: this.F_year + '-' + this.F_month + '-' + this.F_day,
-                category: 'user',
-                gender: this.F_sexValue
-            }).then(function (response) {
-                alert(response.data.msg);
-            }).catch(function (error) {
-                alert('error!');
-            });
-        },
-        register2: function register2() {
-            // 입력한 국적에 맞는 값을 대입합니다.
-            this.setCountry();
 
-            var url = "/register";
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, {
-                user_id: this.F_user_id,
-                password: this.F_password,
-                c_password: this.F_C_password,
-                email: this.F_user_email,
-                name: this.F_user_name,
-                country: this.F_country,
-                birthday: this.F_year + '-' + this.F_month + '-' + this.F_day,
-                category: 'owner',
-                gender: this.F_sexValue
-            }).then(function (response) {
+            var temp = {
+                user_id: this.user_id,
+                password: this.user_pw1,
+                email: this.user_email,
+                name: this.user_name,
+                country: this.user_country,
+                birthday: this.user_year + '-' + this.user_month + '-' + this.user_day,
+                category: this.user_categoty,
+                gender: this.user_gender,
+                favorite_1: this.user_favorite[0],
+                favorite_2: this.user_favorite[1],
+                favorite_3: this.user_favorite[2]
+            };
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, temp).then(function (response) {
                 var url = response.data.url;
-
                 location.replace(url);
             }).catch(function (error) {
-                alert('error!');
+                alert(JSON.stringify(temp));
             });
         }
     }
@@ -36603,7 +36496,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ownerPageTop_vue__ = __webpack_require__(533);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ownerPageTop_vue__ = __webpack_require__(534);
 //
 //
 //
@@ -36743,9 +36636,9 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -36977,9 +36870,9 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -37119,12 +37012,28 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37279,6 +37188,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             /* 예약 가능인가 불가능인가 */
             impossible: '',
 
+            /* 메뉴 선택 가능여부 */
+            reservation_selectMenu: false,
+            menuSelectData: '',
+
             /* date picker */
             pick_date: null,
             menu: false,
@@ -37315,17 +37228,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             _this.items = reservationSettingData;
             _this.resData = response.data.restaurantData;
 
-            console.log(_this.items);
-
             /* 가게 lunch.dinner open/close */
             _this.lunch_open = _this.resData[0].lunch_open;
             _this.lunch_close = _this.resData[0].lunch_close;
             _this.dinner_open = _this.resData[0].dinner_open;
             _this.dinner_close = _this.resData[0].dinner_close;
 
-            console.log(_this.lunch_open);
+            _this.menuSelectData = menuSelectData;
 
-            _this.checkDate(_this.items);
+            if (_this.menuSelectData == true) {
+                _this.menuSelectData = '주문 가능';
+            } else if (_this.menuSelectData == false) {
+                _this.menuSelectData = '주문 불가능';
+            }
         });
     },
 
@@ -37461,6 +37376,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 if (response.data.flag === 'true') location.reload();
             }).catch(console.log('test'));
         },
+        menuoption_save: function menuoption_save() {
+            /* Data 송신 */
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/setReservationSetting', {
+                shop_id: this.$route.params.shop_id,
+                reservation_selectMenu: this.reservation_selectMenu
+            }).then(function (response) {
+                location.reload();
+            }).catch(console.log('test'));
+        },
         save: function save() {
             /* Data 송신 */
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/setReservationSetting', {
@@ -37490,13 +37414,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-//
 //
 //
 //
@@ -37704,6 +37627,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var num = 0; // 갤러리 이미지 갯수 카운트
 var formData = new FormData(document.getElementById("upload_info")); // 입력 값들을 담아 전송함.
+var clickImg = null;
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
@@ -37788,9 +37712,6 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
             addressRule: [function (v) {
                 return !!v || '상세주소2를 입력해주세요!';
             }],
-            typeRule: [function (v) {
-                return !!v || '업종을 입력해주세요!';
-            }],
             phoneRule: [function (v) {
                 return !!v || '전화번호를 입력해주세요!';
             }],
@@ -37819,6 +37740,9 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
             // 도도부현 리스트 배열
             ddbkList: [{ text: '東京' }, { text: '北海道' }, { text: '札幌' }, { text: '京都' }, { text: '大阪' }, { text: '靑森' }, { text: '岩手' }, { text: '宮城' }, { text: '秋田' }, { text: '山形' }, { text: '福島' }, { text: '茨城' }, { text: '栃木' }, { text: '群馬' }, { text: '埼玉' }, { text: '千葉' }, { text: '神奈川' }, { text: '新潟' }, { text: '富山' }, { text: '石川' }, { text: '福井' }, { text: '山梨' }, { text: '長野' }, { text: '岐阜' }, { text: '靜岡' }, { text: '愛知' }, { text: '三重' }, { text: '滋賀' }, { text: '兵庫' }, { text: '奈良' }, { text: '和歌山' }, { text: '鳥取' }, { text: '島根' }, { text: '岡山' }, { text: '廣島' }, { text: '山口' }, { text: '德島' }, { text: '香川' }, { text: '愛媛' }, { text: '高知' }, { text: '福岡' }, { text: '佐賀' }, { text: '長崎' }, { text: '熊本' }, { text: '大分' }, { text: '宮崎' }, { text: '鹿兒島' }, { text: '沖繩' }],
 
+            // 업종
+            typeList: [{ text: '한식' }, { text: '일식' }, { text: '중식' }, { text: '양식' }, { text: '분식' }, { text: '덮밥' }, { text: '스시' }, { text: '패스트 푸드' }, { text: '찜' }, { text: '탕' }, { text: '도시락' }, { text: '카페&디저트' }, { text: '술집' }, { text: '면류' }, { text: '제과' }],
+
             // 결제 방법
             paymentList: [{ text: '현금 결제' }, { text: '카드 결제' }, { text: '둘다 가능' }],
 
@@ -37846,6 +37770,7 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
             var file = event.target.files[0];
             var reader = new FileReader();
             var gallery_div = document.getElementById('gallery_div');
+            var click_menu = document.getElementById('click_menu');
 
             // 업로드한 이미지가 3개 이하인 경우
             if (gallery_div.children[2].children[0].src == '') {
@@ -37942,7 +37867,7 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
                     console.log(pair[0] + ': ' + pair[1]);
                 }
 
-                // // 값 보내기
+                // 값 보내기
             } catch (err) {
                 _didIteratorError2 = true;
                 _iteratorError2 = err;
@@ -37976,10 +37901,14 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
 //
 //
 //
@@ -38131,12 +38060,20 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
             end_menu: false,
 
             clickCouponid: 0,
+
             /* table */
             dialog: false,
-            headers: [{ text: '쿠폰 이름', value: 'name' }, { text: '쿠폰 종류', value: 'category' }, { text: '할인율', value: 'discount' }, { text: '제공 상품', value: 'add_product' }, { text: '쿠폰 조건', value: 'price_condition' }, { text: '사용 시작일', value: 'start_date' }, { text: '사용 종료일', value: 'end_date' }, { text: 'Actions', value: 'name', sortable: false }],
+            headers: [{ text: '쿠폰 이름', value: 'name' }, { text: '쿠폰 종류', value: 'category' }, { text: '할인율', value: 'discount' }, { text: '제공 상품', value: 'menu_name' }, { text: '쿠폰 조건', value: 'price_condition' }, { text: '사용 시작일', value: 'start_date' }, { text: '사용 종료일', value: 'end_date' }, { text: 'Actions', value: 'name', sortable: false }],
 
             /* 저장 & 편집 & 삭제 */
             items: [],
+
+            /* 메뉴 선택 */
+            AddProductSelect: [],
+            menu_id: 0,
+
+            menuDataList: [],
+
             CouponItem: {
                 name: '',
                 category: '',
@@ -38159,17 +38096,24 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
         }).then(function (response) {
             /* DB Coupon Data */
             var Index = response.data.couponNum;
-            console.log(response.data.coupon);
-            // var Coupondata = Object.values(response.data.coupon);
 
-            var Coupondata = response.data.coupon;
+            _this.items = response.data.coupon;
 
-            _this.items = Coupondata;
+            /* menu_data */
+            var menuData = response.data.menuList;
+            _this.menuDataList = menuData;
+
+            _this.menu_data_product();
         });
     },
 
     methods: {
-        data: function data() {},
+        menu_data_product: function menu_data_product() {
+            // 0: id / name
+            for (var i = 0; i < this.menuDataList.length; i++) {
+                this.AddProductSelect.push(this.menuDataList[i].name);
+            }
+        },
         deleteItem: function deleteItem(item) {
             var _this2 = this;
 
@@ -38187,16 +38131,25 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
             this.dialog = false;
         },
         save: function save() {
+            /* 메뉴id 찾기 */
+            for (var i = 0; i < this.menuDataList.length; i++) {
+                if (this.CouponItem.add_product == this.menuDataList[i].name) {
+                    this.menu_id = this.menuDataList[i].id;
+                    break;
+                }
+            }
+
             /* Data 송신 */
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/createCoupon', {
                 name: this.CouponItem.CouponName,
                 shop_id: this.$route.params.shop_id,
                 category: this.CouponItem.CouponType,
                 discount: this.CouponItem.Discount,
-                add_product: this.CouponItem.addproduct,
+                add_product: this.menu_id,
                 price_condition: this.CouponItem.Condition,
                 start_date: this.CouponItem.start_date,
                 expiry_date: this.CouponItem.end_date
+
             }).then(function (response) {
                 location.reload();
             }).catch(console.log('test'));
@@ -38211,9 +38164,9 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -38246,9 +38199,9 @@ var formData = new FormData(document.getElementById("upload_info")); // 입력 �
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -38548,9 +38501,9 @@ var num = 0; // 옵션 갯수
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -38569,9 +38522,9 @@ var num = 0; // 옵션 갯수
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -39046,15 +38999,29 @@ var palet_cntxt = null; // palette context
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     created: function created() {
-        // this.dragSelect();     
+        var _this = this;
+
+        // 메뉴 레이아웃 가져오기
+        var url = '';
+        var layoutNum = null;
+        var shop_id = this.$route.params.shop_id;
+        url = '/owner/' + shop_id + '/getLayout';
+        // 카테고리 요청하기.
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (response) {
+            layoutNum = response.data.layoutNum;
+
+            if (layoutNum != 0) _this.selected_template = "기본 템플릿" + layoutNum;else _this.selected_template = "사용자 제작 템플릿";
+        }).catch(function (ex) {
+            alert('레이아웃 로드 실패');
+        });
     },
     data: function data() {
         return {
             // 이미지 주소 주소 설정 좀여
-            exImg1: '선주야 부탁한다!',
-            exImg2: '선주야 부탁한다!',
-            exImg3: '선주야 부탁한다!',
-            exImg4: '선주야 부탁한다!',
+            exImg1: '/images/template/template1.jpeg',
+            exImg2: '/images/template/template2.png',
+            exImg3: '/images/template/template3.png',
+            exImg4: '/images/template/template4.png',
 
             // 모달 용 
             tem1: false,
@@ -39085,10 +39052,19 @@ var palet_cntxt = null; // palette context
                 alert('메뉴판 템플릿을 선택해주세요');
             } else {
                 // 선택한 템플릿 설정 저장하기.
-                var url = '선주야 부탁한다!';
+                var url = '/saveSelectedLayout';
 
-                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, slt_tem).then(function (response) {
-                    get_datas = response.data;
+                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, {
+                    'slt_tem': slt_tem,
+                    'shop_id': this.$route.params.shop_id
+                }).then(function (response) {
+
+                    if (response.data.msg) {
+                        alert('저장이 완료 되었습니다');
+                        location.reload();
+                    }
+
+                    // get_datas = response.data
                 }).catch(function (ex) {
                     alert('저장 실패');
                 });
@@ -39170,21 +39146,19 @@ var palet_cntxt = null; // palette context
             array['MenuMargin'] = MenuMargin.value + 'px'; // 메뉴 간의 간격 설정
 
             // 메뉴 출력 설정 사항 저장하기.
-            formData.append('Menu', JSON.stringify(array)); // 메뉴 스타일. 
-
+            formData.append('Menu', JSON.stringify(array)); // 메뉴 스타일.
+            formData.append('shop_id', this.$route.params.shop_id);
             // formData 확인하기
             // for(var pair of formData.entries()) {
             //     console.log(pair[0]+ ': '+ pair[1]); 
             // }
 
             // 저장하기.
-            // axios.post('선주야 부탁해', formData )
-            // .then( (response) => {
-            //     
-            // })
-            // .catch((ex)=>{
-            //     alert('저장 실패');
-            // });
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/saveCustomLayout', formData).then(function (response) {
+                if (response.data.msg) alert('저장이 완료되었습니다');
+            }).catch(function (ex) {
+                alert('저장 실패');
+            });
         },
 
         // 드래그로 엘리먼트 다중 선택하기. 
@@ -39618,8 +39592,12 @@ var palet_cntxt = null; // palette context
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventBus_js__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MenuDefaultLayout1_vue__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventBus_js__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MenuDefaultLayout1_vue__ = __webpack_require__(70);
 //
 //
 //
@@ -39745,27 +39723,8 @@ var palet_cntxt = null; // palette context
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 
@@ -39774,14 +39733,13 @@ var palet_cntxt = null; // palette context
 // import DefaultLayout2 from './MenuDefaultLayout2.vue';
 // import DefaultLayout3 from './MenuDefaultLayout3.vue';
 // import DefaultLayout4 from './MenuDefaultLayout4.vue';
-//import CustomLayout from './MenuDefaultLayout1.vue';      // 아직
+// import CustomLayout from './MenuDefaultLayout1.vue';      // 아직
 
-var layout = __WEBPACK_IMPORTED_MODULE_1__MenuDefaultLayout1_vue__["a" /* default */]; // 사장이 선택한 메뉴판 탬플릿
+var layout = __WEBPACK_IMPORTED_MODULE_3__MenuDefaultLayout1_vue__["a" /* default */]; // 사장이 선택한 메뉴판 탬플릿
 var obj = []; // 클릭한 배열 담기
 var check = 0; // 클릭한 배열 index용 변수
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-
     created: function created() {
         __WEBPACK_IMPORTED_MODULE_0__eventBus_js__["a" /* EventBus */].$on('select_menus', function (menu) {
             obj.push(menu[check]);check++;
@@ -39792,56 +39750,175 @@ var check = 0; // 클릭한 배열 index용 변수
         return {
             Menu_Order: 0,
             click_menu: [], // 클릭한 메뉴들이 담김
-            Ordercheck: false, // 주문 확인 창 
+            Ordercheck: false, // 주문 확인 창
             sum_price: 0, // 선택한 메뉴 총 가격
-            translateText: [] // 번역한 텍스트 값이 들어갈 배열 
+            translateText: [], // 번역한 텍스트 값이 들어갈 배열
+
+            // 옵션 선택
+            optionselect: [],
+            optionArray: [], // 클릭한 메뉴의 옵션 값을 관리할 배열
+            optionId: [],
+
+            // 메뉴 아이디 배열
+            menuid: [],
+            MenuOrder: [],
+            OpOrder: [],
+            OpCount: [],
+            SubOpOrder: [],
+            subOpCount: [],
+
+            // 번역 
+            TransMenu: [],
+            MenuList: [],
+            translatedText: '메뉴1=고기&메뉴2=소스:마요네즈、야채추가:레타스&메뉴3=고기:많이、고기2:많이2&'
         };
     },
 
     methods: {
-        // 메뉴 번역 - 확인 버튼 클릭 시 호출되는 함수
-        OrderMenu: function OrderMenu() {},
-
         // 주문하기 버튼 클릭 시 호출되는 함수
-        check_menus: function check_menus() {
-            // alert('안녕?');
+        order_menu: function order_menu() {
             this.click_menu = obj;
             this.sum_price = 0;
-            console.log(this.click_menu);
 
             for (var i = 0; i < this.click_menu.length; i++) {
                 this.sum_price += this.click_menu[i].menu.price;
             }
+
+            this.select();
         },
+
         // v-for 용 함수, start에서 시작해서 end까지 1식 반환
         range: function range(start, end) {
             return Array(end - start + 1).fill().map(function (_, idx) {
                 return start + idx;
             });
         },
+
+        // 메뉴 취소하기
         click_cancel: function click_cancel() {
             var id = event.target.parentNode.id; // 클릭한 메뉴 click_menu의 배열 키 값
             var container = document.getElementById('menu_check_container'); // 메뉴 확인 창
 
             this.sum_price = this.sum_price - this.click_menu[id].menu.price; // 총 가격 빼기
             this.click_menu.splice(id, 1); // 선택한 메뉴 배열에서 취소한 메뉴 삭제
-            // console.log(this.click_menu);
+
             alert('선택한 메뉴를 취소하였습니다.');
         },
-        translate_menu: function translate_menu() {
-            // 번역할 문장 만들기.
-            for (var i = 0; i < this.click_menu.length; i++) {
-                var text = this.click_menu[i].menu.name + " : ";
 
-                if (this.click_menu[i].option !== undefined) {
-                    text += this.click_menu[i].menu.optionName1 + "은 " + this.click_menu[i].option.value + "으로";
+        // 옵션 선택
+        select: function select() {
+            var argId = argId;
+            var MenuMax = this.click_menu.length;
+
+            // 메뉴 길이 만큼 돌기
+            for (var i = 0; i < MenuMax; i++) {
+                // 해당 메뉴 옵션 개수
+                var opNumMax = this.click_menu[i].menu.opNum;
+
+                this.optionArray[i] = [];
+                this.optionselect[i] = [];
+                this.optionId[i] = [];
+                for (var j = 0; j < opNumMax; j++) {
+                    // 서브 옵션 개수
+                    var supOption = this.click_menu[i].menu['subOpNum' + (j + 1)];
+
+                    // 옵션 이름 넣기
+                    this.optionArray[i][j] = [];
+                    this.optionId[i][j] = this.click_menu[i].menu['optionId' + (j + 1)];
+                    this.optionArray[i][j]['Name'] = this.click_menu[i].menu['optionName' + (j + 1)];
+
+                    for (var z = 0; z < supOption; z++) {
+                        // 옵션 상세 정보
+                        this.optionArray[i][j][z] = this.click_menu[i].menu[j + 1 + 'optionValue' + (z + 1)];
+                    }
                 }
-
-                text += " 한 개";
-
-                this.translateText[i] = text;
             }
-            console.log(this.translateText);
+        },
+
+
+        // 번역 메뉴 목록
+        MenuOrderList: function MenuOrderList() {
+            for (var i = 0; i < this.click_menu.length; i++) {
+                var OpNum = 0;
+                var subNum = 0;
+                this.OpOrder[i] = [];
+                this.SubOpOrder[i] = [];
+                // 메뉴 이름
+                this.MenuOrder[i] = this.click_menu[i].menu.name;
+                for (var j = 0; j < this.optionArray[i].length; j++) {
+                    // 옵션 이름
+                    this.OpOrder[i][j] = this.optionArray[i][j].Name;
+                    OpNum++;
+                    // 서브옵션값
+                    if (this.optionselect[i][j] != null) {
+                        this.SubOpOrder[i][j] = this.optionselect[i][j];
+                        subNum++;
+                    }
+                }
+                this.OpCount[i] = OpNum;
+                this.subOpCount[i] = subNum;
+            }
+
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/translateOrder', {
+                Menu: this.MenuOrder,
+                Option: this.OpOrder,
+                subOption: this.SubOpOrder,
+                MenuCount: this.MenuOrder.length,
+                OpCount: this.OpCount,
+                subOpCount: this.subOpCount
+            }).then(function (response) {
+                document.write(response.data.msg);
+                // location.reload();
+            });
+
+            // 메뉴 번역된것 DB에서 받기
+            this.MenuTranslate();
+        },
+        MenuTranslate: function MenuTranslate() {
+            // DB에서 번역된 값 받기
+            // axios.post('/trans', {
+            // }).then((response) => {
+            //     this.translatedText = response.data.translatedText
+            // })
+
+            var Menu = this.translatedText.split('&');
+
+            // db에서 받은값 문자열 자르기
+            for (var i = 0; i < Menu.length - 1; i++) {
+                this.TransMenu[i] = Menu[i].split('=');
+            }
+
+            // 이쁘게 배열에 넣기
+            for (var i = 0; i < this.TransMenu.length; i++) {
+                this.MenuList[i] = [];
+                this.MenuList[i]['name'] = this.TransMenu[i][0];
+                this.MenuList[i]['option'] = this.TransMenu[i][1];
+            }
+
+            console.log(this.MenuList);
+        },
+
+
+        // 메뉴 주문 데이터 송신
+        OrderMenu: function OrderMenu() {
+            // 주문한 메뉴
+            for (var i = 0; i < this.click_menu.length; i++) {
+                this.menuid[i] = this.click_menu[i].menu.id;
+            }
+
+            console.log(this.optionArray);
+            /* Data 송신 */
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/makeOrder', {
+                menulength: this.menuid.length, // 메뉴 개수
+                menu_id: this.menuid, // 선택한 메뉴가 있는 배열
+                option: this.optionId, // 옵션 Id
+                suboption: this.optionselect, // 서브 옵션
+                shop_id: this.$route.params.shop_id,
+                sum_price: this.sum_price
+            }).then(function (response) {
+                document.write(response.data.msg);
+                // location.reload();
+            }).catch(console.log('test'));
         }
     },
     components: {
@@ -39854,40 +39931,11 @@ var check = 0; // 클릭한 배열 index용 변수
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventBus; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
-
-/***/ }),
-/* 264 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eventBus_js__ = __webpack_require__(263);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eventBus_js__ = __webpack_require__(43);
 //
 //
 //
@@ -39958,32 +40006,30 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     created: function created() {
-        var url = '';
+        var _this = this;
+
+        var url = '/menu/getCategory';
         var get_categorys = null;
         this.shop_id = this.$route.params.shop_id; // 샵 아이디 
 
         // 카테고리 요청하기.
-        // axios.post(url, this.shop_id)
-        // .then( (response) => {
-        //     get_categorys = response.data 
-        //     this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
-        // })
-        // .catch((ex)=>{
-        //     alert('메뉴 로드 실패');
-        // });
-
-        get_categorys = [{ "category": '특식' }, { "category": '추천 메뉴' }, { "category": '식사류' }, { "category": '찌개류' }, { "category": '안주류' }, { "category": '음료' }, { "category": '커피' }, { "category": '디저트' }, { "category": '특식' }, { "category": '추천 메뉴' }, { "category": '식사류' }, { "category": '찌개류' }, { "category": '안주류' }, { "category": '음료' }, { "category": '커피' }, { "category": '디저트' }, { "category": '특식' }, { "category": '추천 메뉴' }, { "category": '식사류' }, { "category": '찌개류' }, { "category": '안주류' }, { "category": '음료' }, { "category": '커피' }, { "category": '디저트' }, { "category": '특식' }, { "category": '추천 메뉴' }, { "category": '식사류' }, { "category": '찌개류' }, { "category": '안주류' }, { "category": '음료' }, { "category": '커피' }, { "category": '디저트' }, { "category": '특식' }, { "category": '추천 메뉴' }, { "category": '식사류' }, { "category": '찌개류' }, { "category": '안주류' }, { "category": '음료' }, { "category": '커피' }, { "category": '디저트' }, { "category": '특식' }, { "category": '추천 메뉴' }, { "category": '식사류' }, { "category": '찌개류' }, { "category": '안주류' }, { "category": '음료' }, { "category": '커피' }, { "category": '디저트' }];
-        this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, {
+            'shop_id': this.shop_id
+        }).then(function (response) {
+            get_categorys = response.data.category;
+            _this.categorys = _this.unique(get_categorys); // 카테고리 중복 값 제거.
+        }).catch(function (ex) {
+            alert('메뉴 로드 실패');
+        });
     },
     data: function data() {
         return {
             e2: null, // 카테고리 클릭 값
             categorys: null, // 카테고리 배열
             get_menus: null, // 해당 카테고리 메뉴들
-            menu_row_num: 0, // 메뉴 출력 v-layout 갯수 
+            menu_num: 0, // 메뉴 출력 v-layout 갯수 
             select_menus: [], // 상위 컴퍼넌트에 보낼 값
-            shop_id: null, // 가게 아이디 값
-            options: []
+            shop_id: null // 가게 아이디 값 
         };
     },
 
@@ -39991,8 +40037,10 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
     methods: {
         // 메뉴 카테고리 클릭
         click_category: function click_category() {
+            var _this2 = this;
+
             var category = event.target; // 선택한 카테고리 
-            var url = "선주야 부탁한다!"; // 서버에 요청할 주소 
+            var url = ""; // 서버에 요청할 주소
             var send_data = [];
 
             // 클릭한 값 검사
@@ -40002,86 +40050,19 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
                 category = category.value;
             }
 
+            url = '/menu/getMenu/' + this.shop_id + '/' + category;
+
             // 보낼 데이터 초기화
             send_data['shop_id'] = this.shop_id;
             send_data['category'] = category;
 
             // 클릭한 카테고리의 메뉴 호출
-            // axios.post(url, send_data)
-            // .then( (response) => {
-            //     this.get_menus = response.data 
-
-            //     // 출력할 v-layout 개수 설정
-            //     if( this.get_menus.length%3 === 0 ){
-            //         this.menu_row_num = this.get_menus.length / 3;
-            //     }
-            //     else {
-            //         this.menu_row_num = Math.floor(this.get_menus.length / 3) + 1;
-            //     }
-
-            //     // 옵션 값 뽑아내기
-            //     for(let i=0; i < this.get_menus.length; i++) {   
-            //         this.options[i] = [];
-            //         for(let j=1; j <= this.get_menus[i].subOpNum; j++){
-            //             this.options[i].push(this.get_menus[i]['optionValue'+j] );
-            //         }
-            //     }    
-            // })
-            // .catch((ex)=>{
-            //     alert('메뉴 로드 실패');
-            // });
-
-            this.get_menus = [{
-                "id": 1,
-                "name": "짬뽕",
-                "explanation": "짬뽕입니다.",
-                "price": 9000,
-                "remark": "default",
-                "path": "/images/menu/1/",
-                "filename": "1_menuImg_1.jpeg",
-                "optionName1": "맵기 조절",
-                "optionValue1": "순한맛",
-                "optionValue2": "보통맛",
-                "optionValue3": "매운맛",
-                "subOpNum": 3
-            }, {
-                "id": 2,
-                "name": "연두부",
-                "explanation": "연두부",
-                "price": 5000,
-                "remark": "default",
-                "path": "/images/menu/1/",
-                "filename": "1_menuImg_2.jpeg",
-                "optionName1": "소스",
-                "optionValue1": "특제 소스",
-                "optionValue2": "간장 소스",
-                "subOpNum": 2
-            }, {
-                "id": 3,
-                "name": "케이크",
-                "explanation": "123123",
-                "price": 9999,
-                "remark": "default",
-                "path": "/images/menu/1/",
-                "filename": "1_menuImg_3.jpeg",
-                "optionName1": "없으면 입력 x",
-                "subOpNum": 0
-            }];
-
-            // 출력할 v-layout 개수 설정
-            if (this.get_menus.length % 3 === 0) {
-                this.menu_row_num = this.get_menus.length / 3;
-            } else {
-                this.menu_row_num = Math.floor(this.get_menus.length / 3) + 1;
-            }
-
-            // 옵션 값 뽑아내기
-            for (var i = 0; i < this.get_menus.length; i++) {
-                this.options[i] = [];
-                for (var j = 1; j <= this.get_menus[i].subOpNum; j++) {
-                    this.options[i].push(this.get_menus[i]['optionValue' + j]);
-                }
-            }
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (response) {
+                _this2.get_menus = response.data.menu;
+                _this2.menu_num = _this2.get_menus.length;
+            }).catch(function (ex) {
+                alert('메뉴 로드 실패');
+            });
         }, // end of click_category
 
         // 배열 중복 값 제거, 인자는 서버에 받은 카테고리 목록
@@ -40106,24 +40087,11 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 
         // 주문하기 클릭한 메뉴
         select_menu: function select_menu() {
-            var menu = event.target.parentNode; // 클릭한 메뉴 가져오기.
-            var array = [];
+            var menu = event.target; // 클릭한 메뉴 가져오기. 
+            var arr = [];
 
-            // 클릭한 메뉴 테두리 붉게
-            // menu.parentNode.parentNode.parentNode.parentNode.style = "border: 3px solid red;"   
-
-            array['menu'] = this.get_menus[menu.id];
-
-            console.log(this.get_menus[menu.id]);
-
-            if (this.get_menus[menu.id].optionValue1 !== undefined) {
-                var op_val = document.getElementById('value' + menu.id); // 선택한 옵션 값 가져오기.
-
-                array['option'] = { 'value': op_val.value };
-            }
-            this.select_menus.push(array);
-            // console.log( this.select_menus );
-
+            arr['menu'] = this.get_menus[menu.id];
+            this.select_menus.push(arr); // 보낼 값 배열에 담기.  
             __WEBPACK_IMPORTED_MODULE_2__eventBus_js__["a" /* EventBus */].$emit('select_menus', this.select_menus);
             alert('선택하신 메뉴가 추가 되었습니다.');
         } // end of method
@@ -40133,14 +40101,14 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 });
 
 /***/ }),
-/* 265 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserReviewData__ = __webpack_require__(595);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserReviewData__ = __webpack_require__(597);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 //
 //
@@ -40330,14 +40298,14 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 });
 
 /***/ }),
-/* 266 */
+/* 265 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserCreateReview_vue__ = __webpack_require__(598);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserCreateReview_vue__ = __webpack_require__(600);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 //
 //
@@ -40683,14 +40651,14 @@ var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 });
 
 /***/ }),
-/* 267 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserStar_vue__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserStar_vue__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -41031,13 +40999,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 }, 'created', function created() {}));
 
 /***/ }),
-/* 268 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserStar_vue__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserStar_vue__ = __webpack_require__(268);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_31311d97_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserStar_vue__ = __webpack_require__(601);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_31311d97_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserStar_vue__ = __webpack_require__(603);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 /* script */
@@ -41085,7 +41053,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 269 */
+/* 268 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41206,18 +41174,189 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 270 */
+/* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_menu_eventBus_js__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_menu_MenuDefaultLayout1_vue__ = __webpack_require__(70);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41437,53 +41576,238 @@ if (false) {(function () {
 
 
 
+// import * as VueGoogleMaps from 'vue2-google-maps';
+
+// 예약 하기
 
 
-// 구글 맵스 키 값
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue2_google_maps__, {
-    load: {
-        key: 'AIzaSyDeu-HoB1RsF5Vf0xjEvBwwCKodP8mkgWQ'
-    }
-});
 
+var layout = __WEBPACK_IMPORTED_MODULE_4__user_menu_MenuDefaultLayout1_vue__["a" /* default */]; // 사장이 선택한 메뉴판 탬플릿
+var obj = []; // 클릭한 배열 담기
+var check = 0; // 클릭한 배열 index용 변수    
+
+// // 구글 맵스 키 값
+// Vue.use(VueGoogleMaps, {
+//     load: { 
+//         key: 'AIzaSyDeu-HoB1RsF5Vf0xjEvBwwCKodP8mkgWQ',    
+//     }
+// });
+
+var restaurant_id = ''; // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
 var get_datas = null; // 요청한 데이터들이 담길 변수 JSON으로 받을 예정
 var url = '';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
-        return {
+        var _ref;
+
+        return _ref = {
             dialog: false,
             dialog_ok: false,
+            menuDialog: false,
+
+            Menu_Order: 0,
+            click_menu: [], // 클릭한 메뉴들이 담김
+            Ordercheck: false, // 주문 확인 창 
+            sum_price: 0, // 선택한 메뉴 총 가격
+            translateText: [], // 번역한 텍스트 값이 들어갈 배열 
+
+            // 옵션 선택
+            optionselect: [],
+            optionArray: [], // 클릭한 메뉴의 옵션 값을 관리할 배열 
+            optionId: [],
+
+            // 메뉴 아이디 배열
+            menu: [],
+            Order: [],
+
+            // 이쁜 메뉴 배열
+            HappyMenu: [],
 
             /* reservation */
-            message: '',
-            usernum: '',
             adult_person: '',
             child_person: '',
             menuselect: '',
+            message: '',
 
             /* date picker */
             start_date: null,
             reservation_menu: false,
             modal: false,
 
-            /* time picker */
-            time: null,
-            menu2: false,
-            modal2: false
-        };
+            /* timePicker*/
+            /* 예약 시간 배열 */
+            states: [],
+            /* 선택한 시간 */
+            pick_time: '',
+
+            /* 메뉴 선택 가능한지 안한지 */
+            reservation_selectMenu: 1,
+
+            /* 기본 식당 시간 */
+            lunch_open: '09:00',
+            lunch_close: '14:00',
+            dinner_open: '17:00',
+            dinner_close: '22:00',
+
+            /* DB에서 받아 온 값 - reservation_set */
+            items: [{
+                impossible: '예약 불가능',
+                pick_date: '2018-05-03'
+            }, {
+                impossible: '예약 가능',
+                pick_date: '2018-05-04',
+                set_time: ["11:00", "12:00", "13:30"]
+
+            }, {
+                impossible: '예약 불가능',
+                pick_date: '2018-05-05'
+            }, {
+                impossible: '예약 불가능',
+                pick_date: '2018-05-07'
+            }],
+
+            /* 쿠폰 */
+            translateTextDownDialog: false,
+            dialog2: false,
+            clickCouponid: null,
+            clickCouponname: null
+
+        }, _defineProperty(_ref, 'items', [{
+            id: '1',
+            name: '안녕fsdfsd',
+            category: '상품 제공',
+            price_condition: '1000',
+            add_product: '제공',
+            start_date: '2018-03-02',
+            expiry_date: '2019-04-03'
+        }, {
+            id: '2',
+            name: 'd',
+            category: '가격 할인',
+            price_condition: '1000',
+            discount: '200',
+            start_date: '2018-03-02',
+            expiry_date: '2019-04-03'
+
+        }]), _defineProperty(_ref, 'ShowMoreImg', false), _ref;
     },
     created: function created() {
         var _this = this;
 
-        // <-- 값 보내기
-        // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
+        // 값 보내기
         this.shop_id = this.$route.params.shop_id;
         url = '/restaurant/' + this.shop_id + '/getInfo';
 
+        // url = '/restaurant/1/getInfo';
+
         __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(url).then(function (response) {
             get_datas = response.data.restaurant;
-            console.log(get_datas);
+
+            // get_datas = [
+            //     {
+            //         'name'          : 'Innovative Cuisine',
+            //         'type'          : '한식',
+            //         'explanation'   : "최고의 재료를 찾아내고 그 재료가 지닌 다양한 맛을 연구해 한식이 지낸 깊은 향과 숨은 맛을 전합니다. " +
+            //                             "최상의 식재료를 선별, 그에 걸맞는 신중한 조리를 통해 재료 본연의 맛을 극대화한 한식,"+ 
+            //                             "전통 한식 본연의 못브에 대한 셰프의 철학과 감성을 더해 궁극의 요리 예술로서 풀어낸 한식"+
+            //                             "저희는 매일 바뀌는 계절과 에너지의 흐름을 되짚어가며 한식의 성숙하고 자연스러운 맛을"+
+            //                             "오랜 시간의 노고가 스며든 정성스러운 손길로 표현합니다.",
+            //         'dodobuken'     : '도쿄 도',
+            //         'cities'        : '미나토 구',
+            //         'address'       : '아카사카 1-11-6',
+            //         'phone'         : '010-8991-8606',
+            //         'lunch_open'    : '11:30',
+            //         'lunch_close'   : '15:00',
+            //         'lunch_lo'      : '14:30',
+            //         'dinner_open'   : '17:30',
+            //         'dinner_close'  : '22:00', 
+            //         'dinner_lo'     : '21:30',
+            //         'payment'       : '카드 결제 가능',
+            //         'seat_num'      : '70석',
+            //         'children'      : 'yes',
+            //         'pet'           : 'yes',
+            //         'parking'       : 'no',
+            //         'smoking'       : 'no',
+            //         'privateroom'   : 'no'
+            //     },
+            //     {
+            //         'totalrate'        : 4.7,
+            //     },
+            //     {
+            //         'filename' : "13_titleImg,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+
+
+            //     {
+            //         'filename' : "13_galleryImg0,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+
+            //     {
+            //         'filename' : "13_galleryImg1,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+
+
+            //     {
+            //         'filename' : "13_galleryImg1,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+            //     {
+            //         'filename' : "13_galleryImg1,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+
+
+            //     {
+            //         'filename' : "13_galleryImg1,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+
+            //     {
+            //         'filename' : "13_galleryImg1,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+
+
+            //     {
+            //         'filename' : "13_galleryImg1,jpeg",
+            //         'path' : '/images/13/'
+            //     },
+            // ]; 
+
+            // 예약 하기
+            // 메뉴
+            __WEBPACK_IMPORTED_MODULE_3__user_menu_eventBus_js__["a" /* EventBus */].$on('select_menus', function (menu) {
+                obj.push(menu[check]);check++;
+            });
+
+            // 예약하기
+            var set_time_data;
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/reservationSetting', {
+                'shop_id': _this.$route.params.shop_id
+            }).then(function (response) {
+                /* 그 가게의 예약설정된 Data */
+                var reservationSettingData = response.data.reservationSetting;
+
+                /* item안에 넣기 */
+                _this.items = reservationSettingData;
+
+                /* 메뉴가 선택 가능한 가게인지 아닌지 */
+                _this.reservation_selectMenu = reservation_selectMenu;
+
+                /* 기본 가게 정보 */
+                _this.lunch_open = _this.resData[0].lunch_open;
+                _this.lunch_close = _this.resData[0].lunch_close;
+                _this.dinner_open = _this.resData[0].dinner_open;
+                _this.dinner_close = _this.resData[0].dinner_close;
+            });
+
+            // 쿠폰
+            var Coupondata = response.data.coupon;
+            _this.items = Coupondata;
 
             // 데이터 바인딩-기본정보
             _this.enter_data(get_datas[0]);
@@ -41494,19 +41818,22 @@ var url = '';
             // 지도 생성
             _this.geoCoder(get_datas[0]);
 
-            console.log("url('" + get_datas[2].path + get_datas[2].filename + "')");
-
             // 타이틀 이미지 삽입
             _this.enter_title(get_datas[2]);
 
             // 갤러리 이미지 출력
             _this.enter_galley();
         }).catch(function (ex) {
-            // alert('왜 안대');
+            alert('왜 안대');
         });
     },
 
-    methods: {
+
+    components: {
+        'Layout': layout
+    },
+
+    methods: _defineProperty({
         // 각 공간에 해당 값들을 삽입함.
         enter_data: function enter_data(argArray) {
             var iterator = Object.keys(argArray);
@@ -41519,23 +41846,22 @@ var url = '';
                 for (var _iterator = iterator[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var key = _step.value;
 
-
                     if (document.getElementById(key) !== null) {
                         var get_div = document.getElementById(key);
 
-                        // 데이터 입력
-                        if (argArray[key] === 1) {
-                            get_div.innerText += '가능';
-                        } else if (argArray[key] === 0) {
-                            get_div.innerText += '불가';
-                        } else if (argArray[key] === 'card') {
-                            get_div.innerText += '카드 가능';
-                        } else if (argArray[key] === 'cash') {
-                            get_div.innerText += '현금 결제';
-                        } else if (argArray[key] === null) {
-                            get_div.innerText += 0;
-                        } else {
-                            get_div.innerText += argArray[key];
+                        switch (argArray[key]) {
+                            case 1:
+                                get_div.innerText += '가능';break;
+                            case 0:
+                                get_div.innerText += '불가';break;
+                            case 'yes':
+                                get_div.innerText += '가능';break;
+                            case 'no':
+                                get_div.innerText += '불가';break;
+                            case null:
+                                get_div.innerText += 0;break;
+                            default:
+                                get_div.innerText += argArray[key];break;
                         }
                     }
                 }
@@ -41557,87 +41883,79 @@ var url = '';
 
         // 타이틀 이미지 삽입하기
         enter_title: function enter_title(argImgArray) {
-            var title_div = document.getElementById('title_img');
-            title_div.style.backgroundImage = "url(" + argImgArray.path + argImgArray.filename + ")";
+            document.getElementById('title_img').style.backgroundImage = "url(" + argImgArray.path + argImgArray.filename + ")";
         },
 
         // 갤러리에 이미지 추가하기.
         enter_galley: function enter_galley() {
             var gallery_div = document.getElementById('gallery_div');
-            var argNum = get_datas.length; // 넘어온 데이터 배열 갯수 :  0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지 
+
+            // 넘어온 데이터 배열 갯수 : 0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지 
+            var argNum = get_datas.length;
 
             // 등록된 이미지가 없으면 메세지 출력 
             if (argNum - 3 == 0) {
                 gallery_div.innerText = "등록된 이미지가 없습니다.";
-            } else {
-                for (var i = 3; i < argNum; i++) {
-                    // div, img 생성
-                    var createdDiv = document.createElement('div');
-                    var createdImg = document.createElement('img');
-
-                    // 생성한 div와 img에 css와 src를 추가함.
-                    createdImg.src = get_datas[i].path + get_datas[i].filename;
-                    createdImg.classList.add('gallery_img');
-                    createdDiv.classList.add('gallery');
-
-                    // 생성한 div와 img를 갤러리 div에 추가.
-                    createdDiv.appendChild(createdImg);
-                    gallery_div.appendChild(createdDiv);
-                }
             }
+            // 등록된 이미지가 6개 이하.
+            else if (argNum - 3 < 7) {
+                    for (var i = 3; i < argNum; i++) {
+                        // div, img 생성
+                        var createdDiv = document.createElement('div');
+                        var createdImg = document.createElement('img');
 
-            // // 등록된 이미지가 6개 이하인 경우 div와 img 생성 후 갤러리에 출력.
-            // else if (argNum <= 6) {
-            //     for (let i=0; i < argNum; i++){
-            //         // div, img 생성
-            //         let createdDiv = document.createElement('div');
-            //         let createdImg = document.createElement('img');
+                        // 생성한 div와 img에 css와 src를 추가함.
+                        createdImg.src = get_datas[i].path + get_datas[i].filename;
+                        createdImg.classList.add('gallery_img');
+                        createdDiv.classList.add('gallery');
 
-            //         // 생성한 div와 img에 css와 src를 추가함.
-            //         createdImg.src = get_datas.gallery_img + i;
-            //         createdImg.classList.add('gallery_img');
-            //         createdDiv.classList.add('gallery');
+                        // 생성한 div와 img를 갤러리 div에 추가.
+                        createdDiv.appendChild(createdImg);
+                        gallery_div.prepend(createdDiv);
+                    }
+                }
+                // 등록된 이미지가 6개 초과
+                else {
+                        // 더 보기 display none에서 block으로
+                        var moreImg = document.getElementById('moreImg');
+                        moreImg.style.display = 'block';
 
-            //         // 생성한 div와 img를 갤러리 div에 추가.
-            //         createdDiv.appendChild(createdImg);
-            //         gallery_div.appendChild(createdDiv);
-            //     }
-            // }
-            // // 등록된 이미지가 6개 초과인 경우 5개 div는 그대로 이미지 출력,
-            // // 마지막 div를 더보기 클릭 창으로 만듬
-            // else if (argNum > 6) {
-            //     for (let i=0; i < 6; i++){
-            //         let createdDiv = document.createElement('div');
-            //         createdDiv.classList.add('gallery');
+                        for (var _i = 3; _i < 8; _i++) {
+                            // div, img 생성
+                            var _createdDiv = document.createElement('div');
+                            var _createdImg = document.createElement('img');
 
-            //         // div 5개까지는 이미지 출력
-            //         if(i !== 5){
-            //             let createdImg = document.createElement('img');
-            //             createdImg.classList.add('gallery_img');
-            //             createdImg.src = get_datas.gallery_img + i;        
-            //             createdDiv.appendChild(createdImg);
-            //         } 
-            //         // 6번째 div에 더보기 버튼 생성.
-            //         else if (i === 5){
-            //             createdDiv.id        = 'show_gallery';
-            //             createdDiv.innerText = '더 보기';
-            //             createdDiv.onclick   = this.show_gallery;
-            //         }
-            //         // 갤러리 div에 생성한 div 추가하기
-            //         gallery_div.appendChild(createdDiv);
-            //     }
-            // }
+                            // 생성한 div와 img에 css와 src를 추가함.
+                            _createdImg.src = get_datas[_i].path + get_datas[_i].filename;
+                            _createdImg.classList.add('gallery_img');
+                            _createdDiv.classList.add('gallery');
 
-            // show_gallery : function (){
-            //     alert('아직 : 갤러리 보여주기');
-            // },
+                            // 생성한 div와 img를 갤러리 div에 추가.
+                            _createdDiv.appendChild(_createdImg);
+                            gallery_div.prepend(_createdDiv);
+                        }
+                    }
         },
 
-        // 예약하기
-        // reserve : function (){
-        //     alert('아직 : 예약하기');
-        // },
+        // 모든 갤러리 이미지 출력
+        PrtAllGalleryImg: function PrtAllGalleryImg() {
+            var prtAllImgs = document.getElementById('prtAllImgs');
+            var argNum = get_datas.length;
 
+            for (var i = 3; i < argNum; i++) {
+                var outer = document.createElement('div');
+                var inner = document.createElement('img');
+
+                // 생성한 div와 img에 css와 src를 추가함.
+                inner.src = get_datas[i].path + get_datas[i].filename;
+                inner.classList.add('img-inner');
+                outer.classList.add('img-outer');
+
+                // 생성한 div와 img를 갤러리 div에 추가.
+                outer.appendChild(inner);
+                prtAllImgs.appendChild(outer);
+            }
+        },
 
         // 구글 맵스 설정하기.
         geoCoder: function geoCoder(argAddress) {
@@ -41659,38 +41977,228 @@ var url = '';
             });
         },
 
+        // 예약하기
+        // 불가능 한 날짜 반환.
+        allowedDates: function allowedDates(val) {
+            var index = 0;
+            var maxlength = this.items.length;
+
+            var dateCheck = "";
+
+            for (var $i = 0; $i < maxlength; $i++) {
+                // impossible이 예약 불가능일 경우 달력에 표시되지 않습니다.
+                if (val == this.items[$i].pick_date && this.items[$i].impossible == '예약 불가능') {
+                    dateCheck += this.items[$i].pick_date + "&&";
+                }
+            }
+            return !dateCheck;
+        },
+        setTime: function setTime() {
+            /* date가 클릭시 item안의 set_time[]을 select 문에 넣기 */
+            var maxIndex = this.items.length;
+            this.states = [];
+
+            /* true/ false로 날짜가 배열안에 있는지 없는지 파악 */
+            var check = false;
+
+            for (var i = 0; i < maxIndex; i++) {
+                // 배열안의 예약 가능 시간 빼오기
+                if (this.start_date == this.items[i].pick_date && this.items[i].impossible == "예약 가능") {
+                    check = true;
+                    for (var j = 0; j < this.items[i].set_time.length; j++) {
+                        this.states.push(this.items[i].set_time[j]);
+                    }
+                }
+            }
+
+            /* 사장님이 지정한 설정 배열에 날짜가 존재하지 않는 경우 */
+            if (check == false) {
+                this.basic_time();
+            }
+        },
+
+
+        // 기본 시간 으로 설정
+        basic_time: function basic_time() {
+            // 점심 "11:00 -> 11"
+            var lunch_open_hour = parseInt(this.lunch_open.substr(0, 2));
+            var lunch_close_hour = parseInt(this.lunch_close.substr(0, 2));
+            var lunch_open_minute = this.lunch_open.substr(3, 2);
+            var lunch_close_minute = this.lunch_close.substr(3, 2);
+            // 저녁
+            var dinner_open_hour = parseInt(this.dinner_open.substr(0, 2));
+            var dinner_close_hour = parseInt(this.dinner_close.substr(0, 2));
+            var dinner_open_minute = this.dinner_open.substr(3, 2);
+            var dinner_close_minute = this.dinner_close.substr(3, 2);
+
+            // 시
+            var hour;
+            var lunch_minute = lunch_open_minute;
+            var dinner_minute = dinner_open_minute;
+
+            // 점심 시작 - 점심 끝
+            for (var i = lunch_open_hour; i <= lunch_close_hour; i++) {
+                hour = i;
+                // 시작) 분 : 00
+                if (lunch_minute == '00') {
+                    this.states.push(hour + ":" + lunch_minute);
+                    if (hour == lunch_close_hour && lunch_close_minute != '30') {
+                        break;
+                    } else {
+                        lunch_minute = '30';
+                        this.states.push(hour + ":" + lunch_minute);
+                    }
+                    lunch_minute = '00';
+                } else if (lunch_minute == '30') {
+                    this.states.push(hour + ":" + lunch_minute);
+                    lunch_minute = '00';
+                }
+            }
+
+            for (var i = dinner_open_hour; i <= dinner_close_hour; i++) {
+                hour = i;
+                // 시작) 분 : 00
+                if (dinner_minute == '00') {
+                    this.states.push(hour + ":" + dinner_minute);
+                    if (hour == dinner_close_hour && dinner_close_minute != '30') {
+                        break;
+                    } else {
+                        dinner_minute = '30';
+                        this.states.push(hour + ":" + dinner_minute);
+                    }
+                    dinner_minute = '00';
+                } else if (dinner_minute == '30') {
+                    this.states.push(hour + ":" + dinner_minute);
+                    dinner_minute = '00';
+                }
+            }
+        },
         Okey: function Okey() {
             confirm('예약이 완료 되었습니다.');
         },
+
+
+        // -------------- 메뉴판 ---------------
+        // 주문하기 버튼 클릭 시 호출되는 함수
+        order_menu: function order_menu() {
+            this.click_menu = obj;
+            this.sum_price = 0;
+
+            for (var i = 0; i < this.click_menu.length; i++) {
+                this.sum_price += this.click_menu[i].menu.price;
+            }
+
+            this.select();
+        },
+
+        // v-for 용 함수, start에서 시작해서 end까지 1식 반환
+        range: function range(start, end) {
+            return Array(end - start + 1).fill().map(function (_, idx) {
+                return start + idx;
+            });
+        },
+
+        // 메뉴 취소하기 
+        click_cancel: function click_cancel() {
+            var id = event.target.parentNode.id; // 클릭한 메뉴 click_menu의 배열 키 값
+            var container = document.getElementById('menu_check_container'); // 메뉴 확인 창
+
+            this.sum_price = this.sum_price - this.click_menu[id].menu.price; // 총 가격 빼기
+            this.click_menu.splice(id, 1); // 선택한 메뉴 배열에서 취소한 메뉴 삭제
+
+            alert('선택한 메뉴를 취소하였습니다.');
+        },
+
+        // 옵션 선택
+        select: function select() {
+            var argId = argId;
+            var MenuMax = this.click_menu.length;
+
+            // 메뉴 길이 만큼 돌기
+            for (var i = 0; i < MenuMax; i++) {
+                // 해당 메뉴 옵션 개수
+                var opNumMax = this.click_menu[i].menu.opNum;
+
+                this.optionArray[i] = [];
+                this.optionselect[i] = [];
+                this.optionId[i] = [];
+                for (var j = 0; j < opNumMax; j++) {
+                    // 서브 옵션 개수
+                    var supOption = this.click_menu[i].menu['subOpNum' + (j + 1)];
+
+                    // 옵션 이름 넣기
+                    this.optionArray[i][j] = [];
+                    this.optionId[i][j] = this.click_menu[i].menu['optionId' + (j + 1)];
+                    this.optionArray[i][j]['Name'] = this.click_menu[i].menu['optionName' + (j + 1)];
+
+                    for (var z = 0; z < supOption; z++) {
+                        // 옵션 상세 정보
+                        this.optionArray[i][j][z] = this.click_menu[i].menu[j + 1 + 'optionValue' + (z + 1)];
+                    }
+                }
+            }
+        },
+
+
+        // 메뉴 주문 데이터 송신
+        OrderMenu: function OrderMenu() {
+            // 주문한 메뉴
+            for (var i = 0; i < this.click_menu.length; i++) {
+                this.menu[i] = this.click_menu[i].menu.id;
+            }
+
+            this.menuDialog = false;
+        },
         SpendData: function SpendData() {
             // axios http 라이브러리
+            // -- 사장님 수락 리스트에 등록 --
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/requestReservation', {
                 shop_id: this.$route.params.shop_id,
                 adult_person: this.adult_person,
                 child_person: this.child_person,
                 date: this.start_date,
-                time: this.time,
+                time: this.pick_time,
                 message: this.message,
-                menu_select: false
+
+                // 메뉴
+                menulength: this.menu.length, // 메뉴 개수
+                menu_id: this.menu, // 선택한 메뉴가 있는 배열
+                option: this.optionId, // 옵션 Id
+                suboption: this.optionselect // 서브 옵션
             }).then(function (response) {
                 alert(response.data.msg);
             }).catch(console.log('test '));
+        },
+
+
+        // ------ 쿠폰 ---------
+        Download: function Download(item) {
+            var index = this.items.indexOf(item);
+            this.clickCouponid = this.items[index].id;
+
+            /* Data 송신 -> 자신의 쿠폰함으로 담긴다*/
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/CouponDown', {
+                // 쿠폰ID
+                id: this.clickCouponid
+            }).then(console.log('success')).catch(console.log('test '));
         }
-    }
+    }, 'Okey', function Okey() {
+        alert('쿠폰함에 쿠폰이 다운되었습니다.');
+    })
 });
 
 /***/ }),
-/* 271 */
+/* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserReviewStarRating_vue__ = __webpack_require__(612);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_picture_input__ = __webpack_require__(616);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_input_tag__ = __webpack_require__(620);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserReviewStarRating_vue__ = __webpack_require__(614);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_picture_input__ = __webpack_require__(618);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_input_tag__ = __webpack_require__(622);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_input_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_input_tag__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -41995,11 +42503,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 272 */
+/* 271 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserStar_vue__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__UserStar_vue__ = __webpack_require__(267);
 //
 //
 //
@@ -42173,7 +42681,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 273 */
+/* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42732,14 +43240,116 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 274 */
+/* 273 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_menu_eventBus_js__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_menu_MenuDefaultLayout1_vue__ = __webpack_require__(70);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -42841,18 +43451,80 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 
+
+
+// 사용자 설정에 따라 레이아웃을 선택함.
+
+// import DefaultLayout2 from './MenuDefaultLayout2.vue';
+// import DefaultLayout3 from './MenuDefaultLayout3.vue';
+// import DefaultLayout4 from './MenuDefaultLayout4.vue';
+// import CustomLayout from './MenuDefaultLayout1.vue';      // 아직
+
+var layout = __WEBPACK_IMPORTED_MODULE_3__user_menu_MenuDefaultLayout1_vue__["a" /* default */]; // 사장이 선택한 메뉴판 탬플릿
+var obj = []; // 클릭한 배열 담기
+var check = 0; // 클릭한 배열 index용 변수    
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+    created: function created() {
+        var _this = this;
+
+        // 메뉴
+        __WEBPACK_IMPORTED_MODULE_0__user_menu_eventBus_js__["a" /* EventBus */].$on('select_menus', function (menu) {
+            obj.push(menu[check]);check++;
+        });
+
+        // 예약
+        var set_time_data;
+        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/reservationSetting', {
+            'shop_id': this.$route.params.shop_id
+        }).then(function (response) {
+            /* 그 가게의 예약설정된 Data */
+            var reservationSettingData = response.data.reservationSetting;
+
+            /* item안에 넣기 */
+            _this.items = reservationSettingData;
+
+            /* 메뉴가 선택 가능한 가게인지 아닌지 */
+            _this.menu_select = menu_select;
+
+            /* 기본 가게 정보 */
+            _this.lunch_open = _this.resData[0].lunch_open;
+            _this.lunch_close = _this.resData[0].lunch_close;
+            _this.dinner_open = _this.resData[0].dinner_open;
+            _this.dinner_close = _this.resData[0].dinner_close;
+        });
+    },
+    components: {
+        'Layout': layout
+    },
     data: function data() {
         return {
             dialog: false,
             dialog_ok: false,
+            menuDialog: false,
+
+            Menu_Order: 0,
+            click_menu: [], // 클릭한 메뉴들이 담김
+            Ordercheck: false, // 주문 확인 창 
+            sum_price: 0, // 선택한 메뉴 총 가격
+            translateText: [], // 번역한 텍스트 값이 들어갈 배열 
+
+            // 옵션 선택
+            optionselect: [],
+            optionArray: [], // 클릭한 메뉴의 옵션 값을 관리할 배열 
+
+            // 메뉴 아이디 배열
+            menu: [],
+            Order: [],
+
+            // 이쁜 메뉴 배열
+            HappyMenu: [],
 
             /* reservation */
-            username: '',
             adult_person: '',
             child_person: '',
             menuselect: '',
+            message: '',
 
             /* date picker */
             start_date: null,
@@ -42865,13 +43537,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             /* 선택한 시간 */
             pick_time: '',
 
+            /* 메뉴 선택 가능한지 안한지 */
+            menu_select: 1,
+
             /* 기본 식당 시간 */
-            basic_info: {
-                lunch_open: '09:00',
-                lunch_close: '14:00',
-                dinner_open: '17:00',
-                dinner_close: '22:00'
-            },
+            lunch_open: '09:00',
+            lunch_close: '14:00',
+            dinner_open: '17:00',
+            dinner_close: '22:00',
 
             /* DB에서 받아 온 값 - reservation_set */
             items: [{
@@ -42893,22 +43566,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
 
 
-    /* Data값 받기 */
-    created: function created() {
-        var _this = this;
-
-        var set_time_data;
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/reservationSetting', {
-            'shop_id': this.$route.params.shop_id
-        }).then(function (response) {
-            /* 그 가게의 예약설정된 Data */
-            var reservationSettingData = response.data.reservationSetting;
-
-            /* item안에 넣기 */
-            _this.items = reservationSettingData;
-        });
-    },
-
     methods: {
         // 불가능 한 날짜 반환.
         allowedDates: function allowedDates(val) {
@@ -42928,52 +43585,198 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         setTime: function setTime() {
             /* date가 클릭시 item안의 set_time[]을 select 문에 넣기 */
             var maxIndex = this.items.length;
+            this.states = [];
 
-            confirm(maxIndex);
+            /* true/ false로 날짜가 배열안에 있는지 없는지 파악 */
+            var check = false;
 
             for (var i = 0; i < maxIndex; i++) {
                 // 배열안의 예약 가능 시간 빼오기
-                if (this.start_date == this.items[i].pick_date) {
-                    confirm('adasdfadf');
+                if (this.start_date == this.items[i].pick_date && this.items[i].impossible == "예약 가능") {
+                    check = true;
                     for (var j = 0; j < this.items[i].set_time.length; j++) {
                         this.states.push(this.items[i].set_time[j]);
                     }
+                }
+            }
+
+            /* 사장님이 지정한 설정 배열에 날짜가 존재하지 않는 경우 */
+            if (check == false) {
+                this.basic_time();
+            }
+        },
+
+
+        // 기본 시간 으로 설정
+        basic_time: function basic_time() {
+            // 점심 "11:00 -> 11"
+            var lunch_open_hour = parseInt(this.lunch_open.substr(0, 2));
+            var lunch_close_hour = parseInt(this.lunch_close.substr(0, 2));
+            var lunch_open_minute = this.lunch_open.substr(3, 2);
+            var lunch_close_minute = this.lunch_close.substr(3, 2);
+            // 저녁
+            var dinner_open_hour = parseInt(this.dinner_open.substr(0, 2));
+            var dinner_close_hour = parseInt(this.dinner_close.substr(0, 2));
+            var dinner_open_minute = this.dinner_open.substr(3, 2);
+            var dinner_close_minute = this.dinner_close.substr(3, 2);
+
+            // 시
+            var hour;
+            var lunch_minute = lunch_open_minute;
+            var dinner_minute = dinner_open_minute;
+
+            // 점심 시작 - 점심 끝
+            for (var i = lunch_open_hour; i <= lunch_close_hour; i++) {
+                hour = i;
+                // 시작) 분 : 00
+                if (lunch_minute == '00') {
+                    this.states.push(hour + ":" + lunch_minute);
+                    if (hour == lunch_close_hour && lunch_close_minute != '30') {
+                        break;
+                    } else {
+                        lunch_minute = '30';
+                        this.states.push(hour + ":" + lunch_minute);
+                    }
+                    lunch_minute = '00';
+                } else if (lunch_minute == '30') {
+                    this.states.push(hour + ":" + lunch_minute);
+                    lunch_minute = '00';
+                }
+            }
+
+            for (var i = dinner_open_hour; i <= dinner_close_hour; i++) {
+                hour = i;
+                // 시작) 분 : 00
+                if (dinner_minute == '00') {
+                    this.states.push(hour + ":" + dinner_minute);
+                    if (hour == dinner_close_hour && dinner_close_minute != '30') {
+                        break;
+                    } else {
+                        dinner_minute = '30';
+                        this.states.push(hour + ":" + dinner_minute);
+                    }
+                    dinner_minute = '00';
+                } else if (dinner_minute == '30') {
+                    this.states.push(hour + ":" + dinner_minute);
+                    dinner_minute = '00';
                 }
             }
         },
         Okey: function Okey() {
             confirm('예약이 완료 되었습니다.');
         },
+
+
+        // -------------- 메뉴판 ---------------
+        // 주문하기 버튼 클릭 시 호출되는 함수
+        order_menu: function order_menu() {
+            this.click_menu = obj;
+            this.sum_price = 0;
+
+            for (var i = 0; i < this.click_menu.length; i++) {
+                this.sum_price += this.click_menu[i].menu.price;
+            }
+
+            this.select();
+        },
+
+        // v-for 용 함수, start에서 시작해서 end까지 1식 반환
+        range: function range(start, end) {
+            return Array(end - start + 1).fill().map(function (_, idx) {
+                return start + idx;
+            });
+        },
+
+        // 메뉴 취소하기 
+        click_cancel: function click_cancel() {
+            var id = event.target.parentNode.id; // 클릭한 메뉴 click_menu의 배열 키 값
+            var container = document.getElementById('menu_check_container'); // 메뉴 확인 창
+
+            this.sum_price = this.sum_price - this.click_menu[id].menu.price; // 총 가격 빼기
+            this.click_menu.splice(id, 1); // 선택한 메뉴 배열에서 취소한 메뉴 삭제
+
+            alert('선택한 메뉴를 취소하였습니다.');
+        },
+
+        // 옵션 선택
+        select: function select() {
+            var argId = argId;
+            var MenuMax = this.click_menu.length;
+
+            // 메뉴 길이 만큼 돌기
+            for (var i = 0; i < MenuMax; i++) {
+                // 해당 메뉴 옵션 개수
+                var opNumMax = this.click_menu[i].menu.opNum;
+
+                this.optionArray[i] = [];
+                this.optionselect[i] = [];
+                for (var j = 0; j < opNumMax; j++) {
+                    // 서브 옵션 개수
+                    var supOption = this.click_menu[i].menu['subOpNum' + (j + 1)];
+
+                    // 옵션 이름 넣기
+                    this.optionArray[i][j] = [];
+                    this.optionArray[i][j]['Name'] = this.click_menu[i].menu['optionName' + (j + 1)];
+
+                    for (var z = 0; z < supOption; z++) {
+                        // 옵션 상세 정보
+                        this.optionArray[i][j][z] = this.click_menu[i].menu[j + 1 + 'optionValue' + (z + 1)];
+                    }
+                }
+            }
+        },
+
+
+        // 메뉴 주문 데이터 송신
+        OrderMenu: function OrderMenu() {
+            // 주문한 메뉴
+            for (var i = 0; i < this.click_menu.length; i++) {
+                this.menu[i] = this.click_menu[i].menu.id;
+            }
+
+            this.menuDialog = false;
+        },
         SpendData: function SpendData() {
             // axios http 라이브러리
             // -- 사장님 수락 리스트에 등록 --
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/addReservation', {
-                username: this.username,
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/requestReservation', {
+                shop_id: this.$route.params.shop_id,
                 adult_person: this.adult_person,
                 child_person: this.child_person,
-                start_date: this.start_date,
-                time: this.pick_time
-            }).then(console.log('success')).catch(console.log('test '));
+                date: this.start_date,
+                time: this.time,
+                message: this.message,
+                // 선택한 menu id
+                menu: this.menu,
+                // 옵션
+                option: this.optionselect
+            }).then(function (response) {
+                alert(response.data.msg);
+            }).catch(console.log('test '));
         }
     }
 });
 
 /***/ }),
-/* 275 */
+/* 274 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__MenuSalesChart_vue__ = __webpack_require__(629);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__SalesProfitChart_vue__ = __webpack_require__(630);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__SalesGenderChart_vue__ = __webpack_require__(631);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SalesAgeChart_vue__ = __webpack_require__(632);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__SalesNationalityChart_vue__ = __webpack_require__(633);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerNumberChart_vue__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerGenderChart_vue__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerAgeChart_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__CustomerCountryChart_vue__ = __webpack_require__(631);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__CustomerRatingChart_vue__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__MenuRankingChart_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__MenuSalesChart_vue__ = __webpack_require__(632);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SalesProfitChart_vue__ = __webpack_require__(633);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__SalesGenderChart_vue__ = __webpack_require__(634);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__SalesAgeChart_vue__ = __webpack_require__(635);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__SalesCountryChart_vue__ = __webpack_require__(668);
 //
 //
 //
@@ -43501,13 +44304,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 // LineChart.js
 // import { Line } from 'vue-chartjs';
+// axios 라이브러리 import
 
 
 
-
-
-
-
+ // 월별 손님수 그래프
+ //
+ //
+ // 손님 국적 그래프
+ // 손님 평점 그래프
+ //
+ //
 
 // 전체 매출을 그리는 그래프
 
@@ -43519,30 +44326,45 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  components: {
+    'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_2__CustomerNumberChart_vue__["a" /* default */],
+    'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_3__CustomerGenderChart_vue__["a" /* default */],
+    'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_4__CustomerAgeChart_vue__["a" /* default */],
+    'CustomerCountryChart': __WEBPACK_IMPORTED_MODULE_5__CustomerCountryChart_vue__["a" /* default */],
+    'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_6__CustomerRatingChart_vue__["a" /* default */],
+    'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_7__MenuRankingChart_vue__["a" /* default */],
+    'SalesProfitChart': __WEBPACK_IMPORTED_MODULE_9__SalesProfitChart_vue__["a" /* default */],
+    'SalesGenderChart': __WEBPACK_IMPORTED_MODULE_10__SalesGenderChart_vue__["a" /* default */],
+    'SalesAgeChart': __WEBPACK_IMPORTED_MODULE_11__SalesAgeChart_vue__["a" /* default */],
+    'SalesCountryChart': __WEBPACK_IMPORTED_MODULE_12__SalesCountryChart_vue__["a" /* default */],
+    'MenuSalesChart': __WEBPACK_IMPORTED_MODULE_8__MenuSalesChart_vue__["a" /* default */]
+  },
+
   data: function data() {
     return {
       shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
       startDate: null,
       startMenu: false,
       endDate: null,
+      endDatePlusOne: null, // 마지막 날짜 + 1일 값이 저장되는 변수 (날짜까지만 있으면 00시00분00초가 기준이 되기 떄문에, 해당날의 모든 데이터를 포함하기 위해서는 다음날짜가 필요)
       endMenu: false,
 
       rankingCountrySelect: { country: '국가 선택', countryNum: 0 }, // 선택된 국가 필터링 기준
       rankingCountryItems: [// 국가 필터링 기준들
-      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }],
+      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }, { country: 'usa', countryNum: 4 }],
 
       rankingGenderSelect: { gender: '성별 선택', genderNum: 0 }, // 선택된 국가 필터링 기준
       rankingGenderItems: [// 국가 필터링 기준들
       { gender: 'all', genderNum: 0 }, { gender: 'male', genderNum: 1 }, { gender: 'female', genderNum: 2 }],
 
-      rankingAgeSelect: [{ age: '연령 선택', ageNum: 0 }], // 선택된 국가 필터링 기준
+      rankingAgeSelect: { age: '연령 선택', ageNum: 0 }, // 선택된 국가 필터링 기준
       rankingAgeItems: [// 국가 필터링 기준들
-      { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }],
+      { age: 'all', ageNum: 0 }, { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }],
 
       // 매출 필터링
       salesCountrySelect: { country: '국가 선택', countryNum: 0 }, // 선택된 국가 필터링 기준
       salesCountryItems: [// 국가 필터링 기준들
-      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }],
+      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }, { country: 'usa', countryNum: 4 }],
 
       salesGenderSelect: { gender: '성별 선택', genderNum: 0 }, // 선택된 국가 필터링 기준
       salesGenderItems: [// 국가 필터링 기준들
@@ -43550,13 +44372,123 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
       salesAgeSelect: [{ age: '연령 선택', ageNum: 0 }], // 선택된 국가 필터링 기준
       salesAgeItems: [// 국가 필터링 기준들
-      { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }]
+      { age: 'all', ageNum: 0 }, { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }],
 
+      menuRankData: null, // 그래프를 그리기 위한 메뉴 판매수 데이터가 저장될 변수
+      menuSalesData: null, // 그래프를 그리기 위한 메뉴 판매금액 데이터가 저장될 변수  
+      ratingData: [], // 가게평점 5종류의 값을 전달 받을 변수
+      customerGenderData: [], // 그래프를 그리기 위한 판매량 대비 방문 손님 성비 데이터가 저장될 변수
+      customerAgeData: [], // 그래프를 그리기 위한 판매량 대비 방문 손님 연령대 데이터가 저장될 변수
+      customerCountryData: [], // 그래프를 그리기 위한 판매량 대비 방문 손님 국적 데이터가 저장될 변수
+      salesGenderData: [], // 그래프를 그리기 위한 매출 대비 방문 손님 성비 데이터가 저장될 변수
+      salesAgeData: [], // 그래프를 그리기 위한 매출 대비 방문 손님 연령대 데이터가 저장될 변수
+      salesCountryData: [], // 그래프를 그리기 위한 매출 대비 방문 손님 국적 데이터가 저장될 변수
+
+      getRatingScore: [// 그래프를 그리기 위한 평점 배열을 저장할 배열, 값을 초기화 해둡니다.
+      { 'totalRating': 0 }, { 'taste': 0 }, { 'service': 0 }, { 'mood': 0 }, { 'price': 0 }]
     };
   },
 
 
+  watch: {
+    // 판매량 대비 메뉴 필터링에서 선택된 국가
+    rankingCountrySelect: function rankingCountrySelect() {
+      this.getMenuRankData();
+    },
+
+    // 판매량 대비 메뉴 필터링에서 선택된 성별
+    rankingGenderSelect: function rankingGenderSelect() {
+      this.getMenuRankData();
+    },
+    // 판매량 대비 메뉴 필터링에서 선택된 연령
+    rankingAgeSelect: function rankingAgeSelect() {
+      this.getMenuRankData();
+    },
+
+    // 판매금액 대비 메뉴 필터링에서 선택된 국가
+    salesCountrySelect: function salesCountrySelect() {
+      this.getMenuSalesData();
+    },
+    // 판매금액 대비 메뉴 필터링에서 선택된 성별
+    salesGenderSelect: function salesGenderSelect() {
+      this.getMenuSalesData();
+    },
+    // 판매금액 대비 메뉴 필터링에서 선택된 연령
+    salesAgeSelect: function salesAgeSelect() {
+      this.getMenuSalesData();
+    }
+  },
+
   methods: {
+    //************************* 그래프 조회 날짜를 갱신하는 함수 *************************
+    dateSearch: function dateSearch() {
+      console.log('---------- startDate ----------');
+      console.log(this.startDate);
+      console.log('---------- endDate ----------');
+      console.log(this.endDate);
+      console.log('---------- endDatePlusOne ----------');
+      console.log(this.endDatePlusOne);
+
+      // 마지막 날짜의 + 1일 값을 구하는 함수
+      this.endDatePlusOneDate();
+
+      // 유저평점 데이터를 받아 그래프를 그리는 함수를 실행합니다.
+      this.getCustomerRating();
+
+      // 메뉴 주문 그래프 생성 함수를 실행합니다.
+      this.getMenuRankData();
+
+      // 메뉴 매출대비 주문 그래프 생성 함수를 실행합니다.
+      this.getMenuSalesData();
+
+      // 판매량 대비 방문 손님 성비를 갱신하는 함수를 실행합니다.
+      this.getCustomerGenderData();
+
+      // 판매량 대비 방문 손님 연령을 갱신하는 함수
+      this.getCustomerAgeData();
+
+      // 판매량 대비 방문 손님 국적을 갱신하는 함수
+      this.getCustomerCountryData();
+
+      // 매출 대비 방문 손님 성비를 갱신하는 함수
+      this.getSalesGenderData();
+
+      // 매출 대비 방문 손님 연령을 갱신하는 함수
+      this.getSalesAgeData();
+
+      // 매출 대비 방문 손님 국적을 갱신하는 함수
+      this.getSalesCountryData();
+    },
+
+
+    // 반올림 함수 (반올림 대상값, 반올림 자릿수)
+    round: function round(number, precision) {
+      var numArray = 0;
+
+      if (number != null) {
+        var shift = function shift(number, precision, reverseShift) {
+          if (reverseShift) {
+            precision = -precision;
+          }
+          numArray = ("" + number).split("e");
+          return +(numArray[0] + "e" + (numArray[1] ? +numArray[1] + precision : precision));
+        };
+        return shift(Math.round(shift(number, precision, false)), precision, true);
+      }
+
+      return 0;
+    },
+
+
+    // 마지막 날짜의 + 1일 값을 구하는 함수
+    endDatePlusOneDate: function endDatePlusOneDate() {
+      var dateArr = this.endDate.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다.
+      var date = Number(dateArr[2]) + 1; // 마지막 날짜값에서 1 값을 더합니다.
+
+      this.endDatePlusOne = dateArr[0] + '-' + dateArr[1] + '-' + date; // 마지막 날짜 +1일 에해당하는 날짜를 대입합니다.
+    },
+
+
     // 통계 기간 선택을 자동으로 오늘로 지정해주는 함수
     setToday: function setToday() {
       var today = new Date().toISOString().substr(0, 10).replace('T', ' ');
@@ -43593,26 +44525,536 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       // 오늘 날짜
       var today = new Date().toISOString().substr(0, 10).replace('T', ' ');
       this.endDate = today;
+    },
+
+
+    //************************* 유저평점 데이터를 받아 그래프를 그리는 함수 *************************
+    getCustomerRating: function getCustomerRating() {
+      var _this = this;
+
+      // axios http 라이브러리 
+
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getRatingScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        // console.log('????? 맞나???????');
+        // console.log(this.startDate);
+
+        _this.getRatingScore = response.data['ratingData']; // 가게평점 5종류를 대입합니다.
+
+        // console.log('가게 평점 배열');
+        // console.log(this.getRatingScore);
+
+        // Overwriting base render method with actual data.
+        _this.ratingData = {
+          labels: ['총점', '맛', '서비스', '분위기', '가격'],
+          datasets: [{
+            label: '평점',
+            backgroundColor: ['rgba(54, 162, 235, 0.5)'],
+            borderColor: ['#0099FF'],
+            fill: true,
+            // borderWidth: 1,
+            data: [_this.getRatingScore[0]['totalRating'], _this.getRatingScore[0]['taste'], _this.getRatingScore[0]['service'], _this.getRatingScore[0]['mood'], _this.getRatingScore[0]['price']],
+            pointRadius: 7, // 포인터의 반지름 크기 값
+            pointHoverRadius: 20, // 가리킨 포인터의 반지름
+            pointBorderColor: '#3366CC  ', // 포인터의 색깔
+            pointBackgroundColor: 'rgba(000,102,255,0.7)' // 포인터의 배경색깔
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 판매량 대비 방문 손님 성비를 갱신하는 함수 *************************
+    getCustomerGenderData: function getCustomerGenderData() {
+      var _this2 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getGenderScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getGenderData = response.data['genderData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('성비');
+        // console.log(getGenderData);
+
+        var maleNumber = Number(getGenderData[0]['male']);
+        var femaleNumber = Number(getGenderData[0]['female']);
+
+        // 손님 성비를 계산합니다.
+        // (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+        var maleRatio = _this2.round(maleNumber / (maleNumber + femaleNumber) * 100, 2);
+        var femaleRatio = _this2.round(femaleNumber / (maleNumber + femaleNumber) * 100, 2);
+
+        var genderRatioData = [];
+        genderRatioData.push(maleRatio);
+        genderRatioData.push(femaleRatio);
+
+        // console.log('성비값 변경');
+        // console.log(genderRatioData);
+
+        // Overwriting base render method with actual data.
+        _this2.customerGenderData = {
+          labels: ['남성 손님', '여성 손님'],
+          datasets: [{
+            label: '손님 성비',
+            backgroundColor: ['#3399FF', '#FF6666'],
+            data: genderRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 판매량 대비 방문 손님 연령을 갱신하는 함수 *************************
+    getCustomerAgeData: function getCustomerAgeData() {
+      var _this3 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getAgeScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getAgeData = response.data['ageData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('연령비 ');
+        // console.log(getAgeData);
+
+        // 전달받은 연령대 값을 대입합니다. (퍼센트가 아니라 연령대별 주문횟수)
+        var ageArray = getAgeData[0];
+        // 전달받은 연령대 값의 value값 배열을 대입합니다.
+        var ageValueArray = Object.values(ageArray);
+
+        // 전체 연령의 주문횟수의 총합이 저장되는 변수
+        var totalNumber = 0;
+
+        // 전체 연령별 주문횟수 총합을 구합니다.
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          totalNumber += Number(ageValueArray[iCount]);
+        }
+
+        // 전달받은 연령대별 주문횟수를 비율로 계산한 값을 저장하는 배열
+        var ageRatioData = [];
+
+        // 전체 연령별 방문 손님 비율을 구합니다.
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          ageRatioData.push(_this3.round(ageValueArray[iCount] / totalNumber * 100, 2));
+        }
+
+        // console.log('연령대별 ~~ 개꿀 ~~');
+        // console.log(ageRatioData);
+
+        // Overwriting base render method with actual data.
+        _this3.customerAgeData = {
+          labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
+          datasets: [{
+            label: '매출 연령대',
+            backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
+            data: ageRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 판매량 대비 방문 손님 국적을 갱신하는 함수 *************************
+    getCustomerCountryData: function getCustomerCountryData() {
+      var _this4 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getCountryScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getCountryData = response.data['countryData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('국적값');
+        // console.log(getCountryData); 
+
+        // 전달받은 국적 값을 대입합니다. (퍼센트가 아니라 연령대별 주문횟수)
+        var countryArray = JSON.parse(JSON.stringify(getCountryData[0]));
+        // 전달받은 국적 값의 value값 배열을 대입합니다.
+        var countryValueArray = Object.values(countryArray);
+
+        // 전체 국적별 주문횟수의 총합이 저장되는 변수
+        var totalNumber = 0;
+
+        // console.log('전달받은 값');
+        // console.log(countryArray);
+        // console.log('전달받은 값의 values');
+        // console.log(countryValueArray);
+        // console.log('전달받은 값의 keys');
+        // console.log(nationalityKeysArray);
+
+        // 전체 국적별 주문횟수 총합을 구합니다.
+        for (var iCount = 0; iCount < countryValueArray.length; iCount++) {
+          totalNumber += Number(countryValueArray[iCount]);
+        }
+
+        // 전달받은 국적별 주문횟수를 비율로 계산한 값을 저장하는 배열
+        var countryRatioData = [];
+
+        // 전체 국적별 방문 손님 비율을 구합니다.
+        for (var iCount = 0; iCount < countryValueArray.length; iCount++) {
+          countryRatioData.push(_this4.round(countryValueArray[iCount] / totalNumber * 100, 2));
+        }
+
+        // Overwriting base render method with actual data.
+        _this4.customerCountryData = {
+          labels: ['한국', '일본', '중국', '미국'],
+          datasets: [{
+            label: '방문 손님 국적',
+            backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
+            data: countryRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 방문 손님 성비를 갱신하는 함수 *************************
+    getSalesGenderData: function getSalesGenderData() {
+      var _this5 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getGenderSalesData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getSalesGenderData = response.data['genderData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('매출 성비');
+        // console.log(getSalesGenderData);
+
+        var maleNumber = Number(getSalesGenderData[0]['maleSales']);
+        var femaleNumber = Number(getSalesGenderData[0]['femaleSales']);
+
+        // 손님 성비를 계산 (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+        var maleRatio = _this5.round(maleNumber / (maleNumber + femaleNumber) * 100, 2);
+        var femaleRatio = _this5.round(femaleNumber / (maleNumber + femaleNumber) * 100, 2);
+
+        // 전달받은 성별 주문횟수를 성비로 계산한 값을 저장하는 배열
+        var genderSalesRatioData = [];
+
+        genderSalesRatioData.push(maleRatio);
+        genderSalesRatioData.push(femaleRatio);
+
+        console.log('성비값 변경');
+        console.log(genderSalesRatioData);
+
+        // Overwriting base render method with actual data.
+        _this5.salesGenderData = {
+          labels: ['남성 손님', '여성 손님'],
+          datasets: [{
+            label: '손님 성비',
+            backgroundColor: ['#3399FF', '#FF6666'],
+            data: genderSalesRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 방문 손님 연령을 갱신하는 함수 *************************
+    getSalesAgeData: function getSalesAgeData() {
+      var _this6 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getAgesSalesData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getSalesAgeData = response.data['ageData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('매출별 연령비');
+        // console.log(getSalesAgeData);
+
+        // 전달받은 연령대 값을 대입합니다. (퍼센트가 아니라 연령대별 매출금액)
+        var ageArray = getSalesAgeData[0];
+        // 전달받은 연령대 값의 value값 배열을 대입합니다.
+        var ageValueArray = Object.values(ageArray);
+
+        // console.log('매출별 연령대 ~~ 개꿀 ~~');
+        // console.log(ageArray);
+
+        // 전체 연령의 매출금액의 총합이 저장되는 변수
+        var totalNumber = 0;
+
+        // 전체 연령별 주문금액 총합을 구합니다.
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          totalNumber += Number(ageValueArray[iCount]);
+        }
+
+        var ageSalesRatioData = [];
+
+        // 전체 연령별 매출대비 방문 손님 비율을 구합니다. (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          ageSalesRatioData.push(_this6.round(ageValueArray[iCount] / totalNumber * 100, 2));
+        }
+
+        // Overwriting base render method with actual data.
+        _this6.salesAgeData = {
+          labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
+          datasets: [{
+            label: '매출 연령대',
+            backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
+            data: ageSalesRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 방문 손님 국적을 갱신하는 함수 *************************
+    getSalesCountryData: function getSalesCountryData() {
+      var _this7 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getCountrySalesData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getSalesCountryData = response.data['countryData']; // 전달받은 월별 손님수를 대입합니다.
+
+        console.log('매출별 국적값');
+        console.log(getSalesCountryData);
+
+        // 전달받은 국적 값을 대입합니다. (퍼센트가 아니라 연령대별 매출금액)
+        var countrySalesArray = JSON.parse(JSON.stringify(getSalesCountryData[0]));
+        // 전달받은 국적 값의 value값 배열을 대입합니다.
+        var countrySalesValueArray = Object.values(countrySalesArray);
+
+        // 전체 국적별 매출금액의 총합이 저장되는 변수
+        var totalNumber = 0;
+
+        // console.log('전달받은 값');
+        // console.log(countrySalesArray);
+        // console.log('전달받은 값의 values');
+        // console.log(countrySalesValueArray);
+        // console.log('전달받은 값의 keys');
+        // console.log(nationalityKeysArray);
+
+        // 전체 국적별 매출금액 총합을 구합니다.
+        for (var iCount = 0; iCount < countrySalesValueArray.length; iCount++) {
+          totalNumber += Number(countrySalesValueArray[iCount]);
+        }
+
+        // 전달받은 국적별 주문횟수를 비율로 계산한 값을 저장하는 배열
+        var countrySalesRatioData = [];
+
+        // 전체 국적별 매출금액 비율을 구합니다.
+        for (var iCount = 0; iCount < countrySalesValueArray.length; iCount++) {
+          countrySalesRatioData.push(_this7.round(countrySalesValueArray[iCount] / totalNumber * 100, 2));
+        }
+
+        // Overwriting base render method with actual data.
+        _this7.salesCountryData = {
+          labels: ['한국', '일본', '중국', '미국'],
+          datasets: [{
+            label: '방문 손님 국적',
+            backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
+            data: countrySalesRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 판매량 대비 메뉴 데이터를 받아 그래프를 그리는 함수 *************************
+    getMenuRankData: function getMenuRankData() {
+      var _this8 = this;
+
+      // console.log('국가');
+      // console.log(this.rankingCountrySelect['countryNum']);
+      // console.log('성별');
+      // console.log(this.rankingGenderSelect['genderNum']);
+      // console.log('연령');
+      // console.log(this.rankingAgeSelect['ageNum']);
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getMenuData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne, // 마지막 날짜
+        'ranking_country': this.rankingCountrySelect['countryNum'], // 국적
+        'ranking_age': this.rankingAgeSelect['ageNum'], // 나이
+        'ranking_gender': this.rankingGenderSelect['genderNum'] // 성별
+      }).then(function (response) {
+        var getMenuData = response.data['menuData']; // 전달받은 메뉴 데이터를 대입합니다.
+
+        // console.log('메뉴 데이터');
+        // console.log(getMenuData);
+
+        var menuNameList = []; // 메뉴 이름 목록이 저장되는 배열
+        var menuValueList = []; // 메뉴 값 목록이 저장되는 배열
+
+        // 메뉴이름 및 메뉴별 주문 개수 값을 각각 배열에 저장합니다.
+        for (var iCount = 0; iCount < getMenuData.length; iCount++) {
+          menuNameList.push(getMenuData[iCount]['menuName']);
+          menuValueList.push(getMenuData[iCount]['menuCount']);
+        }
+
+        // console.log(menuNameList);
+        // console.log(menuValueList);
+
+        // 그래프 색상 설정
+        _this8.firstBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.secondBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.thirdBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.fourthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.fifthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+        _this8.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
+        _this8.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
+        _this8.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
+
+        _this8.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
+        _this8.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
+        _this8.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
+
+        _this8.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
+        _this8.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
+        _this8.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
+
+        _this8.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
+        _this8.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
+        _this8.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
+
+        _this8.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
+        _this8.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
+        _this8.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
+
+        // 그래프 데이터
+        _this8.menuRankData = {
+          labels: menuNameList,
+          datasets: [{
+            label: '그릇',
+            backgroundColor: [_this8.firstBar, _this8.secondBar, _this8.thirdBar, _this8.fourthBar, _this8.fifthBar],
+            hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
+            data: menuValueList
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 메뉴 데이터를 받아 그래프를 그리는 함수 *************************
+    getMenuSalesData: function getMenuSalesData() {
+      var _this9 = this;
+
+      // console.log('국가');
+      // console.log(this.rankingCountrySelect['countryNum']);
+      // console.log('성별');
+      // console.log(this.rankingGenderSelect['genderNum']);
+      // console.log('연령');
+      // console.log(this.rankingAgeSelect['ageNum']);
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getSalesMenuData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne, // 마지막 날짜
+        'ranking_country': this.salesCountrySelect['countryNum'], // 국적
+        'ranking_age': this.salesAgeSelect['ageNum'], // 나이
+        'ranking_gender': this.salesGenderSelect['genderNum'] // 성별
+      }).then(function (response) {
+        var getMenuData = response.data['menuData']; // 전달받은 메뉴 데이터를 대입합니다.
+
+        // console.log('메뉴 데이터');
+        // console.log(getMenuData);
+
+        var menuNameList = []; // 메뉴 이름 목록이 저장되는 배열
+        var menuValueList = []; // 메뉴 값 목록이 저장되는 배열
+
+        // 메뉴이름 및 메뉴별 주문 개수 값을 각각 배열에 저장합니다.
+        for (var iCount = 0; iCount < getMenuData.length; iCount++) {
+          menuNameList.push(getMenuData[iCount]['menuName']);
+          menuValueList.push(getMenuData[iCount]['menuTotal']);
+        }
+
+        // console.log(menuNameList);
+        // console.log(menuValueList);
+
+        // 그래프 색상 설정
+        _this9.firstBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this9.secondBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this9.thirdBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this9.fourthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this9.fifthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+        _this9.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
+        _this9.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
+        _this9.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
+
+        _this9.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
+        _this9.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
+        _this9.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
+
+        _this9.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
+        _this9.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
+        _this9.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
+
+        _this9.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
+        _this9.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
+        _this9.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
+
+        _this9.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
+        _this9.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
+        _this9.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
+
+        // 그래프 데이터
+        _this9.menuSalesData = {
+          labels: menuNameList,
+          datasets: [{
+            label: '그릇',
+            backgroundColor: [_this9.firstBar, _this9.secondBar, _this9.thirdBar, _this9.fourthBar, _this9.fifthBar],
+            hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
+            data: menuValueList
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
     }
   },
 
-  components: {
-    'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__["a" /* default */],
-    'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__["a" /* default */],
-    'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__["a" /* default */],
-    'CustomerNationalityChart': __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__["a" /* default */],
-    'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__["a" /* default */],
-    'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__["a" /* default */],
-    'SalesProfitChart': __WEBPACK_IMPORTED_MODULE_7__SalesProfitChart_vue__["a" /* default */],
-    'SalesGenderChart': __WEBPACK_IMPORTED_MODULE_8__SalesGenderChart_vue__["a" /* default */],
-    'SalesAgeChart': __WEBPACK_IMPORTED_MODULE_9__SalesAgeChart_vue__["a" /* default */],
-    'SalesNationalityChart': __WEBPACK_IMPORTED_MODULE_10__SalesNationalityChart_vue__["a" /* default */],
-    'MenuSalesChart': __WEBPACK_IMPORTED_MODULE_6__MenuSalesChart_vue__["a" /* default */]
-  },
+  mounted: function mounted() {
+    // 유저평점 데이터를 받아 그래프를 그리는 함수
+    this.getCustomerRating();
 
+    // 메뉴 주문 그래프 생성 함수
+    this.getMenuRankData();
+
+    // 메뉴 매출대비 주문 그래프 생성 함수
+    this.getMenuSalesData();
+
+    // 판매량 대비 방문 손님 성비를 갱신하는 함수
+    this.getCustomerGenderData();
+
+    // 판매량 대비 방문 손님 연령을 갱신하는 함수
+    this.getCustomerAgeData();
+
+    // 판매량 대비 방문 손님 국적을 갱신하는 함수
+    this.getCustomerCountryData();
+
+    // 매출 대비 방문 손님 성비를 갱신하는 함수
+    this.getSalesGenderData();
+
+    // 매출 대비 방문 손님 연령을 갱신하는 함수
+    this.getSalesAgeData();
+
+    // 매출 대비 방문 손님 국적을 갱신하는 함수
+    this.getSalesCountryData();
+  },
   created: function created() {
-    console.log('test');
-    console.log(this.rankingCountrySelect.countryNum);
+    this.setMonth(); // 통계 기간을 이번달로 초기화합니다.
 
     // Add shop_id in statisticsData
     var statisticsData = new FormData();
@@ -43626,23 +45068,152 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     statisticsData.append('sales_gender', this.salesGenderSelect.genderNum); // 매출 기준 인기 메뉴 순위 성별 필터링
     statisticsData.append('sales_age', this.salesAgeSelect); // 매출 기준 인기 메뉴 순위 연령 필터링, 배열
 
-    console.log('-----send data-----');
-    console.log(statisticsData.get('end_date'));
-
-    // axios http 라이브러리 with Send statisticsData
-    // axios.post('/???', statisticsData).
-    // then((response)=>{
-
-    // }).catch(console.log('Oh my god!!, Failed'));
-  },
-  beforeUpdate: function beforeUpdate() {
-    // console.log('시작 날짜');
-    // console.log(this.startDate);
-    // console.log('마지막 날짜');
-    // console.log(this.endDate);
-    // console.log('test');
-    // console.log(this.rankingCountrySelect.countryNum);
+    // 마지막 날짜의 + 1일 값을 구하는 함수를 실행합니다.
+    this.endDatePlusOneDate();
+    console.log('마지막 날 짜르기 : ' + this.endDatePlusOne);
   }
+});
+
+/***/ }),
+/* 275 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__ = __webpack_require__(8);
+//
+//
+//
+//
+
+// axios 라이브러리 import
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    // 통계 시작 날짜
+    startDay: {
+      type: String,
+      default: ""
+    },
+    // 통계 마지막 날짜
+    endDay: {
+      type: String,
+      default: ""
+    }
+  },
+
+  data: function data() {
+    return {
+      monthList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 방문 손님수를 분류할 기준
+      shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
+      getCustomerScore: [], // 월별 손님수값을 전달받는 배열
+      sendMonthList: [], // 전송할 값
+      filterCustomerScore: [] // 전달받은 월별 손님수를 가공한 값이 저장되는 배열
+    };
+  },
+
+
+  extends: __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__["c" /* Line */],
+  mounted: function mounted() {
+    var _this = this;
+
+    // axios로 전달할 값을 가공합니다.
+    this.sendMonthListSet();
+
+    // axios http 라이브러리 
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getCustomerNumber', this.sendMonthList).then(function (response) {
+      _this.getCustomerScore = response.data['customerData']; // 전달받은 월별 손님수를 대입합니다.
+
+      // console.log('손님수 배열');
+      // console.log(this.getCustomerScore);
+      // console.log(response.data['test']);
+      // console.log('haha');
+
+      // 월별 사용자수를 가공합니다.
+      _this.customerDataFilter();
+
+      // Overwriting base render method with actual data.
+      _this.renderChart({
+        labels: _this.monthList,
+        datasets: [{
+          label: '올해 손님수',
+          backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
+          data: _this.filterCustomerScore, // 월별 사용자수 값
+          lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
+          fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
+          borderColor: 'orange', // 선의 색상
+          borderDash: [5, 5], // dash의 길이와 간격
+          pointBorderColor: 'orange', // 포인터의 색깔
+          pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
+          pointRadius: 7, // 포인터의 반지름 크기 값
+          pointHoverRadius: 20, // 가리킨 포인터의 반지름
+          pointHitRadius: 30,
+          pointBorderWidth: 2,
+          pointStyle: 'circle'
+        }]
+      });
+    }).catch(console.log('Oh my god!!, Failed'));
+  },
+
+
+  methods: {
+    // axios로 전달할 값을 초기화 하는 함수
+    sendMonthListSet: function sendMonthListSet() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다.
+
+      this.sendMonthList = {
+        'shop_id': this.shop_id, //  식당 id
+        'start_day1': dateArr[0] + "-01" + "-01", //  1월 시작일
+        'end_date1': dateArr[0] + "-02" + "-01", //  1월 종료일 (정확히는 2월1일 00시00분00초)
+        'start_day2': dateArr[0] + "-02" + "-01", //  2월 시작일
+        'end_date2': dateArr[0] + "-03" + "-01", //  2월 종료일
+        'start_day3': dateArr[0] + "-03" + "-01", //  3월 시작일
+        'end_date3': dateArr[0] + "-04" + "-01", //  3월 종료일
+        'start_day4': dateArr[0] + "-04" + "-01", //  4월 시작일
+        'end_date4': dateArr[0] + "-05" + "-01", //  4월 종료일
+        'start_day5': dateArr[0] + "-05" + "-01", //  5월 시작일
+        'end_date5': dateArr[0] + "-06" + "-01", //  5월 종료일
+        'start_day6': dateArr[0] + "-06" + "-01", //  6월 시작일
+        'end_date6': dateArr[0] + "-07" + "-01", //  6월 종료일
+        'start_day7': dateArr[0] + "-07" + "-01", //  7월 시작일
+        'end_date7': dateArr[0] + "-08" + "-01", //  7월 종료일
+        'start_day8': dateArr[0] + "-08" + "-01", //  8월 시작일
+        'end_date8': dateArr[0] + "-09" + "-01", //  8월 종료일
+        'start_day9': dateArr[0] + "-09" + "-01", //  9월 시작일
+        'end_date9': dateArr[0] + "-10" + "-01", //  9월 종료일
+        'start_day10': dateArr[0] + "-10" + "-01", //  10월 시작일
+        'end_date10': dateArr[0] + "-11" + "-01", //  10월 종료일
+        'start_day11': dateArr[0] + "-11" + "-01", //  11월 시작일
+        'end_date11': dateArr[0] + "-12" + "-01", //  11월 종료일
+        'start_day12': dateArr[0] + "-12" + "-01", //  12월 시작일
+        'end_date12': Number(dateArr[0]) + 1 + "-01" + "-01" //  12월 종료일
+      };
+    },
+
+
+    // 전달받은 월별 사용자수 값을 가공합니다.
+    // 현재달 이후의 전달받은 값을 모두 null로 대입합니다.
+    customerDataFilter: function customerDataFilter() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다. ex)2018-05-13 [2018][05][13]
+
+      for (var iCount = 0; iCount < 12; iCount++) {
+        if (iCount < Number(dateArr[1])) {
+          this.filterCustomerScore.push(this.getCustomerScore[iCount][0]['customer']);
+        } else {
+          this.filterCustomerScore.push(null);
+        }
+      }
+      // console.log('test hahaha');
+      // console.log(this.filterCustomerScore);
+    }
+  }
+
 });
 
 /***/ }),
@@ -43657,46 +45228,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Line */],
+  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Doughnut */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      datasets: [{
-        label: '작년 손님수',
-        backgroundColor: 'transparent',
-        data: [130, 163, 185, 180, 170, 186, 239, 280, 321, 327, 292, 280],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: '#0066FF', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: '#3366CC  ', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(000,102,255,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
-      }, {
-        label: '올해 손님수',
-        backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
-        data: [251, 283, 320, 300, 353, 379, 439, 450, 480, 520, 500, 470],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: 'orange', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: 'orange', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
-
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -43712,19 +45254,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Doughnut */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남성 손님', '여성 손님'],
-      datasets: [{
-        label: '손님 성비',
-        backgroundColor: ['#3399FF', '#FF6666'],
-        data: [59, 41]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -43740,19 +45280,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Doughnut */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
-      datasets: [{
-        label: '작년 손님 성비',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
-        data: [1, 21, 39, 20, 13, 5, 1]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -43768,19 +45306,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Doughnut */],
+  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* Radar */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['한국', '중국', '대만', '홍콩', '미국', '호주', '영국', '프랑스', '그외'],
-      datasets: [{
-        label: '방문 손님 국적',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
-        data: [34, 34, 7, 7, 3, 3, 2, 2, 8]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -43796,26 +45332,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* Radar */],
+  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["b" /* HorizontalBar */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['총점', '맛', '서비스', '분위기', '가격'],
-      datasets: [{
-        label: '평점',
-        backgroundColor: ['rgba(54, 162, 235, 0.5)'],
-        borderColor: ['#0099FF'],
-        fill: true,
-        // borderWidth: 1,
-        data: [4.1, 4.5, 4, 3.8, 3.9],
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointBorderColor: '#3366CC  ', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(000,102,255,0.7)' // 포인터의 배경색깔
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -43831,46 +45358,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["b" /* HorizontalBar */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    this.firstBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.secondBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.thirdBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fourthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fifthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-
-    this.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
-    this.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
-    this.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
-
-    this.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
-    this.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
-    this.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
-
-    this.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
-    this.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
-    this.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
-
-    this.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
-    this.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
-    this.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
-
-    this.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
-    this.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
-    this.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
-
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남방 치킨', '토종닭 숯불 구이', '믹스 후라이', '돼지 갈비', '어린이 세트'],
-      datasets: [{
-        label: '메뉴 순위',
-        backgroundColor: [this.firstBar, this.secondBar, this.thirdBar, this.fourthBar, this.fifthBar],
-        hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
-        data: [560, 380, 366, 230, 222]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -43879,54 +45377,144 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__ = __webpack_require__(8);
 //
 //
 //
 //
+
+// axios 라이브러리 import
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["b" /* HorizontalBar */],
+  props: {
+    // 통계 시작 날짜
+    startDay: {
+      type: String,
+      default: ""
+    },
+    // 통계 마지막 날짜
+    endDay: {
+      type: String,
+      default: ""
+    }
+  },
+
+  data: function data() {
+    return {
+      monthList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 월별 매출을 분류할 기준
+      shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
+      getSalesScore: [], // 월별 매출값을 전달받는 배열
+      sendMonthList: [], // 전송할 값
+      filterSalesScore: [] // 전달받은 월별 매출값을 가공한 값이 저장되는 배열
+    };
+  },
+
+
+  extends: __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__["c" /* Line */],
   mounted: function mounted() {
-    this.firstBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.secondBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.thirdBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fourthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fifthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+    var _this = this;
 
-    this.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
-    this.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
-    this.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
+    // axios로 전달할 값을 가공합니다.
+    this.sendMonthListSet();
 
-    this.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
-    this.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
-    this.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
+    // axios http 라이브러리 
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getSalesNumber', this.sendMonthList).then(function (response) {
+      _this.getSalesScore = response.data['salesData']; // 전달받은 월별 매출값을 대입합니다.
 
-    this.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
-    this.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
-    this.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
+      // console.log('돌려받은 매출값');
+      // console.log(this.getSalesScore);
+      // console.log(response.data['test']);
+      // console.log('haha');
 
-    this.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
-    this.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
-    this.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
+      // 월별 사용자수를 가공합니다.
+      _this.salesDataFilter();
 
-    this.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
-    this.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
-    this.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
+      // Overwriting base render method with actual data.
+      _this.renderChart({
+        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        datasets: [{
+          label: '올해 매출',
+          backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
+          data: _this.filterSalesScore,
+          lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
+          fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
+          borderColor: 'orange', // 선의 색상
+          borderDash: [5, 5], // dash의 길이와 간격
+          pointBorderColor: 'orange', // 포인터의 색깔
+          pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
+          pointRadius: 7, // 포인터의 반지름 크기 값
+          pointHoverRadius: 20, // 가리킨 포인터의 반지름
+          pointHitRadius: 30,
+          pointBorderWidth: 2,
+          pointStyle: 'circle'
+        }]
+      });
+    }).catch(console.log('Oh my god!!, Failed'));
+  },
 
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남방 치킨', '토종닭 숯불 구이', '믹스 후라이', '돼지 갈비', '어린이 세트'],
-      datasets: [{
-        label: '메뉴 순위',
-        backgroundColor: [this.firstBar, this.secondBar, this.thirdBar, this.fourthBar, this.fifthBar],
-        hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
-        data: [672000, 494000, 439200, 230000, 288600]
-      }]
-    });
+
+  methods: {
+    // axios로 전달할 값을 초기화 하는 함수
+    sendMonthListSet: function sendMonthListSet() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다.
+
+      this.sendMonthList = {
+        'shop_id': this.shop_id, //  식당 id
+        'start_day1': dateArr[0] + "-01" + "-01", //  1월 시작일
+        'end_date1': dateArr[0] + "-02" + "-01", //  1월 종료일 (정확히는 2월1일 00시00분00초)
+        'start_day2': dateArr[0] + "-02" + "-01", //  2월 시작일
+        'end_date2': dateArr[0] + "-03" + "-01", //  2월 종료일
+        'start_day3': dateArr[0] + "-03" + "-01", //  3월 시작일
+        'end_date3': dateArr[0] + "-04" + "-01", //  3월 종료일
+        'start_day4': dateArr[0] + "-04" + "-01", //  4월 시작일
+        'end_date4': dateArr[0] + "-05" + "-01", //  4월 종료일
+        'start_day5': dateArr[0] + "-05" + "-01", //  5월 시작일
+        'end_date5': dateArr[0] + "-06" + "-01", //  5월 종료일
+        'start_day6': dateArr[0] + "-06" + "-01", //  6월 시작일
+        'end_date6': dateArr[0] + "-07" + "-01", //  6월 종료일
+        'start_day7': dateArr[0] + "-07" + "-01", //  7월 시작일
+        'end_date7': dateArr[0] + "-08" + "-01", //  7월 종료일
+        'start_day8': dateArr[0] + "-08" + "-01", //  8월 시작일
+        'end_date8': dateArr[0] + "-09" + "-01", //  8월 종료일
+        'start_day9': dateArr[0] + "-09" + "-01", //  9월 시작일
+        'end_date9': dateArr[0] + "-10" + "-01", //  9월 종료일
+        'start_day10': dateArr[0] + "-10" + "-01", //  10월 시작일
+        'end_date10': dateArr[0] + "-11" + "-01", //  10월 종료일
+        'start_day11': dateArr[0] + "-11" + "-01", //  11월 시작일
+        'end_date11': dateArr[0] + "-12" + "-01", //  11월 종료일
+        'start_day12': dateArr[0] + "-12" + "-01", //  12월 시작일
+        'end_date12': Number(dateArr[0]) + 1 + "-01" + "-01" //  12월 종료일
+      };
+
+      // console.log('전달할 값');
+      // console.log(this.sendMonthList);
+    },
+
+
+    // 전달받은 월별 매출 값을 가공합니다.
+    // 현재달 이후의 전달받은 값을 모두 null로 대입합니다.
+    salesDataFilter: function salesDataFilter() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다. ex)2018-05-13 [2018][05][13]
+
+      for (var iCount = 0; iCount < 12; iCount++) {
+        if (iCount < Number(dateArr[1])) {
+          this.filterSalesScore.push(this.getSalesScore[iCount][0]['total']);
+        } else {
+          this.filterSalesScore.push(null);
+        }
+      }
+      // console.log('test hahaha');
+      // console.log(this.filterSalesScore);
+    }
   }
+
 });
 
 /***/ }),
@@ -43941,46 +45529,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Line */],
+  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      datasets: [{
-        label: '작년 매출',
-        backgroundColor: 'transparent',
-        data: [156000, 198860, 231250, 350000, 225000, 238080, 305920, 364000, 433350, 451260, 379600, 361200],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: '#0066FF', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: '#3366CC  ', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(000,102,255,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
-      }, {
-        label: '올해 매출',
-        backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
-        data: [301200, 311300, 390400, 366300, 430660, 492700, 526800, 540000, 648000, 676000, 640000, 587500],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: 'orange', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: 'orange', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
-
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -43996,89 +45555,55 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남성 손님', '여성 손님'],
-      datasets: [{
-        label: '손님 성비',
-        backgroundColor: ['#3399FF', '#FF6666'],
-        data: [65, 35]
-      }]
-    });
-  }
-});
-
-/***/ }),
-/* 285 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
-//
-//
-//
-//
-
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
-      datasets: [{
-        label: '작년 손님 성비',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
-        data: [6, 8, 37, 30, 16, 3, 1]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
 /***/ }),
+/* 285 */,
 /* 286 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
 //
 //
 //
 //
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['한국', '중국', '대만', '홍콩', '미국', '호주', '영국', '프랑스', '그외'],
-      datasets: [{
-        label: '방문 손님 국적',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
-        data: [33, 38, 5, 9, 3, 3, 2, 2, 5]
-      }]
-    });
-  }
-});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 287 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__ = __webpack_require__(74);
 //
 //
 //
@@ -44104,437 +45629,46 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-// LineChart.js
-// import { Line } from 'vue-chartjs';
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {
-      startDate: null,
-      startMenu: false,
-
-      endDate: null,
-      endMenu: false
-
-      // chartData: [40, 39, 10, 40, 39, 80, 40],
-      // chartOptions: 
-
-    };
-  },
-
-
-  components: {
-    'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__["a" /* default */],
-    'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__["a" /* default */],
-    'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__["a" /* default */],
-    'CustomerNationalityChart': __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__["a" /* default */],
-    'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__["a" /* default */],
-    'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__["a" /* default */]
-  }
-});
 
 /***/ }),
 /* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__ = __webpack_require__(74);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-// LineChart.js
-// import { Line } from 'vue-chartjs';
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {
-      startDate: null,
-      startMenu: false,
-
-      endDate: null,
-      endMenu: false
-
-      // chartData: [40, 39, 10, 40, 39, 80, 40],
-      // chartOptions: 
-
-    };
-  },
-
-
-  components: {
-    'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__["a" /* default */],
-    'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__["a" /* default */],
-    'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__["a" /* default */],
-    'CustomerNationalityChart': __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__["a" /* default */],
-    'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__["a" /* default */],
-    'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__["a" /* default */]
-  }
-});
-
-/***/ }),
-/* 289 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -44607,21 +45741,40 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     data: function data() {
         return {
             userName: '윤진주',
-            dialog: false,
+            spendDialog: false,
             clickCoupon: null,
 
-            headers: [{ text: '쿠폰 이름', value: 'name' }, { text: '쿠폰 종류', value: 'category' }, { text: '할인율', value: 'discount' }, { text: '제공 상품', value: 'add_product' }, { text: '쿠폰 조건', value: 'price_condition' }, { text: '사용 시작일', value: 'start_date' }, { text: '사용 종료일', value: 'end_date' }, { text: 'Actions', value: 'name', sortable: false }],
-
             /* 저장 & 편집 & 삭제 */
-            items: [],
-            CouponItem: {
-                CouponName: '',
-                CouponType: '',
-                Discount: null,
-                addproduct: null,
-                Condition: '',
+            items: [{
+                id: 1,
+                name: '선주',
+                category: '상품 제공',
+                discount: '',
+                add_product: 'ㅇㅇ',
+                price_condition: '10000',
+                start_date: '2018-02-03',
+                expiry_date: '2018=34=34'
+            }, {
+                id: 2,
+                name: '상원이',
+                category: '가격 할인',
+                discount: '1000',
+                add_product: '',
+                price_condition: '10000',
+                start_date: '2018-02-03',
+                expiry_date: '2018=34=34'
+            }],
+
+            /* 번역할 내용 */
+            trans: {
+                id: 0,
+                name: '',
+                category: '',
+                discount: 0,
+                add_product: '',
+                price_condition: 0,
                 start_date: '',
-                end_date: ''
+                expiry_date: ''
             }
         };
     },
@@ -44632,10 +45785,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getCouponList', {
             'shop_id': this.$route.params.shop_id
         }).then(function (response) {
-            alert(response.data.coupon);
             /* DB Coupon Data */
             var Index = response.data.couponNum;
-            console.log(response.data.coupon);
 
             var Coupondata = response.data.coupon;
 
@@ -44643,8 +45794,36 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         });
     },
     methods: {
+        /* 번역 */
+        TransCoupon: function TransCoupon(item) {
+            var index = this.items.indexOf(item);
+
+            this.trans.id = this.items[index].id;
+            this.trans.name = this.items[index].name;
+            this.trans.category = this.items[index].category;
+
+            if (this.items[index].category == '상품 제공') {
+                this.trans.add_product = this.items[index].add_product;
+            } else if (this.items[index].category == '가격 할인') {
+                this.trans.discount = this.items[index].discount;
+            }
+
+            this.trans.price_condition = this.items[index].price_condition;
+            this.trans.start_date = this.items[index].start_date;
+            this.trans.expiry_date = this.items[index].expiry_date;
+        },
+
+        /* data보내기 */
+        SpendData: function SpendData() {
+            alert('쿠폰이 사용 되었습니다.');
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/useCoupon', {
+                id: this.trans.id
+            }).then(console.log('success')).catch(console.log('test '));
+        },
+
+
         /* 사용된 쿠폰을 DB에서 삭제 하기 */
-        SpendData: function SpendData(item) {
+        Cancel: function Cancel(item) {
             var index = this.items.indexOf(item);
             this.clickCoupon = this.items[index].id;
 
@@ -44652,19 +45831,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 id: this.clickCoupon
             }).then(console.log('success')).catch(console.log('test '));
 
-            confirm('쿠폰이 사용 되었습니다.');
+            alert('쿠폰이 삭제되었습니다.');
         }
     }
 });
 
 /***/ }),
-/* 290 */
+/* 289 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -44810,7 +45989,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 date: '',
                 time: '',
                 adult: 0,
-                child: 0
+                child: 0,
+                menu_select: ''
             }, {
                 id: 2,
                 shopName: '1',
@@ -44818,7 +45998,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 date: '',
                 time: '',
                 adult: 0,
-                child: 0
+                child: 0,
+                menu_select: ''
             }],
 
             // 수락 대기중인 예약 배열
@@ -44829,7 +46010,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 date: '',
                 time: '',
                 adult: 0,
-                child: 0
+                child: 0,
+                menu_select: ''
             }, {
                 id: '2',
                 shopName: '1',
@@ -44837,7 +46019,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 date: '',
                 time: '',
                 adult: 0,
-                child: 0
+                child: 0,
+                menu_select: ''
             }],
 
             clickshopid: 0
@@ -44860,6 +46043,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             _this.StandBycards = standByreservationData;
         });
     },
+
     methods: {
         TypeChange: function TypeChange(id) {
             this.clickshopid = parseInt(id);
@@ -44870,19 +46054,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/cancelReservation', {
                 id: this.clickshopid,
                 whycancel: this.WhyCancel
-            }).then(console.log('success')).catch(console.log('test '));
+            }).then(this.clickshopid = null, this.WhyCancel = null).catch(console.log('test '));
         }
     }
 });
 
 /***/ }),
-/* 291 */
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -44972,11 +46156,105 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
+/* 291 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            dialog: false,
+            userName: '윤진주',
+
+            // 주문 내역 배열
+            orderMenu: [{
+                id: 1,
+                shopName: 'rksek',
+                date: '1',
+                menu_select: ''
+            }, {
+                id: 2,
+                shopName: 'rksek',
+                date: '1',
+                menu_select: ''
+            }]
+        };
+    },
+
+    created: function created() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userPageOrder', {}).then(function (response) {
+            var MenuorderData = response.data.Menuorder;
+
+            _this.userName = username;
+            // 사용자 주문 내역
+            _this.orderMenu = MenuorderData;
+        });
+    }
+});
+
+/***/ }),
 /* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(293);
-module.exports = __webpack_require__(655);
+module.exports = __webpack_require__(660);
 
 
 /***/ }),
@@ -44988,9 +46266,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_session__ = __webpack_require__(315);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_session___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_session__);
@@ -45001,37 +46279,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuetify_dist_vuetify_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuetify_dist_vuetify_min_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_preview__ = __webpack_require__(335);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_preview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_vue_preview__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue2_google_maps__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue2_google_maps__ = __webpack_require__(336);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vue2_google_maps___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_vue2_google_maps__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vue_chartjs__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain_vue__ = __webpack_require__(515);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_user_user_main_UserMain2_vue__ = __webpack_require__(520);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Register_vue__ = __webpack_require__(524);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_user_user_common_UserRestaurantMain_vue__ = __webpack_require__(526);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_owner_owner_common_OwnerPage_vue__ = __webpack_require__(530);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPageSideReservation_vue__ = __webpack_require__(536);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPageSideSetting_vue__ = __webpack_require__(540);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_common_OwnerPageSideStatistics_vue__ = __webpack_require__(544);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationlist_vue__ = __webpack_require__(548);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationAccept_vue__ = __webpack_require__(552);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_reservation_OwnerReservationSetting_vue__ = __webpack_require__(556);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_restaurant_OwnerRestaurant_vue__ = __webpack_require__(560);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_coupon_createCoupon_vue__ = __webpack_require__(564);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenu_vue__ = __webpack_require__(568);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuOperate_vue__ = __webpack_require__(572);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_owner_owner_menu_OwnerMenuList_vue__ = __webpack_require__(576);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_owner_owner_menu_OwnerMenuSelectLayout_vue__ = __webpack_require__(580);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_user_user_menu_MenuMain_vue__ = __webpack_require__(584);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_user_user_review_UserReview_vue__ = __webpack_require__(592);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_user_user_restaurant_UserRestaurant_vue__ = __webpack_require__(605);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_user_user_review_UserWriteReview_vue__ = __webpack_require__(609);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_user_user_reservation_CustomerAddReservation_vue__ = __webpack_require__(622);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_owner_owner_statistics_OwnerTotalStatistics_vue__ = __webpack_require__(626);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_owner_owner_statistics_OwnerCustomerStatistics_vue__ = __webpack_require__(635);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_owner_owner_statistics_OwnerSalesStatistics_vue__ = __webpack_require__(639);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_user_user_coupon_UserCoupon_vue__ = __webpack_require__(643);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_user_user_reservation_UserPageReservation_vue__ = __webpack_require__(647);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_user_user_review_UserReviewHistory_vue__ = __webpack_require__(651);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain_vue__ = __webpack_require__(516);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Register_vue__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_EditInformation__ = __webpack_require__(670);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_user_user_common_UserRestaurantMain_vue__ = __webpack_require__(527);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_owner_owner_common_OwnerPage_vue__ = __webpack_require__(531);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_owner_owner_common_OwnerPageSideReservation_vue__ = __webpack_require__(537);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_owner_owner_common_OwnerPageSideSetting_vue__ = __webpack_require__(541);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_owner_owner_common_OwnerPageSideStatistics_vue__ = __webpack_require__(545);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_owner_owner_reservation_OwnerReservationlist_vue__ = __webpack_require__(549);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_owner_owner_reservation_OwnerReservationAccept_vue__ = __webpack_require__(553);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_owner_owner_reservation_OwnerReservationSetting_vue__ = __webpack_require__(557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_restaurant_OwnerRestaurant_vue__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_owner_owner_coupon_createCoupon_vue__ = __webpack_require__(565);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_owner_owner_menu_OwnerMenu_vue__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_owner_owner_menu_OwnerMenuOperate_vue__ = __webpack_require__(573);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_owner_owner_menu_OwnerMenuList_vue__ = __webpack_require__(577);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_owner_owner_menu_OwnerMenuSelectLayout_vue__ = __webpack_require__(581);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_user_user_menu_MenuMain_vue__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_user_user_review_UserReview_vue__ = __webpack_require__(594);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_user_user_restaurant_UserRestaurant_vue__ = __webpack_require__(607);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_user_user_review_UserWriteReview_vue__ = __webpack_require__(611);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_user_user_reservation_CustomerAddReservation_vue__ = __webpack_require__(624);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_owner_owner_statistics_OwnerTotalStatistics_vue__ = __webpack_require__(628);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_owner_owner_statistics_OwnerCustomerStatistics_vue__ = __webpack_require__(638);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_owner_owner_statistics_OwnerSalesStatistics_vue__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_user_user_coupon_UserCoupon_vue__ = __webpack_require__(646);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_user_user_reservation_UserPageReservation_vue__ = __webpack_require__(650);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_user_user_review_UserReviewHistory_vue__ = __webpack_require__(654);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_user_user_restaurant_UserOrderHistory_vue__ = __webpack_require__(658);
 
 
 
@@ -45063,14 +46342,18 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_9_vue2
         libraries: "places" // necessary for places input
     }
 });
+
 // chartjs
 
 
 
 // <-- User Main Page Component Import
 
-
 // <-- User Register Page Component Import
+
+
+// <-- Edit Information
+
 
 // <-- User Restaurant Page Component Import
 
@@ -45131,6 +46414,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_9_vue2
 
 // 리뷰내역
 
+// 주문내역
+
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [
@@ -45139,20 +46424,18 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: '/',
         name: 'home',
         component: __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain_vue__["a" /* default */]
-    }, {
-        path: '/main',
-        name: 'home',
-        component: __WEBPACK_IMPORTED_MODULE_11__components_user_user_main_UserMain_vue__["a" /* default */]
-    }, {
-        path: '/search',
-        name: 'home2',
-        component: __WEBPACK_IMPORTED_MODULE_12__components_user_user_main_UserMain2_vue__["a" /* default */]
     },
     // <-- 회원 가입
     {
         path: '/register',
         name: 'register',
-        component: __WEBPACK_IMPORTED_MODULE_13__components_Register_vue__["a" /* default */]
+        component: __WEBPACK_IMPORTED_MODULE_12__components_Register_vue__["a" /* default */]
+    },
+    // <-- 회원 정보 수정
+    {
+        path: '/editInformation',
+        name: 'EditInformation',
+        component: __WEBPACK_IMPORTED_MODULE_13__components_EditInformation__["a" /* default */]
     }, {
         // 쿠폰함
         name: 'UserCoupon',
@@ -45169,11 +46452,10 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: '/UserReviewHistory',
         component: __WEBPACK_IMPORTED_MODULE_38__components_user_user_review_UserReviewHistory_vue__["a" /* default */]
     }, {
-        name: 'OwnerRestaurant',
-        path: '/owner/createRestaurant',
-        // '/owner/createRestaurant',
-        // '/owner/:shop_id/editRestaurant',
-        component: __WEBPACK_IMPORTED_MODULE_22__components_owner_owner_restaurant_OwnerRestaurant_vue__["a" /* default */]
+        // 주문내역
+        name: 'UserOrderHistory',
+        path: '/UserOrderHistory',
+        component: __WEBPACK_IMPORTED_MODULE_39__components_user_user_restaurant_UserOrderHistory_vue__["a" /* default */]
     },
     // <-- 가게 페이지 공통
     {
@@ -45278,12 +46560,12 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
                 // 손님 통계
                 name: 'OwnerCustomerStatistic',
                 path: '/owner/:shop_id/customerStatistic',
-                component: __WEBPACK_IMPORTED_MODULE_34__components_owner_owner_statistics_OwnerCustomerStatistics_vue__["a" /* default */]
+                component: __WEBPACK_IMPORTED_MODULE_34__components_owner_owner_statistics_OwnerCustomerStatistics_vue__["default"]
             }, {
                 // 매출 통계
                 name: 'OwnerSalesStatistics',
                 path: '/owner/:shop_id/salesStatistics',
-                component: __WEBPACK_IMPORTED_MODULE_35__components_owner_owner_statistics_OwnerSalesStatistics_vue__["a" /* default */]
+                component: __WEBPACK_IMPORTED_MODULE_35__components_owner_owner_statistics_OwnerSalesStatistics_vue__["default"]
             }]
         }]
     }, {
@@ -45560,7 +46842,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33), __webpack_require__(75)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33), __webpack_require__(76)))
 
 /***/ }),
 /* 296 */
@@ -48200,9 +49482,9 @@ if (inBrowser && window.Vue) {
 
 
 var utils = __webpack_require__(9);
-var bind = __webpack_require__(76);
+var bind = __webpack_require__(77);
 var Axios = __webpack_require__(299);
-var defaults = __webpack_require__(43);
+var defaults = __webpack_require__(44);
 
 /**
  * Create an instance of Axios
@@ -48235,9 +49517,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(80);
+axios.Cancel = __webpack_require__(81);
 axios.CancelToken = __webpack_require__(313);
-axios.isCancel = __webpack_require__(79);
+axios.isCancel = __webpack_require__(80);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -48285,7 +49567,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(43);
+var defaults = __webpack_require__(44);
 var utils = __webpack_require__(9);
 var InterceptorManager = __webpack_require__(308);
 var dispatchRequest = __webpack_require__(309);
@@ -48390,7 +49672,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(78);
+var createError = __webpack_require__(79);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -48825,8 +50107,8 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(9);
 var transformData = __webpack_require__(310);
-var isCancel = __webpack_require__(79);
-var defaults = __webpack_require__(43);
+var isCancel = __webpack_require__(80);
+var defaults = __webpack_require__(44);
 var isAbsoluteURL = __webpack_require__(311);
 var combineURLs = __webpack_require__(312);
 
@@ -48985,7 +50267,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(80);
+var Cancel = __webpack_require__(81);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -49194,7 +50476,7 @@ module.exports = VueSession;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(82);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6dd1125c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(328);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
@@ -49283,7 +50565,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: #FF3300; \n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -49328,7 +50610,7 @@ function listToStyles (parentId, list) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserCommunication_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserCommunication_vue__ = __webpack_require__(83);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3dc03c4a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserCommunication_vue__ = __webpack_require__(327);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
@@ -49427,7 +50709,7 @@ exports.push([module.i, "\n.emoticon:hover{\n  background: gainsboro;\n  cursor:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CommunicationButton_vue__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CommunicationButton_vue__ = __webpack_require__(84);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1c16a238_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CommunicationButton_vue__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
@@ -50227,7 +51509,7 @@ var render = function() {
                 [
                   _c(
                     "v-list-tile",
-                    { attrs: { avatar: "" } },
+                    { attrs: { avatar: "", to: "/editInformation" } },
                     [
                       _c(
                         "v-list-tile-avatar",
@@ -50243,7 +51525,10 @@ var render = function() {
                         "v-list-tile-content",
                         [
                           _c("v-list-tile-title", [
-                            _vm._v(_vm._s(_vm.user_name) + " 님")
+                            _vm._v(
+                              _vm._s(_vm.user_id + "(" + _vm.user_name + ")") +
+                                " 님"
+                            )
                           ]),
                           _vm._v(" "),
                           _vm.checkRestaurant()
@@ -50269,6 +51554,7 @@ var render = function() {
                     [
                       _c(
                         "v-list-tile",
+                        { attrs: { to: "/UserOrderHistory" } },
                         [
                           _c(
                             "v-list-tile-action",
@@ -50498,145 +51784,188 @@ var render = function() {
                     ],
                     1
                   )
-                : _c(
-                    "v-list",
-                    [
-                      _c("v-subheader", [_vm._v("가게 관리")]),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyMenu()
+                : _vm.checkRestaurant() != "needCreate"
+                  ? _c(
+                      "v-list",
+                      [
+                        _c("v-subheader", [_vm._v("가게 관리")]),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyMenu()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("developer_board")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [_c("v-list-tile-title", [_vm._v("메뉴")])],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyReservation()
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("developer_board")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [_c("v-list-tile-title", [_vm._v("메뉴")])],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyReservation()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("playlist_add_check")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [_c("v-list-tile-title", [_vm._v("예약")])],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyStats()
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("playlist_add_check")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [_c("v-list-tile-title", [_vm._v("예약")])],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyStats()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("timeline")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [_c("v-list-tile-title", [_vm._v("통계")])],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c("v-subheader", [_vm._v("내 가게 페이지")]),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-tile",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.moveMyRestaurant()
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("timeline")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [_c("v-list-tile-title", [_vm._v("통계")])],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("v-divider"),
+                        _vm._v(" "),
+                        _c("v-subheader", [_vm._v("내 가게 페이지")]),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyRestaurant()
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "v-list-tile-action",
-                            [
-                              _c(
-                                "v-icon",
-                                { attrs: { large: "", color: "green" } },
-                                [_vm._v("restaurant")]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-tile-content",
-                            [
-                              _c("v-list-tile-title", [
-                                _vm._v("내 가게로 이동")
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("restaurant")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [
+                                _c("v-list-tile-title", [
+                                  _vm._v("내 가게로 이동")
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  : _c(
+                      "v-list",
+                      [
+                        _c("v-subheader", [_vm._v("가게 관리")]),
+                        _vm._v(" "),
+                        _c(
+                          "v-list-tile",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.moveMyRestaurant()
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "v-list-tile-action",
+                              [
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "green" } },
+                                  [_vm._v("restaurant")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-list-tile-content",
+                              [
+                                _c("v-list-tile-title", [
+                                  _vm._v("가게 생성하기")
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
             ],
             1
           ),
@@ -50707,26 +52036,24 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              !_vm.checkRestaurant()
-                ? _c(
-                    "v-btn",
-                    {
-                      attrs: { icon: "" },
-                      nativeOn: {
-                        click: function($event) {
-                          $event.stopPropagation()
-                          _vm.gps_modal = true
-                        }
-                      }
-                    },
-                    [
-                      _c("v-icon", { attrs: { large: "", color: "red" } }, [
-                        _vm._v("gps_fixed")
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
+              _c(
+                "v-btn",
+                {
+                  attrs: { icon: "" },
+                  nativeOn: {
+                    click: function($event) {
+                      $event.stopPropagation()
+                      _vm.gps_modal = true
+                    }
+                  }
+                },
+                [
+                  _c("v-icon", { attrs: { large: "", color: "amber" } }, [
+                    _vm._v("gps_fixed")
+                  ])
+                ],
+                1
+              ),
               _vm._v(" "),
               !_vm.checkLogin()
                 ? _c(
@@ -50748,7 +52075,7 @@ var render = function() {
                   )
                 : _c(
                     "v-menu",
-                    { attrs: { bottom: "", "offset-y": "" } },
+                    { attrs: { "offset-y": "" } },
                     [
                       _c(
                         "v-btn",
@@ -50805,7 +52132,13 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("v-content", [_c("router-view")], 1)
+          _c(
+            "v-content",
+            [
+              _c("router-view", { attrs: { searchAddress: _vm.searchAddress } })
+            ],
+            1
+          )
         ],
         1
       ),
@@ -50903,11 +52236,8 @@ var render = function() {
                               _c(
                                 "v-flex",
                                 [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "place",
-                                      required: ""
-                                    }
+                                  _c("gmap-autocomplete", {
+                                    on: { place_changed: _vm.setPlace }
                                   })
                                 ],
                                 1
@@ -50918,14 +52248,12 @@ var render = function() {
                               _c(
                                 "v-btn",
                                 {
-                                  attrs: {
-                                    color: "amber lighten-1",
-                                    to: "/search"
-                                  },
+                                  attrs: { color: "amber lighten-1" },
                                   nativeOn: {
                                     click: function($event) {
                                       _vm.gps_search = false
                                       _vm.gps_modal = false
+                                      _vm.searching()
                                     }
                                   }
                                 },
@@ -51091,6 +52419,36 @@ var render = function() {
               )
             ],
             1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-snackbar",
+        {
+          attrs: { timeout: _vm.timeout, top: "", vertical: "" },
+          model: {
+            value: _vm.snackbar,
+            callback: function($$v) {
+              _vm.snackbar = $$v
+            },
+            expression: "snackbar"
+          }
+        },
+        [
+          _vm._v("\n    " + _vm._s(_vm.snackText) + "\n    "),
+          _c(
+            "v-btn",
+            {
+              attrs: { flat: "", color: "pink" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.snackbar = false
+                }
+              }
+            },
+            [_vm._v("Close")]
           )
         ],
         1
@@ -69637,6 +70995,129 @@ module.exports = SocialSharing;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.MountableMixin = exports.Autocomplete = exports.MapElementMixin = exports.PlaceInput = exports.Map = exports.InfoWindow = exports.Rectangle = exports.Circle = exports.Polygon = exports.Polyline = exports.Cluster = exports.Marker = exports.loaded = exports.load = undefined;
+exports.install = install;
+
+var _manager = __webpack_require__(27);
+
+var _marker = __webpack_require__(337);
+
+var _marker2 = _interopRequireDefault(_marker);
+
+var _cluster = __webpack_require__(410);
+
+var _cluster2 = _interopRequireDefault(_cluster);
+
+var _polyline = __webpack_require__(430);
+
+var _polyline2 = _interopRequireDefault(_polyline);
+
+var _polygon = __webpack_require__(447);
+
+var _polygon2 = _interopRequireDefault(_polygon);
+
+var _circle = __webpack_require__(448);
+
+var _circle2 = _interopRequireDefault(_circle);
+
+var _rectangle = __webpack_require__(449);
+
+var _rectangle2 = _interopRequireDefault(_rectangle);
+
+var _infoWindow = __webpack_require__(450);
+
+var _infoWindow2 = _interopRequireDefault(_infoWindow);
+
+var _map = __webpack_require__(452);
+
+var _map2 = _interopRequireDefault(_map);
+
+var _streetViewPanorama = __webpack_require__(456);
+
+var _streetViewPanorama2 = _interopRequireDefault(_streetViewPanorama);
+
+var _placeInput = __webpack_require__(460);
+
+var _placeInput2 = _interopRequireDefault(_placeInput);
+
+var _autocomplete = __webpack_require__(462);
+
+var _autocomplete2 = _interopRequireDefault(_autocomplete);
+
+var _mapElementMixin = __webpack_require__(18);
+
+var _mapElementMixin2 = _interopRequireDefault(_mapElementMixin);
+
+var _mountableMixin = __webpack_require__(69);
+
+var _mountableMixin2 = _interopRequireDefault(_mountableMixin);
+
+var _deferredReady = __webpack_require__(41);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// export everything
+
+
+// Vue component imports
+exports.load = _manager.load;
+exports.loaded = _manager.loaded;
+exports.Marker = _marker2.default;
+exports.Cluster = _cluster2.default;
+exports.Polyline = _polyline2.default;
+exports.Polygon = _polygon2.default;
+exports.Circle = _circle2.default;
+exports.Rectangle = _rectangle2.default;
+exports.InfoWindow = _infoWindow2.default;
+exports.Map = _map2.default;
+exports.PlaceInput = _placeInput2.default;
+exports.MapElementMixin = _mapElementMixin2.default;
+exports.Autocomplete = _autocomplete2.default;
+exports.MountableMixin = _mountableMixin2.default;
+function install(Vue, options) {
+  options = Object.assign({}, {
+    installComponents: true
+  }, options);
+
+  Vue.use(_deferredReady.DeferredReady);
+
+  var defaultResizeBus = new Vue();
+  Vue.$gmapDefaultResizeBus = defaultResizeBus;
+  Vue.mixin({
+    created: function created() {
+      this.$gmapDefaultResizeBus = defaultResizeBus;
+    }
+  });
+
+  if (options.load) {
+    (0, _manager.load)(options.load);
+  }
+
+  if (options.installComponents) {
+    Vue.component('GmapMap', _map2.default);
+    Vue.component('GmapMarker', _marker2.default);
+    Vue.component('GmapCluster', _cluster2.default);
+    Vue.component('GmapInfoWindow', _infoWindow2.default);
+    Vue.component('GmapPolyline', _polyline2.default);
+    Vue.component('GmapPolygon', _polygon2.default);
+    Vue.component('GmapCircle', _circle2.default);
+    Vue.component('GmapRectangle', _rectangle2.default);
+    Vue.component('GmapAutocomplete', _autocomplete2.default);
+    Vue.component('GmapPlaceInput', _placeInput2.default);
+    Vue.component('GmapStreetViewPanorama', _streetViewPanorama2.default);
+  }
+}
+
+/***/ }),
+/* 337 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _mapValues = __webpack_require__(85);
 
@@ -69791,11 +71272,11 @@ exports.default = {
 };
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(87),
-    isMasked = __webpack_require__(340),
+    isMasked = __webpack_require__(341),
     isObject = __webpack_require__(21),
     toSource = __webpack_require__(89);
 
@@ -69844,7 +71325,7 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(24);
@@ -69896,7 +71377,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -69924,10 +71405,10 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(341);
+var coreJsData = __webpack_require__(342);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -69950,7 +71431,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(12);
@@ -69962,7 +71443,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports) {
 
 /**
@@ -69981,7 +71462,7 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports) {
 
 /**
@@ -70012,7 +71493,7 @@ module.exports = createBaseFor;
 
 
 /***/ }),
-/* 344 */
+/* 345 */
 /***/ (function(module, exports) {
 
 /**
@@ -70038,7 +71519,7 @@ module.exports = baseTimes;
 
 
 /***/ }),
-/* 345 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(23),
@@ -70062,7 +71543,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 346 */
+/* 347 */
 /***/ (function(module, exports) {
 
 /**
@@ -70086,11 +71567,11 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 347 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(23),
-    isLength = __webpack_require__(48),
+    isLength = __webpack_require__(49),
     isObjectLike = __webpack_require__(17);
 
 /** `Object#toString` result references. */
@@ -70152,11 +71633,11 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 348 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(51),
-    nativeKeys = __webpack_require__(349);
+var isPrototype = __webpack_require__(52),
+    nativeKeys = __webpack_require__(350);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -70188,7 +71669,7 @@ module.exports = baseKeys;
 
 
 /***/ }),
-/* 349 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var overArg = __webpack_require__(94);
@@ -70200,11 +71681,11 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 350 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(351),
-    getMatchData = __webpack_require__(389),
+var baseIsMatch = __webpack_require__(352),
+    getMatchData = __webpack_require__(390),
     matchesStrictComparable = __webpack_require__(103);
 
 /**
@@ -70228,10 +71709,10 @@ module.exports = baseMatches;
 
 
 /***/ }),
-/* 351 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(53),
+var Stack = __webpack_require__(54),
     baseIsEqual = __webpack_require__(96);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -70296,7 +71777,7 @@ module.exports = baseIsMatch;
 
 
 /***/ }),
-/* 352 */
+/* 353 */
 /***/ (function(module, exports) {
 
 /**
@@ -70315,7 +71796,7 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 353 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(36);
@@ -70356,7 +71837,7 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 354 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(36);
@@ -70381,7 +71862,7 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 355 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(36);
@@ -70403,7 +71884,7 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 356 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(36);
@@ -70435,7 +71916,7 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 357 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(35);
@@ -70456,7 +71937,7 @@ module.exports = stackClear;
 
 
 /***/ }),
-/* 358 */
+/* 359 */
 /***/ (function(module, exports) {
 
 /**
@@ -70480,7 +71961,7 @@ module.exports = stackDelete;
 
 
 /***/ }),
-/* 359 */
+/* 360 */
 /***/ (function(module, exports) {
 
 /**
@@ -70500,7 +71981,7 @@ module.exports = stackGet;
 
 
 /***/ }),
-/* 360 */
+/* 361 */
 /***/ (function(module, exports) {
 
 /**
@@ -70520,12 +72001,12 @@ module.exports = stackHas;
 
 
 /***/ }),
-/* 361 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(35),
-    Map = __webpack_require__(55),
-    MapCache = __webpack_require__(56);
+    Map = __webpack_require__(56),
+    MapCache = __webpack_require__(57);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -70560,12 +72041,12 @@ module.exports = stackSet;
 
 
 /***/ }),
-/* 362 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(363),
+var Hash = __webpack_require__(364),
     ListCache = __webpack_require__(35),
-    Map = __webpack_require__(55);
+    Map = __webpack_require__(56);
 
 /**
  * Removes all key-value entries from the map.
@@ -70587,14 +72068,14 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 363 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(364),
-    hashDelete = __webpack_require__(365),
-    hashGet = __webpack_require__(366),
-    hashHas = __webpack_require__(367),
-    hashSet = __webpack_require__(368);
+var hashClear = __webpack_require__(365),
+    hashDelete = __webpack_require__(366),
+    hashGet = __webpack_require__(367),
+    hashHas = __webpack_require__(368),
+    hashSet = __webpack_require__(369);
 
 /**
  * Creates a hash object.
@@ -70625,7 +72106,7 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 364 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -70646,7 +72127,7 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 365 */
+/* 366 */
 /***/ (function(module, exports) {
 
 /**
@@ -70669,7 +72150,7 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 366 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -70705,7 +72186,7 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 367 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -70734,7 +72215,7 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 368 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(37);
@@ -70763,7 +72244,7 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 369 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -70787,7 +72268,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 370 */
+/* 371 */
 /***/ (function(module, exports) {
 
 /**
@@ -70808,7 +72289,7 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 371 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -70830,7 +72311,7 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 372 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -70852,7 +72333,7 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 373 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(38);
@@ -70880,16 +72361,16 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 374 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(53),
+var Stack = __webpack_require__(54),
     equalArrays = __webpack_require__(97),
-    equalByTag = __webpack_require__(380),
-    equalObjects = __webpack_require__(383),
+    equalByTag = __webpack_require__(381),
+    equalObjects = __webpack_require__(384),
     getTag = __webpack_require__(39),
     isArray = __webpack_require__(10),
-    isBuffer = __webpack_require__(46),
+    isBuffer = __webpack_require__(47),
     isTypedArray = __webpack_require__(93);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -70969,12 +72450,12 @@ module.exports = baseIsEqualDeep;
 
 
 /***/ }),
-/* 375 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(56),
-    setCacheAdd = __webpack_require__(376),
-    setCacheHas = __webpack_require__(377);
+var MapCache = __webpack_require__(57),
+    setCacheAdd = __webpack_require__(377),
+    setCacheHas = __webpack_require__(378);
 
 /**
  *
@@ -71002,7 +72483,7 @@ module.exports = SetCache;
 
 
 /***/ }),
-/* 376 */
+/* 377 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -71027,7 +72508,7 @@ module.exports = setCacheAdd;
 
 
 /***/ }),
-/* 377 */
+/* 378 */
 /***/ (function(module, exports) {
 
 /**
@@ -71047,7 +72528,7 @@ module.exports = setCacheHas;
 
 
 /***/ }),
-/* 378 */
+/* 379 */
 /***/ (function(module, exports) {
 
 /**
@@ -71076,7 +72557,7 @@ module.exports = arraySome;
 
 
 /***/ }),
-/* 379 */
+/* 380 */
 /***/ (function(module, exports) {
 
 /**
@@ -71095,15 +72576,15 @@ module.exports = cacheHas;
 
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(24),
     Uint8Array = __webpack_require__(98),
-    eq = __webpack_require__(54),
+    eq = __webpack_require__(55),
     equalArrays = __webpack_require__(97),
-    mapToArray = __webpack_require__(381),
-    setToArray = __webpack_require__(382);
+    mapToArray = __webpack_require__(382),
+    setToArray = __webpack_require__(383);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -71213,7 +72694,7 @@ module.exports = equalByTag;
 
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports) {
 
 /**
@@ -71237,7 +72718,7 @@ module.exports = mapToArray;
 
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports) {
 
 /**
@@ -71261,7 +72742,7 @@ module.exports = setToArray;
 
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getAllKeys = __webpack_require__(99);
@@ -71356,7 +72837,7 @@ module.exports = equalObjects;
 
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports) {
 
 /**
@@ -71387,7 +72868,7 @@ module.exports = arrayFilter;
 
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(20),
@@ -71400,7 +72881,7 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(20),
@@ -71413,7 +72894,7 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(20),
@@ -71426,7 +72907,7 @@ module.exports = Set;
 
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(20),
@@ -71439,7 +72920,7 @@ module.exports = WeakMap;
 
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(102),
@@ -71469,13 +72950,13 @@ module.exports = getMatchData;
 
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(96),
-    get = __webpack_require__(391),
-    hasIn = __webpack_require__(397),
-    isKey = __webpack_require__(59),
+    get = __webpack_require__(392),
+    hasIn = __webpack_require__(398),
+    isKey = __webpack_require__(60),
     isStrictComparable = __webpack_require__(102),
     matchesStrictComparable = __webpack_require__(103),
     toKey = __webpack_require__(26);
@@ -71508,7 +72989,7 @@ module.exports = baseMatchesProperty;
 
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(40);
@@ -71547,10 +73028,10 @@ module.exports = get;
 
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(393);
+var memoizeCapped = __webpack_require__(394);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -71580,10 +73061,10 @@ module.exports = stringToPath;
 
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(394);
+var memoize = __webpack_require__(395);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -71612,10 +73093,10 @@ module.exports = memoizeCapped;
 
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(56);
+var MapCache = __webpack_require__(57);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -71691,10 +73172,10 @@ module.exports = memoize;
 
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(396);
+var baseToString = __webpack_require__(397);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -71725,13 +73206,13 @@ module.exports = toString;
 
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(24),
-    arrayMap = __webpack_require__(61),
+    arrayMap = __webpack_require__(62),
     isArray = __webpack_require__(10),
-    isSymbol = __webpack_require__(60);
+    isSymbol = __webpack_require__(61);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -71768,11 +73249,11 @@ module.exports = baseToString;
 
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(398),
-    hasPath = __webpack_require__(399);
+var baseHasIn = __webpack_require__(399),
+    hasPath = __webpack_require__(400);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -71808,7 +73289,7 @@ module.exports = hasIn;
 
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, exports) {
 
 /**
@@ -71827,14 +73308,14 @@ module.exports = baseHasIn;
 
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(25),
-    isArguments = __webpack_require__(45),
+    isArguments = __webpack_require__(46),
     isArray = __webpack_require__(10),
-    isIndex = __webpack_require__(47),
-    isLength = __webpack_require__(48),
+    isIndex = __webpack_require__(48),
+    isLength = __webpack_require__(49),
     toKey = __webpack_require__(26);
 
 /**
@@ -71872,12 +73353,12 @@ module.exports = hasPath;
 
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(401),
-    basePropertyDeep = __webpack_require__(402),
-    isKey = __webpack_require__(59),
+var baseProperty = __webpack_require__(402),
+    basePropertyDeep = __webpack_require__(403),
+    isKey = __webpack_require__(60),
     toKey = __webpack_require__(26);
 
 /**
@@ -71910,7 +73391,7 @@ module.exports = property;
 
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports) {
 
 /**
@@ -71930,7 +73411,7 @@ module.exports = baseProperty;
 
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(40);
@@ -71952,11 +73433,11 @@ module.exports = basePropertyDeep;
 
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayEach = __webpack_require__(104),
-    baseEach = __webpack_require__(404),
+    baseEach = __webpack_require__(405),
     castFunction = __webpack_require__(105),
     isArray = __webpack_require__(10);
 
@@ -71999,11 +73480,11 @@ module.exports = forEach;
 
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseForOwn = __webpack_require__(90),
-    createBaseEach = __webpack_require__(405);
+    createBaseEach = __webpack_require__(406);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -72019,10 +73500,10 @@ module.exports = baseEach;
 
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArrayLike = __webpack_require__(52);
+var isArrayLike = __webpack_require__(53);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -72057,12 +73538,12 @@ module.exports = createBaseEach;
 
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFor = __webpack_require__(91),
     castFunction = __webpack_require__(105),
-    keysIn = __webpack_require__(63);
+    keysIn = __webpack_require__(64);
 
 /**
  * Iterates over own and inherited enumerable string keyed properties of an
@@ -72102,12 +73583,12 @@ module.exports = forIn;
 
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(21),
-    isPrototype = __webpack_require__(51),
-    nativeKeysIn = __webpack_require__(408);
+    isPrototype = __webpack_require__(52),
+    nativeKeysIn = __webpack_require__(409);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -72141,7 +73622,7 @@ module.exports = baseKeysIn;
 
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports) {
 
 /**
@@ -72167,7 +73648,7 @@ module.exports = nativeKeysIn;
 
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72197,7 +73678,7 @@ var _getPropsValuesMixin = __webpack_require__(13);
 
 var _getPropsValuesMixin2 = _interopRequireDefault(_getPropsValuesMixin);
 
-var _markerClustererPlus = __webpack_require__(428);
+var _markerClustererPlus = __webpack_require__(429);
 
 var _markerClustererPlus2 = _interopRequireDefault(_markerClustererPlus);
 
@@ -72288,7 +73769,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(29),
@@ -72311,11 +73792,11 @@ module.exports = baseAssign;
 
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(29),
-    keysIn = __webpack_require__(63);
+    keysIn = __webpack_require__(64);
 
 /**
  * The base implementation of `_.assignIn` without support for multiple sources
@@ -72334,7 +73815,7 @@ module.exports = baseAssignIn;
 
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(12);
@@ -72376,7 +73857,7 @@ module.exports = cloneBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, exports) {
 
 /**
@@ -72402,11 +73883,11 @@ module.exports = copyArray;
 
 
 /***/ }),
-/* 414 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(29),
-    getSymbols = __webpack_require__(58);
+    getSymbols = __webpack_require__(59);
 
 /**
  * Copies own symbols of `source` to `object`.
@@ -72424,7 +73905,7 @@ module.exports = copySymbols;
 
 
 /***/ }),
-/* 415 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(29),
@@ -72446,7 +73927,7 @@ module.exports = copySymbolsIn;
 
 
 /***/ }),
-/* 416 */
+/* 417 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -72478,14 +73959,14 @@ module.exports = initCloneArray;
 
 
 /***/ }),
-/* 417 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(67),
-    cloneDataView = __webpack_require__(418),
-    cloneRegExp = __webpack_require__(419),
-    cloneSymbol = __webpack_require__(420),
-    cloneTypedArray = __webpack_require__(421);
+var cloneArrayBuffer = __webpack_require__(68),
+    cloneDataView = __webpack_require__(419),
+    cloneRegExp = __webpack_require__(420),
+    cloneSymbol = __webpack_require__(421),
+    cloneTypedArray = __webpack_require__(422);
 
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
@@ -72561,10 +74042,10 @@ module.exports = initCloneByTag;
 
 
 /***/ }),
-/* 418 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(67);
+var cloneArrayBuffer = __webpack_require__(68);
 
 /**
  * Creates a clone of `dataView`.
@@ -72583,7 +74064,7 @@ module.exports = cloneDataView;
 
 
 /***/ }),
-/* 419 */
+/* 420 */
 /***/ (function(module, exports) {
 
 /** Used to match `RegExp` flags from their coerced string values. */
@@ -72606,7 +74087,7 @@ module.exports = cloneRegExp;
 
 
 /***/ }),
-/* 420 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(24);
@@ -72630,10 +74111,10 @@ module.exports = cloneSymbol;
 
 
 /***/ }),
-/* 421 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(67);
+var cloneArrayBuffer = __webpack_require__(68);
 
 /**
  * Creates a clone of `typedArray`.
@@ -72652,12 +74133,12 @@ module.exports = cloneTypedArray;
 
 
 /***/ }),
-/* 422 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(423),
-    getPrototype = __webpack_require__(65),
-    isPrototype = __webpack_require__(51);
+var baseCreate = __webpack_require__(424),
+    getPrototype = __webpack_require__(66),
+    isPrototype = __webpack_require__(52);
 
 /**
  * Initializes an object clone.
@@ -72676,7 +74157,7 @@ module.exports = initCloneObject;
 
 
 /***/ }),
-/* 423 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(21);
@@ -72712,12 +74193,12 @@ module.exports = baseCreate;
 
 
 /***/ }),
-/* 424 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMap = __webpack_require__(425),
-    baseUnary = __webpack_require__(49),
-    nodeUtil = __webpack_require__(50);
+var baseIsMap = __webpack_require__(426),
+    baseUnary = __webpack_require__(50),
+    nodeUtil = __webpack_require__(51);
 
 /* Node.js helper references. */
 var nodeIsMap = nodeUtil && nodeUtil.isMap;
@@ -72745,7 +74226,7 @@ module.exports = isMap;
 
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getTag = __webpack_require__(39),
@@ -72769,12 +74250,12 @@ module.exports = baseIsMap;
 
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsSet = __webpack_require__(427),
-    baseUnary = __webpack_require__(49),
-    nodeUtil = __webpack_require__(50);
+var baseIsSet = __webpack_require__(428),
+    baseUnary = __webpack_require__(50),
+    nodeUtil = __webpack_require__(51);
 
 /* Node.js helper references. */
 var nodeIsSet = nodeUtil && nodeUtil.isSet;
@@ -72802,7 +74283,7 @@ module.exports = isSet;
 
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getTag = __webpack_require__(39),
@@ -72826,7 +74307,7 @@ module.exports = baseIsSet;
 
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, exports) {
 
 /**
@@ -74466,7 +75947,7 @@ module.exports = MarkerClusterer
 
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74592,12 +76073,12 @@ exports.default = {
 };
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(25),
-    last = __webpack_require__(431),
-    parent = __webpack_require__(432),
+    last = __webpack_require__(432),
+    parent = __webpack_require__(433),
     toKey = __webpack_require__(26);
 
 /**
@@ -74618,7 +76099,7 @@ module.exports = baseUnset;
 
 
 /***/ }),
-/* 431 */
+/* 432 */
 /***/ (function(module, exports) {
 
 /**
@@ -74644,11 +76125,11 @@ module.exports = last;
 
 
 /***/ }),
-/* 432 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(40),
-    baseSlice = __webpack_require__(433);
+    baseSlice = __webpack_require__(434);
 
 /**
  * Gets the parent value at `path` of `object`.
@@ -74666,7 +76147,7 @@ module.exports = parent;
 
 
 /***/ }),
-/* 433 */
+/* 434 */
 /***/ (function(module, exports) {
 
 /**
@@ -74703,10 +76184,10 @@ module.exports = baseSlice;
 
 
 /***/ }),
-/* 434 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPlainObject = __webpack_require__(435);
+var isPlainObject = __webpack_require__(436);
 
 /**
  * Used by `_.omit` to customize its `_.cloneDeep` use to only clone plain
@@ -74725,11 +76206,11 @@ module.exports = customOmitClone;
 
 
 /***/ }),
-/* 435 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(23),
-    getPrototype = __webpack_require__(65),
+    getPrototype = __webpack_require__(66),
     isObjectLike = __webpack_require__(17);
 
 /** `Object#toString` result references. */
@@ -74793,12 +76274,12 @@ module.exports = isPlainObject;
 
 
 /***/ }),
-/* 436 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var flatten = __webpack_require__(437),
-    overRest = __webpack_require__(440),
-    setToString = __webpack_require__(442);
+var flatten = __webpack_require__(438),
+    overRest = __webpack_require__(441),
+    setToString = __webpack_require__(443);
 
 /**
  * A specialized version of `baseRest` which flattens the rest array.
@@ -74815,10 +76296,10 @@ module.exports = flatRest;
 
 
 /***/ }),
-/* 437 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFlatten = __webpack_require__(438);
+var baseFlatten = __webpack_require__(439);
 
 /**
  * Flattens `array` a single level deep.
@@ -74843,11 +76324,11 @@ module.exports = flatten;
 
 
 /***/ }),
-/* 438 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(57),
-    isFlattenable = __webpack_require__(439);
+var arrayPush = __webpack_require__(58),
+    isFlattenable = __webpack_require__(440);
 
 /**
  * The base implementation of `_.flatten` with support for restricting flattening.
@@ -74887,11 +76368,11 @@ module.exports = baseFlatten;
 
 
 /***/ }),
-/* 439 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(24),
-    isArguments = __webpack_require__(45),
+    isArguments = __webpack_require__(46),
     isArray = __webpack_require__(10);
 
 /** Built-in value references. */
@@ -74913,10 +76394,10 @@ module.exports = isFlattenable;
 
 
 /***/ }),
-/* 440 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(441);
+var apply = __webpack_require__(442);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -74955,7 +76436,7 @@ module.exports = overRest;
 
 
 /***/ }),
-/* 441 */
+/* 442 */
 /***/ (function(module, exports) {
 
 /**
@@ -74982,11 +76463,11 @@ module.exports = apply;
 
 
 /***/ }),
-/* 442 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSetToString = __webpack_require__(443),
-    shortOut = __webpack_require__(445);
+var baseSetToString = __webpack_require__(444),
+    shortOut = __webpack_require__(446);
 
 /**
  * Sets the `toString` method of `func` to return `string`.
@@ -75002,12 +76483,12 @@ module.exports = setToString;
 
 
 /***/ }),
-/* 443 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var constant = __webpack_require__(444),
+var constant = __webpack_require__(445),
     defineProperty = __webpack_require__(86),
-    identity = __webpack_require__(62);
+    identity = __webpack_require__(63);
 
 /**
  * The base implementation of `setToString` without support for hot loop shorting.
@@ -75030,7 +76511,7 @@ module.exports = baseSetToString;
 
 
 /***/ }),
-/* 444 */
+/* 445 */
 /***/ (function(module, exports) {
 
 /**
@@ -75062,7 +76543,7 @@ module.exports = constant;
 
 
 /***/ }),
-/* 445 */
+/* 446 */
 /***/ (function(module, exports) {
 
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
@@ -75105,7 +76586,7 @@ module.exports = shortOut;
 
 
 /***/ }),
-/* 446 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75281,7 +76762,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 447 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75385,7 +76866,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 448 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75468,7 +76949,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 449 */
+/* 450 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75476,7 +76957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_infoWindowImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f5ee817c_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_infoWindow_vue__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f5ee817c_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_infoWindow_vue__ = __webpack_require__(451);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 /* script */
@@ -75523,7 +77004,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 450 */
+/* 451 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75546,7 +77027,7 @@ if (false) {
 }
 
 /***/ }),
-/* 451 */
+/* 452 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75554,12 +77035,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_mapImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_4b3ce208_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_map_vue__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_4b3ce208_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_map_vue__ = __webpack_require__(455);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(452)
+  __webpack_require__(453)
 }
 /* script */
 
@@ -75605,13 +77086,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 452 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(453);
+var content = __webpack_require__(454);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -75632,7 +77113,7 @@ if(false) {
 }
 
 /***/ }),
-/* 453 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -75646,7 +77127,7 @@ exports.push([module.i, "\n.vue-map-container {\n  position: relative;\n}\n.vue-
 
 
 /***/ }),
-/* 454 */
+/* 455 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75680,7 +77161,7 @@ if (false) {
 }
 
 /***/ }),
-/* 455 */
+/* 456 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75688,12 +77169,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_streetViewPanoramaImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_c4367d3e_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_streetViewPanorama_vue__ = __webpack_require__(458);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_c4367d3e_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_streetViewPanorama_vue__ = __webpack_require__(459);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(456)
+  __webpack_require__(457)
 }
 /* script */
 
@@ -75739,13 +77220,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 456 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(457);
+var content = __webpack_require__(458);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -75766,7 +77247,7 @@ if(false) {
 }
 
 /***/ }),
-/* 457 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -75780,7 +77261,7 @@ exports.push([module.i, "\n.vue-street-view-pano-container {\n  position: relati
 
 
 /***/ }),
-/* 458 */
+/* 459 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75815,7 +77296,7 @@ if (false) {
 }
 
 /***/ }),
-/* 459 */
+/* 460 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75823,7 +77304,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_placeInputImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_0c367d87_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_placeInput_vue__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_0c367d87_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_placeInput_vue__ = __webpack_require__(461);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 /* script */
@@ -75870,7 +77351,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 460 */
+/* 461 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75901,7 +77382,7 @@ if (false) {
 }
 
 /***/ }),
-/* 461 */
+/* 462 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75909,7 +77390,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__);
 /* harmony namespace reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_autocompleteImpl_js__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f0d8a628_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_autocomplete_vue__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_f0d8a628_hasScoped_false_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_autocomplete_vue__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 /* script */
@@ -75956,13 +77437,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 462 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(61),
+var arrayMap = __webpack_require__(62),
     baseIteratee = __webpack_require__(95),
-    basePickBy = __webpack_require__(463),
-    getAllKeysIn = __webpack_require__(66);
+    basePickBy = __webpack_require__(464),
+    getAllKeysIn = __webpack_require__(67);
 
 /**
  * Creates an object composed of the `object` properties `predicate` returns
@@ -75999,11 +77480,11 @@ module.exports = pickBy;
 
 
 /***/ }),
-/* 463 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(40),
-    baseSet = __webpack_require__(464),
+    baseSet = __webpack_require__(465),
     castPath = __webpack_require__(25);
 
 /**
@@ -76035,12 +77516,12 @@ module.exports = basePickBy;
 
 
 /***/ }),
-/* 464 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assignValue = __webpack_require__(64),
+var assignValue = __webpack_require__(65),
     castPath = __webpack_require__(25),
-    isIndex = __webpack_require__(47),
+    isIndex = __webpack_require__(48),
     isObject = __webpack_require__(21),
     toKey = __webpack_require__(26);
 
@@ -76088,7 +77569,7 @@ module.exports = baseSet;
 
 
 /***/ }),
-/* 465 */
+/* 466 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76115,7 +77596,7 @@ if (false) {
 }
 
 /***/ }),
-/* 466 */
+/* 467 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76203,7 +77684,7 @@ var reactiveProp = {
 });
 
 /***/ }),
-/* 467 */
+/* 468 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76217,7 +77698,7 @@ var reactiveProp = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return Radar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Bubble; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Scatter; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(469);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 
 function generateChart(chartId, chartType) {
@@ -76310,20 +77791,20 @@ var Scatter = generateChart('scatter-chart', 'scatter');
 });
 
 /***/ }),
-/* 468 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * @namespace Chart
  */
-var Chart = __webpack_require__(469)();
+var Chart = __webpack_require__(470)();
 
 Chart.helpers = __webpack_require__(4);
 
 // @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
-__webpack_require__(473)(Chart);
+__webpack_require__(474)(Chart);
 
-Chart.defaults = __webpack_require__(5);
+Chart.defaults = __webpack_require__(7);
 Chart.Element = __webpack_require__(14);
 Chart.elements = __webpack_require__(19);
 Chart.Interaction = __webpack_require__(116);
@@ -76332,40 +77813,40 @@ Chart.platform = __webpack_require__(117);
 Chart.plugins = __webpack_require__(118);
 Chart.Ticks = __webpack_require__(31);
 
-__webpack_require__(484)(Chart);
 __webpack_require__(485)(Chart);
 __webpack_require__(486)(Chart);
 __webpack_require__(487)(Chart);
 __webpack_require__(488)(Chart);
 __webpack_require__(489)(Chart);
-
 __webpack_require__(490)(Chart);
+
 __webpack_require__(491)(Chart);
 __webpack_require__(492)(Chart);
 __webpack_require__(493)(Chart);
 __webpack_require__(494)(Chart);
 __webpack_require__(495)(Chart);
+__webpack_require__(496)(Chart);
 
 // Controllers must be loaded after elements
 // See Chart.core.datasetController.dataElementType
-__webpack_require__(497)(Chart);
 __webpack_require__(498)(Chart);
 __webpack_require__(499)(Chart);
 __webpack_require__(500)(Chart);
 __webpack_require__(501)(Chart);
 __webpack_require__(502)(Chart);
 __webpack_require__(503)(Chart);
-
 __webpack_require__(504)(Chart);
+
 __webpack_require__(505)(Chart);
 __webpack_require__(506)(Chart);
 __webpack_require__(507)(Chart);
 __webpack_require__(508)(Chart);
 __webpack_require__(509)(Chart);
 __webpack_require__(510)(Chart);
+__webpack_require__(511)(Chart);
 
 // Loading built-it plugins
-var plugins = __webpack_require__(511);
+var plugins = __webpack_require__(512);
 for (var k in plugins) {
 	if (plugins.hasOwnProperty(k)) {
 		Chart.plugins.register(plugins[k]);
@@ -76438,13 +77919,13 @@ Chart.layoutService = Chart.layouts;
 
 
 /***/ }),
-/* 469 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 
 defaults._set('global', {
 	responsive: true,
@@ -76494,7 +77975,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 470 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76751,7 +78232,7 @@ helpers.easingEffects = effects;
 
 
 /***/ }),
-/* 471 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76972,7 +78453,7 @@ helpers.drawRoundedRectangle = function(ctx) {
 
 
 /***/ }),
-/* 472 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77075,7 +78556,7 @@ module.exports = {
 
 
 /***/ }),
-/* 473 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77084,7 +78565,7 @@ module.exports = {
 
 
 var color = __webpack_require__(115);
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var helpers = __webpack_require__(4);
 
 module.exports = function(Chart) {
@@ -77693,10 +79174,10 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 474 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var conversions = __webpack_require__(475);
+var conversions = __webpack_require__(476);
 
 var convert = function() {
    return new Converter();
@@ -77790,7 +79271,7 @@ Converter.prototype.getValues = function(space) {
 module.exports = convert;
 
 /***/ }),
-/* 475 */
+/* 476 */
 /***/ (function(module, exports) {
 
 /* MIT license */
@@ -78494,11 +79975,11 @@ for (var key in cssKeywords) {
 
 
 /***/ }),
-/* 476 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* MIT license */
-var colorNames = __webpack_require__(477);
+var colorNames = __webpack_require__(478);
 
 module.exports = {
    getRgba: getRgba,
@@ -78721,7 +80202,7 @@ for (var name in colorNames) {
 
 
 /***/ }),
-/* 477 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78880,13 +80361,13 @@ module.exports = {
 
 
 /***/ }),
-/* 478 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 
@@ -78994,13 +80475,13 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 479 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 
@@ -79092,13 +80573,13 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 480 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 
@@ -79205,13 +80686,13 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 481 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 
 defaults._set('global', {
@@ -79429,7 +80910,7 @@ module.exports = Element.extend({
 
 
 /***/ }),
-/* 482 */
+/* 483 */
 /***/ (function(module, exports) {
 
 /**
@@ -79450,7 +80931,7 @@ module.exports = {
 
 
 /***/ }),
-/* 483 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -79914,14 +81395,14 @@ helpers.removeEvent = removeEventListener;
 
 
 /***/ }),
-/* 484 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* global window: false */
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 
@@ -80093,13 +81574,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 485 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var helpers = __webpack_require__(4);
 var Interaction = __webpack_require__(116);
 var layouts = __webpack_require__(30);
@@ -81047,7 +82528,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 486 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -81384,13 +82865,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var helpers = __webpack_require__(4);
 var layouts = __webpack_require__(30);
 
@@ -81437,13 +82918,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 488 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 var Ticks = __webpack_require__(31);
@@ -82380,13 +83861,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 489 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 
@@ -83335,7 +84816,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 490 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83528,7 +85009,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 491 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -83668,13 +85149,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 492 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var helpers = __webpack_require__(4);
 var Ticks = __webpack_require__(31);
 
@@ -83866,7 +85347,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 493 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84220,13 +85701,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 494 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var helpers = __webpack_require__(4);
 var Ticks = __webpack_require__(31);
 
@@ -84756,7 +86237,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 495 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84766,7 +86247,7 @@ module.exports = function(Chart) {
 var moment = __webpack_require__(0);
 moment = typeof moment === 'function' ? moment : window.moment;
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var helpers = __webpack_require__(4);
 
 // Integer constants are from the ES6 spec.
@@ -85546,7 +87027,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 496 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -85811,16 +87292,16 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 496;
+webpackContext.id = 497;
 
 /***/ }),
-/* 497 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var elements = __webpack_require__(19);
 var helpers = __webpack_require__(4);
 
@@ -86325,13 +87806,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 498 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var elements = __webpack_require__(19);
 var helpers = __webpack_require__(4);
 
@@ -86512,13 +87993,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 499 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var elements = __webpack_require__(19);
 var helpers = __webpack_require__(4);
 
@@ -86818,13 +88299,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 500 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var elements = __webpack_require__(19);
 var helpers = __webpack_require__(4);
 
@@ -87158,13 +88639,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 501 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var elements = __webpack_require__(19);
 var helpers = __webpack_require__(4);
 
@@ -87387,13 +88868,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 502 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var elements = __webpack_require__(19);
 var helpers = __webpack_require__(4);
 
@@ -87562,13 +89043,13 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 503 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 
 defaults._set('scatter', {
 	hover: {
@@ -87611,7 +89092,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 504 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87629,7 +89110,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 505 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87646,7 +89127,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 506 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87664,7 +89145,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 507 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87682,7 +89163,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 508 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87700,7 +89181,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 509 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87718,7 +89199,7 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 510 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87733,20 +89214,20 @@ module.exports = function(Chart) {
 
 
 /***/ }),
-/* 511 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = {};
-module.exports.filler = __webpack_require__(512);
-module.exports.legend = __webpack_require__(513);
-module.exports.title = __webpack_require__(514);
+module.exports.filler = __webpack_require__(513);
+module.exports.legend = __webpack_require__(514);
+module.exports.title = __webpack_require__(515);
 
 
 /***/ }),
-/* 512 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87758,7 +89239,7 @@ module.exports.title = __webpack_require__(514);
 
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var elements = __webpack_require__(19);
 var helpers = __webpack_require__(4);
 
@@ -88071,13 +89552,13 @@ module.exports = {
 
 
 /***/ }),
-/* 513 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 var layouts = __webpack_require__(30);
@@ -88654,13 +90135,13 @@ module.exports = {
 
 
 /***/ }),
-/* 514 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(7);
 var Element = __webpack_require__(14);
 var helpers = __webpack_require__(4);
 var layouts = __webpack_require__(30);
@@ -88913,18 +90394,18 @@ module.exports = {
 
 
 /***/ }),
-/* 515 */
+/* 516 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserMain_vue__ = __webpack_require__(242);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b63383d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain_vue__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b63383d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain_vue__ = __webpack_require__(520);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(516)
+  __webpack_require__(517)
 }
 /* script */
 
@@ -88971,13 +90452,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 516 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(517);
+var content = __webpack_require__(518);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -88998,7 +90479,7 @@ if(false) {
 }
 
 /***/ }),
-/* 517 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -89006,13 +90487,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#page-content_wrapper {\r\n    width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 518 */
+/* 519 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89029,7 +90510,7 @@ var render = function() {
         "gmap-map",
         {
           staticStyle: { width: "100%", height: "400px" },
-          attrs: { center: _vm.center, zoom: 16 }
+          attrs: { center: _vm.currentCenter, zoom: 16 }
         },
         _vm._l(_vm.markers, function(m, index) {
           return _c("gmap-marker", {
@@ -89149,7 +90630,7 @@ if (false) {
 }
 
 /***/ }),
-/* 519 */
+/* 520 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89162,24 +90643,43 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("br"),
-      _vm._v(" "),
       _c(
         "v-card",
         [
           _c(
             "v-flex",
+            { attrs: { xs12: "", sm10: "", "offset-sm1": "" } },
             [
-              [
-                _c(
-                  "div",
-                  { attrs: { id: "app" } },
-                  [_c("google-map", { attrs: { testCenter: _vm.testCenter } })],
-                  1
-                )
-              ]
+              _c(
+                "v-alert",
+                {
+                  staticStyle: { cursor: "pointer" },
+                  attrs: {
+                    value: true,
+                    outline: "",
+                    color: "success",
+                    icon: "gps_fixed"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.open_gps_dialog()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.searchAddress[0]) +
+                      "\n        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("GoogleMap", {
+                attrs: { currentCenter: _vm.searchAddress[1] }
+              })
             ],
-            2
+            1
           )
         ],
         1
@@ -89196,119 +90696,13 @@ var render = function() {
             { attrs: { xs12: "", sm10: "", "offset-sm1": "" } },
             [
               _c(
-                "v-card",
+                "v-carousel",
                 [
-                  _c("v-subheader", [_c("h1", [_vm._v("최근 리뷰")])]),
+                  _c("v-carousel-item", { attrs: { src: "/images/1.jpg" } }),
                   _vm._v(" "),
-                  _c(
-                    "v-container",
-                    { attrs: { fluid: "", "grid-list-sm": "" } },
-                    [
-                      _c(
-                        "v-layout",
-                        { attrs: { row: "", wrap: "" } },
-                        [
-                          _c(
-                            "v-flex",
-                            [
-                              _c(
-                                "v-card-title",
-                                { attrs: { "primary-title": "" } },
-                                [
-                                  _c("h3", { staticClass: "headline mb-0" }, [
-                                    _vm._v(_vm._s(_vm.test[1][0]))
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-card-media", {
-                                attrs: {
-                                  src: "/images/" + _vm.test[1][1] + ".jpg",
-                                  height: "200px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-card-actions")
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-flex",
-                            [
-                              _c(
-                                "v-card-title",
-                                { attrs: { "primary-title": "" } },
-                                [
-                                  _c("h3", { staticClass: "headline mb-0" }, [
-                                    _vm._v(_vm._s(_vm.test[1][0]))
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("v-card-media", {
-                                attrs: {
-                                  src: "/images/" + _vm.test[1][1] + ".jpg",
-                                  height: "200px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("v-card-actions")
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
+                  _c("v-carousel-item", { attrs: { src: "/images/2.jpg" } }),
                   _vm._v(" "),
-                  _c("v-subheader", [_c("h1", [_vm._v("나에게 맞는 가게")])]),
-                  _vm._v(" "),
-                  _c(
-                    "v-container",
-                    { attrs: { fluid: "", "grid-list-sm": "" } },
-                    [
-                      _vm.test2
-                        ? _c(
-                            "v-layout",
-                            { attrs: { row: "", wrap: "" } },
-                            _vm._l(3, function(i) {
-                              return _c(
-                                "v-flex",
-                                { key: i, attrs: { xs4: "" } },
-                                [
-                                  _c(
-                                    "v-card-title",
-                                    { attrs: { "primary-title": "" } },
-                                    [
-                                      _c(
-                                        "h3",
-                                        { staticClass: "headline mb-0" },
-                                        [_vm._v(_vm._s(_vm.test2[i][0]))]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("v-card-media", {
-                                    attrs: {
-                                      src:
-                                        "/images/" + _vm.test2[i][1] + ".jpg",
-                                      height: "200px"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("v-card-actions")
-                                ],
-                                1
-                              )
-                            })
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  )
+                  _c("v-carousel-item", { attrs: { src: "/images/3.jpg" } })
                 ],
                 1
               )
@@ -89333,378 +90727,17 @@ if (false) {
 }
 
 /***/ }),
-/* 520 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserMain2_vue__ = __webpack_require__(245);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1dc90e76_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain2_vue__ = __webpack_require__(523);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
-var disposed = false
-function injectStyle (context) {
-  if (disposed) return
-  __webpack_require__(521)
-}
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-
-var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserMain2_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1dc90e76_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain2_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1dc90e76_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserMain2_vue__["b" /* staticRenderFns */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\user\\user_main\\UserMain2.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1dc90e76", Component.options)
-  } else {
-    hotAPI.reload("data-v-1dc90e76", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 521 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(522);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(3).default
-var update = add("554d6504", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserMain2.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserMain2.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 522 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 523 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "v-flex",
-        { attrs: { xs12: "", sm10: "", "offset-sm1": "" } },
-        [
-          _c(
-            "v-card",
-            [
-              _c("v-subheader", [
-                _c("h1", [_vm._v("현재 위치 : 후쿠오카 텐진")])
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
-                [
-                  [
-                    _c(
-                      "div",
-                      { attrs: { id: "app" } },
-                      [
-                        _c("google-map", {
-                          attrs: { testCenter: _vm.testCenter }
-                        })
-                      ],
-                      1
-                    )
-                  ]
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _c("br")
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        { attrs: { row: "" } },
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs12: "", sm10: "", "offset-sm1": "" } },
-            [
-              _c(
-                "v-card",
-                [
-                  _c("v-subheader", [_c("h1", [_vm._v("최근 리뷰")])]),
-                  _vm._v(" "),
-                  _c(
-                    "v-container",
-                    { attrs: { fluid: "", "grid-list-sm": "" } },
-                    [
-                      _vm.test
-                        ? _c(
-                            "v-layout",
-                            { attrs: { row: "", wrap: "" } },
-                            _vm._l(3, function(i) {
-                              return _c(
-                                "v-flex",
-                                { key: i, attrs: { xs4: "" } },
-                                [
-                                  _c(
-                                    "v-card-title",
-                                    { attrs: { "primary-title": "" } },
-                                    [
-                                      _c(
-                                        "h3",
-                                        { staticClass: "headline mb-0" },
-                                        [_vm._v(_vm._s(_vm.test[i][0]))]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("v-card-media", {
-                                    attrs: {
-                                      src: "/images/" + _vm.test[i][1] + ".jpg",
-                                      height: "200px"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-card-actions",
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticStyle: { width: "33%" },
-                                          attrs: {
-                                            flat: "",
-                                            color: "orange",
-                                            to: "" + _vm.test[i][2]
-                                          }
-                                        },
-                                        [_vm._v("Info")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticStyle: { width: "33%" },
-                                          attrs: {
-                                            flat: "",
-                                            color: "orange",
-                                            to: "" + _vm.test[i][3]
-                                          }
-                                        },
-                                        [_vm._v("Menu")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticStyle: { width: "33%" },
-                                          attrs: {
-                                            flat: "",
-                                            color: "orange",
-                                            to: "" + _vm.test[i][4]
-                                          }
-                                        },
-                                        [_vm._v("Review")]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            })
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("v-subheader", [_c("h1", [_vm._v("나에게 맞는 가게")])]),
-                  _vm._v(" "),
-                  _c(
-                    "v-container",
-                    { attrs: { fluid: "", "grid-list-sm": "" } },
-                    [
-                      _vm.test2
-                        ? _c(
-                            "v-layout",
-                            { attrs: { row: "", wrap: "" } },
-                            _vm._l(3, function(i) {
-                              return _c(
-                                "v-flex",
-                                { key: i, attrs: { xs4: "" } },
-                                [
-                                  _c(
-                                    "v-card-title",
-                                    { attrs: { "primary-title": "" } },
-                                    [
-                                      _c(
-                                        "h3",
-                                        { staticClass: "headline mb-0" },
-                                        [_vm._v(_vm._s(_vm.test2[i][0]))]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("v-card-media", {
-                                    attrs: {
-                                      src:
-                                        "/images/" + _vm.test2[i][1] + ".jpg",
-                                      height: "200px"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-card-actions",
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticStyle: { width: "33%" },
-                                          attrs: {
-                                            flat: "",
-                                            color: "orange",
-                                            to: "" + _vm.test2[i][2]
-                                          }
-                                        },
-                                        [_vm._v("Info")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticStyle: { width: "33%" },
-                                          attrs: {
-                                            flat: "",
-                                            color: "orange",
-                                            to: "" + _vm.test2[i][3]
-                                          }
-                                        },
-                                        [_vm._v("Menu")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticStyle: { width: "33%" },
-                                          attrs: {
-                                            flat: "",
-                                            color: "orange",
-                                            to: "" + _vm.test2[i][4]
-                                          }
-                                        },
-                                        [_vm._v("Review")]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            })
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1dc90e76", { render: render, staticRenderFns: staticRenderFns })
-  }
-}
-
-/***/ }),
-/* 524 */
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_Register_vue__ = __webpack_require__(246);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e24368cc_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Register_vue__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e24368cc_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Register_vue__ = __webpack_require__(526);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 /* script */
@@ -89752,7 +90785,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 525 */
+/* 526 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89766,769 +90799,409 @@ var render = function() {
     "v-app",
     [
       _c(
-        "v-layout",
-        { attrs: { row: "", "justify-center": "" } },
+        "v-container",
         [
           _c(
-            "v-dialog",
-            {
-              attrs: { persistent: "", "max-width": "500px" },
-              model: {
-                value: _vm.dialog,
-                callback: function($$v) {
-                  _vm.dialog = $$v
-                },
-                expression: "dialog"
-              }
-            },
+            "v-flex",
+            { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
             [
               _c(
                 "v-btn",
                 {
-                  staticStyle: { width: "30vw", height: "50vh" },
-                  attrs: { slot: "activator", round: "", color: "success" },
-                  slot: "activator"
+                  attrs: { color: "green", outline: "", block: "", large: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.user_categoty = true
+                    }
+                  }
                 },
                 [_vm._v("개인 회원")]
               ),
               _vm._v(" "),
               _c(
-                "v-card",
-                [
-                  _c("v-card-title", [
-                    _c("span", { staticClass: "headline" }, [
-                      _vm._v("개인 회원 가입")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-container",
-                        { attrs: { "grid-list-md": "" } },
-                        [
-                          _c(
-                            "v-layout",
-                            { attrs: { wrap: "" } },
-                            [
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: { placeholder: "ID", required: "" },
-                                    model: {
-                                      value: _vm.F_user_id,
-                                      callback: function($$v) {
-                                        _vm.F_user_id = $$v
-                                      },
-                                      expression: "F_user_id"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Email",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_email,
-                                      callback: function($$v) {
-                                        _vm.F_user_email = $$v
-                                      },
-                                      expression: "F_user_email"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Name",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_name,
-                                      callback: function($$v) {
-                                        _vm.F_user_name = $$v
-                                      },
-                                      expression: "F_user_name"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_password,
-                                      callback: function($$v) {
-                                        _vm.F_password = $$v
-                                      },
-                                      expression: "F_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Confirm Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_C_password,
-                                      callback: function($$v) {
-                                        _vm.F_C_password = $$v
-                                      },
-                                      expression: "F_C_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c(
-                                    "v-radio-group",
-                                    {
-                                      attrs: { mandatory: false },
-                                      model: {
-                                        value: _vm.F_sexValue,
-                                        callback: function($$v) {
-                                          _vm.F_sexValue = $$v
-                                        },
-                                        expression: "F_sexValue"
-                                      }
-                                    },
-                                    [
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Male",
-                                          value: "male",
-                                          default: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Female",
-                                          value: "female"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Country",
-                                      required: "",
-                                      items: ["한국", "日本", "中国", "USA"]
-                                    },
-                                    model: {
-                                      value: _vm.F_country,
-                                      callback: function($$v) {
-                                        _vm.F_country = $$v
-                                      },
-                                      expression: "F_country"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Year",
-                                      required: "",
-                                      items: [
-                                        "1995",
-                                        "1996",
-                                        "1997",
-                                        "1998",
-                                        "1999",
-                                        "2000",
-                                        "2001",
-                                        "2002",
-                                        "2003",
-                                        "2004",
-                                        "2005",
-                                        "2006",
-                                        "2007"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_year,
-                                      callback: function($$v) {
-                                        _vm.F_year = $$v
-                                      },
-                                      expression: "F_year"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Month",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_month,
-                                      callback: function($$v) {
-                                        _vm.F_month = $$v
-                                      },
-                                      expression: "F_month"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Day",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12",
-                                        "13",
-                                        "14",
-                                        "15",
-                                        "16",
-                                        "17",
-                                        "18",
-                                        "19",
-                                        "20",
-                                        "21",
-                                        "22",
-                                        "23",
-                                        "24",
-                                        "25",
-                                        "26",
-                                        "27",
-                                        "28",
-                                        "29",
-                                        "30",
-                                        "31"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_day,
-                                      callback: function($$v) {
-                                        _vm.F_day = $$v
-                                      },
-                                      expression: "F_day"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.dialog = false
-                            }
-                          }
-                        },
-                        [_vm._v("Close")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.register()
-                            }
-                          }
-                        },
-                        [_vm._v("Register")]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
+                "v-btn",
+                {
+                  attrs: { color: "red", outline: "", block: "", large: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.user_categoty = false
+                    }
+                  }
+                },
+                [_vm._v("사업자 회원")]
               )
             ],
             1
           ),
           _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
           _c(
-            "v-dialog",
-            {
-              attrs: { persistent: "", "max-width": "500px" },
-              model: {
-                value: _vm.dialog2,
-                callback: function($$v) {
-                  _vm.dialog2 = $$v
-                },
-                expression: "dialog2"
-              }
-            },
+            "v-flex",
+            { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
             [
-              _c(
-                "v-btn",
-                {
-                  staticStyle: { width: "30vw", height: "50vh" },
-                  attrs: { slot: "activator", round: "", color: "error" },
-                  slot: "activator"
-                },
-                [_vm._v("사업자 회원")]
-              ),
-              _vm._v(" "),
               _c(
                 "v-card",
                 [
-                  _c("v-card-title", [
-                    _c("span", { staticClass: "headline" }, [
-                      _vm._v("사업자 회원 가입")
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _c(
                     "v-card-text",
                     [
-                      _c(
-                        "v-container",
-                        { attrs: { "grid-list-md": "" } },
-                        [
-                          _c(
-                            "v-layout",
-                            { attrs: { wrap: "" } },
-                            [
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: { placeholder: "ID", required: "" },
-                                    model: {
-                                      value: _vm.F_user_id,
-                                      callback: function($$v) {
-                                        _vm.F_user_id = $$v
-                                      },
-                                      expression: "F_user_id"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Email",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_email,
-                                      callback: function($$v) {
-                                        _vm.F_user_email = $$v
-                                      },
-                                      expression: "F_user_email"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Name",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_user_name,
-                                      callback: function($$v) {
-                                        _vm.F_user_name = $$v
-                                      },
-                                      expression: "F_user_name"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_password,
-                                      callback: function($$v) {
-                                        _vm.F_password = $$v
-                                      },
-                                      expression: "F_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm6: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      placeholder: "Confirm Password",
-                                      type: "password",
-                                      required: ""
-                                    },
-                                    model: {
-                                      value: _vm.F_C_password,
-                                      callback: function($$v) {
-                                        _vm.F_C_password = $$v
-                                      },
-                                      expression: "F_C_password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c(
-                                    "v-radio-group",
-                                    {
-                                      attrs: { mandatory: false },
-                                      model: {
-                                        value: _vm.F_sexValue,
-                                        callback: function($$v) {
-                                          _vm.F_sexValue = $$v
-                                        },
-                                        expression: "F_sexValue"
-                                      }
-                                    },
-                                    [
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Male",
-                                          value: "male",
-                                          default: ""
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("v-radio", {
-                                        attrs: {
-                                          label: "Female",
-                                          value: "famale"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Country",
-                                      required: "",
-                                      items: ["한국", "日本", "中国", "USA"]
-                                    },
-                                    model: {
-                                      value: _vm.F_country,
-                                      callback: function($$v) {
-                                        _vm.F_country = $$v
-                                      },
-                                      expression: "F_country"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Year",
-                                      required: "",
-                                      items: [
-                                        "1995",
-                                        "1996",
-                                        "1997",
-                                        "1998",
-                                        "1999",
-                                        "2000",
-                                        "2001",
-                                        "2002",
-                                        "2003",
-                                        "2004",
-                                        "2005",
-                                        "2006",
-                                        "2007"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_year,
-                                      callback: function($$v) {
-                                        _vm.F_year = $$v
-                                      },
-                                      expression: "F_year"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Month",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_month,
-                                      callback: function($$v) {
-                                        _vm.F_month = $$v
-                                      },
-                                      expression: "F_month"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", sm3: "" } },
-                                [
-                                  _c("v-select", {
-                                    attrs: {
-                                      placeholder: "Day",
-                                      required: "",
-                                      items: [
-                                        "1",
-                                        "2",
-                                        "3",
-                                        "4",
-                                        "5",
-                                        "6",
-                                        "7",
-                                        "8",
-                                        "9",
-                                        "10",
-                                        "11",
-                                        "12",
-                                        "13",
-                                        "14",
-                                        "15",
-                                        "16",
-                                        "17",
-                                        "18",
-                                        "19",
-                                        "20",
-                                        "21",
-                                        "22",
-                                        "23",
-                                        "24",
-                                        "25",
-                                        "26",
-                                        "27",
-                                        "28",
-                                        "29",
-                                        "30",
-                                        "31"
-                                      ]
-                                    },
-                                    model: {
-                                      value: _vm.F_day,
-                                      callback: function($$v) {
-                                        _vm.F_day = $$v
-                                      },
-                                      expression: "F_day"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.dialog2 = false
-                            }
-                          }
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "ID",
+                          required: "",
+                          color: "green",
+                          rules: _vm.idRules
                         },
-                        [_vm._v("Close")]
-                      ),
+                        model: {
+                          value: _vm.user_id,
+                          callback: function($$v) {
+                            _vm.user_id = $$v
+                          },
+                          expression: "user_id"
+                        }
+                      }),
                       _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "blue darken-1", flat: "" },
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.register2()
-                            }
-                          }
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-icon": _vm.hidePw1
+                            ? "visibility"
+                            : "visibility_off",
+                          "append-icon-cb": function() {
+                            return (_vm.hidePw1 = !_vm.hidePw1)
+                          },
+                          type: _vm.hidePw1 ? "password" : "text",
+                          label: "Enter your password",
+                          color: "green",
+                          rules: _vm.pwRules
                         },
-                        [_vm._v("Register")]
-                      )
+                        model: {
+                          value: _vm.user_pw1,
+                          callback: function($$v) {
+                            _vm.user_pw1 = $$v
+                          },
+                          expression: "user_pw1"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-icon": _vm.hidePw2
+                            ? "visibility"
+                            : "visibility_off",
+                          "append-icon-cb": function() {
+                            return (_vm.hidePw2 = !_vm.hidePw2)
+                          },
+                          type: _vm.hidePw2 ? "password" : "text",
+                          label: "Enter your password confirm",
+                          color: "green",
+                          rules: _vm.pwRules
+                        },
+                        model: {
+                          value: _vm.user_pw2,
+                          callback: function($$v) {
+                            _vm.user_pw2 = $$v
+                          },
+                          expression: "user_pw2"
+                        }
+                      })
                     ],
                     1
                   )
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-text",
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "Name",
+                          required: "",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_name,
+                          callback: function($$v) {
+                            _vm.user_name = $$v
+                          },
+                          expression: "user_name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-radio-group",
+                        {
+                          attrs: { row: "" },
+                          model: {
+                            value: _vm.user_gender,
+                            callback: function($$v) {
+                              _vm.user_gender = $$v
+                            },
+                            expression: "user_gender"
+                          }
+                        },
+                        [
+                          _c("v-radio", {
+                            attrs: {
+                              label: "Male",
+                              value: "Male",
+                              color: "green"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-radio", {
+                            attrs: {
+                              label: "Female",
+                              value: "Female",
+                              color: "green"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  placeholder: "Year",
+                                  required: "",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.user_year,
+                                  callback: function($$v) {
+                                    _vm.user_year = $$v
+                                  },
+                                  expression: "user_year"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.month,
+                                  label: "Month",
+                                  color: "green",
+                                  "single-line": ""
+                                },
+                                model: {
+                                  value: _vm.user_month,
+                                  callback: function($$v) {
+                                    _vm.user_month = $$v
+                                  },
+                                  expression: "user_month"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  placeholder: "Day",
+                                  required: "",
+                                  "append-icon": "cake",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.user_day,
+                                  callback: function($$v) {
+                                    _vm.user_day = $$v
+                                  },
+                                  expression: "user_day"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "Email",
+                          required: "",
+                          "append-icon": "email",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_email,
+                          callback: function($$v) {
+                            _vm.user_email = $$v
+                          },
+                          expression: "user_email"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: {
+                          items: _vm.country,
+                          label: "Country",
+                          "single-line": "",
+                          auto: "",
+                          "append-icon": "language",
+                          "hide-details": "",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_country,
+                          callback: function($$v) {
+                            _vm.user_country = $$v
+                          },
+                          expression: "user_country"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.user_categoty
+                ? _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-text",
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              items: _vm.food,
+                              label: "Favorite Food (max 3 items)",
+                              "single-line": "",
+                              auto: "",
+                              "hide-details": "",
+                              multiple: "",
+                              chips: "",
+                              color: "green"
+                            },
+                            model: {
+                              value: _vm.user_favorite,
+                              callback: function($$v) {
+                                _vm.user_favorite = $$v
+                              },
+                              expression: "user_favorite"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
             ],
             1
+          ),
+          _vm._v(" "),
+          _vm.user_categoty
+            ? _c(
+                "v-flex",
+                { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+                [
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color: "green",
+                        block: "",
+                        outline: "",
+                        large: ""
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.register()
+                        }
+                      }
+                    },
+                    [_vm._v("개인 회원 가입")]
+                  )
+                ],
+                1
+              )
+            : _c(
+                "v-flex",
+                { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color: "red",
+                        block: "",
+                        outline: "",
+                        large: ""
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.register()
+                        }
+                      }
+                    },
+                    [_vm._v("사업자 회원 가입")]
+                  )
+                ],
+                1
+              )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-snackbar",
+        {
+          attrs: { timeout: _vm.timeout, top: "", vertical: "" },
+          model: {
+            value: _vm.snackbar,
+            callback: function($$v) {
+              _vm.snackbar = $$v
+            },
+            expression: "snackbar"
+          }
+        },
+        [
+          _vm._v("\n    " + _vm._s(_vm.snackText) + "\n    "),
+          _c(
+            "v-btn",
+            {
+              attrs: { flat: "", color: "pink" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.snackbar = false
+                }
+              }
+            },
+            [_vm._v("Close")]
           )
         ],
         1
@@ -90548,18 +91221,18 @@ if (false) {
 }
 
 /***/ }),
-/* 526 */
+/* 527 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserRestaurantMain_vue__ = __webpack_require__(247);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_124357a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurantMain_vue__ = __webpack_require__(529);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_124357a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurantMain_vue__ = __webpack_require__(530);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(527)
+  __webpack_require__(528)
 }
 /* script */
 
@@ -90606,13 +91279,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 527 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(528);
+var content = __webpack_require__(529);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -90633,7 +91306,7 @@ if(false) {
 }
 
 /***/ }),
-/* 528 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -90647,7 +91320,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 529 */
+/* 530 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90734,18 +91407,18 @@ if (false) {
 }
 
 /***/ }),
-/* 530 */
+/* 531 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPage_vue__ = __webpack_require__(248);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_60192786_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPage_vue__ = __webpack_require__(535);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_60192786_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPage_vue__ = __webpack_require__(536);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(531)
+  __webpack_require__(532)
 }
 /* script */
 
@@ -90792,13 +91465,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 531 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(532);
+var content = __webpack_require__(533);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -90819,7 +91492,7 @@ if(false) {
 }
 
 /***/ }),
-/* 532 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -90833,13 +91506,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""])
 
 
 /***/ }),
-/* 533 */
+/* 534 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_ownerPageTop_vue__ = __webpack_require__(249);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7879bd68_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ownerPageTop_vue__ = __webpack_require__(534);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7879bd68_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ownerPageTop_vue__ = __webpack_require__(535);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 /* script */
@@ -90887,7 +91560,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 534 */
+/* 535 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90932,7 +91605,7 @@ if (false) {
 }
 
 /***/ }),
-/* 535 */
+/* 536 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90969,19 +91642,19 @@ if (false) {
 }
 
 /***/ }),
-/* 536 */
+/* 537 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideReservation_vue__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideReservation_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideReservation_vue__);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4858c1a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideReservation_vue__ = __webpack_require__(539);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4858c1a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideReservation_vue__ = __webpack_require__(540);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(537)
+  __webpack_require__(538)
 }
 /* script */
 
@@ -91028,13 +91701,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 537 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(538);
+var content = __webpack_require__(539);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -91055,7 +91728,7 @@ if(false) {
 }
 
 /***/ }),
-/* 538 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -91069,7 +91742,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  /* 폰�
 
 
 /***/ }),
-/* 539 */
+/* 540 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91146,18 +91819,18 @@ if (false) {
 }
 
 /***/ }),
-/* 540 */
+/* 541 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideSetting_vue__ = __webpack_require__(251);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c9d627a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideSetting_vue__ = __webpack_require__(543);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c9d627a8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideSetting_vue__ = __webpack_require__(544);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(541)
+  __webpack_require__(542)
 }
 /* script */
 
@@ -91204,13 +91877,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 541 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(542);
+var content = __webpack_require__(543);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -91231,7 +91904,7 @@ if(false) {
 }
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -91245,7 +91918,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91341,18 +92014,18 @@ if (false) {
 }
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerPageSideStatistics_vue__ = __webpack_require__(252);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a9095f12_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideStatistics_vue__ = __webpack_require__(547);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a9095f12_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerPageSideStatistics_vue__ = __webpack_require__(548);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(545)
+  __webpack_require__(546)
 }
 /* script */
 
@@ -91399,13 +92072,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(546);
+var content = __webpack_require__(547);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -91426,7 +92099,7 @@ if(false) {
 }
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -91440,7 +92113,7 @@ exports.push([module.i, "\nㅇ\n    /* 폰트 컬러 */\n  .fontColor_red {\n   
 
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91513,18 +92186,18 @@ if (false) {
 }
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerReservationlist_vue__ = __webpack_require__(253);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ff3778da_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationlist_vue__ = __webpack_require__(551);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_ff3778da_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationlist_vue__ = __webpack_require__(552);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(549)
+  __webpack_require__(550)
 }
 /* script */
 
@@ -91571,13 +92244,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 549 */
+/* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(550);
+var content = __webpack_require__(551);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -91598,7 +92271,7 @@ if(false) {
 }
 
 /***/ }),
-/* 550 */
+/* 551 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -91612,7 +92285,7 @@ exports.push([module.i, "\n.Reservation_list {\n    padding-left: 5%;\n    paddi
 
 
 /***/ }),
-/* 551 */
+/* 552 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92150,18 +92823,18 @@ if (false) {
 }
 
 /***/ }),
-/* 552 */
+/* 553 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerReservationAccept_vue__ = __webpack_require__(254);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4f447bdd_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationAccept_vue__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4f447bdd_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationAccept_vue__ = __webpack_require__(556);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(553)
+  __webpack_require__(554)
 }
 /* script */
 
@@ -92208,13 +92881,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 553 */
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(554);
+var content = __webpack_require__(555);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -92235,7 +92908,7 @@ if(false) {
 }
 
 /***/ }),
-/* 554 */
+/* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -92249,7 +92922,7 @@ exports.push([module.i, "\n.reservation_accept {\n    padding-left: 5%;\n    pad
 
 
 /***/ }),
-/* 555 */
+/* 556 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92470,18 +93143,18 @@ if (false) {
 }
 
 /***/ }),
-/* 556 */
+/* 557 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerReservationSetting_vue__ = __webpack_require__(255);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6f29484b_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationSetting_vue__ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6f29484b_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerReservationSetting_vue__ = __webpack_require__(560);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(557)
+  __webpack_require__(558)
 }
 /* script */
 
@@ -92528,13 +93201,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 557 */
+/* 558 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(558);
+var content = __webpack_require__(559);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -92555,7 +93228,7 @@ if(false) {
 }
 
 /***/ }),
-/* 558 */
+/* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -92563,13 +93236,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.reservation_calender {\n    float: left;\n    width: 150px;\n    height: 200px;\n}\n.reservation_set_table {\n    float: left;\n    padding-left : 15%;\n}\n.ownerReservationSetting {\n    padding-left : 2%;\n    padding-right : 2%;\n}\n", ""]);
+exports.push([module.i, "\n.reservation_calender {\n    float: left;\n    width: 20%;\n    padding-left: 1%;\n}\n.reservation_set_table {\n    float: left;\n    padding-left : 10%;\n}\n.ownerReservationSetting {\n    padding-left : 2%;\n    padding-right : 2%;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 559 */
+/* 560 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92589,267 +93262,380 @@ var render = function() {
         _c("h3", [_c("B", [_vm._v("예약 설정")])], 1),
         _vm._v("\n        예약 관련된 설정을 할 수 있습니다.\n        "),
         _c("hr"),
-        _c("br"),
         _vm._v(" "),
         _c(
-          "v-dialog",
-          {
-            attrs: { persistent: "", "max-width": "500px" },
-            model: {
-              value: _vm.dialog,
-              callback: function($$v) {
-                _vm.dialog = $$v
-              },
-              expression: "dialog"
-            }
-          },
+          "v-tabs",
+          { attrs: { left: "" } },
           [
-            _c(
-              "v-btn",
-              {
-                attrs: { slot: "activator", color: "#424242", dark: "" },
-                on: {
-                  click: function($event) {
-                    _vm.settime()
-                  }
-                },
-                slot: "activator"
-              },
-              [_vm._v("예약 설정 추가")]
-            ),
+            _c("v-tab", [
+              _c("h5", [_c("B", [_vm._v("  예약 주문 설정  ")])], 1)
+            ]),
             _vm._v(" "),
             _c(
-              "v-card",
+              "v-tab-item",
               [
-                _c("v-card-title", [
-                  _c("span", { staticClass: "headline" }, [
-                    _vm._v("예약 설정 추가")
-                  ])
-                ]),
+                _c(
+                  "v-radio-group",
+                  {
+                    model: {
+                      value: _vm.reservation_selectMenu,
+                      callback: function($$v) {
+                        _vm.reservation_selectMenu = $$v
+                      },
+                      expression: "reservation_selectMenu"
+                    }
+                  },
+                  [
+                    _c("B", [_vm._v(" 현재 상태 ")]),
+                    _vm._v(": " + _vm._s(this.menuSelectData) + " "),
+                    _c("br"),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("v-radio", {
+                      attrs: { label: "주문 가능", value: "true" }
+                    }),
+                    _vm._v(" "),
+                    _c("v-radio", {
+                      attrs: { label: "주문 불가능", value: "false" }
+                    })
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c(
-                  "v-card-text",
+                  "v-btn",
+                  {
+                    attrs: { color: "primary" },
+                    on: { click: _vm.menuoption_save }
+                  },
+                  [_vm._v("저장하기")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("v-tab", [
+              _c("h5", [_c("B", [_vm._v("  예약 날짜/시간 설정  ")])], 1)
+            ]),
+            _vm._v(" "),
+            _c(
+              "v-tab-item",
+              [
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "v-dialog",
+                  {
+                    attrs: { persistent: "", "max-width": "500px" },
+                    model: {
+                      value: _vm.dialog,
+                      callback: function($$v) {
+                        _vm.dialog = $$v
+                      },
+                      expression: "dialog"
+                    }
+                  },
                   [
                     _c(
-                      "v-container",
-                      { attrs: { "grid-list-md": "" } },
+                      "v-btn",
+                      {
+                        attrs: {
+                          slot: "activator",
+                          color: "#424242",
+                          dark: ""
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.settime()
+                          }
+                        },
+                        slot: "activator"
+                      },
+                      [_vm._v("예약 설정 추가")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-card",
                       [
+                        _c("v-card-title", [
+                          _c("span", { staticClass: "headline" }, [
+                            _vm._v("예약 설정 추가")
+                          ])
+                        ]),
+                        _vm._v(" "),
                         _c(
-                          "v-layout",
-                          { attrs: { wrap: "" } },
+                          "v-card-text",
                           [
                             _c(
-                              "v-flex",
-                              { attrs: { xs11: "" } },
+                              "v-container",
+                              { attrs: { "grid-list-md": "" } },
                               [
                                 _c(
-                                  "v-menu",
-                                  {
-                                    ref: "menu",
-                                    attrs: {
-                                      lazy: "",
-                                      "close-on-content-click": false,
-                                      transition: "scale-transition",
-                                      "offset-y": "",
-                                      "full-width": "",
-                                      "nudge-right": 40,
-                                      "min-width": "290px",
-                                      "return-value":
-                                        _vm.ReservationSettingItem.pick_date
-                                    },
-                                    on: {
-                                      "update:returnValue": function($event) {
-                                        _vm.$set(
-                                          _vm.ReservationSettingItem,
-                                          "pick_date",
-                                          $event
-                                        )
-                                      }
-                                    },
-                                    model: {
-                                      value: _vm.menu,
-                                      callback: function($$v) {
-                                        _vm.menu = $$v
-                                      },
-                                      expression: "menu"
-                                    }
-                                  },
+                                  "v-layout",
+                                  { attrs: { wrap: "" } },
                                   [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        slot: "activator",
-                                        label: "pick Date",
-                                        "prepend-icon": "event",
-                                        readonly: "",
-                                        hint: "예약 설정할 날짜 선택",
-                                        "persistent-hint": ""
-                                      },
-                                      slot: "activator",
-                                      model: {
-                                        value:
-                                          _vm.ReservationSettingItem.pick_date,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.ReservationSettingItem,
-                                            "pick_date",
-                                            $$v
-                                          )
-                                        },
-                                        expression:
-                                          "ReservationSettingItem.pick_date"
-                                      }
-                                    }),
-                                    _vm._v(" "),
                                     _c(
-                                      "v-date-picker",
-                                      {
-                                        attrs: {
-                                          "no-title": "",
-                                          scrollable: ""
-                                        },
-                                        model: {
-                                          value:
-                                            _vm.ReservationSettingItem
-                                              .pick_date,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.ReservationSettingItem,
-                                              "pick_date",
-                                              $$v
-                                            )
-                                          },
-                                          expression:
-                                            "ReservationSettingItem.pick_date"
-                                        }
-                                      },
+                                      "v-flex",
+                                      { attrs: { xs11: "" } },
                                       [
-                                        _c("v-spacer"),
-                                        _vm._v(" "),
                                         _c(
-                                          "v-btn",
+                                          "v-menu",
                                           {
+                                            ref: "menu",
                                             attrs: {
-                                              flat: "",
-                                              color: "primary"
+                                              lazy: "",
+                                              "close-on-content-click": false,
+                                              transition: "scale-transition",
+                                              "offset-y": "",
+                                              "full-width": "",
+                                              "nudge-right": 40,
+                                              "min-width": "290px",
+                                              "return-value":
+                                                _vm.ReservationSettingItem
+                                                  .pick_date
                                             },
                                             on: {
-                                              click: function($event) {
-                                                _vm.menu = false
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Cancel")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              flat: "",
-                                              color: "primary"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                _vm.$refs.menu.save(
-                                                  _vm.ReservationSettingItem
-                                                    .pick_date
+                                              "update:returnValue": function(
+                                                $event
+                                              ) {
+                                                _vm.$set(
+                                                  _vm.ReservationSettingItem,
+                                                  "pick_date",
+                                                  $event
                                                 )
                                               }
+                                            },
+                                            model: {
+                                              value: _vm.menu,
+                                              callback: function($$v) {
+                                                _vm.menu = $$v
+                                              },
+                                              expression: "menu"
                                             }
                                           },
-                                          [_vm._v("OK")]
+                                          [
+                                            _c("v-text-field", {
+                                              attrs: {
+                                                slot: "activator",
+                                                label: "pick Date",
+                                                "prepend-icon": "event",
+                                                readonly: "",
+                                                hint: "예약 설정할 날짜 선택",
+                                                "persistent-hint": ""
+                                              },
+                                              slot: "activator",
+                                              model: {
+                                                value:
+                                                  _vm.ReservationSettingItem
+                                                    .pick_date,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.ReservationSettingItem,
+                                                    "pick_date",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression:
+                                                  "ReservationSettingItem.pick_date"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-date-picker",
+                                              {
+                                                attrs: {
+                                                  "no-title": "",
+                                                  scrollable: ""
+                                                },
+                                                model: {
+                                                  value:
+                                                    _vm.ReservationSettingItem
+                                                      .pick_date,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.ReservationSettingItem,
+                                                      "pick_date",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "ReservationSettingItem.pick_date"
+                                                }
+                                              },
+                                              [
+                                                _c("v-spacer"),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-btn",
+                                                  {
+                                                    attrs: {
+                                                      flat: "",
+                                                      color: "primary"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.menu = false
+                                                      }
+                                                    }
+                                                  },
+                                                  [_vm._v("Cancel")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-btn",
+                                                  {
+                                                    attrs: {
+                                                      flat: "",
+                                                      color: "primary"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.$refs.menu.save(
+                                                          _vm
+                                                            .ReservationSettingItem
+                                                            .pick_date
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [_vm._v("OK")]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
                                         )
                                       ],
                                       1
-                                    )
+                                    ),
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { xs11: "" } },
+                                      [
+                                        _c(
+                                          "v-radio-group",
+                                          {
+                                            attrs: {
+                                              mandatory: false,
+                                              row: ""
+                                            },
+                                            model: {
+                                              value:
+                                                _vm.ReservationSettingItem
+                                                  .impossible,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.ReservationSettingItem,
+                                                  "impossible",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "ReservationSettingItem.impossible"
+                                            }
+                                          },
+                                          [
+                                            _c("v-radio", {
+                                              attrs: {
+                                                label: "예약 가능",
+                                                value: "예약 가능"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("v-radio", {
+                                              attrs: {
+                                                label: "예약 불가능",
+                                                value: "예약 불가능"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    this.ReservationSettingItem.impossible ==
+                                    "예약 가능"
+                                      ? _c(
+                                          "v-flex",
+                                          [
+                                            _vm._v(
+                                              "\n                                            예약 가능한 시간대를 설정해 주세요.\n                                            "
+                                            ),
+                                            _c("v-select", {
+                                              staticClass:
+                                                "input-group--focused",
+                                              attrs: {
+                                                items: _vm.time_item,
+                                                multiple: "",
+                                                label: "Select",
+                                                "item-value": "text"
+                                              },
+                                              model: {
+                                                value:
+                                                  _vm.ReservationSettingItem
+                                                    .reservation_time,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.ReservationSettingItem,
+                                                    "reservation_time",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression:
+                                                  "ReservationSettingItem.reservation_time"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )
                               ],
                               1
-                            ),
-                            _vm._v(" "),
-                            _c("br"),
-                            _c("br"),
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-card-actions",
+                          [
+                            _c("v-spacer"),
                             _vm._v(" "),
                             _c(
-                              "v-flex",
-                              { attrs: { xs11: "" } },
-                              [
-                                _c(
-                                  "v-radio-group",
-                                  {
-                                    attrs: { mandatory: false, row: "" },
-                                    model: {
-                                      value:
-                                        _vm.ReservationSettingItem.impossible,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.ReservationSettingItem,
-                                          "impossible",
-                                          $$v
-                                        )
-                                      },
-                                      expression:
-                                        "ReservationSettingItem.impossible"
-                                    }
-                                  },
-                                  [
-                                    _c("v-radio", {
-                                      attrs: {
-                                        label: "예약 가능",
-                                        value: "예약 가능"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("v-radio", {
-                                      attrs: {
-                                        label: "예약 불가능",
-                                        value: "예약 불가능"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
+                              "v-btn",
+                              {
+                                attrs: { color: "blue darken-1", flat: "" },
+                                nativeOn: {
+                                  click: function($event) {
+                                    _vm.dialog = false
+                                  }
+                                }
+                              },
+                              [_vm._v("Close")]
                             ),
                             _vm._v(" "),
-                            this.ReservationSettingItem.impossible ==
-                            "예약 가능"
-                              ? _c(
-                                  "v-flex",
-                                  [
-                                    _vm._v(
-                                      "\n                                예약 가능한 시간대를 설정해 주세요.\n                                "
-                                    ),
-                                    _c("v-select", {
-                                      staticClass: "input-group--focused",
-                                      attrs: {
-                                        items: _vm.time_item,
-                                        multiple: "",
-                                        label: "Select",
-                                        "item-value": "text"
-                                      },
-                                      model: {
-                                        value:
-                                          _vm.ReservationSettingItem
-                                            .reservation_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.ReservationSettingItem,
-                                            "reservation_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression:
-                                          "ReservationSettingItem.reservation_time"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { color: "blue darken-1", flat: "" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.check()
+                                  }
+                                }
+                              },
+                              [_vm._v("Save")]
+                            )
                           ],
                           1
                         )
@@ -92860,58 +93646,12 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c(
-                  "v-card-actions",
-                  [
-                    _c("v-spacer"),
-                    _vm._v(" "),
-                    _c(
-                      "v-btn",
-                      {
-                        attrs: { color: "blue darken-1", flat: "" },
-                        nativeOn: {
-                          click: function($event) {
-                            _vm.dialog = false
-                          }
-                        }
-                      },
-                      [_vm._v("Close")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-btn",
-                      {
-                        attrs: { color: "blue darken-1", flat: "" },
-                        on: {
-                          click: function($event) {
-                            _vm.check()
-                          }
-                        }
-                      },
-                      [_vm._v("Save")]
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "div",
-            { staticClass: "reservation_calender" },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-between": "", wrap: "" } },
-                [
+                _c("div", [
+                  _c("br"),
+                  _vm._v(" "),
                   _c(
-                    "v-flex",
-                    { staticClass: "my-3" },
+                    "div",
+                    { staticClass: "reservation_calender" },
                     [
                       _c("v-date-picker", {
                         attrs: {
@@ -92931,130 +93671,119 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "primary" },
-                      on: {
-                        click: function($event) {
-                          _vm.date_click()
-                        }
-                      }
-                    },
-                    [_vm._v(" 조회하기 ")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "reservation_set_table" },
-            [
-              _c("br"),
-              _vm._v(" "),
-              _c("v-data-table", {
-                staticClass: "elevation-1",
-                attrs: {
-                  headers: _vm.headers,
-                  items: _vm.items,
-                  "hide-actions": ""
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "items",
-                    fn: function(props) {
-                      return [
-                        _c("td", { staticClass: "text-xs-left" }, [
-                          _vm._v(_vm._s(props.item.setting_date))
-                        ]),
-                        _vm._v(" "),
-                        props.item.remark
-                          ? _c("td", { staticClass: "text-xs-left" }, [
-                              _vm._v("예약 가능")
-                            ])
-                          : _c("td", { staticClass: "text-xs-left" }, [
-                              _vm._v("예약 불가능")
-                            ]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "text-xs-left" }, [
-                          _vm._v(_vm._s(props.item.start_time))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: "text-xs-left" }, [
-                          _vm._v(_vm._s(props.item.end_time))
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          { staticClass: "justify-center layout px-0" },
-                          [
-                            _c(
-                              "v-btn",
-                              {
-                                staticClass: "mx-0",
-                                attrs: { icon: "" },
-                                on: {
-                                  click: [
-                                    function($event) {
-                                      $event.stopPropagation()
-                                      _vm.setdialog = true
-                                    },
-                                    function($event) {
-                                      _vm.deleteItem(props.item)
-                                    }
-                                  ]
-                                }
-                              },
-                              [
-                                _c("v-icon", { attrs: { color: "pink" } }, [
-                                  _vm._v("delete")
-                                ])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-dialog",
-                              {
-                                attrs: { "max-width": "500px" },
-                                model: {
-                                  value: _vm.setdialog,
-                                  callback: function($$v) {
-                                    _vm.setdialog = $$v
-                                  },
-                                  expression: "setdialog"
-                                }
-                              },
-                              [
-                                _c(
-                                  "v-card",
-                                  [
-                                    _c("v-card-text", [
-                                      _vm._v(
-                                        "\n                                        예약 설정이 삭제 되었습니다.\n                                    "
-                                      )
+                    "div",
+                    { staticClass: "reservation_set_table" },
+                    [
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("v-data-table", {
+                        staticClass: "elevation-1",
+                        attrs: {
+                          headers: _vm.headers,
+                          items: _vm.items,
+                          "hide-actions": ""
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "items",
+                            fn: function(props) {
+                              return [
+                                _c("td", { staticClass: "text-xs-left" }, [
+                                  _vm._v(_vm._s(props.item.setting_date))
+                                ]),
+                                _vm._v(" "),
+                                props.item.remark
+                                  ? _c("td", { staticClass: "text-xs-left" }, [
+                                      _vm._v("예약 가능")
+                                    ])
+                                  : _c("td", { staticClass: "text-xs-left" }, [
+                                      _vm._v("예약 불가능")
                                     ]),
-                                    _vm._v(" "),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-xs-left" }, [
+                                  _vm._v(_vm._s(props.item.start_time))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-xs-left" }, [
+                                  _vm._v(_vm._s(props.item.end_time))
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticClass: "justify-center layout px-0" },
+                                  [
                                     _c(
                                       "v-btn",
                                       {
                                         staticClass: "mx-0",
                                         attrs: { icon: "" },
                                         on: {
-                                          click: function($event) {
-                                            $event.stopPropagation()
-                                            _vm.setdialog = false
-                                          }
+                                          click: [
+                                            function($event) {
+                                              $event.stopPropagation()
+                                              _vm.setdialog = true
+                                            },
+                                            function($event) {
+                                              _vm.deleteItem(props.item)
+                                            }
+                                          ]
                                         }
                                       },
                                       [
                                         _c(
                                           "v-icon",
-                                          { attrs: { color: "error" } },
-                                          [_vm._v("확인")]
+                                          { attrs: { color: "pink" } },
+                                          [_vm._v("delete")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-dialog",
+                                      {
+                                        attrs: { "max-width": "500px" },
+                                        model: {
+                                          value: _vm.setdialog,
+                                          callback: function($$v) {
+                                            _vm.setdialog = $$v
+                                          },
+                                          expression: "setdialog"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-card",
+                                          [
+                                            _c("v-card-text", [
+                                              _vm._v(
+                                                "\n                                                    예약 설정이 삭제 되었습니다.\n                                                "
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-btn",
+                                              {
+                                                staticClass: "mx-0",
+                                                attrs: { icon: "" },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.stopPropagation()
+                                                    _vm.setdialog = false
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "v-icon",
+                                                  { attrs: { color: "error" } },
+                                                  [_vm._v("확인")]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
                                         )
                                       ],
                                       1
@@ -93062,21 +93791,21 @@ var render = function() {
                                   ],
                                   1
                                 )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
-                    }
-                  }
+                              ]
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
+                  )
                 ])
-              })
-            ],
-            1
-          )
-        ])
+              ],
+              1
+            )
+          ],
+          1
+        )
       ],
       1
     )
@@ -93093,18 +93822,18 @@ if (false) {
 }
 
 /***/ }),
-/* 560 */
+/* 561 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerRestaurant_vue__ = __webpack_require__(256);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_515ac086_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerRestaurant_vue__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_515ac086_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerRestaurant_vue__ = __webpack_require__(564);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(561)
+  __webpack_require__(562)
 }
 /* script */
 
@@ -93151,13 +93880,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 561 */
+/* 562 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(562);
+var content = __webpack_require__(563);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -93178,7 +93907,7 @@ if(false) {
 }
 
 /***/ }),
-/* 562 */
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -93186,13 +93915,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n/* 이미지 업로드 버튼의 라벨 스타일 */\n.upload_btn {\n    width: 100%;\n    font-size: 1.5rem;\n    position: relative;  \n    color:lightseagreen;\n}\n/* 이미지 업로드 버튼 스타일 */\n.upload_btn_hidden {\n    width: 0%;\n    font-size: 0px;\n    position: relative; \n    opacity: 0;\n}\n/* 타이틀 이미지 상위 card */\n.title_div {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 35%;\n}\n/* 갤러리 이미지 상위 card */\n.gallery_div {\n    position: relative;\n    float: left;\n    margin: 1%; \n    background-color: lightgray;\n    border: 1px solid lightgrey;\n    width: 31%;\n    height: 0;\n    overflow: hidden; \n    padding-bottom: 22%;\n}\n/* 타이틀, 갤러리 이미지 스타일 */\n.img_style { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 105%;\n    height: 105%; \n    -o-object-fit: cover; \n       object-fit: cover;\n}   \n/* 저장하기 버튼 스타일 */\n.submit_btn{\n    width:80%; height: 80%; font-size:1.5rem;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n/* 이미지 업로드 버튼의 라벨 스타일 */\n.upload_btn {\n    width: 100%;\n    font-size: 1.5rem;\n    position: relative;  \n    color:lightseagreen;\n}\n/* 이미지 업로드 버튼 스타일 */\n.upload_btn_hidden {\n    width: 0%;\n    font-size: 0px;\n    position: relative; \n    opacity: 0;\n}\n/* 타이틀 이미지 상위 card */\n.title_div {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 35%;\n}\n/* 갤러리 이미지 상위 card */\n.gallery_div {\n    position: relative;\n    float: left;\n    margin: 1%; \n    background-color: lightgray;\n    border: 1px solid lightgrey;\n    width: 31%;\n    height: 0;\n    overflow: hidden; \n    padding-bottom: 22%;\n}\n/* 타이틀, 갤러리 이미지 스타일 */\n.img_style { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 105%;\n    height: 105%; \n    -o-object-fit: cover; \n       object-fit: cover;\n}   \n/* 저장하기 버튼 스타일 */\n.submit_btn{\n    width:80%; height: 80%; font-size:1.5rem;\n}\n.context-menus {\n    width: 20%;\n    border: 1px solid black;\n    z-index:100;\n    text-align: center;\n    position: absolute;\n    display: none;\n}\n.context-menus.active {\n    display: block;\n    background-color: #EFF5FB;\n}\n.context-menus.active>ul>li {\n    list-style: none;\n    padding: 10px;\n    color: #424242;\n}\n.context-menus.active>ul>li:hover {\n    background-color: lightgreen;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -93300,7 +94029,8 @@ var render = function() {
                           label: "가게 설명",
                           rules: _vm.explanationRule,
                           required: "",
-                          "prepend-icon": "assignment"
+                          "prepend-icon": "assignment",
+                          "multi-line": ""
                         },
                         model: {
                           value: _vm.ipt_data.explanation,
@@ -93399,11 +94129,11 @@ var render = function() {
                     "v-flex",
                     { attrs: { xs6: "", "mr-4": "" } },
                     [
-                      _c("v-text-field", {
+                      _c("v-select", {
                         attrs: {
                           label: "업종",
-                          rules: _vm.typeRule,
-                          required: "",
+                          items: _vm.typeList,
+                          "single-line": "",
                           "prepend-icon": "local_dining"
                         },
                         model: {
@@ -93905,12 +94635,7 @@ var render = function() {
                     _c("img", { staticClass: "img_style" })
                   ])
                 ]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br")
+              )
             ],
             1
           )
@@ -93931,18 +94656,18 @@ if (false) {
 }
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_createCoupon_vue__ = __webpack_require__(257);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2402873c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_createCoupon_vue__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2402873c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_createCoupon_vue__ = __webpack_require__(568);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(565)
+  __webpack_require__(566)
 }
 /* script */
 
@@ -93989,13 +94714,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(566);
+var content = __webpack_require__(567);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94016,7 +94741,7 @@ if(false) {
 }
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -94030,7 +94755,7 @@ exports.push([module.i, "\n.create_coupon {\n    padding-left: 5%;\n    padding-
 
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -94048,7 +94773,9 @@ var render = function() {
         _c("br"),
         _vm._v(" "),
         _c("h3", [_c("B", [_vm._v("쿠폰 추가")])], 1),
-        _vm._v("\n      원하는 쿠폰을 제작하여 등록할 수 있습니다.\n    "),
+        _vm._v(
+          "\n        원하는 쿠폰을 제작하여 등록할 수 있습니다.\n        "
+        ),
         _c("hr"),
         _c("br"),
         _vm._v(" "),
@@ -94094,7 +94821,7 @@ var render = function() {
                           [
                             _c(
                               "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
+                              { attrs: { xs12: "" } },
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "쿠폰 이름", required: "" },
@@ -94116,7 +94843,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-flex",
-                              { attrs: { xs12: "" } },
+                              { attrs: { xs12: "", sm6: "", md4: "" } },
                               [
                                 _c("v-select", {
                                   attrs: {
@@ -94140,45 +94867,58 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "할인 가격", required: "" },
-                                  model: {
-                                    value: _vm.CouponItem.Discount,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.CouponItem, "Discount", $$v)
-                                    },
-                                    expression: "CouponItem.Discount"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "제공 상품", required: "" },
-                                  model: {
-                                    value: _vm.CouponItem.addproduct,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.CouponItem,
-                                        "addproduct",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "CouponItem.addproduct"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
+                            _vm.CouponItem.CouponType == "가격 할인"
+                              ? _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "", sm6: "", md4: "" } },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        label: "할인 가격",
+                                        required: ""
+                                      },
+                                      model: {
+                                        value: _vm.CouponItem.Discount,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.CouponItem,
+                                            "Discount",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "CouponItem.Discount"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm.CouponItem.CouponType == "상품 제공"
+                                ? _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", sm6: "", md4: "" } },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          label: "상품 선택",
+                                          required: "",
+                                          items: _vm.AddProductSelect
+                                        },
+                                        model: {
+                                          value: _vm.CouponItem.add_product,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.CouponItem,
+                                              "add_product",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "CouponItem.add_product"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                : _vm._e(),
                             _vm._v(" "),
                             _c(
                               "v-flex",
@@ -94510,7 +95250,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-xs-left" }, [
-                    _vm._v(_vm._s(props.item.add_product))
+                    _vm._v(_vm._s(props.item.menu_name))
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-xs-left" }, [
@@ -94571,18 +95311,18 @@ if (false) {
 }
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenu_vue__ = __webpack_require__(258);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_677cbc81_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenu_vue__ = __webpack_require__(571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_677cbc81_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenu_vue__ = __webpack_require__(572);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(569)
+  __webpack_require__(570)
 }
 /* script */
 
@@ -94629,13 +95369,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(570);
+var content = __webpack_require__(571);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94656,7 +95396,7 @@ if(false) {
 }
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -94670,7 +95410,7 @@ exports.push([module.i, "\n.link {\n    width: 20%; \n    margin-right:5%;  \n  
 
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -94744,18 +95484,18 @@ if (false) {
 }
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuOperate_vue__ = __webpack_require__(259);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b2eaff3_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuOperate_vue__ = __webpack_require__(575);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7b2eaff3_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuOperate_vue__ = __webpack_require__(576);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(573)
+  __webpack_require__(574)
 }
 /* script */
 
@@ -94802,13 +95542,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(574);
+var content = __webpack_require__(575);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94829,7 +95569,7 @@ if(false) {
 }
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -94843,7 +95583,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -95056,18 +95796,18 @@ if (false) {
 }
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuList_vue__ = __webpack_require__(260);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_240b35bf_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuList_vue__ = __webpack_require__(579);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_240b35bf_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuList_vue__ = __webpack_require__(580);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(577)
+  __webpack_require__(578)
 }
 /* script */
 
@@ -95114,13 +95854,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(578);
+var content = __webpack_require__(579);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -95141,7 +95881,7 @@ if(false) {
 }
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -95155,7 +95895,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -95185,18 +95925,18 @@ if (false) {
 }
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerMenuSelectLayout_vue__ = __webpack_require__(261);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2471c767_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuSelectLayout_vue__ = __webpack_require__(583);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2471c767_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerMenuSelectLayout_vue__ = __webpack_require__(586);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(581)
+  __webpack_require__(582)
 }
 /* script */
 
@@ -95243,13 +95983,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 581 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(582);
+var content = __webpack_require__(583);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -95270,21 +96010,50 @@ if(false) {
 }
 
 /***/ }),
-/* 582 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(584);
 exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 이미지 비율용 스타일 */\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n/* 메뉴 제작 작업 공간 */\n#workSpace {\n    width: 100%; \n    height: 100%; \n    position:relative; \n    overflow:hidden;\n    margin: auto;\n    background-color: rgb(238, 238, 238);\n}\n\n/* 메뉴 출력 설정 */\n#MenuPrt {\n    width: 30%;  \n    z-index:100;\n    margin-top: 5%;\n    border: 3px solid #585858; \n    background-color: #EFF5FB; \n    position: absolute;\n    display: none;\n}\n#MenuPrt.active { \n    display: block;  \n    left : 35%;\n}\n\n/* 리스트 스타일 */\n.list-style{\n    font-size: 1.5rem;\n}\n\n/* 메뉴 영역 */\n.createdMenu { \n    border: 2px dashed black; \n    font-size: 1.5rem;\n    text-align: center; \n    overflow: hidden;\n    background-color: white;\n}\n/* 메뉴 이미지 영역 */\n.createdImg { \n    /* background-image: url('./image.jpg'); */\n    background-size: 100% 100%;\n}\n/* 메뉴 이름 영역 */\n.createdName { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n} \n/* 메뉴 설명 영역 */\n.createdExpl { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 가격 영역 */\n.createdPrice { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 선택 영역 */\n.createdSelect { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n\n/* 엘리먼트 움직이기 용 */\n.dragElement { \n    position: absolute;\n    cursor: pointer;\n}\n/* div 크기 조절기 */\n.resizer {\n    width: 10px;\n    height: 10px; \n    right: 0;\n    bottom: 0;\n    z-index: 90;\n    position: absolute;\n    cursor: se-resize;\n    background-color:salmon;\n}\n\n/* 마우스 메뉴 */\nul {\n    margin: 0px;\n    padding: 0px;\n    font-size: 1.2rem;\n}\nhr {\n    margin: 3%;\n    border: thin solid #D8D8D8;\n}\n.context-menus {\n    width: 20%;\n    border: 1px solid black;\n    z-index:100;\n    position: absolute;\n    display: none;\n    text-align: center;\n}\n.context-menus.active {\n    display: block;\n    background-color: #EFF5FB;\n}\n.context-menus.active>ul>li {\n    list-style: none;\n    padding: 10px;\n    color: #424242;\n}\n.context-menus.active>ul>li:hover {\n    background-color: lightgreen;\n}\n.click_color {\n    border:2px solid blue;\n}\n\n/* 영역 서식 메뉴창 */\n#designSet {\n    width: 40%; \n    max-height: 80%;\n    z-index:100;\n    border: 3px dashed #585858; \n    padding-bottom: 3%;\n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#designSet.active {\n    top : 15%;\n    left: 30%;\n    display: block;\n    overflow: scroll;\n}\n.designSet_title {\n    font-size: 2rem;\n    margin-left: 3%;\n    color: cadetblue;\n}\n.designSet_tr {\n    width: 90%;\n    font-size: 1.3rem;\n    margin: auto;\n    margin-top: 6%;\n}\n.designSet_name {color: #6E6E6E;\n}\n.designSet_ipt{\n    width: 50%;\n    font-size: 1.3rem;\n    margin-left: 5%;\n    text-align: center;\n    color: #6E6E6E; \n    border-bottom: 1.5px solid #6E6E6E;\n}\n.designSet_color {\n    width: 10%; \n    height: 0;\n    border: 1px solid black;\n    margin-left: 5%;\n    margin-right: 3%; \n    position: relative; \n    float: left;\n    overflow: hidden;\n    padding-bottom: 9%;\n}\n.designSet_color_inner{\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    position: absolute;\n}\n.designSet_color_btn {\n    font-size: 1.5rem;\n    margin-left: 5%;\n    float: left;\n    color: cadetblue;\n} \n\n/* color-picker */\n#colorPicker{\n    width: auto; \n    z-index:100;\n    border: 3px solid #585858; \n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#colorPicker.active {\n    top : 15%;\n    left: 40%;\n    display:inline-block; \n    overflow: hidden;\n}\n#palette { width:256px; height:256px;\n}\n#bar { width:20px; height:256px;\n}\n#click_color {\n    width: 100%; \n    height: 40px;\n    font-size: 1.5rem;\n    border-bottom: 3px solid #585858;  \n    color: #6E6E6E; \n    text-align: center;\n}\n.color_btn {\n    width: 50%;\n    font-size: 1.5rem;\n    text-align: center;\n    float: left;\n    color: #6E6E6E;\n}\n\n/* 그룹화 div */\n.groupDiv {\n    width: auto;\n    height: auto;\n    min-width: 10px;\n    min-height: 10px;\n    overflow: hidden; \n    border: 1px solid lightgreen;\n}\n\n/* 드래그로 div 선택 */\n.selecter {\n    width: 100px;\n    height: 100px;\n    opacity: 0.2;\n    z-index: 100;\n    background-color: aqua;\n    position: absolute;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 이미지 비율용 스타일 */\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n/* 메뉴 제작 작업 공간 */\n#workSpace {\n    width: 100%; \n    height: 100%; \n    position:relative; \n    overflow:hidden;\n    margin: auto;\n    background-color: rgb(238, 238, 238);\n}\n\n/* 메뉴 출력 설정 */\n#MenuPrt {\n    width: 30%;  \n    z-index:100;\n    margin-top: 5%;\n    border: 3px solid #585858; \n    background-color: #EFF5FB; \n    position: absolute;\n    display: none;\n}\n#MenuPrt.active { \n    display: block;  \n    left : 35%;\n}\n\n/* 리스트 스타일 */\n.list-style{\n    font-size: 1.5rem;\n}\n\n/* 메뉴 영역 */\n.createdMenu { \n    border: 2px dashed black; \n    font-size: 1.5rem;\n    text-align: center; \n    overflow: hidden;\n    background-color: white;\n}\n/* 메뉴 이미지 영역 */\n.createdImg { \n    background-image: url(" + escape(__webpack_require__(585)) + ");\n    background-size: 100% 100%;\n}\n/* 메뉴 이름 영역 */\n.createdName { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n} \n/* 메뉴 설명 영역 */\n.createdExpl { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 가격 영역 */\n.createdPrice { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 선택 영역 */\n.createdSelect { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n\n/* 엘리먼트 움직이기 용 */\n.dragElement { \n    position: absolute;\n    cursor: pointer;\n}\n/* div 크기 조절기 */\n.resizer {\n    width: 10px;\n    height: 10px; \n    right: 0;\n    bottom: 0;\n    z-index: 90;\n    position: absolute;\n    cursor: se-resize;\n    background-color:salmon;\n}\n\n/* 마우스 메뉴 */\nul {\n    margin: 0px;\n    padding: 0px;\n    font-size: 1.2rem;\n}\nhr {\n    margin: 3%;\n    border: thin solid #D8D8D8;\n}\n.context-menus {\n    width: 20%;\n    border: 1px solid black;\n    z-index:100;\n    position: absolute;\n    display: none;\n    text-align: center;\n}\n.context-menus.active {\n    display: block;\n    background-color: #EFF5FB;\n}\n.context-menus.active>ul>li {\n    list-style: none;\n    padding: 10px;\n    color: #424242;\n}\n.context-menus.active>ul>li:hover {\n    background-color: lightgreen;\n}\n.click_color {\n    border:2px solid blue;\n}\n\n/* 영역 서식 메뉴창 */\n#designSet {\n    width: 40%; \n    max-height: 80%;\n    z-index:100;\n    border: 3px dashed #585858; \n    padding-bottom: 3%;\n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#designSet.active {\n    top : 15%;\n    left: 30%;\n    display: block;\n    overflow: scroll;\n}\n.designSet_title {\n    font-size: 2rem;\n    margin-left: 3%;\n    color: cadetblue;\n}\n.designSet_tr {\n    width: 90%;\n    font-size: 1.3rem;\n    margin: auto;\n    margin-top: 6%;\n}\n.designSet_name {color: #6E6E6E;\n}\n.designSet_ipt{\n    width: 50%;\n    font-size: 1.3rem;\n    margin-left: 5%;\n    text-align: center;\n    color: #6E6E6E; \n    border-bottom: 1.5px solid #6E6E6E;\n}\n.designSet_color {\n    width: 10%; \n    height: 0;\n    border: 1px solid black;\n    margin-left: 5%;\n    margin-right: 3%; \n    position: relative; \n    float: left;\n    overflow: hidden;\n    padding-bottom: 9%;\n}\n.designSet_color_inner{\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    position: absolute;\n}\n.designSet_color_btn {\n    font-size: 1.5rem;\n    margin-left: 5%;\n    float: left;\n    color: cadetblue;\n} \n\n/* color-picker */\n#colorPicker{\n    width: auto; \n    z-index:100;\n    border: 3px solid #585858; \n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#colorPicker.active {\n    top : 15%;\n    left: 40%;\n    display:inline-block; \n    overflow: hidden;\n}\n#palette { width:256px; height:256px;\n}\n#bar { width:20px; height:256px;\n}\n#click_color {\n    width: 100%; \n    height: 40px;\n    font-size: 1.5rem;\n    border-bottom: 3px solid #585858;  \n    color: #6E6E6E; \n    text-align: center;\n}\n.color_btn {\n    width: 50%;\n    font-size: 1.5rem;\n    text-align: center;\n    float: left;\n    color: #6E6E6E;\n}\n\n/* 그룹화 div */\n.groupDiv {\n    width: auto;\n    height: auto;\n    min-width: 10px;\n    min-height: 10px;\n    overflow: hidden; \n    border: 1px solid lightgreen;\n}\n\n/* 드래그로 div 선택 */\n.selecter {\n    width: 100px;\n    height: 100px;\n    opacity: 0.2;\n    z-index: 100;\n    background-color: aqua;\n    position: absolute;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 583 */
+/* 584 */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
+}
+
+
+/***/ }),
+/* 585 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/image.jpg?ee45e1b9870e967db8e4434ab1450935";
+
+/***/ }),
+/* 586 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -96831,18 +97600,18 @@ if (false) {
 }
 
 /***/ }),
-/* 584 */
+/* 587 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuMain_vue__ = __webpack_require__(262);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3d50c82a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuMain_vue__ = __webpack_require__(591);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3d50c82a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuMain_vue__ = __webpack_require__(593);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(585)
+  __webpack_require__(588)
 }
 /* script */
 
@@ -96889,13 +97658,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 585 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(586);
+var content = __webpack_require__(589);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -96916,105 +97685,6 @@ if(false) {
 }
 
 /***/ }),
-/* 586 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.info_div {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 10%;\n}\n.menu_info { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%; \n    padding:3%;\n} \n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 587 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout1_vue__ = __webpack_require__(264);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_118f3ff8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout1_vue__ = __webpack_require__(590);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
-var disposed = false
-function injectStyle (context) {
-  if (disposed) return
-  __webpack_require__(588)
-}
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-
-var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout1_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_118f3ff8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout1_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_118f3ff8_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout1_vue__["b" /* staticRenderFns */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\user\\user_menu\\MenuDefaultLayout1.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-118f3ff8", Component.options)
-  } else {
-    hotAPI.reload("data-v-118f3ff8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 588 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(589);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(3).default
-var update = add("7fc659ec", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout1.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout1.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
 /* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -97023,269 +97693,16 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n.menu_name { \n    position: relative;\n    width: 100%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 10%;\n}\n.menu_expl { \n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 15%;\n}\n.menu_price { \n    position: relative;\n    width: 50%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 12%;\n}\n.menu_info {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\nselect {\n    widows: 100%;\n    border-bottom: 1px solid;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 모바일 */\n@media (max-width: 639px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 17px;\n}\n.Trans_Title {\n        font-size:16px;\n}\n.Trans_Main {\n        font-size: 13px;\n}\n}\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:18px;\n}\n.Trans_Main {\n        font-size: 14px;\n}\n}\n/* 데스트 탑 */\n@media (min-width: 1024px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:20px;\n}\n.Trans_Main {\n        font-size: 15px;\n}\n}  \n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 590 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "container",
-      staticStyle: { width: "100%", border: "1px solid" }
-    },
-    [
-      _c(
-        "v-container",
-        { staticStyle: { color: "white" } },
-        [
-          _c(
-            "v-layout",
-            { attrs: { xs12: "" } },
-            [
-              _c(
-                "v-card",
-                { staticStyle: { margin: "auto" } },
-                [
-                  _c(
-                    "v-bottom-nav",
-                    {
-                      attrs: { value: true, active: _vm.e2 },
-                      on: {
-                        "update:active": function($event) {
-                          _vm.e2 = $event
-                        }
-                      }
-                    },
-                    _vm._l(_vm.categorys, function(value, key) {
-                      return _c(
-                        "v-btn",
-                        {
-                          key: key,
-                          attrs: { value: value },
-                          on: { click: _vm.click_category }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(value) +
-                              " \n                "
-                          )
-                        ]
-                      )
-                    })
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._l(_vm.range(0, _vm.menu_row_num - 1), function(index) {
-            return _vm.menu_row_num !== 0
-              ? _c(
-                  "v-layout",
-                  { key: index, attrs: { xs12: "" } },
-                  _vm._l(_vm.range(index * 3, index * 3 + 2), function(n) {
-                    return n < _vm.get_menus.length
-                      ? _c(
-                          "v-flex",
-                          {
-                            key: n,
-                            attrs: {
-                              xs4: "",
-                              "elevation-20": "",
-                              "mx-3": "",
-                              "my-3": ""
-                            }
-                          },
-                          [
-                            _c(
-                              "v-card",
-                              {
-                                staticStyle: { color: "black" },
-                                attrs: { color: "white" }
-                              },
-                              [
-                                _c("div", { staticClass: "tem_img" }, [
-                                  _c("img", { attrs: { src: "" } })
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "v-card-title",
-                                  { attrs: { "primary-title": "" } },
-                                  [
-                                    _c("div", { staticClass: "menu_name" }, [
-                                      _c("h3", { staticClass: "menu_info" }, [
-                                        _vm._v(
-                                          " " +
-                                            _vm._s(_vm.get_menus[n].name) +
-                                            " "
-                                        )
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "menu_expl" }, [
-                                      _c("div", { staticClass: "menu_info" }, [
-                                        _vm._v(
-                                          " " +
-                                            _vm._s(
-                                              _vm.get_menus[n].explanation
-                                            ) +
-                                            " "
-                                        )
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "menu_name",
-                                        staticStyle: { "margin-top": "5%" }
-                                      },
-                                      [
-                                        _vm.get_menus[n].optionValue1 !==
-                                        undefined
-                                          ? _c(
-                                              "h4",
-                                              {
-                                                staticStyle: {
-                                                  float: "left",
-                                                  width: "50%"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                            옵션 : " +
-                                                    _vm._s(
-                                                      _vm.get_menus[n]
-                                                        .optionName1
-                                                    ) +
-                                                    "\n                        "
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        _vm.get_menus[n].optionValue1 !==
-                                        undefined
-                                          ? _c(
-                                              "select",
-                                              {
-                                                staticStyle: {
-                                                  float: "left",
-                                                  width: "50%"
-                                                },
-                                                attrs: { id: "value" + n }
-                                              },
-                                              _vm._l(_vm.options[n], function(
-                                                value,
-                                                key
-                                              ) {
-                                                return value !== undefined
-                                                  ? _c(
-                                                      "option",
-                                                      {
-                                                        key: key,
-                                                        domProps: {
-                                                          value: value
-                                                        }
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                " +
-                                                            _vm._s(value) +
-                                                            "\n                            "
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e()
-                                              })
-                                            )
-                                          : _vm._e()
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "menu_price" }, [
-                                      _c("h4", { staticClass: "menu_info" }, [
-                                        _vm._v(
-                                          " 가격 : " +
-                                            _vm._s(_vm.get_menus[n].price) +
-                                            " "
-                                        )
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "menu_price" },
-                                      [
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              slot: "activator",
-                                              color: "primary",
-                                              width: "100%;",
-                                              flat: "",
-                                              id: n
-                                            },
-                                            on: { click: _vm.select_menu },
-                                            slot: "activator"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                            주문하기\n                        "
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ]
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  })
-                )
-              : _vm._e()
-          })
-        ],
-        2
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-118f3ff8", { render: render, staticRenderFns: staticRenderFns })
-  }
-}
-
-/***/ }),
-/* 591 */
+/* 590 */,
+/* 591 */,
+/* 592 */,
+/* 593 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97359,7 +97776,7 @@ var render = function() {
                     "v-btn",
                     {
                       attrs: { color: "error" },
-                      on: { click: _vm.check_menus },
+                      on: { click: _vm.order_menu },
                       nativeOn: {
                         click: function($event) {
                           _vm.Menu_Order = 2
@@ -97398,7 +97815,7 @@ var render = function() {
                               [
                                 _c(
                                   "v-flex",
-                                  { attrs: { xs4: "" } },
+                                  { attrs: { sm12: "" } },
                                   [
                                     _c(
                                       "v-card",
@@ -97407,7 +97824,6 @@ var render = function() {
                                         _c(
                                           "v-card-text",
                                           {
-                                            staticClass: "info_div",
                                             staticStyle: {
                                               "font-size": "1.2rem"
                                             }
@@ -97415,7 +97831,6 @@ var render = function() {
                                           [
                                             _c(
                                               "div",
-                                              { staticClass: "menu_info" },
                                               [
                                                 _c("b", [
                                                   _vm._v(
@@ -97423,79 +97838,6 @@ var render = function() {
                                                       _vm._s(
                                                         _vm.click_menu[i].menu
                                                           .name
-                                                      ) +
-                                                      " "
-                                                  )
-                                                ])
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-card-text",
-                                          {
-                                            staticClass: "info_div",
-                                            staticStyle: {
-                                              "font-size": "1.2rem"
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "menu_info" },
-                                              [
-                                                _vm.click_menu[i].option !==
-                                                undefined
-                                                  ? _c("b", [
-                                                      _vm._v(
-                                                        " \n                                                옵션명 : " +
-                                                          _vm._s(
-                                                            _vm.click_menu[i]
-                                                              .menu.optionName1
-                                                          ) +
-                                                          " \n                                            "
-                                                      )
-                                                    ])
-                                                  : _vm._e()
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c(
-                                      "v-card",
-                                      { attrs: { "elevation-20": "" } },
-                                      [
-                                        _c(
-                                          "v-card-text",
-                                          {
-                                            staticClass: "info_div",
-                                            staticStyle: {
-                                              "font-size": "1.2rem"
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "menu_info" },
-                                              [
-                                                _c("b", [
-                                                  _vm._v(
-                                                    " 가격 : " +
-                                                      _vm._s(
-                                                        _vm.click_menu[i].menu
-                                                          .price
                                                       ) +
                                                       " "
                                                   )
@@ -97520,40 +97862,97 @@ var render = function() {
                                                     )
                                                   ],
                                                   1
-                                                )
+                                                ),
+                                                _c("br"),
+                                                _vm._v(" "),
+                                                _c("b", [
+                                                  _vm._v(
+                                                    " 가격 : " +
+                                                      _vm._s(
+                                                        _vm.click_menu[i].menu
+                                                          .price
+                                                      ) +
+                                                      " "
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("br"),
+                                                _vm._v(" "),
+                                                _vm.click_menu[i].menu.opNum !=
+                                                0
+                                                  ? _c(
+                                                      "v-flex",
+                                                      { attrs: { xs6: "" } },
+                                                      [
+                                                        _c("b", [
+                                                          _vm._v(" [ 옵션 ] ")
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("br"),
+                                                        _vm._v(" "),
+                                                        _vm._l(
+                                                          _vm.optionArray[i],
+                                                          function(
+                                                            option,
+                                                            index
+                                                          ) {
+                                                            return _c(
+                                                              "span",
+                                                              { key: index },
+                                                              [
+                                                                _c("b", {
+                                                                  domProps: {
+                                                                    textContent: _vm._s(
+                                                                      option[
+                                                                        "Name"
+                                                                      ]
+                                                                    )
+                                                                  }
+                                                                }),
+                                                                _vm._v(" "),
+                                                                _c("v-select", {
+                                                                  attrs: {
+                                                                    items:
+                                                                      _vm
+                                                                        .optionArray[
+                                                                        i
+                                                                      ][index],
+                                                                    "single-line":
+                                                                      ""
+                                                                  },
+                                                                  model: {
+                                                                    value:
+                                                                      _vm
+                                                                        .optionselect[
+                                                                        i
+                                                                      ][index],
+                                                                    callback: function(
+                                                                      $$v
+                                                                    ) {
+                                                                      _vm.$set(
+                                                                        _vm
+                                                                          .optionselect[
+                                                                          i
+                                                                        ],
+                                                                        index,
+                                                                        $$v
+                                                                      )
+                                                                    },
+                                                                    expression:
+                                                                      "optionselect[i][index]"
+                                                                  }
+                                                                })
+                                                              ],
+                                                              1
+                                                            )
+                                                          }
+                                                        )
+                                                      ],
+                                                      2
+                                                    )
+                                                  : _vm._e()
                                               ],
                                               1
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-card-text",
-                                          {
-                                            staticClass: "info_div",
-                                            staticStyle: {
-                                              "font-size": "1.2rem"
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "menu_info" },
-                                              [
-                                                _vm.click_menu[i].option !==
-                                                undefined
-                                                  ? _c("b", [
-                                                      _vm._v(
-                                                        " \n                                                선택 옵션 : " +
-                                                          _vm._s(
-                                                            _vm.click_menu[i]
-                                                              .option.value
-                                                          ) +
-                                                          " \n                                            "
-                                                      )
-                                                    ])
-                                                  : _vm._e()
-                                              ]
                                             )
                                           ]
                                         )
@@ -97574,49 +97973,21 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "div",
-                    { staticStyle: { "margin-bottom": "0" } },
+                    "v-flex",
                     [
-                      _c(
-                        "v-flex",
-                        { staticClass: "info_div", attrs: { xs12: "" } },
-                        [
-                          _c("v-card", { staticClass: "menu_info" }, [
-                            _c(
-                              "b",
-                              {
-                                staticStyle: {
-                                  "margin-right": "10%",
-                                  "font-size": "2rem"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  " 총 : " +
-                                    _vm._s(_vm.click_menu.length) +
-                                    " 개 "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "b",
-                              {
-                                staticStyle: {
-                                  "margin-right": "10%",
-                                  "font-size": "2rem"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  " 합계 : " + _vm._s(_vm.sum_price) + " 円 "
-                                )
-                              ]
-                            )
-                          ])
-                        ],
-                        1
-                      )
+                      _c("v-card", [
+                        _c("b", { staticClass: "total" }, [
+                          _vm._v(
+                            " 총 : " + _vm._s(_vm.click_menu.length) + " 개 "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("b", { staticClass: "total" }, [
+                          _vm._v(" 합계 : " + _vm._s(_vm.sum_price) + " 円 ")
+                        ])
+                      ])
                     ],
                     1
                   ),
@@ -97625,7 +97996,11 @@ var render = function() {
                     "v-btn",
                     {
                       attrs: { color: "error" },
-                      on: { click: _vm.translate_menu },
+                      on: {
+                        click: function($event) {
+                          _vm.MenuOrderList()
+                        }
+                      },
                       nativeOn: {
                         click: function($event) {
                           _vm.Menu_Order = 3
@@ -97657,33 +98032,38 @@ var render = function() {
                 [
                   _c(
                     "v-card",
-                    {
-                      staticClass: "mb-5",
-                      attrs: { color: "white lighten-1" }
-                    },
-                    _vm._l(_vm.range(0, _vm.translateText.length - 1), function(
-                      j
-                    ) {
-                      return _c("v-card-text", { key: j }, [
-                        _c(
-                          "b",
-                          {
-                            staticStyle: {
-                              "margin-right": "10%",
-                              "font-size": "2rem",
-                              color: "black"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              " \n                            " +
-                                _vm._s(_vm.translateText[j]) +
-                                " \n                        "
-                            )
-                          ]
-                        )
-                      ])
-                    })
+                    { staticClass: "mb-5", attrs: { color: "white" } },
+                    [
+                      _c(
+                        "v-card-text",
+                        _vm._l(_vm.range(0, _vm.MenuList.length - 1), function(
+                          i
+                        ) {
+                          return _c(
+                            "v-card",
+                            {
+                              key: i,
+                              staticStyle: { color: "black", padding: "7px" },
+                              attrs: { hover: "", color: "white" }
+                            },
+                            [
+                              _c("div", { staticClass: "Trans_Title" }, [
+                                _c("b", [
+                                  _vm._v(
+                                    " " + _vm._s(_vm.MenuList[i].name) + " "
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "Trans_Main" }, [
+                                _vm._v(_vm._s(_vm.MenuList[i].option))
+                              ])
+                            ]
+                          )
+                        })
+                      )
+                    ],
+                    1
                   ),
                   _vm._v(" "),
                   _c(
@@ -97753,14 +98133,11 @@ var render = function() {
                               _c(
                                 "v-btn",
                                 {
-                                  attrs: {
-                                    color: "error",
-                                    to: "/restaurant/1/info"
-                                  },
+                                  attrs: { color: "error" },
                                   on: {
                                     click: function($event) {
                                       $event.stopPropagation()
-                                      ;(_vm.Ordercheck = false), _vm.OrderMenu
+                                      _vm.OrderMenu(), (_vm.Ordercheck = false)
                                     }
                                   }
                                 },
@@ -97803,18 +98180,18 @@ if (false) {
 }
 
 /***/ }),
-/* 592 */
+/* 594 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReview_vue__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReview_vue__ = __webpack_require__(264);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__ = __webpack_require__(682);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(593)
+  __webpack_require__(680)
 }
 /* script */
 
@@ -97826,14 +98203,14 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-0c3d645d"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReview_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__["b" /* staticRenderFns */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0c3d645d_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReview_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -97861,59 +98238,20 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 593 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(594);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(3).default
-var update = add("1562dd13", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReview.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReview.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 594 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* svg태그의 cursor를 설정합니다. */\nsvg {\n    cursor: pointer;\n}\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s\n}\n.fade-enter, .fade-leave-active {\n    opacity: 0\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 595 */
+/* 595 */,
+/* 596 */,
+/* 597 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewData_vue__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewData_vue__ = __webpack_require__(265);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7eab2eb2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewData_vue__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7eab2eb2_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewData_vue__ = __webpack_require__(685);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(596)
+  __webpack_require__(683)
 }
 /* script */
 
@@ -97925,14 +98263,14 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-7eab2eb2"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewData_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7eab2eb2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewData_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7eab2eb2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewData_vue__["b" /* staticRenderFns */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7eab2eb2_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewData_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7eab2eb2_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewData_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -97960,59 +98298,20 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 596 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(597);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(3).default
-var update = add("36bdcc5a", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReviewData.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReviewData.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 597 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* ul 태그 CSS */\nul {\n    list-style: none;\n}\n\n/* SNS 마크 이미지 CSS */\n.snsMark {\n    width: 50px;\n    height: 50px;\n    cursor: pointer;\n}\n.fade-enter-active, .fade-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.fade-enter, .fade-leave-active {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na:hover { \n    color: #FF6666; \n    text-decoration: none;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 598 */
+/* 598 */,
+/* 599 */,
+/* 600 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserCreateReview_vue__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserCreateReview_vue__ = __webpack_require__(266);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bcc0de8e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserCreateReview_vue__ = __webpack_require__(602);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bcc0de8e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserCreateReview_vue__ = __webpack_require__(604);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(599)
+  __webpack_require__(601)
 }
 /* script */
 
@@ -98059,13 +98358,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 599 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(600);
+var content = __webpack_require__(602);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -98086,7 +98385,7 @@ if(false) {
 }
 
 /***/ }),
-/* 600 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -98100,7 +98399,7 @@ exports.push([module.i, "\n.image-div {\n    position: relative;\n    width: 100
 
 
 /***/ }),
-/* 601 */
+/* 603 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98166,7 +98465,7 @@ if (false) {
 }
 
 /***/ }),
-/* 602 */
+/* 604 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98607,500 +98906,20 @@ if (false) {
 }
 
 /***/ }),
-/* 603 */
+/* 605 */,
+/* 606 */,
+/* 607 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "transition",
-    { attrs: { name: "fade" } },
-    [
-      _c(
-        "v-content",
-        [
-          _c(
-            "v-layout",
-            [
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c("v-flex", { attrs: { xs4: "", sm2: "", "offset-sm1": "" } }, [
-                _c("h1", [_vm._v("평점 : " + _vm._s(this.totalRating))])
-              ]),
-              _vm._v(" "),
-              _c("v-spacer")
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            [
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c("v-flex", { attrs: { xs12: "", sm10: "" } }, [_c("hr")]),
-              _vm._v(" "),
-              _c("v-spacer")
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            [
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c("v-flex", { attrs: { xs12: "", sm10: "" } }, [
-                _c(
-                  "ul",
-                  _vm._l(_vm.reviewDataList, function(reviewData) {
-                    return reviewData["id"]
-                      ? _c(
-                          "li",
-                          { key: reviewData["id"] },
-                          [
-                            _c("UserCreateReview", {
-                              attrs: {
-                                userID: reviewData["name"],
-                                reviewID: reviewData["id"],
-                                country: reviewData["country"],
-                                writeDate: reviewData["reg_date"],
-                                likeNum: reviewData["likeNum"],
-                                reviewLike: reviewData["reviewLike"],
-                                rating: reviewData["rating"],
-                                taste: reviewData["taste"],
-                                service: reviewData["service"],
-                                mood: reviewData["mood"],
-                                price: reviewData["price"],
-                                image: reviewData["image"],
-                                content: reviewData["content"],
-                                hashTag: reviewData["hashTag"]
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  })
-                )
-              ]),
-              _vm._v(" "),
-              _c("v-spacer")
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7eab2eb2", { render: render, staticRenderFns: staticRenderFns })
-  }
-}
-
-/***/ }),
-/* 604 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "transition",
-    { attrs: { name: "fade" } },
-    [
-      _c(
-        "v-content",
-        { attrs: { "grid-list-md": "", "text-xs-center": "" } },
-        [
-          _c(
-            "v-layout",
-            [
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { xs10: "", sm10: "" } },
-                [
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: {
-                        outline: "",
-                        color: "red lighten-2",
-                        to: "writeReview",
-                        block: ""
-                      }
-                    },
-                    [_vm._v("리뷰 작성")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-spacer")
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            { attrs: { "align-center": "" } },
-            [
-              _c("v-spacer"),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { xs10: "", sm10: "" } },
-                [
-                  _c("social-sharing", {
-                    attrs: { url: _vm.url },
-                    inlineTemplate: {
-                      render: function() {
-                        var _vm = this
-                        var _h = _vm.$createElement
-                        var _c = _vm._self._c || _h
-                        return _c(
-                          "v-layout",
-                          [
-                            _c("v-spacer"),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs4: "", sm2: "", "offset-xs1": "" } },
-                              [
-                                _c(
-                                  "network",
-                                  { attrs: { network: "facebook" } },
-                                  [
-                                    _c(
-                                      "svg",
-                                      {
-                                        attrs: {
-                                          viewBox: "0 0 448 512",
-                                          width: "70%",
-                                          height: "70%"
-                                        }
-                                      },
-                                      [
-                                        _c("path", {
-                                          staticStyle: { fill: "#3b5998" },
-                                          attrs: {
-                                            d:
-                                              "M448 56.7v398.5c0 13.7-11.1 \n                                    24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 \n                                    5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6 \n                                    0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 \n                                    468.9 0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7 0 24.8 \n                                    11.1 24.8 24.7z"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              {
-                                attrs: {
-                                  xs4: "",
-                                  sm2: "",
-                                  "align-content-center": ""
-                                }
-                              },
-                              [
-                                _c(
-                                  "network",
-                                  { attrs: { network: "twitter" } },
-                                  [
-                                    _c(
-                                      "svg",
-                                      {
-                                        attrs: {
-                                          viewBox: "0 0 512 512",
-                                          width: "70%",
-                                          height: "70%"
-                                        }
-                                      },
-                                      [
-                                        _c("path", {
-                                          staticStyle: { fill: "#00aced" },
-                                          attrs: {
-                                            d:
-                                              "M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 \n                                    298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 \n                                    16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 \n                                    130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 \n                                    12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 \n                                    27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 \n                                    30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 \n                                    5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 \n                                    216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 \n                                    0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 \n                                    23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 \n                                    57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 \n                                    39.308-52.628 54.253z"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              {
-                                attrs: {
-                                  xs4: "",
-                                  sm2: "",
-                                  "justify-center": ""
-                                }
-                              },
-                              [
-                                _c("network", { attrs: { network: "weibo" } }, [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticStyle: {
-                                        "enable-background": "new 0 0 512 512"
-                                      },
-                                      attrs: {
-                                        version: "1.1",
-                                        width: "70%",
-                                        height: "70%",
-                                        id: "Layer_1",
-                                        x: "0px",
-                                        y: "0px",
-                                        viewBox: "0 0 512 512",
-                                        "xml:space": "preserve"
-                                      }
-                                    },
-                                    [
-                                      _c("path", {
-                                        staticStyle: { fill: "#EA533B" },
-                                        attrs: {
-                                          d:
-                                            "M403.51,247.992c12.189-23.721,13.499-45.899,3.546-63.137\n                                        c-10.316-17.868-31.605-28.033-59.944-28.622c-20.81-0.427-44.439,4.311-68.131,13.528c8.166-27.851,5.532-49.961-7.876-63.369\n                                        c-16.113-16.113-44.899-16.666-81.056-1.558c-33.715,14.088-70.764,40.33-104.325,73.889\n                                        c-49.982,49.983-83.19,107.958-84.779,147.93C0.318,330.616,0,334.579,0,338.441c0,35.793,25.09,69.017,70.648,93.547\n                                        c43.858,23.617,101.979,36.622,163.656,36.622s119.798-13.005,163.656-36.622c45.558-24.53,70.648-57.754,70.648-93.547\n                                        C468.609,304.067,445.576,272.184,403.51,247.992z"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("path", {
-                                        staticStyle: { fill: "#D93C1C" },
-                                        attrs: {
-                                          d:
-                                            "M260.338,459.932c-61.677,0-119.798-13.005-163.656-36.622\n                                        c-45.558-24.53-70.648-57.754-70.648-93.547c0-3.863,0.318-7.825,0.945-11.787c1.589-39.973,34.797-97.947,84.78-147.93\n                                        c33.227-33.226,69.87-59.27,103.314-73.458c-7.854,1.823-16.218,4.566-25.023,8.245c-33.715,14.088-70.764,40.33-104.325,73.889\n                                        C35.742,228.707,2.534,286.682,0.945,326.654C0.318,330.616,0,334.579,0,338.441c0,35.793,25.09,69.017,70.648,93.547\n                                        c43.858,23.617,101.979,36.622,163.656,36.622c48.616,0,95.016-8.086,133.969-23.074\n                                        C335.352,454.941,298.529,459.932,260.338,459.932z"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("path", {
-                                        staticStyle: { fill: "#FFFFFF" },
-                                        attrs: {
-                                          d:
-                                            "M364.19,312.032c-2.568-29.565-22.081-55.61-54.944-73.338\n                                        c-31.681-17.091-72.302-24.49-114.382-20.835c-42.079,3.656-80.818,17.949-109.076,40.247\n                                        c-29.314,23.131-44.045,52.151-41.476,81.715c2.569,29.565,22.082,55.61,54.946,73.338c26.389,14.236,58.976,21.748,93.447,21.747\n                                        c6.913,0,13.905-0.302,20.934-0.913c42.079-3.654,80.817-17.948,109.075-40.246C352.029,370.616,366.758,341.596,364.19,312.032z"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("path", {
-                                        staticStyle: { fill: "#E5E5E5" },
-                                        attrs: {
-                                          d:
-                                            "M230.36,425.319c-7.029,0.611-14.021,0.913-20.934,0.913c-34.471,0.001-67.059-7.511-93.447-21.747\n                                        c-32.863-17.729-52.378-43.774-54.946-73.338c-2.569-29.564,12.161-58.584,41.476-81.715c5.799-4.575,12.046-8.808,18.665-12.687\n                                        c-12.993,5.932-24.911,13.095-35.388,21.361c-29.314,23.131-44.045,52.151-41.476,81.715c2.569,29.565,22.082,55.61,54.946,73.338\n                                        c26.389,14.236,58.976,21.748,93.447,21.747c6.913,0,13.905-0.302,20.934-0.913c33.445-2.905,64.771-12.535,90.41-27.559\n                                        C281.994,416.503,256.841,423.019,230.36,425.319z"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("path", {
-                                        staticStyle: { fill: "#333333" },
-                                        attrs: {
-                                          d:
-                                            "M286.65,312.533c-9.507-39.544-55.55-62.508-102.638-51.189\n                                        c-47.088,11.32-77.661,52.703-68.156,92.249c4.682,19.473,18.156,35.492,37.943,45.105c12.283,5.967,26.102,9.003,40.355,9.003\n                                        c8.042,0,16.221-0.967,24.339-2.918C265.582,393.462,296.157,352.08,286.65,312.533z"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("circle", {
-                                        staticStyle: { fill: "#FFFFFF" },
-                                        attrs: {
-                                          cx: "177.898",
-                                          cy: "351.457",
-                                          r: "30.373"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("g", [
-                                        _c("path", {
-                                          staticStyle: { fill: "#FFA929" },
-                                          attrs: {
-                                            d:
-                                              "M373.152,117.153c-7.189,0-13.017,5.828-13.017,13.017c0,7.189,5.828,13.017,13.017,13.017\n                                            c26.318,0,47.729,21.411,47.729,47.729c0,7.189,5.828,13.017,13.017,13.017s13.017-5.828,13.017-13.017\n                                            C446.914,150.243,413.824,117.153,373.152,117.153z"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("path", {
-                                          staticStyle: { fill: "#FFA929" },
-                                          attrs: {
-                                            d:
-                                              "M364.475,43.39c-3.261,0-6.564,0.108-9.817,0.322c-9.564,0.629-16.808,8.893-16.18,18.458\n                                            c0.629,9.564,8.9,16.804,18.458,16.18c2.498-0.164,5.035-0.248,7.539-0.248c62.206,0,112.813,50.608,112.813,112.813\n                                            c0,7.606-0.759,15.204-2.257,22.581c-1.396,6.875,1.691,14.209,7.576,18.025c5.99,3.884,14.111,3.587,19.829-0.675\n                                            c3.388-2.525,5.774-6.307,6.614-10.445c1.958-9.646,2.95-19.566,2.95-29.487C512,109.571,445.82,43.39,364.475,43.39z"
-                                          }
-                                        })
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("circle", {
-                                        staticStyle: { fill: "#FFFFFF" },
-                                        attrs: {
-                                          cx: "234.305",
-                                          cy: "321.085",
-                                          r: "17.356"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ])
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("v-spacer")
-                          ],
-                          1
-                        )
-                      },
-                      staticRenderFns: []
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-spacer")
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("br"),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            [
-              _c(
-                "v-flex",
-                {
-                  attrs: {
-                    xs4: "",
-                    sm2: "",
-                    "offset-sm1": "",
-                    "offset-xs1": ""
-                  }
-                },
-                [
-                  _c("v-select", {
-                    attrs: {
-                      items: _vm.sortItems,
-                      label: "정렬",
-                      "item-text": "sort",
-                      "item-value": "sortNum",
-                      "single-line": "",
-                      "return-object": ""
-                    },
-                    model: {
-                      value: _vm.sortSelect,
-                      callback: function($$v) {
-                        _vm.sortSelect = $$v
-                      },
-                      expression: "sortSelect"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { xs4: "", sm2: "" } },
-                [
-                  _c("v-select", {
-                    attrs: {
-                      items: _vm.filterItems,
-                      label: "국가 선택",
-                      "item-text": "country",
-                      "single-line": "",
-                      "return-object": ""
-                    },
-                    model: {
-                      value: _vm.filterSelect,
-                      callback: function($$v) {
-                        _vm.filterSelect = $$v
-                      },
-                      expression: "filterSelect"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-spacer")
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("br"),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            [
-              _c(
-                "v-flex",
-                [
-                  _c("UserReviewData", {
-                    attrs: {
-                      countryNum: this.filterSelect.countryNum,
-                      countryName: this.filterSelect.country,
-                      sortNum: this.sortSelect.sortNum
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0c3d645d", { render: render, staticRenderFns: staticRenderFns })
-  }
-}
-
-/***/ }),
-/* 605 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserRestaurant_vue__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserRestaurant_vue__ = __webpack_require__(269);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5024903d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurant_vue__ = __webpack_require__(608);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5024903d_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserRestaurant_vue__ = __webpack_require__(610);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(606)
+  __webpack_require__(608)
 }
 /* script */
 
@@ -99147,13 +98966,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 606 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(607);
+var content = __webpack_require__(609);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -99174,7 +98993,7 @@ if(false) {
 }
 
 /***/ }),
-/* 607 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -99182,13 +99001,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.frame {\n    width: 100%; \n    border-top: 1px solid;\n    font-size: 180%;\n    color: #6E6E6E;\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n    margin-bottom: 5%;\n}\n.frame_small {\n    width: 100%;  \n    height: auto;\n    border-top: 1px solid;    \n    font-size: 180%; \n    padding-top: 1%;\n    color: #6E6E6E;\n    margin-bottom: 3%; \n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n}\n.title_frame {\n    width: 100%;   \n    font-size: 180%;\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤. */\n    margin-bottom: 5%; \n    border: 1px;\n}\n#title_img{\n    background-size: 100% 100%;\n    padding-top: 5%;\n    padding-bottom: 5%;\n    padding-left: 30%;\n    padding-right: 5%;\n}\n#name_area { \n    background: black;\n    color: white; \n    text-align: center;\n    opacity: 0.6;\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n}\n#reserve {\n    width: 15%;\n    height: 50px;\n    float: left;\n    margin-left: 3%;\n    font-size: 200%;\n}\n.gallery{\n    width: 31%; \n    min-height: 250px;\n    float: left;\n    margin: 1%;\n}\n.gallery_img {\n    width: 100%;\n    height: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n    position: relative; \n    border: 1px solid;\n}\n#show_gallery {\n    text-align: center;\n    padding: 5%;\n    font-size: 200%;\n    border: 1px solid;\n}\n.column{\n    width: 20%;\n    text-align: center;\n    float: left;  \n    font-size: 120%; \n    position: relative;\n}\n.column_value{\n    width: 80%;\n    float: left;  \n    padding: 3px; \n    position: relative;\n}\n#map {\n    width: 100%;\n    height: 400px;\n    border: 1px solid;\n    margin-top: 1%;\n}\n#address { \n    display:inline-block;      /*  안에 들어올 요소의 크기에 div를 맞춤. */\n    margin-top: 1%; \n    margin-left: 3%;\n}\n.address_values{ \n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n    margin-right: 3px;\n}\n.others{\n    display:inline-block;       /* 안에 들어올 요소의 크기에 div를 맞춤.*/\n    margin-right: 3%;\n}\n#pop_up {\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n/* 모바일 */\n@media (max-width: 639px){\nhtml         { font-size: 10px;\n}\n#name        { font-size: 1.5rem;\n}\n#explanation {max-height: 200px; overflow: scroll;\n}\n.column      { font-size: 1.8rem;\n}\n.timeInfo    { font-size: 1.5rem;\n}\n.resInfo     { font-size: 1.5rem;\n}\n.gallery     { width: 48%; padding-bottom: 35%;\n}\n.img-outer   { width: 90%; padding-bottom: 60%;\n} \n\n    /* 예약하기 */\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 17px;\n}\n.reservationCheck_title {\n        font-size: 17px;\n        padding-bottom: 1%;\n}\n.reservationCheck_main {\n        padding-top: 1%;\n        font-size: 15px;\n}\n\n    /* 쿠폰 */\n.CouponDownTitle {\n        font-size: 14px;\n        text-align: center;\n}\n.CouponDownMain {\n        font-size: 20px;\n        text-align: center;\n}\n}\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\nhtml         { font-size: 12px;\n}\n#name        { font-size: 2rem;\n}\n#explanation {max-height: 300px; overflow: scroll;\n}\n.column      { font-size: 2rem;\n}\n.timeInfo    { font-size: 1.5rem;\n}\n.resInfo     { font-size: 1.7rem;\n}\n.gallery     { width: 48%; padding-bottom: 35%;\n}\n.img-outer   { width: 90%; padding-bottom: 60%;\n} \n\n    /* 예약하기 */\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.reservationCheck_title {\n        font-size: 20px;\n        padding-bottom: 1%;\n}\n.reservationCheck_main {\n        padding-top: 1%;\n        font-size: 18px;\n}\n\n    /* 쿠폰 */\n.CouponDownTitle {\n        font-size: 20px;\n        text-align: center;\n}\n}\n/* 데스트 탑 */\n@media (min-width: 1024px){\nhtml        { font-size: 15px;\n}\n#name       { font-size: 2rem;\n}\n.column     { font-size: 2rem;\n}\n.timeInfo   { font-size: 1.5rem;\n}\n.resInfo    { font-size: 1.7rem;\n}\n.gallery    { width: 31%; padding-bottom: 25%;\n}\n.img-outer  { width: 46%; padding-bottom: 40%;\n} \n\n    /* 예약하기 */\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.reservationCheck_title {\n        font-size: 20px;\n        padding-bottom: 1%;\n}\n.reservationCheck_main {\n        padding-top: 1%;\n        font-size: 18px;\n}\n\n    /* 쿠폰 */\n.CouponDownTitle {\n        font-size: 20px;\n        text-align: center;\n}\n}  \n\n/* 가게 설명, 갤러리, 주소 */\n.frame {\n    width: 100%; \n    border-top: 1px solid;\n    font-size: 1.8rem;\n    color: #848484;\n    display:inline-block;        \n    margin-bottom: 5%;\n}   \n\n/* 요리 유형, 좌석 수, 전화번호, 이용시간, 결제 방식, 이용안내 */\n.frame_small {\n    width: 100%;  \n    height: auto; \n    padding-top: 3%;\n    padding-left: 1%;\n    border-top: 1px solid #848484;    \n    margin-bottom: 3%; \n    display:inline-block;\n}   \n\n/* 가게 메인 이미지 */\n.title_div {\n    width: 100%;\n    height: 0;\n    padding-bottom: 40%;\n    margin-bottom: 5%; \n    overflow: hidden;\n    position: relative;\n}\n#title_img{ \n    top: 0;\n    left: 0;\n    width: 105%;\n    height: 105%;  \n    background-size: 100% 100%;\n    /* background-image: url('./test4.jpg'); */\n    position: absolute;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n\n/* 가게 명 */\n#name_area { \n    top: 0;\n    left: 0;\n    padding:4px;\n    opacity: 0.5;\n    background: black;\n    color: white; \n    text-align: center;\n    display:inline-block;\n} \n\n/*갤러리 관련.*/\n.gallery{\n    height: 0;\n    margin: 1%; \n    border: 1px solid #D8D8D8;\n    float: left;\n    overflow: hidden;\n    position: relative;\n}\n.gallery_img {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;  \n    -o-object-fit: cover;  \n       object-fit: cover;\n    position: absolute;  \n    -webkit-transition: all 0.3s ease-in-out;  \n    transition: all 0.3s ease-in-out;\n}\n/* 마우스 오버 시 이미지 확대 */\n.gallery_img:hover {\n    transform:          scale(1.2);\n    -o-transform:       scale(1.2);\n    -ms-transform:      scale(1.2);\n    -moz-transform:     scale(1.2);\n    -webkit-transform:  scale(1.2);\n} \n/* 갤러리 이미지 더 보기 */\n.MoreImg_inner { \n    font-size:2rem;  \n    padding-top: 25%;\n    text-align:center;\n}\n#prtAllImgs { \n    background-color: white;  \n    overflow: auto;\n}\n.img-outer { \n    height: 0;\n    margin: 1%; \n    border: 1px solid #D8D8D8;\n    float: left;\n    overflow: hidden;\n    position: relative;\n}\n.img-inner{\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;   \n    -o-object-fit: cover;   \n       object-fit: cover;\n    position: absolute;\n} \n  \n/* 정보 칼럼 */\n.column{ \n    margin-right: 20px;  \n    color: #6E6E6E;\n    text-align: left;\n    position: relative;\n    display:inline-block;\n}\n/* 정보 내용 */\n.column_value{\n    font-size: 1.7rem; \n    padding: 3px;  \n    position: relative;\n}\n\n/* 구글 맵스용 */\n#map {\n    top: 0;\n    left: 0;\n    width: 100%; \n    height: 100%; \n    border: 1px solid #6E6E6E;\n    position: absolute;\n} \n/* 가게 정보 */\n.resInfo{ \n    margin-right: 10px;  \n    display:inline-block;\n}  \n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 608 */
+/* 610 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99198,483 +99017,1308 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticStyle: { width: "100%" } },
-      [
-        _vm._m(1),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("v-app", [
+        _c("div", { staticClass: "title_div" }, [
+          _c("div", { attrs: { id: "title_img" } }, [
+            _c("div", { attrs: { id: "name_area" } }, [
+              _c("b", { attrs: { id: "name" } })
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _c(
-          "v-dialog",
-          {
-            staticStyle: { float: "right" },
-            attrs: { persistent: "", "max-width": "500px" },
-            model: {
-              value: _vm.dialog,
-              callback: function($$v) {
-                _vm.dialog = $$v
-              },
-              expression: "dialog"
-            }
-          },
-          [
-            _c(
-              "v-btn",
-              {
-                staticClass: "addReservation_btn",
-                attrs: { slot: "activator", color: "#424242", dark: "" },
-                slot: "activator"
-              },
-              [_vm._v("예약 하기")]
-            ),
-            _vm._v(" "),
-            _c(
-              "v-card",
-              [
-                _c("v-card-title", [
-                  _c("span", { staticClass: "headline" }, [_vm._v("예약 하기")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "v-card-text",
-                  [
-                    _c(
-                      "v-container",
-                      { attrs: { "grid-list-md": "" } },
-                      [
-                        _c(
-                          "v-layout",
-                          { attrs: { wrap: "" } },
-                          [
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "예약자 명", required: "" },
-                                  model: {
-                                    value: _vm.usernum,
-                                    callback: function($$v) {
-                                      _vm.usernum = $$v
-                                    },
-                                    expression: "usernum"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs11: "", sm5: "" } },
-                              [
-                                _c(
-                                  "v-menu",
-                                  {
-                                    ref: "reservation_menu",
-                                    attrs: {
-                                      lazy: "",
-                                      "close-on-content-click": false,
-                                      transition: "scale-transition",
-                                      "offset-y": "",
-                                      "full-width": "",
-                                      "nudge-right": 40,
-                                      "min-width": "290px",
-                                      "return-value": _vm.start_date
-                                    },
-                                    on: {
-                                      "update:returnValue": function($event) {
-                                        _vm.start_date = $event
-                                      }
-                                    },
-                                    model: {
-                                      value: _vm.reservation_menu,
-                                      callback: function($$v) {
-                                        _vm.reservation_menu = $$v
-                                      },
-                                      expression: "reservation_menu"
-                                    }
-                                  },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        slot: "activator",
-                                        label: "pick Date",
-                                        "prepend-icon": "event",
-                                        readonly: ""
-                                      },
-                                      slot: "activator",
-                                      model: {
-                                        value: _vm.start_date,
-                                        callback: function($$v) {
-                                          _vm.start_date = $$v
+        _c("div", { staticStyle: { width: "100%" } }, [
+          _c("div", { staticStyle: { float: "left", display: "flex" } }, [
+            _c("b", { staticClass: "column" }, [_vm._v(" 소개 ")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                float: "right",
+                "margin-right": "1%",
+                display: "flex"
+              }
+            },
+            [
+              _c(
+                "b",
+                {
+                  staticClass: "column",
+                  staticStyle: { "text-align": "right" },
+                  attrs: { id: "totalRating" }
+                },
+                [_vm._v("방문객 평점 :")]
+              ),
+              _vm._v(" "),
+              _c(
+                "v-dialog",
+                {
+                  attrs: { persistent: "", "max-width": "500px" },
+                  model: {
+                    value: _vm.dialog,
+                    callback: function($$v) {
+                      _vm.dialog = $$v
+                    },
+                    expression: "dialog"
+                  }
+                },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      staticClass: "addReservation_btn",
+                      attrs: { slot: "activator", color: "#424242", dark: "" },
+                      slot: "activator"
+                    },
+                    [_vm._v("예약 하기")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-card-title", [
+                        _c("span", { staticClass: "headline" }, [
+                          _vm._v("예약 하기")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        [
+                          _c(
+                            "v-container",
+                            { attrs: { "grid-list-md": "" } },
+                            [
+                              _c(
+                                "v-layout",
+                                { attrs: { wrap: "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs11: "", sm5: "" } },
+                                    [
+                                      _c(
+                                        "v-menu",
+                                        {
+                                          ref: "reservation_menu",
+                                          attrs: {
+                                            lazy: "",
+                                            "close-on-content-click": false,
+                                            transition: "scale-transition",
+                                            "offset-y": "",
+                                            "full-width": "",
+                                            "nudge-right": 40,
+                                            "min-width": "290px",
+                                            "return-value": _vm.start_date
+                                          },
+                                          on: {
+                                            "update:returnValue": function(
+                                              $event
+                                            ) {
+                                              _vm.start_date = $event
+                                            }
+                                          },
+                                          model: {
+                                            value: _vm.reservation_menu,
+                                            callback: function($$v) {
+                                              _vm.reservation_menu = $$v
+                                            },
+                                            expression: "reservation_menu"
+                                          }
                                         },
-                                        expression: "start_date"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-date-picker",
-                                      {
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              slot: "activator",
+                                              label: "예약 날짜",
+                                              "prepend-icon": "event",
+                                              readonly: ""
+                                            },
+                                            slot: "activator",
+                                            model: {
+                                              value: _vm.start_date,
+                                              callback: function($$v) {
+                                                _vm.start_date = $$v
+                                              },
+                                              expression: "start_date"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-date-picker",
+                                            {
+                                              attrs: {
+                                                "no-title": "",
+                                                scrollable: "",
+                                                "allowed-dates":
+                                                  _vm.allowedDates
+                                              },
+                                              model: {
+                                                value: _vm.start_date,
+                                                callback: function($$v) {
+                                                  _vm.start_date = $$v
+                                                },
+                                                expression: "start_date"
+                                              }
+                                            },
+                                            [
+                                              _c("v-spacer"),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: {
+                                                    flat: "",
+                                                    color: "primary"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      $event.stopPropagation()
+                                                      _vm.reservation_menu = false
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Cancel")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-btn",
+                                                {
+                                                  attrs: {
+                                                    flat: "",
+                                                    color: "primary"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.$refs.reservation_menu.save(
+                                                        _vm.start_date
+                                                      ),
+                                                        _vm.setTime()
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("OK")]
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", sm6: "", md4: "" } },
+                                    [
+                                      _c("v-select", {
                                         attrs: {
-                                          "no-title": "",
-                                          scrollable: ""
+                                          items: _vm.states,
+                                          label: "예약 시간",
+                                          "single-line": ""
                                         },
                                         model: {
-                                          value: _vm.start_date,
+                                          value: _vm.pick_time,
                                           callback: function($$v) {
-                                            _vm.start_date = $$v
+                                            _vm.pick_time = $$v
                                           },
-                                          expression: "start_date"
+                                          expression: "pick_time"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", sm6: "", md4: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "어른 인원",
+                                          required: ""
+                                        },
+                                        model: {
+                                          value: _vm.adult_person,
+                                          callback: function($$v) {
+                                            _vm.adult_person = $$v
+                                          },
+                                          expression: "adult_person"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", sm6: "", md4: "" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: {
+                                          label: "아이 인원",
+                                          required: ""
+                                        },
+                                        model: {
+                                          value: _vm.child_person,
+                                          callback: function($$v) {
+                                            _vm.child_person = $$v
+                                          },
+                                          expression: "child_person"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  this.reservation_selectMenu == 1
+                                    ? _c(
+                                        "div",
+                                        [
+                                          _c("B", [
+                                            _vm._v(
+                                              " 메뉴 예약이 가능한 가게 입니다. "
+                                            )
+                                          ]),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: { color: "primary" },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.menuDialog = true
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(" 메뉴 선택하기 ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-dialog",
+                                            {
+                                              model: {
+                                                value: _vm.menuDialog,
+                                                callback: function($$v) {
+                                                  _vm.menuDialog = $$v
+                                                },
+                                                expression: "menuDialog"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-stepper",
+                                                {
+                                                  attrs: { dark: "" },
+                                                  model: {
+                                                    value: _vm.Menu_Order,
+                                                    callback: function($$v) {
+                                                      _vm.Menu_Order = $$v
+                                                    },
+                                                    expression: "Menu_Order"
+                                                  }
+                                                },
+                                                [
+                                                  _c(
+                                                    "v-stepper-header",
+                                                    [
+                                                      _c(
+                                                        "v-stepper-step",
+                                                        {
+                                                          attrs: {
+                                                            step: "1",
+                                                            complete:
+                                                              _vm.Menu_Order > 1
+                                                          }
+                                                        },
+                                                        [_vm._v("메뉴 선택")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("v-divider"),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-stepper-step",
+                                                        {
+                                                          attrs: {
+                                                            step: "2",
+                                                            complete:
+                                                              _vm.Menu_Order > 2
+                                                          }
+                                                        },
+                                                        [_vm._v("메뉴 확인")]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c("v-divider")
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-items",
+                                                    [
+                                                      _c(
+                                                        "v-stepper-content",
+                                                        {
+                                                          attrs: {
+                                                            step: "1",
+                                                            color: "error"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card",
+                                                            {
+                                                              staticClass:
+                                                                "mb-5",
+                                                              staticStyle: {
+                                                                overflow:
+                                                                  "hidden"
+                                                              },
+                                                              attrs: {
+                                                                color:
+                                                                  "white lighten-1"
+                                                              }
+                                                            },
+                                                            [_c("Layout")],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                color: "error"
+                                                              },
+                                                              on: {
+                                                                click:
+                                                                  _vm.order_menu
+                                                              },
+                                                              nativeOn: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  _vm.Menu_Order = 2
+                                                                }
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "\n                                                    확인\n                                                "
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                flat: ""
+                                                              },
+                                                              on: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  _vm.menuDialog = false
+                                                                }
+                                                              }
+                                                            },
+                                                            [_vm._v("취소")]
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-stepper-content",
+                                                        {
+                                                          attrs: { step: "2" }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-card",
+                                                            {
+                                                              staticClass:
+                                                                "mb-5",
+                                                              attrs: {
+                                                                color:
+                                                                  "white lighten-1"
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "v-container",
+                                                                {
+                                                                  attrs: {
+                                                                    id:
+                                                                      "menu_check_container"
+                                                                  }
+                                                                },
+                                                                _vm._l(
+                                                                  _vm.range(
+                                                                    0,
+                                                                    _vm
+                                                                      .click_menu
+                                                                      .length -
+                                                                      1
+                                                                  ),
+                                                                  function(i) {
+                                                                    return _c(
+                                                                      "v-layout",
+                                                                      {
+                                                                        key: i,
+                                                                        attrs: {
+                                                                          id:
+                                                                            "menu_layout" +
+                                                                            i,
+                                                                          "mb-3":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "v-flex",
+                                                                          {
+                                                                            attrs: {
+                                                                              sm12:
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "v-card",
+                                                                              {
+                                                                                attrs: {
+                                                                                  "elevation-20":
+                                                                                    ""
+                                                                                }
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "v-card-text",
+                                                                                  {
+                                                                                    staticStyle: {
+                                                                                      "font-size":
+                                                                                        "1.2rem"
+                                                                                    }
+                                                                                  },
+                                                                                  [
+                                                                                    _c(
+                                                                                      "div",
+                                                                                      [
+                                                                                        _c(
+                                                                                          "b",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              " 메뉴명 : " +
+                                                                                                _vm._s(
+                                                                                                  _vm
+                                                                                                    .click_menu[
+                                                                                                    i
+                                                                                                  ]
+                                                                                                    .menu
+                                                                                                    .name
+                                                                                                ) +
+                                                                                                " "
+                                                                                            )
+                                                                                          ]
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "v-btn",
+                                                                                          {
+                                                                                            staticStyle: {
+                                                                                              float:
+                                                                                                "right"
+                                                                                            },
+                                                                                            attrs: {
+                                                                                              icon:
+                                                                                                "",
+                                                                                              id: i
+                                                                                            },
+                                                                                            on: {
+                                                                                              click:
+                                                                                                _vm.click_cancel
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "v-icon",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  dark:
+                                                                                                    ""
+                                                                                                }
+                                                                                              },
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  " close "
+                                                                                                )
+                                                                                              ]
+                                                                                            )
+                                                                                          ],
+                                                                                          1
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "br"
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "b",
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              " 가격 : " +
+                                                                                                _vm._s(
+                                                                                                  _vm
+                                                                                                    .click_menu[
+                                                                                                    i
+                                                                                                  ]
+                                                                                                    .menu
+                                                                                                    .price
+                                                                                                ) +
+                                                                                                " "
+                                                                                            )
+                                                                                          ]
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _c(
+                                                                                          "br"
+                                                                                        ),
+                                                                                        _vm._v(
+                                                                                          " "
+                                                                                        ),
+                                                                                        _vm
+                                                                                          .click_menu[
+                                                                                          i
+                                                                                        ]
+                                                                                          .menu
+                                                                                          .opNum !=
+                                                                                        0
+                                                                                          ? _c(
+                                                                                              "v-flex",
+                                                                                              {
+                                                                                                attrs: {
+                                                                                                  xs6:
+                                                                                                    ""
+                                                                                                }
+                                                                                              },
+                                                                                              [
+                                                                                                _c(
+                                                                                                  "b",
+                                                                                                  [
+                                                                                                    _vm._v(
+                                                                                                      " [ 옵션 ] "
+                                                                                                    )
+                                                                                                  ]
+                                                                                                ),
+                                                                                                _vm._v(
+                                                                                                  " "
+                                                                                                ),
+                                                                                                _c(
+                                                                                                  "br"
+                                                                                                ),
+                                                                                                _vm._v(
+                                                                                                  " "
+                                                                                                ),
+                                                                                                _vm._l(
+                                                                                                  _vm
+                                                                                                    .optionArray[
+                                                                                                    i
+                                                                                                  ],
+                                                                                                  function(
+                                                                                                    option,
+                                                                                                    index
+                                                                                                  ) {
+                                                                                                    return _c(
+                                                                                                      "span",
+                                                                                                      {
+                                                                                                        key: index
+                                                                                                      },
+                                                                                                      [
+                                                                                                        _c(
+                                                                                                          "b",
+                                                                                                          {
+                                                                                                            domProps: {
+                                                                                                              textContent: _vm._s(
+                                                                                                                option[
+                                                                                                                  "Name"
+                                                                                                                ]
+                                                                                                              )
+                                                                                                            }
+                                                                                                          }
+                                                                                                        ),
+                                                                                                        _vm._v(
+                                                                                                          " "
+                                                                                                        ),
+                                                                                                        _c(
+                                                                                                          "v-select",
+                                                                                                          {
+                                                                                                            attrs: {
+                                                                                                              items:
+                                                                                                                _vm
+                                                                                                                  .optionArray[
+                                                                                                                  i
+                                                                                                                ][
+                                                                                                                  index
+                                                                                                                ],
+                                                                                                              "single-line":
+                                                                                                                ""
+                                                                                                            },
+                                                                                                            model: {
+                                                                                                              value:
+                                                                                                                _vm
+                                                                                                                  .optionselect[
+                                                                                                                  i
+                                                                                                                ][
+                                                                                                                  index
+                                                                                                                ],
+                                                                                                              callback: function(
+                                                                                                                $$v
+                                                                                                              ) {
+                                                                                                                _vm.$set(
+                                                                                                                  _vm
+                                                                                                                    .optionselect[
+                                                                                                                    i
+                                                                                                                  ],
+                                                                                                                  index,
+                                                                                                                  $$v
+                                                                                                                )
+                                                                                                              },
+                                                                                                              expression:
+                                                                                                                "optionselect[i][index]"
+                                                                                                            }
+                                                                                                          }
+                                                                                                        )
+                                                                                                      ],
+                                                                                                      1
+                                                                                                    )
+                                                                                                  }
+                                                                                                )
+                                                                                              ],
+                                                                                              2
+                                                                                            )
+                                                                                          : _vm._e()
+                                                                                      ],
+                                                                                      1
+                                                                                    )
+                                                                                  ]
+                                                                                )
+                                                                              ],
+                                                                              1
+                                                                            )
+                                                                          ],
+                                                                          1
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    )
+                                                                  }
+                                                                )
+                                                              )
+                                                            ],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-flex",
+                                                            [
+                                                              _c("v-card", [
+                                                                _c(
+                                                                  "b",
+                                                                  {
+                                                                    staticClass:
+                                                                      "total"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      " 총 : " +
+                                                                        _vm._s(
+                                                                          _vm
+                                                                            .click_menu
+                                                                            .length
+                                                                        ) +
+                                                                        " 개 "
+                                                                    )
+                                                                  ]
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c("br"),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "b",
+                                                                  {
+                                                                    staticClass:
+                                                                      "total"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      " 합계 : " +
+                                                                        _vm._s(
+                                                                          _vm.sum_price
+                                                                        ) +
+                                                                        " 円 "
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ])
+                                                            ],
+                                                            1
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                color: "error"
+                                                              },
+                                                              on: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  _vm.OrderMenu()
+                                                                }
+                                                              },
+                                                              nativeOn: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  _vm.Menu_Order = 2
+                                                                }
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "\n                                                    메뉴 선택\n                                                "
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "v-btn",
+                                                            {
+                                                              attrs: {
+                                                                flat: ""
+                                                              },
+                                                              nativeOn: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  _vm.Menu_Order = 1
+                                                                }
+                                                              }
+                                                            },
+                                                            [_vm._v("취소")]
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                [
+                                  _c("v-text-field", {
+                                    attrs: { label: "요구 사항", required: "" },
+                                    model: {
+                                      value: _vm.message,
+                                      callback: function($$v) {
+                                        _vm.message = $$v
+                                      },
+                                      expression: "message"
+                                    }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
+                        [
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.dialog = false
+                                }
+                              }
+                            },
+                            [_vm._v("닫기")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "blue darken-1", flat: "" },
+                              on: {
+                                click: function($event) {
+                                  $event.stopPropagation()
+                                  _vm.dialog_ok = true
+                                }
+                              }
+                            },
+                            [_vm._v("예약 하기")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-dialog",
+                            {
+                              attrs: { "max-width": "500px" },
+                              model: {
+                                value: _vm.dialog_ok,
+                                callback: function($$v) {
+                                  _vm.dialog_ok = $$v
+                                },
+                                expression: "dialog_ok"
+                              }
+                            },
+                            [
+                              _c(
+                                "v-card",
+                                [
+                                  _c("v-card-title", [
+                                    _c("div", [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "reservationCheck_title"
+                                        },
+                                        [_c("b", [_vm._v("예약 확인")])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("hr"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "reservationCheck_main"
+                                        },
+                                        [
+                                          _c("B", [_vm._v(" 예약 날짜 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.start_date) +
+                                              "    "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 예약 시간 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.pick_time) +
+                                              "     "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 어른 인원 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.adult_person) +
+                                              "  "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 아이 인원 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.child_person) +
+                                              "  "
+                                          ),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("B", [_vm._v(" 요구 사항 : ")]),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(this.message) +
+                                              " \n                              "
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-actions",
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { color: "primary", flat: "" },
+                                          on: {
+                                            click: [
+                                              function($event) {
+                                                $event.stopPropagation()
+                                                ;(_vm.dialog_ok = false),
+                                                  (_vm.dialog = false)
+                                              },
+                                              function($event) {
+                                                _vm.SpendData(), _vm.Okey()
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        [_vm._v("확인")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { color: "primary", flat: "" },
+                                          nativeOn: {
+                                            click: function($event) {
+                                              ;(_vm.dialog_ok = false),
+                                                (_vm.dialog = false)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("취소")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  staticStyle: { color: "white" },
+                  attrs: { small: "", color: "cyan darken-1" },
+                  on: {
+                    click: function($event) {
+                      _vm.dialog2 = true
+                    }
+                  }
+                },
+                [_c("B", [_vm._v("쿠폰 다운")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-dialog",
+                {
+                  attrs: { fullscreen: "", "hide-overlay": "" },
+                  model: {
+                    value: _vm.dialog2,
+                    callback: function($$v) {
+                      _vm.dialog2 = $$v
+                    },
+                    expression: "dialog2"
+                  }
+                },
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-toolbar",
+                        {
+                          attrs: { card: "", dark: "", color: "cyan darken-1" }
+                        },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { icon: "", dark: "" },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.dialog2 = false
+                                }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("close")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-toolbar-title"),
+                          _vm._v(" "),
+                          _c("v-spacer")
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-card-text", [
+                        _c(
+                          "div",
+                          { staticClass: "CouponDownTitle" },
+                          [_c("B", [_vm._v("쿠폰 다운 받기")])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("hr"),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "CouponDownMain" },
+                          [
+                            _vm._l(_vm.items, function(item, index) {
+                              return [
+                                _c(
+                                  "v-list-tile",
+                                  {
+                                    key: item.name,
+                                    attrs: { avatar: "", ripple: "" }
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-tile-content",
+                                      {
+                                        staticStyle: {
+                                          height: "700px",
+                                          "padding-top": "2%",
+                                          "padding-bottom": "2%"
                                         }
                                       },
                                       [
-                                        _c("v-spacer"),
-                                        _vm._v(" "),
                                         _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              flat: "",
-                                              color: "primary"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                _vm.reservation_menu = false
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Cancel")]
+                                          "v-list-tile-title",
+                                          [
+                                            _c("B", [
+                                              _vm._v(
+                                                " " + _vm._s(item.name) + " "
+                                              )
+                                            ])
+                                          ],
+                                          1
                                         ),
                                         _vm._v(" "),
                                         _c(
+                                          "v-list-tile-sub-title",
+                                          { staticClass: "text--primary" },
+                                          [
+                                            _vm._v(
+                                              "\n                            " +
+                                                _vm._s(item.category) +
+                                                "\n                        "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        item.category == "상품 제공"
+                                          ? _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "\n                            " +
+                                                  _vm._s(item.price_condition) +
+                                                  "이상일 경우,   " +
+                                                  _vm._s(item.add_product) +
+                                                  " 제공\n                        "
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        item.category == "가격 할인"
+                                          ? _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "\n                            " +
+                                                  _vm._s(item.price_condition) +
+                                                  "이상일 경우,   " +
+                                                  _vm._s(item.discount) +
+                                                  " 할인\n                        "
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c("v-list-tile-sub-title", [
+                                          _vm._v(
+                                            "\n                            [ " +
+                                              _vm._s(item.start_date) +
+                                              " ~ " +
+                                              _vm._s(item.expiry_date) +
+                                              " ]\n                        "
+                                          )
+                                        ])
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile-action",
+                                      [
+                                        _c(
                                           "v-btn",
                                           {
                                             attrs: {
                                               flat: "",
-                                              color: "primary"
+                                              icon: "",
+                                              color: "error"
                                             },
                                             on: {
                                               click: function($event) {
-                                                _vm.$refs.reservation_menu.save(
-                                                  _vm.start_date
-                                                )
+                                                _vm.Download(item)
                                               }
                                             }
                                           },
-                                          [_vm._v("OK")]
+                                          [_c("v-icon", [_vm._v("get_app")])],
+                                          1
                                         )
                                       ],
                                       1
                                     )
                                   ],
                                   1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs11: "", sm5: "" } },
-                              [
-                                _c(
-                                  "v-menu",
-                                  {
-                                    ref: "menu",
-                                    attrs: {
-                                      lazy: "",
-                                      "close-on-content-click": false,
-                                      transition: "scale-transition",
-                                      "offset-y": "",
-                                      "full-width": "",
-                                      "nudge-right": 40,
-                                      "max-width": "290px",
-                                      "min-width": "290px",
-                                      "return-value": _vm.time
-                                    },
-                                    on: {
-                                      "update:returnValue": function($event) {
-                                        _vm.time = $event
-                                      }
-                                    },
-                                    model: {
-                                      value: _vm.menu2,
-                                      callback: function($$v) {
-                                        _vm.menu2 = $$v
-                                      },
-                                      expression: "menu2"
-                                    }
-                                  },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        slot: "activator",
-                                        label: "pick Time",
-                                        "prepend-icon": "access_time",
-                                        readonly: ""
-                                      },
-                                      slot: "activator",
-                                      model: {
-                                        value: _vm.time,
-                                        callback: function($$v) {
-                                          _vm.time = $$v
-                                        },
-                                        expression: "time"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("v-time-picker", {
-                                      on: {
-                                        change: function($event) {
-                                          _vm.$refs.menu.save(_vm.time)
-                                        }
-                                      },
-                                      model: {
-                                        value: _vm.time,
-                                        callback: function($$v) {
-                                          _vm.time = $$v
-                                        },
-                                        expression: "time"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "어른 인원", required: "" },
-                                  model: {
-                                    value: _vm.adult_person,
-                                    callback: function($$v) {
-                                      _vm.adult_person = $$v
-                                    },
-                                    expression: "adult_person"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "아이 인원", required: "" },
-                                  model: {
-                                    value: _vm.child_person,
-                                    callback: function($$v) {
-                                      _vm.child_person = $$v
-                                    },
-                                    expression: "child_person"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: {
-                                    label: "요청사항(선택)",
-                                    required: ""
-                                  },
-                                  model: {
-                                    value: _vm.message,
-                                    callback: function($$v) {
-                                      _vm.message = $$v
-                                    },
-                                    expression: "message"
-                                  }
-                                })
-                              ],
-                              1
-                            )
+                                ),
+                                _vm._v(" "),
+                                index + 1 < _vm.items.length
+                                  ? _c("v-divider", { key: index })
+                                  : _vm._e()
+                              ]
+                            })
                           ],
-                          1
+                          2
                         )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "frame",
+          staticStyle: { padding: "2%" },
+          attrs: { id: "explanation" }
+        }),
+        _vm._v(" "),
+        _c("b", { staticClass: "column" }, [_vm._v(" 갤러리 ")]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "frame", attrs: { id: "gallery_div" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "gallery",
+                staticStyle: { display: "none" },
+                attrs: { id: "moreImg" }
+              },
+              [
                 _c(
-                  "v-card-actions",
+                  "div",
+                  {
+                    staticClass: "gallery_img MoreImg_inner",
+                    on: {
+                      click: [
+                        _vm.PrtAllGalleryImg,
+                        function($event) {
+                          $event.stopPropagation()
+                          _vm.ShowMoreImg = true
+                        }
+                      ]
+                    }
+                  },
+                  [_vm._v("더 보기")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "v-dialog",
+              {
+                attrs: { width: "95%", scrollable: "" },
+                model: {
+                  value: _vm.ShowMoreImg,
+                  callback: function($$v) {
+                    _vm.ShowMoreImg = $$v
+                  },
+                  expression: "ShowMoreImg"
+                }
+              },
+              [
+                _c(
+                  "v-card",
                   [
-                    _c("v-spacer"),
-                    _vm._v(" "),
                     _c(
-                      "v-btn",
-                      {
-                        attrs: { color: "blue darken-1", flat: "" },
-                        nativeOn: {
-                          click: function($event) {
-                            _vm.dialog = false
-                          }
-                        }
-                      },
-                      [_vm._v("닫기")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-btn",
-                      {
-                        attrs: { color: "blue darken-1", flat: "" },
-                        on: {
-                          click: function($event) {
-                            $event.stopPropagation()
-                            _vm.dialog_ok = true
-                          }
-                        }
-                      },
-                      [_vm._v("예약 하기")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-dialog",
-                      {
-                        attrs: { "max-width": "500px" },
-                        model: {
-                          value: _vm.dialog_ok,
-                          callback: function($$v) {
-                            _vm.dialog_ok = $$v
-                          },
-                          expression: "dialog_ok"
-                        }
-                      },
+                      "v-card-title",
                       [
                         _c(
-                          "v-card",
+                          "h2",
+                          {
+                            staticClass: "column",
+                            staticStyle: { margin: "auto" }
+                          },
+                          [_vm._v(" Gallery ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          {
+                            staticStyle: { float: "right" },
+                            attrs: { icon: "" },
+                            on: {
+                              click: function($event) {
+                                _vm.ShowMoreImg = false
+                              }
+                            }
+                          },
                           [
-                            _c("v-card-title", [
-                              _c("div", { staticClass: "reservationCheck" }, [
-                                _c("h2", [_c("B", [_vm._v("예약 확인")])], 1),
-                                _vm._v(" "),
-                                _c("br"),
-                                _c("hr"),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  [
-                                    _c("B", [_vm._v(" 예약자 명 : ")]),
-                                    _vm._v(" " + _vm._s(_vm.usernum) + " ")
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  [
-                                    _c("B", [_vm._v(" 예약 날짜 : ")]),
-                                    _vm._v(" " + _vm._s(_vm.start_date) + " ")
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  [
-                                    _c("B", [_vm._v(" 예약 시간 : ")]),
-                                    _vm._v(" " + _vm._s(_vm.time) + " ")
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  [
-                                    _c("B", [_vm._v(" 어른 인원 : ")]),
-                                    _vm._v(" " + _vm._s(_vm.adult_person) + " ")
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  [
-                                    _c("B", [_vm._v(" 아이 인원 : ")]),
-                                    _vm._v(" " + _vm._s(_vm.child_person) + " ")
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "h3",
-                                  [
-                                    _c("B", [_vm._v(" 요청 사항 : ")]),
-                                    _vm._v(" " + _vm._s(_vm.message) + " ")
-                                  ],
-                                  1
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "v-card-actions",
-                              [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: { color: "primary", flat: "" },
-                                    on: {
-                                      click: [
-                                        function($event) {
-                                          $event.stopPropagation()
-                                          ;(_vm.dialog_ok = false),
-                                            (_vm.dialog = false)
-                                        },
-                                        function($event) {
-                                          _vm.SpendData(), _vm.Okey()
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  [_vm._v("확인")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: { color: "primary", flat: "" },
-                                    nativeOn: {
-                                      click: function($event) {
-                                        ;(_vm.dialog_ok = false),
-                                          (_vm.dialog = false)
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("취소")]
-                                )
-                              ],
-                              1
-                            )
+                            _c("v-icon", { attrs: { large: "" } }, [
+                              _vm._v(" clear ")
+                            ])
                           ],
                           1
                         )
                       ],
                       1
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c("v-flex", { attrs: { xs12: "", id: "prtAllImgs" } })
                   ],
                   1
                 )
@@ -99683,216 +100327,163 @@ var render = function() {
             )
           ],
           1
-        )
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", {
-      staticClass: "frame",
-      staticStyle: { padding: "2%" },
-      attrs: { id: "explanation" }
-    }),
-    _vm._v(" "),
-    _c("h2", [_vm._v(" 갤러리 ")]),
-    _vm._v(" "),
-    _c("div", {
-      staticClass: "frame",
-      staticStyle: { "text-align": "center" },
-      attrs: { id: "gallery_div" }
-    }),
-    _vm._v(" "),
-    _c("h2", [_vm._v(" 주소 ")]),
-    _vm._v(" "),
-    _vm._m(3),
-    _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _vm._m(5),
-    _vm._v(" "),
-    _vm._m(6),
-    _vm._v(" "),
-    _vm._m(7),
-    _vm._v(" "),
-    _vm._m(8),
-    _vm._v(" "),
-    _vm._m(9)
-  ])
+        ),
+        _vm._v(" "),
+        _c("b", { staticClass: "column" }, [_vm._v(" 주소 ")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "frame" }, [
+          _c(
+            "div",
+            {
+              staticClass: "title_div",
+              staticStyle: { "margin-top": "1%", "margin-bottom": "1%" }
+            },
+            [_c("div", { attrs: { id: "map" } })]
+          ),
+          _vm._v(" "),
+          _c("div", [
+            _c("b", { staticClass: "column" }, [_vm._v(" 상세 주소 : ")]),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "resInfo",
+              staticStyle: { "margin-right": "3px" },
+              attrs: { id: "dodobuken" }
+            }),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "resInfo",
+              staticStyle: { "margin-right": "3px" },
+              attrs: { id: "cities" }
+            }),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "resInfo",
+              staticStyle: { "margin-right": "3px" },
+              attrs: { id: "address" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "frame_small" }, [
+          _c("span", { staticClass: "column" }, [
+            _c("b", [_vm._v("요리 유형")])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "column_value", attrs: { id: "type" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "frame_small" }, [
+          _c("span", { staticClass: "column" }, [_c("b", [_vm._v("좌석 수")])]),
+          _vm._v(" "),
+          _c("span", { staticClass: "column_value", attrs: { id: "seat_num" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "frame_small" }, [
+          _c("span", { staticClass: "column" }, [
+            _c("b", [_vm._v("전화번호")])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "column_value", attrs: { id: "phone" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "frame_small" }, [
+          _c("div", { staticClass: "column", staticStyle: { float: "left" } }, [
+            _c("b", [_vm._v("이용 시간")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "column_value", staticStyle: { float: "left" } },
+            [
+              _c("span", { staticClass: "timeInfo" }, [_vm._v(" 런치 : ")]),
+              _vm._v(" "),
+              _c("span", {
+                staticClass: "timeInfo",
+                attrs: { id: "lunch_open" }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "timeInfo", attrs: { id: "lunch_close" } },
+                [_vm._v(" ~ ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "timeInfo", attrs: { id: "lunch_lo" } },
+                [_vm._v(" ( last order : ")]
+              ),
+              _vm._v(" "),
+              _c("span", [_vm._v(" ) ")]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("span", { staticClass: "timeInfo" }, [_vm._v(" 디너 : ")]),
+              _vm._v(" "),
+              _c("span", {
+                staticClass: "timeInfo",
+                attrs: { id: "dinner_open" }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "timeInfo", attrs: { id: "dinner_close" } },
+                [_vm._v(" ~ ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "timeInfo", attrs: { id: "dinner_lo" } },
+                [_vm._v(" ( last order : ")]
+              ),
+              _c("span", [_vm._v(" ) ")])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "frame_small" }, [
+          _c("span", { staticClass: "column" }, [
+            _c("b", [_vm._v("결제 방식")])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "column_value", attrs: { id: "payment" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "frame_small" }, [
+          _c("span", { staticClass: "column" }, [
+            _c("b", [_vm._v("이용 안내")])
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "column_value" }, [
+            _c("span", { staticClass: "resInfo", attrs: { id: "children" } }, [
+              _vm._v(" 아이 동반 : ")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "resInfo", attrs: { id: "pet" } }, [
+              _vm._v(" 애완 동물 동반 : ")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "resInfo", attrs: { id: "parking" } }, [
+              _vm._v(" 주차 : ")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "resInfo", attrs: { id: "smoking" } }, [
+              _vm._v(" 흡연 : ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "resInfo", attrs: { id: "privateroom" } },
+              [_vm._v(" 개인실 : ")]
+            )
+          ])
+        ])
+      ])
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "title_frame", attrs: { id: "title_img" } },
-      [
-        _c("br"),
-        _vm._v(" "),
-        _c("div", { attrs: { id: "name_area" } }, [
-          _c("b", {
-            staticStyle: { "font-size": "200%" },
-            attrs: { id: "name" }
-          })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticStyle: { width: "40%", float: "left" } }, [
-      _c("h2", { staticStyle: { "font-size": "200%" } }, [_vm._v("  소개 ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { width: "40%", float: "left", "margin-right": "3%" } },
-      [
-        _c(
-          "h2",
-          {
-            staticStyle: { "text-align": "right", "font-size": "200%" },
-            attrs: { id: "totalRating" }
-          },
-          [_vm._v("\n               방문객 평점 :\n            ")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "frame" }, [
-      _c("div", { attrs: { id: "map" } }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "address" } }, [
-        _c("b", { staticClass: "address_values" }, [_vm._v(" 상세 주소 : ")]),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "address_values",
-          attrs: { id: "dodobuken" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "address_values", attrs: { id: "cities" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "address_values", attrs: { id: "address" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "frame_small" }, [
-      _c("div", { staticClass: "column" }, [_c("b", [_vm._v("요리 유형")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column_value", attrs: { id: "type" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "frame_small" }, [
-      _c("div", { staticClass: "column" }, [_c("b", [_vm._v("좌석 수")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column_value", attrs: { id: "seat_num" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "frame_small" }, [
-      _c("div", { staticClass: "column" }, [_c("b", [_vm._v("전화번호")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column_value", attrs: { id: "phone" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "frame_small" }, [
-      _c("div", { staticClass: "column" }, [_c("b", [_vm._v("이용 시간")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column_value" }, [
-        _c("span", [_vm._v(" 런치 : ")]),
-        _vm._v(" "),
-        _c("span", { attrs: { id: "lunch_open" } }),
-        _vm._v(" "),
-        _c("span", { attrs: { id: "lunch_close" } }, [_vm._v(" ~ ")]),
-        _vm._v(" "),
-        _c("span", { attrs: { id: "lunch_lo" } }, [_vm._v(" ( last order : ")]),
-        _vm._v(" "),
-        _c("span", [_vm._v(" ) ")]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", [_vm._v(" 디너 : ")]),
-        _vm._v(" "),
-        _c("span", { attrs: { id: "dinner_open" } }),
-        _vm._v(" "),
-        _c("span", { attrs: { id: "dinner_close" } }, [_vm._v(" ~ ")]),
-        _vm._v(" "),
-        _c("span", { attrs: { id: "dinner_lo" } }, [
-          _vm._v(" ( last order : ")
-        ]),
-        _c("span", [_vm._v(" ) ")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "frame_small" }, [
-      _c("div", { staticClass: "column" }, [_c("b", [_vm._v("결제 방식")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column_value", attrs: { id: "payment" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "frame_small" }, [
-      _c("div", { staticClass: "column" }, [_c("b", [_vm._v("이용 안내")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column_value" }, [
-        _c("div", { staticClass: "others", attrs: { id: "children" } }, [
-          _vm._v(" 아이 동반 : ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "others", attrs: { id: "pet" } }, [
-          _vm._v(" 애완 동물 동반 : ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "others", attrs: { id: "parking" } }, [
-          _vm._v(" 주차 : ")
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("div", { staticClass: "others", attrs: { id: "smoking" } }, [
-          _vm._v(" 흡연 : ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "others", attrs: { id: "privateroom" } }, [
-          _vm._v(" 개인실 : ")
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 if (false) {
@@ -99903,18 +100494,18 @@ if (false) {
 }
 
 /***/ }),
-/* 609 */
+/* 611 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserWriteReview_vue__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserWriteReview_vue__ = __webpack_require__(270);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42ab863c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserWriteReview_vue__ = __webpack_require__(621);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_42ab863c_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserWriteReview_vue__ = __webpack_require__(623);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(610)
+  __webpack_require__(612)
 }
 /* script */
 
@@ -99961,13 +100552,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 610 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(611);
+var content = __webpack_require__(613);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -99988,7 +100579,7 @@ if(false) {
 }
 
 /***/ }),
-/* 611 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -100002,18 +100593,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 612 */
+/* 614 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewStarRating_vue__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewStarRating_vue__ = __webpack_require__(271);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7be88568_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewStarRating_vue__ = __webpack_require__(615);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7be88568_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewStarRating_vue__ = __webpack_require__(617);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(613)
+  __webpack_require__(615)
 }
 /* script */
 
@@ -100060,13 +100651,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 613 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(614);
+var content = __webpack_require__(616);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -100087,7 +100678,7 @@ if(false) {
 }
 
 /***/ }),
-/* 614 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -100101,7 +100692,7 @@ exports.push([module.i, "\n.vue-star-rating-star[data-v-7be88568] {\n    display
 
 
 /***/ }),
-/* 615 */
+/* 617 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100191,18 +100782,18 @@ if (false) {
 }
 
 /***/ }),
-/* 616 */
+/* 618 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_vue_loader_lib_selector_type_script_index_0_PictureInput_vue__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_vue_loader_lib_selector_type_script_index_0_PictureInput_vue__ = __webpack_require__(272);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_43083542_hasScoped_true_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_PictureInput_vue__ = __webpack_require__(619);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_loader_lib_template_compiler_index_id_data_v_43083542_hasScoped_true_optionsId_0_buble_transforms_vue_loader_lib_selector_type_template_index_0_PictureInput_vue__ = __webpack_require__(621);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(617)
+  __webpack_require__(619)
 }
 /* script */
 
@@ -100249,13 +100840,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 617 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(618);
+var content = __webpack_require__(620);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -100276,7 +100867,7 @@ if(false) {
 }
 
 /***/ }),
-/* 618 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -100290,7 +100881,7 @@ exports.push([module.i, "\n.picture-input[data-v-43083542] {\n  width: 100%;\n  
 
 
 /***/ }),
-/* 619 */
+/* 621 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100526,14 +101117,14 @@ if (false) {
 }
 
 /***/ }),
-/* 620 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(t,e){if(true)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var n=e();for(var r in n)("object"==typeof exports?exports:t)[r]=n[r]}}(this,function(){return function(t){function e(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,e),o.l=!0,o.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="dist/",e(e.s=41)}([function(t,e,n){var r=n(23)("wks"),o=n(15),i=n(1).Symbol,u="function"==typeof i;(t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))}).store=r},function(t,e){var n=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(t,e){var n=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=n)},function(t,e){var n={}.hasOwnProperty;t.exports=function(t,e){return n.call(t,e)}},function(t,e,n){var r=n(8),o=n(31),i=n(26),u=Object.defineProperty;e.f=n(6)?Object.defineProperty:function(t,e,n){if(r(t),e=i(e,!0),r(n),o)try{return u(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(t[e]=n.value),t}},function(t,e,n){var r=n(60),o=n(17);t.exports=function(t){return r(o(t))}},function(t,e,n){t.exports=!n(9)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,e,n){var r=n(4),o=n(12);t.exports=n(6)?function(t,e,n){return r.f(t,e,o(1,n))}:function(t,e,n){return t[e]=n,t}},function(t,e,n){var r=n(14);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,e){t.exports={}},function(t,e,n){var r=n(36),o=n(18);t.exports=Object.keys||function(t){return r(t,o)}},function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},function(t,e,n){var r=n(1),o=n(2),i=n(29),u=n(7),a=function(t,e,n){var f,c,s,p=t&a.F,l=t&a.G,d=t&a.S,v=t&a.P,h=t&a.B,y=t&a.W,g=l?o:o[e]||(o[e]={}),m=g.prototype,x=l?r:d?r[e]:(r[e]||{}).prototype;l&&(n=e);for(f in n)(c=!p&&x&&void 0!==x[f])&&f in g||(s=c?x[f]:n[f],g[f]=l&&"function"!=typeof x[f]?n[f]:h&&c?i(s,r):y&&x[f]==s?function(t){var e=function(e,n,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(e);case 2:return new t(e,n)}return new t(e,n,r)}return t.apply(this,arguments)};return e.prototype=t.prototype,e}(s):v&&"function"==typeof s?i(Function.call,s):s,v&&((g.virtual||(g.virtual={}))[f]=s,t&a.R&&m&&!m[f]&&u(m,f,s)))};a.F=1,a.G=2,a.S=4,a.P=8,a.B=16,a.W=32,a.U=64,a.R=128,t.exports=a},function(t,e){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,e){var n=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++n+r).toString(36))}},function(t,e){var n={}.toString;t.exports=function(t){return n.call(t).slice(8,-1)}},function(t,e){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,e){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,e){t.exports=!0},function(t,e){e.f={}.propertyIsEnumerable},function(t,e,n){var r=n(4).f,o=n(3),i=n(0)("toStringTag");t.exports=function(t,e,n){t&&!o(t=n?t:t.prototype,i)&&r(t,i,{configurable:!0,value:e})}},function(t,e,n){var r=n(23)("keys"),o=n(15);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,e,n){var r=n(1),o=r["__core-js_shared__"]||(r["__core-js_shared__"]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,e){var n=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:n)(t)}},function(t,e,n){var r=n(17);t.exports=function(t){return Object(r(t))}},function(t,e,n){var r=n(14);t.exports=function(t,e){if(!r(t))return t;var n,o;if(e&&"function"==typeof(n=t.toString)&&!r(o=n.call(t)))return o;if("function"==typeof(n=t.valueOf)&&!r(o=n.call(t)))return o;if(!e&&"function"==typeof(n=t.toString)&&!r(o=n.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,e,n){var r=n(1),o=n(2),i=n(19),u=n(28),a=n(4).f;t.exports=function(t){var e=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in e||a(e,t,{value:u.f(t)})}},function(t,e,n){e.f=n(0)},function(t,e,n){var r=n(53);t.exports=function(t,e,n){if(r(t),void 0===e)return t;switch(n){case 1:return function(n){return t.call(e,n)};case 2:return function(n,r){return t.call(e,n,r)};case 3:return function(n,r,o){return t.call(e,n,r,o)}}return function(){return t.apply(e,arguments)}}},function(t,e,n){var r=n(14),o=n(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,e,n){t.exports=!n(6)&&!n(9)(function(){return 7!=Object.defineProperty(n(30)("div"),"a",{get:function(){return 7}}).a})},function(t,e,n){"use strict";var r=n(19),o=n(13),i=n(37),u=n(7),a=n(3),f=n(10),c=n(64),s=n(21),p=n(72),l=n(0)("iterator"),d=!([].keys&&"next"in[].keys()),v=function(){return this};t.exports=function(t,e,n,h,y,g,m){c(n,e,h);var x,b,w,_=function(t){if(!d&&t in j)return j[t];switch(t){case"keys":case"values":return function(){return new n(this,t)}}return function(){return new n(this,t)}},O=e+" Iterator",S="values"==y,T=!1,j=t.prototype,E=j[l]||j["@@iterator"]||y&&j[y],A=E||_(y),C=y?S?_("entries"):A:void 0,P="Array"==e?j.entries||E:E;if(P&&(w=p(P.call(new t)))!==Object.prototype&&(s(w,O,!0),r||a(w,l)||u(w,l,v)),S&&E&&"values"!==E.name&&(T=!0,A=function(){return E.call(this)}),r&&!m||!d&&!T&&j[l]||u(j,l,A),f[e]=A,f[O]=v,y)if(x={values:S?A:_("values"),keys:g?A:_("keys"),entries:C},m)for(b in x)b in j||i(j,b,x[b]);else o(o.P+o.F*(d||T),e,x);return x}},function(t,e,n){var r=n(8),o=n(69),i=n(18),u=n(22)("IE_PROTO"),a=function(){},f=function(){var t,e=n(30)("iframe"),r=i.length;for(e.style.display="none",n(59).appendChild(e),e.src="javascript:",t=e.contentWindow.document,t.open(),t.write("<script>document.F=Object<\/script>"),t.close(),f=t.F;r--;)delete f.prototype[i[r]];return f()};t.exports=Object.create||function(t,e){var n;return null!==t?(a.prototype=r(t),n=new a,a.prototype=null,n[u]=t):n=f(),void 0===e?n:o(n,e)}},function(t,e,n){var r=n(36),o=n(18).concat("length","prototype");e.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,e){e.f=Object.getOwnPropertySymbols},function(t,e,n){var r=n(3),o=n(5),i=n(55)(!1),u=n(22)("IE_PROTO");t.exports=function(t,e){var n,a=o(t),f=0,c=[];for(n in a)n!=u&&r(a,n)&&c.push(n);for(;e.length>f;)r(a,n=e[f++])&&(~i(c,n)||c.push(n));return c}},function(t,e,n){t.exports=n(7)},function(t,e,n){var r=n(24),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,e,n){"use strict";var r=n(74)(!0);n(32)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,e=this._t,n=this._i;return n>=e.length?{value:void 0,done:!0}:(t=r(e,n),this._i+=t.length,{value:t,done:!1})})},function(t,e,n){function r(t){n(89)}var o=n(87)(n(42),n(88),r,null,null);t.exports=o.exports},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.InputTag=void 0;var r=n(40),o=function(t){return t&&t.__esModule?t:{default:t}}(r);e.InputTag=o.default,e.default=o.default},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var o=n(48),i=r(o),u=n(44),a=r(u),f=n(47),c=r(f),s={email:new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),url:new RegExp(/^(https?|ftp|rmtp|mms):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?\/?/i),text:new RegExp(/^[a-zA-Z]+$/),digits:new RegExp(/^[\d() \.\:\-\+#]+$/),isodate:new RegExp(/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/)};e.default={name:"InputTag",props:{tags:{type:Array,default:function(){return[]}},placeholder:{type:String,default:""},readOnly:{type:Boolean,default:!1},validate:{type:String|Object,default:""},addTagOnKeys:{type:Array,default:function(){return[13,188,9]}},addTagOnBlur:{type:Boolean,default:!1},limit:{default:-1}},data:function(){return{newTag:"",innerTags:[].concat((0,c.default)(this.tags))}},watch:{tags:function(){this.innerTags=[].concat((0,c.default)(this.tags))}},computed:{isLimit:function(){return this.limit>0&&Number(this.limit)===this.innerTags.length}},methods:{focusNewTag:function(){!this.readOnly&&this.$el.querySelector(".new-tag")&&this.$el.querySelector(".new-tag").focus()},addNew:function(t){t&&-1===this.addTagOnKeys.indexOf(t.keyCode)&&("blur"!==t.type||!this.addTagOnBlur)||this.isLimit||(t&&(t.stopPropagation(),t.preventDefault()),this.newTag&&-1===this.innerTags.indexOf(this.newTag)&&this.validateIfNeeded(this.newTag)&&(this.innerTags.push(this.newTag),this.newTag="",this.tagChange()))},validateIfNeeded:function(t){return""===this.validate||void 0===this.validate||("string"==typeof this.validate&&(0,a.default)(s).indexOf(this.validate)>-1?s[this.validate].test(t):"object"!==(0,i.default)(this.validate)||void 0===this.validate.test||this.validate.test(t))},remove:function(t){this.innerTags.splice(t,1),this.tagChange()},removeLastTag:function(){this.newTag||(this.innerTags.pop(),this.tagChange())},tagChange:function(){this.$emit("update:tags",this.innerTags)}}}},function(t,e,n){t.exports={default:n(49),__esModule:!0}},function(t,e,n){t.exports={default:n(50),__esModule:!0}},function(t,e,n){t.exports={default:n(51),__esModule:!0}},function(t,e,n){t.exports={default:n(52),__esModule:!0}},function(t,e,n){"use strict";e.__esModule=!0;var r=n(43),o=function(t){return t&&t.__esModule?t:{default:t}}(r);e.default=function(t){if(Array.isArray(t)){for(var e=0,n=Array(t.length);e<t.length;e++)n[e]=t[e];return n}return(0,o.default)(t)}},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}e.__esModule=!0;var o=n(46),i=r(o),u=n(45),a=r(u),f="function"==typeof a.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof a.default&&t.constructor===a.default&&t!==a.default.prototype?"symbol":typeof t};e.default="function"==typeof a.default&&"symbol"===f(i.default)?function(t){return void 0===t?"undefined":f(t)}:function(t){return t&&"function"==typeof a.default&&t.constructor===a.default&&t!==a.default.prototype?"symbol":void 0===t?"undefined":f(t)}},function(t,e,n){n(39),n(77),t.exports=n(2).Array.from},function(t,e,n){n(79),t.exports=n(2).Object.keys},function(t,e,n){n(81),n(80),n(82),n(83),t.exports=n(2).Symbol},function(t,e,n){n(39),n(84),t.exports=n(28).f("iterator")},function(t,e){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,e){t.exports=function(){}},function(t,e,n){var r=n(5),o=n(38),i=n(75);t.exports=function(t){return function(e,n,u){var a,f=r(e),c=o(f.length),s=i(u,c);if(t&&n!=n){for(;c>s;)if((a=f[s++])!=a)return!0}else for(;c>s;s++)if((t||s in f)&&f[s]===n)return t||s||0;return!t&&-1}}},function(t,e,n){var r=n(16),o=n(0)("toStringTag"),i="Arguments"==r(function(){return arguments}()),u=function(t,e){try{return t[e]}catch(t){}};t.exports=function(t){var e,n,a;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(n=u(e=Object(t),o))?n:i?r(e):"Object"==(a=r(e))&&"function"==typeof e.callee?"Arguments":a}},function(t,e,n){"use strict";var r=n(4),o=n(12);t.exports=function(t,e,n){e in t?r.f(t,e,o(0,n)):t[e]=n}},function(t,e,n){var r=n(11),o=n(35),i=n(20);t.exports=function(t){var e=r(t),n=o.f;if(n)for(var u,a=n(t),f=i.f,c=0;a.length>c;)f.call(t,u=a[c++])&&e.push(u);return e}},function(t,e,n){t.exports=n(1).document&&document.documentElement},function(t,e,n){var r=n(16);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,e,n){var r=n(10),o=n(0)("iterator"),i=Array.prototype;t.exports=function(t){return void 0!==t&&(r.Array===t||i[o]===t)}},function(t,e,n){var r=n(16);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,e,n){var r=n(8);t.exports=function(t,e,n,o){try{return o?e(r(n)[0],n[1]):e(n)}catch(e){var i=t.return;throw void 0!==i&&r(i.call(t)),e}}},function(t,e,n){"use strict";var r=n(33),o=n(12),i=n(21),u={};n(7)(u,n(0)("iterator"),function(){return this}),t.exports=function(t,e,n){t.prototype=r(u,{next:o(1,n)}),i(t,e+" Iterator")}},function(t,e,n){var r=n(0)("iterator"),o=!1;try{var i=[7][r]();i.return=function(){o=!0},Array.from(i,function(){throw 2})}catch(t){}t.exports=function(t,e){if(!e&&!o)return!1;var n=!1;try{var i=[7],u=i[r]();u.next=function(){return{done:n=!0}},i[r]=function(){return u},t(i)}catch(t){}return n}},function(t,e){t.exports=function(t,e){return{value:e,done:!!t}}},function(t,e,n){var r=n(11),o=n(5);t.exports=function(t,e){for(var n,i=o(t),u=r(i),a=u.length,f=0;a>f;)if(i[n=u[f++]]===e)return n}},function(t,e,n){var r=n(15)("meta"),o=n(14),i=n(3),u=n(4).f,a=0,f=Object.isExtensible||function(){return!0},c=!n(9)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++a,w:{}}})},p=function(t,e){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!f(t))return"F";if(!e)return"E";s(t)}return t[r].i},l=function(t,e){if(!i(t,r)){if(!f(t))return!0;if(!e)return!1;s(t)}return t[r].w},d=function(t){return c&&v.NEED&&f(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:p,getWeak:l,onFreeze:d}},function(t,e,n){var r=n(4),o=n(8),i=n(11);t.exports=n(6)?Object.defineProperties:function(t,e){o(t);for(var n,u=i(e),a=u.length,f=0;a>f;)r.f(t,n=u[f++],e[n]);return t}},function(t,e,n){var r=n(20),o=n(12),i=n(5),u=n(26),a=n(3),f=n(31),c=Object.getOwnPropertyDescriptor;e.f=n(6)?c:function(t,e){if(t=i(t),e=u(e,!0),f)try{return c(t,e)}catch(t){}if(a(t,e))return o(!r.f.call(t,e),t[e])}},function(t,e,n){var r=n(5),o=n(34).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],a=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?a(t):o(r(t))}},function(t,e,n){var r=n(3),o=n(25),i=n(22)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,e,n){var r=n(13),o=n(2),i=n(9);t.exports=function(t,e){var n=(o.Object||{})[t]||Object[t],u={};u[t]=e(n),r(r.S+r.F*i(function(){n(1)}),"Object",u)}},function(t,e,n){var r=n(24),o=n(17);t.exports=function(t){return function(e,n){var i,u,a=String(o(e)),f=r(n),c=a.length;return f<0||f>=c?t?"":void 0:(i=a.charCodeAt(f),i<55296||i>56319||f+1===c||(u=a.charCodeAt(f+1))<56320||u>57343?t?a.charAt(f):i:t?a.slice(f,f+2):u-56320+(i-55296<<10)+65536)}}},function(t,e,n){var r=n(24),o=Math.max,i=Math.min;t.exports=function(t,e){return t=r(t),t<0?o(t+e,0):i(t,e)}},function(t,e,n){var r=n(56),o=n(0)("iterator"),i=n(10);t.exports=n(2).getIteratorMethod=function(t){if(void 0!=t)return t[o]||t["@@iterator"]||i[r(t)]}},function(t,e,n){"use strict";var r=n(29),o=n(13),i=n(25),u=n(63),a=n(61),f=n(38),c=n(57),s=n(76);o(o.S+o.F*!n(65)(function(t){Array.from(t)}),"Array",{from:function(t){var e,n,o,p,l=i(t),d="function"==typeof this?this:Array,v=arguments.length,h=v>1?arguments[1]:void 0,y=void 0!==h,g=0,m=s(l);if(y&&(h=r(h,v>2?arguments[2]:void 0,2)),void 0==m||d==Array&&a(m))for(e=f(l.length),n=new d(e);e>g;g++)c(n,g,y?h(l[g],g):l[g]);else for(p=m.call(l),n=new d;!(o=p.next()).done;g++)c(n,g,y?u(p,h,[o.value,g],!0):o.value);return n.length=g,n}})},function(t,e,n){"use strict";var r=n(54),o=n(66),i=n(10),u=n(5);t.exports=n(32)(Array,"Array",function(t,e){this._t=u(t),this._i=0,this._k=e},function(){var t=this._t,e=this._k,n=this._i++;return!t||n>=t.length?(this._t=void 0,o(1)):"keys"==e?o(0,n):"values"==e?o(0,t[n]):o(0,[n,t[n]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,e,n){var r=n(25),o=n(11);n(73)("keys",function(){return function(t){return o(r(t))}})},function(t,e){},function(t,e,n){"use strict";var r=n(1),o=n(3),i=n(6),u=n(13),a=n(37),f=n(68).KEY,c=n(9),s=n(23),p=n(21),l=n(15),d=n(0),v=n(28),h=n(27),y=n(67),g=n(58),m=n(62),x=n(8),b=n(5),w=n(26),_=n(12),O=n(33),S=n(71),T=n(70),j=n(4),E=n(11),A=T.f,C=j.f,P=S.f,M=r.Symbol,k=r.JSON,N=k&&k.stringify,I=d("_hidden"),R=d("toPrimitive"),F={}.propertyIsEnumerable,L=s("symbol-registry"),$=s("symbols"),B=s("op-symbols"),U=Object.prototype,D="function"==typeof M,z=r.QObject,W=!z||!z.prototype||!z.prototype.findChild,Z=i&&c(function(){return 7!=O(C({},"a",{get:function(){return C(this,"a",{value:7}).a}})).a})?function(t,e,n){var r=A(U,e);r&&delete U[e],C(t,e,n),r&&t!==U&&C(U,e,r)}:C,G=function(t){var e=$[t]=O(M.prototype);return e._k=t,e},J=D&&"symbol"==typeof M.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof M},K=function(t,e,n){return t===U&&K(B,e,n),x(t),e=w(e,!0),x(n),o($,e)?(n.enumerable?(o(t,I)&&t[I][e]&&(t[I][e]=!1),n=O(n,{enumerable:_(0,!1)})):(o(t,I)||C(t,I,_(1,{})),t[I][e]=!0),Z(t,e,n)):C(t,e,n)},q=function(t,e){x(t);for(var n,r=g(e=b(e)),o=0,i=r.length;i>o;)K(t,n=r[o++],e[n]);return t},V=function(t,e){return void 0===e?O(t):q(O(t),e)},X=function(t){var e=F.call(this,t=w(t,!0));return!(this===U&&o($,t)&&!o(B,t))&&(!(e||!o(this,t)||!o($,t)||o(this,I)&&this[I][t])||e)},Y=function(t,e){if(t=b(t),e=w(e,!0),t!==U||!o($,e)||o(B,e)){var n=A(t,e);return!n||!o($,e)||o(t,I)&&t[I][e]||(n.enumerable=!0),n}},Q=function(t){for(var e,n=P(b(t)),r=[],i=0;n.length>i;)o($,e=n[i++])||e==I||e==f||r.push(e);return r},H=function(t){for(var e,n=t===U,r=P(n?B:b(t)),i=[],u=0;r.length>u;)!o($,e=r[u++])||n&&!o(U,e)||i.push($[e]);return i};D||(M=function(){if(this instanceof M)throw TypeError("Symbol is not a constructor!");var t=l(arguments.length>0?arguments[0]:void 0),e=function(n){this===U&&e.call(B,n),o(this,I)&&o(this[I],t)&&(this[I][t]=!1),Z(this,t,_(1,n))};return i&&W&&Z(U,t,{configurable:!0,set:e}),G(t)},a(M.prototype,"toString",function(){return this._k}),T.f=Y,j.f=K,n(34).f=S.f=Q,n(20).f=X,n(35).f=H,i&&!n(19)&&a(U,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!D,{Symbol:M});for(var tt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;tt.length>et;)d(tt[et++]);for(var tt=E(d.store),et=0;tt.length>et;)h(tt[et++]);u(u.S+u.F*!D,"Symbol",{for:function(t){return o(L,t+="")?L[t]:L[t]=M(t)},keyFor:function(t){if(J(t))return y(L,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){W=!0},useSimple:function(){W=!1}}),u(u.S+u.F*!D,"Object",{create:V,defineProperty:K,defineProperties:q,getOwnPropertyDescriptor:Y,getOwnPropertyNames:Q,getOwnPropertySymbols:H}),k&&u(u.S+u.F*(!D||c(function(){var t=M();return"[null]"!=N([t])||"{}"!=N({a:t})||"{}"!=N(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!J(t)){for(var e,n,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return e=r[1],"function"==typeof e&&(n=e),!n&&m(e)||(e=function(t,e){if(n&&(e=n.call(this,t,e)),!J(e))return e}),r[1]=e,N.apply(k,r)}}}),M.prototype[R]||n(7)(M.prototype,R,M.prototype.valueOf),p(M,"Symbol"),p(Math,"Math",!0),p(r.JSON,"JSON",!0)},function(t,e,n){n(27)("asyncIterator")},function(t,e,n){n(27)("observable")},function(t,e,n){n(78);for(var r=n(1),o=n(7),i=n(10),u=n(0)("toStringTag"),a=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],f=0;f<5;f++){var c=a[f],s=r[c],p=s&&s.prototype;p&&!p[u]&&o(p,u,c),i[c]=i.Array}},function(t,e,n){e=t.exports=n(86)(),e.push([t.i,'.vue-input-tag-wrapper{background-color:#fff;border:1px solid #ccc;overflow:hidden;padding-left:4px;padding-top:4px;cursor:text;text-align:left;-webkit-appearance:textfield;display:flex;flex-wrap:wrap}.vue-input-tag-wrapper .input-tag{background-color:#cde69c;border-radius:2px;border:1px solid #a5d24a;color:#638421;display:inline-block;font-size:13px;font-weight:400;margin-bottom:4px;margin-right:4px;padding:3px}.vue-input-tag-wrapper .input-tag .remove{cursor:pointer;font-weight:700;color:#638421}.vue-input-tag-wrapper .input-tag .remove:hover{text-decoration:none}.vue-input-tag-wrapper .input-tag .remove:before{content:" x"}.vue-input-tag-wrapper .new-tag{background:transparent;border:0;color:#777;font-size:13px;font-weight:400;margin-bottom:6px;margin-top:1px;outline:none;padding:4px;padding-left:0;flex-grow:1}.vue-input-tag-wrapper.read-only{cursor:default}',""])},function(t,e){t.exports=function(){var t=[];return t.toString=function(){for(var t=[],e=0;e<this.length;e++){var n=this[e];n[2]?t.push("@media "+n[2]+"{"+n[1]+"}"):t.push(n[1])}return t.join("")},t.i=function(e,n){"string"==typeof e&&(e=[[null,e,""]]);for(var r={},o=0;o<this.length;o++){var i=this[o][0];"number"==typeof i&&(r[i]=!0)}for(o=0;o<e.length;o++){var u=e[o];"number"==typeof u[0]&&r[u[0]]||(n&&!u[2]?u[2]=n:n&&(u[2]="("+u[2]+") and ("+n+")"),t.push(u))}},t}},function(t,e){t.exports=function(t,e,n,r,o){var i,u=t=t||{},a=typeof t.default;"object"!==a&&"function"!==a||(i=t,u=t.default);var f="function"==typeof u?u.options:u;e&&(f.render=e.render,f.staticRenderFns=e.staticRenderFns),r&&(f._scopeId=r);var c;if(o?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),n&&n.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},f._ssrRegister=c):n&&(c=n),c){var s=f.functional,p=s?f.render:f.beforeCreate;s?f.render=function(t,e){return c.call(e),p(t,e)}:f.beforeCreate=p?[].concat(p,c):[c]}return{esModule:i,exports:u,options:f}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"vue-input-tag-wrapper",class:{"read-only":t.readOnly},on:{click:function(e){t.focusNewTag()}}},[t._l(t.innerTags,function(e,r){return n("span",{key:r,staticClass:"input-tag"},[n("span",[t._v(t._s(e))]),t._v(" "),t.readOnly?t._e():n("a",{staticClass:"remove",on:{click:function(e){e.preventDefault(),e.stopPropagation(),t.remove(r)}}})])}),t._v(" "),t.readOnly||t.isLimit?t._e():n("input",{directives:[{name:"model",rawName:"v-model",value:t.newTag,expression:"newTag"}],ref:"inputtag",staticClass:"new-tag",attrs:{placeholder:t.placeholder,type:"text"},domProps:{value:t.newTag},on:{keydown:[function(e){if(!("button"in e)&&t._k(e.keyCode,"delete",[8,46]))return null;e.stopPropagation(),t.removeLastTag(e)},t.addNew],blur:t.addNew,input:function(e){e.target.composing||(t.newTag=e.target.value)}}})],2)},staticRenderFns:[]}},function(t,e,n){var r=n(85);"string"==typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);n(90)("a07ea41c",r,!0)},function(t,e,n){function r(t){for(var e=0;e<t.length;e++){var n=t[e],r=s[n.id];if(r){r.refs++;for(var o=0;o<r.parts.length;o++)r.parts[o](n.parts[o]);for(;o<n.parts.length;o++)r.parts.push(i(n.parts[o]));r.parts.length>n.parts.length&&(r.parts.length=n.parts.length)}else{for(var u=[],o=0;o<n.parts.length;o++)u.push(i(n.parts[o]));s[n.id]={id:n.id,refs:1,parts:u}}}}function o(){var t=document.createElement("style");return t.type="text/css",p.appendChild(t),t}function i(t){var e,n,r=document.querySelector('style[data-vue-ssr-id~="'+t.id+'"]');if(r){if(v)return h;r.parentNode.removeChild(r)}if(y){var i=d++;r=l||(l=o()),e=u.bind(null,r,i,!1),n=u.bind(null,r,i,!0)}else r=o(),e=a.bind(null,r),n=function(){r.parentNode.removeChild(r)};return e(t),function(r){if(r){if(r.css===t.css&&r.media===t.media&&r.sourceMap===t.sourceMap)return;e(t=r)}else n()}}function u(t,e,n,r){var o=n?"":r.css;if(t.styleSheet)t.styleSheet.cssText=g(e,o);else{var i=document.createTextNode(o),u=t.childNodes;u[e]&&t.removeChild(u[e]),u.length?t.insertBefore(i,u[e]):t.appendChild(i)}}function a(t,e){var n=e.css,r=e.media,o=e.sourceMap;if(r&&t.setAttribute("media",r),o&&(n+="\n/*# sourceURL="+o.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */"),t.styleSheet)t.styleSheet.cssText=n;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}var f="undefined"!=typeof document;if("undefined"!=typeof DEBUG&&DEBUG&&!f)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var c=n(91),s={},p=f&&(document.head||document.getElementsByTagName("head")[0]),l=null,d=0,v=!1,h=function(){},y="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());t.exports=function(t,e,n){v=n;var o=c(t,e);return r(o),function(e){for(var n=[],i=0;i<o.length;i++){var u=o[i],a=s[u.id];a.refs--,n.push(a)}e?(o=c(t,e),r(o)):o=[];for(var i=0;i<n.length;i++){var a=n[i];if(0===a.refs){for(var f=0;f<a.parts.length;f++)a.parts[f]();delete s[a.id]}}}};var g=function(){var t=[];return function(e,n){return t[e]=n,t.filter(Boolean).join("\n")}}()},function(t,e){t.exports=function(t,e){for(var n=[],r={},o=0;o<e.length;o++){var i=e[o],u=i[0],a=i[1],f=i[2],c=i[3],s={id:t+":"+o,css:a,media:f,sourceMap:c};r[u]?r[u].parts.push(s):n.push(r[u]={id:u,parts:[s]})}return n}}])});
 //# sourceMappingURL=vue-input-tag.min.js.map
 
 /***/ }),
-/* 621 */
+/* 623 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100917,18 +101508,18 @@ if (false) {
 }
 
 /***/ }),
-/* 622 */
+/* 624 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerAddReservation_vue__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerAddReservation_vue__ = __webpack_require__(273);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_56d1fe5a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CustomerAddReservation_vue__ = __webpack_require__(625);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_56d1fe5a_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CustomerAddReservation_vue__ = __webpack_require__(627);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(623)
+  __webpack_require__(625)
 }
 /* script */
 
@@ -100975,13 +101566,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 623 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(624);
+var content = __webpack_require__(626);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -101002,7 +101593,7 @@ if(false) {
 }
 
 /***/ }),
-/* 624 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -101010,13 +101601,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.addReservation_btn {\n  width: 200px;\n  height: 30px;\n  text-align: center;\n}\n\n", ""]);
+exports.push([module.i, "\n.addReservation_btn {\n  width: 200px;\n  height: 30px;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 625 */
+/* 627 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -101076,24 +101667,6 @@ var render = function() {
                             "v-layout",
                             { attrs: { wrap: "" } },
                             [
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: { label: "예약자 명", required: "" },
-                                    model: {
-                                      value: _vm.username,
-                                      callback: function($$v) {
-                                        _vm.username = $$v
-                                      },
-                                      expression: "username"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
                               _c(
                                 "v-flex",
                                 { attrs: { xs11: "", sm5: "" } },
@@ -101209,6 +101782,7 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
+                                { attrs: { xs12: "", sm6: "", md4: "" } },
                                 [
                                   _c("v-select", {
                                     attrs: {
@@ -101262,7 +101836,564 @@ var render = function() {
                                   })
                                 ],
                                 1
-                              )
+                              ),
+                              _vm._v(" "),
+                              this.menu_select == 1
+                                ? _c(
+                                    "div",
+                                    [
+                                      _c("B", [
+                                        _vm._v(
+                                          " 메뉴 예약이 가능한 가게 입니다. "
+                                        )
+                                      ]),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { color: "primary" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.menuDialog = true
+                                            }
+                                          }
+                                        },
+                                        [_vm._v(" 메뉴 선택하기 ")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-dialog",
+                                        {
+                                          model: {
+                                            value: _vm.menuDialog,
+                                            callback: function($$v) {
+                                              _vm.menuDialog = $$v
+                                            },
+                                            expression: "menuDialog"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-stepper",
+                                            {
+                                              attrs: { dark: "" },
+                                              model: {
+                                                value: _vm.Menu_Order,
+                                                callback: function($$v) {
+                                                  _vm.Menu_Order = $$v
+                                                },
+                                                expression: "Menu_Order"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "v-stepper-header",
+                                                [
+                                                  _c(
+                                                    "v-stepper-step",
+                                                    {
+                                                      attrs: {
+                                                        step: "1",
+                                                        complete:
+                                                          _vm.Menu_Order > 1
+                                                      }
+                                                    },
+                                                    [_vm._v("메뉴 선택")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("v-divider"),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-step",
+                                                    {
+                                                      attrs: {
+                                                        step: "2",
+                                                        complete:
+                                                          _vm.Menu_Order > 2
+                                                      }
+                                                    },
+                                                    [_vm._v("메뉴 확인")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("v-divider")
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "v-stepper-items",
+                                                [
+                                                  _c(
+                                                    "v-stepper-content",
+                                                    {
+                                                      attrs: {
+                                                        step: "1",
+                                                        color: "error"
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          staticClass: "mb-5",
+                                                          staticStyle: {
+                                                            overflow: "hidden"
+                                                          },
+                                                          attrs: {
+                                                            color:
+                                                              "white lighten-1"
+                                                          }
+                                                        },
+                                                        [_c("Layout")],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "error"
+                                                          },
+                                                          on: {
+                                                            click:
+                                                              _vm.order_menu
+                                                          },
+                                                          nativeOn: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.Menu_Order = 2
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                    확인\n                                                "
+                                                          )
+                                                        ]
+                                                      )
+                                                    ],
+                                                    1
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-stepper-content",
+                                                    { attrs: { step: "2" } },
+                                                    [
+                                                      _c(
+                                                        "v-card",
+                                                        {
+                                                          staticClass: "mb-5",
+                                                          attrs: {
+                                                            color:
+                                                              "white lighten-1"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "v-container",
+                                                            {
+                                                              attrs: {
+                                                                id:
+                                                                  "menu_check_container"
+                                                              }
+                                                            },
+                                                            _vm._l(
+                                                              _vm.range(
+                                                                0,
+                                                                _vm.click_menu
+                                                                  .length - 1
+                                                              ),
+                                                              function(i) {
+                                                                return _c(
+                                                                  "v-layout",
+                                                                  {
+                                                                    key: i,
+                                                                    attrs: {
+                                                                      id:
+                                                                        "menu_layout" +
+                                                                        i,
+                                                                      "mb-3": ""
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "v-flex",
+                                                                      {
+                                                                        attrs: {
+                                                                          sm12:
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "v-card",
+                                                                          {
+                                                                            attrs: {
+                                                                              "elevation-20":
+                                                                                ""
+                                                                            }
+                                                                          },
+                                                                          [
+                                                                            _c(
+                                                                              "v-card-text",
+                                                                              {
+                                                                                staticStyle: {
+                                                                                  "font-size":
+                                                                                    "1.2rem"
+                                                                                }
+                                                                              },
+                                                                              [
+                                                                                _c(
+                                                                                  "div",
+                                                                                  [
+                                                                                    _c(
+                                                                                      "b",
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          " 메뉴명 : " +
+                                                                                            _vm._s(
+                                                                                              _vm
+                                                                                                .click_menu[
+                                                                                                i
+                                                                                              ]
+                                                                                                .menu
+                                                                                                .name
+                                                                                            ) +
+                                                                                            " "
+                                                                                        )
+                                                                                      ]
+                                                                                    ),
+                                                                                    _vm._v(
+                                                                                      " "
+                                                                                    ),
+                                                                                    _c(
+                                                                                      "v-btn",
+                                                                                      {
+                                                                                        staticStyle: {
+                                                                                          float:
+                                                                                            "right"
+                                                                                        },
+                                                                                        attrs: {
+                                                                                          icon:
+                                                                                            "",
+                                                                                          id: i
+                                                                                        },
+                                                                                        on: {
+                                                                                          click:
+                                                                                            _vm.click_cancel
+                                                                                        }
+                                                                                      },
+                                                                                      [
+                                                                                        _c(
+                                                                                          "v-icon",
+                                                                                          {
+                                                                                            attrs: {
+                                                                                              dark:
+                                                                                                ""
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _vm._v(
+                                                                                              " close "
+                                                                                            )
+                                                                                          ]
+                                                                                        )
+                                                                                      ],
+                                                                                      1
+                                                                                    ),
+                                                                                    _c(
+                                                                                      "br"
+                                                                                    ),
+                                                                                    _vm._v(
+                                                                                      " "
+                                                                                    ),
+                                                                                    _c(
+                                                                                      "b",
+                                                                                      [
+                                                                                        _vm._v(
+                                                                                          " 가격 : " +
+                                                                                            _vm._s(
+                                                                                              _vm
+                                                                                                .click_menu[
+                                                                                                i
+                                                                                              ]
+                                                                                                .menu
+                                                                                                .price
+                                                                                            ) +
+                                                                                            " "
+                                                                                        )
+                                                                                      ]
+                                                                                    ),
+                                                                                    _vm._v(
+                                                                                      " "
+                                                                                    ),
+                                                                                    _c(
+                                                                                      "br"
+                                                                                    ),
+                                                                                    _vm._v(
+                                                                                      " "
+                                                                                    ),
+                                                                                    _vm
+                                                                                      .click_menu[
+                                                                                      i
+                                                                                    ]
+                                                                                      .menu
+                                                                                      .opNum !=
+                                                                                    0
+                                                                                      ? _c(
+                                                                                          "v-flex",
+                                                                                          {
+                                                                                            attrs: {
+                                                                                              xs6:
+                                                                                                ""
+                                                                                            }
+                                                                                          },
+                                                                                          [
+                                                                                            _c(
+                                                                                              "b",
+                                                                                              [
+                                                                                                _vm._v(
+                                                                                                  " [ 옵션 ] "
+                                                                                                )
+                                                                                              ]
+                                                                                            ),
+                                                                                            _vm._v(
+                                                                                              " "
+                                                                                            ),
+                                                                                            _c(
+                                                                                              "br"
+                                                                                            ),
+                                                                                            _vm._v(
+                                                                                              " "
+                                                                                            ),
+                                                                                            _vm._l(
+                                                                                              _vm
+                                                                                                .optionArray[
+                                                                                                i
+                                                                                              ],
+                                                                                              function(
+                                                                                                option,
+                                                                                                index
+                                                                                              ) {
+                                                                                                return _c(
+                                                                                                  "span",
+                                                                                                  {
+                                                                                                    key: index
+                                                                                                  },
+                                                                                                  [
+                                                                                                    _c(
+                                                                                                      "b",
+                                                                                                      {
+                                                                                                        domProps: {
+                                                                                                          textContent: _vm._s(
+                                                                                                            option[
+                                                                                                              "Name"
+                                                                                                            ]
+                                                                                                          )
+                                                                                                        }
+                                                                                                      }
+                                                                                                    ),
+                                                                                                    _vm._v(
+                                                                                                      " "
+                                                                                                    ),
+                                                                                                    _c(
+                                                                                                      "v-select",
+                                                                                                      {
+                                                                                                        attrs: {
+                                                                                                          items:
+                                                                                                            _vm
+                                                                                                              .optionArray[
+                                                                                                              i
+                                                                                                            ][
+                                                                                                              index
+                                                                                                            ],
+                                                                                                          "single-line":
+                                                                                                            ""
+                                                                                                        },
+                                                                                                        model: {
+                                                                                                          value:
+                                                                                                            _vm
+                                                                                                              .optionselect[
+                                                                                                              i
+                                                                                                            ][
+                                                                                                              index
+                                                                                                            ],
+                                                                                                          callback: function(
+                                                                                                            $$v
+                                                                                                          ) {
+                                                                                                            _vm.$set(
+                                                                                                              _vm
+                                                                                                                .optionselect[
+                                                                                                                i
+                                                                                                              ],
+                                                                                                              index,
+                                                                                                              $$v
+                                                                                                            )
+                                                                                                          },
+                                                                                                          expression:
+                                                                                                            "optionselect[i][index]"
+                                                                                                        }
+                                                                                                      }
+                                                                                                    )
+                                                                                                  ],
+                                                                                                  1
+                                                                                                )
+                                                                                              }
+                                                                                            )
+                                                                                          ],
+                                                                                          2
+                                                                                        )
+                                                                                      : _vm._e()
+                                                                                  ],
+                                                                                  1
+                                                                                )
+                                                                              ]
+                                                                            )
+                                                                          ],
+                                                                          1
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                )
+                                                              }
+                                                            )
+                                                          )
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-flex",
+                                                        [
+                                                          _c("v-card", [
+                                                            _c(
+                                                              "b",
+                                                              {
+                                                                staticStyle: {
+                                                                  "padding-left":
+                                                                    "5%",
+                                                                  "font-size":
+                                                                    "2rem"
+                                                                }
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  " 총 : " +
+                                                                    _vm._s(
+                                                                      _vm
+                                                                        .click_menu
+                                                                        .length
+                                                                    ) +
+                                                                    " 개 "
+                                                                )
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "b",
+                                                              {
+                                                                staticStyle: {
+                                                                  "padding-left":
+                                                                    "5%",
+                                                                  "font-size":
+                                                                    "2rem"
+                                                                }
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  " 합계 : " +
+                                                                    _vm._s(
+                                                                      _vm.sum_price
+                                                                    ) +
+                                                                    " 円 "
+                                                                )
+                                                              ]
+                                                            )
+                                                          ])
+                                                        ],
+                                                        1
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: {
+                                                            color: "error"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.OrderMenu()
+                                                            }
+                                                          },
+                                                          nativeOn: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.Menu_Order = 2
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                    메뉴 선택\n                                                "
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-btn",
+                                                        {
+                                                          attrs: { flat: "" },
+                                                          nativeOn: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              _vm.Menu_Order = 1
+                                                            }
+                                                          }
+                                                        },
+                                                        [_vm._v("취소")]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "요구 사항", required: "" },
+                                model: {
+                                  value: _vm.message,
+                                  callback: function($$v) {
+                                    _vm.message = $$v
+                                  },
+                                  expression: "message"
+                                }
+                              })
                             ],
                             1
                           )
@@ -101332,15 +102463,6 @@ var render = function() {
                                   _c(
                                     "h3",
                                     [
-                                      _c("B", [_vm._v(" 예약자 명 : ")]),
-                                      _vm._v(" " + _vm._s(this.username) + " ")
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "h3",
-                                    [
                                       _c("B", [_vm._v(" 예약 날짜 : ")]),
                                       _vm._v(
                                         " " + _vm._s(this.start_date) + " "
@@ -101376,6 +102498,15 @@ var render = function() {
                                       _vm._v(
                                         " " + _vm._s(this.child_person) + " "
                                       )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h3",
+                                    [
+                                      _c("B", [_vm._v(" 요구 사항 : ")]),
+                                      _vm._v(" " + _vm._s(this.message) + " ")
                                     ],
                                     1
                                   )
@@ -101454,18 +102585,18 @@ if (false) {
 }
 
 /***/ }),
-/* 626 */
+/* 628 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerTotalStatistics_vue__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerTotalStatistics_vue__ = __webpack_require__(274);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2583c7de_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerTotalStatistics_vue__ = __webpack_require__(634);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2583c7de_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerTotalStatistics_vue__ = __webpack_require__(637);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(627)
+  __webpack_require__(629)
 }
 /* script */
 
@@ -101512,13 +102643,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 627 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(628);
+var content = __webpack_require__(630);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -101539,7 +102670,7 @@ if(false) {
 }
 
 /***/ }),
-/* 628 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -101547,17 +102678,70 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .statistics-line {\n    padding-left: 5%;\n    padding-right: 5%;\n} */\n\n/* 기간 선택 구분 hr태그 CSS */\n.date-picker-line {\n  border : dashed 0.1em rgba(105, 105, 105, 0.3);\n}\n.card-text-style {\n  font-size: 1.5em;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 기간 선택 구분 hr태그 CSS */\n.date-picker-line {\n  border : dashed 0.1em rgba(105, 105, 105, 0.3);\n}\n.card-text-style {\n  font-size: 1.5em;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 629 */
+/* 631 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuSalesChart_vue__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerCountryChart_vue__ = __webpack_require__(278);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+/* script */
+
+
+/* template */
+var __vue_render__, __vue_static_render_fns__
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerCountryChart_vue__["a" /* default */],
+  __vue_render__,
+  __vue_static_render_fns__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_statistics\\CustomerCountryChart.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-70fe8ba3", Component.options)
+  } else {
+    hotAPI.reload("data-v-70fe8ba3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 632 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuSalesChart_vue__ = __webpack_require__(281);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -101606,11 +102790,11 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 630 */
+/* 633 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesProfitChart_vue__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesProfitChart_vue__ = __webpack_require__(282);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -101659,11 +102843,11 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 631 */
+/* 634 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesGenderChart_vue__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesGenderChart_vue__ = __webpack_require__(283);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -101712,11 +102896,11 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 632 */
+/* 635 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesAgeChart_vue__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesAgeChart_vue__ = __webpack_require__(284);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -101765,60 +102949,8 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 633 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesNationalityChart_vue__ = __webpack_require__(286);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
-var disposed = false
-/* script */
-
-
-/* template */
-var __vue_render__, __vue_static_render_fns__
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-
-var Component = Object(__WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesNationalityChart_vue__["a" /* default */],
-  __vue_render__,
-  __vue_static_render_fns__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_statistics\\SalesNationalityChart.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ae8c047e", Component.options)
-  } else {
-    hotAPI.reload("data-v-ae8c047e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 634 */
+/* 636 */,
+/* 637 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -102083,7 +103215,10 @@ var render = function() {
                             [
                               _c(
                                 "v-btn",
-                                { attrs: { large: "", color: "error" } },
+                                {
+                                  attrs: { large: "", color: "error" },
+                                  on: { click: _vm.dateSearch }
+                                },
                                 [_c("b", [_vm._v("조회")])]
                               )
                             ],
@@ -102201,7 +103336,11 @@ var render = function() {
                   _c(
                     "v-flex",
                     { attrs: { xs7: "" } },
-                    [_c("CustomerRatingChart", { attrs: { height: 300 } })],
+                    [
+                      _c("CustomerRatingChart", {
+                        attrs: { height: 300, "chart-data": _vm.ratingData }
+                      })
+                    ],
                     1
                   ),
                   _vm._v(" "),
@@ -102248,7 +103387,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["totalRating"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102268,7 +103413,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["taste"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102288,7 +103439,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["service"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102308,7 +103465,11 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(this.getRatingScore[0]["mood"]) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102328,7 +103489,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["price"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102379,7 +103546,15 @@ var render = function() {
           _c(
             "v-flex",
             { attrs: { xs9: "" } },
-            [_c("CustomerNumberChart", { attrs: { height: 200 } })],
+            [
+              _c("CustomerNumberChart", {
+                attrs: {
+                  height: 200,
+                  startDay: _vm.startDate,
+                  endDay: _vm.endDatePlusOne
+                }
+              })
+            ],
             1
           ),
           _vm._v(" "),
@@ -102517,7 +103692,14 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("CustomerGenderChart", { attrs: { height: 350 } })],
+                    [
+                      _c("CustomerGenderChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.customerGenderData
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -102548,7 +103730,14 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("CustomerAgeChart", { attrs: { height: 350 } })],
+                    [
+                      _c("CustomerAgeChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.customerAgeData
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -102580,7 +103769,12 @@ var render = function() {
                   _c(
                     "v-flex",
                     [
-                      _c("CustomerNationalityChart", { attrs: { height: 350 } })
+                      _c("CustomerCountryChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.customerCountryData
+                        }
+                      })
                     ],
                     1
                   )
@@ -102681,7 +103875,6 @@ var render = function() {
                                   items: _vm.rankingAgeItems,
                                   label: "연령 선택",
                                   "item-text": "age",
-                                  multiple: "",
                                   "single-line": "",
                                   "return-object": ""
                                 },
@@ -102741,7 +103934,11 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("MenuRankingChart", { attrs: { height: 200 } })],
+                    [
+                      _c("MenuRankingChart", {
+                        attrs: { height: 200, "chart-data": _vm.menuRankData }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -102783,7 +103980,15 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesProfitChart", { attrs: { height: 200 } })],
+                    [
+                      _c("SalesProfitChart", {
+                        attrs: {
+                          height: 200,
+                          startDay: _vm.startDate,
+                          endDay: _vm.endDatePlusOne
+                        }
+                      })
+                    ],
                     1
                   ),
                   _vm._v(" "),
@@ -102927,7 +104132,14 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesGenderChart", { attrs: { height: 350 } })],
+                    [
+                      _c("SalesGenderChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.salesGenderData
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -102958,7 +104170,11 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesAgeChart", { attrs: { height: 350 } })],
+                    [
+                      _c("SalesAgeChart", {
+                        attrs: { height: 350, "chart-data": _vm.salesAgeData }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -102989,7 +104205,14 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesNationalityChart", { attrs: { height: 350 } })],
+                    [
+                      _c("SalesCountryChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.salesCountryData
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103149,7 +104372,11 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("MenuSalesChart", { attrs: { height: 200 } })],
+                    [
+                      _c("MenuSalesChart", {
+                        attrs: { height: 200, "chart-data": _vm.menuSalesData }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103176,18 +104403,19 @@ if (false) {
 }
 
 /***/ }),
-/* 635 */
+/* 638 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCustomerStatistics_vue__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCustomerStatistics_vue__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCustomerStatistics_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCustomerStatistics_vue__);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7a9d1b07_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerCustomerStatistics_vue__ = __webpack_require__(638);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7a9d1b07_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerCustomerStatistics_vue__ = __webpack_require__(641);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(636)
+  __webpack_require__(639)
 }
 /* script */
 
@@ -103204,7 +104432,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCustomerStatistics_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerCustomerStatistics_vue___default.a,
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7a9d1b07_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerCustomerStatistics_vue__["a" /* render */],
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_7a9d1b07_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerCustomerStatistics_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
@@ -103230,17 +104458,17 @@ if (false) {(function () {
   })
 })()}
 
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
 
 
 /***/ }),
-/* 636 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(637);
+var content = __webpack_require__(640);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -103261,7 +104489,7 @@ if(false) {
 }
 
 /***/ }),
-/* 637 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -103269,13 +104497,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 638 */
+/* 641 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -103301,487 +104529,6 @@ var render = function() {
           ])
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs9: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs3: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 수 (명)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                [
-                  _c(
-                    "v-flex",
-                    [_c("CustomerNumberChart", { attrs: { height: 200 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs3: "" } },
-            [
-              _c(
-                "v-card",
-                [
-                  _c("v-card-title", [
-                    _vm._v("\n            가간 선택\n          ")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-layout",
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs8: "" } },
-                            [
-                              _c(
-                                "v-menu",
-                                {
-                                  ref: "startMenu",
-                                  attrs: {
-                                    lazy: "",
-                                    "close-on-content-click": false,
-                                    transition: "scale-transition",
-                                    "offset-y": "",
-                                    "full-width": "",
-                                    "nudge-right": 40,
-                                    "min-width": "290px",
-                                    "return-value": _vm.startDate
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      _vm.startDate = $event
-                                    }
-                                  },
-                                  model: {
-                                    value: _vm.startMenu,
-                                    callback: function($$v) {
-                                      _vm.startMenu = $$v
-                                    },
-                                    expression: "startMenu"
-                                  }
-                                },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      slot: "activator",
-                                      label: "시작 날짜",
-                                      "prepend-icon": "event",
-                                      readonly: ""
-                                    },
-                                    slot: "activator",
-                                    model: {
-                                      value: _vm.startDate,
-                                      callback: function($$v) {
-                                        _vm.startDate = $$v
-                                      },
-                                      expression: "startDate"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        "no-title": "",
-                                        scrollable: "",
-                                        "show-current": ""
-                                      },
-                                      model: {
-                                        value: _vm.startDate,
-                                        callback: function($$v) {
-                                          _vm.startDate = $$v
-                                        },
-                                        expression: "startDate"
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.startMenu = false
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Cancel")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.$refs.startMenu.save(
-                                                _vm.startDate
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("OK")]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-layout",
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs8: "" } },
-                            [
-                              _c(
-                                "v-menu",
-                                {
-                                  ref: "endMenu",
-                                  attrs: {
-                                    lazy: "",
-                                    "close-on-content-click": false,
-                                    transition: "scale-transition",
-                                    "offset-y": "",
-                                    "full-width": "",
-                                    "nudge-right": 40,
-                                    "min-width": "290px",
-                                    "return-value": _vm.endDate
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      _vm.endDate = $event
-                                    }
-                                  },
-                                  model: {
-                                    value: _vm.endMenu,
-                                    callback: function($$v) {
-                                      _vm.endMenu = $$v
-                                    },
-                                    expression: "endMenu"
-                                  }
-                                },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      slot: "activator",
-                                      label: "마지막 날짜",
-                                      "prepend-icon": "event",
-                                      readonly: ""
-                                    },
-                                    slot: "activator",
-                                    model: {
-                                      value: _vm.endDate,
-                                      callback: function($$v) {
-                                        _vm.endDate = $$v
-                                      },
-                                      expression: "endDate"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        "no-title": "",
-                                        scrollable: "",
-                                        "show-current": ""
-                                      },
-                                      model: {
-                                        value: _vm.endDate,
-                                        callback: function($$v) {
-                                          _vm.endDate = $$v
-                                        },
-                                        expression: "endDate"
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.endMenu = false
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Cancel")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.$refs.endMenu.save(
-                                                _vm.endDate
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("OK")]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-layout",
-                        { attrs: { "justify-space-around": "" } },
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs8: "" } },
-                            [
-                              _c(
-                                "v-btn",
-                                { attrs: { large: "", color: "error" } },
-                                [
-                                  _vm._v(
-                                    "\n                  조회\n                "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
-      _c("hr"),
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        { attrs: { "justify-space-around": "" } },
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs7: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 성비 (%)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [_c("CustomerGenderChart", { attrs: { height: 350 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs7: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 연령대 (%)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [_c("CustomerAgeChart", { attrs: { height: 350 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs7: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 국적 (%)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [
-                      _c("CustomerNationalityChart", { attrs: { height: 350 } })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
-      _c("hr"),
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs5: "" } }, [
-                    _c("h2", [_vm._v("손님 평점 (점)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [_c("v-flex", [_c("CustomerRatingChart")], 1)],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs8: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs5: "" } }, [
-                    _c("h2", [_vm._v("3개월간 인기 메뉴 순위 (그릇)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [_c("MenuRankingChart", { attrs: { height: 200 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
       )
     ],
     1
@@ -103798,18 +104545,19 @@ if (false) {
 }
 
 /***/ }),
-/* 639 */
+/* 642 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerSalesStatistics_vue__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerSalesStatistics_vue__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerSalesStatistics_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerSalesStatistics_vue__);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_54dc684e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerSalesStatistics_vue__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_54dc684e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerSalesStatistics_vue__ = __webpack_require__(645);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(640)
+  __webpack_require__(643)
 }
 /* script */
 
@@ -103826,7 +104574,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerSalesStatistics_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_OwnerSalesStatistics_vue___default.a,
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_54dc684e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerSalesStatistics_vue__["a" /* render */],
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_54dc684e_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_OwnerSalesStatistics_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
@@ -103852,17 +104600,17 @@ if (false) {(function () {
   })
 })()}
 
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
 
 
 /***/ }),
-/* 640 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(641);
+var content = __webpack_require__(644);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -103883,7 +104631,7 @@ if(false) {
 }
 
 /***/ }),
-/* 641 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -103891,13 +104639,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 642 */
+/* 645 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -103923,487 +104671,6 @@ var render = function() {
           ])
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs9: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs3: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 수 (명)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                [
-                  _c(
-                    "v-flex",
-                    [_c("CustomerNumberChart", { attrs: { height: 200 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs3: "" } },
-            [
-              _c(
-                "v-card",
-                [
-                  _c("v-card-title", [
-                    _vm._v("\n            가간 선택\n          ")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-text",
-                    [
-                      _c(
-                        "v-layout",
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs8: "" } },
-                            [
-                              _c(
-                                "v-menu",
-                                {
-                                  ref: "startMenu",
-                                  attrs: {
-                                    lazy: "",
-                                    "close-on-content-click": false,
-                                    transition: "scale-transition",
-                                    "offset-y": "",
-                                    "full-width": "",
-                                    "nudge-right": 40,
-                                    "min-width": "290px",
-                                    "return-value": _vm.startDate
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      _vm.startDate = $event
-                                    }
-                                  },
-                                  model: {
-                                    value: _vm.startMenu,
-                                    callback: function($$v) {
-                                      _vm.startMenu = $$v
-                                    },
-                                    expression: "startMenu"
-                                  }
-                                },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      slot: "activator",
-                                      label: "시작 날짜",
-                                      "prepend-icon": "event",
-                                      readonly: ""
-                                    },
-                                    slot: "activator",
-                                    model: {
-                                      value: _vm.startDate,
-                                      callback: function($$v) {
-                                        _vm.startDate = $$v
-                                      },
-                                      expression: "startDate"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        "no-title": "",
-                                        scrollable: "",
-                                        "show-current": ""
-                                      },
-                                      model: {
-                                        value: _vm.startDate,
-                                        callback: function($$v) {
-                                          _vm.startDate = $$v
-                                        },
-                                        expression: "startDate"
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.startMenu = false
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Cancel")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.$refs.startMenu.save(
-                                                _vm.startDate
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("OK")]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-layout",
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs8: "" } },
-                            [
-                              _c(
-                                "v-menu",
-                                {
-                                  ref: "endMenu",
-                                  attrs: {
-                                    lazy: "",
-                                    "close-on-content-click": false,
-                                    transition: "scale-transition",
-                                    "offset-y": "",
-                                    "full-width": "",
-                                    "nudge-right": 40,
-                                    "min-width": "290px",
-                                    "return-value": _vm.endDate
-                                  },
-                                  on: {
-                                    "update:returnValue": function($event) {
-                                      _vm.endDate = $event
-                                    }
-                                  },
-                                  model: {
-                                    value: _vm.endMenu,
-                                    callback: function($$v) {
-                                      _vm.endMenu = $$v
-                                    },
-                                    expression: "endMenu"
-                                  }
-                                },
-                                [
-                                  _c("v-text-field", {
-                                    attrs: {
-                                      slot: "activator",
-                                      label: "마지막 날짜",
-                                      "prepend-icon": "event",
-                                      readonly: ""
-                                    },
-                                    slot: "activator",
-                                    model: {
-                                      value: _vm.endDate,
-                                      callback: function($$v) {
-                                        _vm.endDate = $$v
-                                      },
-                                      expression: "endDate"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-date-picker",
-                                    {
-                                      attrs: {
-                                        "no-title": "",
-                                        scrollable: "",
-                                        "show-current": ""
-                                      },
-                                      model: {
-                                        value: _vm.endDate,
-                                        callback: function($$v) {
-                                          _vm.endDate = $$v
-                                        },
-                                        expression: "endDate"
-                                      }
-                                    },
-                                    [
-                                      _c("v-spacer"),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.endMenu = false
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("Cancel")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { flat: "", color: "primary" },
-                                          on: {
-                                            click: function($event) {
-                                              _vm.$refs.endMenu.save(
-                                                _vm.endDate
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [_vm._v("OK")]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-layout",
-                        { attrs: { "justify-space-around": "" } },
-                        [
-                          _c(
-                            "v-flex",
-                            { attrs: { xs8: "" } },
-                            [
-                              _c(
-                                "v-btn",
-                                { attrs: { large: "", color: "error" } },
-                                [
-                                  _vm._v(
-                                    "\n                  조회\n                "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
-      _c("hr"),
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        { attrs: { "justify-space-around": "" } },
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs7: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 성비 (%)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [_c("CustomerGenderChart", { attrs: { height: 350 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs7: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 연령대 (%)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [_c("CustomerAgeChart", { attrs: { height: 350 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs7: "" } }, [
-                    _c("h2", [_vm._v("방문 손님 국적 (%)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [
-                      _c("CustomerNationalityChart", { attrs: { height: 350 } })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _c("br"),
-      _c("hr"),
-      _c("br"),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "v-layout",
-        [
-          _c(
-            "v-flex",
-            { attrs: { xs4: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs5: "" } }, [
-                    _c("h2", [_vm._v("손님 평점 (점)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [_c("v-flex", [_c("CustomerRatingChart")], 1)],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { xs8: "" } },
-            [
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c("v-flex", { attrs: { xs5: "" } }, [
-                    _c("h2", [_vm._v("3개월간 인기 메뉴 순위 (그릇)")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-layout",
-                { attrs: { "justify-space-around": "" } },
-                [
-                  _c(
-                    "v-flex",
-                    [_c("MenuRankingChart", { attrs: { height: 200 } })],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
       )
     ],
     1
@@ -104420,18 +104687,18 @@ if (false) {
 }
 
 /***/ }),
-/* 643 */
+/* 646 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserCoupon_vue__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserCoupon_vue__ = __webpack_require__(288);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_886e50c6_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserCoupon_vue__ = __webpack_require__(646);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_886e50c6_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserCoupon_vue__ = __webpack_require__(649);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(644)
+  __webpack_require__(647)
 }
 /* script */
 
@@ -104478,13 +104745,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 644 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(645);
+var content = __webpack_require__(648);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -104505,7 +104772,7 @@ if(false) {
 }
 
 /***/ }),
-/* 645 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -104513,13 +104780,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* 반응형 웹 */\r\n    /* 모바일 */\n@media (max-width: 639px){\n.Trans_Title {\r\n            font-size:18px;\n}\n.Trans_Main {\r\n            font-size: 14px;\n}\n}\r\n    /* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\n.Trans_Title {\r\n            font-size:20px;\n}\n.Trans_Main {\r\n            font-size: 15px;\n}\n}\r\n    /* 데스트 탑 */\n@media (min-width: 1024px){\n.Trans_Title {\r\n            font-size:20px;\n}\n.Trans_Main {\r\n            font-size: 15px;\n}\n}\r\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 646 */
+/* 649 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104532,7 +104799,7 @@ var render = function() {
   return _c("v-app", [
     _c(
       "div",
-      { staticStyle: { "margin-left": "20px", "margin-right": "20px" } },
+      { attrs: { id: "UserPageCoupon" } },
       [
         _c("br"),
         _vm._v(" "),
@@ -104551,187 +104818,313 @@ var render = function() {
               _vm._v("\n                사용 가능한 쿠폰       \n            ")
             ]),
             _vm._v(" "),
-            _c(
-              "v-tab-item",
-              [
-                _c(
-                  "v-card",
-                  { attrs: { flat: "" } },
-                  [
-                    _c("v-data-table", {
-                      staticClass: "userCouponTable",
-                      attrs: {
-                        headers: _vm.headers,
-                        items: _vm.items,
-                        "hide-actions": ""
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "items",
-                          fn: function(props) {
+            _c("v-tab-item", [
+              _c(
+                "div",
+                { attrs: { id: "Coupon_table" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { flat: "" } },
+                    [
+                      _c(
+                        "v-list",
+                        { attrs: { "two-line": "" } },
+                        [
+                          _vm._l(_vm.items, function(item, index) {
                             return [
-                              _c("td", [_vm._v(_vm._s(props.item.name))]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-xs-right" }, [
-                                _vm._v(_vm._s(props.item.category))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-xs-right" }, [
-                                _vm._v(_vm._s(props.item.discount))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-xs-right" }, [
-                                _vm._v(_vm._s(props.item.add_product))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-xs-right" }, [
-                                _vm._v(_vm._s(props.item.price_condition))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-xs-right" }, [
-                                _vm._v(_vm._s(props.item.start_date))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-xs-right" }, [
-                                _vm._v(_vm._s(props.item.expiry_date))
-                              ]),
-                              _vm._v(" "),
                               _c(
-                                "td",
-                                { staticClass: "justify-center layout px-0" },
+                                "v-list-tile",
+                                {
+                                  key: item.name,
+                                  attrs: { avatar: "", ripple: "" }
+                                },
                                 [
                                   _c(
-                                    "v-btn",
-                                    {
-                                      staticStyle: { color: "white" },
-                                      attrs: { color: "red" },
-                                      nativeOn: {
-                                        click: function($event) {
-                                          $event.stopPropagation()
-                                          _vm.dialog = true
-                                        }
-                                      }
-                                    },
-                                    [_vm._v(" 쿠폰 사용 ")]
+                                    "v-list-tile-content",
+                                    [
+                                      _c(
+                                        "v-list-tile-title",
+                                        [
+                                          _c("B", [
+                                            _vm._v(
+                                              " " + _vm._s(item.name) + " "
+                                            )
+                                          ])
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-list-tile-sub-title",
+                                        { staticClass: "text--primary" },
+                                        [
+                                          _vm._v(
+                                            "\n                                    " +
+                                              _vm._s(item.category) +
+                                              "\n                                "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      item.category == "상품 제공"
+                                        ? _c("v-list-tile-sub-title", [
+                                            _vm._v(
+                                              "\n                                    " +
+                                                _vm._s(item.price_condition) +
+                                                "이상일 경우,   " +
+                                                _vm._s(item.add_product) +
+                                                " 제공\n                                "
+                                            )
+                                          ])
+                                        : item.category == "가격 할인"
+                                          ? _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "\n                                    " +
+                                                  _vm._s(item.price_condition) +
+                                                  "이상일 경우,   " +
+                                                  _vm._s(item.discount) +
+                                                  " 할인\n                                "
+                                              )
+                                            ])
+                                          : _vm._e(),
+                                      _vm._v(" "),
+                                      _c("v-list-tile-sub-title", [
+                                        _vm._v(
+                                          "\n                                   [ " +
+                                            _vm._s(item.start_date) +
+                                            " ~ " +
+                                            _vm._s(item.expiry_date) +
+                                            " ]\n                                "
+                                        )
+                                      ])
+                                    ],
+                                    1
                                   ),
                                   _vm._v(" "),
                                   _c(
-                                    "v-dialog",
-                                    {
-                                      attrs: { "max-width": "290" },
-                                      model: {
-                                        value: _vm.dialog,
-                                        callback: function($$v) {
-                                          _vm.dialog = $$v
-                                        },
-                                        expression: "dialog"
-                                      }
-                                    },
+                                    "v-list-tile-action",
                                     [
                                       _c(
-                                        "v-card",
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            flat: "",
+                                            icon: "",
+                                            color: "primary"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              ;(_vm.spendDialog = true),
+                                                _vm.TransCoupon(item)
+                                            }
+                                          }
+                                        },
                                         [
-                                          _c("v-card-title", [
-                                            _c("h3", [
-                                              _vm._v(_vm._s(props.item.name))
-                                            ])
+                                          _c("v-icon", [
+                                            _vm._v("aspect_ratio")
                                           ]),
-                                          _vm._v(" "),
+                                          _vm._v(
+                                            " 사용\n                                "
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-dialog",
+                                        {
+                                          attrs: {
+                                            "hide-overlay": "",
+                                            "max-width": "500px"
+                                          },
+                                          model: {
+                                            value: _vm.spendDialog,
+                                            callback: function($$v) {
+                                              _vm.spendDialog = $$v
+                                            },
+                                            expression: "spendDialog"
+                                          }
+                                        },
+                                        [
                                           _c(
-                                            "v-card-text",
+                                            "v-card",
                                             [
-                                              _c("B", [_vm._v("쿠폰 종류 : ")]),
-                                              _vm._v(
-                                                _vm._s(props.item.category) +
-                                                  " "
-                                              ),
-                                              _c("br"),
+                                              _c("v-card-title", [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass: "Trans_Title"
+                                                  },
+                                                  [
+                                                    _c("b", [
+                                                      _vm._v(
+                                                        " " +
+                                                          _vm._s(
+                                                            _vm.trans.name
+                                                          ) +
+                                                          " "
+                                                      )
+                                                    ])
+                                                  ]
+                                                )
+                                              ]),
                                               _vm._v(" "),
-                                              _c("B", [_vm._v("할인 가격 : ")]),
-                                              _vm._v(
-                                                _vm._s(props.item.discount) +
-                                                  " "
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("B", [_vm._v("상품 제공 : ")]),
-                                              _vm._v(
-                                                _vm._s(props.item.add_product) +
-                                                  " "
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("B", [_vm._v("쿠폰 조건 : ")]),
-                                              _vm._v(
-                                                _vm._s(
-                                                  props.item.price_condition
-                                                ) + " "
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c("B", [_vm._v("사용 기간 : ")]),
-                                              _vm._v(
-                                                _vm._s(props.item.start_date) +
-                                                  " ~ " +
-                                                  _vm._s(
-                                                    props.item.expiry_date
-                                                  ) +
-                                                  "\n                                        "
-                                              )
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "v-card-actions",
-                                            [
-                                              _c("v-spacer"),
+                                              _c("v-card-text", [
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "Trans_Main" },
+                                                  [
+                                                    _c("B", [
+                                                      _vm._v("카테고리 : ")
+                                                    ]),
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.trans.category
+                                                      ) + " "
+                                                    ),
+                                                    _c("br"),
+                                                    _vm._v(" "),
+                                                    _vm.trans.category ==
+                                                    "상품 제공"
+                                                      ? _c(
+                                                          "span",
+                                                          [
+                                                            _c("B", [
+                                                              _vm._v(
+                                                                "제공되는 상품 : "
+                                                              )
+                                                            ]),
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                _vm.trans
+                                                                  .add_product
+                                                              ) +
+                                                                "\n                                                    "
+                                                            )
+                                                          ],
+                                                          1
+                                                        )
+                                                      : _vm.trans.category ==
+                                                        "가격 할인"
+                                                        ? _c(
+                                                            "span",
+                                                            [
+                                                              _c("B", [
+                                                                _vm._v(
+                                                                  "할인 가격 : "
+                                                                )
+                                                              ]),
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  _vm.trans
+                                                                    .discount
+                                                                ) +
+                                                                  "\n                                                    "
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        : _vm._e(),
+                                                    _c("br"),
+                                                    _vm._v(" "),
+                                                    _c("B", [
+                                                      _vm._v("쿠폰 조건 : ")
+                                                    ]),
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.trans
+                                                          .price_condition
+                                                      ) + " "
+                                                    ),
+                                                    _c("br"),
+                                                    _vm._v(" "),
+                                                    _c("B", [
+                                                      _vm._v("사용 기간 : ")
+                                                    ]),
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.trans.start_date
+                                                      ) +
+                                                        " ~ " +
+                                                        _vm._s(
+                                                          _vm.trans.expiry_date
+                                                        ) +
+                                                        "\n                                                "
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ]),
                                               _vm._v(" "),
                                               _c(
-                                                "v-btn",
-                                                {
-                                                  attrs: {
-                                                    color: "error",
-                                                    flat: "flat"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      _vm.SpendData(props.item)
-                                                    }
-                                                  },
-                                                  nativeOn: {
-                                                    click: function($event) {
-                                                      _vm.dialog = false
-                                                    }
-                                                  }
-                                                },
-                                                [_vm._v("사용하기")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "v-btn",
-                                                {
-                                                  attrs: {
-                                                    color: "error",
-                                                    flat: "flat"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      _vm.clickCoupon = null
-                                                    }
-                                                  },
-                                                  nativeOn: {
-                                                    click: function($event) {
-                                                      _vm.dialog = false
-                                                    }
-                                                  }
-                                                },
-                                                [_vm._v(" 취소")]
+                                                "v-card-actions",
+                                                [
+                                                  _c(
+                                                    "v-btn",
+                                                    {
+                                                      attrs: {
+                                                        color: "primary",
+                                                        flat: ""
+                                                      },
+                                                      on: {
+                                                        click: [
+                                                          function($event) {
+                                                            $event.stopPropagation()
+                                                            _vm.spendDialog = false
+                                                          },
+                                                          function($event) {
+                                                            _vm.SpendData()
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    [_vm._v("사용하기")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "v-btn",
+                                                    {
+                                                      attrs: {
+                                                        color: "primary",
+                                                        flat: ""
+                                                      },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          $event.stopPropagation()
+                                                          _vm.spendDialog = false
+                                                        }
+                                                      }
+                                                    },
+                                                    [_vm._v("취소")]
+                                                  )
+                                                ],
+                                                1
                                               )
                                             ],
                                             1
                                           )
                                         ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            flat: "",
+                                            icon: "",
+                                            color: "error"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.Cancel(item)
+                                            }
+                                          }
+                                        },
+                                        [_c("v-icon", [_vm._v("delete")])],
                                         1
                                       )
                                     ],
@@ -104739,18 +105132,23 @@ var render = function() {
                                   )
                                 ],
                                 1
-                              )
+                              ),
+                              _vm._v(" "),
+                              index + 1 < _vm.items.length
+                                ? _c("v-divider", { key: index })
+                                : _vm._e()
                             ]
-                          }
-                        }
-                      ])
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
+                          })
+                        ],
+                        2
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
           ],
           1
         )
@@ -104770,18 +105168,18 @@ if (false) {
 }
 
 /***/ }),
-/* 647 */
+/* 650 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserPageReservation_vue__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserPageReservation_vue__ = __webpack_require__(289);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_59132a78_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserPageReservation_vue__ = __webpack_require__(650);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_59132a78_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserPageReservation_vue__ = __webpack_require__(653);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(648)
+  __webpack_require__(651)
 }
 /* script */
 
@@ -104828,13 +105226,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 648 */
+/* 651 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(649);
+var content = __webpack_require__(652);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -104855,7 +105253,7 @@ if(false) {
 }
 
 /***/ }),
-/* 649 */
+/* 652 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -104863,13 +105261,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 650 */
+/* 653 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104906,11 +105304,9 @@ var render = function() {
               [
                 _c(
                   "v-layout",
-                  { attrs: { column: "" } },
                   [
                     _c(
                       "v-flex",
-                      { attrs: { xs12: "", sm6: "" } },
                       [
                         _c(
                           "v-card",
@@ -104928,7 +105324,10 @@ var render = function() {
                                   ) {
                                     return _c(
                                       "v-flex",
-                                      { key: index, attrs: { sm6: "" } },
+                                      {
+                                        key: index,
+                                        attrs: { xs12: "", sm6: "" }
+                                      },
                                       [
                                         _c(
                                           "v-card",
@@ -104957,7 +105356,7 @@ var render = function() {
                                                     "\n                                            예약 날짜 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .date
                                                       )
                                                   ),
                                                   _c("br"),
@@ -104965,7 +105364,7 @@ var render = function() {
                                                     "\n                                            예약 시간 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .time
                                                       )
                                                   ),
                                                   _c("br"),
@@ -104973,7 +105372,7 @@ var render = function() {
                                                     "\n                                            어른 인원 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .adult
                                                       )
                                                   ),
                                                   _c("br"),
@@ -104981,18 +105380,26 @@ var render = function() {
                                                     "\n                                            아이 인원 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .child
                                                       )
                                                   ),
                                                   _c("br"),
-                                                  _vm._v(
-                                                    "\n                                            주문 메뉴 : " +
-                                                      _vm._s(
-                                                        _vm.StandBycards[index]
-                                                          .shopName
-                                                      ) +
-                                                      "\n                                        "
-                                                  )
+                                                  _vm._v(" "),
+                                                  _vm.StandBycards[index]
+                                                    .reservation_selectMenu !=
+                                                  null
+                                                    ? _c("span", [
+                                                        _vm._v(
+                                                          " 주문 메뉴 : " +
+                                                            _vm._s(
+                                                              _vm.StandBycards[
+                                                                index
+                                                              ].menu_select
+                                                            ) +
+                                                            " "
+                                                        )
+                                                      ])
+                                                    : _vm._e()
                                                 ],
                                                 1
                                               )
@@ -105030,11 +105437,9 @@ var render = function() {
               [
                 _c(
                   "v-layout",
-                  { attrs: { column: "" } },
                   [
                     _c(
                       "v-flex",
-                      { attrs: { xs12: "", sm6: "" } },
                       [
                         _c(
                           "v-card",
@@ -105052,7 +105457,10 @@ var render = function() {
                                   ) {
                                     return _c(
                                       "v-flex",
-                                      { key: index, attrs: { sm6: "" } },
+                                      {
+                                        key: index,
+                                        attrs: { xs12: "", sm6: "" }
+                                      },
                                       [
                                         _c(
                                           "v-card",
@@ -105078,7 +105486,7 @@ var render = function() {
                                                     "\n                                            예약 날짜 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .date
                                                       )
                                                   ),
                                                   _c("br"),
@@ -105086,7 +105494,7 @@ var render = function() {
                                                     "\n                                            예약 시간 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .time
                                                       )
                                                   ),
                                                   _c("br"),
@@ -105094,7 +105502,7 @@ var render = function() {
                                                     "\n                                            어른 인원 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .adult
                                                       )
                                                   ),
                                                   _c("br"),
@@ -105102,18 +105510,26 @@ var render = function() {
                                                     "\n                                            아이 인원 : " +
                                                       _vm._s(
                                                         _vm.StandBycards[index]
-                                                          .shopName
+                                                          .child
                                                       )
                                                   ),
                                                   _c("br"),
-                                                  _vm._v(
-                                                    "\n                                            주문 메뉴 : " +
-                                                      _vm._s(
-                                                        _vm.StandBycards[index]
-                                                          .shopName
-                                                      ) +
-                                                      "\n                                        "
-                                                  )
+                                                  _vm._v(" "),
+                                                  _vm.StandBycards[index]
+                                                    .reservation_selectMenu !=
+                                                  null
+                                                    ? _c("span", [
+                                                        _vm._v(
+                                                          " 주문 메뉴 : " +
+                                                            _vm._s(
+                                                              _vm.StandBycards[
+                                                                index
+                                                              ].menu_select
+                                                            ) +
+                                                            " "
+                                                        )
+                                                      ])
+                                                    : _vm._e()
                                                 ],
                                                 1
                                               )
@@ -105138,7 +105554,7 @@ var render = function() {
                                                           _vm.dialog = true
                                                         },
                                                         function($event) {
-                                                          ;(this.clickshopid =
+                                                          ;(_vm.clickshopid =
                                                             _vm.StandBycards[
                                                               index
                                                             ].id),
@@ -105195,8 +105611,7 @@ var render = function() {
                                                                 _vm._v(
                                                                   "가게이름 : " +
                                                                     _vm._s(
-                                                                      this
-                                                                        .clickshopid
+                                                                      _vm.clickshopid
                                                                     )
                                                                 )
                                                               ])
@@ -105209,7 +105624,7 @@ var render = function() {
                                                           "v-card-text",
                                                           [
                                                             _vm._v(
-                                                              "\n                                                예약을 취소하는 이유가 무엇입니까? "
+                                                              "\n                                                예약을 취소하는 사유를 적어주세요 "
                                                             ),
                                                             _c("br"),
                                                             _vm._v(" "),
@@ -105334,18 +105749,18 @@ if (false) {
 }
 
 /***/ }),
-/* 651 */
+/* 654 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewHistory_vue__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserReviewHistory_vue__ = __webpack_require__(290);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_35bb8ba7_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewHistory_vue__ = __webpack_require__(654);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_35bb8ba7_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserReviewHistory_vue__ = __webpack_require__(657);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
 function injectStyle (context) {
   if (disposed) return
-  __webpack_require__(652)
+  __webpack_require__(655)
 }
 /* script */
 
@@ -105392,13 +105807,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 652 */
+/* 655 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(653);
+var content = __webpack_require__(656);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -105419,7 +105834,7 @@ if(false) {
 }
 
 /***/ }),
-/* 653 */
+/* 656 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -105433,7 +105848,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 654 */
+/* 657 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105575,10 +105990,1843 @@ if (false) {
 }
 
 /***/ }),
-/* 655 */
+/* 658 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserOrderHistory_vue__ = __webpack_require__(291);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d299a034_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserOrderHistory_vue__ = __webpack_require__(659);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_UserOrderHistory_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d299a034_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserOrderHistory_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_d299a034_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_UserOrderHistory_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\user\\user_restaurant\\UserOrderHistory.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d299a034", Component.options)
+  } else {
+    hotAPI.reload("data-v-d299a034", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 659 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("v-app", [
+    _c(
+      "div",
+      [
+        _c("br"),
+        _vm._v(" "),
+        _c("B", [_vm._v(_vm._s(_vm.userName))]),
+        _vm._v(" 님 반갑습니다.\n        "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("h4", [_c("B", [_vm._v(" 주문 내역")])], 1),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "v-tabs",
+          { attrs: { color: "dark", dark: "", "slider-color": "red" } },
+          [
+            _c("v-tab", [_vm._v("\n                주문 내역 \n            ")]),
+            _vm._v(" "),
+            _c(
+              "v-tab-item",
+              [
+                _c(
+                  "v-layout",
+                  [
+                    _c(
+                      "v-flex",
+                      [
+                        _c(
+                          "v-card",
+                          [
+                            _c(
+                              "v-container",
+                              { attrs: { fluid: "", "grid-list-md": "" } },
+                              [
+                                _c(
+                                  "v-layout",
+                                  { attrs: { row: "", wrap: "" } },
+                                  _vm._l(_vm.orderMenu, function(card, index) {
+                                    return _c(
+                                      "v-flex",
+                                      {
+                                        key: index,
+                                        attrs: { xs12: "", sm6: "" }
+                                      },
+                                      [
+                                        _c(
+                                          "v-card",
+                                          [
+                                            _c("v-card-text", [
+                                              _c(
+                                                "div",
+                                                [
+                                                  _c("B", [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.orderMenu[index]
+                                                          .shopName
+                                                      )
+                                                    )
+                                                  ]),
+                                                  _c("br"),
+                                                  _vm._v(
+                                                    "\n                                            날짜 : " +
+                                                      _vm._s(
+                                                        _vm.orderMenu[index]
+                                                          .date
+                                                      )
+                                                  ),
+                                                  _c("br"),
+                                                  _vm._v(
+                                                    "\n                                            주문한 메뉴 : " +
+                                                      _vm._s(
+                                                        _vm.orderMenu[index]
+                                                          .menu_select
+                                                      ) +
+                                                      "\n                                        "
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  })
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d299a034", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 660 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 661 */,
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */,
+/* 667 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
+//
+//
+//
+//
+
+
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
+  mixins: [reactiveProp],
+  props: ['options'],
+  mounted: function mounted() {
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
+  }
+});
+
+/***/ }),
+/* 668 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesCountryChart_vue__ = __webpack_require__(667);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+/* script */
+
+
+/* template */
+var __vue_render__, __vue_static_render_fns__
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_SalesCountryChart_vue__["a" /* default */],
+  __vue_render__,
+  __vue_static_render_fns__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\owner\\owner_statistics\\SalesCountryChart.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-63bf76b2", Component.options)
+  } else {
+    hotAPI.reload("data-v-63bf76b2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 669 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            user_category: true,
+            user_id: "",
+            user_pw1: "",
+            user_pw2: "",
+
+            user_name: "",
+            user_gender: true,
+            user_year: "",
+            user_month: "",
+            user_day: "",
+
+            user_email: "",
+            user_country: "",
+            user_favorite: [],
+
+            hidePw1: true,
+            hidePw2: true,
+
+            idRules: [function (v) {
+                return !!v || 'ID is required';
+            }],
+            pwRules: [function (v) {
+                return !!v || 'Password is required';
+            }],
+            month: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            country: ['Korea', 'Japan', 'China', 'USA'],
+            food: ['한식', '일식', '중식', '양식', '분식', '덮밥', '스시', '패스트 푸드', '찜', '탕', '도시락', '카페&디저트', '술집', '면류', '제과'],
+
+            snackbar: false,
+            snackText: "",
+            timeout: 3000
+        };
+    },
+
+
+    mounted: function mounted() {
+        var _this = this;
+
+        var url = "/getInfo";
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, { user_id: this.$session.get('user_id') }).then(function (response) {
+            //console.log(response.data[0].category);
+            //this.user_category = response.data[0].category;
+            _this.user_category = response.data[0].category;
+            _this.user_id = response.data[0].user_id;
+            _this.user_name = response.data[0].name;
+            _this.user_gender = response.data[0].gender == '0' ? "Male" : "Female";
+            var user_birthday = response.data[0].birthday.split('-');
+            _this.user_year = user_birthday[0];
+            _this.user_month = user_birthday[1];
+            _this.user_day = user_birthday[2];
+            _this.user_email = response.data[0].email;
+            _this.user_country = response.data[0].country;
+            if (_this.user_category) {
+                _this.user_favorite = [response.data[0].favorite_1, response.data[0].favorite_2, response.data[0].favorite_3];
+            }
+        }).catch(function (error) {
+            alert(error);
+        });
+    },
+
+    methods: {
+        editInfo: function editInfo() {
+            if (this.user_id == "") {
+                this.snackbar = true;
+                this.snackText = "아이디는 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_pw1 == "") {
+                this.snackbar = true;
+                this.snackText = "비밀번호는 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_pw1 != this.user_pw2) {
+                this.snackbar = true;
+                this.snackText = "비밀번호와 비밀번호 확인이 서로 다릅니다.";
+                return;
+            }
+
+            if (this.user_name == "") {
+                this.snackbar = true;
+                this.snackText = "이름은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_gender == "") {
+                this.snackbar = true;
+                this.snackText = "성별은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_year == "" || this.user_month == "" || this.user_day == "") {
+                this.snackbar = true;
+                this.snackText = "생년월일은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_year < 1900 || this.user_year > 2018) {
+                this.snackbar = true;
+                this.snackText = "년도를 확인해주세요.";
+                return;
+            }
+
+            if (this.user_email == "") {
+                this.snackbar = true;
+                this.snackText = "이메일은 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_country == "") {
+                this.snackbar = true;
+                this.snackText = "국가는 필수 입력 사항입니다.";
+                return;
+            }
+
+            if (this.user_category) {
+                var temp = this.user_favorite;
+                if (temp[3]) {
+                    this.snackbar = true;
+                    this.snackText = "선호하는 음식은 최대 3가지 입니다.";
+                    return;
+                }
+            }
+
+            var url = "/editInfo";
+
+            var temp = {
+                user_id: this.user_id,
+                password: this.user_pw1,
+                email: this.user_email,
+                name: this.user_name,
+                country: this.user_country,
+                birthday: this.user_year + '-' + this.user_month + '-' + this.user_day,
+                category: this.user_category,
+                gender: this.user_gender,
+                favorite_1: this.user_favorite[0],
+                favorite_2: this.user_favorite[1],
+                favorite_3: this.user_favorite[2]
+            };
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, temp).then(function (response) {
+                location.replace("/");
+            }).catch(function (error) {
+                alert(JSON.stringify(temp));
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 670 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_EditInformation_vue__ = __webpack_require__(669);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2ecfacca_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditInformation_vue__ = __webpack_require__(673);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_EditInformation_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2ecfacca_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditInformation_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2ecfacca_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditInformation_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\EditInformation.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2ecfacca", Component.options)
+  } else {
+    hotAPI.reload("data-v-2ecfacca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 671 */,
+/* 672 */,
+/* 673 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-app",
+    [
+      _c(
+        "v-container",
+        [
+          _c(
+            "v-flex",
+            { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+            [
+              _vm.user_category
+                ? _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color: "green",
+                        outline: "",
+                        block: "",
+                        large: ""
+                      }
+                    },
+                    [_vm._v("개인 회원 수정")]
+                  )
+                : _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "red", outline: "", block: "", large: "" }
+                    },
+                    [_vm._v("사업자 회원 수정")]
+                  )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+            [
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-text",
+                    [
+                      _c("v-text-field", {
+                        attrs: { disabled: "" },
+                        model: {
+                          value: _vm.user_id,
+                          callback: function($$v) {
+                            _vm.user_id = $$v
+                          },
+                          expression: "user_id"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-icon": _vm.hidePw1
+                            ? "visibility"
+                            : "visibility_off",
+                          "append-icon-cb": function() {
+                            return (_vm.hidePw1 = !_vm.hidePw1)
+                          },
+                          type: _vm.hidePw1 ? "password" : "text",
+                          label: "Enter your password",
+                          color: "green",
+                          rules: _vm.pwRules
+                        },
+                        model: {
+                          value: _vm.user_pw1,
+                          callback: function($$v) {
+                            _vm.user_pw1 = $$v
+                          },
+                          expression: "user_pw1"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          "append-icon": _vm.hidePw2
+                            ? "visibility"
+                            : "visibility_off",
+                          "append-icon-cb": function() {
+                            return (_vm.hidePw2 = !_vm.hidePw2)
+                          },
+                          type: _vm.hidePw2 ? "password" : "text",
+                          label: "Enter your password confirm",
+                          color: "green",
+                          rules: _vm.pwRules
+                        },
+                        model: {
+                          value: _vm.user_pw2,
+                          callback: function($$v) {
+                            _vm.user_pw2 = $$v
+                          },
+                          expression: "user_pw2"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "v-card",
+                [
+                  _c(
+                    "v-card-text",
+                    [
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "Name",
+                          required: "",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_name,
+                          callback: function($$v) {
+                            _vm.user_name = $$v
+                          },
+                          expression: "user_name"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "v-radio-group",
+                        {
+                          attrs: { row: "" },
+                          model: {
+                            value: _vm.user_gender,
+                            callback: function($$v) {
+                              _vm.user_gender = $$v
+                            },
+                            expression: "user_gender"
+                          }
+                        },
+                        [
+                          _c("v-radio", {
+                            attrs: {
+                              label: "Male",
+                              value: "Male",
+                              color: "green"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("v-radio", {
+                            attrs: {
+                              label: "Female",
+                              value: "Female",
+                              color: "green"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  placeholder: "Year",
+                                  required: "",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.user_year,
+                                  callback: function($$v) {
+                                    _vm.user_year = $$v
+                                  },
+                                  expression: "user_year"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.month,
+                                  label: "Month",
+                                  color: "green",
+                                  "single-line": ""
+                                },
+                                model: {
+                                  value: _vm.user_month,
+                                  callback: function($$v) {
+                                    _vm.user_month = $$v
+                                  },
+                                  expression: "user_month"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { xs4: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  placeholder: "Day",
+                                  required: "",
+                                  "append-icon": "cake",
+                                  color: "green"
+                                },
+                                model: {
+                                  value: _vm.user_day,
+                                  callback: function($$v) {
+                                    _vm.user_day = $$v
+                                  },
+                                  expression: "user_day"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: {
+                          placeholder: "Email",
+                          required: "",
+                          "append-icon": "email",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_email,
+                          callback: function($$v) {
+                            _vm.user_email = $$v
+                          },
+                          expression: "user_email"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: {
+                          items: _vm.country,
+                          label: "Country",
+                          "single-line": "",
+                          auto: "",
+                          "append-icon": "language",
+                          "hide-details": "",
+                          color: "green"
+                        },
+                        model: {
+                          value: _vm.user_country,
+                          callback: function($$v) {
+                            _vm.user_country = $$v
+                          },
+                          expression: "user_country"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.user_category
+                ? _c(
+                    "v-card",
+                    [
+                      _c(
+                        "v-card-text",
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              items: _vm.food,
+                              label: "Favorite Food (max 3 items)",
+                              "single-line": "",
+                              auto: "",
+                              "hide-details": "",
+                              multiple: "",
+                              chips: "",
+                              color: "green"
+                            },
+                            model: {
+                              value: _vm.user_favorite,
+                              callback: function($$v) {
+                                _vm.user_favorite = $$v
+                              },
+                              expression: "user_favorite"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { xs12: "", sm6: "", "offset-sm3": "" } },
+            [
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "v-btn",
+                {
+                  attrs: { color: "green", block: "", outline: "", large: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.editInfo()
+                    }
+                  }
+                },
+                [_vm._v("정보 수정")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-snackbar",
+        {
+          attrs: { timeout: _vm.timeout, top: "", vertical: "" },
+          model: {
+            value: _vm.snackbar,
+            callback: function($$v) {
+              _vm.snackbar = $$v
+            },
+            expression: "snackbar"
+          }
+        },
+        [
+          _vm._v("\n    " + _vm._s(_vm.snackText) + "\n    "),
+          _c(
+            "v-btn",
+            {
+              attrs: { flat: "", color: "pink" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.snackbar = false
+                }
+              }
+            },
+            [_vm._v("Close")]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2ecfacca", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 674 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(675);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(3).default
+var update = add("5747f8b7", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-118f3ff8\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout1.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-118f3ff8\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout1.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 675 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 모바일 */\n@media (max-width: 639px){\nhtml[data-v-118f3ff8]       { font-size: 15px;\n}\n.menu_body[data-v-118f3ff8] { width:100%; margin:2%;\n}\n.menu_expl[data-v-118f3ff8] { padding-bottom: 15%;\n}\n}\n\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\nhtml[data-v-118f3ff8]       { font-size: 13px;\n}\n.menu_body[data-v-118f3ff8] { width:47%; margin:1%;\n}\n.menu_expl[data-v-118f3ff8] { padding-bottom: 15%;\n}\n}\n\n/* 데스트 탑 */\n@media (min-width: 1024px){\nhtml[data-v-118f3ff8]       { font-size: 12px;\n}\n.menu_body[data-v-118f3ff8] { width:31%; margin :1%;\n}\n.menu_expl[data-v-118f3ff8] { padding-bottom: 25%;\n}\n} \n\n/* 메뉴 */\n.menu_body[data-v-118f3ff8] { \n    float: left;\n}\n\n/* 메뉴 이미지 바깥 */\n.tem_img[data-v-118f3ff8] {\n    width: 100%;\n    height: 0;\n    padding-bottom: 70%;\n    overflow: hidden;\n    position: relative;\n}\n/* 메뉴 이미지 안쪽 */\nimg[data-v-118f3ff8] { \n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%; \n    position: absolute;\n} \n\n/* 메뉴 정보 길고 얇은거 */\n.menu-outer[data-v-118f3ff8] { \n    height: 0;  \n    padding-bottom: 11%;   \n    overflow: hidden;\n    position: relative;\n}\n/* 메뉴 설명 */\n.menu_expl[data-v-118f3ff8] { \n    width: 100%;\n    height: 0; \n    \n    overflow: auto;\n    position: relative;\n}\n.menu_info[data-v-118f3ff8] {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%; \n    position: absolute;\n}  \n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 676 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [
+      _c(
+        "v-container",
+        { staticStyle: { color: "white" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { xs12: "" } },
+            [
+              _c(
+                "v-card",
+                { staticStyle: { margin: "auto" } },
+                [
+                  _c(
+                    "v-bottom-nav",
+                    {
+                      attrs: { value: true, active: _vm.e2 },
+                      on: {
+                        "update:active": function($event) {
+                          _vm.e2 = $event
+                        }
+                      }
+                    },
+                    _vm._l(_vm.categorys, function(value, key) {
+                      return _c(
+                        "v-btn",
+                        {
+                          key: key,
+                          attrs: { value: value },
+                          on: { click: _vm.click_category }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(value) +
+                              " \n                "
+                          )
+                        ]
+                      )
+                    })
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.range(0, _vm.menu_num - 1), function(n) {
+            return _c(
+              "div",
+              { key: n, staticClass: "menu_body" },
+              [
+                _c(
+                  "v-card",
+                  {
+                    staticStyle: { color: "black" },
+                    attrs: { color: "white" }
+                  },
+                  [
+                    _c("div", { staticClass: "tem_img" }, [
+                      _c("img", {
+                        attrs: {
+                          src: _vm.get_menus[n].path + _vm.get_menus[n].filename
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "v-card-title",
+                      {
+                        staticStyle: { padding: "2%" },
+                        attrs: { "primary-title": "", "elevation-20": "" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "menu-outer",
+                            staticStyle: { width: "100%" }
+                          },
+                          [
+                            _c("h3", { staticClass: "menu_info" }, [
+                              _vm._v(" " + _vm._s(_vm.get_menus[n].name))
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "menu_expl" }, [
+                          _c("div", { staticClass: "menu_info" }, [
+                            _vm._v(" " + _vm._s(_vm.get_menus[n].explanation))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "menu-outer",
+                            staticStyle: { width: "100%" }
+                          },
+                          [
+                            _c("h4", { staticClass: "menu_info" }, [
+                              _vm._v(
+                                " 런치 / 디너 구분 :  " +
+                                  _vm._s(_vm.get_menus[n].remark) +
+                                  " "
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "menu-outer",
+                            staticStyle: { width: "50%" }
+                          },
+                          [
+                            _c(
+                              "b",
+                              {
+                                staticClass: "menu_info",
+                                staticStyle: {
+                                  "margin-top": "2%",
+                                  "margin-left": "2%"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  " \n                            가격 : " +
+                                    _vm._s(_vm.get_menus[n].price) +
+                                    " \n                        "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "menu-outer",
+                            staticStyle: { width: "50%" }
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticStyle: {
+                                  width: "100%",
+                                  "padding-top": "5%",
+                                  color: "cadetblue"
+                                },
+                                attrs: { id: n },
+                                on: { click: _vm.select_menu }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            선택하기\n                        "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-118f3ff8", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(681);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(3).default
+var update = add("64ca0600", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-0c3d645d\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReview.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-0c3d645d\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReview.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 681 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* svg태그의 cursor를 설정합니다. */\nsvg[data-v-0c3d645d] {\n    cursor: pointer;\n}\n.fade-enter-active[data-v-0c3d645d], .fade-leave-active[data-v-0c3d645d] {\n    -webkit-transition: opacity .5s;\n    transition: opacity .5s\n}\n.fade-enter[data-v-0c3d645d], .fade-leave-active[data-v-0c3d645d] {\n    opacity: 0\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 682 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "transition",
+    { attrs: { name: "fade" } },
+    [
+      _c(
+        "v-content",
+        { attrs: { "grid-list-md": "", "text-xs-center": "" } },
+        [
+          _c(
+            "v-layout",
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs10: "", sm10: "" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        outline: "",
+                        color: "red lighten-2",
+                        to: "writeReview",
+                        block: ""
+                      }
+                    },
+                    [_vm._v("리뷰 작성")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { "align-center": "" } },
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs10: "", sm10: "" } },
+                [
+                  _c("social-sharing", {
+                    attrs: { url: _vm.url },
+                    inlineTemplate: {
+                      render: function() {
+                        var _vm = this
+                        var _h = _vm.$createElement
+                        var _c = _vm._self._c || _h
+                        return _c(
+                          "v-layout",
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              { attrs: { xs4: "", sm2: "", "offset-xs1": "" } },
+                              [
+                                _c(
+                                  "network",
+                                  { attrs: { network: "facebook" } },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        attrs: {
+                                          viewBox: "0 0 448 512",
+                                          width: "70%",
+                                          height: "70%"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          staticStyle: { fill: "#3b5998" },
+                                          attrs: {
+                                            d:
+                                              "M448 56.7v398.5c0 13.7-11.1 \n                                    24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 \n                                    5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6 \n                                    0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 \n                                    468.9 0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7 0 24.8 \n                                    11.1 24.8 24.7z"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              {
+                                attrs: {
+                                  xs4: "",
+                                  sm2: "",
+                                  "align-content-center": ""
+                                }
+                              },
+                              [
+                                _c(
+                                  "network",
+                                  { attrs: { network: "twitter" } },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        attrs: {
+                                          viewBox: "0 0 512 512",
+                                          width: "70%",
+                                          height: "70%"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          staticStyle: { fill: "#00aced" },
+                                          attrs: {
+                                            d:
+                                              "M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 \n                                    298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 \n                                    16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 \n                                    130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 \n                                    12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 \n                                    27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 \n                                    30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 \n                                    5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 \n                                    216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 \n                                    0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 \n                                    23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 \n                                    57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 \n                                    39.308-52.628 54.253z"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-flex",
+                              {
+                                attrs: {
+                                  xs4: "",
+                                  sm2: "",
+                                  "justify-center": ""
+                                }
+                              },
+                              [
+                                _c("network", { attrs: { network: "weibo" } }, [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticStyle: {
+                                        "enable-background": "new 0 0 512 512"
+                                      },
+                                      attrs: {
+                                        version: "1.1",
+                                        width: "70%",
+                                        height: "70%",
+                                        id: "Layer_1",
+                                        x: "0px",
+                                        y: "0px",
+                                        viewBox: "0 0 512 512",
+                                        "xml:space": "preserve"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        staticStyle: { fill: "#EA533B" },
+                                        attrs: {
+                                          d:
+                                            "M403.51,247.992c12.189-23.721,13.499-45.899,3.546-63.137\n                                        c-10.316-17.868-31.605-28.033-59.944-28.622c-20.81-0.427-44.439,4.311-68.131,13.528c8.166-27.851,5.532-49.961-7.876-63.369\n                                        c-16.113-16.113-44.899-16.666-81.056-1.558c-33.715,14.088-70.764,40.33-104.325,73.889\n                                        c-49.982,49.983-83.19,107.958-84.779,147.93C0.318,330.616,0,334.579,0,338.441c0,35.793,25.09,69.017,70.648,93.547\n                                        c43.858,23.617,101.979,36.622,163.656,36.622s119.798-13.005,163.656-36.622c45.558-24.53,70.648-57.754,70.648-93.547\n                                        C468.609,304.067,445.576,272.184,403.51,247.992z"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        staticStyle: { fill: "#D93C1C" },
+                                        attrs: {
+                                          d:
+                                            "M260.338,459.932c-61.677,0-119.798-13.005-163.656-36.622\n                                        c-45.558-24.53-70.648-57.754-70.648-93.547c0-3.863,0.318-7.825,0.945-11.787c1.589-39.973,34.797-97.947,84.78-147.93\n                                        c33.227-33.226,69.87-59.27,103.314-73.458c-7.854,1.823-16.218,4.566-25.023,8.245c-33.715,14.088-70.764,40.33-104.325,73.889\n                                        C35.742,228.707,2.534,286.682,0.945,326.654C0.318,330.616,0,334.579,0,338.441c0,35.793,25.09,69.017,70.648,93.547\n                                        c43.858,23.617,101.979,36.622,163.656,36.622c48.616,0,95.016-8.086,133.969-23.074\n                                        C335.352,454.941,298.529,459.932,260.338,459.932z"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        staticStyle: { fill: "#FFFFFF" },
+                                        attrs: {
+                                          d:
+                                            "M364.19,312.032c-2.568-29.565-22.081-55.61-54.944-73.338\n                                        c-31.681-17.091-72.302-24.49-114.382-20.835c-42.079,3.656-80.818,17.949-109.076,40.247\n                                        c-29.314,23.131-44.045,52.151-41.476,81.715c2.569,29.565,22.082,55.61,54.946,73.338c26.389,14.236,58.976,21.748,93.447,21.747\n                                        c6.913,0,13.905-0.302,20.934-0.913c42.079-3.654,80.817-17.948,109.075-40.246C352.029,370.616,366.758,341.596,364.19,312.032z"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        staticStyle: { fill: "#E5E5E5" },
+                                        attrs: {
+                                          d:
+                                            "M230.36,425.319c-7.029,0.611-14.021,0.913-20.934,0.913c-34.471,0.001-67.059-7.511-93.447-21.747\n                                        c-32.863-17.729-52.378-43.774-54.946-73.338c-2.569-29.564,12.161-58.584,41.476-81.715c5.799-4.575,12.046-8.808,18.665-12.687\n                                        c-12.993,5.932-24.911,13.095-35.388,21.361c-29.314,23.131-44.045,52.151-41.476,81.715c2.569,29.565,22.082,55.61,54.946,73.338\n                                        c26.389,14.236,58.976,21.748,93.447,21.747c6.913,0,13.905-0.302,20.934-0.913c33.445-2.905,64.771-12.535,90.41-27.559\n                                        C281.994,416.503,256.841,423.019,230.36,425.319z"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        staticStyle: { fill: "#333333" },
+                                        attrs: {
+                                          d:
+                                            "M286.65,312.533c-9.507-39.544-55.55-62.508-102.638-51.189\n                                        c-47.088,11.32-77.661,52.703-68.156,92.249c4.682,19.473,18.156,35.492,37.943,45.105c12.283,5.967,26.102,9.003,40.355,9.003\n                                        c8.042,0,16.221-0.967,24.339-2.918C265.582,393.462,296.157,352.08,286.65,312.533z"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("circle", {
+                                        staticStyle: { fill: "#FFFFFF" },
+                                        attrs: {
+                                          cx: "177.898",
+                                          cy: "351.457",
+                                          r: "30.373"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("g", [
+                                        _c("path", {
+                                          staticStyle: { fill: "#FFA929" },
+                                          attrs: {
+                                            d:
+                                              "M373.152,117.153c-7.189,0-13.017,5.828-13.017,13.017c0,7.189,5.828,13.017,13.017,13.017\n                                            c26.318,0,47.729,21.411,47.729,47.729c0,7.189,5.828,13.017,13.017,13.017s13.017-5.828,13.017-13.017\n                                            C446.914,150.243,413.824,117.153,373.152,117.153z"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("path", {
+                                          staticStyle: { fill: "#FFA929" },
+                                          attrs: {
+                                            d:
+                                              "M364.475,43.39c-3.261,0-6.564,0.108-9.817,0.322c-9.564,0.629-16.808,8.893-16.18,18.458\n                                            c0.629,9.564,8.9,16.804,18.458,16.18c2.498-0.164,5.035-0.248,7.539-0.248c62.206,0,112.813,50.608,112.813,112.813\n                                            c0,7.606-0.759,15.204-2.257,22.581c-1.396,6.875,1.691,14.209,7.576,18.025c5.99,3.884,14.111,3.587,19.829-0.675\n                                            c3.388-2.525,5.774-6.307,6.614-10.445c1.958-9.646,2.95-19.566,2.95-29.487C512,109.571,445.82,43.39,364.475,43.39z"
+                                          }
+                                        })
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("circle", {
+                                        staticStyle: { fill: "#FFFFFF" },
+                                        attrs: {
+                                          cx: "234.305",
+                                          cy: "321.085",
+                                          r: "17.356"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-spacer")
+                          ],
+                          1
+                        )
+                      },
+                      staticRenderFns: []
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            [
+              _c(
+                "v-flex",
+                {
+                  attrs: {
+                    xs4: "",
+                    sm2: "",
+                    "offset-sm1": "",
+                    "offset-xs1": ""
+                  }
+                },
+                [
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.sortItems,
+                      label: "정렬",
+                      "item-text": "sort",
+                      "item-value": "sortNum",
+                      "single-line": "",
+                      "return-object": ""
+                    },
+                    model: {
+                      value: _vm.sortSelect,
+                      callback: function($$v) {
+                        _vm.sortSelect = $$v
+                      },
+                      expression: "sortSelect"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs4: "", sm2: "" } },
+                [
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.filterItems,
+                      label: "국가 선택",
+                      "item-text": "country",
+                      "single-line": "",
+                      "return-object": ""
+                    },
+                    model: {
+                      value: _vm.filterSelect,
+                      callback: function($$v) {
+                        _vm.filterSelect = $$v
+                      },
+                      expression: "filterSelect"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            [
+              _c(
+                "v-flex",
+                [
+                  _c("UserReviewData", {
+                    attrs: {
+                      countryNum: this.filterSelect.countryNum,
+                      countryName: this.filterSelect.country,
+                      sortNum: this.sortSelect.sortNum
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0c3d645d", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 683 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(684);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(3).default
+var update = add("cbedf582", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-7eab2eb2\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReviewData.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-7eab2eb2\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserReviewData.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 684 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* ul 태그 CSS */\nul[data-v-7eab2eb2] {\n    list-style: none;\n}\n\n/* SNS 마크 이미지 CSS */\n.snsMark[data-v-7eab2eb2] {\n    width: 50px;\n    height: 50px;\n    cursor: pointer;\n}\n.fade-enter-active[data-v-7eab2eb2], .fade-leave-active[data-v-7eab2eb2] {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.fade-enter[data-v-7eab2eb2], .fade-leave-active[data-v-7eab2eb2] {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n\n/* 링크를 클릭하려고 마우스를 가져갔을 때 */\na[data-v-7eab2eb2]:hover { \n    color: #FF6666; \n    text-decoration: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 685 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "transition",
+    { attrs: { name: "fade" } },
+    [
+      _c(
+        "v-content",
+        [
+          _c(
+            "v-layout",
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs4: "", sm2: "", "offset-sm1": "" } }, [
+                _c("h1", [_vm._v("평점 : " + _vm._s(this.totalRating))])
+              ]),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs12: "", sm10: "" } }, [_c("hr")]),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            [
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs12: "", sm10: "" } }, [
+                _c(
+                  "ul",
+                  _vm._l(_vm.reviewDataList, function(reviewData) {
+                    return reviewData["id"]
+                      ? _c(
+                          "li",
+                          { key: reviewData["id"] },
+                          [
+                            _c("UserCreateReview", {
+                              attrs: {
+                                userID: reviewData["name"],
+                                reviewID: reviewData["id"],
+                                country: reviewData["country"],
+                                writeDate: reviewData["reg_date"],
+                                likeNum: reviewData["likeNum"],
+                                reviewLike: reviewData["reviewLike"],
+                                rating: reviewData["rating"],
+                                taste: reviewData["taste"],
+                                service: reviewData["service"],
+                                mood: reviewData["mood"],
+                                price: reviewData["price"],
+                                image: reviewData["image"],
+                                content: reviewData["content"],
+                                hashTag: reviewData["hashTag"]
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  })
+                )
+              ]),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7eab2eb2", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
 
 /***/ })
 /******/ ]);

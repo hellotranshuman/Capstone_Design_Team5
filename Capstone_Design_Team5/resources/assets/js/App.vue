@@ -10,12 +10,12 @@
                 hide-overlay
             >
                 <v-list>
-                    <v-list-tile avatar>
+                    <v-list-tile avatar to="/editInformation">
                         <v-list-tile-avatar>
                             <v-icon large>account_circle</v-icon>
                         </v-list-tile-avatar>
                         <v-list-tile-content>
-                            <v-list-tile-title>{{ user_name }} 님</v-list-tile-title>
+                            <v-list-tile-title>{{ user_id+"("+user_name+")" }} 님</v-list-tile-title>
                             <v-list-tile-sub-title v-if="checkRestaurant()">사업자 회원</v-list-tile-sub-title>
                             <v-list-tile-sub-title v-else>개인 회원</v-list-tile-sub-title>
                         </v-list-tile-content>
@@ -24,7 +24,7 @@
                 <v-divider></v-divider>
                 <v-list v-if="!checkRestaurant()">
                     <!-- 주문 내역 -->
-                    <v-list-tile>
+                    <v-list-tile to="/UserOrderHistory">
                         <v-list-tile-action>
                             <v-icon large>assignment</v-icon>
                         </v-list-tile-action>
@@ -108,7 +108,7 @@
                     </v-dialog>
                     <!-- 커뮤니케이션 버튼 끝 -->
                 </v-list>
-                <v-list v-else>
+                <v-list v-else-if="checkRestaurant() != 'needCreate'">
                     <v-subheader>가게 관리</v-subheader>
                     <v-list-tile @click="moveMyMenu()">
                         <v-list-tile-action>
@@ -145,6 +145,17 @@
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list>
+                <v-list v-else>
+                    <v-subheader>가게 관리</v-subheader>
+                    <v-list-tile @click="moveMyRestaurant()">
+                        <v-list-tile-action>
+                            <v-icon large color="green">restaurant</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>가게 생성하기</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </v-list>
             </v-navigation-drawer>
             <v-toolbar
                 app
@@ -163,13 +174,13 @@
                 <v-btn icon>
                     <v-icon large color="red">search</v-icon>
                 </v-btn>
-                <v-btn v-if="!checkRestaurant()" icon @click.native.stop="gps_modal = true">
-                    <v-icon large color="red">gps_fixed</v-icon>
+                <v-btn icon @click.native.stop="gps_modal = true">
+                    <v-icon large color="amber">gps_fixed</v-icon>
                 </v-btn>
                 <v-btn v-if="!checkLogin()" icon @click="loginForm=true">
                     <v-icon large color="blue">account_circle</v-icon>
                 </v-btn>
-                <v-menu v-else bottom offset-y>
+                <v-menu v-else offset-y>
                 <v-btn icon slot="activator">
                     <v-icon large color="blue">account_circle</v-icon>
                 </v-btn>
@@ -185,7 +196,7 @@
             </v-toolbar>
             <!-- 컴포넌트 출력 -->
             <v-content>
-                <router-view></router-view>
+                <router-view :searchAddress=searchAddress></router-view>
             </v-content>
         </v-app>
         <v-dialog v-model="gps_modal" max-width="400">
@@ -204,10 +215,10 @@
                             <v-card-title class="headline">위치를 입력하세요</v-card-title>
                             <v-card-actions>
                                 <v-flex>
-                                    <v-text-field placeholder="place" required></v-text-field>
+                                    <gmap-autocomplete @place_changed="setPlace"></gmap-autocomplete>
                                 </v-flex>
                                 <v-spacer></v-spacer>
-                                <v-btn color="amber lighten-1" to="/search" @click.native="gps_search = false; gps_modal = false">검색</v-btn>
+                                <v-btn color="amber lighten-1" @click.native="gps_search = false; gps_modal = false; searching()">검색</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -247,8 +258,18 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+        <v-snackbar
+        v-model="snackbar"
+        :timeout="timeout"
+        top
+        vertical
+        >
+        {{ snackText }}
+        <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+        </v-snackbar>
     </div>
 </template>
+        
 
 <script>
     import axios  from 'axios';
@@ -273,7 +294,20 @@
                 user_name: this.$session.get('user_name'),
 
                 communicationDialog: false,     // 커뮤니케이션 버튼을 통해 모달창을 출력하는데 사용
-                topURL : "/", // 사이트 최상위 url
+
+                snackbar:   false,
+                snackText:  "",
+                timeout:    3000,
+
+                searchAddressInput: "",
+                searchAddress: ['대한민국 대구광역시 북구 복현2동 복현로 35', { lat: 35.8963134, lng: 128.6198624 }]
+            }
+        },
+
+        created: function() {
+            // GoogleMap 위치 검색을 한 이력이 있으면 그 위치를 초기값으로 함
+            if(this.$session.get("searchAddressHistory")) {
+                this.searchAddress = this.$session.get("searchAddressHistory");
             }
         },
 
@@ -286,11 +320,15 @@
                 })
                     .then(response => {
                         if(!response.data.login) { // 로그인 실패시
-                            alert(response.data.msg); // 메시지 출력
+                            this.snackbar = true;
+                            this.snackText = response.data.msg;
                             return;
                         }
                         if(response.data.restaurant_id != "/") { // 사장인지 손님인지 체크
-                            this.$session.set('restaurant_id', response.data.restaurant_id); // 사장이라면 가게 주소 set
+                            if(response.data.restaurant_id != "noneRestaurant") // 가게를 만든 사장인지 체크
+                                this.$session.set('restaurant_id', response.data.restaurant_id); // 가게를 만든 사장이라면, 가게 id set
+                            else 
+                                this.$session.set('restaurant_id', 'needCreate');
                         }
 
                         this.$session.set('loginStatus', true);                     // 로그인 상태 true
@@ -298,13 +336,18 @@
                         this.$session.set('user_name', response.data.user_name);    // user_name set
 
                         if(this.$session.get('restaurant_id')) { // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
-                            var restaurant_id = this.$session.get('restaurant_id');
-                            location.replace('/owner/' + restaurant_id + '/menu');
+                            if(!(this.$session.get('restaurant_id') == 'needCreate')) { // 가게를 만들지 않은 사장인지 체크
+                                var restaurant_id = this.$session.get('restaurant_id');
+                                location.replace('/owner/' + restaurant_id + '/menu');
+                            } else {
+                                location.replace('/owner/createRestaurant');
+                            }
                         } else
                             location.replace(response.data.restaurant_id); 
                     })
-                    .catch(function (error) {
-                        alert('error!');
+                    .catch(error => {
+                        this.snackbar = true;
+                        this.snackText = error;
                     });
             },
 
@@ -318,7 +361,10 @@
             },
 
             checkRestaurant() {
-                return this.$session.get('restaurant_id');
+                if(!this.$session.get('restaurant_id' == 'needCreate')) // 가게 등록한 사장인지 아닌지 체크
+                    return this.$session.get('restaurant_id');
+                else
+                    return "needCreate";
             },
 
             moveMyMenu() {
@@ -338,19 +384,44 @@
 
             moveMyRestaurant() {
                 var restaurant_id = this.$session.get('restaurant_id');
-                location.replace('/restaurant/' + restaurant_id + '/info');
+
+                if(restaurant_id != "needCreate") // 가게를 등록했으면 가게 페이지로, 아니면 생성 페이지로
+                    location.replace('/restaurant/' + restaurant_id + '/info');
+                else
+                    location.replace('/owner/createRestaurant');
             },
 
             openMenu() {
                 if(this.checkLogin()) {
                     this.menu = !this.menu;
                 } else {
-                    alert("로그인이 필요합니다!");
+                    this.snackbar = true;
+                    this.snackText = "로그인이 필요합니다!";
                     this.loginForm = true;
                 }
             },
-        },
+
+            setPlace(AddressInput) {
+                this.searchAddressInput = AddressInput;
+            },
+
+            searching() {
+                if(this.searchAddressInput.formatted_address) {
+                    this.searchAddress = [this.searchAddressInput.formatted_address, {
+                        lat: this.searchAddressInput.geometry.location.lat(),
+                        lng: this.searchAddressInput.geometry.location.lng()
+                    }]
+                    this.$session.set("searchAddressHistory", this.searchAddress);
+                    location.replace('/');
+                }
+            }
+        }
     }
 </script>
 <style>
+    /* 링크를 클릭하려고 마우스를 가져갔을 때 */
+    a:hover { 
+        color: #FF3300; 
+        text-decoration: none;
+    }
 </style>

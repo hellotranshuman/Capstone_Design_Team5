@@ -27,7 +27,7 @@
             <v-flex xs12 mr-4>
                 <v-text-field label="가게 설명" 
                     v-model="ipt_data.explanation" :rules="explanationRule" required
-                    prepend-icon="assignment"></v-text-field>
+                    prepend-icon="assignment" multi-line></v-text-field>
             </v-flex> 
         </v-layout> 
          
@@ -49,9 +49,9 @@
 
         <v-layout mt-1>
             <v-flex xs6 mr-4> 
-                <v-text-field label="업종" 
-                    v-model="ipt_data.type" :rules="typeRule" required
-                    prepend-icon="local_dining"></v-text-field> 
+                <v-select label="업종" 
+                    v-model="ipt_data.type" :items="typeList" single-line
+                    prepend-icon="local_dining"></v-select> 
             </v-flex>                
             <v-flex xs6 mr-4> 
                 <v-text-field label="전화번호 ex) 000-000-0000" 
@@ -194,7 +194,6 @@
                 <img class="img_style">
             </div>
         </div>
-        <br><br><br><br>
     </v-container>
 </form>
 </div> 
@@ -206,6 +205,7 @@ import axios from 'axios';
 
 var num      = 0;                                                           // 갤러리 이미지 갯수 카운트
 var formData = new FormData(document.getElementById("upload_info"));        // 입력 값들을 담아 전송함.
+var clickImg = null;
 
 export default { 
 
@@ -244,7 +244,6 @@ export default {
             explanationRule  : [ v => !!v || '가게 설명을 입력해주세요!' ],
             citiesRule       : [ v => !!v || '상세주소1을 입력해주세요!' ],
             addressRule      : [ v => !!v || '상세주소2를 입력해주세요!' ],
-            typeRule         : [ v => !!v || '업종을 입력해주세요!' ],
             phoneRule        : [ v => !!v || '전화번호를 입력해주세요!' ],
             seat_numRule     : [ v => !!v || '업종을 입력해주세요!' ],
             lunch_openRule   : [ v => !!v || '점심 오픈 시간을 입력해주세요!' ],
@@ -268,6 +267,13 @@ export default {
                 { text: '德島'},    { text: '香川'},    { text: '愛媛'},    { text: '高知'},     
                 { text: '福岡'},    { text: '佐賀'},    { text: '長崎'},    { text: '熊本'},     
                 { text: '大分'},    { text: '宮崎'},    { text: '鹿兒島'},  { text: '沖繩'},
+            ],
+
+            // 업종
+            typeList : [
+                { text: '한식'},{ text: '일식'},{ text: '중식'},{ text: '양식'},{ text: '분식'},
+                { text: '덮밥'},{ text: '스시'},{ text: '패스트 푸드'},{ text: '찜'},{ text: '탕'},
+                { text: '도시락'},{ text: '카페&디저트'},{ text: '술집'},{ text: '면류'},{ text: '제과'}
             ],
 
             // 결제 방법
@@ -296,16 +302,15 @@ export default {
             let file        = event.target.files[0];
             let reader      = new FileReader();
             let gallery_div = document.getElementById('gallery_div');  
-
+            let click_menu  = document.getElementById('click_menu');
+            
             // 업로드한 이미지가 3개 이하인 경우
             if(gallery_div.children[2].children[0].src == ''){ 
                 for(let i=0; i < gallery_div.children.length; i++){
                     let img = gallery_div.children[i].children[0];
 
                     if(img.src == ''){ 
-                        reader.onload = function(){
-                            img.src = reader.result;
-                        };
+                        reader.onload = function(){ img.src = reader.result; };
                         break;
                     }
                 }
@@ -315,19 +320,18 @@ export default {
                 let createdDiv = document.createElement("div");     // 새 div 생성
                 let createdImg = document.createElement("img");     // 새 img 생성
 
-                reader.onload = function() {
-                    createdImg.src = reader.result;
-                };
+                reader.onload = function() { createdImg.src = reader.result; };
                 
                 createdDiv.classList.add("gallery_div");            // css 적용
                 createdImg.classList.add("img_style");              // 새 img alt 속성 추가
 
                 createdDiv.appendChild(createdImg);                 // 추가하기.          
                 gallery_div.appendChild(createdDiv);
-            }
+            }  
             reader.readAsDataURL(file);
             formData.append('galleryImg'+ num, file); num++;    // 파일 저장
         }, 
+ 
 
         // 입력한 데이터 저장하기 TitleImgUpload
         save_data :function() {    
@@ -343,7 +347,7 @@ export default {
                     formData.append(key, this.ipt_data[key].text);
                 }
             }
-              
+            
             // 타이틀 이미지 append
             if(TitleImgUpload.files.length !== 0) { 
                 formData.append( 'titleImg', TitleImgUpload.files[0] );
@@ -356,7 +360,7 @@ export default {
                 console.log(pair[0]+ ': '+ pair[1]); 
             }
 
-            // // 값 보내기
+            // 값 보내기
             axios.post('/owner/createRestaurant',formData)
             .then( (response) => {
 
@@ -364,10 +368,11 @@ export default {
 
                  this.link = response.data.link;
                  window.location.href = this.link;
-             })
-             .catch((ex)=>{
+            })
+            .catch((ex)=>{
                  console.lg('updatePhoto failed',ex);
-             })
+            })
+
         }
     }
 };
@@ -420,6 +425,27 @@ export default {
 /* 저장하기 버튼 스타일 */
 .submit_btn{
     width:80%; height: 80%; font-size:1.5rem; 
+}
+
+.context-menus {
+    width: 20%;
+    border: 1px solid black;
+    z-index:100;
+    text-align: center;
+    position: absolute;
+    display: none;
+}
+.context-menus.active {
+    display: block;
+    background-color: #EFF5FB;
+}
+.context-menus.active>ul>li {
+    list-style: none;
+    padding: 10px;
+    color: #424242;
+}
+.context-menus.active>ul>li:hover {
+    background-color: lightgreen;
 }
 
 </style>

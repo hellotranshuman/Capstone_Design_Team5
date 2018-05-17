@@ -1,13 +1,13 @@
 <!-- 
-※ 메뉴 매출 순위를 그리는 차트
+※ 방문 손님 국적을 그리는 차트
 
 -->
 <script>
-import  { HorizontalBar, mixins } from 'vue-chartjs';
-const   { reactiveProp } = mixins
+import { Doughnut, mixins } from 'vue-chartjs'
+const  { reactiveProp } = mixins
 
 export default {
-  extends: HorizontalBar,
+  extends: Doughnut,
   mixins : [reactiveProp ],
   props: ['options'],
   mounted () {

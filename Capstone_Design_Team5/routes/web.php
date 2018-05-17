@@ -51,6 +51,14 @@ Route::group(['middleware' => 'web'], function () {
         return view('user.selectForm');
     });
 
+    Route::post('getInfo', 
+        'UsersController@getInfo'
+    );
+
+    Route::post('editInfo',
+        'UsersController@editInfo'
+    );
+
 // <-- show Register Form
     Route::post('register', [
         'as' => 'register.createMember',
@@ -93,18 +101,22 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'menu.getCategory',
         'uses' => 'MenuController@getCategory'
     ]);
-/*
-    // Test
-    Route::get('menu/getMenu', [
-        'as' => 'menu.getMenu',
-        'uses' => 'MenuController@getMenu'
-    ]); */
 
     Route::get('menu/getMenu/{shop_id}/{category}', [
         'as' => 'menu.getMenu',
         'uses' => 'MenuController@getMenu'
     ]);
 
+// <-- User Order Page
+    Route::post('makeOrder', [
+        'as' => 'order.makeOrder',
+        'uses' => 'OrderController@makeOrder'
+    ]);
+
+    Route::post('translateOrder', [
+        'as' => 'order.translateOrder',
+        'uses' => 'OrderController@translateOrder'
+    ]);
 
 // <-- Owner Menu Setting
 
@@ -137,6 +149,33 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'layout.getSelectedLayout',
         'uses' => 'LayoutController@getSelectedLayout'
     ]);
+
+    Route::post('saveCustomLayout', [
+        'as' => 'layout.saveCustomLayout',
+        'uses' => 'LayoutController@saveCustomLayout'
+    ]);
+
+    Route::post('saveSelectedLayout', [
+        'as' => 'layout.saveSelectedLayout',
+        'uses' => 'LayoutController@saveSelectedLayout'
+    ]);
+
+    Route::get('loadCustomLayout', [
+        'as' => 'layout.loadCustomLayout',
+        'uses' => 'LayoutController@loadCustomLayout'
+    ]);
+
+// <-- User Coupon Page
+    Route::post('userCouponCreate', [
+        'as' => 'coupon.userCouponCreate',
+        'uses' => 'CouponController@userCouponCreate'
+    ]);
+
+    Route::post('getCouponList', [
+        'as' => 'coupon.getCouponList',
+        'uses' => 'CouponController@getCouponList'
+    ]);
+
 
 // <-- Owner Coupon Page
     Route::get('owner/{shop_id}/createCoupon', [
@@ -254,15 +293,80 @@ Route::group(['middleware' => 'web'], function () {
         'uses' =>  'ReservationController@getReservationSettingByDate'
     ]);
 
-// <— Owner Statistics Page
-    Route::get('/owner/{shop_id}/totalStatistics', [
-        'as' => 'reservation.showReservationSetting',
-        'uses' => 'ReservationController@showReservationSetting'
+    Route::post('/updateReservationSelectMenu', [
+        'as' => 'reservation.updateReservationSelectMenu',
+        'uses' =>  'ReservationController@updateReservationSelectMenu'
     ]);
 
-    Route::get('/owner/{shop_id}/getRatingScore', [
+// <— Owner Statistics Page
+    Route::get('/owner/{shop_id}/totalStatistics', [
+        'as' => 'statistic.showStatisticsForm',
+        'uses' => 'StatisticController@showStatisticsForm'
+    ]);
+
+    Route::post('/owner/getRatingScore', [
         'as' => 'statistic.getRatingScore',
         'uses' => 'StatisticController@getRatingScore'
+    ]);
+
+    Route::post('/owner/getCustomerScore', [
+        'as' => 'statistic.getCustomerScore',
+        'uses' => 'StatisticController@getCustomerScore'
+    ]);
+
+    Route::post('/owner/getGenderScore', [
+        'as' => 'statistic.getGenderScore',
+        'uses' => 'StatisticController@getGenderScore'
+    ]);
+
+    Route::post('/owner/getAgeScore', [
+        'as' => 'statistic.getAgeScore',
+        'uses' => 'StatisticController@getAgeScore'
+    ]);
+
+    Route::post('/owner/getCountryScore', [
+        'as' => 'statistic.getCountryScore',
+        'uses' => 'StatisticController@getCountryScore'
+    ]);
+
+    Route::post('/owner/getMenuData', [
+        'as' => 'statistic.getMenuData',
+        'uses' => 'StatisticController@getMenuData'
+    ]);
+
+    Route::post('/owner/getSalesData', [
+        'as' => 'statistic.getSalesData',
+        'uses' => 'StatisticController@getSalesData'
+    ]);
+
+    Route::post('/owner/getSalesMenuData', [
+        'as' => 'statistic.getSalesMenuData',
+        'uses' => 'StatisticController@getSalesMenuData'
+    ]);
+
+    Route::post('/owner/getCustomerNumber', [
+        'as' => 'statistic.getCustomerNumber',
+        'uses' => 'StatisticController@getCustomerNumber'
+    ]);
+
+    Route::post('/owner/getSalesNumber', [
+        'as' => 'statistic.getSalesNumber',
+        'uses' => 'StatisticController@getSalesNumber'
+    ]);
+
+    Route::post('/owner/getGenderSalesData', [
+        'as' => 'statistic.getGenderSalesData',
+        'uses' => 'StatisticController@getGenderSalesData'
+    ]);
+
+    Route::post('/owner/getCountrySalesData', [
+        'as' => 'statistic.getCountrySalesData',
+        'uses' => 'StatisticController@getCountrySalesData'
+    ]);
+
+    Route::post('/owner/getAgesSalesData', [
+        'as' => 'statistic.getAgesSalesData',
+        'uses' => 'StatisticController@getAgesSalesData'
     ]);
 
 // <-- Communication Routes

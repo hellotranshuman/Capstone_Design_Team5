@@ -13,13 +13,13 @@
                     수락한 예약  
                 </v-tab>
                 <v-tab-item>
-                    <v-layout column>
-                        <v-flex xs12 sm6>
+                    <v-layout>
+                        <v-flex>
                         <v-card>
                             <v-container fluid grid-list-md>
                                 <v-layout row wrap>
                                     <v-flex
-                                        sm6
+                                         xs12 sm6
                                          v-for="(card, index) in Acceptcards"
                                         :key="index"
                                     >
@@ -34,11 +34,11 @@
                                         <v-card-text>
                                            <div>
                                                 <B>{{StandBycards[index].shopName}}</B><br>
-                                                예약 날짜 : {{StandBycards[index].shopName}}<br>
-                                                예약 시간 : {{StandBycards[index].shopName}}<br>
-                                                어른 인원 : {{StandBycards[index].shopName}}<br>
-                                                아이 인원 : {{StandBycards[index].shopName}}<br>
-                                                주문 메뉴 : {{StandBycards[index].shopName}}
+                                                예약 날짜 : {{StandBycards[index].date}}<br>
+                                                예약 시간 : {{StandBycards[index].time}}<br>
+                                                어른 인원 : {{StandBycards[index].adult}}<br>
+                                                아이 인원 : {{StandBycards[index].child}}<br>
+                                                <span v-if="StandBycards[index].reservation_selectMenu != null"> 주문 메뉴 : {{StandBycards[index].menu_select}} </span>
                                             </div>
                                         </v-card-text>
                                     </v-card>
@@ -53,13 +53,13 @@
                     수락 대기중인 예약
                 </v-tab>
                 <v-tab-item>
-                    <v-layout column>
-                        <v-flex xs12 sm6>
+                    <v-layout>
+                        <v-flex>
                         <v-card>
                             <v-container fluid grid-list-md>
                                 <v-layout row wrap>
                                     <v-flex
-                                        sm6
+                                        xs12 sm6
                                         v-for="(card, index) in StandBycards"
                                         :key="index"
                                     >
@@ -74,26 +74,26 @@
                                         <v-card-title>
                                             <div>
                                                 <B>{{StandBycards[index].shopName}}</B><br>
-                                                예약 날짜 : {{StandBycards[index].shopName}}<br>
-                                                예약 시간 : {{StandBycards[index].shopName}}<br>
-                                                어른 인원 : {{StandBycards[index].shopName}}<br>
-                                                아이 인원 : {{StandBycards[index].shopName}}<br>
-                                                주문 메뉴 : {{StandBycards[index].shopName}}
+                                                예약 날짜 : {{StandBycards[index].date}}<br>
+                                                예약 시간 : {{StandBycards[index].time}}<br>
+                                                어른 인원 : {{StandBycards[index].adult}}<br>
+                                                아이 인원 : {{StandBycards[index].child}}<br>
+                                                <span v-if="StandBycards[index].reservation_selectMenu != null"> 주문 메뉴 : {{StandBycards[index].menu_select}} </span>
                                             </div>
                                         </v-card-title>
                                         <v-card-actions>
                                             <v-spacer></v-spacer>
-                                            <v-btn color="error" dark @click.stop="dialog = true" @click="this.clickshopid = StandBycards[index].id, TypeChange(StandBycards[index].id)">예약 취소
+                                            <v-btn color="error" dark @click.stop="dialog = true" @click="clickshopid = StandBycards[index].id, TypeChange(StandBycards[index].id)">예약 취소
                                                 <v-icon dark right>check_circle</v-icon>
                                             </v-btn>
                                             <!-- 예약 취소 Dialog -->
                                             <v-dialog v-model="dialog" max-width="500px">
                                                 <v-card>
                                                 <v-card-title>
-                                                    <span><B>가게이름 : {{this.clickshopid}}</B></span>
+                                                    <span><B>가게이름 : {{clickshopid}}</B></span>
                                                 </v-card-title>
                                                 <v-card-text>
-                                                    예약을 취소하는 이유가 무엇입니까? <br>
+                                                    예약을 취소하는 사유를 적어주세요 <br>
                                                     <v-text-field
                                                         v-model="WhyCancel"
                                                         label="예약 취소 사유"
@@ -144,6 +144,7 @@ import axios from 'axios';
                         time : '',
                         adult: 0,
                         child: 0,
+                        menu_select : ''
                     },
                     {
                         id : 2,
@@ -153,6 +154,7 @@ import axios from 'axios';
                         time : '',
                         adult: 0,
                         child: 0,
+                        menu_select : ''
                     }
                 ],
                 
@@ -166,6 +168,7 @@ import axios from 'axios';
                         time : '',
                         adult: 0,
                         child: 0,
+                        menu_select : ''
                     },
                     {
                         id : '2',
@@ -175,6 +178,7 @@ import axios from 'axios';
                         time : '',
                         adult: 0,
                         child: 0,
+                        menu_select : ''
                     }
                 ],
 
@@ -194,8 +198,11 @@ import axios from 'axios';
 
                 // 수락 대기중인 예약
                 this.StandBycards   =   standByreservationData;
+
+                
             }) 
         },
+        
         methods : {
             TypeChange(id) {
                 this.clickshopid = parseInt(id);
@@ -205,7 +212,10 @@ import axios from 'axios';
                 axios.post('/cancelReservation', {
                     id          : this.clickshopid,
                     whycancel   : this.WhyCancel
-                }).then(console.log('success')).catch(console.log('test '));
+                }).then(
+                    this.clickshopid = null,
+                    this.WhyCancel = null
+                ).catch(console.log('test '));
             }
         }
     }

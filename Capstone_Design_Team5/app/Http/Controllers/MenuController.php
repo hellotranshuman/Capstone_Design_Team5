@@ -36,7 +36,7 @@ class MenuController extends Controller
         $shop_id = $request->get('shop_id');
 
         $category =  Menu::select('category')
-                    ->where('shop_id', $request->get('shop_id'))
+                    ->where('shop_id', $shop_id)
                     ->get()
                     ->toArray();
 
@@ -78,12 +78,19 @@ class MenuController extends Controller
            // <-- Option Data Select
            $optionData  = Menu_Option::where('menu_id', $menuArray['id'])
                                         ->get();
+           $optionCount = Menu_Option::where('menu_id', $menuArray['id'])
+                            ->count();
+            $menuArray['opNum'] = $optionCount;
+            $optionKey = 1;
 
            foreach ($optionData as $option)
            {
+
                // <-- Option Data Save in Array
-               $optionKey = 1;
+
                $opNum = $option->opnum;
+               $opIdName = 'optionId' . $optionKey;
+               $menuArray[$opIdName] = $opNum;
                $keyName = 'optionName' . $optionKey;
                $menuArray[$keyName] = $option->name;
 
@@ -92,17 +99,25 @@ class MenuController extends Controller
                                             ->get();
 
                $subOpKey = 1;
+
                foreach ($subOptionData as $subOption)
                {
                    // <-- SubOption Data Save in Array
-                   $subOpKeyName = 'optionValue' . $subOpKey;
+                   $subOpKeyName = $optionKey .'optionValue' . $subOpKey;
+                   $subOpIDName = $optionKey .'subOptionId' . $subOpKey;
                    $menuArray[$subOpKeyName]  = $subOption->name;
-                   $subOpKey++;
-               }
-                   $menuArray['subOpNum'] = --$subOpKey;
-           }
+                   $menuArray[$subOpIDName]   = $subOption->sub_opnum;
 
-           array_push($totalMenuArray, $menuArray);
+                   $subOpKey++;
+
+               }
+               $subOpNumName = 'subOpNum' . $optionKey;
+               $menuArray[$subOpNumName] = --$subOpKey;
+
+               $optionKey++;
+
+           }
+            array_push($totalMenuArray, $menuArray);
 
         }
 

@@ -194,7 +194,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     /* svg태그의 cursor를 설정합니다. */
     svg {
         cursor: pointer;

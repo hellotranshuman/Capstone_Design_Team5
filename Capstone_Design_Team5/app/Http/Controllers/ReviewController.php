@@ -130,7 +130,7 @@ class ReviewController extends Controller
 
         $reviewId = $review->id;
 
-        // <— hash Tag column create in HashTag Table
+        // <-- hash Tag column create in HashTag Table
         $tags = implode(',' , $request->get('HASHTAG'));
         $hashTag = str_replace('#', '', $tags);
         $hashTags = explode(',', $hashTag);
@@ -151,7 +151,7 @@ class ReviewController extends Controller
         $imgNum = $request->get('imgNum');
         $fileIndex = 1;
 
-        // <— Image Save
+        // <-- Image Save
         if($imgNum != 0) {
             for( $num = 1 ; $num <= 3 ; $num++ )
             {

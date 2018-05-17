@@ -338,7 +338,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     /* ul 태그 CSS */
     ul {
         list-style: none;
