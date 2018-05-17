@@ -38081,6 +38081,10 @@ var clickImg = null;
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -38097,12 +38101,20 @@ var clickImg = null;
             end_menu: false,
 
             clickCouponid: 0,
+
             /* table */
             dialog: false,
-            headers: [{ text: '쿠폰 이름', value: 'name' }, { text: '쿠폰 종류', value: 'category' }, { text: '할인율', value: 'discount' }, { text: '제공 상품', value: 'add_product' }, { text: '쿠폰 조건', value: 'price_condition' }, { text: '사용 시작일', value: 'start_date' }, { text: '사용 종료일', value: 'end_date' }, { text: 'Actions', value: 'name', sortable: false }],
+            headers: [{ text: '쿠폰 이름', value: 'name' }, { text: '쿠폰 종류', value: 'category' }, { text: '할인율', value: 'discount' }, { text: '제공 상품', value: 'menu_name' }, { text: '쿠폰 조건', value: 'price_condition' }, { text: '사용 시작일', value: 'start_date' }, { text: '사용 종료일', value: 'end_date' }, { text: 'Actions', value: 'name', sortable: false }],
 
             /* 저장 & 편집 & 삭제 */
             items: [],
+
+            /* 메뉴 선택 */
+            AddProductSelect: [],
+            menu_id: 0,
+
+            menuDataList: [],
+
             CouponItem: {
                 name: '',
                 category: '',
@@ -38125,18 +38137,24 @@ var clickImg = null;
         }).then(function (response) {
             /* DB Coupon Data */
             var Index = response.data.couponNum;
-            console.log(response.data.coupon);
-            console.log(response.data.menuList);
-            // var Coupondata = Object.values(response.data.coupon);
 
-            var Coupondata = response.data.coupon;
+            _this.items = response.data.coupon;
 
-            _this.items = Coupondata;
+            /* menu_data */
+            var menuData = response.data.menuList;
+            _this.menuDataList = menuData;
+
+            _this.menu_data_product();
         });
     },
 
     methods: {
-        data: function data() {},
+        menu_data_product: function menu_data_product() {
+            // 0: id / name
+            for (var i = 0; i < this.menuDataList.length; i++) {
+                this.AddProductSelect.push(this.menuDataList[i].name);
+            }
+        },
         deleteItem: function deleteItem(item) {
             var _this2 = this;
 
@@ -38154,16 +38172,25 @@ var clickImg = null;
             this.dialog = false;
         },
         save: function save() {
+            /* 메뉴id 찾기 */
+            for (var i = 0; i < this.menuDataList.length; i++) {
+                if (this.CouponItem.add_product == this.menuDataList[i].name) {
+                    this.menu_id = this.menuDataList[i].id;
+                    break;
+                }
+            }
+
             /* Data 송신 */
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/createCoupon', {
                 name: this.CouponItem.CouponName,
                 shop_id: this.$route.params.shop_id,
                 category: this.CouponItem.CouponType,
                 discount: this.CouponItem.Discount,
-                add_product: this.CouponItem.addproduct,
+                add_product: this.menu_id,
                 price_condition: this.CouponItem.Condition,
                 start_date: this.CouponItem.start_date,
                 expiry_date: this.CouponItem.end_date
+
             }).then(function (response) {
                 location.reload();
             }).catch(console.log('test'));
@@ -39734,6 +39761,8 @@ var palet_cntxt = null; // palette context
 //
 //
 //
+//
+//
 
 
 
@@ -39751,7 +39780,6 @@ var obj = []; // 클릭한 배열 담기
 var check = 0; // 클릭한 배열 index용 변수
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-
     created: function created() {
         __WEBPACK_IMPORTED_MODULE_0__eventBus_js__["a" /* EventBus */].$on('select_menus', function (menu) {
             obj.push(menu[check]);check++;
@@ -39773,7 +39801,15 @@ var check = 0; // 클릭한 배열 index용 변수
 
             // 메뉴 아이디 배열
             menuid: [],
-            Order: []
+            MenuOrder: [],
+            OpOrder: [],
+            OpCount: [],
+            SubOpOrder: [],
+            subOpCount: [],
+
+            // 번역
+            TransMenu: [],
+            translatedText: '메뉴1=고기&메뉴2=소스:마요네즈、야채추가:레타스&메뉴3=고기:많이、고기2:많이2&'
         };
     },
 
@@ -39841,28 +39877,55 @@ var check = 0; // 클릭한 배열 index용 변수
 
         // 번역 메뉴 목록
         MenuOrderList: function MenuOrderList() {
-            console.log(this.click_menu);
-            console.log(this.optionselect);
-            console.log(this.optionArray);
-
             for (var i = 0; i < this.click_menu.length; i++) {
-                this.Order[i] = [];
+                var OpNum = 0;
+                var subNum = 0;
+                this.OpOrder[i] = [];
+                this.SubOpOrder[i] = [];
                 // 메뉴 이름
-                this.Order[i]['name'] = this.click_menu[i].menu.name;
+                this.MenuOrder[i] = this.click_menu[i].menu.name;
                 for (var j = 0; j < this.optionArray[i].length; j++) {
                     // 옵션 이름
-                    this.Order[i]['option' + (j + 1)] = this.optionArray[i][j].Name;
+                    this.OpOrder[i][j] = this.optionArray[i][j].Name;
+                    OpNum++;
                     // 서브옵션값
-                    this.Order[i]['option' + (j + 1) + 'select'] = this.optionselect[i][j];
+                    if (this.optionselect[i][j] != null) {
+                        this.SubOpOrder[i][j] = this.optionselect[i][j];
+                        subNum++;
+                    }
                 }
+                this.OpCount[i] = OpNum;
+                this.subOpCount[i] = subNum;
             }
 
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/translateOrder', {
-                Order: this.Order // 메뉴 개수
+                Menu: this.MenuOrder,
+                Option: this.OpOrder,
+                subOption: this.SubOpOrder,
+                MenuCount: this.MenuOrder.length,
+                OpCount: this.OpCount,
+                subOpCount: this.subOpCount
             }).then(function (response) {
-                document.write(response.data.msg);
+                // document.write(response.data.msg);
                 // location.reload();
             });
+
+            // 메뉴 번역된것 DB에서 받기
+            this.MenuTranslate();
+        },
+        MenuTranslate: function MenuTranslate() {
+            // DB에서 번역된 값 받기
+            // axios.post('/trans', {
+            // }).then((response) => {
+            //     this.translatedText = response.data.translatedText
+            // })
+
+            var Menu = this.translatedText.split('&');
+            console.log(Menu);
+            for (var i = 0; i < Menu.length - 1; i++) {
+                this.TransMenu[i] = Menu[i].split('=');
+            }
+            console.log(this.TransMenu);
         },
 
 
@@ -93769,7 +93832,9 @@ var render = function() {
         _c("br"),
         _vm._v(" "),
         _c("h3", [_c("B", [_vm._v("쿠폰 추가")])], 1),
-        _vm._v("\r\n      원하는 쿠폰을 제작하여 등록할 수 있습니다.\r\n    "),
+        _vm._v(
+          "\n        원하는 쿠폰을 제작하여 등록할 수 있습니다.\n        "
+        ),
         _c("hr"),
         _c("br"),
         _vm._v(" "),
@@ -93815,7 +93880,7 @@ var render = function() {
                           [
                             _c(
                               "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
+                              { attrs: { xs12: "" } },
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "쿠폰 이름", required: "" },
@@ -93837,7 +93902,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-flex",
-                              { attrs: { xs12: "" } },
+                              { attrs: { xs12: "", sm6: "", md4: "" } },
                               [
                                 _c("v-select", {
                                   attrs: {
@@ -93861,45 +93926,58 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "할인 가격", required: "" },
-                                  model: {
-                                    value: _vm.CouponItem.Discount,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.CouponItem, "Discount", $$v)
-                                    },
-                                    expression: "CouponItem.Discount"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-flex",
-                              { attrs: { xs12: "", sm6: "", md4: "" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "제공 상품", required: "" },
-                                  model: {
-                                    value: _vm.CouponItem.addproduct,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.CouponItem,
-                                        "addproduct",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "CouponItem.addproduct"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
+                            _vm.CouponItem.CouponType == "가격 할인"
+                              ? _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "", sm6: "", md4: "" } },
+                                  [
+                                    _c("v-text-field", {
+                                      attrs: {
+                                        label: "할인 가격",
+                                        required: ""
+                                      },
+                                      model: {
+                                        value: _vm.CouponItem.Discount,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.CouponItem,
+                                            "Discount",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "CouponItem.Discount"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm.CouponItem.CouponType == "상품 제공"
+                                ? _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", sm6: "", md4: "" } },
+                                    [
+                                      _c("v-select", {
+                                        attrs: {
+                                          label: "상품 선택",
+                                          required: "",
+                                          items: _vm.AddProductSelect
+                                        },
+                                        model: {
+                                          value: _vm.CouponItem.add_product,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.CouponItem,
+                                              "add_product",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "CouponItem.add_product"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                : _vm._e(),
                             _vm._v(" "),
                             _c(
                               "v-flex",
@@ -94231,7 +94309,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-xs-left" }, [
-                    _vm._v(_vm._s(props.item.add_product))
+                    _vm._v(_vm._s(props.item.menu_name))
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "text-xs-left" }, [
@@ -96674,7 +96752,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97274,11 +97352,17 @@ var render = function() {
                     "v-card",
                     { staticClass: "mb-5", attrs: { color: "white" } },
                     [
-                      _c("v-card-text", { staticStyle: { color: "black" } }, [
-                        _vm._v(
-                          "\n                        번역 부분 입니다\n                    "
-                        )
-                      ])
+                      _c(
+                        "v-card-text",
+                        { staticStyle: { color: "black" } },
+                        _vm._l(_vm.range(0, _vm.TransMenu.length - 1), function(
+                          i
+                        ) {
+                          return _c("v-card", { key: i }, [
+                            _c("p", [_vm._v(_vm._s(_vm.TransMenu[i]))])
+                          ])
+                        })
+                      )
                     ],
                     1
                   ),

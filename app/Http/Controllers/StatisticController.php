@@ -387,11 +387,11 @@ class StatisticController extends Controller
 
         switch ($request->get('ranking_gender')) {
             case 1 : {
-                $gender = true;
+                $gender = 1;
                 break;
             }
             case 2 : {
-                $gender = false;
+                $gender = 0;
                 break;
             }
         }
@@ -475,6 +475,45 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
+           else if($gender == null) {
+               $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                   ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                   ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                   ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                   ->where('order_list.shop_id', $shopId)
+                   ->whereRaw($ages)
+                   ->where('users.country', $country)
+                   ->groupBy('menu.name')
+                   ->orderByRaw('menuCount DESC')
+                   ->get()
+                   ->toArray();
+           }
+           else if($ages == null) {
+               $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                   ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                   ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                   ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                   ->where('order_list.shop_id', $shopId)
+                   ->where('users.country', $country)
+                   ->where('users.gender', $gender)
+                   ->groupBy('menu.name')
+                   ->orderByRaw('menuCount DESC')
+                   ->get()
+                   ->toArray();
+           }
+           else if($country == null) {
+               $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                   ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                   ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                   ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                   ->where('order_list.shop_id', $shopId)
+                   ->whereRaw($ages)
+                   ->where('users.gender', $gender)
+                   ->groupBy('menu.name')
+                   ->orderByRaw('menuCount DESC')
+                   ->get()
+                   ->toArray();
+           }
            else {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -537,6 +576,48 @@ class StatisticController extends Controller
                     ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
                     ->where('order_list.shop_id', $shopId)
                     ->where('order_date', '<', $end_date)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($gender == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '<', $end_date)
+                    ->whereRaw($ages)
+                    ->where('users.country', $country)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($ages == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '<', $end_date)
+                    ->where('users.country', $country)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($country == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '<', $end_date)
+                    ->whereRaw($ages)
                     ->where('users.gender', $gender)
                     ->groupBy('menu.name')
                     ->orderByRaw('menuCount DESC')
@@ -612,6 +693,48 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            else if($gender == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '>', $start_date)
+                    ->whereRaw($ages)
+                    ->where('users.country', $country)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($ages == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '>', $start_date)
+                    ->where('users.country', $country)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($country == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '>', $start_date)
+                    ->whereRaw($ages)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
             else {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -675,6 +798,48 @@ class StatisticController extends Controller
                     ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
                     ->where('order_list.shop_id', $shopId)
                     ->whereBetween('order_date', [$start_date, $end_date])
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($gender == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereBetween('order_date', [$start_date, $end_date])
+                    ->whereRaw($ages)
+                    ->where('users.country', $country)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($ages == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereBetween('order_date', [$start_date, $end_date])
+                    ->where('users.country', $country)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuCount DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($country == null) {
+                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereBetween('order_date', [$start_date, $end_date])
+                    ->whereRaw($ages)
                     ->where('users.gender', $gender)
                     ->groupBy('menu.name')
                     ->orderByRaw('menuCount DESC')
@@ -778,11 +943,11 @@ class StatisticController extends Controller
 
         switch ($request->get('ranking_gender')) {
             case 1 : {
-                $gender = true;
+                $gender = 1;
                 break;
             }
             case 2 : {
-                $gender = false;
+                $gender = 0;
                 break;
             }
         }
@@ -866,6 +1031,45 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            else if($gender == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereRaw($ages)
+                    ->where('users.country', $country)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($ages == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('users.country', $country)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($country == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereRaw($ages)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
             else {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -928,6 +1132,48 @@ class StatisticController extends Controller
                     ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
                     ->where('order_list.shop_id', $shopId)
                     ->where('order_date', '<', $end_date)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($gender == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '<', $end_date)
+                    ->whereRaw($ages)
+                    ->where('users.country', $country)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($ages == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '<', $end_date)
+                    ->where('users.country', $country)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($country == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '<', $end_date)
+                    ->whereRaw($ages)
                     ->where('users.gender', $gender)
                     ->groupBy('menu.name')
                     ->orderByRaw('menuTotal DESC')
@@ -1003,6 +1249,48 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            else if($gender == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '>', $start_date)
+                    ->whereRaw($ages)
+                    ->where('users.country', $country)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($ages == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '>', $start_date)
+                    ->where('users.country', $country)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($country == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->where('order_date', '>', $start_date)
+                    ->whereRaw($ages)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
             else {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -1066,6 +1354,48 @@ class StatisticController extends Controller
                     ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
                     ->where('order_list.shop_id', $shopId)
                     ->whereBetween('order_date', [$start_date, $end_date])
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($gender == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereBetween('order_date', [$start_date, $end_date])
+                    ->whereRaw($ages)
+                    ->where('users.country', $country)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($ages == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereBetween('order_date', [$start_date, $end_date])
+                    ->where('users.country', $country)
+                    ->where('users.gender', $gender)
+                    ->groupBy('menu.name')
+                    ->orderByRaw('menuTotal DESC')
+                    ->get()
+                    ->toArray();
+            }
+            else if($country == null) {
+                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                    ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
+                    ->where('order_list.shop_id', $shopId)
+                    ->whereBetween('order_date', [$start_date, $end_date])
+                    ->whereRaw($ages)
                     ->where('users.gender', $gender)
                     ->groupBy('menu.name')
                     ->orderByRaw('menuTotal DESC')

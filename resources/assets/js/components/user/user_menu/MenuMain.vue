@@ -74,8 +74,8 @@
                     </v-card>
                     <v-flex>
                         <v-card>
-                            <b style="padding-left:5%; font-size: 2rem"> 총 : {{click_menu.length}} 개 </b>
-                            <b style="padding-left:5%; font-size: 2rem"> 합계 : {{sum_price}} 円 </b>
+                            <b class="total"> 총 : {{click_menu.length}} 개 </b> <br>
+                            <b class="total"> 합계 : {{sum_price}} 円 </b>
                         </v-card>
                     </v-flex>
                     <!-- btn -->
@@ -89,8 +89,11 @@
                 <!-- 3. 번역  height="200px"-->
                 <v-stepper-content step="3">
                     <v-card color="white" class="mb-5">
-                        <v-card-text style="color:black">
-                            번역 부분 입니다
+                        <v-card-text>
+                            <v-card v-for="i in range(0, MenuList.length-1)" :key="i" hover color="white" style="color:black; padding:7px;">
+                                <div class="Trans_Title"><b> {{MenuList[i].name}} </b> </div>
+                                <div class="Trans_Main">{{MenuList[i].option}}</div>
+                            </v-card>
                         </v-card-text>
                     </v-card>
 
@@ -137,7 +140,6 @@
     var check  = 0;                  // 클릭한 배열 index용 변수
 
     export default {
-
         created : function () {
             EventBus.$on('select_menus', function(menu) {
                 obj.push( menu[check] ); check++;
@@ -159,7 +161,16 @@
 
                 // 메뉴 아이디 배열
                 menuid : [],
-                Order : [],
+                MenuOrder : [],
+                OpOrder : [],
+                OpCount : [],
+                SubOpOrder : [],
+                subOpCount : [],
+
+                // 번역
+                TransMenu : [],
+                MenuList : [],
+                translatedText : '메뉴1=고기&메뉴2=소스:마요네즈、야채추가:레타스&메뉴3=고기:많이、고기2:많이2&'
             }
         },
         methods : {
@@ -226,30 +237,71 @@
 
             // 번역 메뉴 목록
             MenuOrderList() {
-                console.log(this.click_menu);
-                console.log(this.optionselect);
-                console.log(this.optionArray);
-
                 for(var i = 0; i < this.click_menu.length; i++)
                 {
-                    this.Order[i] = [];
+                    var OpNum = 0;
+                    var subNum = 0;
+                    this.OpOrder[i] = [];
+                    this.SubOpOrder[i] = [];
                     // 메뉴 이름
-                    this.Order[i]['name'] = this.click_menu[i].menu.name;
+                    this.MenuOrder[i] = this.click_menu[i].menu.name;
                     for(var j = 0; j < this.optionArray[i].length; j++)
                     {
                         // 옵션 이름
-                        this.Order[i]['option'+ (j+1)] = this.optionArray[i][j].Name;
+                        this.OpOrder[i][j] = this.optionArray[i][j].Name;
+                        OpNum++;
                         // 서브옵션값
-                        this.Order[i]['option'+ (j+1) + 'select'] = this.optionselect[i][j];
+                        if(this.optionselect[i][j] != null)
+                        {
+                            this.SubOpOrder[i][j] = this.optionselect[i][j];
+                            subNum++;
+                        }
+
                     }
+                    this.OpCount[i]     = OpNum;
+                    this.subOpCount[i]  = subNum;
                 }
 
                 axios.post('/translateOrder', {
-                    Order : this.Order,    // 메뉴 개수
+                    Menu        : this.MenuOrder,
+                    Option      : this.OpOrder,
+                    subOption   : this.SubOpOrder,
+                    MenuCount   : this.MenuOrder.length,
+                    OpCount     : this.OpCount,
+                    subOpCount  : this.subOpCount
                 }).then((response) => {
                     document.write(response.data.msg);
                     // location.reload();
                 })
+
+                // 메뉴 번역된것 DB에서 받기
+                this.MenuTranslate();
+            },
+
+            MenuTranslate() {
+                // DB에서 번역된 값 받기
+                // axios.post('/trans', {
+                // }).then((response) => {
+                //     this.translatedText = response.data.translatedText
+                // })
+
+                var Menu = this.translatedText.split('&');
+
+                // db에서 받은값 문자열 자르기
+                for(var i = 0; i < Menu.length-1; i++)
+                {
+                    this.TransMenu[i] = Menu[i].split('=');
+                }
+
+                // 이쁘게 배열에 넣기
+                for(var i = 0; i < this.TransMenu.length; i++)
+                {
+                    this.MenuList[i] = [];
+                    this.MenuList[i]['name'] = this.TransMenu[i][0];
+                    this.MenuList[i]['option'] = this.TransMenu[i][1];
+                }
+
+                console.log(this.MenuList)
             },
 
             // 메뉴 주문 데이터 송신
@@ -263,10 +315,10 @@
                 console.log(this.optionArray)
                 /* Data 송신 */
                 axios.post('/makeOrder', {
-                    menulength : this.menuid.length,    // 메뉴 개수
-                    menu_id : this.menuid,              // 선택한 메뉴가 있는 배열
-                    option  : this.optionId,            // 옵션 Id
-                    suboption  : this.optionselect,      // 서브 옵션
+                    menulength  : this.menuid.length,    // 메뉴 개수
+                    menu_id     : this.menuid,              // 선택한 메뉴가 있는 배열
+                    option      : this.optionId,            // 옵션 Id
+                    suboption   : this.optionselect,      // 서브 옵션
                     shop_id     : this.$route.params.shop_id,
                     sum_price   : this.sum_price,
                 }).then((response) => {
@@ -281,7 +333,50 @@
         }
     }
 </script>
-
 <style>
-
+    /* 모바일 */
+    @media (max-width: 639px){
+        .total {
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 10%;
+            font-size: 17px;
+        }
+        .Trans_Title {
+            font-size:16px;
+        }
+        .Trans_Main {
+            font-size: 13px;
+        }
+    }
+    /* 테블릿 */
+    @media (min-width: 640px) and (max-width: 1023px){
+        .total {
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 10%;
+            font-size: 20px;
+        }
+        .Trans_Title {
+            font-size:18px;
+        }
+        .Trans_Main {
+            font-size: 14px;
+        }
+    }
+    /* 데스트 탑 */
+    @media (min-width: 1024px){
+        .total {
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 10%;
+            font-size: 20px;
+        }
+        .Trans_Title {
+            font-size:20px;
+        }
+        .Trans_Main {
+            font-size: 15px;
+        }
+    }
 </style>

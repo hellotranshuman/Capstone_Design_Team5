@@ -105,6 +105,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'OrderController@makeOrder'
     ]);
 
+    Route::post('translateOrder', [
+        'as' => 'order.translateOrder',
+        'uses' => 'OrderController@translateOrder'
+    ]);
+
 // <-- Owner Menu Setting
 
     Route::get('owner/{shop_id}/menu',[

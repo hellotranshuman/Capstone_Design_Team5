@@ -104,63 +104,94 @@ class OrderController extends Controller
     }
 
 
-    public function translateOrder(Request $request) {
+    public function translateOrder(Request $request)
+    {
         $source = '';
-        $target = 'jp';
 
         switch (auth()->user()->country) {
 
-            case 'korea' : {
-                $source = 'ko';
-                break;
-            }
+            case 'korea' :
+                {
+                    $source = 'ko';
+                    break;
+                }
 
-            case 'china' : {
-                $source = 'zh-CN';
-                break;
-            }
+            case 'china' :
+                {
+                    $source = 'zh-CN';
+                    break;
+                }
 
-            case 'usa' : {
-                $source = 'en';
-                break;
-            }
+            case 'usa' :
+                {
+                    $source = 'en';
+                    break;
+                }
 
         } // <-- switch end
 
-        /*
-        $menuArray      = $request->get('Menu');
-        $menuCount      = $request->get('MenuCount);
-        $opArray        = $request->get('Option');
-        $opCount        = $request->get('OpCount');
-        $subOpArray     = $request->get('subOption');
-        $subOpCount     = $request->get('subOpCount');
-
-
-        for($orderIndex = 0 ; $orderIndex < $menuCount ; $orderIndex++ ) {
-            $currentOpCount     = $opCount[$menuCount];
-            $currentSubOpCount  = $subOpCount[$menuCount];
-
-            $transBeforeText = '';
-
-            $transBeforeText = $menuArray[$orderIndex] . ' ';
-
-
-            /*
-            for($optionIndex = 0 ; $optionIndex < $currentOpCount ; $optionIndex++) {
-
-                $transBeforeText .= $opArray[$optionIndex] . ' : ';
+        $menuArray = $request->get('Menu');
+        $menuCount = $request->get('MenuCount');
+        $opArray = $request->get('Option');
+        $opCount = $request->get('OpCount');
+        $subOpArray = $request->get('subOption');
+        $subOpCount = $request->get('subOpCount');
+        $transBeforeText = '';
 
 
 
-            }*/
+        for ($orderIndex = 0; $orderIndex < $menuCount; $orderIndex++) {
 
-        
+            $currentOpCount = $opCount[$orderIndex];
+            $currentSubOpCount = $subOpCount[$orderIndex];
 
-
-
-
-
+            $transBeforeText .= $menuArray[$orderIndex] . '=';
 
 
+            for ($optionIndex = 0; $optionIndex < $currentOpCount; $optionIndex++) {
+
+                if ($currentSubOpCount != 0) {
+                    $transBeforeText .= $opArray[$orderIndex][$optionIndex] . ' : ';
+
+                    if($currentSubOpCount == 1)
+                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . '&';
+                    else
+                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . ', ';
+                    $currentSubOpCount--;
+
+                }
+                else {
+                    $transBeforeText .= $opArray[$orderIndex][$optionIndex] . '&';
+                }
+
+
+            } // <-- option For End
+
+        } // <-- menu For end
+
+        $encText = urlencode($transBeforeText);
+        $postValues = 'source=' . $source . '&target=ja&text='.$encText;
+        $ch  = curl_init();
+
+        curl_setopt($ch,CURLOPT_URL, $this->url);
+        curl_setopt($ch,CURLOPT_POST, $this->is_post);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+        $response    = curl_exec ($ch);
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close ($ch);
+
+        if($status_code == 200)
+            return response()->json([
+                'content' => $response,
+            ]);
+        else
+            return response()->json([
+                'content' =>'error! ' . $response,
+            ]);
     }
 }

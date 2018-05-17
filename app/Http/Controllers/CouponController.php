@@ -6,6 +6,7 @@ use App\Menu;
 use Illuminate\Http\Request;
 use \App\Coupon;
 use \App\UserCoupon;
+use Illuminate\Support\Facades\DB;
 
 class CouponController extends Controller
 {
@@ -27,7 +28,6 @@ class CouponController extends Controller
             'add_product'     => $request->get('add_product'),
         ]);
 
-
         return response()->json([
            'content' => '등록이 완료되었습니다',
         ]);
@@ -37,7 +37,15 @@ class CouponController extends Controller
     // <-- get Coupon List in Coupon Table
     public function getCouponList(Request $request) {
 
-        $couponList = Coupon::where('shop_id', $request->get('shop_id'))
+        $couponList = Coupon::join('menu', 'menu.id', '=', 'coupon.add_product')
+                        ->select(DB::raw('coupon.id as id, coupon.category as category,
+                                           coupon.name as name, coupon.discount as discount,
+                                           coupon.price_condition as price_condition,
+                                           coupon.add_product as add_product,
+                                           coupon.start_date as start_date,
+                                           coupon.expiry_date as expiry_date,
+                                           menu.name as menu_name'))
+                        ->where('coupon.shop_id', $request->get('shop_id'))
                         ->get()
                         ->toArray();
 
@@ -69,7 +77,7 @@ class CouponController extends Controller
         ]);
     }
 
-    // 쿠폰 id..만 있으면 되는데..
+    // <-- Add Coupon in User Coupon Table
     public function userCouponCreate(Request $request) {
 
         $currentCouponId = $request->get('coupon_id');
