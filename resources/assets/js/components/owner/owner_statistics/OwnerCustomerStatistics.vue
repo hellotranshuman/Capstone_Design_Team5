@@ -142,7 +142,7 @@
           </v-layout>
           <v-layout justify-space-around>
             <v-flex>
-              <CustomerNationalityChart :height="350"></CustomerNationalityChart>
+              <CustomerCountryChart :height="350"></CustomerCountryChart>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -186,7 +186,7 @@
 import CustomerNumberChart      from './CustomerNumberChart.vue';
 import CustomerGenderChart      from './CustomerGenderChart.vue';
 import CustomerAgeChart         from './CustomerAgeChart.vue';
-import CustomerNationalityChart from './CustomerNationalityChart.vue';
+import CustomerCountryChart     from './CustomerCountryChart.vue';
 import CustomerRatingChart      from './CustomerRatingChart.vue';
 import MenuRankingChart         from './MenuRankingChart.vue';
 
@@ -209,7 +209,7 @@ import MenuRankingChart         from './MenuRankingChart.vue';
       'CustomerNumberChart'     : CustomerNumberChart,
       'CustomerGenderChart'     : CustomerGenderChart,
       'CustomerAgeChart'        : CustomerAgeChart,
-      'CustomerNationalityChart': CustomerNationalityChart,
+      'CustomerCountryChart'    : CustomerCountryChart,
       'CustomerRatingChart'     : CustomerRatingChart,
       'MenuRankingChart'        : MenuRankingChart,
     }

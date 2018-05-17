@@ -364,7 +364,9 @@ class StatisticController extends Controller
         $ages = null;
         $gender = null;
 
+
        switch ($request->get('ranking_country')) {
+
            case 1 : {
                $country = 'china';
                break;
@@ -382,21 +384,21 @@ class StatisticController extends Controller
                break;
            }
 
-
        }
 
         switch ($request->get('ranking_gender')) {
-            case 1 : {
+           case 1 : {
                 $gender = 1;
                 break;
             }
             case 2 : {
-                $gender = 0;
+                $gender = 2;
                 break;
             }
         }
 
         switch ($request->get('ranking_age')) {
+
             case 1 : {
                 $ages = 'date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9';
                 break;
@@ -685,9 +687,9 @@ class StatisticController extends Controller
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
                     ->select(DB::raw('menu.name as menuName, count(order_menu.menu_id) as menuCount'))
+                    ->where('users.gender', $gender)
                     ->where('order_list.shop_id', $shopId)
                     ->where('order_date', '>', $start_date)
-                    ->where('users.gender', $gender)
                     ->groupBy('menu.name')
                     ->orderByRaw('menuCount DESC')
                     ->get()
@@ -777,6 +779,7 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+
             }
             else if($country == null && $gender == null) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -790,6 +793,7 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+
             }
             else if($country == null && $ages == null) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -803,6 +807,8 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+
+                $test = 'cccc';
             }
             else if($gender == null) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -817,6 +823,8 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+
+                $test = 'dddd';
             }
             else if($ages == null) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -831,6 +839,8 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+
+                $test = 'eee';
             }
             else if($country == null) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -845,6 +855,7 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+                $test = 'vvv';
             }
             else {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -860,11 +871,18 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+
+                $test = '1111';
             }
 
         }
+
         return response()->json([
             'menuData' => $menuData,
+            'test'   => $test,
+            'gender'   => $request->get('ranking_gender'),
+            'country'  => $request->get('ranking_country'),
+            'age'       => $request->get('ranking_age'),
         ]);
 
     }
@@ -947,7 +965,7 @@ class StatisticController extends Controller
                 break;
             }
             case 2 : {
-                $gender = 0;
+                $gender = 2;
                 break;
             }
         }
@@ -1420,7 +1438,7 @@ class StatisticController extends Controller
 
         }
         return response()->json([
-            'menuData' => $salesData,
+            'salesData' => $salesData,
         ]);
     }
 

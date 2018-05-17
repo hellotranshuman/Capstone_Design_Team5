@@ -3,27 +3,17 @@
 
 -->
 <script>
-import { Pie } from 'vue-chartjs'
+import { Pie, mixins } from 'vue-chartjs'
+const  { reactiveProp } = mixins
 
 export default {
   extends: Pie,
+  mixins : [reactiveProp ],
+  props: ['options'],
   mounted () {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남성 손님', '여성 손님'],
-      datasets: [
-        {
-          label: '손님 성비',
-          backgroundColor: ['#3399FF','#FF6666'],
-          data: [65,35]
-        },
-        // {
-        //   label: '올해 손님 성비',
-        //   backgroundColor: ['#6699FF','#f87979'],
-        //   data: [55,45]
-        // }
-      ]
-    })
-  }
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options)
+  },
 }
 </script>

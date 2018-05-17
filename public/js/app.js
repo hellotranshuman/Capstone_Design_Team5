@@ -5062,7 +5062,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="fun
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1__BaseCharts__["h"]; });
 /* unused harmony reexport Bubble */
 /* unused harmony reexport Scatter */
-/* unused harmony reexport mixins */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_0__mixins_index_js__["a"]; });
 /* unused harmony reexport generateChart */
 
 
@@ -19579,7 +19579,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerNationalityChart_vue__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerCountryChart_vue__ = __webpack_require__(279);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
 var disposed = false
@@ -19598,7 +19598,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerNationalityChart_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomerCountryChart_vue__["a" /* default */],
   __vue_render__,
   __vue_static_render_fns__,
   __vue_template_functional__,
@@ -19606,7 +19606,7 @@ var Component = Object(__WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/owner/owner_statistics/CustomerNationalityChart.vue"
+Component.options.__file = "resources/assets/js/components/owner/owner_statistics/CustomerCountryChart.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -19615,9 +19615,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-31156c5d", Component.options)
+    hotAPI.createRecord("data-v-54d36143", Component.options)
   } else {
-    hotAPI.reload("data-v-31156c5d", Component.options)
+    hotAPI.reload("data-v-54d36143", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -43603,17 +43603,21 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__MenuSalesChart_vue__ = __webpack_require__(628);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__SalesProfitChart_vue__ = __webpack_require__(629);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__SalesGenderChart_vue__ = __webpack_require__(630);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SalesAgeChart_vue__ = __webpack_require__(631);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__SalesNationalityChart_vue__ = __webpack_require__(632);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerNumberChart_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerGenderChart_vue__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerAgeChart_vue__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__CustomerCountryChart_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__CustomerRatingChart_vue__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__MenuRankingChart_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__MenuSalesChart_vue__ = __webpack_require__(628);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__SalesProfitChart_vue__ = __webpack_require__(629);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__SalesGenderChart_vue__ = __webpack_require__(630);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__SalesAgeChart_vue__ = __webpack_require__(631);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__SalesNationalityChart_vue__ = __webpack_require__(632);
 //
 //
 //
@@ -44141,13 +44145,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 // LineChart.js
 // import { Line } from 'vue-chartjs';
+// axios 라이브러리 import
 
 
 
-
-
-
-
+ // 월별 손님수 그래프
+ //
+ //
+ // 손님 국적 그래프
+ // 손님 평점 그래프
+ //
+ //
 
 // 전체 매출을 그리는 그래프
 
@@ -44159,30 +44167,45 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  components: {
+    'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_2__CustomerNumberChart_vue__["a" /* default */],
+    'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_3__CustomerGenderChart_vue__["a" /* default */],
+    'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_4__CustomerAgeChart_vue__["a" /* default */],
+    'CustomerCountryChart': __WEBPACK_IMPORTED_MODULE_5__CustomerCountryChart_vue__["a" /* default */],
+    'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_6__CustomerRatingChart_vue__["a" /* default */],
+    'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_7__MenuRankingChart_vue__["a" /* default */],
+    'SalesProfitChart': __WEBPACK_IMPORTED_MODULE_9__SalesProfitChart_vue__["a" /* default */],
+    'SalesGenderChart': __WEBPACK_IMPORTED_MODULE_10__SalesGenderChart_vue__["a" /* default */],
+    'SalesAgeChart': __WEBPACK_IMPORTED_MODULE_11__SalesAgeChart_vue__["a" /* default */],
+    'SalesNationalityChart': __WEBPACK_IMPORTED_MODULE_12__SalesNationalityChart_vue__["a" /* default */],
+    'MenuSalesChart': __WEBPACK_IMPORTED_MODULE_8__MenuSalesChart_vue__["a" /* default */]
+  },
+
   data: function data() {
     return {
       shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
       startDate: null,
       startMenu: false,
       endDate: null,
+      endDatePlusOne: null, // 마지막 날짜 + 1일 값이 저장되는 변수 (날짜까지만 있으면 00시00분00초가 기준이 되기 떄문에, 해당날의 모든 데이터를 포함하기 위해서는 다음날짜가 필요)
       endMenu: false,
 
       rankingCountrySelect: { country: '국가 선택', countryNum: 0 }, // 선택된 국가 필터링 기준
       rankingCountryItems: [// 국가 필터링 기준들
-      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }],
+      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }, { country: 'usa', countryNum: 4 }],
 
       rankingGenderSelect: { gender: '성별 선택', genderNum: 0 }, // 선택된 국가 필터링 기준
       rankingGenderItems: [// 국가 필터링 기준들
       { gender: 'all', genderNum: 0 }, { gender: 'male', genderNum: 1 }, { gender: 'female', genderNum: 2 }],
 
-      rankingAgeSelect: [{ age: '연령 선택', ageNum: 0 }], // 선택된 국가 필터링 기준
+      rankingAgeSelect: { age: '연령 선택', ageNum: 0 }, // 선택된 국가 필터링 기준
       rankingAgeItems: [// 국가 필터링 기준들
-      { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }],
+      { age: 'all', ageNum: 0 }, { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }],
 
       // 매출 필터링
       salesCountrySelect: { country: '국가 선택', countryNum: 0 }, // 선택된 국가 필터링 기준
       salesCountryItems: [// 국가 필터링 기준들
-      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }],
+      { country: 'all', countryNum: 0 }, { country: 'china', countryNum: 1 }, { country: 'japan', countryNum: 2 }, { country: 'korea', countryNum: 3 }, { country: 'usa', countryNum: 4 }],
 
       salesGenderSelect: { gender: '성별 선택', genderNum: 0 }, // 선택된 국가 필터링 기준
       salesGenderItems: [// 국가 필터링 기준들
@@ -44190,13 +44213,120 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
       salesAgeSelect: [{ age: '연령 선택', ageNum: 0 }], // 선택된 국가 필터링 기준
       salesAgeItems: [// 국가 필터링 기준들
-      { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }]
+      { age: 'all', ageNum: 0 }, { age: '0~9세', ageNum: 1 }, { age: '10대', ageNum: 2 }, { age: '20대', ageNum: 3 }, { age: '30대', ageNum: 4 }, { age: '40대', ageNum: 5 }, { age: '50대', ageNum: 6 }, { age: '60세 이상', ageNum: 7 }],
 
+      menuRankData: null, // 그래프를 그리기 위한 메뉴 판매수 데이터가 저장될 변수
+      menuSalesData: null, // 그래프를 그리기 위한 메뉴 판매금액 데이터가 저장될 변수  
+      ratingData: [], // 가게평점 5종류의 값을 전달 받을 변수
+      customerGenderData: [], // 그래프를 그리기 위한 판매량 대비 방문 손님 성비 데이터가 저장될 변수
+      customerAgeData: [], // 그래프를 그리기 위한 판매량 대비 방문 손님 연령대 데이터가 저장될 변수
+      customerCountryData: [], // 그래프를 그리기 위한 판매량 대비 방문 손님 국적 데이터가 저장될 변수
+      salesGenderData: [], // 그래프를 그리기 위한 매출 대비 방문 손님 성비 데이터가 저장될 변수
+      salesAgeData: [], // 그래프를 그리기 위한 매출 대비 방문 손님 연령대 데이터가 저장될 변수
+
+
+      getRatingScore: [// 그래프를 그리기 위한 평점 배열을 저장할 배열, 값을 초기화 해둡니다.
+      { 'totalRating': 0 }, { 'taste': 0 }, { 'service': 0 }, { 'mood': 0 }, { 'price': 0 }]
     };
   },
 
 
+  watch: {
+    // 판매량 대비 메뉴 필터링에서 선택된 국가
+    rankingCountrySelect: function rankingCountrySelect() {
+      this.getMenuRankData();
+    },
+
+    // 판매량 대비 메뉴 필터링에서 선택된 성별
+    rankingGenderSelect: function rankingGenderSelect() {
+      this.getMenuRankData();
+    },
+    // 판매량 대비 메뉴 필터링에서 선택된 연령
+    rankingAgeSelect: function rankingAgeSelect() {
+      this.getMenuRankData();
+    },
+
+    // 판매금액 대비 메뉴 필터링에서 선택된 국가
+    salesCountrySelect: function salesCountrySelect() {
+      this.getMenuSalesData();
+    },
+    // 판매금액 대비 메뉴 필터링에서 선택된 성별
+    salesGenderSelect: function salesGenderSelect() {
+      this.getMenuSalesData();
+    },
+    // 판매금액 대비 메뉴 필터링에서 선택된 연령
+    salesAgeSelect: function salesAgeSelect() {
+      this.getMenuSalesData();
+    }
+  },
+
   methods: {
+    //************************* 그래프 조회 날짜를 갱신하는 함수 *************************
+    dateSearch: function dateSearch() {
+      console.log('---------- startDate ----------');
+      console.log(this.startDate);
+      console.log('---------- endDate ----------');
+      console.log(this.endDate);
+      console.log('---------- endDatePlusOne ----------');
+      console.log(this.endDatePlusOne);
+
+      // 마지막 날짜의 + 1일 값을 구하는 함수
+      this.endDatePlusOneDate();
+
+      // 유저평점 데이터를 받아 그래프를 그리는 함수를 실행합니다.
+      this.getCustomerRating();
+
+      // 메뉴 주문 그래프 생성 함수를 실행합니다.
+      this.getMenuRankData();
+
+      // 메뉴 매출대비 주문 그래프 생성 함수를 실행합니다.
+      this.getMenuSalesData();
+
+      // 판매량 대비 방문 손님 성비를 갱신하는 함수를 실행합니다.
+      this.getCustomerGenderData();
+
+      // 판매량 대비 방문 손님 연령을 갱신하는 함수
+      this.getCustomerAgeData();
+
+      // 판매량 대비 방문 손님 국적을 갱신하는 함수
+      this.getCustomerCountryData();
+
+      // 매출 대비 방문 손님 성비를 갱신하는 함수
+      this.getSalesGenderData();
+
+      // 매출 대비 방문 손님 연령을 갱신하는 함수
+      this.getSalesAgeData();
+    },
+
+
+    // 반올림 함수 (반올림 대상값, 반올림 자릿수)
+    round: function round(number, precision) {
+      var numArray = 0;
+
+      if (number != null) {
+        var shift = function shift(number, precision, reverseShift) {
+          if (reverseShift) {
+            precision = -precision;
+          }
+          numArray = ("" + number).split("e");
+          return +(numArray[0] + "e" + (numArray[1] ? +numArray[1] + precision : precision));
+        };
+        return shift(Math.round(shift(number, precision, false)), precision, true);
+      }
+
+      return 0;
+    },
+
+
+    // 마지막 날짜의 + 1일 값을 구하는 함수
+    endDatePlusOneDate: function endDatePlusOneDate() {
+      var dateArr = this.endDate.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다.
+      var date = Number(dateArr[2]) + 1; // 마지막 날짜값에서 1 값을 더합니다.
+
+      this.endDatePlusOne = dateArr[0] + '-' + dateArr[1] + '-' + date; // 마지막 날짜 +1일 에해당하는 날짜를 대입합니다.
+    },
+
+
     // 통계 기간 선택을 자동으로 오늘로 지정해주는 함수
     setToday: function setToday() {
       var today = new Date().toISOString().substr(0, 10).replace('T', ' ');
@@ -44233,26 +44363,485 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       // 오늘 날짜
       var today = new Date().toISOString().substr(0, 10).replace('T', ' ');
       this.endDate = today;
+    },
+
+
+    //************************* 유저평점 데이터를 받아 그래프를 그리는 함수 *************************
+    getCustomerRating: function getCustomerRating() {
+      var _this = this;
+
+      // axios http 라이브러리 
+
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getRatingScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        // console.log('????? 맞나???????');
+        // console.log(this.startDate);
+
+        _this.getRatingScore = response.data['ratingData']; // 가게평점 5종류를 대입합니다.
+
+        // console.log('가게 평점 배열');
+        // console.log(this.getRatingScore);
+
+        // Overwriting base render method with actual data.
+        _this.ratingData = {
+          labels: ['총점', '맛', '서비스', '분위기', '가격'],
+          datasets: [{
+            label: '평점',
+            backgroundColor: ['rgba(54, 162, 235, 0.5)'],
+            borderColor: ['#0099FF'],
+            fill: true,
+            // borderWidth: 1,
+            data: [_this.getRatingScore[0]['totalRating'], _this.getRatingScore[0]['taste'], _this.getRatingScore[0]['service'], _this.getRatingScore[0]['mood'], _this.getRatingScore[0]['price']],
+            pointRadius: 7, // 포인터의 반지름 크기 값
+            pointHoverRadius: 20, // 가리킨 포인터의 반지름
+            pointBorderColor: '#3366CC  ', // 포인터의 색깔
+            pointBackgroundColor: 'rgba(000,102,255,0.7)' // 포인터의 배경색깔
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 판매량 대비 방문 손님 성비를 갱신하는 함수 *************************
+    getCustomerGenderData: function getCustomerGenderData() {
+      var _this2 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getGenderScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getGenderData = response.data['genderData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('성비');
+        // console.log(getGenderData);
+
+        var maleNumber = Number(getGenderData[0]['male']);
+        var femaleNumber = Number(getGenderData[0]['female']);
+
+        // 손님 성비를 계산합니다.
+        // (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+        var maleRatio = _this2.round(maleNumber / (maleNumber + femaleNumber) * 100, 2);
+        var femaleRatio = _this2.round(femaleNumber / (maleNumber + femaleNumber) * 100, 2);
+
+        var genderRatioData = [];
+        genderRatioData.push(maleRatio);
+        genderRatioData.push(femaleRatio);
+
+        // console.log('성비값 변경');
+        // console.log(genderRatioData);
+
+        // Overwriting base render method with actual data.
+        _this2.customerGenderData = {
+          labels: ['남성 손님', '여성 손님'],
+          datasets: [{
+            label: '손님 성비',
+            backgroundColor: ['#3399FF', '#FF6666'],
+            data: genderRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 판매량 대비 방문 손님 연령을 갱신하는 함수 *************************
+    getCustomerAgeData: function getCustomerAgeData() {
+      var _this3 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getAgeScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getAgeData = response.data['ageData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('연령비 ');
+        // console.log(getAgeData);
+
+        // 전달받은 연령대 값을 대입합니다. (퍼센트가 아니라 연령대별 주문횟수)
+        var ageArray = getAgeData[0];
+        // 전달받은 연령대 값의 value값 배열을 대입합니다.
+        var ageValueArray = Object.values(ageArray);
+
+        // 전체 연령의 주문횟수의 총합이 저장되는 변수
+        var totalNumber = 0;
+
+        // 전체 연령별 주문횟수 총합을 구합니다.
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          totalNumber += Number(ageValueArray[iCount]);
+        }
+
+        // 전달받은 연령대별 주문횟수를 비율로 계산한 값을 저장하는 배열
+        var ageRatioData = [];
+
+        // 전체 연령별 방문 손님 비율을 구합니다.
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          ageRatioData.push(_this3.round(ageValueArray[iCount] / totalNumber * 100, 2));
+        }
+
+        // console.log('연령대별 ~~ 개꿀 ~~');
+        // console.log(ageRatioData);
+
+        // Overwriting base render method with actual data.
+        _this3.customerAgeData = {
+          labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
+          datasets: [{
+            label: '매출 연령대',
+            backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
+            data: ageRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 판매량 대비 방문 손님 국적을 갱신하는 함수 *************************
+    getCustomerCountryData: function getCustomerCountryData() {
+      var _this4 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getCountryScore', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getnationalityData = response.data['countryData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('국적값');
+        // console.log(getnationalityData); 
+
+        // 전달받은 국적 값을 대입합니다. (퍼센트가 아니라 연령대별 주문횟수)
+        var nationalityArray = JSON.parse(JSON.stringify(getnationalityData[0]));
+        // 전달받은 국적 값의 value값 배열을 대입합니다.
+        var nationalityValueArray = Object.values(nationalityArray);
+
+        // 전체 국적별 주문횟수의 총합이 저장되는 변수
+        var totalNumber = 0;
+
+        // console.log('전달받은 값');
+        // console.log(nationalityArray);
+        // console.log('전달받은 값의 values');
+        // console.log(nationalityValueArray);
+        // console.log('전달받은 값의 keys');
+        // console.log(nationalityKeysArray);
+
+        // 전체 국적별 주문횟수 총합을 구합니다.
+        for (var iCount = 0; iCount < nationalityValueArray.length; iCount++) {
+          totalNumber += Number(nationalityValueArray[iCount]);
+        }
+
+        // 전달받은 국적별 주문횟수를 비율로 계산한 값을 저장하는 배열
+        var nationalityRatioData = [];
+
+        // 전체 국적별 방문 손님 비율을 구합니다.
+        for (var iCount = 0; iCount < nationalityValueArray.length; iCount++) {
+          nationalityRatioData.push(_this4.round(nationalityValueArray[iCount] / totalNumber * 100, 2));
+        }
+
+        // Overwriting base render method with actual data.
+        _this4.customerCountryData = {
+          labels: ['한국', '일본', '중국', '미국'],
+          datasets: [{
+            label: '방문 손님 국적',
+            backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
+            data: nationalityRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 방문 손님 성비를 갱신하는 함수 *************************
+    getSalesGenderData: function getSalesGenderData() {
+      var _this5 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getGenderSalesData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getSalesGenderData = response.data['genderData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('매출 성비');
+        // console.log(getSalesGenderData);
+
+        var maleNumber = Number(getSalesGenderData[0]['maleSales']);
+        var femaleNumber = Number(getSalesGenderData[0]['femaleSales']);
+
+        // 손님 성비를 계산 (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+        var maleRatio = _this5.round(maleNumber / (maleNumber + femaleNumber) * 100, 2);
+        var femaleRatio = _this5.round(femaleNumber / (maleNumber + femaleNumber) * 100, 2);
+
+        // 전달받은 성별 주문횟수를 성비로 계산한 값을 저장하는 배열
+        var genderSalesRatioData = [];
+
+        genderSalesRatioData.push(maleRatio);
+        genderSalesRatioData.push(femaleRatio);
+
+        console.log('성비값 변경');
+        console.log(genderSalesRatioData);
+
+        // Overwriting base render method with actual data.
+        _this5.salesGenderData = {
+          labels: ['남성 손님', '여성 손님'],
+          datasets: [{
+            label: '손님 성비',
+            backgroundColor: ['#3399FF', '#FF6666'],
+            data: genderSalesRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 방문 손님 연령을 갱신하는 함수 *************************
+    getSalesAgeData: function getSalesAgeData() {
+      var _this6 = this;
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getAgesSalesData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne // 마지막 날짜
+      }).then(function (response) {
+        var getSalesAgeData = response.data['ageData']; // 전달받은 월별 손님수를 대입합니다.
+
+        // console.log('매출별 연령비');
+        // console.log(getSalesAgeData);
+
+        // 전달받은 연령대 값을 대입합니다. (퍼센트가 아니라 연령대별 매출금액)
+        var ageArray = getSalesAgeData[0];
+        // 전달받은 연령대 값의 value값 배열을 대입합니다.
+        var ageValueArray = Object.values(ageArray);
+
+        // console.log('매출별 연령대 ~~ 개꿀 ~~');
+        // console.log(ageArray);
+
+        // 전체 연령의 매출금액의 총합이 저장되는 변수
+        var totalNumber = 0;
+
+        // 전체 연령별 주문금액 총합을 구합니다.
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          totalNumber += Number(ageValueArray[iCount]);
+        }
+
+        var ageSalesRatioData = [];
+
+        // 전체 연령별 매출대비 방문 손님 비율을 구합니다. (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+        for (var iCount = 0; iCount < ageValueArray.length; iCount++) {
+          ageSalesRatioData.push(_this6.round(ageValueArray[iCount] / totalNumber * 100, 2));
+        }
+
+        // Overwriting base render method with actual data.
+        _this6.salesAgeData = {
+          labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
+          datasets: [{
+            label: '매출 연령대',
+            backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
+            data: ageSalesRatioData
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 방문 손님 국적을 갱신하는 함수 *************************
+    getSalesCountryData: function getSalesCountryData() {},
+
+
+    //************************* 판매량 대비 메뉴 데이터를 받아 그래프를 그리는 함수 *************************
+    getMenuRankData: function getMenuRankData() {
+      var _this7 = this;
+
+      // console.log('국가');
+      // console.log(this.rankingCountrySelect['countryNum']);
+      // console.log('성별');
+      // console.log(this.rankingGenderSelect['genderNum']);
+      // console.log('연령');
+      // console.log(this.rankingAgeSelect['ageNum']);
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getMenuData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne, // 마지막 날짜
+        'ranking_country': this.rankingCountrySelect['countryNum'], // 국적
+        'ranking_age': this.rankingAgeSelect['ageNum'], // 나이
+        'ranking_gender': this.rankingGenderSelect['genderNum'] // 성별
+      }).then(function (response) {
+        var getMenuData = response.data['menuData']; // 전달받은 메뉴 데이터를 대입합니다.
+        console.log(response.data.test);
+        console.log(response.data.gender);
+        console.log(response.data.country);
+        console.log(response.data.age);
+
+        // console.log('메뉴 데이터');
+        // console.log(getMenuData);
+
+        var menuNameList = []; // 메뉴 이름 목록이 저장되는 배열
+        var menuValueList = []; // 메뉴 값 목록이 저장되는 배열
+
+        // 메뉴이름 및 메뉴별 주문 개수 값을 각각 배열에 저장합니다.
+        for (var iCount = 0; iCount < getMenuData.length; iCount++) {
+          menuNameList.push(getMenuData[iCount]['menuName']);
+          menuValueList.push(getMenuData[iCount]['menuCount']);
+        }
+
+        // console.log(menuNameList);
+        // console.log(menuValueList);
+
+        // 그래프 색상 설정
+        _this7.firstBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this7.secondBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this7.thirdBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this7.fourthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this7.fifthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+        _this7.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
+        _this7.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
+        _this7.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
+
+        _this7.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
+        _this7.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
+        _this7.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
+
+        _this7.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
+        _this7.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
+        _this7.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
+
+        _this7.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
+        _this7.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
+        _this7.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
+
+        _this7.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
+        _this7.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
+        _this7.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
+
+        // 그래프 데이터
+        _this7.menuRankData = {
+          labels: menuNameList,
+          datasets: [{
+            label: '그릇',
+            backgroundColor: [_this7.firstBar, _this7.secondBar, _this7.thirdBar, _this7.fourthBar, _this7.fifthBar],
+            hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
+            data: menuValueList
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
+
+
+    //************************* 매출 대비 메뉴 데이터를 받아 그래프를 그리는 함수 *************************
+    getMenuSalesData: function getMenuSalesData() {
+      var _this8 = this;
+
+      // console.log('국가');
+      // console.log(this.rankingCountrySelect['countryNum']);
+      // console.log('성별');
+      // console.log(this.rankingGenderSelect['genderNum']);
+      // console.log('연령');
+      // console.log(this.rankingAgeSelect['ageNum']);
+
+      // axios http 라이브러리 
+      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getSalesMenuData', {
+        'shop_id': this.shop_id, // 가게 id
+        'start_date': this.startDate, // 처음 날짜
+        'end_date': this.endDatePlusOne, // 마지막 날짜
+        'ranking_country': this.salesCountrySelect['countryNum'], // 국적
+        'ranking_age': this.salesAgeSelect['ageNum'], // 나이
+        'ranking_gender': this.salesGenderSelect['genderNum'] // 성별
+      }).then(function (response) {
+        var getMenuData = response.data['menuData']; // 전달받은 메뉴 데이터를 대입합니다.
+
+        // console.log('메뉴 데이터');
+        // console.log(getMenuData);
+
+        var menuNameList = []; // 메뉴 이름 목록이 저장되는 배열
+        var menuValueList = []; // 메뉴 값 목록이 저장되는 배열
+
+        // 메뉴이름 및 메뉴별 주문 개수 값을 각각 배열에 저장합니다.
+        for (var iCount = 0; iCount < getMenuData.length; iCount++) {
+          menuNameList.push(getMenuData[iCount]['menuName']);
+          menuValueList.push(getMenuData[iCount]['menuTotal']);
+        }
+
+        // console.log(menuNameList);
+        // console.log(menuValueList);
+
+        // 그래프 색상 설정
+        _this8.firstBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.secondBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.thirdBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.fourthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+        _this8.fifthBar = document.createElement('canvas').getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+        _this8.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
+        _this8.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
+        _this8.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
+
+        _this8.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
+        _this8.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
+        _this8.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
+
+        _this8.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
+        _this8.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
+        _this8.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
+
+        _this8.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
+        _this8.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
+        _this8.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
+
+        _this8.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
+        _this8.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
+        _this8.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
+
+        // 그래프 데이터
+        _this8.menuSalesData = {
+          labels: menuNameList,
+          datasets: [{
+            label: '그릇',
+            backgroundColor: [_this8.firstBar, _this8.secondBar, _this8.thirdBar, _this8.fourthBar, _this8.fifthBar],
+            hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
+            data: menuValueList
+          }]
+        };
+      }).catch(console.log('Oh my god!!, Failed'));
     }
   },
 
-  components: {
-    'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__["a" /* default */],
-    'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__["a" /* default */],
-    'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__["a" /* default */],
-    'CustomerNationalityChart': __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__["a" /* default */],
-    'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__["a" /* default */],
-    'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__["a" /* default */],
-    'SalesProfitChart': __WEBPACK_IMPORTED_MODULE_7__SalesProfitChart_vue__["a" /* default */],
-    'SalesGenderChart': __WEBPACK_IMPORTED_MODULE_8__SalesGenderChart_vue__["a" /* default */],
-    'SalesAgeChart': __WEBPACK_IMPORTED_MODULE_9__SalesAgeChart_vue__["a" /* default */],
-    'SalesNationalityChart': __WEBPACK_IMPORTED_MODULE_10__SalesNationalityChart_vue__["a" /* default */],
-    'MenuSalesChart': __WEBPACK_IMPORTED_MODULE_6__MenuSalesChart_vue__["a" /* default */]
-  },
+  mounted: function mounted() {
+    // 유저평점 데이터를 받아 그래프를 그리는 함수
+    this.getCustomerRating();
 
+    // 메뉴 주문 그래프 생성 함수
+    this.getMenuRankData();
+
+    // 메뉴 매출대비 주문 그래프 생성 함수
+    this.getMenuSalesData();
+
+    // 판매량 대비 방문 손님 성비를 갱신하는 함수
+    this.getCustomerGenderData();
+
+    // 판매량 대비 방문 손님 연령을 갱신하는 함수
+    this.getCustomerAgeData();
+
+    // 판매량 대비 방문 손님 국적을 갱신하는 함수
+    this.getCustomerCountryData();
+
+    // 매출 대비 방문 손님 성비를 갱신하는 함수
+    this.getSalesGenderData();
+
+    // 매출 대비 방문 손님 연령을 갱신하는 함수
+    this.getSalesAgeData();
+  },
   created: function created() {
-    console.log('test');
-    console.log(this.rankingCountrySelect.countryNum);
+    this.setMonth(); // 통계 기간을 이번달로 초기화합니다.
 
     // Add shop_id in statisticsData
     var statisticsData = new FormData();
@@ -44266,22 +44855,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     statisticsData.append('sales_gender', this.salesGenderSelect.genderNum); // 매출 기준 인기 메뉴 순위 성별 필터링
     statisticsData.append('sales_age', this.salesAgeSelect); // 매출 기준 인기 메뉴 순위 연령 필터링, 배열
 
-    console.log('-----send data-----');
-    console.log(statisticsData.get('end_date'));
-
-    // axios http 라이브러리 with Send statisticsData
-    // axios.post('/???', statisticsData).
-    // then((response)=>{
-
-    // }).catch(console.log('Oh my god!!, Failed'));
-  },
-  beforeUpdate: function beforeUpdate() {
-    // console.log('시작 날짜');
-    // console.log(this.startDate);
-    // console.log('마지막 날짜');
-    // console.log(this.endDate);
-    // console.log('test');
-    // console.log(this.rankingCountrySelect.countryNum);
+    // 마지막 날짜의 + 1일 값을 구하는 함수를 실행합니다.
+    this.endDatePlusOneDate();
+    console.log('마지막 날 짜르기 : ' + this.endDatePlusOne);
   }
 });
 
@@ -44290,54 +44866,141 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__ = __webpack_require__(8);
 //
 //
 //
 //
+
+// axios 라이브러리 import
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Line */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      datasets: [{
-        label: '작년 손님수',
-        backgroundColor: 'transparent',
-        data: [130, 163, 185, 180, 170, 186, 239, 280, 321, 327, 292, 280],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: '#0066FF', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: '#3366CC  ', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(000,102,255,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
-      }, {
-        label: '올해 손님수',
-        backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
-        data: [251, 283, 320, 300, 353, 379, 439, 450, 480, 520, 500, 470],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: 'orange', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: 'orange', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
+  props: {
+    // 통계 시작 날짜
+    startDay: {
+      type: String,
+      default: ""
+    },
+    // 통계 마지막 날짜
+    endDay: {
+      type: String,
+      default: ""
+    }
+  },
 
-      }]
-    });
+  data: function data() {
+    return {
+      monthList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 방문 손님수를 분류할 기준
+      shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
+      getCustomerScore: [], // 월별 손님수값을 전달받는 배열
+      sendMonthList: [], // 전송할 값
+      filterCustomerScore: [] // 전달받은 월별 손님수를 가공한 값이 저장되는 배열
+    };
+  },
+
+
+  extends: __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__["c" /* Line */],
+  mounted: function mounted() {
+    var _this = this;
+
+    // axios로 전달할 값을 가공합니다.
+    this.sendMonthListSet();
+
+    // axios http 라이브러리 
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getCustomerNumber', this.sendMonthList).then(function (response) {
+      _this.getCustomerScore = response.data['customerData']; // 전달받은 월별 손님수를 대입합니다.
+
+      // console.log('손님수 배열');
+      // console.log(this.getCustomerScore);
+      // console.log(response.data['test']);
+      // console.log('haha');
+
+      // 월별 사용자수를 가공합니다.
+      _this.customerDataFilter();
+
+      // Overwriting base render method with actual data.
+      _this.renderChart({
+        labels: _this.monthList,
+        datasets: [{
+          label: '올해 손님수',
+          backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
+          data: _this.filterCustomerScore, // 월별 사용자수 값
+          lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
+          fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
+          borderColor: 'orange', // 선의 색상
+          borderDash: [5, 5], // dash의 길이와 간격
+          pointBorderColor: 'orange', // 포인터의 색깔
+          pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
+          pointRadius: 7, // 포인터의 반지름 크기 값
+          pointHoverRadius: 20, // 가리킨 포인터의 반지름
+          pointHitRadius: 30,
+          pointBorderWidth: 2,
+          pointStyle: 'circle'
+        }]
+      });
+    }).catch(console.log('Oh my god!!, Failed'));
+  },
+
+
+  methods: {
+    // axios로 전달할 값을 초기화 하는 함수
+    sendMonthListSet: function sendMonthListSet() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다.
+
+      this.sendMonthList = {
+        'shop_id': this.shop_id, //  식당 id
+        'start_day1': dateArr[0] + "-01" + "-01", //  1월 시작일
+        'end_date1': dateArr[0] + "-02" + "-01", //  1월 종료일 (정확히는 2월1일 00시00분00초)
+        'start_day2': dateArr[0] + "-02" + "-01", //  2월 시작일
+        'end_date2': dateArr[0] + "-03" + "-01", //  2월 종료일
+        'start_day3': dateArr[0] + "-03" + "-01", //  3월 시작일
+        'end_date3': dateArr[0] + "-04" + "-01", //  3월 종료일
+        'start_day4': dateArr[0] + "-04" + "-01", //  4월 시작일
+        'end_date4': dateArr[0] + "-05" + "-01", //  4월 종료일
+        'start_day5': dateArr[0] + "-05" + "-01", //  5월 시작일
+        'end_date5': dateArr[0] + "-06" + "-01", //  5월 종료일
+        'start_day6': dateArr[0] + "-06" + "-01", //  6월 시작일
+        'end_date6': dateArr[0] + "-07" + "-01", //  6월 종료일
+        'start_day7': dateArr[0] + "-07" + "-01", //  7월 시작일
+        'end_date7': dateArr[0] + "-08" + "-01", //  7월 종료일
+        'start_day8': dateArr[0] + "-08" + "-01", //  8월 시작일
+        'end_date8': dateArr[0] + "-09" + "-01", //  8월 종료일
+        'start_day9': dateArr[0] + "-09" + "-01", //  9월 시작일
+        'end_date9': dateArr[0] + "-10" + "-01", //  9월 종료일
+        'start_day10': dateArr[0] + "-10" + "-01", //  10월 시작일
+        'end_date10': dateArr[0] + "-11" + "-01", //  10월 종료일
+        'start_day11': dateArr[0] + "-11" + "-01", //  11월 시작일
+        'end_date11': dateArr[0] + "-12" + "-01", //  11월 종료일
+        'start_day12': dateArr[0] + "-12" + "-01", //  12월 시작일
+        'end_date12': Number(dateArr[0]) + 1 + "-01" + "-01" //  12월 종료일
+      };
+    },
+
+
+    // 전달받은 월별 사용자수 값을 가공합니다.
+    // 현재달 이후의 전달받은 값을 모두 null로 대입합니다.
+    customerDataFilter: function customerDataFilter() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다. ex)2018-05-13 [2018][05][13]
+
+      for (var iCount = 0; iCount < 12; iCount++) {
+        if (iCount < Number(dateArr[1])) {
+          this.filterCustomerScore.push(this.getCustomerScore[iCount][0]['customer']);
+        } else {
+          this.filterCustomerScore.push(null);
+        }
+      }
+      // console.log('test hahaha');
+      // console.log(this.filterCustomerScore);
+    }
   }
+
 });
 
 /***/ }),
@@ -44352,19 +45015,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Doughnut */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남성 손님', '여성 손님'],
-      datasets: [{
-        label: '손님 성비',
-        backgroundColor: ['#3399FF', '#FF6666'],
-        data: [59, 41]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44380,19 +45041,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Doughnut */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
-      datasets: [{
-        label: '작년 손님 성비',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
-        data: [1, 21, 39, 20, 13, 5, 1]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44408,19 +45067,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Doughnut */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['한국', '중국', '대만', '홍콩', '미국', '호주', '영국', '프랑스', '그외'],
-      datasets: [{
-        label: '방문 손님 국적',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
-        data: [34, 34, 7, 7, 3, 3, 2, 2, 8]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44436,26 +45093,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["e" /* Radar */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['총점', '맛', '서비스', '분위기', '가격'],
-      datasets: [{
-        label: '평점',
-        backgroundColor: ['rgba(54, 162, 235, 0.5)'],
-        borderColor: ['#0099FF'],
-        fill: true,
-        // borderWidth: 1,
-        data: [4.1, 4.5, 4, 3.8, 3.9],
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointBorderColor: '#3366CC  ', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(000,102,255,0.7)' // 포인터의 배경색깔
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44471,46 +45119,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["b" /* HorizontalBar */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    this.firstBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.secondBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.thirdBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fourthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fifthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-
-    this.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
-    this.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
-    this.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
-
-    this.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
-    this.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
-    this.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
-
-    this.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
-    this.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
-    this.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
-
-    this.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
-    this.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
-    this.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
-
-    this.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
-    this.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
-    this.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
-
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남방 치킨', '토종닭 숯불 구이', '믹스 후라이', '돼지 갈비', '어린이 세트'],
-      datasets: [{
-        label: '메뉴 순위',
-        backgroundColor: [this.firstBar, this.secondBar, this.thirdBar, this.fourthBar, this.fifthBar],
-        hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
-        data: [560, 380, 366, 230, 222]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44526,46 +45145,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["b" /* HorizontalBar */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    this.firstBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.secondBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.thirdBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fourthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    this.fifthBar = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-
-    this.firstBar.addColorStop(0, 'rgba(255, 0,0, 0.9)');
-    this.firstBar.addColorStop(0.5, 'rgba(255, 0, 0, 0.7)');
-    this.firstBar.addColorStop(1, 'rgba(255, 0, 0, 0.5)');
-
-    this.secondBar.addColorStop(0, 'rgba(000, 051, 255, 0.9)');
-    this.secondBar.addColorStop(0.5, 'rgba(000, 051, 255, 0.7)');
-    this.secondBar.addColorStop(1, 'rgba(000, 051, 255, 0.5)');
-
-    this.thirdBar.addColorStop(0, 'rgba(000, 153, 102, 0.9)');
-    this.thirdBar.addColorStop(0.5, 'rgba(000, 153, 102, 0.7)');
-    this.thirdBar.addColorStop(1, 'rgba(000, 153, 102, 0.5)');
-
-    this.fourthBar.addColorStop(0, 'rgba(102, 000, 204, 0.9)');
-    this.fourthBar.addColorStop(0.5, 'rgba(102, 000, 204, 0.7)');
-    this.fourthBar.addColorStop(1, 'rgba(102, 000, 204, 0.5)');
-
-    this.fifthBar.addColorStop(0, 'rgba(255, 102, 000, 0.9)');
-    this.fifthBar.addColorStop(0.5, 'rgba(255, 102, 000, 0.7)');
-    this.fifthBar.addColorStop(1, 'rgba(255, 102, 000, 0.5)');
-
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남방 치킨', '토종닭 숯불 구이', '믹스 후라이', '돼지 갈비', '어린이 세트'],
-      datasets: [{
-        label: '메뉴 순위',
-        backgroundColor: [this.firstBar, this.secondBar, this.thirdBar, this.fourthBar, this.fifthBar],
-        hoverBackgroundColor: ['rgba(255,051,051,0.8)', 'rgba(000,102,255,0.8)', 'rgba(051,204,153,0.8)', 'rgba(102,000,153,0.8)', 'rgba(255,051,000,0.8)'],
-        data: [672000, 494000, 439200, 230000, 288600]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44574,54 +45164,144 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__ = __webpack_require__(8);
 //
 //
 //
 //
+
+// axios 라이브러리 import
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["c" /* Line */],
-  mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-      datasets: [{
-        label: '작년 매출',
-        backgroundColor: 'transparent',
-        data: [156000, 198860, 231250, 350000, 225000, 238080, 305920, 364000, 433350, 451260, 379600, 361200],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: '#0066FF', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: '#3366CC  ', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(000,102,255,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
-      }, {
-        label: '올해 매출',
-        backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
-        data: [301200, 311300, 390400, 366300, 430660, 492700, 526800, 540000, 648000, 676000, 640000, 587500],
-        lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
-        fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
-        borderColor: 'orange', // 선의 색상
-        borderDash: [5, 5], // dash의 길이와 간격
-        pointBorderColor: 'orange', // 포인터의 색깔
-        pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
-        pointRadius: 7, // 포인터의 반지름 크기 값
-        pointHoverRadius: 20, // 가리킨 포인터의 반지름
-        pointHitRadius: 30,
-        pointBorderWidth: 2,
-        pointStyle: 'circle'
+  props: {
+    // 통계 시작 날짜
+    startDay: {
+      type: String,
+      default: ""
+    },
+    // 통계 마지막 날짜
+    endDay: {
+      type: String,
+      default: ""
+    }
+  },
 
-      }]
-    });
+  data: function data() {
+    return {
+      monthList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], // 월별 매출을 분류할 기준
+      shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
+      getSalesScore: [], // 월별 매출값을 전달받는 배열
+      sendMonthList: [], // 전송할 값
+      filterSalesScore: [] // 전달받은 월별 매출값을 가공한 값이 저장되는 배열
+    };
+  },
+
+
+  extends: __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__["c" /* Line */],
+  mounted: function mounted() {
+    var _this = this;
+
+    // axios로 전달할 값을 가공합니다.
+    this.sendMonthListSet();
+
+    // axios http 라이브러리 
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getSalesNumber', this.sendMonthList).then(function (response) {
+      _this.getSalesScore = response.data['salesData']; // 전달받은 월별 매출값을 대입합니다.
+
+      // console.log('돌려받은 매출값');
+      // console.log(this.getSalesScore);
+      // console.log(response.data['test']);
+      // console.log('haha');
+
+      // 월별 사용자수를 가공합니다.
+      _this.salesDataFilter();
+
+      // Overwriting base render method with actual data.
+      _this.renderChart({
+        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        datasets: [{
+          label: '올해 매출',
+          backgroundColor: 'transparent', // 배경 색상, transparent는 투명함을 의미
+          data: _this.filterSalesScore,
+          lineTension: 0, // 선의 곡선 관련 값, 0은 직선을 의미
+          fill: false, // 두개의 데이터 경계 영역을 만드는데 사용되는 값
+          borderColor: 'orange', // 선의 색상
+          borderDash: [5, 5], // dash의 길이와 간격
+          pointBorderColor: 'orange', // 포인터의 색깔
+          pointBackgroundColor: 'rgba(255,150,0,0.5)', // 포인터의 배경색깔
+          pointRadius: 7, // 포인터의 반지름 크기 값
+          pointHoverRadius: 20, // 가리킨 포인터의 반지름
+          pointHitRadius: 30,
+          pointBorderWidth: 2,
+          pointStyle: 'circle'
+        }]
+      });
+    }).catch(console.log('Oh my god!!, Failed'));
+  },
+
+
+  methods: {
+    // axios로 전달할 값을 초기화 하는 함수
+    sendMonthListSet: function sendMonthListSet() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다.
+
+      this.sendMonthList = {
+        'shop_id': this.shop_id, //  식당 id
+        'start_day1': dateArr[0] + "-01" + "-01", //  1월 시작일
+        'end_date1': dateArr[0] + "-02" + "-01", //  1월 종료일 (정확히는 2월1일 00시00분00초)
+        'start_day2': dateArr[0] + "-02" + "-01", //  2월 시작일
+        'end_date2': dateArr[0] + "-03" + "-01", //  2월 종료일
+        'start_day3': dateArr[0] + "-03" + "-01", //  3월 시작일
+        'end_date3': dateArr[0] + "-04" + "-01", //  3월 종료일
+        'start_day4': dateArr[0] + "-04" + "-01", //  4월 시작일
+        'end_date4': dateArr[0] + "-05" + "-01", //  4월 종료일
+        'start_day5': dateArr[0] + "-05" + "-01", //  5월 시작일
+        'end_date5': dateArr[0] + "-06" + "-01", //  5월 종료일
+        'start_day6': dateArr[0] + "-06" + "-01", //  6월 시작일
+        'end_date6': dateArr[0] + "-07" + "-01", //  6월 종료일
+        'start_day7': dateArr[0] + "-07" + "-01", //  7월 시작일
+        'end_date7': dateArr[0] + "-08" + "-01", //  7월 종료일
+        'start_day8': dateArr[0] + "-08" + "-01", //  8월 시작일
+        'end_date8': dateArr[0] + "-09" + "-01", //  8월 종료일
+        'start_day9': dateArr[0] + "-09" + "-01", //  9월 시작일
+        'end_date9': dateArr[0] + "-10" + "-01", //  9월 종료일
+        'start_day10': dateArr[0] + "-10" + "-01", //  10월 시작일
+        'end_date10': dateArr[0] + "-11" + "-01", //  10월 종료일
+        'start_day11': dateArr[0] + "-11" + "-01", //  11월 시작일
+        'end_date11': dateArr[0] + "-12" + "-01", //  11월 종료일
+        'start_day12': dateArr[0] + "-12" + "-01", //  12월 시작일
+        'end_date12': Number(dateArr[0]) + 1 + "-01" + "-01" //  12월 종료일
+      };
+
+      // console.log('전달할 값');
+      // console.log(this.sendMonthList);
+    },
+
+
+    // 전달받은 월별 매출 값을 가공합니다.
+    // 현재달 이후의 전달받은 값을 모두 null로 대입합니다.
+    salesDataFilter: function salesDataFilter() {
+      var dateArr = this.endDay.split("-"); // 마지막 날짜 문자열을 -를 기준으로 구분합니다. ex)2018-05-13 [2018][05][13]
+
+      for (var iCount = 0; iCount < 12; iCount++) {
+        if (iCount < Number(dateArr[1])) {
+          this.filterSalesScore.push(this.getSalesScore[iCount][0]['total']);
+        } else {
+          this.filterSalesScore.push(null);
+        }
+      }
+      // console.log('test hahaha');
+      // console.log(this.filterSalesScore);
+    }
   }
+
 });
 
 /***/ }),
@@ -44636,19 +45316,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['남성 손님', '여성 손님'],
-      datasets: [{
-        label: '손님 성비',
-        backgroundColor: ['#3399FF', '#FF6666'],
-        data: [65, 35]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44664,19 +45342,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 
 
+var reactiveProp = __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["f" /* mixins */].reactiveProp;
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
+  mixins: [reactiveProp],
+  props: ['options'],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'],
-      datasets: [{
-        label: '작년 손님 성비',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300'],
-        data: [6, 8, 37, 30, 16, 3, 1]
-      }]
-    });
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -44685,26 +45361,123 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__ = __webpack_require__(8);
 //
 //
 //
 //
+
+// axios 라이브러리 import
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["d" /* Pie */],
+  props: {
+    // 통계 시작 날짜
+    startDay: {
+      type: String,
+      default: ""
+    },
+    // 통계 마지막 날짜
+    endDay: {
+      type: String,
+      default: ""
+    }
+  },
+
+  data: function data() {
+    return {
+      shop_id: this.$route.params.shop_id, // 식당 아이디를 저장하는 변수
+      getnationalityData: [], // 전달받은 국적별 값 (퍼센트가 아니라 연령대별 매출금액)
+      nationalityRatioData: [] // 전달받은 국적별 매출금액을 비율로 계산한 값을 저장하는 배열
+    };
+  },
+
+
+  extends: __WEBPACK_IMPORTED_MODULE_2_vue_chartjs__["d" /* Pie */],
   mounted: function mounted() {
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['한국', '중국', '대만', '홍콩', '미국', '호주', '영국', '프랑스', '그외'],
-      datasets: [{
-        label: '방문 손님 국적',
-        backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
-        data: [33, 38, 5, 9, 3, 3, 2, 2, 5]
-      }]
-    });
+    var _this = this;
+
+    // axios http 라이브러리 
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/owner/getCountrySalesData', {
+      'shop_id': this.shop_id, // 가게 id
+      'start_date': this.startDay, // 처음 날짜
+      'end_date': this.endDay // 마지막 날짜
+    }).then(function (response) {
+      _this.getnationalityData = response.data['countryData']; // 전달받은 월별 손님수를 대입합니다.
+
+      // console.log('매출별 국적값');
+      // console.log(this.getnationalityData); 
+
+      // 손님 연령대를 계산하는 함수를 호출합니다.
+      _this.getNationalityRatio();
+
+      // Overwriting base render method with actual data.
+      _this.renderChart({
+        labels: ['한국', '일본', '중국', '미국'],
+        datasets: [{
+          label: '방문 손님 국적',
+          backgroundColor: ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00', '#990066', '#663300', '#FF6666', '#66FFFF'],
+          data: _this.nationalityRatioData
+        }]
+      });
+    }).catch(console.log('Oh my god!!, Failed'));
+  },
+
+
+  methods: {
+    // 반올림 함수 (반올림 대상값, 반올림 자릿수)
+    round: function round(number, precision) {
+      var numArray = 0;
+
+      if (number != null) {
+        var shift = function shift(number, precision, reverseShift) {
+          if (reverseShift) {
+            precision = -precision;
+          }
+          numArray = ("" + number).split("e");
+          return +(numArray[0] + "e" + (numArray[1] ? +numArray[1] + precision : precision));
+        };
+        return shift(Math.round(shift(number, precision, false)), precision, true);
+      }
+
+      return 0;
+    },
+
+
+    // 손님 연령대를 계산하는 함수
+    // (퍼센트 구하는 공식 : 일부값 / 전체값 * 100)
+    getNationalityRatio: function getNationalityRatio() {
+      // 전달받은 국적 값을 대입합니다. (퍼센트가 아니라 연령대별 매출금액)
+      var nationalityArray = JSON.parse(JSON.stringify(this.getnationalityData[0]));
+      // 전달받은 국적 값의 value값 배열을 대입합니다.
+      var nationalityValueArray = Object.values(nationalityArray);
+
+      // 전체 국적별 매출금액의 총합이 저장되는 변수
+      var totalNumber = 0;
+
+      // console.log('전달받은 값');
+      // console.log(nationalityArray);
+      // console.log('전달받은 값의 values');
+      // console.log(nationalityValueArray);
+      // console.log('전달받은 값의 keys');
+      // console.log(nationalityKeysArray);
+
+      // 전체 국적별 매출금액 총합을 구합니다.
+      for (var iCount = 0; iCount < nationalityValueArray.length; iCount++) {
+        totalNumber += Number(nationalityValueArray[iCount]);
+      }
+
+      // 전체 국적별 매출금액 비율을 구합니다.
+      for (var iCount = 0; iCount < nationalityValueArray.length; iCount++) {
+        this.nationalityRatioData.push(this.round(nationalityValueArray[iCount] / totalNumber * 100, 2));
+      }
+    }
   }
 });
 
@@ -44716,7 +45489,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerCountryChart_vue__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__ = __webpack_require__(75);
 //
@@ -44931,7 +45704,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__["a" /* default */],
     'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__["a" /* default */],
     'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__["a" /* default */],
-    'CustomerNationalityChart': __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__["a" /* default */],
+    'CustomerCountryChart': __WEBPACK_IMPORTED_MODULE_3__CustomerCountryChart_vue__["a" /* default */],
     'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__["a" /* default */],
     'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__["a" /* default */]
   }
@@ -44945,7 +45718,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomerCountryChart_vue__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__ = __webpack_require__(75);
 //
@@ -45160,7 +45933,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     'CustomerNumberChart': __WEBPACK_IMPORTED_MODULE_0__CustomerNumberChart_vue__["a" /* default */],
     'CustomerGenderChart': __WEBPACK_IMPORTED_MODULE_1__CustomerGenderChart_vue__["a" /* default */],
     'CustomerAgeChart': __WEBPACK_IMPORTED_MODULE_2__CustomerAgeChart_vue__["a" /* default */],
-    'CustomerNationalityChart': __WEBPACK_IMPORTED_MODULE_3__CustomerNationalityChart_vue__["a" /* default */],
+    'CustomerCountryChart': __WEBPACK_IMPORTED_MODULE_3__CustomerCountryChart_vue__["a" /* default */],
     'CustomerRatingChart': __WEBPACK_IMPORTED_MODULE_4__CustomerRatingChart_vue__["a" /* default */],
     'MenuRankingChart': __WEBPACK_IMPORTED_MODULE_5__MenuRankingChart_vue__["a" /* default */]
   }
@@ -102166,7 +102939,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .statistics-line {\n    padding-left: 5%;\n    padding-right: 5%;\n} */\n\n/* 기간 선택 구분 hr태그 CSS */\n.date-picker-line {\n  border : dashed 0.1em rgba(105, 105, 105, 0.3);\n}\n.card-text-style {\n  font-size: 1.5em;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 기간 선택 구분 hr태그 CSS */\n.date-picker-line {\n  border : dashed 0.1em rgba(105, 105, 105, 0.3);\n}\n.card-text-style {\n  font-size: 1.5em;\n}\n", ""]);
 
 // exports
 
@@ -102702,7 +103475,10 @@ var render = function() {
                             [
                               _c(
                                 "v-btn",
-                                { attrs: { large: "", color: "error" } },
+                                {
+                                  attrs: { large: "", color: "error" },
+                                  on: { click: _vm.dateSearch }
+                                },
                                 [_c("b", [_vm._v("조회")])]
                               )
                             ],
@@ -102820,7 +103596,11 @@ var render = function() {
                   _c(
                     "v-flex",
                     { attrs: { xs7: "" } },
-                    [_c("CustomerRatingChart", { attrs: { height: 300 } })],
+                    [
+                      _c("CustomerRatingChart", {
+                        attrs: { height: 300, "chart-data": _vm.ratingData }
+                      })
+                    ],
                     1
                   ),
                   _vm._v(" "),
@@ -102867,7 +103647,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["totalRating"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102887,7 +103673,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["taste"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102907,7 +103699,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["service"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102927,7 +103725,11 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(this.getRatingScore[0]["mood"]) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102947,7 +103749,13 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-flex", { attrs: { xs2: "" } }, [
-                                    _vm._v(" 00")
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          this.getRatingScore[0]["price"]
+                                        ) +
+                                        " "
+                                    )
                                   ]),
                                   _vm._v(" "),
                                   _c("v-spacer")
@@ -102998,7 +103806,15 @@ var render = function() {
           _c(
             "v-flex",
             { attrs: { xs9: "" } },
-            [_c("CustomerNumberChart", { attrs: { height: 200 } })],
+            [
+              _c("CustomerNumberChart", {
+                attrs: {
+                  height: 200,
+                  startDay: _vm.startDate,
+                  endDay: _vm.endDatePlusOne
+                }
+              })
+            ],
             1
           ),
           _vm._v(" "),
@@ -103136,7 +103952,14 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("CustomerGenderChart", { attrs: { height: 350 } })],
+                    [
+                      _c("CustomerGenderChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.customerGenderData
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103167,7 +103990,14 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("CustomerAgeChart", { attrs: { height: 350 } })],
+                    [
+                      _c("CustomerAgeChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.customerAgeData
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103199,7 +104029,12 @@ var render = function() {
                   _c(
                     "v-flex",
                     [
-                      _c("CustomerNationalityChart", { attrs: { height: 350 } })
+                      _c("CustomerCountryChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.customerCountryData
+                        }
+                      })
                     ],
                     1
                   )
@@ -103300,7 +104135,6 @@ var render = function() {
                                   items: _vm.rankingAgeItems,
                                   label: "연령 선택",
                                   "item-text": "age",
-                                  multiple: "",
                                   "single-line": "",
                                   "return-object": ""
                                 },
@@ -103360,7 +104194,11 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("MenuRankingChart", { attrs: { height: 200 } })],
+                    [
+                      _c("MenuRankingChart", {
+                        attrs: { height: 200, "chart-data": _vm.menuRankData }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103402,7 +104240,15 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesProfitChart", { attrs: { height: 200 } })],
+                    [
+                      _c("SalesProfitChart", {
+                        attrs: {
+                          height: 200,
+                          startDay: _vm.startDate,
+                          endDay: _vm.endDatePlusOne
+                        }
+                      })
+                    ],
                     1
                   ),
                   _vm._v(" "),
@@ -103546,7 +104392,14 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesGenderChart", { attrs: { height: 350 } })],
+                    [
+                      _c("SalesGenderChart", {
+                        attrs: {
+                          height: 350,
+                          "chart-data": _vm.salesGenderData
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103577,7 +104430,11 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesAgeChart", { attrs: { height: 350 } })],
+                    [
+                      _c("SalesAgeChart", {
+                        attrs: { height: 350, "chart-data": _vm.salesAgeData }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103608,7 +104465,15 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("SalesNationalityChart", { attrs: { height: 350 } })],
+                    [
+                      _c("SalesNationalityChart", {
+                        attrs: {
+                          height: 350,
+                          startDay: _vm.startDate,
+                          endDay: _vm.endDatePlusOne
+                        }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -103768,7 +104633,11 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [_c("MenuSalesChart", { attrs: { height: 200 } })],
+                    [
+                      _c("MenuSalesChart", {
+                        attrs: { height: 200, "chart-data": _vm.menuSalesData }
+                      })
+                    ],
                     1
                   )
                 ],
@@ -104320,9 +105189,7 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [
-                      _c("CustomerNationalityChart", { attrs: { height: 350 } })
-                    ],
+                    [_c("CustomerCountryChart", { attrs: { height: 350 } })],
                     1
                   )
                 ],
@@ -104942,9 +105809,7 @@ var render = function() {
                 [
                   _c(
                     "v-flex",
-                    [
-                      _c("CustomerNationalityChart", { attrs: { height: 350 } })
-                    ],
+                    [_c("CustomerCountryChart", { attrs: { height: 350 } })],
                     1
                   )
                 ],

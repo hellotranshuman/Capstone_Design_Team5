@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Layout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use \App\Menu;
 use \App\Menu_Option;
 use \App\Suboption;
-
+use \App\Restaurant;
 
 class MenuController extends Controller
 {
@@ -34,6 +35,19 @@ class MenuController extends Controller
 
     public function getCategory(Request $request) {
         $shop_id = $request->get('shop_id');
+        $layout = '';
+
+        $layoutData = Restaurant::select('selectLayout')
+            ->where('id', $shop_id)
+            ->first();
+
+        $layoutNum = $layoutData->selectLayout;
+
+        if($layoutNum == 0) {
+          $layout  = Layout::where('shop_id', $shop_id)
+                        ->get()
+                        ->toArray();
+        }
 
         $category =  Menu::select('category')
                     ->where('shop_id', $shop_id)
@@ -42,6 +56,7 @@ class MenuController extends Controller
 
         return response()->json([
            'category' =>  $category,
+            'layout'  =>  $layout
         ]);
     }
 
