@@ -21,7 +21,11 @@
                 <v-stepper-content step="1" color="error">
 
                     <v-card color="white lighten-1" class="mb-5" style="overflow:hidden">
-                        <Layout></Layout>
+                        <CustomLayout   v-if="layout == 0"></CustomLayout>
+                        <DefaultLayout1 v-if="layout == 1"></DefaultLayout1>
+                        <DefaultLayout2 v-if="layout == 2"></DefaultLayout2>
+                        <DefaultLayout3 v-if="layout == 3"></DefaultLayout3>
+                        <DefaultLayout4 v-if="layout == 4"></DefaultLayout4>
                     </v-card>
 
                     <!-- btn -->
@@ -125,22 +129,35 @@
 
 <script>
     import { EventBus } from './eventBus.js';
-    import VueAxios from 'vue-axios';
-    import axios    from 'axios';
+    import VueAxios     from 'vue-axios';
+    import axios        from 'axios';
 
     // 사용자 설정에 따라 레이아웃을 선택함.
+    import CustomLayout   from './CustomLayout.vue';
     import DefaultLayout1 from './MenuDefaultLayout1.vue';
-    // import DefaultLayout2 from './MenuDefaultLayout2.vue';
-    // import DefaultLayout3 from './MenuDefaultLayout3.vue';
-    // import DefaultLayout4 from './MenuDefaultLayout4.vue';
-    // import CustomLayout from './MenuDefaultLayout1.vue';      // 아직
+    import DefaultLayout2 from './MenuDefaultLayout2.vue';
+    import DefaultLayout3 from './MenuDefaultLayout3.vue';
+    import DefaultLayout4 from './MenuDefaultLayout4.vue';
 
-    var layout = DefaultLayout1;     // 사장이 선택한 메뉴판 탬플릿
     var obj    = [];                 // 클릭한 배열 담기
     var check  = 0;                  // 클릭한 배열 index용 변수
 
     export default {
         created : function () {
+
+            // 사장이 선택한 메뉴 템플릿 불러오기.
+            axios.post('/menu/getLayoutNumber', {
+                'shop_id' : this.$route.params.shop_id
+            } )
+                .then( (response) => {
+                    // 백엔드에서 보내주는 숫자 값을 this.layout에 넣어주면 그에 맞는 메뉴판이 출력됨.
+                    this.layout = response.data.layoutNum;
+                    console.log(this.layout);
+                })
+                .catch((ex)=>{
+                    alert('메뉴 템플릿 로드 실패!');
+                });
+
             EventBus.$on('select_menus', function(menu) {
                 obj.push( menu[check] ); check++;
             });
@@ -148,6 +165,8 @@
 
         data () {
             return {
+                layout : null,          // 사장이 선택한 레이아웃을 담을거임.
+
                 Menu_Order: 0,
                 click_menu:[],          // 클릭한 메뉴들이 담김
                 Ordercheck: false,      // 주문 확인 창
@@ -170,7 +189,7 @@
                 // 번역
                 TransMenu : [],
                 MenuList : [],
-                translatedText : '메뉴1=고기&메뉴2=소스:마요네즈、야채추가:레타스&메뉴3=고기:많이、고기2:많이2&'
+                translatedText : '',
             }
         },
         methods : {
@@ -270,9 +289,8 @@
                     OpCount     : this.OpCount,
                     subOpCount  : this.subOpCount
                 }).then((response) => {
-                    document.write(response.data.msg);
-                    // location.reload();
-                })
+                    this.translatedText = response.data.translatedText
+                });
 
                 // 메뉴 번역된것 DB에서 받기
                 this.MenuTranslate();
@@ -282,7 +300,7 @@
                 // DB에서 번역된 값 받기
                 // axios.post('/trans', {
                 // }).then((response) => {
-                //     this.translatedText = response.data.translatedText
+                //
                 // })
 
                 var Menu = this.translatedText.split('&');
@@ -315,10 +333,10 @@
                 console.log(this.optionArray)
                 /* Data 송신 */
                 axios.post('/makeOrder', {
-                    menulength  : this.menuid.length,    // 메뉴 개수
+                    menulength  : this.menuid.length,       // 메뉴 개수
                     menu_id     : this.menuid,              // 선택한 메뉴가 있는 배열
                     option      : this.optionId,            // 옵션 Id
-                    suboption   : this.optionselect,      // 서브 옵션
+                    suboption   : this.optionselect,        // 서브 옵션
                     shop_id     : this.$route.params.shop_id,
                     sum_price   : this.sum_price,
                 }).then((response) => {
@@ -329,7 +347,11 @@
             }
         },
         components : {
-            'Layout' : layout
+            'CustomLayout'   : CustomLayout,
+            'DefaultLayout1' : DefaultLayout1,
+            'DefaultLayout2' : DefaultLayout2,
+            'DefaultLayout3' : DefaultLayout3,
+            'DefaultLayout4' : DefaultLayout4,
         }
     }
 </script>

@@ -19,11 +19,11 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId = $request->get('shop_id');
 
-
+        // 조회 날짜 시작 & 끝
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
-
+        // <-- 조회 시작 날짜 & 끝 날짜 X
         if($start_date == null && $end_date == null)
         {
             // <-- select Rating Data
@@ -34,6 +34,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝 날짜만 O
         else if($start_date == null){
             // <-- select Rating Data
             $ratingData = Review::select(DB::raw('ROUND(AVG(rating),2) as totalRating, 
@@ -44,6 +45,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜만 O
         else if($end_date == null){
             // <-- select Rating Data
             $ratingData = Review::select(DB::raw('ROUND(AVG(rating),2) as totalRating, 
@@ -54,6 +56,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작날짜 ~ 끝 날짜 까지의 데이터 조회
         else {
             // <-- select Rating Data
             $ratingData = Review::select(DB::raw('ROUND(AVG(rating),2) as totalRating, 
@@ -77,15 +80,18 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId = $request->get('shop_id');
 
+        // 조회 날짜 시작 & 끝
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // <-- 시작날짜 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
             $customerData = Order_List::select(DB::raw('count(shop_id) as customer'))
                 ->where('shop_id', $shopId)
                 ->get()
                 ->toArray();
         }
+        // <-- 끝 날짜 X
         else if ($start_date == null){
             $customerData = Order_List::select(DB::raw('count(shop_id) as customer'))
                 ->where('shop_id', $shopId)
@@ -93,6 +99,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($end_date == null){
             $customerData = Order_List::select(DB::raw('count(shop_id) as customer'))
                 ->where('shop_id', $shopId)
@@ -100,6 +107,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 ~ 끝 날짜 까지의 데이터 조회
         else {
             $customerData = Order_List::select(DB::raw('count(shop_id) as customer'))
                 ->where('shop_id', $shopId)
@@ -120,9 +128,11 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId     = $request->get('shop_id');
 
+        // 조회 날짜 시작 & 끝
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // <-- 시작 날짜 & 끝나는 날짜 X
         if($start_date == null && $end_date == null) {
 
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -135,6 +145,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.gender=true, 1, null)) as male,
@@ -147,6 +158,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝나는 날짜 X
         else if ($end_date == null) {
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.gender=true, 1, null)) as male,
@@ -159,6 +171,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 ~ 끝나는 날짜의 데이터 조회
         else {
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.gender=true, 1, null)) as male,
@@ -184,9 +197,11 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId = $request->get('shop_id');
 
+        // 조회 날짜 시작 & 끝
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // <-- 조회 날짜 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , 1, 0)) as 0s,
@@ -207,6 +222,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , 1, 0)) as 0s,
@@ -228,6 +244,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝 날짜 X
         else if ($end_date == null) {
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , 1, 0)) as 0s,
@@ -249,6 +266,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 ~ 끝 날짜 까지의 데이터
         else{
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , 1, 0)) as 0s,
@@ -282,9 +300,11 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId      = $request->get('shop_id');
 
+        // 시작 날짜 & 끝 날짜
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // <-- 시작 날짜 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.country=\'korea\', 1, null)) as korea,
@@ -300,6 +320,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.country=\'korea\', 1, null)) as korea,
@@ -316,6 +337,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝나는 날짜 X
         else if ($end_date == null) {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.country=\'korea\', 1, null)) as korea,
@@ -331,6 +353,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 ~ 끝 날짜까지의 데이터
         else {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('count(if(users.country=\'korea\', 1, null)) as korea,
@@ -358,13 +381,16 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId      = $request->get('shop_id');
 
+        // 시작 날짜 & 끝 날짜
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
+
+        // 국가, 나이, 성별 필터링 데이터
         $country = null;
         $ages = null;
         $gender = null;
 
-
+        // <-- 선택 국가에 따른 필터링
        switch ($request->get('ranking_country')) {
 
            case 1 : {
@@ -386,17 +412,19 @@ class StatisticController extends Controller
 
        }
 
+       // <-- 선택한 성별에 따른 필터링
         switch ($request->get('ranking_gender')) {
            case 1 : {
-                $gender = 1;
+                $gender = true;
                 break;
             }
             case 2 : {
-                $gender = 2;
+                $gender = false;
                 break;
             }
         }
 
+        // <-- 선택한 연령대에 따른 필터링
         switch ($request->get('ranking_age')) {
 
             case 1 : {
@@ -429,8 +457,10 @@ class StatisticController extends Controller
             }
         }
 
+        // <-- 시작 날짜 & 끝나는 날짜 X
         if($start_date == null && $end_date == null) {
-           if($country == null && $ages == null && $gender == null) {
+           // 전체 데이터 필터링
+           if(is_null($gender) && is_null($country) && is_null($ages)) {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -441,7 +471,8 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
-           else if($ages == null && $gender == null) {
+           // 국가 데이터 필터링
+           else if(is_null($ages) && is_null($gender)) {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -453,7 +484,8 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
-           else if($country == null && $gender == null) {
+           // 연령대 데이터 필터링
+           else if(is_null($country) && is_null($gender)) {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -465,7 +497,8 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
-           else if($country == null && $ages == null) {
+           // 성별 데이터 필터링
+           else if(is_null($country) && is_null($ages)) {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -477,7 +510,8 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
-           else if($gender == null) {
+           // 연령대 & 국가 데이터 필터링
+           else if(is_null($gender)) {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -490,7 +524,8 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
-           else if($ages == null) {
+           // 국가 & 성별 데이터 필터링
+           else if(is_null($ages)) {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -503,7 +538,8 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
-           else if($country == null) {
+           // 연령대 & 성별 데이터 필터링
+           else if(is_null($country)) {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                    ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -516,6 +552,7 @@ class StatisticController extends Controller
                    ->get()
                    ->toArray();
            }
+           // 연령대 & 국가 & 성별 데이터 필터링
            else {
                $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                    ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -531,8 +568,10 @@ class StatisticController extends Controller
                    ->toArray();
            }
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
-            if($country == null && $ages == null && $gender == null) {
+            // 전체 데이터 필터링
+            if(is_null($country) && is_null($ages) && is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -545,7 +584,8 @@ class StatisticController extends Controller
                     ->toArray();
 
             }
-            else if($ages == null && $gender == null) {
+            // 국가 데이터 필터링
+            else if(is_null($ages) && is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -558,7 +598,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $gender == null) {
+            // 연령대 필터링
+            else if(is_null($country) && is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -571,7 +612,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $ages == null) {
+            // 성별 필터링
+            else if(is_null($country) && is_null($ages)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -584,7 +626,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($gender == null) {
+            // 연령, 국가 필터링
+            else if(is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -598,7 +641,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null) {
+            // 국가, 성별 필터링
+            else if(is_null($ages)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -612,7 +656,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null) {
+            // 연령, 성별 필터링
+            else if(is_null($country)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -626,6 +671,7 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            // 연령, 국가, 성별 데이터 필터링
             else {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -643,8 +689,10 @@ class StatisticController extends Controller
             }
 
         }
+        // <-- 끝나는 날짜 X
         else if ($end_date == null) {
-            if($country == null && $ages == null && $gender == null) {
+           // 전체 데이터
+            if(is_null($country) && is_null($ages) && is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -656,7 +704,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null && $gender == null) {
+            // 국가 데이터 필터링
+            else if(is_null($ages) &&is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -669,7 +718,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $gender == null) {
+            // 연령대 데이터 필터링
+            else if(is_null($country) && is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -682,7 +732,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $ages == null) {
+            // 성별 데이터 필터링
+            else if(is_null($country) && is_null($ages)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -695,7 +746,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($gender == null) {
+            // 연령대, 국가 데이터 필터링
+            else if(is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -709,7 +761,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null) {
+            // 국가, 성별 데이터 필터링
+            else if(is_null($ages)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -723,7 +776,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null) {
+            // 나이, 성별 데이터 필터링
+            else if(is_null($country)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -737,6 +791,7 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            // 나이, 국가, 성별 데이터 필터링
             else {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -754,8 +809,10 @@ class StatisticController extends Controller
             }
 
         }
+        // <-- 시작날짜 ~ 끝나는 날짜까지의 데이터
         else {
-            if($country == null && $ages == null && $gender == null) {
+           // 전체 데이터
+           if(is_null($gender) && is_null($country) && is_null($ages) ) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -766,8 +823,10 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
+
             }
-            else if($ages == null && $gender == null) {
+            // 국가 데이터 필터링
+            else if(is_null($ages) && is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -781,7 +840,8 @@ class StatisticController extends Controller
                     ->toArray();
 
             }
-            else if($country == null && $gender == null) {
+            // 연령대 데이터 필터링
+            else if(is_null($country) && is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -795,7 +855,8 @@ class StatisticController extends Controller
                     ->toArray();
 
             }
-            else if($country == null && $ages == null) {
+            // 성별 데이터 필터링
+            else if(is_null($country) && is_null($ages)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -808,9 +869,9 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
 
-                $test = 'cccc';
             }
-            else if($gender == null) {
+            // 연령대 & 국가 데이터 필터링
+            else if(is_null($gender)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -824,9 +885,9 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
 
-                $test = 'dddd';
             }
-            else if($ages == null) {
+            // 국가 & 성별 데이터 필터링
+            else if(is_null($ages)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -840,9 +901,9 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
 
-                $test = 'eee';
             }
-            else if($country == null) {
+            // 국가, 성별 데이터 필터링
+            else if(is_null($country)) {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -855,8 +916,9 @@ class StatisticController extends Controller
                     ->orderByRaw('menuCount DESC')
                     ->get()
                     ->toArray();
-                $test = 'vvv';
+
             }
+            // 성별, 국가, 연령대 데이터 필터링
             else {
                 $menuData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -872,14 +934,12 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
 
-                $test = '1111';
             }
 
         }
 
         return response()->json([
             'menuData' => $menuData,
-            'test'   => $test,
             'gender'   => $request->get('ranking_gender'),
             'country'  => $request->get('ranking_country'),
             'age'       => $request->get('ranking_age'),
@@ -892,15 +952,18 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId = $request->get('shop_id');
 
+        // 시작 날짜 & 끝 날짜
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // <-- 시작 날짜 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
             $salesData = Order_List::select(DB::raw('sum(total) as total'))
                 ->where('shop_id', $shopId)
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null){
             $salesData = Order_List::select(DB::raw('sum(total) as total'))
                 ->where('shop_id', $shopId)
@@ -908,6 +971,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝 날짜 X
         else if ($end_date == null){
             $salesData = Order_List::select(DB::raw('sum(total) as total'))
                 ->where('shop_id', $shopId)
@@ -915,7 +979,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
-
+        // <-- 시작 날짜 ~ 끝나는 날짜 까지의 데이터
         else {
             $salesData = Order_List::select(DB::raw('sum(total) as total'))
                 ->where('shop_id', $shopId)
@@ -925,7 +989,7 @@ class StatisticController extends Controller
 
         }
         return response()->json([
-            'customerData' => $salesData,
+            'salesData' => $salesData,
         ]);
     }
 
@@ -933,12 +997,15 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId      = $request->get('shop_id');
 
+        // 시작 날짜 & 끝나는 날짜
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
+        // 국가, 연령대, 성별 필터링 데이터
         $country = null;
         $ages = null;
         $gender = null;
 
+        // <-- 국가 필터링 데이터
         switch ($request->get('ranking_country')) {
             case 1 : {
                 $country = 'china';
@@ -959,6 +1026,7 @@ class StatisticController extends Controller
             }
         }
 
+        // <-- 성별 데이터 필터링
         switch ($request->get('ranking_gender')) {
             case 1 : {
                 $gender = 1;
@@ -970,6 +1038,7 @@ class StatisticController extends Controller
             }
         }
 
+        // <-- 연령대에 따른 데이터 필터링
         switch ($request->get('ranking_age')) {
             case 1 : {
                 $ages = 'date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9';
@@ -1001,8 +1070,10 @@ class StatisticController extends Controller
             }
         }
 
+        // <-- 시작 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
-            if($country == null && $ages == null && $gender == null) {
+            // 모든 데이터 조회
+            if(is_null($country) && is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1013,7 +1084,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null && $gender == null) {
+            // 국가 데이터 필터링
+            else if(is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1025,7 +1097,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $gender == null) {
+            // 연령대 데이터 필터링
+            else if(is_null($country) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1037,7 +1110,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $ages == null) {
+            // 성별 데이터 필터링
+            else if(is_null($country) && is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1049,7 +1123,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($gender == null) {
+            // 연령대 & 국가 데이터 필터링
+            else if(is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1062,7 +1137,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null) {
+            // 국가 & 성별 데이터 필터링
+            else if(is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1075,7 +1151,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null) {
+            // 연령대 & 성별 데이터 필터링
+            else if(is_null($country)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1088,8 +1165,9 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            // 연령대 & 국가 & 성별 데이터 필터링
             else {
-                $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
+               $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
                     ->select(DB::raw('menu.name as menuName, sum(menu.price) as menuTotal'))
@@ -1103,8 +1181,10 @@ class StatisticController extends Controller
                     ->toArray();
             }
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
-            if($country == null && $ages == null && $gender == null) {
+            // 전체 데이터 필터링
+            if(is_null($country) && is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1117,7 +1197,8 @@ class StatisticController extends Controller
                     ->toArray();
 
             }
-            else if($ages == null && $gender == null) {
+            // 국가 데이터 필터링
+            else if(is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1130,7 +1211,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $gender == null) {
+            // 연령대 데이터 필터
+            else if(is_null($country) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1143,7 +1225,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $ages == null) {
+            // 성별 데이터 필터링
+            else if(is_null($country) && is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1156,7 +1239,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($gender == null) {
+            // 연령대 & 국가 필터링
+            else if(is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1170,7 +1254,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null) {
+            // 국가 & 성별 데이터 필터링
+            else if(is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1184,7 +1269,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null) {
+            // 연령, 성별 데이터 필터
+            else if(is_null($country)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1198,6 +1284,7 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            // 연령, 국가, 성별 데이터 필터링
             else {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -1215,8 +1302,10 @@ class StatisticController extends Controller
             }
 
         }
+        // <-- 끝나는 날짜  X
         else if ($end_date == null) {
-            if($country == null && $ages == null && $gender == null) {
+            // 모든 데이터 조회
+            if(is_null($country) && is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1228,7 +1317,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null && $gender == null) {
+            // 국가 데이터 필터링
+            else if(is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1241,7 +1331,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $gender == null) {
+            // 연령대 데이터 필터링
+            else if(is_null($country) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1254,7 +1345,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $ages == null) {
+            // 성별 데이터 필터링
+            else if(is_null($country) && is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1267,7 +1359,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($gender == null) {
+            // 국가, 연령대 데이터 필터링
+            else if(is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1281,7 +1374,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null) {
+            // 국가, 성별 데이터 필터링
+            else if(is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1295,7 +1389,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null) {
+            // 연령대, 성별 데이터 필터링
+            else if(is_null($country)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1309,6 +1404,7 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            // 연령대, 국가, 성별 데이터 필터링
             else {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -1326,8 +1422,10 @@ class StatisticController extends Controller
             }
 
         }
+        // <-- 시작 날짜 ~ 끝나는 날짜 데이터 조회
         else {
-            if($country == null && $ages == null && $gender == null) {
+            // 모든 데이터 조회
+            if(is_null($country) && is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1339,7 +1437,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null && $gender == null) {
+            // 국가 데이터 필터링
+            else if(is_null($ages) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1352,7 +1451,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $gender == null) {
+            // 연령대 데이터 필터링
+            else if(is_null($country) && is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1365,7 +1465,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null && $ages == null) {
+            // 성별 데이터 필터링
+            else if(is_null($country) && is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1378,7 +1479,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($gender == null) {
+            // 국가, 연령대 데이터 필터링
+            else if(is_null($gender)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1392,7 +1494,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($ages == null) {
+            // 국가, 성별 데이터 필터링
+            else if(is_null($ages)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1406,7 +1509,8 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
-            else if($country == null) {
+            // 연령대, 성별 데이터 필터링
+            else if(is_null($country)) {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                     ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
@@ -1420,6 +1524,7 @@ class StatisticController extends Controller
                     ->get()
                     ->toArray();
             }
+            // 연령대, 국가, 성별 데이터 필터링
             else {
                 $salesData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                     ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
@@ -1436,7 +1541,8 @@ class StatisticController extends Controller
                     ->toArray();
             }
 
-        }
+        } // <-- if End
+
         return response()->json([
             'salesData' => $salesData,
         ]);
@@ -1614,9 +1720,11 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId     = $request->get('shop_id');
 
+        // 시작 & 끝 날짜
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // <-- 시작 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
 
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
@@ -1628,6 +1736,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(users.gender=true, order_list.total, 0)) as maleSales,
@@ -1639,6 +1748,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝 날짜 X
         else if ($end_date == null) {
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(users.gender=true, order_list.total, 0)) as maleSales,
@@ -1650,6 +1760,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // 시작하는 날짜 ~ 끝 날짜의 데이터 조회
         else {
             $genderData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(users.gender=true, order_list.total, 0)) as maleSales,
@@ -1672,9 +1783,11 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId      = $request->get('shop_id');
 
+        // 시작 & 끝 날짜
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // 시작 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
@@ -1690,6 +1803,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
@@ -1706,6 +1820,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝 날짜 X
         else if ($end_date == null) {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
@@ -1721,6 +1836,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 ~ 끝나는 날짜의 데이터 조회
         else {
             $countryData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(users.country=\'korea\', order_list.total, 0)) as koreaSales,
@@ -1735,7 +1851,7 @@ class StatisticController extends Controller
                 ->whereBetween('order_date', [$start_date, $end_date])
                 ->get()
                 ->toArray();
-        }
+        } // <-- if End
 
         return response()->json([
             'countryData' => $countryData,
@@ -1748,9 +1864,11 @@ class StatisticController extends Controller
         // get Shop Id
         $shopId = $request->get('shop_id');
 
+        // 시작 & 끝 날짜
         $start_date = $request->get('start_date');
         $end_date = $request->get('end_date');
 
+        // <-- 시작 & 끝 날짜 X
         if($start_date == null && $end_date == null) {
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
@@ -1771,6 +1889,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작 날짜 X
         else if ($start_date == null) {
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
@@ -1792,6 +1911,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 끝나는 날짜 X
         else if ($end_date == null) {
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
@@ -1813,6 +1933,7 @@ class StatisticController extends Controller
                 ->get()
                 ->toArray();
         }
+        // <-- 시작하는 날짜 ~ 끝나는 날짜의 데이터 조회
         else{
             $ageData = Order_List::join('users', 'users.id', '=', 'order_list.user_num')
                 ->select(DB::raw('sum(if(date_format(now(),\'%Y\')-substring(users.birthday,1,4) between 0 and 9 , order_list.total, 0)) as 0sSales,
@@ -1833,7 +1954,7 @@ class StatisticController extends Controller
                 ->whereBetween('order_date', [$start_date, $end_date])
                 ->get()
                 ->toArray();
-        }
+        } // <-- if End
 
         return response()->json([
             'ageData' => $ageData,

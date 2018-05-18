@@ -39053,6 +39053,7 @@ var num = 0; // 옵션 갯수
 //
 //
 //
+//
 
 
 
@@ -39062,11 +39063,11 @@ var target_L = 0;
 var target_T = 0;
 var target_Obj = null;
 
-// color picker 
+// color picker
 var bar = null; // color bar
 var bar_cntxt = null; // color bar context
 var palet = null; // palette
-var palet_cntxt = null; // palette context  
+var palet_cntxt = null; // palette context
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     created: function created() {
@@ -39094,7 +39095,7 @@ var palet_cntxt = null; // palette context
             exImg3: '/images/template/template3.png',
             exImg4: '/images/template/template4.png',
 
-            // 모달 용 
+            // 모달 용
             tem1: false,
             tem2: false,
             tem3: false,
@@ -39105,9 +39106,9 @@ var palet_cntxt = null; // palette context
 
             // 메뉴판 커스텀마이징
             createMode: false, // 모달 용
-            sideToolBar: null, // 사이드 툴바 용 
+            sideToolBar: null, // 사이드 툴바 용
             item: null, // 사이드 툴바에서 선택한 리스트 값 저장
-            Resizer: null, // 엘리먼트 리사이즈 용 
+            Resizer: null, // 엘리먼트 리사이즈 용
 
             // 선 색 || 영역 색상 구분용
             appColor: null
@@ -39129,13 +39130,8 @@ var palet_cntxt = null; // palette context
                     'slt_tem': slt_tem,
                     'shop_id': this.$route.params.shop_id
                 }).then(function (response) {
-
-                    if (response.data.msg) {
-                        alert('저장이 완료 되었습니다');
-                        location.reload();
-                    }
-
-                    // get_datas = response.data
+                    alert('저장이 완료 되었습니다');
+                    location.reload();
                 }).catch(function (ex) {
                     alert('저장 실패');
                 });
@@ -39151,8 +39147,8 @@ var palet_cntxt = null; // palette context
         // 메뉴판 제작 - 작업 내용 저장하기.
         createSave: function createSave() {
             var formData = new FormData(); // 엘리먼트들을 담음
-            var browser_w = window.outerWidth; // 브라우저의 width
-            var browser_h = window.outerHeight; // 브라우저의 height
+            // let browser_w  = window.outerWidth;                          // 브라우저의 width
+            // let browser_h  = window.outerHeight;                         // 브라우저의 height
             var MenuNum = document.getElementById('MenuNum'); // 한줄에 표시될 메뉴 갯수
             var MenuMargin = document.getElementById('MenuMargin'); // 메뉴들 간격 설정
             var workSpace = document.getElementById('workSpace'); // 작업 공간 div 가져오기
@@ -39162,24 +39158,30 @@ var palet_cntxt = null; // palette context
             var menu = document.getElementsByClassName('createdMenu')[0];
             var menu_w = menu.style.width.replace('px', '');
             var menu_h = menu.style.height.replace('px', '');
-            var menu_t = menu.style.top.replace('px', '');
-            var menu_l = menu.style.left.replace('px', '');
+            var ratio = Math.floor(menu_h / menu_w * 100);
+            // let menu_t = menu.style.top.replace('px', '');
+            // let menu_l = menu.style.left.replace('px', '');
 
             // 메뉴 영역 스타일 값 페센트로 바꾸기.
-            menu.style.width = Math.ceil(menu_w / browser_w * 100) + "%";
-            menu.style.height = Math.ceil(menu_h / browser_h * 100) + "%";
-            menu.style.top = Math.ceil(menu_t / browser_h * 100) + "%";
-            menu.style.left = Math.ceil(menu_l / browser_w * 100) + "%";
+            // menu.style.width  = Math.ceil( menu_w / browser_w * 100 ) + "%";
+            // menu.style.height = Math.ceil( menu_h / browser_h * 100 ) + "%";
+            // menu.style.top    = Math.ceil( menu_t / browser_h * 100 ) + "%";
+            // menu.style.left   = Math.ceil( menu_l / browser_w * 100 ) + "%";
+
+            array['MenuNum'] = MenuNum.value; // 한 줄에 출력 될 메뉴의 갯수
+            array['MenuMargin'] = MenuMargin.value; // 메뉴 간의 간격 설정
 
             // 배열에 style 값 담기
             array['createdMenu'] = {
-                'width': menu.style.width,
-                'height': menu.style.height,
-                'top': menu.style.top,
-                'left': menu.style.left,
+                // 'width'         : menu.style.width,
+                // 'height'        : menu.style.height,
+                // 'top'           : menu.style.top,
+                // 'left'          : menu.style.left,
+                'ratio': ratio,
                 'border': menu.style.border,
                 'borderRadius': menu.style.borderRadius,
-                'color': menu.style.color
+                'color': menu.style.color,
+                'backgroundColor': menu.style.backgroundColor
             };
 
             // 메뉴 안의 요소들 가공하기 & 배열에 담기.
@@ -39193,35 +39195,42 @@ var palet_cntxt = null; // palette context
                     var item_l = element.style.left.replace('px', '');
                     var className = element.getAttribute('class').split(' ')[0]; // 클래스 명 찾기
 
-                    // width, height, top, left 픽셀 값에서 퍼센트로 바꾸기 
-                    element.style.width = Math.ceil(item_w / menu_w * 100) + "%";
-                    element.style.height = Math.ceil(item_h / menu_h * 100) + "%";
-                    element.style.top = Math.ceil(item_t / menu_h * 100) + "%";
-                    element.style.left = Math.ceil(item_l / menu_w * 100) + "%";
+                    // width, height, top, left 픽셀 값에서 퍼센트로 바꾸기
+                    // element.style.width  = Math.ceil( item_w / menu_w * 100 ) + "%";
+                    // element.style.height = Math.ceil( item_h / menu_h * 100 ) + "%";
+                    // element.style.top    = Math.ceil( item_t / menu_h * 100 ) + "%";
+                    // element.style.left   = Math.ceil( item_l / menu_w * 100 ) + "%";
 
                     // 배열에 style 값 담기
                     array[className] = {
-                        'width': element.style.width,
-                        'height': element.style.height,
-                        'top': element.style.top,
-                        'left': element.style.left,
+                        // 'width'         : element.style.width,
+                        // 'height'        : element.style.height,
+                        // 'top'           : element.style.top,
+                        // 'left'          : element.style.left,
+                        'width': Math.ceil(item_w / menu_w * 100) + "%",
+                        'height': Math.ceil(item_h / menu_h * 100) + "%",
+                        'top': Math.ceil(item_t / menu_h * 100) + "%",
+                        'left': Math.ceil(item_l / menu_w * 100) + "%",
                         'border': element.style.border,
                         'borderRadius': element.style.borderRadius,
-                        'color': element.style.color
+                        'color': element.style.color,
+                        'backgroundColor': element.style.backgroundColor
                     };
-                    //formData.append(className, element.style); 
+                    //formData.append(className, element.style);
                 }
             }
 
-            array['MenuNum'] = MenuNum.value; // 한 줄에 출력 될 메뉴의 갯수 
-            array['MenuMargin'] = MenuMargin.value + 'px'; // 메뉴 간의 간격 설정
-
             // 메뉴 출력 설정 사항 저장하기.
             formData.append('Menu', JSON.stringify(array)); // 메뉴 스타일.
-            formData.append('shop_id', this.$route.params.shop_id);
+            formData.append('shop_id', this.$route.params.shop_id); // shopID
+
+            // json 확인
+            var zz = JSON.stringify(array);
+            console.log(zz);
+
             // formData 확인하기
             // for(var pair of formData.entries()) {
-            //     console.log(pair[0]+ ': '+ pair[1]); 
+            //     console.log(pair[0]+ ': '+ pair[1]);
             // }
 
             // 저장하기.
@@ -39232,7 +39241,7 @@ var palet_cntxt = null; // palette context
             });
         },
 
-        // 드래그로 엘리먼트 다중 선택하기. 
+        // 드래그로 엘리먼트 다중 선택하기.
         dragSelect: function dragSelect() {
             var workSpace = document.getElementById('workSpace');
             var Selecter = document.createElement('div');
@@ -39274,7 +39283,7 @@ var palet_cntxt = null; // palette context
             document.onmousemove = this.moveStart;
             document.onmouseup = this.moveStop;
         },
-        // 엘리먼트 움직이기 : mouseMove  
+        // 엘리먼트 움직이기 : mouseMove
         moveStart: function moveStart() {
             event.preventDefault();
             var e_obj = window.event ? window.event : event;
@@ -39369,6 +39378,13 @@ var palet_cntxt = null; // palette context
                     createdThing.style.height = '80px';
                     createdThing.classList.add('createdExpl');break;
 
+                // 런디 치더 구분 만들기
+                case 'createdL_D':
+                    createdThing.innerText = '런치 / 디너';
+                    createdThing.style.width = '200px';
+                    createdThing.style.height = '50px';
+                    createdThing.classList.add('createdL_D');break;
+
                 // 메뉴 가격
                 case 'createdPrice':
                     createdThing.innerText = '메뉴 가격';
@@ -39376,7 +39392,7 @@ var palet_cntxt = null; // palette context
                     createdThing.style.height = '50px';
                     createdThing.classList.add('createdPrice');break;
 
-                // 메뉴 선택 
+                // 메뉴 선택
                 case 'createdSelect':
                     createdThing.innerText = '메뉴 선택';
                     createdThing.style.width = '100px';
@@ -39401,10 +39417,11 @@ var palet_cntxt = null; // palette context
                 click_menu.classList.remove("active");
             });
 
-            // 생성된 element                         
+            // 생성된 element
             createdThing.style.top = '1px';
             createdThing.style.left = '1px';
             createdThing.style.zIndex = 10;
+            createdThing.style.border = '2px solid black';
             createdThing.onmousedown = this.startDrag;
             createdThing.classList.add('dragElement');
 
@@ -39415,7 +39432,7 @@ var palet_cntxt = null; // palette context
             resizer.onmousedown = this.initResize;
             resizer.classList.add('resizer');
 
-            // 포함 시키기 
+            // 포함 시키기
             createdThing.appendChild(resizer);
 
             if (this.item === 'createdMenu') {
@@ -39448,10 +39465,10 @@ var palet_cntxt = null; // palette context
 
         // 우클릭 메뉴창 : 영역 서식 창 열기
         CallDesignSet: function CallDesignSet() {
-            var click_menu = document.getElementById("click_menu"); // 우 클릭 메뉴창 
-            var designSet = document.getElementById('designSet'); // 영역 서식 메뉴창            
+            var click_menu = document.getElementById("click_menu"); // 우 클릭 메뉴창
+            var designSet = document.getElementById('designSet'); // 영역 서식 메뉴창
 
-            designSet.classList.add('active'); // 영역 서식 메뉴창 열기.   
+            designSet.classList.add('active'); // 영역 서식 메뉴창 열기.
             click_menu.classList.remove("active"); // 우클릭 메뉴창 닫기
         },
         // 우클릭 메뉴창 : 영역 서식 설정 사항 적용하기.
@@ -39471,7 +39488,7 @@ var palet_cntxt = null; // palette context
                 target_Obj.style.border = 0;
             }
 
-            target_Obj.style.color = textColor; // 글자 색 설정.            
+            target_Obj.style.color = textColor; // 글자 색 설정.
             target_Obj.style.backgroundColor = areaColor; // 영역 색상 설정.
 
             // 영역 모양 설정
@@ -39490,7 +39507,7 @@ var palet_cntxt = null; // palette context
         CloseDesignSet: function CloseDesignSet() {
             var designSet = document.getElementById('designSet'); // 영역 서식 메뉴창
 
-            // 영역 서식 메뉴창 닫기. 
+            // 영역 서식 메뉴창 닫기.
             designSet.classList.remove('active');
             target_Obj.classList.remove('click_color');
         },
@@ -39537,7 +39554,7 @@ var palet_cntxt = null; // palette context
         Bar_Click: function Bar_Click() {
             var y = event.clientY - bar.offsetParent.offsetTop; // y 좌표를 가져온다.
             var color = bar_cntxt.getImageData(0, y, 1, 1).data; // 해당 위치의 색상을 가져온다.
-            this.DrawingPalette(color[0], color[1], color[2]); // 팔레트 그리기.     
+            this.DrawingPalette(color[0], color[1], color[2]); // 팔레트 그리기.
         },
         // 팔레트 초기화.
         Palette_init: function Palette_init() {
@@ -39595,7 +39612,7 @@ var palet_cntxt = null; // palette context
         // 우클릭 메뉴창 : 선택한 엘리먼트들 그룹핑하기
         elementGrouping: function elementGrouping() {
             var workSpace = document.getElementById('workSpace');
-            var groupDiv = document.createElement('div'); // 클릭한 element들을 담을 div 
+            var groupDiv = document.createElement('div'); // 클릭한 element들을 담을 div
             var resizer = document.createElement('div'); // element 크기 조절기
             var box = []; // 더블 클릭한 element를 담을 배열
 
@@ -39639,7 +39656,7 @@ var palet_cntxt = null; // palette context
             resizer.onmousedown = this.initResize;
             resizer.classList.add('resizer');
 
-            // 포함 시키기  
+            // 포함 시키기
             groupDiv.appendChild(resizer);
             workSpace.appendChild(groupDiv);
 
@@ -39668,7 +39685,15 @@ var palet_cntxt = null; // palette context
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MenuDefaultLayout1_vue__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CustomLayout_vue__ = __webpack_require__(653);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__MenuDefaultLayout1_vue__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MenuDefaultLayout2_vue__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__MenuDefaultLayout3_vue__ = __webpack_require__(661);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__MenuDefaultLayout4_vue__ = __webpack_require__(665);
+//
+//
+//
+//
 //
 //
 //
@@ -39801,17 +39826,29 @@ var palet_cntxt = null; // palette context
 
 // 사용자 설정에 따라 레이아웃을 선택함.
 
-// import DefaultLayout2 from './MenuDefaultLayout2.vue';
-// import DefaultLayout3 from './MenuDefaultLayout3.vue';
-// import DefaultLayout4 from './MenuDefaultLayout4.vue';
-// import CustomLayout from './MenuDefaultLayout1.vue';      // 아직
 
-var layout = __WEBPACK_IMPORTED_MODULE_3__MenuDefaultLayout1_vue__["a" /* default */]; // 사장이 선택한 메뉴판 탬플릿
+
+
+
+
 var obj = []; // 클릭한 배열 담기
 var check = 0; // 클릭한 배열 index용 변수
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     created: function created() {
+        var _this = this;
+
+        // 사장이 선택한 메뉴 템플릿 불러오기.
+        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/menu/getLayoutNumber', {
+            'shop_id': this.$route.params.shop_id
+        }).then(function (response) {
+            // 백엔드에서 보내주는 숫자 값을 this.layout에 넣어주면 그에 맞는 메뉴판이 출력됨.
+            _this.layout = response.data.layoutNum;
+            console.log(_this.layout);
+        }).catch(function (ex) {
+            alert('메뉴 템플릿 로드 실패!');
+        });
+
         __WEBPACK_IMPORTED_MODULE_0__eventBus_js__["a" /* EventBus */].$on('select_menus', function (menu) {
             obj.push(menu[check]);check++;
         });
@@ -39819,6 +39856,8 @@ var check = 0; // 클릭한 배열 index용 변수
 
     data: function data() {
         return {
+            layout: null, // 사장이 선택한 레이아웃을 담을거임.
+
             Menu_Order: 0,
             click_menu: [], // 클릭한 메뉴들이 담김
             Ordercheck: false, // 주문 확인 창
@@ -39841,7 +39880,7 @@ var check = 0; // 클릭한 배열 index용 변수
             // 번역
             TransMenu: [],
             MenuList: [],
-            translatedText: '메뉴1=고기&메뉴2=소스:마요네즈、야채추가:레타스&메뉴3=고기:많이、고기2:많이2&'
+            translatedText: ''
         };
     },
 
@@ -39909,6 +39948,8 @@ var check = 0; // 클릭한 배열 index용 변수
 
         // 번역 메뉴 목록
         MenuOrderList: function MenuOrderList() {
+            var _this2 = this;
+
             for (var i = 0; i < this.click_menu.length; i++) {
                 var OpNum = 0;
                 var subNum = 0;
@@ -39938,8 +39979,7 @@ var check = 0; // 클릭한 배열 index용 변수
                 OpCount: this.OpCount,
                 subOpCount: this.subOpCount
             }).then(function (response) {
-                document.write(response.data.msg);
-                // location.reload();
+                _this2.translatedText = response.data.translatedText;
             });
 
             // 메뉴 번역된것 DB에서 받기
@@ -39949,7 +39989,7 @@ var check = 0; // 클릭한 배열 index용 변수
             // DB에서 번역된 값 받기
             // axios.post('/trans', {
             // }).then((response) => {
-            //     this.translatedText = response.data.translatedText
+            //
             // })
 
             var Menu = this.translatedText.split('&');
@@ -39993,7 +40033,11 @@ var check = 0; // 클릭한 배열 index용 변수
         }
     },
     components: {
-        'Layout': layout
+        'CustomLayout': __WEBPACK_IMPORTED_MODULE_3__CustomLayout_vue__["a" /* default */],
+        'DefaultLayout1': __WEBPACK_IMPORTED_MODULE_4__MenuDefaultLayout1_vue__["a" /* default */],
+        'DefaultLayout2': __WEBPACK_IMPORTED_MODULE_5__MenuDefaultLayout2_vue__["a" /* default */],
+        'DefaultLayout3': __WEBPACK_IMPORTED_MODULE_6__MenuDefaultLayout3_vue__["a" /* default */],
+        'DefaultLayout4': __WEBPACK_IMPORTED_MODULE_7__MenuDefaultLayout4_vue__["a" /* default */]
     }
 });
 
@@ -96044,7 +96088,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 이미지 비율용 스타일 */\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n\n/* 메뉴 제작 작업 공간 */\n#workSpace {\n    width: 100%; \n    height: 100%; \n    position:relative; \n    overflow:hidden;\n    margin: auto;\n    background-color: rgb(238, 238, 238);\n}\n\n/* 메뉴 출력 설정 */\n#MenuPrt {\n    width: 30%;  \n    z-index:100;\n    margin-top: 5%;\n    border: 3px solid #585858; \n    background-color: #EFF5FB; \n    position: absolute;\n    display: none;\n}\n#MenuPrt.active { \n    display: block;  \n    left : 35%;\n}\n\n/* 리스트 스타일 */\n.list-style{\n    font-size: 1.5rem;\n}\n\n/* 메뉴 영역 */\n.createdMenu { \n    border: 2px dashed black; \n    font-size: 1.5rem;\n    text-align: center; \n    overflow: hidden;\n    background-color: white;\n}\n/* 메뉴 이미지 영역 */\n.createdImg { \n    background-image: url(" + escape(__webpack_require__(582)) + ");\n    background-size: 100% 100%;\n}\n/* 메뉴 이름 영역 */\n.createdName { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n} \n/* 메뉴 설명 영역 */\n.createdExpl { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 가격 영역 */\n.createdPrice { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 선택 영역 */\n.createdSelect { \n    border: 2px solid black;\n    font-size: 1.5rem;\n    text-align: center;\n}\n\n/* 엘리먼트 움직이기 용 */\n.dragElement { \n    position: absolute;\n    cursor: pointer;\n}\n/* div 크기 조절기 */\n.resizer {\n    width: 10px;\n    height: 10px; \n    right: 0;\n    bottom: 0;\n    z-index: 90;\n    position: absolute;\n    cursor: se-resize;\n    background-color:salmon;\n}\n\n/* 마우스 메뉴 */\nul {\n    margin: 0px;\n    padding: 0px;\n    font-size: 1.2rem;\n}\nhr {\n    margin: 3%;\n    border: thin solid #D8D8D8;\n}\n.context-menus {\n    width: 20%;\n    border: 1px solid black;\n    z-index:100;\n    position: absolute;\n    display: none;\n    text-align: center;\n}\n.context-menus.active {\n    display: block;\n    background-color: #EFF5FB;\n}\n.context-menus.active>ul>li {\n    list-style: none;\n    padding: 10px;\n    color: #424242;\n}\n.context-menus.active>ul>li:hover {\n    background-color: lightgreen;\n}\n.click_color {\n    border:2px solid blue;\n}\n\n/* 영역 서식 메뉴창 */\n#designSet {\n    width: 40%; \n    max-height: 80%;\n    z-index:100;\n    border: 3px dashed #585858; \n    padding-bottom: 3%;\n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#designSet.active {\n    top : 15%;\n    left: 30%;\n    display: block;\n    overflow: scroll;\n}\n.designSet_title {\n    font-size: 2rem;\n    margin-left: 3%;\n    color: cadetblue;\n}\n.designSet_tr {\n    width: 90%;\n    font-size: 1.3rem;\n    margin: auto;\n    margin-top: 6%;\n}\n.designSet_name {color: #6E6E6E;\n}\n.designSet_ipt{\n    width: 50%;\n    font-size: 1.3rem;\n    margin-left: 5%;\n    text-align: center;\n    color: #6E6E6E; \n    border-bottom: 1.5px solid #6E6E6E;\n}\n.designSet_color {\n    width: 10%; \n    height: 0;\n    border: 1px solid black;\n    margin-left: 5%;\n    margin-right: 3%; \n    position: relative; \n    float: left;\n    overflow: hidden;\n    padding-bottom: 9%;\n}\n.designSet_color_inner{\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    position: absolute;\n}\n.designSet_color_btn {\n    font-size: 1.5rem;\n    margin-left: 5%;\n    float: left;\n    color: cadetblue;\n} \n\n/* color-picker */\n#colorPicker{\n    width: auto; \n    z-index:100;\n    border: 3px solid #585858; \n    background-color: whitesmoke; \n    position: absolute;\n    display: none;\n}\n#colorPicker.active {\n    top : 15%;\n    left: 40%;\n    display:inline-block; \n    overflow: hidden;\n}\n#palette { width:256px; height:256px;\n}\n#bar { width:20px; height:256px;\n}\n#click_color {\n    width: 100%; \n    height: 40px;\n    font-size: 1.5rem;\n    border-bottom: 3px solid #585858;  \n    color: #6E6E6E; \n    text-align: center;\n}\n.color_btn {\n    width: 50%;\n    font-size: 1.5rem;\n    text-align: center;\n    float: left;\n    color: #6E6E6E;\n}\n\n/* 그룹화 div */\n.groupDiv {\n    width: auto;\n    height: auto;\n    min-width: 10px;\n    min-height: 10px;\n    overflow: hidden; \n    border: 1px solid lightgreen;\n}\n\n/* 드래그로 div 선택 */\n.selecter {\n    width: 100px;\n    height: 100px;\n    opacity: 0.2;\n    z-index: 100;\n    background-color: aqua;\n    position: absolute;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 이미지 비율용 스타일 */\n.tem_img {\n    width: 100%;\n    height: 0;\n    padding-bottom: 70%;\n    overflow: hidden;\n    position: relative;\n}\n.inner_img {\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    position: absolute;\n}\n\n/* 메뉴 제작 작업 공간 */\n#workSpace {\n    width: 100%;\n    height: 100%;\n    position:relative;\n    overflow:hidden;\n    margin: auto;\n    background-color: rgb(238, 238, 238);\n}\n\n/* 메뉴 출력 설정 */\n#MenuPrt {\n    width: 30%;\n    z-index:100;\n    margin-top: 5%;\n    border: 3px solid #585858;\n    background-color: #EFF5FB;\n    position: absolute;\n    display: none;\n}\n#MenuPrt.active {\n    display: block;\n    left : 35%;\n}\n\n/* 리스트 스타일 */\n.list-style{\n    font-size: 1.5rem;\n}\n\n/* 메뉴 영역 */\n.createdMenu {\n    font-size: 1.5rem;\n    text-align: center;\n    overflow: hidden;\n    background-color: white;\n}\n/* 메뉴 이미지 영역 */\n.createdImg {\n    background-image: url(" + escape(__webpack_require__(582)) + ");\n    background-size: 100% 100%;\n}\n/* 메뉴 이름 영역 */\n.createdName {\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 설명 영역 */\n.createdExpl {\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 런치 디너 구분 영역 */\n.createdL_D {\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 가격 영역 */\n.createdPrice {\n    font-size: 1.5rem;\n    text-align: center;\n}\n/* 메뉴 선택 영역 */\n.createdSelect {\n    font-size: 1.5rem;\n    text-align: center;\n}\n\n/* 엘리먼트 움직이기 용 */\n.dragElement {\n    position: absolute;\n    cursor: pointer;\n}\n/* div 크기 조절기 */\n.resizer {\n    width: 10px;\n    height: 10px;\n    right: 0;\n    bottom: 0;\n    z-index: 90;\n    position: absolute;\n    cursor: se-resize;\n    background-color:salmon;\n}\n\n/* 마우스 메뉴 */\nul {\n    margin: 0px;\n    padding: 0px;\n    font-size: 1.2rem;\n}\nhr {\n    margin: 3%;\n    border: thin solid #D8D8D8;\n}\n.context-menus {\n    width: 20%;\n    border: 1px solid black;\n    z-index:100;\n    position: absolute;\n    display: none;\n    text-align: center;\n}\n.context-menus.active {\n    display: block;\n    background-color: #EFF5FB;\n}\n.context-menus.active>ul>li {\n    list-style: none;\n    padding: 10px;\n    color: #424242;\n}\n.context-menus.active>ul>li:hover {\n    background-color: lightgreen;\n}\n.click_color {\n    border:2px solid blue;\n}\n\n/* 영역 서식 메뉴창 */\n#designSet {\n    width: 40%;\n    max-height: 80%;\n    z-index:100;\n    border: 3px dashed #585858;\n    padding-bottom: 3%;\n    background-color: whitesmoke;\n    position: absolute;\n    display: none;\n}\n#designSet.active {\n    top : 15%;\n    left: 30%;\n    display: block;\n    overflow: scroll;\n}\n.designSet_title {\n    font-size: 2rem;\n    margin-left: 3%;\n    color: cadetblue;\n}\n.designSet_tr {\n    width: 90%;\n    font-size: 1.3rem;\n    margin: auto;\n    margin-top: 6%;\n}\n.designSet_name {color: #6E6E6E;\n}\n.designSet_ipt{\n    width: 50%;\n    font-size: 1.3rem;\n    margin-left: 5%;\n    text-align: center;\n    color: #6E6E6E;\n    border-bottom: 1.5px solid #6E6E6E;\n}\n.designSet_color {\n    width: 10%;\n    height: 0;\n    border: 1px solid black;\n    margin-left: 5%;\n    margin-right: 3%;\n    position: relative;\n    float: left;\n    overflow: hidden;\n    padding-bottom: 9%;\n}\n.designSet_color_inner{\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    position: absolute;\n}\n.designSet_color_btn {\n    font-size: 1.5rem;\n    margin-left: 5%;\n    float: left;\n    color: cadetblue;\n}\n\n/* color-picker */\n#colorPicker{\n    width: auto;\n    z-index:100;\n    border: 3px solid #585858;\n    background-color: whitesmoke;\n    position: absolute;\n    display: none;\n}\n#colorPicker.active {\n    top : 15%;\n    left: 40%;\n    display:inline-block;\n    overflow: hidden;\n}\n#palette { width:256px; height:256px;\n}\n#bar { width:20px; height:256px;\n}\n#click_color {\n    width: 100%;\n    height: 40px;\n    font-size: 1.5rem;\n    border-bottom: 3px solid #585858;\n    color: #6E6E6E;\n    text-align: center;\n}\n.color_btn {\n    width: 50%;\n    font-size: 1.5rem;\n    text-align: center;\n    float: left;\n    color: #6E6E6E;\n}\n\n/* 그룹화 div */\n.groupDiv {\n    width: auto;\n    height: auto;\n    min-width: 10px;\n    min-height: 10px;\n    overflow: hidden;\n    border: 1px solid lightgreen;\n}\n\n/* 드래그로 div 선택 */\n.selecter {\n    width: 100px;\n    height: 100px;\n    opacity: 0.2;\n    z-index: 100;\n    background-color: aqua;\n    position: absolute;\n}\n\n", ""]);
 
 // exports
 
@@ -96134,11 +96178,7 @@ var render = function() {
                       attrs: { dark: "", block: "" },
                       on: { click: _vm.save_data }
                     },
-                    [
-                      _vm._v(
-                        " \n                    저장하기\n                "
-                      )
-                    ]
+                    [_vm._v("\n                    저장하기\n                ")]
                   )
                 ],
                 1
@@ -96164,7 +96204,10 @@ var render = function() {
                       _c("v-card-text", [_vm._v(" 기본 템플릿1 ")]),
                       _vm._v(" "),
                       _c("div", { staticClass: "tem_img" }, [
-                        _c("img", { attrs: { src: _vm.exImg1 } })
+                        _c("img", {
+                          staticClass: "inner_img",
+                          attrs: { src: _vm.exImg1 }
+                        })
                       ]),
                       _vm._v(" "),
                       _c(
@@ -96189,7 +96232,10 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "tem_img" }, [
-                                _c("img", { attrs: { src: _vm.exImg1 } })
+                                _c("img", {
+                                  staticClass: "inner_img",
+                                  attrs: { src: _vm.exImg1 }
+                                })
                               ])
                             ],
                             1
@@ -96293,7 +96339,10 @@ var render = function() {
                       _c("v-card-text", [_vm._v(" 기본 템플릿2 ")]),
                       _vm._v(" "),
                       _c("div", { staticClass: "tem_img" }, [
-                        _c("img", { attrs: { src: _vm.exImg2 } })
+                        _c("img", {
+                          staticClass: "inner_img",
+                          attrs: { src: _vm.exImg2 }
+                        })
                       ]),
                       _vm._v(" "),
                       _c(
@@ -96317,7 +96366,10 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "tem_img" }, [
-                                _c("img", { attrs: { src: _vm.exImg2 } })
+                                _c("img", {
+                                  staticClass: "inner_img",
+                                  attrs: { src: _vm.exImg2 }
+                                })
                               ])
                             ],
                             1
@@ -96421,7 +96473,10 @@ var render = function() {
                       _c("v-card-text", [_vm._v(" 기본 템플릿3 ")]),
                       _vm._v(" "),
                       _c("div", { staticClass: "tem_img" }, [
-                        _c("img", { attrs: { src: _vm.exImg3 } })
+                        _c("img", {
+                          staticClass: "inner_img",
+                          attrs: { src: _vm.exImg3 }
+                        })
                       ]),
                       _vm._v(" "),
                       _c(
@@ -96445,7 +96500,10 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "tem_img" }, [
-                                _c("img", { attrs: { src: _vm.exImg3 } })
+                                _c("img", {
+                                  staticClass: "inner_img",
+                                  attrs: { src: _vm.exImg3 }
+                                })
                               ])
                             ],
                             1
@@ -96549,7 +96607,10 @@ var render = function() {
                       _c("v-card-text", [_vm._v(" 기본 템플릿4 ")]),
                       _vm._v(" "),
                       _c("div", { staticClass: "tem_img" }, [
-                        _c("img", { attrs: { src: _vm.exImg4 } })
+                        _c("img", {
+                          staticClass: "inner_img",
+                          attrs: { src: _vm.exImg4 }
+                        })
                       ]),
                       _vm._v(" "),
                       _c(
@@ -96573,7 +96634,10 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "tem_img" }, [
-                                _c("img", { attrs: { src: _vm.exImg4 } })
+                                _c("img", {
+                                  staticClass: "inner_img",
+                                  attrs: { src: _vm.exImg4 }
+                                })
                               ])
                             ],
                             1
@@ -96717,14 +96781,10 @@ var render = function() {
                                 }
                               }
                             },
-                            [
-                              _vm._v(
-                                " \n                            메뉴판 제작 \n                        "
-                              )
-                            ]
+                            [_vm._v("메뉴판 제작")]
                           ),
                           _vm._v(
-                            "\n                            제작 툴을 사용하여 자신만의 메뉴판을 직접 제작합니다.\n                    "
+                            "\n                        제작 툴을 사용하여 자신만의 메뉴판을 직접 제작합니다.\n                    "
                           )
                         ],
                         1
@@ -96829,11 +96889,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [
-                              _vm._v(
-                                " \n                            나가기 \n                        "
-                              )
-                            ]
+                            [_vm._v("나가기")]
                           )
                         ],
                         1
@@ -96892,30 +96948,18 @@ var render = function() {
                                 _vm._v(" 1 ")
                               ]),
                               _vm._v(" "),
-                              _c("option", { attrs: { value: "2" } }, [
-                                _vm._v(" 2 ")
-                              ]),
-                              _vm._v(" "),
                               _c(
                                 "option",
-                                { attrs: { value: "3", selected: "" } },
-                                [_vm._v(" 3 ")]
+                                { attrs: { value: "2", selected: "" } },
+                                [_vm._v(" 2 ")]
                               ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "3" } }, [
+                                _vm._v(" 3 ")
+                              ]),
                               _vm._v(" "),
                               _c("option", { attrs: { value: "4" } }, [
                                 _vm._v(" 4 ")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "5" } }, [
-                                _vm._v(" 5 ")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "6" } }, [
-                                _vm._v(" 6 ")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "7" } }, [
-                                _vm._v(" 7 ")
                               ])
                             ]
                           ),
@@ -96935,15 +96979,29 @@ var render = function() {
                             _vm._v(" "),
                             _c("br"),
                             _vm._v(" "),
-                            _c("input", {
-                              staticClass: "designSet_ipt",
-                              attrs: {
-                                type: "text",
-                                id: "MenuMargin",
-                                value: "10"
-                              }
-                            }),
-                            _vm._v(" px\n                        ")
+                            _c(
+                              "select",
+                              {
+                                staticClass: "designSet_ipt",
+                                attrs: { id: "MenuMargin" }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { value: "1", selected: "" } },
+                                  [_vm._v(" 1 ")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "2" } }, [
+                                  _vm._v(" 2 ")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "3" } }, [
+                                  _vm._v(" 3 ")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" %\n                        ")
                           ]
                         )
                       ]),
@@ -97142,6 +97200,45 @@ var render = function() {
                                         "v-list-tile-title",
                                         { staticClass: "list-style" },
                                         [_vm._v("메뉴 설명")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-tile",
+                                {
+                                  staticClass: "mt-3",
+                                  on: {
+                                    click: [
+                                      _vm.createSomething,
+                                      function($event) {
+                                        $event.stopPropagation()
+                                        _vm.sideToolBar = !_vm.sideToolBar
+                                      }
+                                    ],
+                                    "!click": function($event) {
+                                      _vm.item = "createdL_D"
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "v-list-tile-action",
+                                    [_c("v-icon", [_vm._v("assignment")])],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list-tile-content",
+                                    [
+                                      _c(
+                                        "v-list-tile-title",
+                                        { staticClass: "list-style" },
+                                        [_vm._v("런치 / 디너 구분")]
                                       )
                                     ],
                                     1
@@ -97718,7 +97815,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 모바일 */\n@media (max-width: 639px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 17px;\n}\n.Trans_Title {\n        font-size:16px;\n}\n.Trans_Main {\n        font-size: 13px;\n}\n}\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:18px;\n}\n.Trans_Main {\n        font-size: 14px;\n}\n}\n/* 데스트 탑 */\n@media (min-width: 1024px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:20px;\n}\n.Trans_Main {\n        font-size: 15px;\n}\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 모바일 */\n@media (max-width: 639px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 17px;\n}\n.Trans_Title {\n        font-size:16px;\n}\n.Trans_Main {\n        font-size: 13px;\n}\n}\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:18px;\n}\n.Trans_Main {\n        font-size: 14px;\n}\n}\n/* 데스트 탑 */\n@media (min-width: 1024px){\n.total {\n        padding-left: 5%;\n        padding-right: 5%;\n        padding-top: 10%;\n        font-size: 20px;\n}\n.Trans_Title {\n        font-size:20px;\n}\n.Trans_Main {\n        font-size: 15px;\n}\n}\n", ""]);
 
 // exports
 
@@ -98038,7 +98135,17 @@ var render = function() {
                       staticStyle: { overflow: "hidden" },
                       attrs: { color: "white lighten-1" }
                     },
-                    [_c("Layout")],
+                    [
+                      _vm.layout == 0 ? _c("CustomLayout") : _vm._e(),
+                      _vm._v(" "),
+                      _vm.layout == 1 ? _c("DefaultLayout1") : _vm._e(),
+                      _vm._v(" "),
+                      _vm.layout == 2 ? _c("DefaultLayout2") : _vm._e(),
+                      _vm._v(" "),
+                      _vm.layout == 3 ? _c("DefaultLayout3") : _vm._e(),
+                      _vm._v(" "),
+                      _vm.layout == 4 ? _c("DefaultLayout4") : _vm._e()
+                    ],
                     1
                   ),
                   _vm._v(" "),
@@ -105908,6 +106015,2407 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */,
+/* 649 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eventBus_js__ = __webpack_require__(69);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    created: function created() {
+        var _this = this;
+
+        var url = '/menu/getCategory';
+        var get_categorys = null; // 카테고리 값들을 받을 변수
+        var get_menuData = null; // 커스텀마이징 메뉴판 JSON 값 받을 변수
+        this.shop_id = this.$route.params.shop_id; // 샵 아이디 
+
+        // 카테고리 && 커스텀 메뉴판 JSON 값 요청 요청하기.
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, {
+            'shop_id': this.$route.params.shop_id
+        }).then(function (response) {
+            get_categorys = response.data.category; // 카테고리 값 받기
+            get_menuData = response.data.layout[0].layout_data; // 커스텀 메뉴판 값
+            _this.categorys = _this.unique(get_categorys); // 카테고리 중복 값 제거.
+            _this.MenuData = JSON.parse(get_menuData);
+        }).catch(function (ex) {
+            alert('메뉴 로드 실패');
+        });
+    },
+    data: function data() {
+        return {
+            e2: null, // 카테고리 클릭 값
+            categorys: null, // 카테고리 배열
+            MenuData: null, // 메뉴 스타일
+            get_menus: null, // 해당 카테고리 메뉴들
+            menu_num: 0, // 메뉴 출력 v-layout 갯수 
+            select_menus: [], // 상위 컴퍼넌트에 보낼 값
+            shop_id: null // 가게 아이디 값 
+        };
+    },
+    updated: function updated() {
+        this.setMenuItem(); // 메뉴 설정.
+    },
+
+
+    methods: {
+        // 메뉴 요소들 스타일 추가
+        setMenuItem: function setMenuItem() {
+            var MenuWidth = 0; // 메뉴의 가로 길이(%)
+            var MenuHeight = 0; // 메뉴의 세로 길이(%)
+            var MenuMargin = this.MenuData.MenuMargin; // 메뉴 간격 (%)
+            var browser_w = window.outerWidth; // 브라우저의 width (px)             
+            var createdMenu = document.getElementsByName('createdMenu'); // 메뉴 div
+
+            // 모바일 : 한줄에 메뉴 1개
+            if (browser_w < 639) {
+                MenuWidth = 100;
+            }
+            // 테블릿 : 한 줄에 메뉴 2개 
+            else if (638 < browser_w && browser_w < 1024) {
+                    MenuWidth = 50 - MenuMargin * 2;
+                }
+                // 데스크 탑 : 100 / 한 줄에 올 메뉴 갯수 - 메뉴 간격 값 * 2 
+                else if (1023 < browser_w) {
+                        MenuWidth = Math.floor(100 / this.MenuData.MenuNum) - MenuMargin * 2;
+                    }
+
+            // 메뉴 세로 비율 값 구하기.
+            MenuHeight = Math.floor(MenuWidth * this.MenuData.createdMenu.ratio / 100);
+
+            for (var i = 0; i < createdMenu.length; i++) {
+                var MenuData = this.MenuData.createdMenu; // 메뉴 스타일 
+
+                // 메뉴 스타일 지정.
+                createdMenu[i].style.width = MenuWidth + '%'; // 메뉴 가로
+                createdMenu[i].style.paddingBottom = MenuHeight + '%'; // 메뉴 세로
+                createdMenu[i].style.margin = MenuMargin + '%'; // 메뉴 간격
+                createdMenu[i].style.border = MenuData.border; // 선
+                createdMenu[i].style.color = MenuData.color; // 색
+                createdMenu[i].style.backgroundColor = MenuData.backgroundColor; // 배경색
+                createdMenu[i].style.borderRadius = MenuData.borderRadius; // 테두리
+
+                for (var j = 0; j < createdMenu[i].children.length; j++) {
+                    var item = createdMenu[i].children[j]; // 메뉴 div 안의 엘리먼트
+                    var index = item.getAttribute('name'); // 엘리먼트의 name 속성
+
+                    // 엘리먼트 스타일 지정
+                    item.style.top = this.MenuData[index].top;
+                    item.style.left = this.MenuData[index].left;
+                    item.style.width = this.MenuData[index].width;
+                    item.style.height = this.MenuData[index].height;
+                    item.style.border = this.MenuData[index].border;
+                    item.style.color = this.MenuData[index].color;
+                    item.style.backgroundColor = this.MenuData[index].backgroundColor;
+                    item.style.borderRadius = this.MenuData[index].borderRadius;
+                    item.style.position = 'absolute';
+
+                    // 이미지 테두리 맞추기.
+                    if (index == 'createdImg') {
+                        item.children[0].style.borderRadius = this.MenuData[index].borderRadius;
+                    }
+                }
+            }
+        }, // end of setMenuItem
+
+        // 메뉴 카테고리 클릭
+        click_category: function click_category() {
+            var _this2 = this;
+
+            var category = event.target; // 선택한 카테고리 
+            var url = ""; // 서버에 요청할 주소 
+
+            // 클릭한 값 검사
+            if (category.value === undefined) {
+                category = category.parentNode.value;
+            } else {
+                category = category.value;
+            }
+
+            url = '/menu/getMenu/' + this.shop_id + '/' + category;
+
+            // 클릭한 카테고리의 메뉴 호출
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (response) {
+                _this2.get_menus = response.data.menu;
+                _this2.menu_num = _this2.get_menus.length;
+            }).catch(function (ex) {
+                alert('메뉴 로드 실패');
+            });
+        },
+
+        // 배열 중복 값 제거, 인자는 서버에 받은 카테고리 목록
+        unique: function unique(argArr) {
+            var array = [];
+
+            for (var i = 0; i < argArr.length; i++) {
+                // array에 없는 값이면 push
+                if (!array.includes(argArr[i]['category'])) {
+                    array.push(argArr[i]['category']);
+                }
+            }
+            return array;
+        },
+
+        // v-for 용 함수, start에서 시작해서 end까지 1식 반환
+        range: function range(start, end) {
+            return Array(end - start + 1).fill().map(function (_, idx) {
+                return start + idx;
+            });
+        },
+
+        // 주문하기 클릭한 메뉴
+        select_menu: function select_menu() {
+            var menu = event.target; // 클릭한 메뉴 가져오기. 
+            var arr = [];
+
+            arr['menu'] = this.get_menus[menu.id];
+            this.select_menus.push(arr); // 보낼 값 배열에 담기.  
+            __WEBPACK_IMPORTED_MODULE_2__eventBus_js__["a" /* EventBus */].$emit('select_menus', this.select_menus);
+            alert('선택하신 메뉴가 추가 되었습니다.');
+        } // end of method
+
+    } // end of export default
+
+});
+
+/***/ }),
+/* 650 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eventBus_js__ = __webpack_require__(69);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    created: function created() {
+        var _this = this;
+
+        var url = '/menu/getCategory';
+        var get_categorys = null;
+        this.shop_id = this.$route.params.shop_id; // 샵 아이디 
+        var shopData = new FormData();
+        shopData.append('shop_id', this.shop_id);
+
+        // 카테고리 요청하기.
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, shopData).then(function (response) {
+            get_categorys = response.data.category;
+            _this.categorys = _this.unique(get_categorys); // 카테고리 중복 값 제거.
+        }).catch(function (ex) {
+            alert('메뉴 로드 실패');
+        });
+
+        // get_categorys = [   
+        //     {"category" : '특식'},
+        //     {"category" : '추천 메뉴'},
+        //     {"category" : '식사류'},
+        //     {"category" : '찌개류'},
+        //     {"category" : '안주류'},
+        //     {"category" : '음료'},
+        //     {"category" : '커피'},
+        //     {"category" : '디저트'},  
+        // ]
+
+        this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+    },
+    data: function data() {
+        return {
+            e2: null, // 카테고리 클릭 값
+            categorys: null, // 카테고리 배열
+            get_menus: null, // 해당 카테고리 메뉴들
+            menu_row_num: 0, // 메뉴 출력 v-layout 갯수 
+            select_menus: [], // 상위 컴퍼넌트에 보낼 값
+            shop_id: null, // 가게 아이디 값
+            options: []
+        };
+    },
+
+
+    methods: {
+        // 메뉴 카테고리 클릭
+        click_category: function click_category() {
+            var _this2 = this;
+
+            var category = event.target; // 선택한 카테고리 
+            var url = ""; // 서버에 요청할 주소
+            var send_data = [];
+            var categoryData = '';
+
+            // 클릭한 값  검사
+            if (category.value === undefined) {
+                categoryData = category.parentNode.value;
+            } else {
+                categoryData = category.value;
+            }
+
+            url = '/menu/getMenu/' + this.shop_id + '/' + categoryData;
+
+            // 보낼 데이터 초기화
+            send_data['shop_id'] = this.shop_id;
+            send_data['category'] = category;
+
+            // 클릭한 카테고리의 메뉴 호출
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (response) {
+                _this2.get_menus = response.data.menu;
+                console.log(_this2.get_menus);
+
+                // 출력할 v-layout 개수 설정
+                if (_this2.get_menus.length % 3 === 0) {
+                    _this2.menu_row_num = _this2.get_menus.length / 3;
+                } else {
+                    _this2.menu_row_num = Math.floor(_this2.get_menus.length / 3) + 1;
+                }
+
+                // 옵션 값 뽑아내기
+                for (var i = 0; i < _this2.get_menus.length; i++) {
+                    _this2.options[i] = [];
+                    for (var j = 1; j <= _this2.get_menus[i].subOpNum; j++) {
+                        _this2.options[i].push(_this2.get_menus[i]['optionValue' + j]);
+                    }
+                }
+            }).catch(function (ex) {
+                alert('메뉴 로드 실패');
+            });
+
+            // this.get_menus = [
+            //     { 
+            //         "id"            : 1, 
+            //         "name"          : "짬뽕" ,
+            //         "explanation"   : "짬뽕입니다." ,
+            //         "price"         : 9000 ,
+            //         "remark"        : "default" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" ,
+            //         "optionName1"   : "맵기 조절" ,
+            //         "optionValue1"  : "순한맛" ,
+            //         "optionValue2"  : "보통맛" ,
+            //         "optionValue3"  : "매운맛" ,
+            //         "subOpNum"      : 3
+            //     }, 
+            //     { 
+            //         "id"            : 2,
+            //         "name"          : "연두부", 
+            //         "explanation"   : "연두부" ,
+            //         "price"         : 5000,
+            //         "remark"        : "default", 
+            //         "path"          : "/images/menu/1/", 
+            //         "filename"      : "1_menuImg_2.jpeg" ,
+            //         "optionName1"   : "소스" ,
+            //         "optionValue1"  : "특제 소스" ,
+            //         "optionValue2"  : "간장 소스" ,
+            //         "subOpNum"      : 2,
+            //     },                 
+            //     { 
+            //         "id"            : 3 ,
+            //         "name"          : "케이크" ,
+            //         "explanation"   : "123123" ,
+            //         "price"         : 9999,
+            //         "remark"        : "default",
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_3.jpeg",
+            //         "optionName1"   : "없으면 입력 x" ,
+            //         "subOpNum"      : 0
+            //     },   
+            // ]
+        }, // end of click_category
+
+        // 배열 중복 값 제거, 인자는 서버에 받은 카테고리 목록
+        unique: function unique(argArr) {
+            var array = [];
+
+            for (var i = 0; i < argArr.length; i++) {
+                // array에 없는 값이면 push
+                if (!array.includes(argArr[i]['category'])) {
+                    array.push(argArr[i]['category']);
+                }
+            }
+            return array;
+        },
+
+        // v-for 용 함수, start에서 시작해서 end까지 1식 반환
+        range: function range(start, end) {
+            return Array(end - start + 1).fill().map(function (_, idx) {
+                return start + idx;
+            });
+        },
+
+        // 주문하기 클릭한 메뉴
+        select_menu: function select_menu() {
+            var menu = event.target.parentNode; // 클릭한 메뉴 가져오기.
+            var array = [];
+
+            // 클릭한 메뉴 테두리 붉게
+            menu.parentNode.parentNode.parentNode.parentNode.style = "border: 3px solid red;";
+
+            array['menu'] = this.get_menus[menu.id];
+
+            if (this.get_menus[menu.id].optionValue1 !== undefined) {
+                var op_val = document.getElementById('value' + menu.id); // 선택한 옵션 값 가져오기.
+
+                array['option'] = {
+                    'name': this.get_menus[menu.id].optionName1,
+                    'value': op_val.value
+                };
+            }
+            this.select_menus.push(array);
+            __WEBPACK_IMPORTED_MODULE_2__eventBus_js__["a" /* EventBus */].$emit('select_menus', this.select_menus);
+
+            alert('선택하신 메뉴가 추가 되었습니다.');
+        } // end of method
+
+    } // end of export default
+
+});
+
+/***/ }),
+/* 651 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eventBus_js__ = __webpack_require__(69);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    created: function created() {
+        var _this = this;
+
+        var url = '/menu/getCategory';
+        var get_categorys = null;
+        this.shop_id = this.$route.params.shop_id; // 샵 아이디 
+        var shopData = new FormData();
+        shopData.append('shop_id', this.shop_id);
+
+        // 카테고리 요청하기.
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, shopData).then(function (response) {
+            get_categorys = response.data.category;
+            _this.categorys = _this.unique(get_categorys); // 카테고리 중복 값 제거.
+        }).catch(function (ex) {
+            alert('메뉴 로드 실패');
+        });
+
+        // get_categorys = [   
+        //     {"category" : '특식'},
+        //     {"category" : '추천 메뉴'},
+        //     {"category" : '식사류'},
+        //     {"category" : '찌개류'},
+        //     {"category" : '안주류'},
+        //     {"category" : '음료'},
+        //     {"category" : '커피'},
+        //     {"category" : '디저트'},  
+        // ]
+
+        this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+    },
+    data: function data() {
+        return {
+            e2: null, // 카테고리 클릭 값
+            categorys: null, // 카테고리 배열
+            get_menus: null, // 해당 카테고리 메뉴들
+            menu_row_num: 0, // 메뉴 출력 v-layout 갯수 
+            select_menus: [], // 상위 컴퍼넌트에 보낼 값
+            shop_id: null, // 가게 아이디 값
+            options: []
+        };
+    },
+
+
+    methods: {
+        // 메뉴 카테고리 클릭
+        click_category: function click_category() {
+            var _this2 = this;
+
+            var category = event.target; // 선택한 카테고리 
+            var url = ""; // 서버에 요청할 주소
+            var send_data = [];
+            var categoryData = '';
+
+            // 클릭한 값  검사
+            if (category.value === undefined) {
+                categoryData = category.parentNode.value;
+            } else {
+                categoryData = category.value;
+            }
+
+            url = '/menu/getMenu/' + this.shop_id + '/' + categoryData;
+
+            // 보낼 데이터 초기화
+            send_data['shop_id'] = this.shop_id;
+            send_data['category'] = category;
+
+            // 클릭한 카테고리의 메뉴 호출
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (response) {
+                _this2.get_menus = response.data.menu;
+                console.log(_this2.get_menus);
+
+                // 출력할 v-layout 개수 설정
+                if (_this2.get_menus.length % 3 === 0) {
+                    _this2.menu_row_num = _this2.get_menus.length / 3;
+                } else {
+                    _this2.menu_row_num = Math.floor(_this2.get_menus.length / 3) + 1;
+                }
+
+                // 옵션 값 뽑아내기
+                for (var i = 0; i < _this2.get_menus.length; i++) {
+                    _this2.options[i] = [];
+                    for (var j = 1; j <= _this2.get_menus[i].subOpNum; j++) {
+                        _this2.options[i].push(_this2.get_menus[i]['optionValue' + j]);
+                    }
+                }
+            }).catch(function (ex) {
+                alert('메뉴 로드 실패');
+            });
+
+            // this.get_menus = [
+            //     { 
+            //         "id"            : 1, 
+            //         "name"          : "짬뽕" ,
+            //         "explanation"   : "짬뽕입니다." ,
+            //         "price"         : 9000 ,
+            //         "remark"        : "default" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" ,
+            //         "optionName1"   : "맵기 조절" ,
+            //         "optionValue1"  : "순한맛" ,
+            //         "optionValue2"  : "보통맛" ,
+            //         "optionValue3"  : "매운맛" ,
+            //         "subOpNum"      : 3
+            //     }, 
+            //     { 
+            //         "id"            : 2,
+            //         "name"          : "연두부", 
+            //         "explanation"   : "연두부" ,
+            //         "price"         : 5000,
+            //         "remark"        : "default", 
+            //         "path"          : "/images/menu/1/", 
+            //         "filename"      : "1_menuImg_2.jpeg" ,
+            //         "optionName1"   : "소스" ,
+            //         "optionValue1"  : "특제 소스" ,
+            //         "optionValue2"  : "간장 소스" ,
+            //         "subOpNum"      : 2,
+            //     },                 
+            //     { 
+            //         "id"            : 3 ,
+            //         "name"          : "케이크" ,
+            //         "explanation"   : "123123" ,
+            //         "price"         : 9999,
+            //         "remark"        : "default",
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_3.jpeg",
+            //         "optionName1"   : "없으면 입력 x" ,
+            //         "subOpNum"      : 0
+            //     },   
+            // ]
+        }, // end of click_category
+
+        // 배열 중복 값 제거, 인자는 서버에 받은 카테고리 목록
+        unique: function unique(argArr) {
+            var array = [];
+
+            for (var i = 0; i < argArr.length; i++) {
+                // array에 없는 값이면 push
+                if (!array.includes(argArr[i]['category'])) {
+                    array.push(argArr[i]['category']);
+                }
+            }
+            return array;
+        },
+
+        // v-for 용 함수, start에서 시작해서 end까지 1식 반환
+        range: function range(start, end) {
+            return Array(end - start + 1).fill().map(function (_, idx) {
+                return start + idx;
+            });
+        },
+
+        // 주문하기 클릭한 메뉴
+        select_menu: function select_menu() {
+            var menu = event.target.parentNode; // 클릭한 메뉴 가져오기.
+            var array = [];
+
+            // 클릭한 메뉴 테두리 붉게
+            menu.parentNode.parentNode.parentNode.parentNode.style = "border: 3px solid red;";
+
+            array['menu'] = this.get_menus[menu.id];
+
+            if (this.get_menus[menu.id].optionValue1 !== undefined) {
+                var op_val = document.getElementById('value' + menu.id); // 선택한 옵션 값 가져오기.
+
+                array['option'] = {
+                    'name': this.get_menus[menu.id].optionName1,
+                    'value': op_val.value
+                };
+            }
+            this.select_menus.push(array);
+            __WEBPACK_IMPORTED_MODULE_2__eventBus_js__["a" /* EventBus */].$emit('select_menus', this.select_menus);
+
+            alert('선택하신 메뉴가 추가 되었습니다.');
+        } // end of method
+
+    } // end of export default
+
+});
+
+/***/ }),
+/* 652 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__eventBus_js__ = __webpack_require__(69);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    created: function created() {
+        var _this = this;
+
+        var url = '/menu/getCategory';
+        var get_categorys = null;
+        this.shop_id = this.$route.params.shop_id; // 샵 아이디 
+        var shopData = new FormData();
+        shopData.append('shop_id', this.shop_id);
+
+        // 카테고리 요청하기.
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, shopData).then(function (response) {
+            get_categorys = response.data.category;
+            _this.categorys = _this.unique(get_categorys); // 카테고리 중복 값 제거.
+        }).catch(function (ex) {
+            alert('메뉴 로드 실패');
+        });
+
+        // get_categorys = [   
+        //     {"category" : '특식'},
+        //     {"category" : '추천 메뉴'},
+        //     {"category" : '식사류'},
+        //     {"category" : '찌개류'},
+        //     {"category" : '안주류'},
+        //     {"category" : '음료'},
+        //     {"category" : '커피'},
+        //     {"category" : '디저트'},  
+        // ]
+
+        this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+    },
+    data: function data() {
+        return {
+            e2: null, // 카테고리 클릭 값
+            categorys: null, // 카테고리 배열
+            get_menus: null, // 해당 카테고리 메뉴들
+            menu_row_num: 0, // 메뉴 출력 v-layout 갯수 
+            select_menus: [], // 상위 컴퍼넌트에 보낼 값
+            shop_id: null, // 가게 아이디 값
+            options: []
+        };
+    },
+
+
+    methods: {
+        // 메뉴 카테고리 클릭
+        click_category: function click_category() {
+            var _this2 = this;
+
+            var category = event.target; // 선택한 카테고리 
+            var url = ""; // 서버에 요청할 주소
+            var send_data = [];
+            var categoryData = '';
+
+            // 클릭한 값  검사
+            if (category.value === undefined) {
+                categoryData = category.parentNode.value;
+            } else {
+                categoryData = category.value;
+            }
+
+            url = '/menu/getMenu/' + this.shop_id + '/' + categoryData;
+
+            // 보낼 데이터 초기화
+            send_data['shop_id'] = this.shop_id;
+            send_data['category'] = category;
+
+            // 클릭한 카테고리의 메뉴 호출
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url).then(function (response) {
+                _this2.get_menus = response.data.menu;
+                console.log(_this2.get_menus);
+
+                // 출력할 v-layout 개수 설정
+                if (_this2.get_menus.length % 3 === 0) {
+                    _this2.menu_row_num = _this2.get_menus.length / 3;
+                } else {
+                    _this2.menu_row_num = Math.floor(_this2.get_menus.length / 3) + 1;
+                }
+
+                // 옵션 값 뽑아내기
+                for (var i = 0; i < _this2.get_menus.length; i++) {
+                    _this2.options[i] = [];
+                    for (var j = 1; j <= _this2.get_menus[i].subOpNum; j++) {
+                        _this2.options[i].push(_this2.get_menus[i]['optionValue' + j]);
+                    }
+                }
+            }).catch(function (ex) {
+                alert('메뉴 로드 실패');
+            });
+
+            // this.get_menus = [
+            //     { 
+            //         "id"            : 1, 
+            //         "name"          : "짬뽕" ,
+            //         "explanation"   : "짬뽕입니다." ,
+            //         "price"         : 9000 ,
+            //         "remark"        : "default" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" ,
+            //         "optionName1"   : "맵기 조절" ,
+            //         "optionValue1"  : "순한맛" ,
+            //         "optionValue2"  : "보통맛" ,
+            //         "optionValue3"  : "매운맛" ,
+            //         "subOpNum"      : 3
+            //     }, 
+            //     { 
+            //         "id"            : 2,
+            //         "name"          : "연두부", 
+            //         "explanation"   : "연두부" ,
+            //         "price"         : 5000,
+            //         "remark"        : "default", 
+            //         "path"          : "/images/menu/1/", 
+            //         "filename"      : "1_menuImg_2.jpeg" ,
+            //         "optionName1"   : "소스" ,
+            //         "optionValue1"  : "특제 소스" ,
+            //         "optionValue2"  : "간장 소스" ,
+            //         "subOpNum"      : 2,
+            //     },                 
+            //     { 
+            //         "id"            : 3 ,
+            //         "name"          : "케이크" ,
+            //         "explanation"   : "123123" ,
+            //         "price"         : 9999,
+            //         "remark"        : "default",
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_3.jpeg",
+            //         "optionName1"   : "없으면 입력 x" ,
+            //         "subOpNum"      : 0
+            //     },   
+            // ]
+        }, // end of click_category
+
+        // 배열 중복 값 제거, 인자는 서버에 받은 카테고리 목록
+        unique: function unique(argArr) {
+            var array = [];
+
+            for (var i = 0; i < argArr.length; i++) {
+                // array에 없는 값이면 push
+                if (!array.includes(argArr[i]['category'])) {
+                    array.push(argArr[i]['category']);
+                }
+            }
+            return array;
+        },
+
+        // v-for 용 함수, start에서 시작해서 end까지 1식 반환
+        range: function range(start, end) {
+            return Array(end - start + 1).fill().map(function (_, idx) {
+                return start + idx;
+            });
+        },
+
+        // 주문하기 클릭한 메뉴
+        select_menu: function select_menu() {
+            var menu = event.target.parentNode; // 클릭한 메뉴 가져오기.
+            var array = [];
+
+            // 클릭한 메뉴 테두리 붉게
+            menu.parentNode.parentNode.parentNode.parentNode.style = "border: 3px solid red;";
+
+            array['menu'] = this.get_menus[menu.id];
+
+            if (this.get_menus[menu.id].optionValue1 !== undefined) {
+                var op_val = document.getElementById('value' + menu.id); // 선택한 옵션 값 가져오기.
+
+                array['option'] = {
+                    'name': this.get_menus[menu.id].optionName1,
+                    'value': op_val.value
+                };
+            }
+            this.select_menus.push(array);
+            __WEBPACK_IMPORTED_MODULE_2__eventBus_js__["a" /* EventBus */].$emit('select_menus', this.select_menus);
+
+            alert('선택하신 메뉴가 추가 되었습니다.');
+        } // end of method
+
+    } // end of export default
+
+});
+
+/***/ }),
+/* 653 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomLayout_vue__ = __webpack_require__(649);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1a864c54_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CustomLayout_vue__ = __webpack_require__(656);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(654)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1a864c54"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_CustomLayout_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1a864c54_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CustomLayout_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1a864c54_hasScoped_true_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CustomLayout_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/user_menu/CustomLayout.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1a864c54", Component.options)
+  } else {
+    hotAPI.reload("data-v-1a864c54", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 654 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(655);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(3).default
+var update = add("04c625b4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-1a864c54\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CustomLayout.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-1a864c54\",\"scoped\":true,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CustomLayout.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 655 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* 모바일 */\n@media (max-width: 639px){\n.menu_body[data-v-1a864c54] { width:100%; font-size: 12px;\n}\n}\r\n\r\n/* 테블릿 */\n@media (min-width: 640px) and (max-width: 1023px){\n.menu_body[data-v-1a864c54] { width:47%; font-size: 13px;\n}\n}\r\n\r\n/* 데스트 탑 */\n@media (min-width: 1024px){\n.menu_body[data-v-1a864c54] { font-size: 15px;\n}\n}  \r\n\r\n/* 메뉴 */\n.menu_body[data-v-1a864c54] {  \r\n    float: left;\r\n    color: black;\r\n    border :1px solid;\r\n    position: relative;\r\n    overflow: hidden;\r\n    text-align: center;\n}\r\n/* 메뉴 이미지 안쪽 */\nimg[data-v-1a864c54] { \r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%; \r\n    position: absolute;\n}\n.menu_info[data-v-1a864c54] {\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%; \r\n    position: absolute;\n}\n.SelectBtn[data-v-1a864c54]{\r\n    width: 100%;\r\n    height: 100%;\r\n    position: relative;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 656 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [
+      _c(
+        "v-container",
+        { staticStyle: { color: "white" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { xs12: "" } },
+            [
+              _c(
+                "v-card",
+                { staticStyle: { margin: "auto" } },
+                [
+                  _c(
+                    "v-bottom-nav",
+                    {
+                      attrs: { value: true, active: _vm.e2 },
+                      on: {
+                        "update:active": function($event) {
+                          _vm.e2 = $event
+                        }
+                      }
+                    },
+                    _vm._l(_vm.categorys, function(value, key) {
+                      return _c(
+                        "v-btn",
+                        {
+                          key: key,
+                          attrs: { value: value },
+                          on: { click: _vm.click_category }
+                        },
+                        [
+                          _vm._v(
+                            "\r\n                    " +
+                              _vm._s(value) +
+                              "\r\n                "
+                          )
+                        ]
+                      )
+                    })
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.range(0, _vm.menu_num - 1), function(n) {
+            return _c(
+              "div",
+              {
+                key: n,
+                staticClass: "menu_body",
+                attrs: { name: "createdMenu" }
+              },
+              [
+                _c("div", { attrs: { name: "createdImg" } }, [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.get_menus[n].path + _vm.get_menus[n].filename
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { name: "createdName" } }, [
+                  _c("h3", { staticClass: "menu_info" }, [
+                    _vm._v(_vm._s(_vm.get_menus[n].name))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { name: "createdExpl" } }, [
+                  _c("div", { staticClass: "menu_info" }, [
+                    _vm._v(
+                      "\r\n                " +
+                        _vm._s(_vm.get_menus[n].explanation) +
+                        "\r\n            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { name: "createdL_D" } }, [
+                  _c("h4", { staticClass: "menu_info" }, [
+                    _vm._v(
+                      " 런치 / 디너 구분 :  " +
+                        _vm._s(_vm.get_menus[n].remark) +
+                        " "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { name: "createdPrice" } }, [
+                  _c(
+                    "b",
+                    {
+                      staticClass: "menu_info",
+                      staticStyle: { "margin-top": "2%", "margin-left": "2%" }
+                    },
+                    [
+                      _vm._v(
+                        " \r\n                가격 :  " +
+                          _vm._s(_vm.get_menus[n].price) +
+                          " \r\n            "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { name: "createdSelect" } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "SelectBtn",
+                      attrs: { id: n },
+                      on: { click: _vm.select_menu }
+                    },
+                    [_vm._v(" 선택하기 ")]
+                  )
+                ])
+              ]
+            )
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1a864c54", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 657 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout2_vue__ = __webpack_require__(650);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b88bfc2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout2_vue__ = __webpack_require__(660);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(658)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout2_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b88bfc2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout2_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b88bfc2_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout2_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/user_menu/MenuDefaultLayout2.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3b88bfc2", Component.options)
+  } else {
+    hotAPI.reload("data-v-3b88bfc2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 658 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(659);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(3).default
+var update = add("4823c9dc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout2.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout2.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 659 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n.menu_name { \n    position: relative;\n    width: 100%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 10%;\n}\n.menu_expl { \n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 15%;\n}\n.menu_price { \n    position: relative;\n    width: 50%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 12%;\n}\n.menu_info {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\nselect {\n    widows: 100%;\n    border-bottom: 1px solid;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 660 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [
+      _c(
+        "v-container",
+        { staticStyle: { color: "white" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { xs12: "" } },
+            [
+              _c(
+                "v-card",
+                { staticStyle: { margin: "auto" } },
+                [
+                  _c(
+                    "v-bottom-nav",
+                    {
+                      attrs: { value: true, active: _vm.e2 },
+                      on: {
+                        "update:active": function($event) {
+                          _vm.e2 = $event
+                        }
+                      }
+                    },
+                    _vm._l(_vm.categorys, function(value, key) {
+                      return _c(
+                        "v-btn",
+                        {
+                          key: key,
+                          attrs: { value: value },
+                          on: { click: _vm.click_category }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(value) +
+                              " \n                "
+                          )
+                        ]
+                      )
+                    })
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.range(0, _vm.menu_row_num - 1), function(index) {
+            return _vm.menu_row_num !== 0
+              ? _c(
+                  "v-layout",
+                  { key: index, attrs: { xs12: "" } },
+                  _vm._l(_vm.range(index * 3, index * 3 + 2), function(n) {
+                    return n < _vm.get_menus.length
+                      ? _c(
+                          "v-flex",
+                          {
+                            key: n,
+                            attrs: {
+                              xs4: "",
+                              "elevation-20": "",
+                              "mx-3": "",
+                              "my-3": ""
+                            }
+                          },
+                          [
+                            _c(
+                              "v-card",
+                              {
+                                staticStyle: { color: "black" },
+                                attrs: { color: "white" }
+                              },
+                              [
+                                _c("div", { staticClass: "tem_img" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        _vm.get_menus[n].path +
+                                        _vm.get_menus[n].filename
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-title",
+                                  { attrs: { "primary-title": "" } },
+                                  [
+                                    _c("div", { staticClass: "menu_name" }, [
+                                      _c("h3", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(_vm.get_menus[n].name) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "menu_expl" }, [
+                                      _c("div", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(
+                                              _vm.get_menus[n].explanation
+                                            ) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "menu_name",
+                                        staticStyle: { "margin-top": "5%" }
+                                      },
+                                      [
+                                        _vm.get_menus[n].optionValue1 !==
+                                        undefined
+                                          ? _c(
+                                              "h4",
+                                              {
+                                                staticStyle: {
+                                                  float: "left",
+                                                  width: "50%"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            옵션 : " +
+                                                    _vm._s(
+                                                      _vm.get_menus[n]
+                                                        .optionName1
+                                                    ) +
+                                                    "\n                        "
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.get_menus[n].optionValue1 !==
+                                        undefined
+                                          ? _c(
+                                              "select",
+                                              {
+                                                staticStyle: {
+                                                  float: "left",
+                                                  width: "50%"
+                                                },
+                                                attrs: { id: "value" + n }
+                                              },
+                                              _vm._l(_vm.options[n], function(
+                                                value,
+                                                key
+                                              ) {
+                                                return value !== undefined
+                                                  ? _c(
+                                                      "option",
+                                                      {
+                                                        key: key,
+                                                        domProps: {
+                                                          value: value
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                " +
+                                                            _vm._s(value) +
+                                                            "\n                            "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              })
+                                            )
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "menu_price" }, [
+                                      _c("h4", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " 가격 : " +
+                                            _vm._s(_vm.get_menus[n].price) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "menu_price" },
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              slot: "activator",
+                                              color: "primary",
+                                              width: "100%;",
+                                              flat: "",
+                                              id: n
+                                            },
+                                            on: { click: _vm.select_menu },
+                                            slot: "activator"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            주문하기\n                        "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  })
+                )
+              : _vm._e()
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3b88bfc2", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 661 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout3_vue__ = __webpack_require__(651);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b6c90c0_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout3_vue__ = __webpack_require__(664);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(662)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout3_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b6c90c0_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout3_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b6c90c0_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout3_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/user_menu/MenuDefaultLayout3.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3b6c90c0", Component.options)
+  } else {
+    hotAPI.reload("data-v-3b6c90c0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 662 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(663);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(3).default
+var update = add("8c20cf1c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout3.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout3.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 663 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n.menu_name { \n    position: relative;\n    width: 100%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 10%;\n}\n.menu_expl { \n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 15%;\n}\n.menu_price { \n    position: relative;\n    width: 50%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 12%;\n}\n.menu_info {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\nselect {\n    widows: 100%;\n    border-bottom: 1px solid;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 664 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [
+      _c(
+        "v-container",
+        { staticStyle: { color: "white" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { xs12: "" } },
+            [
+              _c(
+                "v-card",
+                { staticStyle: { margin: "auto" } },
+                [
+                  _c(
+                    "v-bottom-nav",
+                    {
+                      attrs: { value: true, active: _vm.e2 },
+                      on: {
+                        "update:active": function($event) {
+                          _vm.e2 = $event
+                        }
+                      }
+                    },
+                    _vm._l(_vm.categorys, function(value, key) {
+                      return _c(
+                        "v-btn",
+                        {
+                          key: key,
+                          attrs: { value: value },
+                          on: { click: _vm.click_category }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(value) +
+                              " \n                "
+                          )
+                        ]
+                      )
+                    })
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.range(0, _vm.menu_row_num - 1), function(index) {
+            return _vm.menu_row_num !== 0
+              ? _c(
+                  "v-layout",
+                  { key: index, attrs: { xs12: "" } },
+                  _vm._l(_vm.range(index * 3, index * 3 + 2), function(n) {
+                    return n < _vm.get_menus.length
+                      ? _c(
+                          "v-flex",
+                          {
+                            key: n,
+                            attrs: {
+                              xs4: "",
+                              "elevation-20": "",
+                              "mx-3": "",
+                              "my-3": ""
+                            }
+                          },
+                          [
+                            _c(
+                              "v-card",
+                              {
+                                staticStyle: { color: "black" },
+                                attrs: { color: "white" }
+                              },
+                              [
+                                _c("div", { staticClass: "tem_img" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        _vm.get_menus[n].path +
+                                        _vm.get_menus[n].filename
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-title",
+                                  { attrs: { "primary-title": "" } },
+                                  [
+                                    _c("div", { staticClass: "menu_name" }, [
+                                      _c("h3", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(_vm.get_menus[n].name) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "menu_expl" }, [
+                                      _c("div", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(
+                                              _vm.get_menus[n].explanation
+                                            ) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "menu_name",
+                                        staticStyle: { "margin-top": "5%" }
+                                      },
+                                      [
+                                        _vm.get_menus[n].optionValue1 !==
+                                        undefined
+                                          ? _c(
+                                              "h4",
+                                              {
+                                                staticStyle: {
+                                                  float: "left",
+                                                  width: "50%"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            옵션 : " +
+                                                    _vm._s(
+                                                      _vm.get_menus[n]
+                                                        .optionName1
+                                                    ) +
+                                                    "\n                        "
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.get_menus[n].optionValue1 !==
+                                        undefined
+                                          ? _c(
+                                              "select",
+                                              {
+                                                staticStyle: {
+                                                  float: "left",
+                                                  width: "50%"
+                                                },
+                                                attrs: { id: "value" + n }
+                                              },
+                                              _vm._l(_vm.options[n], function(
+                                                value,
+                                                key
+                                              ) {
+                                                return value !== undefined
+                                                  ? _c(
+                                                      "option",
+                                                      {
+                                                        key: key,
+                                                        domProps: {
+                                                          value: value
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                " +
+                                                            _vm._s(value) +
+                                                            "\n                            "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              })
+                                            )
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "menu_price" }, [
+                                      _c("h4", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " 가격 : " +
+                                            _vm._s(_vm.get_menus[n].price) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "menu_price" },
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              slot: "activator",
+                                              color: "primary",
+                                              width: "100%;",
+                                              flat: "",
+                                              id: n
+                                            },
+                                            on: { click: _vm.select_menu },
+                                            slot: "activator"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            주문하기\n                        "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  })
+                )
+              : _vm._e()
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3b6c90c0", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
+
+/***/ }),
+/* 665 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout4_vue__ = __webpack_require__(652);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b5061be_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout4_vue__ = __webpack_require__(668);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(1);
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(666)
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_MenuDefaultLayout4_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b5061be_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout4_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3b5061be_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_MenuDefaultLayout4_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/user/user_menu/MenuDefaultLayout4.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3b5061be", Component.options)
+  } else {
+    hotAPI.reload("data-v-3b5061be", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 666 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(667);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(3).default
+var update = add("d01dd45c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout4.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MenuDefaultLayout4.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 667 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tem_img {\n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 70%;\n}\nimg { \n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n.menu_name { \n    position: relative;\n    width: 100%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 10%;\n}\n.menu_expl { \n    position: relative;\n    width: 100%;\n    height: 0;\n    overflow: hidden;\n    padding-bottom: 15%;\n}\n.menu_price { \n    position: relative;\n    width: 50%;\n    height: 0; \n    overflow: hidden;\n    padding-bottom: 12%;\n}\n.menu_info {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\nselect {\n    widows: 100%;\n    border-bottom: 1px solid;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 668 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      staticStyle: { width: "100%", border: "1px solid" }
+    },
+    [
+      _c(
+        "v-container",
+        { staticStyle: { color: "white" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { xs12: "" } },
+            [
+              _c(
+                "v-card",
+                { staticStyle: { margin: "auto" } },
+                [
+                  _c(
+                    "v-bottom-nav",
+                    {
+                      attrs: { value: true, active: _vm.e2 },
+                      on: {
+                        "update:active": function($event) {
+                          _vm.e2 = $event
+                        }
+                      }
+                    },
+                    _vm._l(_vm.categorys, function(value, key) {
+                      return _c(
+                        "v-btn",
+                        {
+                          key: key,
+                          attrs: { value: value },
+                          on: { click: _vm.click_category }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(value) +
+                              " \n                "
+                          )
+                        ]
+                      )
+                    })
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.range(0, _vm.menu_row_num - 1), function(index) {
+            return _vm.menu_row_num !== 0
+              ? _c(
+                  "v-layout",
+                  { key: index, attrs: { xs12: "" } },
+                  _vm._l(_vm.range(index * 3, index * 3 + 2), function(n) {
+                    return n < _vm.get_menus.length
+                      ? _c(
+                          "v-flex",
+                          {
+                            key: n,
+                            attrs: {
+                              xs4: "",
+                              "elevation-20": "",
+                              "mx-3": "",
+                              "my-3": ""
+                            }
+                          },
+                          [
+                            _c(
+                              "v-card",
+                              {
+                                staticStyle: { color: "black" },
+                                attrs: { color: "white" }
+                              },
+                              [
+                                _c("div", { staticClass: "tem_img" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        _vm.get_menus[n].path +
+                                        _vm.get_menus[n].filename
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-title",
+                                  { attrs: { "primary-title": "" } },
+                                  [
+                                    _c("div", { staticClass: "menu_name" }, [
+                                      _c("h3", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(_vm.get_menus[n].name) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "menu_expl" }, [
+                                      _c("div", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(
+                                              _vm.get_menus[n].explanation
+                                            ) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "menu_name",
+                                        staticStyle: { "margin-top": "5%" }
+                                      },
+                                      [
+                                        _vm.get_menus[n].optionValue1 !==
+                                        undefined
+                                          ? _c(
+                                              "h4",
+                                              {
+                                                staticStyle: {
+                                                  float: "left",
+                                                  width: "50%"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            옵션 : " +
+                                                    _vm._s(
+                                                      _vm.get_menus[n]
+                                                        .optionName1
+                                                    ) +
+                                                    "\n                        "
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.get_menus[n].optionValue1 !==
+                                        undefined
+                                          ? _c(
+                                              "select",
+                                              {
+                                                staticStyle: {
+                                                  float: "left",
+                                                  width: "50%"
+                                                },
+                                                attrs: { id: "value" + n }
+                                              },
+                                              _vm._l(_vm.options[n], function(
+                                                value,
+                                                key
+                                              ) {
+                                                return value !== undefined
+                                                  ? _c(
+                                                      "option",
+                                                      {
+                                                        key: key,
+                                                        domProps: {
+                                                          value: value
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                " +
+                                                            _vm._s(value) +
+                                                            "\n                            "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e()
+                                              })
+                                            )
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "menu_price" }, [
+                                      _c("h4", { staticClass: "menu_info" }, [
+                                        _vm._v(
+                                          " 가격 : " +
+                                            _vm._s(_vm.get_menus[n].price) +
+                                            " "
+                                        )
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "menu_price" },
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              slot: "activator",
+                                              color: "primary",
+                                              width: "100%;",
+                                              flat: "",
+                                              id: n
+                                            },
+                                            on: { click: _vm.select_menu },
+                                            slot: "activator"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            주문하기\n                        "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  })
+                )
+              : _vm._e()
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3b5061be", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -60,10 +60,6 @@ class MenuController extends Controller
         ]);
     }
 
-    public function translate(Request $request) {
-
-    }
-
     public function getMenu($shop_id, $category) {
 
         // <-- 메뉴정보를 저장할 Array
@@ -243,8 +239,18 @@ class MenuController extends Controller
             ]);
         }
 
+    }
 
+    public function getLayoutNumber(Request $request) {
+        $layoutData =Restaurant::select('selectLayout')
+                    ->where('id', $request->get('shop_id'))
+                    ->first();
 
+        $layoutNum = $layoutData->selectLayout;
+
+        return response()->json([
+            'layoutNum' => $layoutNum,
+        ]);
     }
 
 }
