@@ -22,9 +22,9 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
-    Route::get('/test', array(
-        'as' => 'main.getReviewData',
-        'uses' => 'MainController@getReviewData'
+    Route::get('/getOrderList', array(
+        'as' => 'main.getOrderList',
+        'uses' => 'MainController@getOrderList'
     ));
 
 
@@ -50,14 +50,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('register', function (){
         return view('user.selectForm');
     });
-
-    Route::post('getInfo', 
-        'UsersController@getInfo'
-    );
-
-    Route::post('editInfo',
-        'UsersController@editInfo'
-    );
 
 // <-- show Register Form
     Route::post('register', [
@@ -105,6 +97,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('menu/getMenu/{shop_id}/{category}', [
         'as' => 'menu.getMenu',
         'uses' => 'MenuController@getMenu'
+    ]);
+
+    Route::post('menu/getLayoutNumber', [
+        'as' => 'menu.getLayoutNumber',
+        'uses' => 'MenuController@getLayoutNumber'
     ]);
 
 // <-- User Order Page

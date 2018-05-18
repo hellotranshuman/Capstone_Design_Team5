@@ -10,7 +10,6 @@ use Validator;
 use Input;
 use \App\Restaurant;
 use \App\User;
-use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -49,45 +48,45 @@ class UsersController extends Controller
         }      */
 
 
-            // <-- User Login 정보 가져오기
-            $userData = array(
-                'user_id'     => $request->get('user_id'),
-                'password'  => $request->get('password')
-            );
+        // <-- User Login 정보 가져오기
+        $userData = array(
+            'user_id'     => $request->get('user_id'),
+            'password'  => $request->get('password')
+        );
 
-            // <-- Login 정보 확인
-            if (! auth()->attempt($userData, true)) {
-                return response()->json([
-                    'login' => false,
-                    'msg' => '아이디와 비밀번호를 확인해주세요.',
-                ]);
+        // <-- Login 정보 확인
+        if (! auth()->attempt($userData, true)) {
+            return response()->json([
+                'login' => false,
+                'msg' => '아이디와 비밀번호를 확인해주세요.',
+            ]);
+        }
+        else {
+            if(!auth()->user()->category)
+            {
+                $userId = auth()->user()->id;
+
+                $restaurant = Restaurant::where('user_num', $userId)
+                    ->get()
+                    ->first();
+
+                if($restaurant)
+                    $restaurant_id = $restaurant->id;
+                else
+                    $restaurant_id = "noneRestaurant";
             }
-            else {
-                if(!auth()->user()->category)
-                {
-                    $userId = auth()->user()->id;
+            else
+                $restaurant_id = '/';
 
-                    $restaurant = Restaurant::where('user_num', $userId)
-                                    ->get()
-                                    ->first();
-
-                    if($restaurant) 
-                        $restaurant_id = $restaurant->id;
-                    else
-                        $restaurant_id = "noneRestaurant";
-                }
-                else 
-                    $restaurant_id = '/';
-
-                // auth()->user()->id
-                // auth()->user()->name
-                return response()->json([
-                    'login' => true,
-                    'restaurant_id' => $restaurant_id,
-                    'user_id' => auth()->user()->user_id,
-                    'user_name' => auth()->user()->name
-                ]);
-            }
+            // auth()->user()->id
+            // auth()->user()->name
+            return response()->json([
+                'login' => true,
+                'restaurant_id' => $restaurant_id,
+                'user_id' => auth()->user()->user_id,
+                'user_name' => auth()->user()->name
+            ]);
+        }
 
 
     }
@@ -105,25 +104,9 @@ class UsersController extends Controller
         $user_id = $request->get('user_id');
 
         $userInfo = DB::table('users')
-        ->where('user_id','=', $user_id)
-        ->get();
+            ->where('user_id','=', $user_id)
+            ->get();
 
         return $userInfo;
-    }
-
-    public function editInfo(Request $request) {
-        $userInfo = DB::table('users')
-        ->where('user_id','=', $request->get('user_id'))
-        ->update([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'gender' => $request->get('gender') == 'Female' ? true : false,
-            'country' => $request->get('country'),
-            'birthday' => $request->get('birthday'),
-            'favorite_1' => $request->get('favorite_1'),
-            'favorite_2' => $request->get('favorite_2'),
-            'favorite_2' => $request->get('favorite_3')
-        ]);
     }
 }

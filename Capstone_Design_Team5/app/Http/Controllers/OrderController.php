@@ -24,8 +24,8 @@ class OrderController extends Controller
         $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
     }
 
+    // <-- 주문하기
     public function makeOrder(Request $request) {
-
 
         // 먼저 OrderList Table에 OrderList 추가 후 Reservation Table에 등록
         Order_List::create([
@@ -42,7 +42,7 @@ class OrderController extends Controller
 
         $orderNum = $orderData->order_num;
 
-        // 필요한것 : 주문 Menu 갯수 , Option
+        // 필요한것 : 주문 Menu 갯수 , Option, SubOption 갯수
         $menuNum         = $request->get('menulength');
         $menuArray       = $request->get('menu_id');
         $optionArray     = $request->get('option');

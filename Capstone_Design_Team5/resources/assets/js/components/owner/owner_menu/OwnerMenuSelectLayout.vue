@@ -1,457 +1,458 @@
 <!-- 식당 사장이 메뉴판이 출력될 레이아웃을 선택하거나 직접 제작 할 수 있도록 한다. -->
 
 <template>
-    <div class="container" style="width:100%;">
-        <v-container grid-list-md>
-            <!-- 서비스에서 제공하는 메뉴판 기본 템플릿 중 하나 선택하기. -->
-            <v-layout elevation-3>
-                <v-flex xs10 style="font-size: 2rem;">
-                    <v-card>
-                        <v-card-text><b>메뉴판 템플릿 선택 - 선택한 템플릿 : {{selected_template}} </b></v-card-text>
-                    </v-card> 
-                </v-flex>
-                <v-flex xs2 style="font-size: 2rem;">
-                    <v-btn dark block style="height:90%;" @click="save_data"> 
-                        저장하기
-                    </v-btn>
-                </v-flex>
-            </v-layout>
+<div class="container" style="width:100%;">
+<v-container grid-list-md>
+    <!-- 서비스에서 제공하는 메뉴판 기본 템플릿 중 하나 선택하기. -->
+    <v-layout elevation-3>
+        <v-flex xs10 style="font-size: 2rem;">
+            <v-card>
+                <v-card-text><b>메뉴판 템플릿 선택 - 선택한 템플릿 : {{selected_template}} </b></v-card-text>
+            </v-card> 
+        </v-flex>
+        <v-flex xs2 style="font-size: 2rem;">
+            <v-btn dark block style="height:90%;" @click="save_data"> 
+                저장하기
+            </v-btn>
+        </v-flex>
+    </v-layout>
 
-            <!-- 기본 메뉴판 템플릿 선택하기. -->
-            <v-layout text-xs-center mb-5>
-                <!-- 서비스에서 제공하는 메뉴판 기본 템플릿1 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
-                    <v-card>
-                        <v-card-text> 기본 템플릿1 </v-card-text>
+    <!-- 기본 메뉴판 템플릿 선택하기. -->
+    <v-layout text-xs-center mb-5>
+        <!-- 서비스에서 제공하는 메뉴판 기본 템플릿1 -->
+        <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+            <v-card>
+                <v-card-text> 기본 템플릿1 </v-card-text>
 
-                        <div class="tem_img"> <img :src="exImg1"> </div>
-                         
-                        <!-- 템플릿 예시 이미지 출력 : 모달 -->
-                        <v-dialog max-width="50%">
-                            <v-btn dark block slot="activator"> 예시 보기 </v-btn>
-                            <v-card align-content-center>
-                                <v-card-text> 기본 템플릿1 예시 이미지 출력 </v-card-text>
-                                <div class="tem_img"> <img :src="exImg1"> </div>
-                            </v-card>
-                        </v-dialog>
-
-                        <!-- 템플릿 선택하기 : 모달 -->
-                         <v-dialog  v-model="tem1" max-width="20%">
-                            <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
-                            <v-card>
-                                <v-card-text> 
-                                    <h3> 기본 템플릿1으로 적용하시겠습니까? </h3>
-                                    <v-btn flat color="green darken-1" 
-                                        @click.native="selected_template=1; tem1=false"> 예 </v-btn>
-                                    <v-btn  color="green darken-1" flat  @click.native="tem1 = false"> 아니오 </v-btn>
-                                </v-card-text>
-                            </v-card>
-                        </v-dialog>
-                    </v-card>
-                </v-flex>
-
-                <!-- 서비스에서 제공하는 메뉴판 기본 템플릿2 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
-                    <v-card>
-                        <v-card-text> 기본 템플릿2 </v-card-text> 
-                        
-                        <div class="tem_img"> <img :src="exImg2"> </div>
-
-                        <!-- 템플릿 예시 이미지 출력 : 모달 -->
-                        <v-dialog max-width="50%">
-                            <v-btn dark block slot="activator"> 예시 보기 </v-btn>
-                            <v-card>
-                                <v-card-text> 기본 템플릿2 예시 이미지 출력 </v-card-text>
-                                <div class="tem_img"> <img :src="exImg2"> </div>
-                            </v-card>
-                        </v-dialog>
-
-                        <!-- 템플릿 선택하기 : 모달 -->
-                        <v-dialog v-model="tem2" max-width="20%">
-                            <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
-                            <v-card>
-                                <v-card-text> 
-                                    <h3> 기본 템플릿2으로 적용하시겠습니까? </h3> 
-                                    <v-btn  color="green darken-1" flat 
-                                        @click.native="selected_template=2; tem2 = false"> 예 </v-btn>
-                                    <v-btn  color="green darken-1" flat  @click.native="tem2 = false"> 아니오 </v-btn>
-                                </v-card-text>
-                            </v-card>
-                        </v-dialog>
-                    </v-card>
-                </v-flex>
-
-                <!-- 서비스에서 제공하는 메뉴판 기본 템플릿3 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
-                    <v-card>
-                        <v-card-text> 기본 템플릿3 </v-card-text>
-
-                        <div class="tem_img"> <img :src="exImg3"> </div>
-
-                        <!-- 템플릿 예시 이미지 출력 : 모달 -->
-                        <v-dialog max-width="50%">
-                            <v-btn dark block slot="activator"> 예시 보기 </v-btn>
-                            <v-card>
-                                <v-card-text> 기본 템플릿3 예시 이미지 출력 </v-card-text>
-                                <div class="tem_img"> <img :src="exImg3"> </div>
-                            </v-card>
-                        </v-dialog>
-
-                        <!-- 템플릿 선택하기 : 모달 -->
-                        <v-dialog v-model="tem3" max-width="20%">
-                            <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
-                            <v-card>
-                                <v-card-text> 
-                                    <h3> 기본 템플릿3으로 적용하시겠습니까? </h3>
-                                    <v-btn  color="green darken-1" flat 
-                                        @click.native="selected_template=3; tem3 = false"> 예 </v-btn>                                    
-                                    <v-btn color="green darken-1" flat  @click.native="tem3 = false"> 아니오 </v-btn>
-                                </v-card-text>
-                            </v-card>
-                        </v-dialog>
-                    </v-card>
-                </v-flex>
-
-                <!-- 서비스에서 제공하는 메뉴판 기본 템플릿4 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
-                    <v-card>
-                        <v-card-text> 기본 템플릿4 </v-card-text>
-
-                        <div class="tem_img"> <img :src="exImg4"> </div>
-
-                        <!-- 템플릿 예시 이미지 출력 : 모달 -->
-                        <v-dialog max-width="50%">
-                            <v-btn dark block slot="activator"> 예시 보기 </v-btn>
-                            <v-card>
-                                <v-card-text> 기본 템플릿4 예시 이미지 출력 </v-card-text>
-                                <div class="tem_img"> <img :src="exImg4"> </div>
-                            </v-card>
-                        </v-dialog>
-
-                        <!-- 템플릿 선택하기 : 모달 -->
-                        <v-dialog v-model="tem4" max-width="20%">
-                            <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
-                            <v-card>
-                                <v-card-text> 
-                                    <h3> 기본 템플릿4으로 적용하시겠습니까? </h3> 
-                                    <v-btn  color="green darken-1" flat 
-                                        @click.native="selected_template=4; tem4 = false"> 예 </v-btn>
-                                    <v-btn color="green darken-1" flat @click.native="tem4 = false"> 아니오 </v-btn>
-                                </v-card-text>
-                            </v-card>
-                        </v-dialog>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-
-            <!-- 메뉴판 템블릿 커스터마이징 -->
-            <v-layout elevation-3>
-                <v-flex xs12 style="font-size: 2rem;">
-                    <v-card>
-                         <v-card-text>
-                            <b> 메뉴판 템플릿 제작 </b>
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-
-            <!-- 제작 툴로 이동하기 -->
-            <v-layout elevation-3>
-                <v-flex xs12>
-                    <v-card>
-                        <v-card-text style="font-size: 1rem;">                             
-                            <v-btn dark @click.stop="createMode=true"> 
-                                메뉴판 제작 
-                            </v-btn>
-                                제작 툴을 사용하여 자신만의 메뉴판을 직접 제작합니다.
-                        </v-card-text> 
-                    </v-card>   
-                </v-flex>     
-            </v-layout> 
-
-            <!-- 제작 툴 -->
-            <v-layout row justify-center>
-                <v-dialog v-model="createMode" fullscreen hide-overlay style="z-index:0"
-                    transition="dialog-bottom-transition">
-                    <v-card>
-                        <!-- 상단 툴바 -->
-                        <v-toolbar color="grey lighten-5">
-                            <!-- 사이드 툴바 호출 버튼 -->
-                            <v-toolbar-side-icon @click.stop="sideToolBar = !sideToolBar" >                                 
-                            </v-toolbar-side-icon>
-
-                            <v-toolbar-title class="black--text"><b>메뉴판 제작</b></v-toolbar-title>
-
-                            <!-- ctrl + z -->
-                            <v-btn icon ml-5>
-                                <v-icon> undo </v-icon>
-                            </v-btn>
-
-                            <!-- ctrl + y -->
-                            <v-btn icon>
-                                <v-icon> redo </v-icon>
-                            </v-btn>
-
-                            <v-spacer></v-spacer>
-
-                            <!-- 출력 형식 -->
-                            <v-btn dark @click="SetMenuPrt"> 메뉴 출력 설정 </v-btn>
-
-                            <!-- 저장하기 나가기 버튼 -->
-                            <v-btn class="white--text" color="red lighten-1" @click="createSave"> 저장하기 </v-btn>
-                            <v-btn class="white--text" color="grey darken-1" @click="createMode=false"> 
-                                나가기 
-                            </v-btn>
-                        </v-toolbar>
-
-                        <!-- 메뉴 출력 설정창 -->
-                        <div id="MenuPrt">       
-                            <div style="width:100%; text-align:center;">                                
-                                <b class="designSet_title"> 메뉴 출력 설정 </b>
-                                <v-btn icon style="float:right" 
-                                    onclick="document.getElementById('MenuPrt').classList.remove('active');">
-                                        <v-icon large> clear </v-icon>
-                                </v-btn>
-                            </div>
-
-                            <div class="designSet_tr"> 
-                                <b class="designSet_name">1줄에 출력될 메뉴의 갯수</b> <br> 
-
-                                <select id="MenuNum" class="designSet_ipt">
-                                    <option value=1> 1 </option>
-                                    <option value=2> 2 </option>
-                                    <option value=3 selected> 3 </option>
-                                    <option value=4> 4 </option>
-                                    <option value=5> 5 </option> 
-                                    <option value=6> 6 </option>
-                                    <option value=7> 7 </option>                              
-                                </select> 개
-                            </div>          
-
-                            <div class="designSet_tr" style="margin-bottom: 5%"> 
-                                <b class="designSet_name">메뉴 간격</b> <br> 
-                                <input type="text" id="MenuMargin" class="designSet_ipt" value="10"> px
-                            </div>           
-                        </div>
-
-                        <!-- 사이드 툴바 -->
-                        <v-navigation-drawer v-model="sideToolBar" temporary absolute style="z-index:100">   
-                             <v-list class="pa-1">
-                                <v-list-tile avatar>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title class="list-style">
-                                            <b>메뉴판 요소 선택</b>
-                                        </v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-                            </v-list>
-
-                            <v-list class="pt-0"> 
-                                <v-divider></v-divider>
-                                <!-- 메뉴 영역 div 생성 -->
-                                <v-list-tile @click="createSomething" class='mt-4'
-                                    @click.capture="item = 'createdMenu'"
-                                    @click.stop="sideToolBar = !sideToolBar">
-                                    <v-list-tile-action>
-                                        <v-icon>subtitles</v-icon>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title class="list-style">메뉴 영역</v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-
-                                <!-- 메뉴 이미지 -->
-                                <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createdImg'"
-                                    @click.stop="sideToolBar = !sideToolBar">
-                                    <v-list-tile-action>
-                                        <v-icon>image</v-icon>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title class="list-style">메뉴 이미지</v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-
-                                <!-- 메뉴 명 생성 -->
-                                <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createdName'"
-                                    @click.stop="sideToolBar = !sideToolBar">
-                                    <v-list-tile-action>
-                                        <v-icon>title</v-icon>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title class="list-style">메뉴 명</v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-
-                                <!-- 메뉴 설명 생성 -->
-                                <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createdExpl'"
-                                    @click.stop="sideToolBar = !sideToolBar">
-                                    <v-list-tile-action>
-                                        <v-icon>assignment</v-icon>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title class="list-style">메뉴 설명</v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-
-                                <!-- 메뉴 가격 -->
-                                <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createdPrice'"
-                                    @click.stop="sideToolBar = !sideToolBar">
-                                    <v-list-tile-action>
-                                        <v-icon>attach_money</v-icon>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title class="list-style">메뉴 가격</v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile>
-
-                                <!-- 메뉴 선택 버튼 -->
-                                <v-list-tile @click="createSomething" class='mt-3'
-                                    @click.capture="item = 'createdSelect'"
-                                    @click.stop="sideToolBar = !sideToolBar">
-                                    <v-list-tile-action>
-                                        <v-icon>check_circle</v-icon>
-                                    </v-list-tile-action>
-                                    <v-list-tile-content>
-                                        <v-list-tile-title class="list-style">메뉴 선택 버튼</v-list-tile-title>
-                                    </v-list-tile-content>
-                                </v-list-tile> 
-                            </v-list>                                                                        
-                        </v-navigation-drawer>
-
-                        <!-- 마우스 오른쪽 버튼 클릭스 나타나는 메뉴 창 -->
-                        <div id="click_menu" class="context-menus">
-                            <ul>
-                                <li id="goFont" @click="zIndexSet"><b>앞으로</b></li>  
-                                <li id="goBack" @click="zIndexSet"><b>뒤로</b></li> <hr> 
-
-                                <li @click="CallDesignSet"><b>영역 서식</b></li> <hr> 
-
-                                <!-- <li @click="elementGrouping"><b>그룹화</b></li>   -->
-                                <li @click="DeleteElement"><b>삭제하기</b></li>
-                            </ul>
-                        </div>
-
-                        <!-- 영역 서식 메뉴창 -->
-                        <div id="designSet">    
-                            <div style="text-align: left;"> 
-                                <b class="designSet_title"> 영역 서식 </b>
-                                
-                                <v-btn icon style="float:right" @click="CloseDesignSet">
-                                    <v-icon large> clear </v-icon>
-                                </v-btn>
-                                <v-btn icon style="float:right" @click="SetColorAndShape">
-                                    <v-icon large> done </v-icon>
-                                </v-btn>
-                            </div> 
-
-                            <div class="designSet_tr">
-                                <b class="designSet_name">선 굵기 설정</b> <br> 
-                                <input type="text" id="line_width" class="designSet_ipt" value="2"> px
-                            </div>
-
-                            <div class="designSet_tr"> 
-                                <b class="designSet_name">선 스타일 설정</b> <br> 
-
-                                <select id="line_style" class="designSet_ipt">
-                                    <option value="solid"> 직선 </option>
-                                    <option value="none"> 없음 </option>
-                                    <option value="dotted"> 짧은 점선 </option>
-                                    <option value="dashed"> 긴 점선 </option>
-                                    <option value="double"> 곂선 </option>                                
-                                </select> (선택)
-                            </div>
-
-                            <div class="designSet_tr">
-                                <b class="designSet_name">선 색상 선택</b> <br>
-
-                                <div style="width:100%; overflow:hidden">
-                                    <div class="designSet_color">
-                                        <div id="line_color" class="designSet_color_inner"
-                                            style="background-color:black;"></div>
-                                    </div>
-                                    <button class="designSet_color_btn" @click="CallColorPicker"
-                                        @click.capture="appColor = 'line_color'">  
-                                        <b>선택하기</b> 
-                                    </button>
-                                    <button class="designSet_color_btn" @click="ColorNull"
-                                        @click.capture="appColor = 'line_color'">  
-                                        <b>색 없음</b> 
-                                    </button>
-                                </div>                                
-                            </div>
-
-                             <div class="designSet_tr">
-                                <b class="designSet_name">글자 색 선택</b> <br>
-
-                                <div style="width:100%; overflow:hidden">
-                                    <div class="designSet_color">
-                                        <div id="text_color" class="designSet_color_inner"
-                                            style="background-color:black;"></div>
-                                    </div>
-                                    <button class="designSet_color_btn" @click="CallColorPicker"
-                                        @click.capture="appColor = 'text_color'">  
-                                        <b>선택하기</b> 
-                                    </button>                                    
-                                </div>                                
-                            </div>
-
-                            <div class="designSet_tr">
-                                <b class="designSet_name">영역 색상</b> <br>
-                                <div style="width:100%; overflow:hidden">
-                                    <div class="designSet_color">
-                                        <div id="area_color" class="designSet_color_inner"></div>
-                                    </div>
-                                    <button class="designSet_color_btn" @click="CallColorPicker" 
-                                        @click.capture="appColor = 'area_color'"> 
-                                        <b>선택하기</b> 
-                                    </button>
-                                    <button class="designSet_color_btn" @click="ColorNull" 
-                                        @click.capture="appColor = 'area_color'"> 
-                                        <b>색 없음</b> 
-                                    </button>
-                                </div>
-                            </div> 
-
-                            <div class="designSet_tr">
-                                <b class="designSet_name">영역 모양 설정</b> <br>
-                                <select id="area_style" class="designSet_ipt">
-                                    <option value="quadrangle"> 사각형 </option>
-                                    <option value="quadrangle_R"> 둥근 사각형 </option>
-                                    <option value="circle"> 원 </option>                  
-                                </select> (선택)
-                            </div>  
-                        </div>
-
-                        <!-- color picker -->
-                        <div id="colorPicker">
-                            <div>
-                                <canvas id="palette" @click="Palette_Click"> </canvas>
-                                <canvas id="bar"     @click="Bar_Click"> </canvas>
-                            </div>
-                            
-                            <div style="width:100%;">
-                                <div id="click_color"><b> 선택한 색상 </b></div>
-                            </div>
-
-                            <div style="width:100%;">
-                                <button class="color_btn" @click="SetColor"><b>적용</b></button>
-                                <button class="color_btn" @click="CloseColorPicker"><b>취소</b></button>
-                            </div>
-                        </div>
-
-                        <!-- 작업 공간 @mousedown="dragSelect"-->
-                        <div style="width:100%; height:90%; position:absolute;">
-                            <div id="workSpace"></div>
-                        </div>
+                <div class="tem_img"> <img class="inner_img" :src="exImg1"> </div>
+                    
+                <!-- 템플릿 예시 이미지 출력 : 모달 -->
+                <v-dialog max-width="50%">
+                    <v-btn dark block slot="activator"> 예시 보기 </v-btn>
+                    <v-card align-content-center>
+                        <v-card-text> 기본 템플릿1 예시 이미지 출력 </v-card-text>
+                        <div class="tem_img"> <img class="inner_img" :src="exImg1"> </div>
                     </v-card>
                 </v-dialog>
-            </v-layout>
-        </v-container>
-    </div>
+
+                <!-- 템플릿 선택하기 : 모달 -->
+                    <v-dialog  v-model="tem1" max-width="20%">
+                    <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
+                    <v-card>
+                        <v-card-text> 
+                            <h3> 기본 템플릿1으로 적용하시겠습니까? </h3>
+                            <v-btn flat color="green darken-1" 
+                                @click.native="selected_template=1; tem1=false"> 예 </v-btn>
+                            <v-btn  color="green darken-1" flat  @click.native="tem1 = false"> 아니오 </v-btn>
+                        </v-card-text>
+                    </v-card>
+                </v-dialog>
+            </v-card>
+        </v-flex>
+
+        <!-- 서비스에서 제공하는 메뉴판 기본 템플릿2 -->
+        <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+            <v-card>
+                <v-card-text> 기본 템플릿2 </v-card-text> 
+                
+                <div class="tem_img"> <img class="inner_img" :src="exImg2"> </div>
+
+                <!-- 템플릿 예시 이미지 출력 : 모달 -->
+                <v-dialog max-width="50%">
+                    <v-btn dark block slot="activator"> 예시 보기 </v-btn>
+                    <v-card>
+                        <v-card-text> 기본 템플릿2 예시 이미지 출력 </v-card-text>
+                        <div class="tem_img"> <img class="inner_img" :src="exImg2"> </div>
+                    </v-card>
+                </v-dialog>
+
+                <!-- 템플릿 선택하기 : 모달 -->
+                <v-dialog v-model="tem2" max-width="20%">
+                    <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
+                    <v-card>
+                        <v-card-text> 
+                            <h3> 기본 템플릿2으로 적용하시겠습니까? </h3> 
+                            <v-btn  color="green darken-1" flat 
+                                @click.native="selected_template=2; tem2 = false"> 예 </v-btn>
+                            <v-btn  color="green darken-1" flat  @click.native="tem2 = false"> 아니오 </v-btn>
+                        </v-card-text>
+                    </v-card>
+                </v-dialog>
+            </v-card>
+        </v-flex>
+
+        <!-- 서비스에서 제공하는 메뉴판 기본 템플릿3 -->
+        <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+            <v-card>
+                <v-card-text> 기본 템플릿3 </v-card-text>
+
+                <div class="tem_img"> <img class="inner_img" :src="exImg3"> </div>
+
+                <!-- 템플릿 예시 이미지 출력 : 모달 -->
+                <v-dialog max-width="50%">
+                    <v-btn dark block slot="activator"> 예시 보기 </v-btn>
+                    <v-card>
+                        <v-card-text> 기본 템플릿3 예시 이미지 출력 </v-card-text>
+                        <div class="tem_img"> <img class="inner_img" :src="exImg3"> </div>
+                    </v-card>
+                </v-dialog>
+
+                <!-- 템플릿 선택하기 : 모달 -->
+                <v-dialog v-model="tem3" max-width="20%">
+                    <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
+                    <v-card>
+                        <v-card-text> 
+                            <h3> 기본 템플릿3으로 적용하시겠습니까? </h3>
+                            <v-btn  color="green darken-1" flat 
+                                @click.native="selected_template=3; tem3 = false"> 예 </v-btn>                                    
+                            <v-btn color="green darken-1" flat  @click.native="tem3 = false"> 아니오 </v-btn>
+                        </v-card-text>
+                    </v-card>
+                </v-dialog>
+            </v-card>
+        </v-flex>
+
+        <!-- 서비스에서 제공하는 메뉴판 기본 템플릿4 -->
+        <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+            <v-card>
+                <v-card-text> 기본 템플릿4 </v-card-text>
+
+                <div class="tem_img"> <img class="inner_img" :src="exImg4"> </div>
+
+                <!-- 템플릿 예시 이미지 출력 : 모달 -->
+                <v-dialog max-width="50%">
+                    <v-btn dark block slot="activator"> 예시 보기 </v-btn>
+                    <v-card>
+                        <v-card-text> 기본 템플릿4 예시 이미지 출력 </v-card-text>
+                        <div class="tem_img"> <img class="inner_img" :src="exImg4"> </div>
+                    </v-card>
+                </v-dialog>
+
+                <!-- 템플릿 선택하기 : 모달 -->
+                <v-dialog v-model="tem4" max-width="20%">
+                    <v-btn dark block slot="activator"> 템플릿 선택 </v-btn>
+                    <v-card>
+                        <v-card-text> 
+                            <h3> 기본 템플릿4으로 적용하시겠습니까? </h3> 
+                            <v-btn color="green darken-1" flat 
+                                @click.native="selected_template=4; tem4 = false"> 예 </v-btn>
+                            <v-btn color="green darken-1" flat @click.native="tem4 = false"> 아니오 </v-btn>
+                        </v-card-text>
+                    </v-card>
+                </v-dialog>
+            </v-card>
+        </v-flex>
+    </v-layout>
+
+    <!-- 메뉴판 템블릿 커스터마이징 -->
+    <v-layout elevation-3>
+        <v-flex xs12 style="font-size: 2rem;">
+            <v-card>
+                <v-card-text>
+                    <b> 메뉴판 템플릿 제작 </b>
+                </v-card-text>
+            </v-card>
+        </v-flex>
+    </v-layout>
+
+    <!-- 제작 툴로 이동하기 -->
+    <v-layout elevation-3>
+        <v-flex xs12>
+            <v-card>
+                <v-card-text style="font-size: 1rem;">                             
+                    <v-btn dark @click.stop="createMode=true">메뉴판 제작</v-btn>
+                    제작 툴을 사용하여 자신만의 메뉴판을 직접 제작합니다.
+                </v-card-text> 
+            </v-card>   
+        </v-flex>     
+    </v-layout> 
+
+    <!-- 제작 툴 -->
+    <v-layout row justify-center>
+        <v-dialog v-model="createMode" fullscreen hide-overlay style="z-index:0"
+            transition="dialog-bottom-transition">
+            <v-card>
+                <!-- 상단 툴바 -->
+                <v-toolbar color="grey lighten-5">
+                    <!-- 사이드 툴바 호출 버튼 -->
+                    <v-toolbar-side-icon @click.stop="sideToolBar = !sideToolBar" >                                 
+                    </v-toolbar-side-icon>
+
+                    <v-toolbar-title class="black--text"><b>메뉴판 제작</b></v-toolbar-title>
+
+                    <!-- ctrl + z -->
+                    <v-btn icon ml-5><v-icon> undo </v-icon></v-btn>
+
+                    <!-- ctrl + y -->
+                    <v-btn icon><v-icon> redo </v-icon></v-btn>
+                    <v-spacer></v-spacer>
+
+                    <!-- 출력 형식 -->
+                    <v-btn dark @click="SetMenuPrt"> 메뉴 출력 설정 </v-btn>
+
+                    <!-- 저장하기 나가기 버튼 -->
+                    <v-btn class="white--text" color="red lighten-1" @click="createSave"> 저장하기 </v-btn>
+                    <v-btn class="white--text" color="grey darken-1" @click="createMode=false">나가기</v-btn>
+                </v-toolbar>
+
+                <!-- 메뉴 출력 설정창 -->
+                <div id="MenuPrt">       
+                    <div style="width:100%; text-align:center;">                                
+                        <b class="designSet_title"> 메뉴 출력 설정 </b>
+                        <v-btn icon style="float:right" 
+                            onclick="document.getElementById('MenuPrt').classList.remove('active');">
+                                <v-icon large> clear </v-icon>
+                        </v-btn>
+                    </div>
+
+                    <div class="designSet_tr"> 
+                        <b class="designSet_name">1줄에 출력될 메뉴의 갯수</b> <br> 
+
+                        <select id="MenuNum" class="designSet_ipt">
+                            <option value=1> 1 </option>
+                            <option value=2 selected> 2 </option>
+                            <option value=3> 3 </option>
+                            <option value=4> 4 </option>                          
+                        </select> 개
+                    </div>          
+
+                    <div class="designSet_tr" style="margin-bottom: 5%"> 
+                        <b class="designSet_name">메뉴 간격</b> <br>  
+                        <select id="MenuMargin" class="designSet_ipt">
+                            <option value=1 selected> 1 </option>
+                            <option value=2> 2 </option>
+                            <option value=3> 3 </option>                        
+                        </select> %
+                    </div>           
+                </div>
+
+                <!-- 사이드 툴바 -->
+                <v-navigation-drawer v-model="sideToolBar" temporary absolute style="z-index:100">   
+                        <v-list class="pa-1">
+                        <v-list-tile avatar>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">
+                                    <b>메뉴판 요소 선택</b>
+                                </v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </v-list>
+
+                    <v-list class="pt-0"> 
+                        <v-divider></v-divider>
+                        <!-- 메뉴 영역 div 생성 -->
+                        <v-list-tile @click="createSomething" class='mt-4'
+                            @click.capture="item = 'createdMenu'"
+                            @click.stop="sideToolBar = !sideToolBar">
+                            <v-list-tile-action>
+                                <v-icon>subtitles</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">메뉴 영역</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <!-- 메뉴 이미지 -->
+                        <v-list-tile @click="createSomething" class='mt-3'
+                            @click.capture="item = 'createdImg'"
+                            @click.stop="sideToolBar = !sideToolBar">
+                            <v-list-tile-action>
+                                <v-icon>image</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">메뉴 이미지</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <!-- 메뉴 명 생성 -->
+                        <v-list-tile @click="createSomething" class='mt-3'
+                            @click.capture="item = 'createdName'"
+                            @click.stop="sideToolBar = !sideToolBar">
+                            <v-list-tile-action>
+                                <v-icon>title</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">메뉴 명</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <!-- 메뉴 설명 생성 -->
+                        <v-list-tile @click="createSomething" class='mt-3'
+                            @click.capture="item = 'createdExpl'"
+                            @click.stop="sideToolBar = !sideToolBar">
+                            <v-list-tile-action>
+                                <v-icon>assignment</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">메뉴 설명</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <!-- 런치 / 디너 구분 생성 -->
+                        <v-list-tile @click="createSomething" class='mt-3'
+                            @click.capture="item = 'createdL_D'"
+                            @click.stop="sideToolBar = !sideToolBar">
+                            <v-list-tile-action>
+                                <v-icon>assignment</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">런치 / 디너 구분</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <!-- 메뉴 가격 -->
+                        <v-list-tile @click="createSomething" class='mt-3'
+                            @click.capture="item = 'createdPrice'"
+                            @click.stop="sideToolBar = !sideToolBar">
+                            <v-list-tile-action>
+                                <v-icon>attach_money</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">메뉴 가격</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+
+                        <!-- 메뉴 선택 버튼 -->
+                        <v-list-tile @click="createSomething" class='mt-3'
+                            @click.capture="item = 'createdSelect'"
+                            @click.stop="sideToolBar = !sideToolBar">
+                            <v-list-tile-action>
+                                <v-icon>check_circle</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="list-style">메뉴 선택 버튼</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile> 
+                    </v-list>                                                                        
+                </v-navigation-drawer>
+
+                <!-- 마우스 오른쪽 버튼 클릭스 나타나는 메뉴 창 -->
+                <div id="click_menu" class="context-menus">
+                    <ul>
+                        <li id="goFont" @click="zIndexSet"><b>앞으로</b></li>  
+                        <li id="goBack" @click="zIndexSet"><b>뒤로</b></li> <hr> 
+                        <li @click="CallDesignSet"><b>영역 서식</b></li> <hr> 
+                        <li @click="DeleteElement"><b>삭제하기</b></li>
+                    </ul>
+                </div>
+
+                <!-- 영역 서식 메뉴창 -->
+                <div id="designSet">    
+                    <div style="text-align: left;"> 
+                        <b class="designSet_title"> 영역 서식 </b>
+                        
+                        <v-btn icon style="float:right" @click="CloseDesignSet">
+                            <v-icon large> clear </v-icon>
+                        </v-btn>
+                        <v-btn icon style="float:right" @click="SetColorAndShape">
+                            <v-icon large> done </v-icon>
+                        </v-btn>
+                    </div> 
+
+                    <div class="designSet_tr">
+                        <b class="designSet_name">선 굵기 설정</b> <br> 
+                        <input type="text" id="line_width" class="designSet_ipt" value="2"> px
+                    </div>
+
+                    <div class="designSet_tr"> 
+                        <b class="designSet_name">선 스타일 설정</b> <br> 
+
+                        <select id="line_style" class="designSet_ipt">
+                            <option value="solid"> 직선 </option>
+                            <option value="none"> 없음 </option>
+                            <option value="dotted"> 짧은 점선 </option>
+                            <option value="dashed"> 긴 점선 </option>
+                            <option value="double"> 곂선 </option>                                
+                        </select> (선택)
+                    </div>
+
+                    <div class="designSet_tr">
+                        <b class="designSet_name">선 색상 선택</b> <br>
+
+                        <div style="width:100%; overflow:hidden">
+                            <div class="designSet_color">
+                                <div id="line_color" class="designSet_color_inner"
+                                    style="background-color:black;"></div>
+                            </div>
+                            <button class="designSet_color_btn" @click="CallColorPicker"
+                                @click.capture="appColor = 'line_color'">  
+                                <b>선택하기</b> 
+                            </button>
+                            <button class="designSet_color_btn" @click="ColorNull"
+                                @click.capture="appColor = 'line_color'">  
+                                <b>색 없음</b> 
+                            </button>
+                        </div>                                
+                    </div>
+
+                        <div class="designSet_tr">
+                        <b class="designSet_name">글자 색 선택</b> <br>
+
+                        <div style="width:100%; overflow:hidden">
+                            <div class="designSet_color">
+                                <div id="text_color" class="designSet_color_inner"
+                                    style="background-color:black;"></div>
+                            </div>
+                            <button class="designSet_color_btn" @click="CallColorPicker"
+                                @click.capture="appColor = 'text_color'">  
+                                <b>선택하기</b> 
+                            </button>                                    
+                        </div>                                
+                    </div>
+
+                    <div class="designSet_tr">
+                        <b class="designSet_name">영역 색상</b> <br>
+                        <div style="width:100%; overflow:hidden">
+                            <div class="designSet_color">
+                                <div id="area_color" class="designSet_color_inner"></div>
+                            </div>
+                            <button class="designSet_color_btn" @click="CallColorPicker" 
+                                @click.capture="appColor = 'area_color'"> 
+                                <b>선택하기</b> 
+                            </button>
+                            <button class="designSet_color_btn" @click="ColorNull" 
+                                @click.capture="appColor = 'area_color'"> 
+                                <b>색 없음</b> 
+                            </button>
+                        </div>
+                    </div> 
+
+                    <div class="designSet_tr">
+                        <b class="designSet_name">영역 모양 설정</b> <br>
+                        <select id="area_style" class="designSet_ipt">
+                            <option value="quadrangle"> 사각형 </option>
+                            <option value="quadrangle_R"> 둥근 사각형 </option>
+                            <option value="circle"> 원 </option>                  
+                        </select> (선택)
+                    </div>  
+                </div>
+
+                <!-- color picker -->
+                <div id="colorPicker">
+                    <div>
+                        <canvas id="palette" @click="Palette_Click"> </canvas>
+                        <canvas id="bar"     @click="Bar_Click"> </canvas>
+                    </div>
+                    
+                    <div style="width:100%;">
+                        <div id="click_color"><b> 선택한 색상 </b></div>
+                    </div>
+
+                    <div style="width:100%;">
+                        <button class="color_btn" @click="SetColor"><b>적용</b></button>
+                        <button class="color_btn" @click="CloseColorPicker"><b>취소</b></button>
+                    </div>
+                </div>
+
+                <!-- 작업 공간 @mousedown="dragSelect"-->
+                <div style="width:100%; height:90%; position:absolute;">
+                    <div id="workSpace"></div>
+                </div>
+            </v-card>
+        </v-dialog>
+    </v-layout>
+</v-container>
+</div>
 </template>
         
 <script type="text/javascript"> 
@@ -472,33 +473,16 @@ var palet_cntxt = null;             // palette context
 export default {  
 
     created(){
-        // 메뉴 레이아웃 가져오기
-        var url = '';
-        var layoutNum = null;
-        var shop_id = this.$route.params.shop_id;
-        url = '/owner/' + shop_id + '/getLayout';
-        // 카테고리 요청하기.
-        axios.get(url)
-            .then( (response) => {
-                layoutNum = response.data.layoutNum;
-
-                if(layoutNum != 0)
-                    this.selected_template = "기본 템플릿" + layoutNum;
-                else
-                    this.selected_template = "사용자 제작 템플릿";
-            })
-            .catch((ex)=>{
-                alert('레이아웃 로드 실패');
-            });
+        // this.dragSelect();     
     },
 
     data () {
         return { 
             // 이미지 주소 주소 설정 좀여
-            exImg1 : '/images/template/template1.jpeg',
-            exImg2 : '/images/template/template2.png',
-            exImg3 : '/images/template/template3.png',
-            exImg4 : '/images/template/template4.png',
+            exImg1 : '선주야 부탁한다!',  
+            exImg2 : '선주야 부탁한다!',
+            exImg3 : '선주야 부탁한다!',
+            exImg4 : '선주야 부탁한다!',
 
             // 모달 용 
             tem1: false,
@@ -523,26 +507,17 @@ export default {
         // 템플릿 선택 - 저장하기
         save_data : function () { 
             let slt_tem = this.selected_template;       // 선택한 템플릿
-
+              
             if ( slt_tem === '없음'){
                 alert('메뉴판 템플릿을 선택해주세요');
             }
             else { 
                 // 선택한 템플릿 설정 저장하기.
-                let url = '/saveSelectedLayout';
+                let url = '선주야 부탁한다!'; 
             
-                axios.post(url, {
-                    'slt_tem' : slt_tem,
-                    'shop_id' : this.$route.params.shop_id,
-                })
+                axios.post(url, slt_tem)
                 .then( (response) => {
-
-                    if(response.data.msg) {
-                        alert('저장이 완료 되었습니다');
-                        location.reload();
-                    }
-
-                    // get_datas = response.data
+                    get_datas = response.data 
                 })
                 .catch((ex)=>{
                     alert('저장 실패');
@@ -559,8 +534,8 @@ export default {
         // 메뉴판 제작 - 작업 내용 저장하기.
         createSave : function() {
             let formData   = new FormData();                                // 엘리먼트들을 담음
-            let browser_w  = window.outerWidth;                             // 브라우저의 width
-            let browser_h  = window.outerHeight;                            // 브라우저의 height
+            // let browser_w  = window.outerWidth;                          // 브라우저의 width
+            // let browser_h  = window.outerHeight;                         // 브라우저의 height
             let MenuNum    = document.getElementById('MenuNum');            // 한줄에 표시될 메뉴 갯수
             let MenuMargin = document.getElementById('MenuMargin');         // 메뉴들 간격 설정
             let workSpace  = document.getElementById('workSpace');          // 작업 공간 div 가져오기
@@ -570,24 +545,30 @@ export default {
             let menu   = document.getElementsByClassName('createdMenu')[0];
             let menu_w = menu.style.width.replace('px', '');
             let menu_h = menu.style.height.replace('px', '');
-            let menu_t = menu.style.top.replace('px', '');
-            let menu_l = menu.style.left.replace('px', '');
+            let ratio  = Math.floor(menu_h/menu_w*100);
+            // let menu_t = menu.style.top.replace('px', '');
+            // let menu_l = menu.style.left.replace('px', '');
 
             // 메뉴 영역 스타일 값 페센트로 바꾸기.
-            menu.style.width  = Math.ceil( menu_w / browser_w * 100 ) + "%";
-            menu.style.height = Math.ceil( menu_h / browser_h * 100 ) + "%"; 
-            menu.style.top    = Math.ceil( menu_t / browser_h * 100 ) + "%";
-            menu.style.left   = Math.ceil( menu_l / browser_w * 100 ) + "%";
+            // menu.style.width  = Math.ceil( menu_w / browser_w * 100 ) + "%";
+            // menu.style.height = Math.ceil( menu_h / browser_h * 100 ) + "%"; 
+            // menu.style.top    = Math.ceil( menu_t / browser_h * 100 ) + "%";
+            // menu.style.left   = Math.ceil( menu_l / browser_w * 100 ) + "%";
             
+            array['MenuNum']    = MenuNum.value;                    // 한 줄에 출력 될 메뉴의 갯수 
+            array['MenuMargin'] = MenuMargin.value;                 // 메뉴 간의 간격 설정
+             
             // 배열에 style 값 담기
             array['createdMenu'] ={ 
-                'width'         : menu.style.width,
-                'height'        : menu.style.height,
-                'top'           : menu.style.top,
-                'left'          : menu.style.left,
-                'border'        : menu.style.border,
-                'borderRadius'  : menu.style.borderRadius,
-                'color'         : menu.style.color,
+                // 'width'         : menu.style.width,
+                // 'height'        : menu.style.height,
+                // 'top'           : menu.style.top,
+                // 'left'          : menu.style.left,
+                'ratio'           : ratio,
+                'border'          : menu.style.border,
+                'borderRadius'    : menu.style.borderRadius,
+                'color'           : menu.style.color,
+                'backgroundColor' : menu.style.backgroundColor,
             };
 
             // 메뉴 안의 요소들 가공하기 & 배열에 담기.
@@ -602,45 +583,52 @@ export default {
                     let className = element.getAttribute('class').split(' ')[0];         // 클래스 명 찾기
                     
                     // width, height, top, left 픽셀 값에서 퍼센트로 바꾸기 
-                    element.style.width  = Math.ceil( item_w / menu_w * 100 ) + "%"; 
-                    element.style.height = Math.ceil( item_h / menu_h * 100 ) + "%";
-                    element.style.top    = Math.ceil( item_t / menu_h * 100 ) + "%"; 
-                    element.style.left   = Math.ceil( item_l / menu_w * 100 ) + "%";
+                    // element.style.width  = Math.ceil( item_w / menu_w * 100 ) + "%"; 
+                    // element.style.height = Math.ceil( item_h / menu_h * 100 ) + "%";
+                    // element.style.top    = Math.ceil( item_t / menu_h * 100 ) + "%"; 
+                    // element.style.left   = Math.ceil( item_l / menu_w * 100 ) + "%";
 
                     // 배열에 style 값 담기
                     array[className] ={ 
-                        'width'         : element.style.width,
-                        'height'        : element.style.height,
-                        'top'           : element.style.top,
-                        'left'          : element.style.left,
-                        'border'        : element.style.border,
-                        'borderRadius'  : element.style.borderRadius,
-                        'color'         : element.style.color,
+                        // 'width'         : element.style.width,
+                        // 'height'        : element.style.height,
+                        // 'top'           : element.style.top,
+                        // 'left'          : element.style.left,
+                        'width'           : Math.ceil( item_w / menu_w * 100 ) + "%",
+                        'height'          : Math.ceil( item_h / menu_h * 100 ) + "%",
+                        'top'             : Math.ceil( item_t / menu_h * 100 ) + "%",
+                        'left'            : Math.ceil( item_l / menu_w * 100 ) + "%",
+                        'border'          : element.style.border,
+                        'borderRadius'    : element.style.borderRadius,
+                        'color'           : element.style.color,
+                        'backgroundColor' : element.style.backgroundColor,
                     };
                     //formData.append(className, element.style); 
                 }
             }  
 
-            array['MenuNum']    = MenuNum.value;                        // 한 줄에 출력 될 메뉴의 갯수 
-            array['MenuMargin'] = MenuMargin.value + 'px';              // 메뉴 간의 간격 설정
-
             // 메뉴 출력 설정 사항 저장하기.
-            formData.append('Menu', JSON.stringify(array));            // 메뉴 스타일.
-            formData.append('shop_id', this.$route.params.shop_id);
+            formData.append('Menu', JSON.stringify(array));            // 메뉴 스타일. 
+            formData.append('shop_id', this.$route.params.shop_id);    // shopID
+
+            // json 확인
+            let zz = JSON.stringify(array)
+            console.log(zz);
+
             // formData 확인하기
             // for(var pair of formData.entries()) {
             //     console.log(pair[0]+ ': '+ pair[1]); 
             // }
  
             // 저장하기.
-             axios.post('/saveCustomLayout', formData )
-             .then( (response) => {
-                 if(response.data.msg)
+            axios.post('/saveCustomLayout', formData )
+            .then( (response) => {
+                if(response.data.msg)
                     alert('저장이 완료되었습니다');
-             })
-             .catch((ex)=>{
-                 alert('저장 실패');
-             });
+            })
+            .catch((ex)=>{
+                alert('저장 실패');
+            });
         },  
 
         // 드래그로 엘리먼트 다중 선택하기. 
@@ -657,8 +645,7 @@ export default {
             workSpace.addEventListener('mousemove', function(){ 
                 event.preventDefault(); 
                 Selecter.style.width  = (event.clientX - Selecter.offsetLeft) + 'px';
-                Selecter.style.height = (event.clientY - Selecter.offsetTop)  + 'px';
-                
+                Selecter.style.height = (event.clientY - Selecter.offsetTop)  + 'px';                
             }, false);
 
             workSpace.addEventListener('mouseup', function(){    
@@ -779,7 +766,14 @@ export default {
                     createdThing.innerText    = '메뉴 설명'; 
                     createdThing.style.width  = '200px'; 
                     createdThing.style.height = '80px';
-                    createdThing.classList.add('createdExpl'); break;                    
+                    createdThing.classList.add('createdExpl'); break;    
+                                    
+                // 런디 치더 구분 만들기
+                case 'createdL_D' :  
+                    createdThing.innerText    = '런치 / 디너'; 
+                    createdThing.style.width  = '200px'; 
+                    createdThing.style.height = '50px';  
+                    createdThing.classList.add('createdL_D'); break; 
 
                 // 메뉴 가격
                 case 'createdPrice' :   
@@ -816,7 +810,8 @@ export default {
             // 생성된 element                         
             createdThing.style.top    = '1px';
             createdThing.style.left   = '1px';           
-            createdThing.style.zIndex = 10;    
+            createdThing.style.zIndex = 10;     
+            createdThing.style.border = '2px solid black';  
             createdThing.onmousedown  = this.startDrag;                
             createdThing.classList.add('dragElement');
   
@@ -1075,18 +1070,18 @@ export default {
 <style>
 /* 이미지 비율용 스타일 */
 .tem_img {
-    position: relative;
     width: 100%;
     height: 0;
-    overflow: hidden;
     padding-bottom: 70%;
+    overflow: hidden;
+    position: relative;
 }
-img { 
-    position: absolute;
+.inner_img { 
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; 
+    height: 100%;  
+    position: absolute;
 }
 
 /* 메뉴 제작 작업 공간 */
@@ -1121,7 +1116,6 @@ img {
 
 /* 메뉴 영역 */
 .createdMenu { 
-    border: 2px dashed black; 
     font-size: 1.5rem;
     text-align: center; 
     overflow: hidden;
@@ -1133,26 +1127,27 @@ img {
     background-size: 100% 100%;
 }
 /* 메뉴 이름 영역 */
-.createdName { 
-    border: 2px solid black;
+.createdName {  
     font-size: 1.5rem;
     text-align: center; 
 } 
 /* 메뉴 설명 영역 */
-.createdExpl { 
-    border: 2px solid black;
+.createdExpl {  
+    font-size: 1.5rem;
+    text-align: center; 
+}
+/* 런치 디너 구분 영역 */
+.createdL_D {  
     font-size: 1.5rem;
     text-align: center; 
 }
 /* 메뉴 가격 영역 */
-.createdPrice { 
-    border: 2px solid black;
+.createdPrice {  
     font-size: 1.5rem;
     text-align: center; 
 }
 /* 메뉴 선택 영역 */
-.createdSelect { 
-    border: 2px solid black;
+.createdSelect {  
     font-size: 1.5rem;
     text-align: center; 
 }

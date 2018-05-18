@@ -68,15 +68,6 @@
                             <v-list-tile-title>찜목록</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <!-- 설정 -->
-                    <v-list-tile>
-                        <v-list-tile-action>
-                            <v-icon large>settings</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>설정</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
                     <!-- 커뮤니케이션 버튼 -->
                     <v-dialog v-model="communicationDialog" fullscreen hide-overlay transition="dialog-bottom-transition" full-width>
                         <v-list-tile @click="" slot="activator">
