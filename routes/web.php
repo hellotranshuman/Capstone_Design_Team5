@@ -22,9 +22,14 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
-    Route::get('/getOrderList', array(
-        'as' => 'main.getOrderList',
-        'uses' => 'MainController@getOrderList'
+    Route::get('/getUserOrderList', array(
+        'as' => 'main.getUserOrderList',
+        'uses' => 'MainController@getUserOrderList'
+    ));
+
+    Route::get('/getUserCouponList', array(
+        'as' => 'main.getUserCouponList',
+        'uses' => 'MainController@getUserCouponList'
     ));
 
 

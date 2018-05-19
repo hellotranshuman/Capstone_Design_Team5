@@ -1,26 +1,22 @@
- <!--
+<!-- 
 ※참고
 식당 페이지 틀
 -->
 <template>
     <v-content>
-        <v-layout row wrap>
-            <v-flex>
-                <!-- 정보, 메뉴, 리뷰 중 선택합니다. -->
-                <v-layout>
-                    <v-spacer></v-spacer>
-                    <v-flex xs4 sm3>
-                        <v-btn large color="error" to="info" class="select-font-style">정보</v-btn>
-                    </v-flex>
-                    <v-flex xs4 sm3>
-                        <v-btn large color="error" to="menu" class="select-font-style">메뉴</v-btn>
-                    </v-flex>
-                    <v-flex xs4 sm3>
-                        <v-btn large color="error" to="review" class="select-font-style">리뷰</v-btn>
-                    </v-flex>
-                    <v-spacer></v-spacer>
-                </v-layout>            
+        <v-layout>
+            <!-- 정보, 메뉴, 리뷰 중 선택합니다. -->
+            <v-spacer></v-spacer>
+            <v-flex xs4 sm3>
+                <v-btn large color="error" to="info" class="select-font-style">정보</v-btn>
             </v-flex>
+            <v-flex xs4 sm3>
+                <v-btn large color="error" to="menu" class="select-font-style">메뉴</v-btn>
+            </v-flex>
+            <v-flex xs4 sm3>                    
+                <v-btn large color="error" to="review" class="select-font-style">리뷰</v-btn>
+            </v-flex>
+            <v-spacer></v-spacer>
         </v-layout>
         <v-layout>
             <v-flex>

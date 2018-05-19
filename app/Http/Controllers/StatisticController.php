@@ -1029,11 +1029,11 @@ class StatisticController extends Controller
         // <-- 성별 데이터 필터링
         switch ($request->get('ranking_gender')) {
             case 1 : {
-                $gender = 1;
+                $gender = true;
                 break;
             }
             case 2 : {
-                $gender = 2;
+                $gender = false;
                 break;
             }
         }

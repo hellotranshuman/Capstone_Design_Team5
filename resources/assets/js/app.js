@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import VueAxios from 'vue-axios';
-import axios from 'axios';
-import VueSession from 'vue-session';
-import Vuetify from 'vuetify';
+import Vue          from 'vue';
+import VueRouter    from 'vue-router';
+import VueAxios     from 'vue-axios';
+import axios        from 'axios';
+import VueSession   from 'vue-session';
+import App          from './App.vue';
+import Vuetify      from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
-import App from './App.vue';
 
 Vue.use(VueRouter);
 Vue.use(Vuetify);
@@ -29,16 +29,21 @@ Vue.use(VueGoogleMaps, {
         libraries: "places" // necessary for places input
     }
 });
+
 // chartjs
 import VueCharts from 'vue-chartjs'
 import { Bar, HorizontalBar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
 
-
 // <-- User Main Page Component Import
 import Home                 from './components/user/user_main/UserMain.vue';
-import Home2                 from './components/user/user_main/UserMain2.vue';
 // <-- User Register Page Component Import
 import Register         from './components/Register.vue';
+
+
+// <-- Edit Information
+import EditInformation from './components/EditInformation';
+
+
 // <-- User Restaurant Page Component Import
 import UserRestaurantMain   from './components/user/user_common/UserRestaurantMain.vue';
 
@@ -92,6 +97,15 @@ import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCus
 // 매출 통계
 import OwnerSalesStatistics from './components/owner/owner_statistics/OwnerSalesStatistics.vue';
 
+// 쿠폰함
+import UserCoupon from './components/user/user_coupon/UserCoupon.vue';
+// 예약내역
+import UserPageReservation from './components/user/user_reservation/UserPageReservation.vue';
+// 리뷰내역
+import UserReviewHistory from './components/user/user_review/UserReviewHistory.vue';
+// 주문내역
+import UserOrderHistory from './components/user/user_restaurant/UserOrderHistory.vue';
+
 const router = new VueRouter({
         routes: [
             // <-- main Page
@@ -100,23 +114,41 @@ const router = new VueRouter({
                 name: 'home',
                 component: Home
             },
-            {
-                path: '/search',
-                name: 'home2',
-                component: Home2
-            },
             // <-- 회원 가입
             {
                 path: '/register',
                 name: 'register',
                 component: Register
             },
+            // <-- 회원 정보 수정
             {
-                name: 'OwnerRestaurant',
-                path: '/owner/createRestaurant',
-                // '/owner/createRestaurant',
-                // '/owner/:shop_id/editRestaurant',
-                component: OwnerRestaurant
+                path: '/editInformation',
+                name: 'EditInformation',
+                component: EditInformation
+            },
+            {
+                // 쿠폰함
+                name: 'UserCoupon',
+                path: '/UserCoupon',
+                component: UserCoupon,
+            },
+            {
+                // 예약내역
+                name: 'UserPageReservation',
+                path: '/UserPageReservation',
+                component: UserPageReservation,
+            },
+            {
+                // 리뷰내역
+                name: 'UserReviewHistory',
+                path: '/UserReviewHistory',
+                component: UserReviewHistory,
+            },
+            {
+                // 주문내역
+                name: 'UserOrderHistory',
+                path: '/UserOrderHistory',
+                component: UserOrderHistory,
             },
             // <-- 가게 페이지 공통
             {
@@ -253,8 +285,7 @@ const router = new VueRouter({
                                     component: OwnerSalesStatistics
                                 }
                             ]
-                    }
-                    
+                    }              
                 ],
             },
             {

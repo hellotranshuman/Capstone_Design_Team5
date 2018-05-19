@@ -178,6 +178,7 @@ export default {
                 { country: 'china', countryNum: 1 },
                 { country: 'japan', countryNum: 2 },
                 { country: 'korea', countryNum: 3 },
+                { country: 'USA',   countryNum: 4 },
             ]
         }
     },
@@ -193,7 +194,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     /* svg태그의 cursor를 설정합니다. */
     svg {
         cursor: pointer;

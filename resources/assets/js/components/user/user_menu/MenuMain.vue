@@ -289,7 +289,8 @@
                     OpCount     : this.OpCount,
                     subOpCount  : this.subOpCount
                 }).then((response) => {
-                    this.translatedText = response.data.translatedText
+                    this.translatedText = response.data.content;
+                    console.log(this.translatedText);
                 });
 
                 // 메뉴 번역된것 DB에서 받기
