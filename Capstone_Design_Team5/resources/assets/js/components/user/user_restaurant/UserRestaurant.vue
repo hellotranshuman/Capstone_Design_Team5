@@ -8,9 +8,10 @@
             <!-- 타이틀 이미지와 가게 명이 들어갈 div -->
             <div class="title_div">
                 <div id="title_img">
-                    <div id="name_area">
-                        <b id="name"> </b>
-                    </div>
+                    <div id="name_area"> <b id="name" style="float:left"></b> </div>
+                    <div id="LikeIt" @click="I_Like_It">  
+                        <b>&nbsp;좋아요 &#9829;&nbsp;</b> 
+                    </div>                    
                 </div>
             </div>
 
@@ -211,7 +212,7 @@
                                             </div>
                                         </v-card-title>
                                         <v-card-actions>
-                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData(), Okey()">확인</v-btn>
+                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData(), res_Okey()">확인</v-btn>
                                             <v-btn color="primary" flat @click.native="dialog_ok = false, dialog = false">취소</v-btn>
                                         </v-card-actions>
                                     </v-card>
@@ -410,6 +411,7 @@
     export default{
         data() {
             return {
+                shop_id : null,
                 dialog: false,
                 dialog_ok : false,
                 menuDialog : false,
@@ -523,81 +525,7 @@
 
             axios.get(url)
                 .then( (response) => {
-                    get_datas = response.data.restaurant;
-
-                    // get_datas = [
-                    //     {
-                    //         'name'          : 'Innovative Cuisine',
-                    //         'type'          : '한식',
-                    //         'explanation'   : "최고의 재료를 찾아내고 그 재료가 지닌 다양한 맛을 연구해 한식이 지낸 깊은 향과 숨은 맛을 전합니다. " +
-                    //                             "최상의 식재료를 선별, 그에 걸맞는 신중한 조리를 통해 재료 본연의 맛을 극대화한 한식,"+
-                    //                             "전통 한식 본연의 못브에 대한 셰프의 철학과 감성을 더해 궁극의 요리 예술로서 풀어낸 한식"+
-                    //                             "저희는 매일 바뀌는 계절과 에너지의 흐름을 되짚어가며 한식의 성숙하고 자연스러운 맛을"+
-                    //                             "오랜 시간의 노고가 스며든 정성스러운 손길로 표현합니다.",
-                    //         'dodobuken'     : '도쿄 도',
-                    //         'cities'        : '미나토 구',
-                    //         'address'       : '아카사카 1-11-6',
-                    //         'phone'         : '010-8991-8606',
-                    //         'lunch_open'    : '11:30',
-                    //         'lunch_close'   : '15:00',
-                    //         'lunch_lo'      : '14:30',
-                    //         'dinner_open'   : '17:30',
-                    //         'dinner_close'  : '22:00',
-                    //         'dinner_lo'     : '21:30',
-                    //         'payment'       : '카드 결제 가능',
-                    //         'seat_num'      : '70석',
-                    //         'children'      : 'yes',
-                    //         'pet'           : 'yes',
-                    //         'parking'       : 'no',
-                    //         'smoking'       : 'no',
-                    //         'privateroom'   : 'no'
-                    //     },
-                    //     {
-                    //         'totalrate'        : 4.7,
-                    //     },
-                    //     {
-                    //         'filename' : "13_titleImg,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-
-
-                    //     {
-                    //         'filename' : "13_galleryImg0,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-
-                    //     {
-                    //         'filename' : "13_galleryImg1,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-
-
-                    //     {
-                    //         'filename' : "13_galleryImg1,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-                    //     {
-                    //         'filename' : "13_galleryImg1,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-
-
-                    //     {
-                    //         'filename' : "13_galleryImg1,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-
-                    //     {
-                    //         'filename' : "13_galleryImg1,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-
-
-                    //     {
-                    //         'filename' : "13_galleryImg1,jpeg",
-                    //         'path' : '/images/13/'
-                    //     },
-                    // ];
+                    get_datas = response.data.restaurant;                    
 
                     // 예약 하기
                     // 메뉴
@@ -633,8 +561,7 @@
                         // 쿠폰
                         var Coupondata = response.data.coupon;
                         this.items = Coupondata;
-                    });
-
+                    });                    
 
                     // 데이터 바인딩-기본정보
                     this.enter_data(get_datas[0]);
@@ -685,6 +612,34 @@
             enter_title : function(argImgArray){
                 document.getElementById('title_img').style.backgroundImage
                     = "url(" + argImgArray.path + argImgArray.filename + ")";
+            },
+
+            // 좋아연.
+            I_Like_It : function(){ 
+                let LikeIt = document.getElementById('LikeIt'); 
+                let url = '';
+
+                // 좋아요
+                if(LikeIt.style.color == 'grey') {
+                    LikeIt.style.color = 'red';
+                    LikeIt.style.borderColor = 'red';                    
+                    url = '서서서서서서서서선주주주주주주주주주주주야야야야야야야';                   
+                }
+                // 좋아요 취소
+                else {
+                    LikeIt.style.color = 'grey';
+                    LikeIt.style.borderColor = 'grey';
+                    url = '서서서서서서서서선주주주주주주주주주주주야야야야야야야';  
+                }
+
+                // 좋아요 and 좋아요 취소
+                axios.post(url, {
+                    'shop_id' : this.$route.params.shop_id
+                }).then((response) => {
+                    
+                }).catch((ex)=>{
+                    alert('요청 실패');
+                })
             },
 
             // 갤러리에 이미지 추가하기.
@@ -898,7 +853,7 @@
             },
 
 
-            Okey() {
+            res_Okey() {
                 confirm('예약이 완료 되었습니다.')
             },
 
@@ -990,7 +945,8 @@
                     menulength  : this.menu.length,         // 메뉴 개수
                     menu_id     : this.menu,                // 선택한 메뉴가 있는 배열
                     option      : this.optionId,            // 옵션 Id
-                    suboption   : this.optionselect         // 서브 옵션
+                    suboption   : this.optionselect,         // 서브 옵션
+                    sum_price   : this.sum_price
                 }).then((response) => {
                     alert(response.data.msg);
                 }).catch(console.log('test '));
@@ -1014,7 +970,7 @@
     };
 </script>
 
-<style>
+<style scoped>
     /* 모바일 */
     @media (max-width: 639px){
         html         { font-size: 10px; }
@@ -1157,21 +1113,31 @@
         width: 105%;
         height: 105%;
         background-size: 100% 100%;
-        /* background-image: url('./test4.jpg'); */
+        /* background-image: url('./test1.jpg'); */
         position: absolute;
         object-fit: cover;
     }
 
     /* 가게 명 */
     #name_area {
-        top: 0;
-        left: 0;
+        /* top: 0;
+        left: 0; */
         padding:4px;
         opacity: 0.5;
         background: black;
         color: white;
         text-align: center;
-        display:inline-block;
+        float: left;
+    }
+
+    /* 좋아여 */
+    #LikeIt { 
+        margin-right: 7%;
+        font-size: 2rem;
+        color: grey;
+        border: 3px solid grey; 
+        text-align: center; 
+        float: right; 
     }
 
     /*갤러리 관련.*/

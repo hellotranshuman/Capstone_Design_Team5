@@ -31,8 +31,8 @@
                     <!-- 아이디 이미지, 아이디, 사용자 국적, 공뷰 버튼 -->
                     <v-layout align-center>
                         <v-flex xs4 sm1>사용자이미지</v-flex>
-                        <v-flex xs3 sm1>{{this.userID}}</v-flex>
-                        <v-flex xs2 sm1>
+                        <v-flex xs3 sm2>{{this.userID}}</v-flex>
+                        <v-flex xs3 sm1>
                             <img v-bind:src= "flag" onmousedown="return false;">
                         </v-flex>
                     </v-layout>
@@ -67,7 +67,7 @@
                         <v-spacer></v-spacer>
                     </v-layout><br>
                     <!-- 맛 -->
-                    <v-layout align-start align-center>
+                    <v-layout align-start align-center v-if="(this.taste != 0)">
                         <v-flex xs2>맛</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -79,7 +79,7 @@
                         </v-flex> 
                     </v-layout>
                     <!-- 서비스 -->
-                    <v-layout align-start align-center>
+                    <v-layout align-start align-center v-if="(this.service != 0)">
                         <v-flex xs2>서비스</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -91,7 +91,7 @@
                         </v-flex> 
                     </v-layout>
                     <!-- 분위기 -->
-                    <v-layout align-start align-center>
+                    <v-layout align-start align-center v-if="(this.mood != 0)">
                         <v-flex xs2>분위기</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -103,7 +103,7 @@
                         </v-flex>
                     </v-layout>
                     <!-- 가격 -->
-                    <v-layout align-start align-center>
+                    <v-layout align-start align-center v-if="(this.price != 0)">
                         <v-flex xs2>가격</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -114,6 +114,7 @@
                             </v-layout>
                         </v-flex>
                     </v-layout>
+
                     <!-- 리뷰 내용 -->
                     <v-layout>
                         <v-flex>
@@ -125,6 +126,8 @@
                                     flat
                                     solo
                                     multi-line
+                                    auto-grow
+                                    rows="1"
                                     readonly>
                                 </v-text-field>
                                 </v-flex>
@@ -132,6 +135,7 @@
                             </v-layout>
                         </v-flex>
                     </v-layout>
+
                     <!-- 해시 태그 -->
                     <v-layout>
                         <v-flex xs6 sm6>
@@ -286,7 +290,7 @@ export default {
             starColor : "#ffd055",
             inactiveStarColor : "#ffd055",
 
-            flag : "../../images/flag/" + this.country + ".png",  // 국적에 맞는 깃발 이미지 주소
+            flag : "../../images/flag/" + this.country + ".svg",  // 국적에 맞는 깃발 이미지 주소
         }
     },
 
@@ -298,8 +302,7 @@ export default {
     },
 
     created(){
-        if((typeof this.likeNum) != Number)
-            reviewLikeBut = parseInt(this.likeNum);
+
     },
 
     // watch 속성은 데이터 변화를 감지해서 자동으로 특정 로직을 수행함
@@ -334,10 +337,6 @@ export default {
 
             }).catch(console.log('is catch'));
         }
-    },
-
-    created(){
-
     },
 }
 </script>

@@ -24,8 +24,8 @@
               </v-flex>
               <!-- 출력할 모달창 -->
               <v-flex>
-                <v-dialog v-model="dialog" max-width="500px" full-width>
-                  <v-card flat tile height="340px">
+                <v-dialog v-model="dialog" :max-width="modalSize + 'px'" full-width>
+                  <v-card flat tile>
                     <v-layout>
                       <!-- 모달 이미지 -->
                       <v-flex xs9>
@@ -34,7 +34,7 @@
                           <v-spacer></v-spacer>
                           <v-flex xs10>
                             <!-- 이미지를 클릭하면 최종 선택 이모티콘을 나타내는 모달창 출력 -->
-                            <v-card flat tile height="315px"     
+                            <v-card flat tile      
                             @click.native.stop="secondDialog = true"
                             @click.native="dialog = false">
                               <img v-bind:src=clickImgURL onmousedown="return false;" class="select-emoticon">
@@ -206,16 +206,17 @@ export default {
             // {url : 'images/emoticon/bill.svg', number : 33},                // 영수증 주세요
           ],
            
-            clickImgURL     : "",             // 모달창에 출력해야 하는 클릭한 이미지의 URL을 저장하는 변수
-            clickImg        : null,           // 모달창에 출력해야 하는 이미지 객체
-            dialog          : false,          // 작은 모달창의 출력 여부를 나타내는 값
-            secondDialog    : false,          // 마지막 모달창의 출력 여부를 나타내는 값
-            bookmarkCheck   : false,          // 이모티콘을 즐겨찾기를 등록했는지 여부가 저장되는 변수
-            getBookmarkList : [],             // 전송받은 즐겨찾기 목록이 저장되는 배열         
-            emoticonData    : [],             // 현재 선택한 카테고리의 즐겨찾기 목록이 저장되는 배열
-            basicsList      : [],             // 기본 이모티콘 목록을 저장하는 배열
-            getOrderList    : [],             // 주문 이모티콘 목록을 저장하는 배열
-            getPayList      : [],             // 계산 이모티콘 목록을 저장하는 배열
+            modalSize       : 500,      // 첫번째 모달창 크기
+            clickImgURL     : "",       // 모달창에 출력해야 하는 클릭한 이미지의 URL을 저장하는 변수
+            clickImg        : null,     // 모달창에 출력해야 하는 이미지 객체
+            dialog          : false,    // 작은 모달창의 출력 여부를 나타내는 값
+            secondDialog    : false,    // 마지막 모달창의 출력 여부를 나타내는 값
+            bookmarkCheck   : false,    // 이모티콘을 즐겨찾기를 등록했는지 여부가 저장되는 변수
+            getBookmarkList : [],       // 전송받은 즐겨찾기 목록이 저장되는 배열         
+            emoticonData    : [],       // 현재 선택한 카테고리의 즐겨찾기 목록이 저장되는 배열
+            basicsList      : [],       // 기본 이모티콘 목록을 저장하는 배열
+            getOrderList    : [],       // 주문 이모티콘 목록을 저장하는 배열
+            getPayList      : [],       // 계산 이모티콘 목록을 저장하는 배열
         }
     },
 
@@ -231,10 +232,10 @@ export default {
 
       // 출력할 Dialogs 이미지의 URL 및 즐겨찾기 등록 여부를 변경합니다.
       changeDialogsData(imgName, imgObj){
-        this.clickImgURL    = imgName;
-        this.clickImg       = imgObj;
+        this.clickImgURL = imgName;
+        this.clickImg    = imgObj;
 
-        var includeCheck    = null;
+        var includeCheck = null;
 
         // 현재 클릭한 이미지가 즐겨찾기에 추가되어 있는지 여부를 확인하는 함수
         for (var iCount = 0; iCount < this.getBookmarkList.length; iCount++){
@@ -247,11 +248,11 @@ export default {
         // 등록되어 있지 않으면 false를 대입합니다.
         if(includeCheck){
           this.bookmarkCheck = true
-          console.log('포함');
+          // console.log('포함');
         } 
         else {
           this.bookmarkCheck = false
-            console.log('미포함');
+            // console.log('미포함');
         }
         // 세션에 저장된 사용자 id를 불러옵니다.
         // sessionStorage.getItem('userId');
@@ -306,10 +307,10 @@ export default {
         // 이모티콘 목록을 배열에 저장합니다.
         this.emoticonInfo     = response.data['emoticonList'];
 
-        console.log('즐겨찾기 리스트');
-        console.log(this.getBookmarkList);
-        console.log('이모티콘 리스트');
-        console.log(this.emoticonInfo);
+        // console.log('즐겨찾기 리스트');
+        // console.log(this.getBookmarkList);
+        // console.log('이모티콘 리스트');
+        // console.log(this.emoticonInfo);
 
         // 이모티콘을 카테고리별로 분류합니다.
         this.emoticonGrouping();
@@ -323,7 +324,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   /* 이모티콘 선택 여뷰 확인 스타일 */
   .select-emoticon:hover{
     cursor: pointer;

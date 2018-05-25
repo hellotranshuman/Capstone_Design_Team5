@@ -12,149 +12,167 @@
 -->
 
 <template>
-    <v-container>
+    <v-content>
+        <!-- 경고창 -->
+        <v-snackbar
+        :timeout="snackbarTimeout"
+        :top="snackbarY === 'top'"
+        :bottom="snackbarY === 'bottom'"
+        :right="snackbarX === 'right'"
+        :left="snackbarX === 'left'"
+        :multi-line="snackbarMode === 'multi-line'"
+        :vertical="snackbarMode === 'vertical'"
+        v-model="snackbarCheck"
+        >
+        {{this.alertErrorCode}}
+        <v-btn flat color="pink" @click.native="snackbarCheck = false">Close</v-btn>
+        </v-snackbar>
         <v-layout>
             <v-flex>
                 <!-- 상단바 -->
-                <v-toolbar flat color="grey darken-3">
+                <v-toolbar flat dark tabs color="grey darken-3">
                     <v-layout justify-space-between align-center>
-                        <v-flex xs10>
-                            <v-toolbar-title class="white--text">리뷰 작성하기</v-toolbar-title>
+                        <v-flex xs10 sm10>
+                            <v-toolbar-title >리뷰 작성</v-toolbar-title>
                         </v-flex>
                         <v-spacer></v-spacer>
-                        <v-flex>
-                            <!-- 활성 등록 버튼 -->
-                            <v-btn outline large color="grey darken-4" @click= "sendReviewData" 
-                            v-on:click="loading" v-if="this.nowLoading">
-                                <span class="submit-btn">등록</span>
+                    </v-layout>
+                    <!-- 상단바 버튼 -->
+                    <v-toolbar-items>
+                        <v-btn flat to="review">
+                            취소
+                        </v-btn>
+                        <!-- 활성 등록 버튼 -->
+                            <v-btn flat @click= "sendReviewData" 
+                            v-if="this.nowLoading" @click.native="snackbarCheck = alertCheck">
+                                등록
                             </v-btn>
                             <!-- 비활성 등록 버튼 -->
-                            <v-btn outline large color="grey darken-4" @click= "sendReviewData" disabled
-                            v-on:click="loading" v-if="!(this.nowLoading)">
-                                <span class="submit-btn">등록</span>
+                            <v-btn flat @click= "sendReviewData" disabled
+                            v-if="!(this.nowLoading)" @click.native="snackbarCheck = alertCheck">
+                                등록
                             </v-btn>
-                        </v-flex>
-                    </v-layout>
+                    </v-toolbar-items>
                 </v-toolbar>
             </v-flex>
         </v-layout>
-        <!-- 구분 -->
-        <br>
-        <v-layout>
-            <!-- 별점 -->
-            <v-flex>
-                <v-card>
-                    <v-card-title>총점</v-card-title>
-                    <v-card-text>
-                        <UserReviewStarRating></UserReviewStarRating>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
-        <!-- 별점 상세평가 -->
-        <v-layout>
-            <v-flex>
-                <v-card>
-                    <v-card-title>상세평가</v-card-title>
-                    <v-card-text>
-                        맛 <UserReviewStarRating></UserReviewStarRating>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
-        <v-layout>
-            <v-flex>
-                <v-card>
-                    <v-card-text>
-                        서비스 <UserReviewStarRating></UserReviewStarRating>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
-        <v-layout>
-            <v-flex>
-                <v-card>
-                    <v-card-text>
-                        분위기 <UserReviewStarRating></UserReviewStarRating>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
-        <v-layout>
-            <v-flex>
-                <v-card>
-                    <v-card-text>
-                        가격 <UserReviewStarRating></UserReviewStarRating>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
+        <!-- 별점 시작 -->
+        <v-container>
+            <v-layout>
+                <v-flex>
+                    <v-card>
+                        <v-card-title>총점</v-card-title>
+                        <v-card-text>
+                            <UserReviewStarRating></UserReviewStarRating>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+            <!-- 별점 상세평가 -->
+            <v-layout>
+                <v-flex>
+                    <v-card>
+                        <v-card-title>상세평가</v-card-title>
+                        <v-card-text>
+                            맛 <UserReviewStarRating></UserReviewStarRating>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+            <v-layout>
+                <v-flex>
+                    <v-card>
+                        <v-card-text>
+                            서비스 <UserReviewStarRating></UserReviewStarRating>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+            <v-layout>
+                <v-flex>
+                    <v-card>
+                        <v-card-text>
+                            분위기 <UserReviewStarRating></UserReviewStarRating>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+            <v-layout>
+                <v-flex>
+                    <v-card>
+                        <v-card-text>
+                            가격 <UserReviewStarRating></UserReviewStarRating>
+                        </v-card-text>
+                    </v-card>
+                </v-flex>
+            </v-layout>
 
-
-        <!-- 구분 -->
-        <hr><br>
-        <!-- 리뷰 텍스트 -->
-        <v-layout>
-            <v-flex>
-                <v-text-field multi-line rows="6" row-height="6" 
-                v-model= "reviewContents" color="black" 
-                label="리뷰 입력">
-                </v-text-field>
-            </v-flex>
-        </v-layout>
-        
-        <!-- 태그 -->
-        <v-layout>
-            <v-flex>
-                <InputTag 
-                v-bind:placeholder  = 'tagPlaceholder' 
-                v-bind:limit        = 'tagLimit' 
-                v-bind:tags.sync    = 'tagsArray'>
-                </InputTag>  
-            </v-flex>
-        </v-layout>
-        <!-- 구분 -->
-        <hr><br>
-        <!-- 이미지 -->
-        <v-layout>
-            <v-flex>
-                <PictureInput ref="image1" @change="onChange" 
-                width="250" height="165" margin="16" radius="10" 
-                accept="image/*" size="10" buttonClass="btn"
-                :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                </PictureInput>
-            </v-flex>
-            <v-flex>
-                <PictureInput ref="image2" @change="onChange" 
-                width="250" height="165" margin="16" radius="10" 
-                accept="image/*" size="10" buttonClass="btn"
-                :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                </PictureInput> 
-            </v-flex>
-            <v-flex>
-                <PictureInput ref="image3" @change="onChange" 
-                width="250" height="165" margin="16" radius="10" 
-                accept="image/*" size="10" buttonClass="btn"
-                :customStrings="{upload: '기다려 주세요', drag: '사진 등록'}">
-                </PictureInput>
-            </v-flex>
-        </v-layout>
-        <!-- 구분 -->
-        <br>
-    </v-container>
+            <!-- 구분 -->
+            <hr><br>
+            <!-- 리뷰 텍스트 -->
+            <v-layout>
+                <v-flex>
+                    <v-text-field multi-line rows="6" row-height="6" 
+                    v-model= "reviewContents" color="black" 
+                    label="리뷰 입력">
+                    </v-text-field>
+                </v-flex>
+            </v-layout>
+            
+            <!-- 태그 -->
+            <v-layout>
+                <v-flex>
+                    <InputTag @change="change"
+                    v-bind:placeholder  = 'tagPlaceholder' 
+                    v-bind:limit        = 'tagLimit' 
+                    v-bind:tags.sync    = 'tagsArray'>
+                    </InputTag>  
+                </v-flex>
+            </v-layout>
+            <!-- 구분 -->
+            <hr><br>
+            <!-- 이미지 -->
+            <v-layout row wrap>
+                <v-spacer></v-spacer>
+                <v-flex xs12 sm3>
+                    <PictureInput ref="image1" removable @change="onChange" 
+                    margin="10" radius="10" height="300" width="500"
+                    accept="image/*" size="10" buttonClass="btn"
+                    :customStrings="setPictureString">
+                    </PictureInput> 
+                </v-flex>
+                <v-flex xs12 sm3>
+                    <PictureInput ref="image2" removable @change="onChange" 
+                    margin="10" radius="10" height="300" width="500"
+                    accept="image/*" size="10" buttonClass="btn"
+                    :customStrings="setPictureString">
+                    </PictureInput> 
+                </v-flex>
+                <v-flex xs12 sm3>
+                    <PictureInput ref="image3" removable @change="onChange" 
+                    margin="10" radius="10" height="300" width="500"
+                    accept="image/*" size="10" buttonClass="btn"
+                    :customStrings="setPictureString">
+                    </PictureInput> 
+                </v-flex>
+                <v-spacer></v-spacer>
+            </v-layout>
+            <!-- <br><br> -->
+        </v-container>
+    </v-content>
 </template>
 
 <script>
 // 유저 별점 컴포넌트 import
 import UserReviewStarRating from './UserReviewStarRating.vue';
 // 이미지 관련 API사용, 이미지 컴포넌트 import
-import PictureInput from 'vue-picture-input';
+import PictureInput         from 'vue-picture-input';
 // 해쉬태그 관련 API사용,
-import InputTag from 'vue-input-tag';
+import InputTag             from 'vue-input-tag';
 
 // axios 라이브러리 import
 import VueAxios from 'vue-axios';
-import axios from 'axios';
+import axios    from 'axios';
 
 export default {
     // 컴포넌트 선언
@@ -166,25 +184,27 @@ export default {
 
     data () {
         return {
-            reviewContents  : '',                           // 리뷰 텍스트 값
-            tagsArray       : ['#Smartさしすせそ'],         // 태그값 (태그를 입력하면 입력된 값이 배열에 저장됨)
-            tagPlaceholder  : "#Tag",                       // 태그 입력 알림(무엇을 입력해야 하는지 알려주는 역할)
-            tagLimit        : 10,                           // 태그 제한 개수,
-            shop_id         :  this.$route.params.shop_id,  // 가게 아이디
-            nowLoading      : true,                         // 리뷰 작성 버튼 클릭 여부를 확인하는 변수
-
-            
+            reviewContents      : '',                           // 리뷰 텍스트 값
+            tagsArray           : ['#Smartさしすせそ'],         // 태그값 (태그를 입력하면 입력된 값이 배열에 저장됨)
+            tagPlaceholder      : "#Tag",                       // 태그 입력 알림(무엇을 입력해야 하는지 알려주는 역할)
+            tagLimit            : 10,                           // 태그 제한 개수,
+            shop_id             :  this.$route.params.shop_id,  // 가게 아이디
+            nowLoading          : true,                         // 리뷰 작성 버튼 클릭 여부를 확인하는 변수
+            setPictureString    : {upload: '사진 업로드', drag: '사진 등록', tap: '사진 등록', change: '사진 변경', 
+                                remove:'사진 제거', select:'사진 선택', selected:'사진 선택 완료', 
+                                fileSize :'파일 사이즈가 큽니다.', fileType :'지원하지 않는 파일입니다.', aspect:'food'},    
+                                
+            alertCheck          : false,                        // 경고창을 띄울지 여부를 나타내는 변수
+            alertErrorCode      : "",                           // 경고창에 띄울 문장이 저장되는 변수
+            snackbarCheck       : false,                        // snackbar 출력여부 확인
+            snackbarY           : 'top',                        // snackbar Y축 값
+            snackbarX           : null,                         // snackbar X축 값
+            snackbarMode        : '',                           // snackbar mode 값
+            snackbarTimeout     : 6000,                         //snackbar 지속시간
         }
     },
 
     methods: {
-        // 리뷰 작성 버튼의 활성 상태를 변경하는 함수,
-        // 즉 리뷰 작성 버튼을 누르면 중복 클릭이 안되게 합니다.
-        loading(){
-            this.nowLoading = !this.nowLoading;
-        },
-
-
         //이미지 관련 메서드
         onChange(image) {
             console.log('New picture selected!')
@@ -197,8 +217,11 @@ export default {
             }
         },
 
-        // 리뷰 관련 데이터를 전송하는 함수
+        change(tag){
+            alert('haha')
+        },
 
+        // 리뷰 관련 데이터를 전송하는 함수
         sendReviewData() {
             // starRating를 class명으로 가지는 별점 항목 엘리먼트를 배열로 가지고옵니다.
             let starArr = document.getElementsByClassName("starRating");
@@ -242,13 +265,13 @@ export default {
                 imgNum++;
             }
 
-            reviewData.append('shop_id', this.shop_id);               // shop_id 전송
-            reviewData.append('imgNum', imgNum);                      // 전송한 이미지 개수를 FormData에 저장
-            reviewData.append('RATING',  RATING);                     // 총 평점을 FormData에 저장
-            reviewData.append('TASTE',   TASTE);                      // 맛 점수를 FormData에 저장
-            reviewData.append('SERVICE', SERVICE);                    // 서비스 점수를 FormData에 저장
-            reviewData.append('MOOD',    MOOD);                       // 분위기 점수를 FormData에 저장
-            reviewData.append('PRICE',   PRICE);                      // 가격 점수를 FormData에 저장
+            reviewData.append('shop_id', this.shop_id);     // shop_id 전송
+            reviewData.append('imgNum', imgNum);            // 전송한 이미지 개수를 FormData에 저장
+            reviewData.append('RATING',  RATING);           // 총 평점을 FormData에 저장
+            reviewData.append('TASTE',   TASTE);            // 맛 점수를 FormData에 저장
+            reviewData.append('SERVICE', SERVICE);          // 서비스 점수를 FormData에 저장
+            reviewData.append('MOOD',    MOOD);             // 분위기 점수를 FormData에 저장
+            reviewData.append('PRICE',   PRICE);            // 가격 점수를 FormData에 저장
 
             reviewData.append('CONTENT', this.reviewContents);  // 리뷰 텍스트를 FormData에 저장
             
@@ -258,54 +281,72 @@ export default {
             }
 
             // ***** console.log 테스트, 지워도 됨 *****
-            console.log(reviewData.get('shop_id'));
-            console.log('img : ');
-            console.log(reviewData.get('imgFile1'));
-            console.log(reviewData.get('imgFile2'));
-            console.log(reviewData.get('imgFile3'));
-            console.log(reviewData.get('imgNum'));
-            console.log('////////////////');
+            // console.log(reviewData.get('shop_id'));
+            // console.log('img : ');
+            // console.log(reviewData.get('imgFile1'));
+            // console.log(reviewData.get('imgFile2'));
+            // console.log(reviewData.get('imgFile3'));
+            // console.log(reviewData.get('imgNum'));
+            // console.log('////////////////');
 
-            console.log('RATE: ');
-            console.log(reviewData.get('RATING'));
-            console.log(reviewData.get('TASTE'));
-            console.log(reviewData.get('SERVICE'));
-            console.log(reviewData.get('MOOD'));
-            console.log(reviewData.get('PRICE'));
-            console.log('////////////////');
+            // console.log('RATE: ');
+            // console.log(reviewData.get('RATING'));
+            // console.log(reviewData.get('TASTE'));
+            // console.log(reviewData.get('SERVICE'));
+            // console.log(reviewData.get('MOOD'));
+            // console.log(reviewData.get('PRICE'));
+            // console.log('////////////////');
 
-            console.log('etc: ');
-            console.log(reviewData.get('CONTENT'));
-            console.log(typeof reviewData.get('HASHTAG'));
-            console.log('////////////////');
+            // console.log('etc: ');
+            // console.log(typeof reviewData.get('CONTENT'));
+            // console.log(reviewData.get('HASHTAG'));
+            // console.log('////////////////');
             // ***** console 테스트 끝 *****
-            
-            // 데이터 전송시 headers 타입
-            var settings = { headers: { 'content-type': 'multipart/form-data' } }
 
-            // axios http 라이브러리
-            axios.post('/review/writeReview', 
-                // 리뷰 관련 데이터
-                reviewData
-            , settings).then( 
-                function (response) {
-                    alert(response.data.content);
+            // 총점을 작성했는지 여부를 확인
+            if(reviewData.get('RATING') != 0){
+                // 리뷰 글을 작성했는지 여부를 확인
+                if(reviewData.get('CONTENT') != ""){
+                    // 경고창이 출력되지 안도록 false를 대입합니다.
+                    this.alertCheck = false;
 
-                    var link = response.data.link;
-                    window.location.href = link;
+                    // 리뷰 작성 버튼의 활성 상태를 변경하는 함수,
+                    // 즉 리뷰 작성 버튼을 누르면 중복 클릭이 안되게 합니다.
+                    this.nowLoading = !this.nowLoading;
+
+                    // 데이터 전송시 headers 타입
+                    var settings = { headers: { 'content-type': 'multipart/form-data' } }
+
+                    // axios http 라이브러리
+                    axios.post('/review/writeReview', 
+                        // 리뷰 관련 데이터
+                        reviewData
+                    , settings).then(function (response) {
+                        console.log('리뷰 작성 성공!!!!!!!!');
+
+                        var link = response.data.link;
+                        window.location.href = link;
+                    }
+                    ).catch(
+                        console.log('send review is catch'),
+                    );
+                } else {
+                    // 경고창이 출력하도록 true를 대입합니다.
+                    this.alertCheck = true;
+                    // 출력할 경고 문장을 대입합니다.
+                    this.alertErrorCode = "리뷰를 작성해 주세요.";
                 }
-                ).catch(console.log('is catch'));
+            } else {
+                // 경고창이 출력하도록 true를 대입합니다.
+                this.alertCheck = true;
+                // 출력할 경고 문장을 대입합니다.
+                this.alertErrorCode = "총점을 입력해 주세요.";
+            }
         }
     },
 }
 </script>
 <style>
-    /* 등록 버튼 CSS */
-    .submit-btn {
-        color: white;
-        font: bold;
-    }
-
      /* 별점 평가 항목 설정 CSS */
     .rating-category-text {
         font-size: 3em;
