@@ -9,13 +9,13 @@
             <v-layout>
                 <v-spacer></v-spacer>
                 <v-flex xs4 sm2 offset-sm1>
-                    <h1>평점 : {{this.totalRating}}</h1>
+                    <h2>평점 : {{this.totalRating}}</h2>
                 </v-flex>
                 <v-spacer></v-spacer>
             </v-layout>
             <v-layout>
                 <v-spacer></v-spacer>
-                <v-flex xs12 sm10>
+                <v-flex xs11 sm10>
                     <hr>
                 </v-flex>
                 <v-spacer></v-spacer>
@@ -92,7 +92,7 @@ export default {
             // 즉 배열이지만 참조를 하지 않고 배열 값을 그대로 복사합니다.
             this.reviewDataList = this.reviewDataListCopy.slice();
 
-            if(this.sortNum != 1){
+            if(this.sortNum == 2){
                 // 좋아요를 많이 받은 순으로 정렬, 좋아요를 받은 값이 같은 경우 최근 작성일 순으로 정렬
                 this.reviewDataList.sort(function(a, b){
                     // 좋아요를 받은 값이 같은 경우 최근 작성일 순으로 정렬
@@ -139,7 +139,6 @@ export default {
             if(this.countryNum != 0)
                 this.reviewDataList = this.countryFilter(this.reviewDataList, this.countryName);
         },
-
     },
 
     methods: {
@@ -287,14 +286,14 @@ export default {
         axios.post('/review', shopData).
         then((response)=>{
 
-            console.log("-----review value get-----");
-            console.log(response.data['review']);
+            // console.log("-----review value get-----");
+            // console.log(response.data['review']);
             // 리뷰 좋아요 데이터
-            console.log("-----review like get-----");
-            console.log(response.data['reviewLike']);
+            // console.log("-----review like get-----");
+            // console.log(response.data['reviewLike']);
             // 해시태그
-            console.log("-----hashtag get-----");
-            console.log(response.data['hashTag']);
+            // console.log("-----hashtag get-----");
+            // console.log(response.data['hashTag']);
 
             // ********************   리뷰목록 사용 데이터 get 및 자료형 변경   ********************
             // hashTagList배열에 해쉬태그 목록이 저장됩니다.
@@ -330,8 +329,8 @@ export default {
             // 배열을 대입할 경우 참조로 대입된다.
             this.reviewDataListCopy = this.reviewDataList;
             // console.log 출력
-            console.log("----- 최종 처리 배열 값  -----"),
-            console.log(this.reviewDataList)
+            // console.log("----- 최종 처리 배열 값  -----"),
+            // console.log(this.reviewDataList)
 
         }).catch(console.log('Oh my god!!, Failed'));
     },

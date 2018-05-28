@@ -22,16 +22,30 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
-    Route::get('/getUserOrderList', array(
+    Route::get('/getSearchData', array(
+        'as' => 'main.getSearchData',
+        'uses' => 'MainController@getSearchData'
+    ));
+
+    Route::post('/getUserOrderList', array(
         'as' => 'main.getUserOrderList',
         'uses' => 'MainController@getUserOrderList'
     ));
 
-    Route::get('/getUserCouponList', array(
+    Route::post('/getUserCouponList', array(
         'as' => 'main.getUserCouponList',
         'uses' => 'MainController@getUserCouponList'
     ));
 
+    Route::post('/getUserReservationList', array(
+        'as' => 'main.getUserReservationList',
+        'uses' => 'MainController@getUserReservationList'
+    ));
+
+    Route::post('/getUserReservationOrderInfo', array(
+        'as' => 'main.getUserReservationOrderInfo',
+        'uses' => 'MainController@getUserReservationOrderInfo'
+    ));
 
 // <-- Show Login Form
     Route::get('login', [
@@ -49,6 +63,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('logout', [
         'as' => 'users.doLogout',
         'uses' => 'UsersController@doLogout'
+    ]);
+
+// <-- User Info
+    Route::post('getInfo', [
+        'as' => 'users.getInfo',
+        'uses' => 'UsersController@getInfo'
     ]);
 
 // <-- select Type
@@ -167,6 +187,16 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'LayoutController@loadCustomLayout'
     ]);
 
+    Route::post('deleteMenu', [
+        'as' => 'menu.deleteMenu',
+        'uses' => 'MenuController@deleteMenu'
+    ]);
+
+    Route::post('updateMenu', [
+        'as' => 'menu.updateMenu',
+        'uses' => 'MenuController@updateMenu'
+    ]);
+
 // <-- User Coupon Page
     Route::post('userCouponCreate', [
         'as' => 'coupon.userCouponCreate',
@@ -241,6 +271,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/requestReservation',[
         'as' => 'reservation.requestReservation',
         'uses' => 'ReservationController@requestReservation'
+    ]);
+
+    Route::post('/userReservationWaitCancel',[
+        'as' => 'reservation.userReservationWaitCancel',
+        'uses' => 'ReservationController@userReservationWaitCancel'
     ]);
 
 // <— Owner Reservation List
@@ -382,6 +417,33 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'communication.addUserBookmark',
         'uses' => 'CommunicationController@addUserBookmark'
     ]);
+
+    // <-- User Menu Route
+    Route::get('/userCoupon', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/userPageReservation', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/userOrderHistory', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/userReviewHistory', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/editInformation', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
 });
 
 /*

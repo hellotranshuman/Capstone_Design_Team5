@@ -102,29 +102,8 @@
                     <template slot="items" slot-scope="props">
                         <td class="text-xs-left">{{ props.item.name }}</td>
                         <td class="text-xs-left">{{ props.item.reservation_date }}</td>
-                        <td class="justify-center layout px-0">
-                            <v-btn icon class="mx-0"  @click.stop="Dialog = true"
-                                   @click="clickId = props.item.id"
-                            >
-                                <v-icon color="primary">상세보기</v-icon>
-                            </v-btn>
-                            <!-- 상세보기 -->
-                            <v-dialog v-model="Dialog" max-width="500px">
-                                <v-card>
-                                    <v-card-text>
-                                        이름 : {{items[0].name}}<br>
-                                        예약 날짜 : {{items[0].reservation_date}}<br>
-                                        어른 인원 : {{items[0].person}}<br>
-                                        아이 인원 : {{items[0].child}}<br>
-                                        메뉴 선정 : {{items[0].menuList}}  <br>
-                                    </v-card-text>
-                                    <v-btn icon class="mx-0"  @click.stop="Dialog = false"
-                                    >
-                                        <v-icon color="primary">확인</v-icon>
-                                    </v-btn>
-                                </v-card>
-                            </v-dialog>
-                        </td>
+                        <td class="text-xs-left">{{ props.item.person }}</td>
+                        <td class="text-xs-left">{{ props.item.child }}</td>
                     </template>
                 </v-data-table>
             </div>
@@ -159,29 +138,21 @@
                 dialog: false,
                 headers: [
                     { text: '예약자 명', value: 'name' },
-                    { text: '예약 날짜', value: 'reservation_date' },
-                    { text: '상세보기', value: 'name', sortable: false }
+                    { text: '예약 날짜/시간', value: 'reservation_date' },
+                    { text: '어른', value: 'person' },
+                    { text: '아이', value: 'child' },
                 ],
 
                 /* 저장 & 편집 & 삭제 */
                 items: [
                     {
                         id : 1,
-                        username: '윤진주',
-                        start_date: '2018-01-02',
+                        name: '윤진주',
+                        reservation_date: '2018-01-02',
                         time: '11:00',
-                        adult_person: 1,
-                        child_person: 1,
+                        person: 1,
+                        child: 1,
                         menuList : '갈비찜 1개'
-                    },
-                    {
-                        id : 2,
-                        username: '가나다',
-                        start_date: '12-01-02',
-                        time: '13:00',
-                        adult_person: 2,
-                        child_person: 1,
-                        menuList : '갈비찜21개'
                     }
                 ],
                 ReservationItem: {

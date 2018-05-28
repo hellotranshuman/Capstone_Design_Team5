@@ -24,6 +24,7 @@ class CreateOrderReservationTable extends Migration
             $table->boolean('menu_select');
             $table->boolean('accept')->nullable();
             $table->unsignedInteger('order_num')->nullable();
+            $table->string('refused_message')->nullable();
             $table->foreign('user_num')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
@@ -33,7 +34,6 @@ class CreateOrderReservationTable extends Migration
             $table->foreign('order_num')
                 ->references('order_num')->on('order_list')
                 ->onDelete('cascade');
-
             $table->timestamps();
         });
     }

@@ -129,25 +129,25 @@ const router = new VueRouter({
             {
                 // 쿠폰함
                 name: 'UserCoupon',
-                path: '/UserCoupon',
+                path: '/userCoupon',
                 component: UserCoupon,
             },
             {
                 // 예약내역
                 name: 'UserPageReservation',
-                path: '/UserPageReservation',
+                path: '/userPageReservation',
                 component: UserPageReservation,
             },
             {
                 // 리뷰내역
                 name: 'UserReviewHistory',
-                path: '/UserReviewHistory',
+                path: '/userReviewHistory',
                 component: UserReviewHistory,
             },
             {
                 // 주문내역
                 name: 'UserOrderHistory',
-                path: '/UserOrderHistory',
+                path: '/userOrderHistory',
                 component: UserOrderHistory,
             },
             // <-- 가게 페이지 공통

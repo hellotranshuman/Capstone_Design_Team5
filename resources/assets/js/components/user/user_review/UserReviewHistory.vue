@@ -55,8 +55,8 @@ import axios from 'axios';
   export default {
     data() {
         return {
-            listHeader : "리뷰 목록",    // 리뷰 목록 헤더
-            getReviewList : [], // 전달받은 리뷰 목록이 저장되는 배열
+            listHeader      : "리뷰 목록",      // 리뷰 목록 헤더
+            getReviewList   : [],               // 전달받은 리뷰 목록이 저장되는 배열
         }
     },
 
@@ -77,12 +77,16 @@ import axios from 'axios';
             // 전달 받은 자료형중 rating 값을 Number형으로 변환합니다.
             this.getReviewListDataTypeChange();
 
-            console.log('get review history list');
-            console.log(this.getReviewList);
+            // console.log('get review history list');
+            // console.log(this.getReviewList);
         }).catch(console.log('review history Oh my god!!, Failed'));
     },
   }
 </script>
-<style>
-
+<style scoped>
+    /* 링크를 클릭하려고 마우스를 가져갔을 때 */
+    a:hover { 
+        color: rgb(102, 051, 000); 
+        text-decoration: none;
+    }
 </style>

@@ -24,7 +24,7 @@
                 <v-divider></v-divider>
                 <v-list v-if="!checkRestaurant()">
                     <!-- 주문 내역 -->
-                    <v-list-tile to="/UserOrderHistory">
+                    <v-list-tile to="/userOrderHistory">
                         <v-list-tile-action>
                             <v-icon large>assignment</v-icon>
                         </v-list-tile-action>
@@ -33,7 +33,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                     <!-- 예약 내역 -->
-                    <v-list-tile to="/UserPageReservation">
+                    <v-list-tile to="/userPageReservation">
                         <v-list-tile-action>
                             <v-icon large>date_range</v-icon>
                         </v-list-tile-action>
@@ -42,7 +42,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                     <!-- 리뷰 내역 -->
-                    <v-list-tile to="/UserReviewHistory">
+                    <v-list-tile to="/userReviewHistory">
                         <v-list-tile-action>
                             <v-icon large>rate_review</v-icon>
                         </v-list-tile-action>
@@ -51,7 +51,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                     <!-- 쿠폰함 -->
-                    <v-list-tile to="/UserCoupon">
+                    <v-list-tile to="/userCoupon">
                         <v-list-tile-action>
                             <v-icon large>loyalty</v-icon>
                         </v-list-tile-action>

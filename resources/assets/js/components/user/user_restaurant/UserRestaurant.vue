@@ -211,7 +211,7 @@
                                             </div>
                                         </v-card-title>
                                         <v-card-actions>
-                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData(), Okey()">확인</v-btn>
+                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData(), res_Okey()">확인</v-btn>
                                             <v-btn color="primary" flat @click.native="dialog_ok = false, dialog = false">취소</v-btn>
                                         </v-card-actions>
                                     </v-card>
@@ -898,7 +898,7 @@
             },
 
 
-            Okey() {
+            res_Okey() {
                 confirm('예약이 완료 되었습니다.')
             },
 
@@ -990,7 +990,8 @@
                     menulength  : this.menu.length,         // 메뉴 개수
                     menu_id     : this.menu,                // 선택한 메뉴가 있는 배열
                     option      : this.optionId,            // 옵션 Id
-                    suboption   : this.optionselect         // 서브 옵션
+                    suboption   : this.optionselect,         // 서브 옵션
+                    sum_price   : this.sum_price
                 }).then((response) => {
                     alert(response.data.msg);
                 }).catch(console.log('test '));

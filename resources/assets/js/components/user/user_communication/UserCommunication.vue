@@ -54,8 +54,7 @@ export default {
             basicsSelect    : false,
             orderSelect     : false,
             paySelect       : false,
-
-            selectValue : 0,          // 이모티콘 카테고리를 나타내는 값            
+            selectValue     : 0,          // 이모티콘 카테고리를 나타내는 값            
         }
     },
 
@@ -71,6 +70,7 @@ export default {
     background: gainsboro;
     cursor: pointer;
   }
+  
   .toolbar-style{
     font-size: 1.2em;
     font-weight: bold;

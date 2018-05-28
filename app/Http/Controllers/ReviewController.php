@@ -77,6 +77,7 @@ class ReviewController extends Controller
        return view('user.writeReview');
     }
 
+    // <-- Review 좋아요
     public function getReviewLike(Request $request) {
 
         if($request->get('review_status'))
@@ -93,8 +94,8 @@ class ReviewController extends Controller
         else
         {
             Review_like::where('user_num', auth()->user()->id)
-                    ->where('review_id', $request->get('review_id'))
-                    ->delete();
+                ->where('review_id', $request->get('review_id'))
+                ->delete();
 
             return response()->json([
                 'msg' => '좋아요가 취소되었습니다.',
@@ -130,17 +131,19 @@ class ReviewController extends Controller
 
         $reviewId = $review->id;
 
-        // <-- hash Tag column create in HashTag Table
-        $tags = implode(',' , $request->get('HASHTAG'));
-        $hashTag = str_replace('#', '', $tags);
-        $hashTags = explode(',', $hashTag);
+        if(!is_null($request->get('HASHTAG'))) {
+            // <-- hash Tag column create in HashTag Table
+            $tags = implode(',' , $request->get('HASHTAG'));
+            $hashTag = str_replace('#', '', $tags);
+            $hashTags = explode(',', $hashTag);
 
-        for( $num = 0 ; $num < count($hashTags) ; $num++)
-        {
-            \App\Hashtag::create([
-                'tag' => $hashTags[$num],
-                'review_id' => $reviewId
-            ]);
+            for( $num = 0 ; $num < count($hashTags) ; $num++)
+            {
+                \App\Hashtag::create([
+                    'tag' => $hashTags[$num],
+                    'review_id' => $reviewId
+                ]);
+            }
         }
 
         /*

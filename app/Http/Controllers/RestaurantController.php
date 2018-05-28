@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Shop_like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -149,6 +150,29 @@ class RestaurantController extends Controller
              'link' => $link,
          ]);
 
+    }
+
+    // <-- 식당 좋아요
+    public function restaurantsLike(Request $request) {
+        if($request->get('')) {
+            Shop_like::create([
+               'user_num' => auth()->user()->id,
+               'shop_id'  => $request->get(''),
+            ]);
+
+            return response()->json([
+                'msg' => '좋아요 했습니다.',
+            ]);
+        }
+        else {
+            Shop_like::where('user_num', auth()->user()->id)
+                ->where('shop_id', $request->get(''))
+                ->delete();
+
+            return response()->json([
+                'msg' => '좋아요가 취소되었습니다.',
+            ]);
+        }
     }
 
 }
