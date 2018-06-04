@@ -40,11 +40,21 @@ class RestaurantController extends Controller
                         ->get()
                         ->toArray();
 
+        $shopLikeNumData = Shop_like::where('user_num', auth()->user()->id)
+                            ->where('shop_id', $shop_id)
+                            ->count();
+
+        if($shopLikeNumData == 0)
+            $shopLike = false;
+        else
+            $shopLike = true;
+
         $restaurantInfo = array_merge($restaurant, $totalRating, $file); //, $totalRating);
 
          return response()->json([
             // 'test' => RestaurantController::$shopId,
             'restaurant' => $restaurantInfo,
+             'shopLike'  => $shopLike,
         ]);
 
 
@@ -154,23 +164,31 @@ class RestaurantController extends Controller
 
     // <-- 식당 좋아요
     public function restaurantsLike(Request $request) {
-        if($request->get('')) {
+        if(!auth()->check())
+            return response()->json([
+                'shopLike' => 'failed',
+            ]);
+
+        if($request->get('shopLike')) {
+
             Shop_like::create([
                'user_num' => auth()->user()->id,
-               'shop_id'  => $request->get(''),
+               'shop_id'  => $request->get('shop_id'),
             ]);
 
             return response()->json([
-                'msg' => '좋아요 했습니다.',
+                'shopLike' => true,
             ]);
         }
         else {
             Shop_like::where('user_num', auth()->user()->id)
-                ->where('shop_id', $request->get(''))
+                ->where('shop_id', $request->get('shop_id'))
                 ->delete();
 
+
+
             return response()->json([
-                'msg' => '좋아요가 취소되었습니다.',
+                'shopLike' => false,
             ]);
         }
     }

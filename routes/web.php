@@ -47,6 +47,16 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@getUserReservationOrderInfo'
     ));
 
+    Route::post('/getRecommendShopData', array(
+        'as' => 'main.getRecommendShopData',
+        'uses' => 'MainController@getRecommendShopData'
+    ));
+
+    Route::post('/getRegionTypeShopData', array(
+        'as' => 'main.getRegionTypeShopData',
+        'uses' => 'MainController@getRegionTypeShopData'
+    ));
+
 // <-- Show Login Form
     Route::get('login', [
         'as' => 'users.showLogin',
@@ -127,6 +137,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('menu/getLayoutNumber', [
         'as' => 'menu.getLayoutNumber',
         'uses' => 'MenuController@getLayoutNumber'
+    ]);
+
+    Route::post('restaurantsLike', [
+        'as' => 'restaurant.restaurantsLike',
+        'uses' => 'RestaurantController@restaurantsLike'
     ]);
 
 // <-- User Order Page
