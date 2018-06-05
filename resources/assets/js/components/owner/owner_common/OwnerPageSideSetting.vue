@@ -9,12 +9,12 @@
         <ul class="sidebar_nav">
             <li class="sidebar_brand"><B>설정</B></li>
             <li class="sidebar_brand"><B>가게 관리</B></li>
-            <li><router-link to="/ownerPage/ownerRestaurant">가게 정보</router-link></li>
-            <li><router-link to="/ownerPage/ownerCreateCoupon">쿠폰</router-link></li>
+            <li><router-link to="editRestaurant">가게 정보</router-link></li>
+            <li><router-link to="createCoupon">쿠폰</router-link></li>
             <li class="sidebar_brand"><B>전자 메뉴판</B></li> 
-            <li><router-link to="/ownerPage/operate">메뉴 추가</router-link></li>
-            <li><router-link to="/ownerPage/list">메뉴 관리</router-link></li>
-            <li><router-link to="/ownerPage/layout">레이아웃 설정</router-link></li>
+            <li><router-link to="menuOperate">메뉴 추가</router-link></li>
+            <li><router-link to="menuList">메뉴 관리</router-link></li>
+            <li><router-link to="menuLayout">레이아웃 설정</router-link></li>
         </ul>
     </div>
     <div id="router_view">
