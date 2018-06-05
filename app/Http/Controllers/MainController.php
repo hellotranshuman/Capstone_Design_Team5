@@ -475,7 +475,6 @@ class MainController extends Controller
 
       // <-- 지역별 가게 추천 Data
       $regionData   = $request->get('');
-      $limitData    = $request->get('');
 
       $regionShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
                             ->select(DB::raw('
@@ -496,75 +495,39 @@ class MainController extends Controller
                             ->get()
                             ->toArray();
 
-      // <-- 한식 type의 가게 Data
-      $type = '한식';
-      $koreanShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
-                            ->select(DB::raw('
-                                                ROUND(AVG(review.rating), 2) as totalRating,
-                                                restaurants.id   as shop_id,
-                                                restaurants.name as shop_name,
-                                                restaurants.type as shop_type,
-                                                restaurants.explanation as shop_explanation,
-                                                restaurants.phone as shop_phone,
-                                                restaurants.dodobuken as shop_ddobuken,
-                                                restaurants.cities as shop_cities,
-                                                restaurants.address as shop_address
-                                            '))
-                            ->where('restaurants.type', $type)
-                            ->groupBy('review.shop_id')
-                            ->orderByRaw('totalRating desc')
-                            ->limit()
-                            ->get()
-                            ->toArray();
-
-      // <-- 일식 type의 가게 Data
-      $type = '일식';
-      $japaneseShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
-                              ->select(DB::raw('
-                                                            ROUND(AVG(review.rating), 2) as totalRating,
-                                                            restaurants.id   as shop_id,
-                                                            restaurants.name as shop_name,
-                                                            restaurants.type as shop_type,
-                                                            restaurants.explanation as shop_explanation,
-                                                            restaurants.phone as shop_phone,
-                                                            restaurants.dodobuken as shop_ddobuken,
-                                                            restaurants.cities as shop_cities,
-                                                            restaurants.address as shop_address
-                                                                                    '))
-                              ->where('restaurants.type', $type)
-                              ->groupBy('review.shop_id')
-                              ->orderByRaw('totalRating desc')
-                              ->limit()
-                              ->get()
-                              ->toArray();
-
-      // <-- 중식 type의 가게 Data
-      $type = '중식';
-      $chineseShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
-                                ->select(DB::raw('
-                                                                    ROUND(AVG(review.rating), 2) as totalRating,
-                                                                    restaurants.id   as shop_id,
-                                                                    restaurants.name as shop_name,
-                                                                    restaurants.type as shop_type,
-                                                                    restaurants.explanation as shop_explanation,
-                                                                    restaurants.phone as shop_phone,
-                                                                    restaurants.dodobuken as shop_ddobuken,
-                                                                    restaurants.cities as shop_cities,
-                                                                    restaurants.address as shop_address
-                                                                '))
-                                ->where('restaurants.type', $type)
-                                ->groupBy('review.shop_id')
-                                ->orderByRaw('totalRating desc')
-                                ->limit()
-                                ->get()
-                                ->toArray();
-
       return response()->json([
           'regionShopData'      => $regionShopData,
-          'koreanShopData'      => $koreanShopData,
-          'japaneseShopData'    => $japaneseShopData,
-          'chineseShopData'     => $chineseShopData,
       ]);
+   }
+
+   public function getTypeShopData(Request $request) {
+
+       // <-- 각 업종의 가게 Data
+       $type = $request->get('');
+       $limitData    = $request->get('');
+
+       $typeShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
+                               ->select(DB::raw('
+                                    ROUND(AVG(review.rating), 2) as totalRating,
+                                    restaurants.id   as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    restaurants.dodobuken as shop_ddobuken,
+                                    restaurants.cities as shop_cities,
+                                    restaurants.address as shop_address
+                                '))
+                               ->where('restaurants.type', $type)
+                               ->groupBy('review.shop_id')
+                               ->orderByRaw('totalRating desc')
+                               ->limit()
+                               ->get()
+                               ->toArray();
+
+       return response()->json([
+           'typeShopData'      => $typeShopData,
+       ]);
    }
 
     // <-- 검색을 누른 키워드에 대한 데이터 get
