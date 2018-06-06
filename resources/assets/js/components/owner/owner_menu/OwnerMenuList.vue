@@ -4,14 +4,13 @@
 <div id="menus">
     <!-- 카테고리 영역 -->
     <div style="width:100%"> 
-        <v-card style="max-width:100%; margin:auto">
+        <div style="max-width:100%; margin:auto">
             <v-bottom-nav :value="true" :active.sync="e2">
-                <v-btn v-for="(value,key) in categorys" :key="key" 
-                    :value="value" @click="click_category">
+                <v-btn v-for="(value,key) in categorys" :key="key" :value="value" @click="click_category">
                     <b style="color: black">{{value}}</b>  
                 </v-btn>
             </v-bottom-nav>
-        </v-card>
+        </div>
     </div> 
 
     <!-- 메뉴들 -->
@@ -61,7 +60,7 @@
                                 <v-card>
                                     <!-- 타이틀, x 버튼 -->
                                     <v-card-title>
-                                        <h2 style="margin: auto"> Options </h2>
+                                        <h1 style="margin: auto"> Options </h1>
                                         <v-btn icon style="float:right" @click="OptionDialog=false">
                                             <v-icon large> clear </v-icon>
                                         </v-btn>
@@ -134,14 +133,8 @@
             <h1 style="float:left"> 메뉴 수정하기 </h1>
             <v-spacer></v-spacer>
 
-            <v-btn color="primary" style="float:right" large
-                @click="modifySave">
-                수정
-            </v-btn>
-            <v-btn color="error" style="float:right" large
-                @click="modifyCancel">
-                취소
-            </v-btn>
+            <v-btn color="primary" style="float:right" large @click="modifySave"  >수정</v-btn>
+            <v-btn color="error"   style="float:right" large @click="modifyCancel">취소</v-btn>
         </v-card-title>   
 
         <!-- 메뉴 수정 영역 -->
@@ -172,17 +165,17 @@
                     </div>
 
                     <div class="editInfo">
-                        <span class="editColumn">메뉴 명</span> 
+                        <div class="editColumn">메뉴 명</div> 
                         <input type="text" id="ed_name" class="editInput" :value="editMenu.name">
                     </div>
 
                     <div class="editInfo">
-                        <span class="editColumn">가격</span> 
+                        <div class="editColumn">가격</div> 
                         <input type="text" id="ed_price" class="editInput" :value="editMenu.price">
                     </div>
 
                     <div class="editInfo">
-                        <span class="editColumn">카테고리</span> 
+                        <div class="editColumn">카테고리</div> 
                         <select class="editInput" id="ed_category">
                             <option v-for="j in range(0, states.length-1)" :key="j">
                                 <h2 v-if="editMenu.category == states[j].name" selected>
@@ -194,7 +187,7 @@
                     </div>
 
                     <div class="editInfo">
-                        <span class="editColumn">런치 / 디너 구분</span> 
+                        <div class="editColumn">런치 / 디너 구분</div> 
                         <select class="editInput" id="ed_remark">
                             <option v-for="j in range(0, remarkList.length-1)" :key="j">
                                 <h2 v-if="editMenu.remark == remarkList[j].text" selected>
@@ -206,8 +199,8 @@
                     </div>
 
                     <div class="editInfo">
-                        <span class="editColumn">메뉴 설명</span> 
-                        <textarea class="editInput" id="ed_expl" style="height:40%;" :value="editMenu.explanation">
+                        <div class="editColumn">메뉴 설명</div> 
+                        <textarea class="editInput" id="ed_expl" style="height:200px;" :value="editMenu.explanation">
                         </textarea>
                     </div> 
                 </v-card>
@@ -217,10 +210,8 @@
             <v-flex xs4 mr-4 elevation-5>
                 <div style="color:black;">
                     <h2 class="card_title"> 옵션 설정 </h2> 
-
-                    <label for="create_option" class="label_style"> <b>옵션 생성</b> </label>
-                    <input type="button" id="create_option" @click="createOption" class="ipt_btn">
-                    
+                    <label for="create_option" id="create_option_label" class="label_style"> 옵션 생성 </label>
+                    <input type="button" id="create_option" @click="createOption" class="ipt_btn">                    
                     <div id="editOptions"></div>
                 </div>
             </v-flex>
@@ -252,6 +243,18 @@ export default {
             this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
         })
         .catch((ex)=>{alert('메뉴 로드 실패');});      
+        
+        // get_categorys = [   
+        //     {"category" : '특식'},
+        //     {"category" : '추천 메뉴'},
+        //     {"category" : '식사류'},
+        //     {"category" : '찌개류'},
+        //     {"category" : '안주류'},
+        //     {"category" : '음료'},
+        //     {"category" : '커피'},
+        //     {"category" : '디저트'}, 
+        // ]
+        // this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
     },
  
     data() {
@@ -327,7 +330,172 @@ export default {
             })
             .catch((ex)=>{
                 alert('메뉴 로드 실패');
-            });           
+            });   
+            // this.get_menus = [
+            //       {                     
+            //         "id"            : 1, 
+            //         "category"      : '특선',
+            //         "name"          : "짬뽕" ,
+            //         "explanation"   : "짬뽕입니다." ,
+            //         "price"         : 9000 ,
+            //         "remark"        : "디너 메뉴" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" ,
+            //         "opNum"         : 6,
+
+            //         "optionId1"      : 1,
+            //         "optionName1"    : "맵기 조절" ,
+            //         "1suboptionId1"  : 1,
+            //         "1optionValue1"  : "순한맛" ,
+            //         "1suboptionId2"  : 2,
+            //         "1optionValue2"  : "보통맛" ,
+            //         "1suboptionId3"  : 3,
+            //         "1optionValue3"  : "매운맛" ,
+            //         "subOpNum1"      : 3,
+
+            //         "optionId2"      : 2,
+            //         "optionName2"   : "샐러드",
+            //         "2suboptionId1"  : 1,
+            //         "2optionValue1" : "제공",
+            //         "2suboptionId2"  : 2,
+            //         "2optionValue2" : "미제공",
+            //         "subOpNum2"      : 2,
+
+            //         "optionId3"      : 3,
+            //         "optionName3"   : "딸기",
+            //         "3suboptionId1"  : 1,
+            //         "3optionValue1" : "제공",
+            //         "3suboptionId2"  : 2,
+            //         "3optionValue2" : "미제공",
+            //         "subOpNum3"      : 2,
+
+            //         "optionId4"      : 4,
+            //         "optionName4"    : "옵션4" ,
+            //         "4suboptionId1"  : 1,
+            //         "4optionValue1"  : "배고파1" ,
+            //         "4suboptionId2"  : 2,
+            //         "4optionValue2"  : "배고파2" ,
+            //         "4suboptionId3"  : 3,
+            //         "4optionValue3"  : "배고파3" ,
+            //         "4suboptionId4"  : 4,
+            //         "4optionValue4"  : "배고파4" ,
+            //         "4suboptionId5"  : 5,
+            //         "4optionValue5"  : "배고파5" ,
+            //         "subOpNum4"      : 5,
+
+            //         "optionId5"      : 5,
+            //         "optionName5"   : "집에가고 싶다",
+            //         "5suboptionId1"  : 1,
+            //         "5optionValue1" : "갈까",
+            //         "5suboptionId2"  : 2,
+            //         "5optionValue2" : "말까",
+            //         "subOpNum5"      : 2,
+
+            //         "optionId3"      : 6,
+            //         "optionName6"   : "구두 사야돼",
+            //         "6suboptionId1"  : 1,
+            //         "6optionValue1" : "내일",
+            //         "6suboptionId2"  : 2,
+            //         "6optionValue2" : "모레",
+            //         "subOpNum6"      : 2,
+            //     },
+            //     {                     
+            //         "id"            : 2, 
+            //         "category"      : '안주류',
+            //         "name"          : "케이크" ,
+            //         "explanation"   : "케이크입니다." ,
+            //         "price"         : 3000 ,
+            //         "remark"        : "상관 없음" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" 
+            //     },
+            //     {                     
+            //         "id"            : 3, 
+            //         "category"      : '식사류',
+            //         "name"          : "짜장면" ,
+            //         "explanation"   : "맛있는 짜장면" ,
+            //         "price"         : 9000 ,
+            //         "remark"        : "런치 메뉴" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" ,
+            //         "opNum"         : 2,
+
+            //         "optionId1"      : 1,
+            //         "optionName1"   : "맵기 조절" ,
+            //         "1suboptionId1"  : 1,
+            //         "1optionValue1"  : "순한맛" ,
+            //         "1suboptionId2"  : 2,
+            //         "1optionValue2"  : "보통맛" ,
+            //         "1suboptionId3"  : 3,
+            //         "1optionValue3"  : "매운맛" ,
+            //         "subOpNum1"      : 3,
+
+            //         "optionId2"      : 2,
+            //         "optionName2"   : "샐러드",
+            //         "2suboptionId1"  : 1,
+            //         "2optionValue1" : "제공",
+            //         "2suboptionId2"  : 2,
+            //         "2optionValue2" : "미제공",
+            //         "subOpNum2"      : 2, 
+            //     },
+            //     {                     
+            //         "id"            : 4, 
+            //         "category"      : '추천메뉴',
+            //         "name"          : "고르곤졸라 피자" ,
+            //         "explanation"   : "꿀 찍어 먹는 얇은 ㅍ자" ,
+            //         "price"         : 18000 ,
+            //         "remark"        : "상관 없음" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" ,
+            //         "opNum"         : 2,
+
+            //         "optionId1"      : 1,
+            //         "optionName1"   : "사이즈" ,
+            //         "1suboptionId1"  : 1,
+            //         "1optionValue1"  : "m" ,
+            //         "1suboptionId2"  : 2,
+            //         "1optionValue2"  : "r" ,
+            //         "1suboptionId3"  : 3,
+            //         "1optionValue3"  : "l" ,
+            //         "subOpNum1"      : 3,
+
+            //         "optionId2"      : 2,
+            //         "optionName2"   : "샐러드",
+            //         "2suboptionId1"  : 1,
+            //         "2optionValue1" : "제공",
+            //         "2suboptionId2"  : 2,
+            //         "2optionValue2" : "미제공",
+            //         "subOpNum2"      : 2, 
+            //     },
+            //     {                     
+            //         "id"            : 5, 
+            //         "category"      : '식사류',
+            //         "name"          : "감자탕" ,
+            //         "explanation"   : "뼈와 살을 발라 먹는 맛" ,
+            //         "price"         : 7500 ,
+            //         "remark"        : "상관 없음" ,
+            //         "path"          : "/images/menu/1/" ,
+            //         "filename"      : "1_menuImg_1.jpeg" ,
+            //         "opNum"         : 2,
+
+            //         "optionId1"      : 1,
+            //         "optionName1"   : "뼈 추가" ,
+            //         "1suboptionId1"  : 1,
+            //         "1optionValue1"  : "추가" ,
+            //         "1suboptionId2"  : 2,
+            //         "1optionValue2"  : "안함" , 
+            //         "subOpNum1"      : 2,
+
+            //         "optionId2"      : 2,
+            //         "optionName2"   : "샐러드",
+            //         "2suboptionId1"  : 1,
+            //         "2optionValue1" : "제공",
+            //         "2suboptionId2"  : 2,
+            //         "2optionValue2" : "미제공",
+            //         "subOpNum2"      : 2, 
+            //     },
+            // ];
+            // this.menu_num  = this.get_menus.length;        
         },  
 
         // 옵션 보기 
@@ -347,7 +515,7 @@ export default {
                     arr[i]['name'] = menu["optionName" +i];                 // 옵션 이름 
                    
                     for(let j=1; j <= menu['subOpNum' +i]; j++){
-                         arr[i][j] = menu[i +"optionValue" +j];             // 옵션 값 
+                        arr[i][j] = menu[i +"optionValue" +j];             // 옵션 값 
                     } 
                 }
                 this.clickedMenu = arr; 
@@ -360,7 +528,7 @@ export default {
         
         // 수정하기
         modifyMenu : function(){ 
-            let index   = event.target.value;                   // 클릭한 button value
+            let index = event.target.value;                   // 클릭한 button value
             let menus = document.getElementById('menus');       // 메뉴 출력 창
             
             this.editMenu = null;
@@ -377,9 +545,9 @@ export default {
             let ed_category = document.getElementById('ed_category').value;
             let ed_remark   = document.getElementById('ed_remark').value;
             let ed_expl     = document.getElementById('ed_expl').value;
-            let editOptions = document.getElementById('editOptions');          // 카테고리 리스트 가져오기
+            let editOptions = document.getElementById('editOptions');          
 
-            formData.append('shop_id',this.shop_id);  
+            formData.append('shop_id', this.shop_id);  
              
             // 업로드한 이미지가 있는지 체크 후 진행함
             if(menu_img.files[0] !== undefined){   
@@ -396,26 +564,44 @@ export default {
                 formData.append('price', ed_price);
                 formData.append('category', ed_category);
                 formData.append('remark', ed_remark);
-                formData.append('explanation', ed_expl);
+                formData.append('explanation', ed_expl);  
                 formData.append('menu_id', this.editMenu.id);
 
                 // 옵션 담기. 없으면 실행 안함.
                 if(editOptions.children.length !== 0){
                     for(let i=0; i < editOptions.children.length; i++){
-                        let optionBox = editOptions.children[i];                       
+                        let optionBox = editOptions.children[i];        
+                        let optionName = optionBox.children[0].children[0];
+                        
+                        if(optionName.tagName !== 'B' || optionName.innerText === ''){
+                            return alert('입력이 완료 되지 않은 옵션 명이 있습니다!');
+                        }
+                        // 옵션 이름, 옵션 값 갯수 담기.
+                        formData.append('option['+ i +'][name]', optionName.innerText);
+                        formData.append('option['+ i +'][num]',  optionBox.children.length -1);
 
-                        // 옵션 값 담기
-                        for(let j=0; j < optionBox.children.length -1; j++){
-                            formData.append('option['+ i +'][value' + j+']', 
-                                optionBox.children[j+1].children[0].innerText);
+                        // 옵션 값 담기 (선택 값이 2개 이하면 경고 메세지 출력)
+                        if(optionBox.children.length -1 > 1){
+                            for(let j=0; j < optionBox.children.length -1; j++){
+                                let optionValue = optionBox.children[j+1].children[0];  // 옵션 값
+
+                                // 옵션 값이 입력 창인 상태이거나 옵션 명이 입력되지 않은 경우 경고 메세지 출력
+                                if(optionValue.tagName !== 'B' || optionValue.innerText === ''){
+                                    return alert('입력이 완료 되지 않은 옵션 값이 있습니다!');
+                                }
+                                formData.append('option['+ i +'][value' + j+']',optionValue.innerText);
+                            }
+                        } else {
+                            return alert('옵션의 선택 값을 2개 이상 생성해주세요!');
                         }
                         
-                        // 옵션 이름, 옵션 값 갯수 담기.
-                        formData.append('option['+ i +'][name]', optionBox.children[0].children[0].innerText);
-                        formData.append('option['+ i +'][num]', optionBox.children.length -1);
                     }
-                }              
-                   
+                }                                 
+                // 콘솔창에 띄우기
+                for(var pair of formData.entries()) {
+                    console.log(pair[0]+ ', '+ pair[1]); 
+                }
+
                 /* 선주야 이거 해줘 */   
                 axios.post('/updateMenu',formData)
                 .then( (response) => { 
@@ -536,17 +722,15 @@ export default {
             let editOptions     = document.getElementById('editOptions');   // 옵션들이 들어갈 div
             let options_box     = document.createElement('div');            // 옵션 명, 옵션 값을 담을 div
             let created_option  = document.createElement('div');            // 옵션 명이 될 div  
-            let created_b       = document.createElement('b');              // 옵션 명
+            let created_input   = document.createElement('input');          // 카테고리 명 입력 창 만들기.
             let created_btns    = [                                         // 옵션 명 div에 들어갈 버튼들.
                                     document.createElement('input'),       
                                     document.createElement('input'),        
                                     document.createElement('input')       
-                                ];
-            created_b.innerText = "옵션 명";                             // 옵션 초기 이름 값 설정.
-            created_b.classList.add('ed_op_b'); 
- 
+                                ]; 
+            created_input.classList.add('ed_op_ipt');
             created_option.classList.add('ed_op_div');                     // 옵션 명에 css 추가
-            created_option.prepend(created_b);                               
+            created_option.prepend(created_input);                               
 
             // 들어갈 버튼들 값 설정, css 추가, 메소드 설정
             for (let i=0; i < created_btns.length; i++){                   
@@ -561,16 +745,15 @@ export default {
                         created_btns[i].value   = '옵션 값 생성';
                         created_btns[i].onclick = this.add_opionValue; break;
                     case 2: 
-                        created_btns[i].value   = '수정';
-                        created_btns[i].onclick = this.rename_option; break;
+                        created_btns[i].value   = '완료';
+                        created_btns[i].onclick = this.rename_complete; break;
                 }
                 created_option.appendChild(created_btns[i]);
             }
             // 옵션 목록 div에 옵션 삽입 
             options_box.classList.add('ed_op_box');
             options_box.appendChild(created_option);
-            editOptions.appendChild (options_box); 
-
+            editOptions.appendChild (options_box);  
         }, // end of create_option
 
         // 수정하기 - 옵션 명 수정하기
@@ -595,6 +778,9 @@ export default {
             let get_iptText = get_option.children[0];           // input 태그 가져오기
             let created_b   = document.createElement('b');      // 카테고리 명 생성.
  
+            if(get_iptText.value.replace(/ /gi, "") === ''){
+                return alert('값을 입력해 주세요!');
+            }
             created_b.innerText = get_iptText.value;                                                   
             created_b.classList.add('ed_op_b');
             
@@ -609,7 +795,7 @@ export default {
         add_opionValue : function(event){  
             let get_box         = event.target.parentNode.parentNode;      // 해당 카테고리 박스 가져오기
             let optionValue     = document.createElement('div');           // 하위 카테고리 div 생성
-            let created_b       = document.createElement('b');             // 카테고리 명 입력할 b 태그
+            let created_input   = document.createElement('input');          // 카테고리 명 입력 창 만들기.
             let created_btns    = [
                                     document.createElement('input'), 
                                     document.createElement('input')
@@ -624,17 +810,15 @@ export default {
                         created_btns[i].value   = '삭제';
                         created_btns[i].onclick = this.delete_optionValue; break;
                     case 1:
-                        created_btns[i].value   = '수정';
-                        created_btns[i].onclick = this.rename_option; break; 
+                        created_btns[i].value   = '완료';
+                        created_btns[i].onclick = this.rename_complete; break; 
                 }
                 optionValue.appendChild(created_btns[i]);
-            }
-            
-            created_b.innerText = '옵션 값';
-            created_b.classList.add('ed_op_b');
- 
-            optionValue.prepend(created_b);
+            } 
+            created_input.classList.add('ed_op_ipt');
+
             optionValue.classList.add('ed_op_value');
+            optionValue.prepend(created_input);
 
             get_box.appendChild(optionValue);
         }, // end of add_opionValue
@@ -673,16 +857,15 @@ export default {
             })
             .catch((ex)=>{
                 alert('서버 연결 실패');
-            });      
-        },
- 
+            });       
+        } 
     }
 }
 
 </script>
 
 <style>
-.h3_style { margin-top: 1%; font-size: 1.2rem; }
+.h3_style { margin-top: 1%; font-size: 1.2rem; padding: 1%;}
 
 /* 메뉴 전체 */
 #prtArea {
@@ -697,7 +880,7 @@ export default {
 /* 옵션 보기 모달 */
 #prtOptions {    
     width: 100%;
-    height: 40%;
+    height: 95%;
     border-top: 1px solid black; 
     color : black;
     background-color: white;  
@@ -713,7 +896,7 @@ export default {
 .opSelect {    
     width: 80%;
     height: 10%;
-    margin-top: 2%; 
+    margin-top: 1.5%; 
     margin-left: 10%;  
     font-size: 1.5rem;
     border-bottom: 2px solid black; 
@@ -723,7 +906,7 @@ export default {
 .menuBody {
     width: 100%; 
     margin-top: 2%;
-    border: 2px solid black;
+    border: 1px solid black;
     color: black; 
     overflow: hidden;
 }
@@ -732,7 +915,7 @@ export default {
     width: 33.3%;
     height: 0;
     padding-bottom: 25%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: relative;
     overflow: hidden;
     float: left;
@@ -759,7 +942,7 @@ export default {
     width: 100%;
     height: 33.3%;
     padding: 1%;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     position: relative;
     overflow: auto;
 }
@@ -774,7 +957,7 @@ export default {
 .mBtns {
     width: 33.3%;
     height: 100%;  
-    font-weight: bold;
+    font-weight: bolder;
     float: left;
     position: relative; 
     overflow: hidden;
@@ -791,7 +974,7 @@ export default {
   
 .card_title{
     margin-bottom: 3%;
-    margin-left:2%;
+    margin-left: 2%;
     text-align: left; 
     position: relative;
 }
@@ -804,11 +987,25 @@ export default {
 }
 /* 메뉴 이미지 업로드 라벨 */
 .label_style{
-    color: cadetblue; 
-    float:right;
     font-size: 1.5rem;
     margin-right: 3%; 
+    color: cadetblue; 
+    font-weight: bold;
+    float:right;
+    user-select:none;               /* 드래그 방지 */
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+} 
+/* 마우스 클릭하고있을때 */
+.label_style:active{
+    color: darkseagreen;
 }
+/* 마우스 한번클릭후 */
+.label_style:visited{
+    color: cadetblue;
+} 
 /* 메뉴 이미지 비율 고정용 */
 .img_div {
     width: 95%;
@@ -827,18 +1024,17 @@ export default {
     margin-bottom: 4%;  
 }
 .editColumn {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 3%;  
     font-weight: bold;
 }
 .editInput {
     width: 90%;
     height: 10%;    
-    font-size: 1.3rem;
-    margin-left: 5%;
+    font-size: 1.4rem;
+    margin-left: 5%; 
     border-bottom: 2px solid #BDBDBD;
 }
-
 
 /* 옵션들이 출력될 div 스타일 */
 #editOptions{
@@ -870,6 +1066,7 @@ export default {
     float: right;
     position: relative;
     color: cadetblue; 
+    font-weight: bold;
 }
 /* 옵션의 값 */
 .ed_op_value {
@@ -882,14 +1079,17 @@ export default {
 }
 /* 옵션 명을 출력할 b태그 */
 .ed_op_b {
-    float: left; 
+    font-size: 1.3rem;
     margin-left: 1%;
+    float: left; 
 }
 /* 옵션 수정에 사용할 input text 태그 */
 .ed_op_ipt {
-    float: left; 
     width: 40%; 
     margin-left: 1%; 
+    font-size: 1.2rem;
     background-color: rgb(135, 194, 196);  
+    float: left; 
+    font-weight: bold;
 }
 </style>

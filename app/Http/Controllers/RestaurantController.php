@@ -162,6 +162,128 @@ class RestaurantController extends Controller
 
     }
 
+    // <-- 레스토랑 정보 수정시 가져올 레스토랑 정보
+    public function getEditRestaurantInfo(Request $request) {
+        $shop_id = $request->get('shop_id');
+
+        $restaurantInfo = Restaurant::where('id', $shop_id)
+                            ->get()
+                            ->toArray();
+
+        $file = Upload::select('path', 'filename')
+                    ->where('shop_id', $shop_id)
+                    ->get()
+                    ->toArray();
+
+        return response()->json([
+           'restaurant'     => $restaurantInfo,
+            'file'          => $file,
+        ]);
+    }
+
+    public function updateRestaurantInfo(Request $request) {
+        $shop_id = $request->get('shop_id');
+
+        Restaurant::where('id', $shop_id)
+                ->update([
+                    'name' => $request->input('name'),
+                    'user_num' => auth()->user()->id,
+                    'type'=> $request->input('type'),
+                    'explanation'=> $request->input('explanation'),
+                    'phone' => $request->input('phone'),
+                    'dodobuken' => $request->input('dodobuken'),
+                    'cities' => $request->input('cities'),
+                    'address' => $request->input('address'),
+                    'payment' => $request->input('payment'),
+                    'seat_num' => $request->input('seat_num'),
+                    'children' => $request->input('children') == 'yes' ? true : false,
+                    'pet' => $request->input('pet') == 'yes' ? true : false,
+                    'parking' => $request->input('parking') == 'yes' ? true : false,
+                    'smoking' => $request->input('smoking') == 'yes' ? true : false,
+                    'privateroom' => $request->input('privateroom') == 'yes' ? true : false,
+                    'lunch_open' => $request->input('lunch_open'),
+                    'lunch_close' => $request->input('lunch_close'),
+                    'lunch_lo' => $request->input('lunch_lo'),
+                    'dinner_open' => $request->input('dinner_open'),
+                    'dinner_close' => $request->input('dinner_close'),
+                    'dinner_lo' => $request->input('dinner_lo'),
+                ]);
+
+        /*
+         * 바뀔 이미지가 있는 경우 현재 이미지 다 지우고
+         * 새로운 이미지로 교체 하기
+         *
+         * 1. 기존 이미지 갯수 DB로 가져오기
+         * 2. 기존 이미지 전부 삭제
+         * 3. 새로운 이미지 갯수에 따라서 새로운 이미지로 교체
+         * 4. DB 삭제후 다시 등록... (갯수변동때메)
+         * */
+
+        if($request->file('')) {
+
+          $uploadData = Upload::where('shop_id', $shop_id)
+                            ->get();
+
+          foreach ($uploadData as $upload) {
+              $fileName = $upload->filename;
+
+              $deleteFileName = '/'. $shop_id . '/'. $fileName;
+
+              Storage::delete($deleteFileName);
+          }
+
+          Upload::where('shop_id', $shop_id)
+              ->delete();
+
+          $imageNum = $request->get('');
+          $path = storage_path() . '/app/public/img/' . $shop_id;
+          $dbPath = '/images/'. $shop_id . '/';
+
+            if($request->file('titleImg')) {
+                // title Img 가져오기
+                $titleImg = $request->file('titleImg');
+
+                // File Name Setting
+                $fileName = $shop_id . '_titleImg' . '.' . $titleImg->getClientOriginalExtension();
+
+                // Upload File Save
+                $titleImg->storeAs($shop_id, $fileName);
+
+                // Create Upload File Column in Upload Table
+                \App\Upload::create([
+                    'filename'   => $fileName,
+                    'shop_id'    => $shop_id,
+                    'path'       => $dbPath
+                ]);
+            }
+
+            if($imageNum != 0) {
+                for ($num = 0; $num < $imageNum; $num++) {
+                    // 업로드한 파일 인덱스 찾기
+                    $uploadName = 'galleryImg' . $num;
+
+                    // 이미지 파일 가져오기
+                    $image = $request->file($uploadName);
+
+                    // File Name Setting
+                    $fileName = $shop_id . '_' . 'galleryImg' . '_' . $num .
+                        '.' . $image->getClientOriginalExtension();
+
+                    // Upload File Save
+                    $image->storeAs($shop_id, $fileName);
+
+                    // DB에 저장
+                    \App\Upload::create([
+                        'filename' => $fileName,
+                        'shop_id' => $shop_id,
+                        'path' => $dbPath
+                    ]);
+                }
+            }
+        }
+
+    }
+
     // <-- 식당 좋아요
     public function restaurantsLike(Request $request) {
         if(!auth()->check())
@@ -184,8 +306,6 @@ class RestaurantController extends Controller
             Shop_like::where('user_num', auth()->user()->id)
                 ->where('shop_id', $request->get('shop_id'))
                 ->delete();
-
-
 
             return response()->json([
                 'shopLike' => false,

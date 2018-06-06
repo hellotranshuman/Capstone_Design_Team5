@@ -338,7 +338,7 @@ class MenuController extends Controller
         // Current Save Shop Image Route
         $dbPath = '/images/menu/' . $shopId . '/';
 
-        $dir = '/menu/'.$shopId;
+        $dir = '/menu/'. $shopId;
 
         if($request->file('menu_img')) {
           $menuImageData = \App\Menu_Image::where('menu_id', $menu_id)

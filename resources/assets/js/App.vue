@@ -329,7 +329,7 @@
                         if(this.$session.get('restaurant_id')) { // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
                             if(!(this.$session.get('restaurant_id') == 'needCreate')) { // 가게를 만들지 않은 사장인지 체크
                                 var restaurant_id = this.$session.get('restaurant_id');
-                                location.replace('/owner/' + restaurant_id + '/menu');
+                                location.replace('/owner/' + restaurant_id + '/editRestaurant');
                             } else {
                                 location.replace('/owner/createRestaurant');
                             }
@@ -360,7 +360,7 @@
 
             moveMyMenu() {
                 var restaurant_id = this.$session.get('restaurant_id');
-                location.replace('/owner/' + restaurant_id + '/menu');
+                location.replace('/owner/' + restaurant_id + '/menuOperate');
             },
 
             moveMyReservation() {

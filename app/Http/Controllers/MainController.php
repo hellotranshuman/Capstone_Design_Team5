@@ -227,13 +227,13 @@ class MainController extends Controller
 
         // 현재 주문번호와 메뉴, 옵션 갯수 Count
         $orderCountData = Order_List::join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
-            ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
-            ->select(DB::raw('order_list.order_num as order_num, 
-                                           count(order_list.order_num) as orderCount'))
-            ->where('order_list.order_num', $currentOrderNum)
-            ->groupBy('order_list.order_num')
-            ->orderByRaw('order_list.order_date DESC')
-            ->get();
+                            ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
+                            ->select(DB::raw('order_list.order_num as order_num, 
+                                                           count(order_list.order_num) as orderCount'))
+                            ->where('order_list.order_num', $currentOrderNum)
+                            ->groupBy('order_list.order_num')
+                            ->orderByRaw('order_list.order_date DESC')
+                            ->get();
 
         // 현재 주문번호의 데이터 받아와 전체 주문 내역에 저장
         foreach ($orderCountData as $orderCount) {
@@ -244,23 +244,23 @@ class MainController extends Controller
 
             // 현재 주문번호의 데이터
             $orderListData = Order_List::join('restaurants', 'order_list.shop_id', '=', 'restaurants.id')
-                ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
-                ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
-                ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
-                ->join('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
-                ->leftJoin('suboption', 'order_option.subop_num', '=', 'suboption.sub_opnum')
-                ->select(DB::raw('order_list.order_num as order_num, 
-                                                        restaurants.name as restaurant_name,
-                                                        order_list.order_date as order_date,
-                                                        order_list.total as total,
-                                                        menu.name as menu_name,
-                                                        menu.price as menu_price,
-                                                        menu_option.name as option_name,
-                                                        suboption.name as suboption_name'))
-                ->where('order_list.order_num', $currentOrderNum)
-                ->orderByRaw('order_list.order_date DESC')
-                ->get()
-                ->toArray();
+                                ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
+                                ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
+                                ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
+                                ->join('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
+                                ->leftJoin('suboption', 'order_option.subop_num', '=', 'suboption.sub_opnum')
+                                ->select(DB::raw('order_list.order_num as order_num, 
+                                                                        restaurants.name as restaurant_name,
+                                                                        order_list.order_date as order_date,
+                                                                        order_list.total as total,
+                                                                        menu.name as menu_name,
+                                                                        menu.price as menu_price,
+                                                                        menu_option.name as option_name,
+                                                                        suboption.name as suboption_name'))
+                                ->where('order_list.order_num', $currentOrderNum)
+                                ->orderByRaw('order_list.order_date DESC')
+                                ->get()
+                                ->toArray();
 
             // 메뉴 정보 Index
             $menuIndex      = 0;
@@ -316,8 +316,6 @@ class MainController extends Controller
             'currentOrder' => $orderArray,
         ]);
 
-
-
     }
 
     // <-- 사용자 쿠폰 내역 출력
@@ -371,7 +369,7 @@ class MainController extends Controller
             if(!is_null(auth()->user()->favorite_region)) {
                 // 선호지역 평점 베스트
                 $regionShopRatingData = Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
-                    ->select(DB::raw('
+                                            ->select(DB::raw('
                                                 ROUND(AVG(review.rating), 2) as totalRating,
                                                 restaurants.id   as shop_id,
                                                 restaurants.name as shop_name,
@@ -382,16 +380,16 @@ class MainController extends Controller
                                                 restaurants.cities as shop_cities,
                                                 restaurants.address as shop_address
                                             '))
-                    ->where('restaurants.dodobuken', auth()->user()->favorite_region)
-                    ->groupBy('review.shop_id')
-                    ->orderByRaw('totalRating desc')
-                    ->limit()
-                    ->get()
-                    ->toArray();
+                                            ->where('restaurants.dodobuken', auth()->user()->favorite_region)
+                                            ->groupBy('review.shop_id')
+                                            ->orderByRaw('totalRating desc')
+                                            ->limit()
+                                            ->get()
+                                            ->toArray();
 
                 // 선호지역 리뷰수 베스트
                 $regionShopReviewData = Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
-                    ->select(DB::raw('
+                                            ->select(DB::raw('
                                                     count(review.id) as reviewCount,,
                                                     restaurants.id   as shop_id,
                                                     restaurants.name as shop_name,
@@ -402,19 +400,19 @@ class MainController extends Controller
                                                     restaurants.cities as shop_cities,
                                                     restaurants.address as shop_address
                                             '))
-                    ->where('restaurants.dodobuken', auth()->user()->favorite_region)
-                    ->groupBy('review.shop_id')
-                    ->orderByRaw('reviewCount desc')
-                    ->limit()
-                    ->get()
-                    ->toArray();
+                                            ->where('restaurants.dodobuken', auth()->user()->favorite_region)
+                                            ->groupBy('review.shop_id')
+                                            ->orderByRaw('reviewCount desc')
+                                            ->limit()
+                                            ->get()
+                                            ->toArray();
 
             }
 
             if(is_null(auth()->user()->favorite_1)) {
                 // 선호 음식 1 평점 리스트
                 $favoriteShopRatingData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
-                    ->select(DB::raw('
+                                                ->select(DB::raw('
                                                     ROUND(AVG(review.rating), 2) as totalRating,
                                                     restaurants.id   as shop_id,
                                                     restaurants.name as shop_name,
@@ -425,33 +423,33 @@ class MainController extends Controller
                                                     restaurants.cities as shop_cities,
                                                     restaurants.address as shop_address
                                                 '))
-                    ->where('restaurants.type', auth()->user()->favorite_1)
-                    ->groupBy('review.shop_id')
-                    ->orderByRaw('totalRating desc')
-                    ->limit()
-                    ->get()
-                    ->toArray();
+                                                ->where('restaurants.type', auth()->user()->favorite_1)
+                                                ->groupBy('review.shop_id')
+                                                ->orderByRaw('totalRating desc')
+                                                ->limit()
+                                                ->get()
+                                                ->toArray();
 
                 // 선호 음식 1 리뷰 수 베스트
                 $favoriteShopReviewData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
-                    ->select(DB::raw('
-                                                    count(review.id) as reviewCount,,
-                                                    restaurants.id   as shop_id,
-                                                    restaurants.name as shop_name,
-                                                    restaurants.type as shop_type,
-                                                    restaurants.explanation as shop_explanation,
-                                                    restaurants.phone as shop_phone,
-                                                    restaurants.dodobuken as shop_ddobuken,
-                                                    restaurants.cities as shop_cities,
-                                                    restaurants.address as shop_address
-                                            '))
-                    ->where('restaurants.dodobuken', auth()->user()->favorite_1)
-                    ->groupBy('review.shop_id')
-                    ->orderByRaw('reviewCount desc')
-                    ->limit()
-                    ->get()
-                    ->toArray();
-            }
+                                                    ->select(DB::raw('
+                                                            count(review.id) as reviewCount,,
+                                                            restaurants.id   as shop_id,
+                                                            restaurants.name as shop_name,
+                                                            restaurants.type as shop_type,
+                                                            restaurants.explanation as shop_explanation,
+                                                            restaurants.phone as shop_phone,
+                                                            restaurants.dodobuken as shop_ddobuken,
+                                                            restaurants.cities as shop_cities,
+                                                            restaurants.address as shop_address
+                                                    '))
+                                                    ->where('restaurants.dodobuken', auth()->user()->favorite_1)
+                                                    ->groupBy('review.shop_id')
+                                                    ->orderByRaw('reviewCount desc')
+                                                    ->limit()
+                                                    ->get()
+                                                    ->toArray();
+                }
 
             }
 
@@ -464,7 +462,8 @@ class MainController extends Controller
 
     }
 
-    public function getRegionTypeShopData(Request $request) {
+    // <-- 지역별 평점 기준 가게 데이터
+    public function getRegionShopData(Request $request) {
         /*
          * 지역별 평점 베스트 (6개)
             도쿄 베스트, 후쿠오카 베스트, 오사카 베스트,
@@ -500,6 +499,7 @@ class MainController extends Controller
       ]);
    }
 
+    // <-- 업종별 평점 기준 가게 데이터
    public function getTypeShopData(Request $request) {
 
        // <-- 각 업종의 가게 Data
@@ -588,7 +588,6 @@ class MainController extends Controller
 
         echo '<br>-----------------------------<br>';
         echo  var_dump($tagSearchData);
-
 
         return response()->json([
             'shopSearchData'    => $shopSearchData,
