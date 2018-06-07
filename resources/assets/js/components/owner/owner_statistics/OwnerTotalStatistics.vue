@@ -1325,7 +1325,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           // 데이터를 정렬해주는 함수 (계산할 숫자값(퍼센트로 가공), 카테고리명, 그래프색상)
           var getGraphData = this.getDataSort(countrySalesValueArray, countrySalesNameData, countrySalesGraphColor);
 
-          // console.log('test');
+          // console.log('translatedText');
           // console.log(getGraphData);
 
           // Overwriting base render method with actual data.

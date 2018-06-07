@@ -46,7 +46,7 @@ export default {
 
       // console.log('손님수 배열');
       // console.log(this.getCustomerScore);
-      // console.log(response.data['test']);
+      // console.log(response.data['translatedText']);
       // console.log('haha');
 
       // 월별 사용자수를 가공합니다.
@@ -123,7 +123,7 @@ export default {
           this.filterCustomerScore.push(null);
         }
       }
-      // console.log('test hahaha');
+      // console.log('translatedText hahaha');
       // console.log(this.filterCustomerScore);
     },
   },

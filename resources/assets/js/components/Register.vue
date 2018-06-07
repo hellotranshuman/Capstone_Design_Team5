@@ -48,8 +48,8 @@
                                 color="green"
                         ></v-text-field>
                         <v-radio-group v-model="user_gender" row>
-                            <v-radio label="Male" value=true color="green"></v-radio>
-                            <v-radio label="Female" value=false color="green"></v-radio>
+                            <v-radio label="Male" value="Male" color="green"></v-radio>
+                            <v-radio label="Female" value="Female" color="green"></v-radio>
                         </v-radio-group>
                         <v-layout row wrap>
                             <v-flex xs4>
@@ -110,6 +110,17 @@
                                 chips
                                 color="green"
                         ></v-select>
+                        <v-select
+                                v-model="user_region"
+                                :items="ddbkList"
+                                label="Favorite Region"
+                                single-line
+                                auto
+                                append-icon="location_on"
+                                hide-details
+                                chips
+                                color="green"
+                        ></v-select>
                     </v-card-text>
                 </v-card>
             </v-flex>
@@ -136,46 +147,63 @@
 <script>
     import axios  from 'axios';
     export default {
-        data: () => ({
-            user_categoty:  true,
-            user_id:        "",
-            user_pw1:       "",
-            user_pw2:       "",
+        data() {
+            return {
+                user_categoty:  true,
+                user_id:        "",
+                user_pw1:       "",
+                user_pw2:       "",
 
-            user_name:      "",
-            user_gender:    "",
-            user_year:      "",
-            user_month:     "",
-            user_day:       "",
+                user_name:      "",
+                user_gender:    "",
+                user_year:      "",
+                user_month:     "",
+                user_day:       "",
 
-            user_email:     "",
-            user_country:   "",
-            user_favorite:  "",
+                user_email:     "",
+                user_country:   "",
+                user_favorite:  "",
+                user_region:    "",
 
-            hidePw1: true,
-            hidePw2: true,
+                hidePw1: true,
+                hidePw2: true,
 
-            idRules: [
-                v => !!v || 'ID is required'
-            ],
-            pwRules: [
-                v => !!v || 'Password is required'
-            ],
-            month: [
-                '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
-            ],
-            country: [
-                'Korea', 'Japan', 'China', 'USA'
-            ],
-            food: [
-                '한식', '일식', '중식', '양식', '분식', '덮밥', '스시', '패스트 푸드', '찜', '탕',
-                '도시락', '카페&디저트', '술집', '면류', '제과'
-            ],
+                idRules: [
+                    v => !!v || 'ID is required'
+                ],
+                pwRules: [
+                    v => !!v || 'Password is required'
+                ],
+                month: [
+                    '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
+                ],
+                country: [
+                    'Korea', 'Japan', 'China', 'USA'
+                ],
+                food: [
+                    '한식', '일식', '중식', '양식', '분식', '덮밥', '스시', '패스트 푸드', '찜', '탕',
+                    '도시락', '카페&디저트', '술집', '면류', '제과'
+                ],
+                ddbkList : [
+                    '東京', '北海道', '札幌', '京都',
+                    '大阪', '靑森', '岩手', '宮城',
+                    '秋田', '山形', '福島', '茨城',
+                    '栃木', '群馬', '埼玉', '千葉',
+                    '神奈川', '新潟', '富山', '石川',
+                    '福井', '山梨', '長野', '岐阜',
+                    '靜岡', '愛知', '三重', '滋賀',
+                    '兵庫', '奈良', '和歌山', '鳥取',
+                    '島根', '岡山', '廣島', '山口',
+                    '德島', '香川', '愛媛', '高知',
+                    '福岡', '佐賀', '長崎', '熊本',
+                    '大分', '宮崎', '鹿兒島', '沖繩'
+                ],
 
-            snackbar:   false,
-            snackText:  "",
-            timeout:    3000
-        }),
+                snackbar:   false,
+                snackText:  "",
+                timeout:    3000
+            }
+        },
 
         methods: {
             register() {
@@ -244,27 +272,41 @@
 
                 var url = "/register";
 
-                var temp = {
-                    user_id     : this.user_id,
-                    password    : this.user_pw1,
-                    email       : this.user_email,
-                    name        : this.user_name,
-                    country     : this.user_country,
-                    birthday    : this.user_year + '-' + this.user_month + '-' + this.user_day,
-                    category    : this.user_categoty,
-                    gender      : this.user_gender,
-                    favorite1   : this.user_favorite[0],
-                    favorite2   : this.user_favorite[1],
-                    favorite3   : this.user_favorite[2],
+                var sendData = {
+                    user_id         : this.user_id,
+                    password        : this.user_pw1,
+                    email           : this.user_email,
+                    name            : this.user_name,
+                    country         : this.user_country,
+                    birthday        : this.user_year + '-' + this.user_month + '-' + this.user_day,
+                    category        : this.user_categoty,
+                    gender          : this.user_gender,
+                    favorite_1      : this.user_favorite[0],
+                    favorite_2      : this.user_favorite[1],
+                    favorite_3      : this.user_favorite[2],
+                    favorite_region : this.user_region
                 }
 
-                axios.post(url, temp)
-                    .then(function (response) {
-                        var url = response.data.url;
-                        location.replace(url);
+                axios.post(url, sendData)
+                    .then(response => {
+                        if(response.data.url != "/") { // 사장인지 손님인지 체크
+                            this.$session.set('restaurant_id', 'needCreate');
+                            alert("사장");
+                        } else {
+                            this.$session.set('favorite_1', this.favorite_1);
+                            this.$session.set('favorite_2', this.favorite_2);
+                            this.$session.set('favorite_3', this.favorite_3);
+                            this.$session.set('region', this.user_region);
+                        }
+
+                        this.$session.set('loginStatus', true);                     // 로그인 상태 true
+                        this.$session.set('user_id', this.user_id);        // user_id set
+                        this.$session.set('user_name', this.user_name);    // user_name set
+
+                        location.replace(response.data.url);
                     })
-                    .catch(function (error) {
-                        alert(JSON.stringify(temp));
+                    .catch(error => {
+                        alert(error);
                     });
             }
         }

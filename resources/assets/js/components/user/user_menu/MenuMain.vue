@@ -65,6 +65,7 @@
                                                         <v-select
                                                                 :items="optionArray[i][index]"
                                                                 v-model="optionselect[i][index]"
+                                                                required
                                                                 single-line
                                                         ></v-select>
                                                     </span>
@@ -83,7 +84,7 @@
                         </v-card>
                     </v-flex>
                     <!-- btn -->
-                    <v-btn color="error" @click.native="Menu_Order = 3" @click="MenuOrderList()"
+                    <v-btn color="error" @click.native="check_option()" @click="translatedText = MenuOrderList()"
                     >
                         확인
                     </v-btn>
@@ -93,12 +94,12 @@
                 <!-- 3. 번역  height="200px"-->
                 <v-stepper-content step="3">
                     <v-card color="white" class="mb-5">
-                        <v-card-text>
+                        <v-card-text style="color: black;">
                             <v-card v-for="i in range(0, MenuList.length-1)" :key="i" hover color="white" style="color:black; padding:7px;">
-                                <div class="Trans_Title"><b> {{MenuList[i].name}} </b> </div>
-                                <div class="Trans_Main">{{MenuList[i].option}}</div>
+                                <div class="Trans_Title"><b> {{MenuList[i]}} </b> </div>
                             </v-card>
                         </v-card-text>
+
                     </v-card>
 
                     <!-- btn -->
@@ -135,9 +136,9 @@
     // 사용자 설정에 따라 레이아웃을 선택함.
     import CustomLayout   from './CustomLayout.vue';
     import DefaultLayout1 from './MenuDefaultLayout1.vue';
-    import DefaultLayout2 from './MenuDefaultLayout2.vue';
-    import DefaultLayout3 from './MenuDefaultLayout3.vue';
-    import DefaultLayout4 from './MenuDefaultLayout4.vue';
+    // import DefaultLayout2 from './MenuDefaultLayout2.vue';
+    // import DefaultLayout3 from './MenuDefaultLayout3.vue';
+    // import DefaultLayout4 from './MenuDefaultLayout4.vue';
 
     var obj    = [];                 // 클릭한 배열 담기
     var check  = 0;                  // 클릭한 배열 index용 변수
@@ -189,7 +190,37 @@
                 // 번역
                 TransMenu : [],
                 MenuList : [],
-                translatedText : '',
+                translatedText : null,
+
+
+                layout : null,          // 사장이 선택한 레이아웃을 담을거임.
+
+                Menu_Order: 0,
+                click_menu:[],          // 클릭한 메뉴들이 담김
+                Ordercheck: false,      // 주문 확인 창
+                sum_price : 0,          // 선택한 메뉴 총 가격
+                translateText : [],     // 번역한 텍스트 값이 들어갈 배열
+
+                // 옵션 선택
+                optionselect : [],
+                optionArray: [],        // 클릭한 메뉴의 옵션 값을 관리할 배열
+                optionId : [],
+
+                // 메뉴 아이디 배열
+                menuid : [],
+                MenuOrder : [],
+                OpOrder : [],
+                OpCount : [],
+                SubOpOrder : [],
+                subOpCount : [],
+
+                // 번역
+                TransMenu : [],
+                MenuList : [],
+                translatedText : null,
+
+                //
+                menu_layout : true,
             }
         },
         methods : {
@@ -254,73 +285,71 @@
                 }
             },
 
-            // 번역 메뉴 목록
-            MenuOrderList() {
-                for(var i = 0; i < this.click_menu.length; i++)
-                {
-                    var OpNum = 0;
-                    var subNum = 0;
-                    this.OpOrder[i] = [];
-                    this.SubOpOrder[i] = [];
-                    // 메뉴 이름
-                    this.MenuOrder[i] = this.click_menu[i].menu.name;
-                    for(var j = 0; j < this.optionArray[i].length; j++)
-                    {
-                        // 옵션 이름
-                        this.OpOrder[i][j] = this.optionArray[i][j].Name;
-                        OpNum++;
-                        // 서브옵션값
-                        if(this.optionselect[i][j] != null)
-                        {
-                            this.SubOpOrder[i][j] = this.optionselect[i][j];
-                            subNum++;
-                        }
+            check_option() {
+                // option
+                var selectoption = true;
+                console.log(this.optionselect);
+                console.log(this.optionArray);
 
+                for(var i = 0; i < this.optionArray.length; i++)
+                {
+                    if(this.optionselect[i].length == this.optionArray[i].length)
+                    {
+                        selectoption = true;
                     }
-                    this.OpCount[i]     = OpNum;
-                    this.subOpCount[i]  = subNum;
+                    else {
+                        selectoption = false;
+                    }
                 }
 
-                axios.post('/translateOrder', {
-                    Menu        : this.MenuOrder,
-                    Option      : this.OpOrder,
-                    subOption   : this.SubOpOrder,
-                    MenuCount   : this.MenuOrder.length,
-                    OpCount     : this.OpCount,
-                    subOpCount  : this.subOpCount
-                }).then((response) => {
-                    this.translatedText = response.data.content;
-                    console.log(this.translatedText);
-                });
-
-                // 메뉴 번역된것 DB에서 받기
-                this.MenuTranslate();
+                if(selectoption == false)
+                {
+                    alert('옵션을 선택 해주세요');
+                }
+                else {
+                    this.Menu_Order = 3;
+                }
             },
 
-            MenuTranslate() {
-                // DB에서 번역된 값 받기
-                // axios.post('/trans', {
-                // }).then((response) => {
-                //
-                // })
+            // 번역 메뉴 목록
+            MenuOrderList() {
+                    for (var i = 0; i < this.click_menu.length; i++) {
+                        var OpNum = 0;
+                        var subNum = 0;
+                        this.OpOrder[i] = [];
+                        this.SubOpOrder[i] = [];
+                        // 메뉴 이름
+                        this.MenuOrder[i] = this.click_menu[i].menu.name;
+                        for (var j = 0; j < this.optionArray[i].length; j++) {
+                            // 옵션 이름
+                            this.OpOrder[i][j] = this.optionArray[i][j].Name;
+                            OpNum++;
+                            // 서브옵션값
+                            if (this.optionselect[i][j] != null) {
+                                this.SubOpOrder[i][j] = this.optionselect[i][j];
+                                subNum++;
+                            }
 
-                var Menu = this.translatedText.split('&');
+                        }
+                        this.OpCount[i] = OpNum;
+                        this.subOpCount[i] = subNum;
+                    }
 
-                // db에서 받은값 문자열 자르기
-                for(var i = 0; i < Menu.length-1; i++)
-                {
-                    this.TransMenu[i] = Menu[i].split('=');
-                }
+                    axios.post('/translateOrder', {
+                        Menu: this.MenuOrder,
+                        Option: this.OpOrder,
+                        subOption: this.SubOpOrder,
+                        MenuCount: this.MenuOrder.length,
+                        OpCount: this.OpCount,
+                        subOpCount: this.subOpCount
+                    }).then((response) => {
+                        let responseText = JSON.parse(response.data.content);
 
-                // 이쁘게 배열에 넣기
-                for(var i = 0; i < this.TransMenu.length; i++)
-                {
-                    this.MenuList[i] = [];
-                    this.MenuList[i]['name'] = this.TransMenu[i][0];
-                    this.MenuList[i]['option'] = this.TransMenu[i][1];
-                }
+                        var translatedText = responseText.message.result.translatedText;
+                        this.MenuList = translatedText.split("@");
 
-                console.log(this.MenuList)
+
+                    });
             },
 
             // 메뉴 주문 데이터 송신
@@ -331,7 +360,8 @@
                     this.menuid[i] = this.click_menu[i].menu.id;
                 }
 
-                console.log(this.optionArray)
+                console.log(this.translatedText);
+                console.log(this.optionArray);
                 /* Data 송신 */
                 axios.post('/makeOrder', {
                     menulength  : this.menuid.length,       // 메뉴 개수
@@ -342,7 +372,6 @@
                     sum_price   : this.sum_price,
                 }).then((response) => {
                     document.write(response.data.msg);
-                    // location.reload();
                 })
                     .catch(console.log('test'));
             }
@@ -350,9 +379,9 @@
         components : {
             'CustomLayout'   : CustomLayout,
             'DefaultLayout1' : DefaultLayout1,
-            'DefaultLayout2' : DefaultLayout2,
-            'DefaultLayout3' : DefaultLayout3,
-            'DefaultLayout4' : DefaultLayout4,
+            // 'DefaultLayout2' : DefaultLayout2,
+            // 'DefaultLayout3' : DefaultLayout3,
+            // 'DefaultLayout4' : DefaultLayout4,
         }
     }
 </script>

@@ -473,7 +473,8 @@ class MainController extends Controller
          * */
 
       // <-- 지역별 가게 추천 Data
-      $regionData   = $request->get('');
+      $regionData   = $request->get('region');
+      $limit        = $request->get('limit');
 
       $regionShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
                             ->select(DB::raw('
@@ -487,10 +488,10 @@ class MainController extends Controller
                                 restaurants.cities as shop_cities,
                                 restaurants.address as shop_address
                             '))
-                            ->where('restaurants.dodobuken', '')
+                            ->where('restaurants.dodobuken', $regionData)
                             ->groupBy('review.shop_id')
                             ->orderByRaw('totalRating desc')
-                            ->limit()
+                            ->limit($limit)
                             ->get()
                             ->toArray();
 

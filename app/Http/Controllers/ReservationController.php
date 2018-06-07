@@ -10,6 +10,7 @@ use App\Order_Option;
 use App\Resset;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class ReservationController extends Controller
@@ -101,13 +102,14 @@ class ReservationController extends Controller
            }
 
            Reservation::create([
-               'shop_id' => $request->get('shop_id'),
-               'user_num' => auth()->user()->id,
-               'reservation_date' => $resDateTime,
-               'person' => $request->get('adult_person'),
-               'child' => $request->get('child_person'),
-               'menu_select' => true,
-               'order_num'  => $orderNum,
+               'shop_id'            => $request->get('shop_id'),
+               'user_num'           => auth()->user()->id,
+               'reservation_date'   => $resDateTime,
+               'message'            => $request->get('message'),
+               'person'             => $request->get('adult_person'),
+               'child'              => $request->get('child_person'),
+               'menu_select'        => true,
+               'order_num'          => $orderNum,
            ]);
        } // if End
         else {
@@ -152,13 +154,16 @@ class ReservationController extends Controller
         $resId  = $request->get('id');
 
         // 예약 요청에 따른 예약 상태 Update
-        if($accept == 'true') {
+        if($accept == true) {
            Reservation::where('id', $resId)
            ->update(['accept' => true]);
         }
         else {
             Reservation::where('id', $resId)
-                ->update(['accept' => false]);
+                ->update([
+                    'accept' => false,
+                    'refused_message' => $request->get('WhyCancel'),
+                ]);
         }
 
     }
@@ -183,7 +188,7 @@ class ReservationController extends Controller
 
         // 예약번호로 해당 예약번호의 주문 번호 조회
         $resData = Reservation::where('id', $reservationNum)
-            ->first();
+                    ->first();
 
         $currentOrderNum = $resData->order_num;
 
@@ -199,7 +204,7 @@ class ReservationController extends Controller
             ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
             ->select(DB::raw('order_list.order_num as order_num, 
                                            count(order_list.order_num) as orderCount'))
-            ->where('order_list.user_num', auth()->user()->id)
+            ->where('order_list.order_num', $currentOrderNum)
             ->groupBy('order_list.order_num')
             ->orderByRaw('order_list.order_date DESC')
             ->get();
@@ -428,6 +433,21 @@ class ReservationController extends Controller
     public function userReservationCancel(Request $request) {
 
 
+    }
+
+    // <-- 사장님 예약추가
+    public function setOwnerReservation(Request $request) {
+        $resDateTime = $request->get('start_date') . ' ' .
+            $request->get('time');
+
+        Reservation::create([
+            'shop_id'            => $request->get('shop_id'),
+            'reservation_date'   => $resDateTime,
+            'message'            => $request->get('message'),
+            'person'             => $request->get('adult_person'),
+            'child'              => $request->get('child_person'),
+            'menu_select'        => false,
+        ]);
     }
 
 }

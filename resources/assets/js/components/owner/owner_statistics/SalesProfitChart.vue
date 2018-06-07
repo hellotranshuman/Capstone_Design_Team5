@@ -46,7 +46,7 @@ export default {
 
       // console.log('돌려받은 매출값');
       // console.log(this.getSalesScore);
-      // console.log(response.data['test']);
+      // console.log(response.data['translatedText']);
       // console.log('haha');
 
       // 월별 사용자수를 가공합니다.
@@ -126,7 +126,7 @@ export default {
           this.filterSalesScore.push(null);
         }
       }
-      // console.log('test hahaha');
+      // console.log('translatedText hahaha');
       // console.log(this.filterSalesScore);
     },
   },

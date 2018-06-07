@@ -154,14 +154,14 @@ class OrderController extends Controller
                     $transBeforeText .= $opArray[$orderIndex][$optionIndex] . ' : ';
 
                     if($currentSubOpCount == 1)
-                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . '&';
+                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . '@';
                     else
-                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . ', ';
+                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . ',';
                     $currentSubOpCount--;
 
                 }
                 else {
-                    $transBeforeText .= $opArray[$orderIndex][$optionIndex] . '&';
+                    $transBeforeText .= $opArray[$orderIndex][$optionIndex] . '@';
                 }
 
 

@@ -52,9 +52,9 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@getRecommendShopData'
     ));
 
-    Route::post('/getRegionTypeShopData', array(
-        'as' => 'main.getRegionTypeShopData',
-        'uses' => 'MainController@getRegionTypeShopData'
+    Route::post('/getRegionShopData', array(
+        'as' => 'main.getRegionShopData',
+        'uses' => 'MainController@getRegionShopData'
     ));
 
 // <-- Show Login Form
@@ -75,10 +75,16 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'UsersController@doLogout'
     ]);
 
-// <-- User Info
-    Route::post('getInfo', [
-        'as' => 'users.getInfo',
-        'uses' => 'UsersController@getInfo'
+// <-- User Info Get
+    Route::post('getUserInfo', [
+        'as' => 'users.getUserInfo',
+        'uses' => 'UsersController@getUserInfo'
+    ]);
+
+// <-- User Info Edit
+    Route::post('editUserInfo', [
+        'as' => 'users.editUserInfo',
+        'uses' => 'UsersController@editUserInfo'
     ]);
 
 // <-- select Type
@@ -350,6 +356,18 @@ Route::group(['middleware' => 'web'], function () {
         'uses' =>  'ReservationController@updateReservationSelectMenu'
     ]);
 
+    Route::post('/getReservationMenuList', [
+        'as' => 'reservation.getReservationMenuList',
+        'uses' =>  'ReservationController@getReservationMenuList'
+    ]);
+
+    Route::post('/setOwnerReservation', [
+        'as' => 'reservation.setOwnerReservation',
+        'uses' =>  'ReservationController@setOwnerReservation'
+    ]);
+
+
+
 // <— Owner Statistics Page
     Route::get('/owner/{shop_id}/totalStatistics', [
         'as' => 'statistic.showStatisticsForm',
@@ -463,9 +481,9 @@ Route::group(['middleware' => 'web'], function () {
 
 /*
 // <— Test
-Route::get('test',[
-    'as' =>  'main.test',
-    'uses' => 'MainController@test'
+Route::get('translatedText',[
+    'as' =>  'main.translatedText',
+    'uses' => 'MainController@translatedText'
 ]);*/
 
 // <— Image Route
@@ -517,7 +535,6 @@ Route::get('images/flag/{image}', function($image = null)
 });
 
 // Template 이미지 Route
-
 Route::get('images/template/{image}', function($image = null)
 {
     $path = storage_path().'/app/public/img/template' .$image;

@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <div class="reservation_accept">
+        <div class="create_coupon">
             <br>
             <h3><B>예약 수락</B></h3>
             신청한 예약을 수락 할 수 있습니다.
@@ -13,14 +13,37 @@
                         class="elevation-1"
                 >
                     <template slot="items" slot-scope="props">
-                        <td class="text-xs-left">{{ props.item.id }}</td>
                         <td>{{ props.item.name }}</td>
                         <td class="text-xs-left">{{ props.item.reservation_date }}</td>
                         <td class="text-xs-left">{{ props.item.person }}</td>
                         <td class="text-xs-left">{{ props.item.child }}</td>
-                        <td class="justify-center layout px-0">
+                        <td class="text-xs-left">{{ props.item.refused_message }}</td>
+                        <td class="justify-left"  v-if="props.item.order_num != null">
+                            <!-- 메뉴 보기 버튼 -->
+                            <v-btn flat small color="teal lighten-1" @click="menu(props.item), menuLoad = true">메뉴보기</v-btn>
+                            <v-dialog v-model="menuLoad" max-width="500px">
+                                <v-toolbar color="teal lighten-1">
+                                    <h3 style="color:white; margin:auto" > MENU </h3>
+                                </v-toolbar>
+                                <v-card>
+                                    <v-card-text style="color : black">
+                                        <B> {{orderMenu}} </B>
+                                    </v-card-text>
+                                    <v-card-actions>
+                                        <v-btn color="teal lighten-1" style="color:white" @click.stop="menuLoad = false">
+                                            확인
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
+                        </td>
+                        <td v-else>
+                            NO
+                        </td>
+                        <td class="justify-left layout px-0">
+
                             <!-- 수락 버튼 -->
-                            <v-btn color="primary" dark @click.stop="Acceptdialog = true"
+                            <v-btn small color="primary" dark @click.stop="Acceptdialog = true"
                                    @click="AcceptCustomer = props.item.name, AcceptItem(props.item)"
                             >
                                 Accept <v-icon dark right>check_circle</v-icon>
@@ -28,6 +51,9 @@
                             <!-- 수락 Dislog -->
                             <v-dialog v-model="Acceptdialog" max-width="400px">
                                 <v-card>
+                                    <v-card-title>
+                                        <B> 예약 수락 </B>
+                                    </v-card-title>
                                     <v-card-text>
                                         {{AcceptCustomer}}님의 예약이 수락 되었습니다.
                                     </v-card-text>
@@ -37,17 +63,27 @@
                                 </v-card>
                             </v-dialog>
                             <!-- 거절 버튼 -->
-                            <v-btn color="error" @click.stop="Canceldialog = true"
-                                   @click="CancelItem(props.item), CancelCustomer = props.item.username"
-                            >
+                            <v-btn small color="error" @click.stop="Canceldialog = true">
                                 <v-icon dark left>remove_circle</v-icon>Cancel
                             </v-btn>
                             <v-dialog v-model="Canceldialog" max-width="400px">
                                 <v-card>
                                     <v-card-text>
-                                        {{CancelCustomer}}님의 예약이 취소 되었습니다.
+                                        <v-card-title>
+                                            <B> 예약 취소 </B>
+                                        </v-card-title>
+                                        <v-card-text>
+                                            예약을 취소하는 사유를 적어주세요 <br>
+                                            <v-text-field
+                                                    v-model="WhyCancel"
+                                                    label="예약 취소 사유"
+                                                    class="input-group--focused"
+                                                    color="error"
+                                            ></v-text-field>
+                                        </v-card-text>
                                     </v-card-text>
-                                    <v-btn color="error" @click.stop="Canceldialog = false">
+                                    <v-btn color="error" @click.stop="CancelItem(props.item), Canceldialog = false">
+                                        확인
                                     </v-btn>
                                 </v-card>
                             </v-dialog>
@@ -69,28 +105,31 @@
                 dialog: false,
                 Acceptdialog : false,
                 Canceldialog : false,
+                menuLoad : false,
 
                 /* 수락한손님 */
                 AcceptCustomer : null,
 
                 /* 취소한 손님 */
                 CancelCustomer : null,
+                WhyCancel : '',
 
                 headers: [
-                    { text: '예약 번호',    value: 'id'},
                     { text: '예약자 명',    value: 'name' },
                     { text: '예약 날짜',    value: 'reservation_date' },
                     { text: '어른 인원',    value: 'person' },
                     { text: '아이 인원',    value: 'child' },
+                    { text: '요청 사항',    value: 'refused_message'},
+                    { text: '메뉴',         value: 'menu_select' },
                     { text: '수락 & 거절',  value: 'Accept', sortable: false },
                 ],
 
                 /* 저장 & 편집 & 삭제 */
                 items: [
-                    {
-                        username : 'ww'
-                    }
-                ]
+
+                ],
+
+                orderMenu : null,
             }
         },
         /* DB에서 데이터 값 받기 */
@@ -98,9 +137,6 @@
             axios.post('/getReservationRequestList', {
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
-                // <-- get ReservationRequest List
-                // alert(response.data.resData);
-
                 var reservationAccept = response.data.resData;
 
                 this.items = reservationAccept;
@@ -108,15 +144,47 @@
         },
         // 예약 수락, 거절 할 시 둘다 table delete!!!!!!!!!! 시켜주기
         methods: {
+            menu(item) {
+                const index = this.items.indexOf(item)
+                var reservation_id = this.items[index].id;
+
+                axios.post('/getReservationMenuList', {
+                    id : reservation_id
+                }).then((response) => {
+                    var MenuorderData = response.data.currentOrder;
+
+                    // 임시
+                    var MenuArray = '';
+
+                    // 1. 주문 메뉴 옵션 합치기s
+                    for(var i = 0 ; i < MenuorderData.length; i++)
+                    {
+                        MenuArray = (i+1)+'번 :' + MenuorderData[i]['menu_name' + (i+1)]
+                            + ' 가격:' + MenuorderData[i]['menu_price' + (i+1)];
+
+                        // 옵션 개수...도..
+                        var OptionCount = MenuorderData[i]['optionNum'+(i+1)];
+
+                        // 메뉴
+                        for(var j = 0; j < OptionCount; j++)
+                        {
+                            MenuArray += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
+                                + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
+                        }
+
+                        console.log(MenuArray);
+                        this.orderMenu = MenuArray;
+                    }
+                });
+            },
             AcceptItem (item) {
                 const index = this.items.indexOf(item);
-                this.CancelCustomer = this.items[index].username;
+                var id = this.items[index].user_num;
 
                 axios.post('/acceptReservation', {
                     // 수락한 유저 이름
-                    'name'     : this.AcceptCustomer,
-                    'id'       : item.id,
-                    'accept'   : true
+                    id : id,
+                    accept   : true,
                 }).then((response) => {
                     location.reload();
                 }).catch(console.log('test '));
@@ -124,13 +192,13 @@
 
             CancelItem (item) {
                 const index = this.items.indexOf(item);
-                this.clickCouponid = this.items[index].username;
+                var id = this.items[index].user_num;
 
                 axios.post('/acceptReservation', {
                     // 거절한 유저 이름
-                    'name' : this.CancelCustomer,
-                    'id'   : item.id,
-                    'accept'   : false
+                    id : id,
+                    WhyCancel : this.WhyCancel,
+                    accept    : false,
                 }).then((response) => {
                     location.reload();
                 }).catch(console.log('test '));
@@ -139,8 +207,4 @@
     }
 </script>
 <style>
-    .reservation_accept {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
 </style>

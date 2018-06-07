@@ -277,6 +277,11 @@ const router = new VueRouter({
                                     component: OwnerSalesStatistics
                                 }
                             ]
+                    },
+                    {
+                        name: 'CreateRestaurant',
+                        path: '/owner/createRestaurant',
+                        component: OwnerRestaurant
                     }
                 ],
             },

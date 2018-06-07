@@ -52,7 +52,7 @@ class RestaurantController extends Controller
         $restaurantInfo = array_merge($restaurant, $totalRating, $file); //, $totalRating);
 
          return response()->json([
-            // 'test' => RestaurantController::$shopId,
+            // 'translatedText' => RestaurantController::$shopId,
             'restaurant' => $restaurantInfo,
              'shopLike'  => $shopLike,
         ]);

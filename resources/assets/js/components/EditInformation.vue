@@ -11,10 +11,10 @@
                 <v-card>
                     <v-card-text>
                         <v-text-field
-                        v-model="user_name"
-                        placeholder="Name"
-                        required
-                        color="green"
+                                v-model="user_name"
+                                placeholder="Name"
+                                required
+                                color="green"
                         ></v-text-field>
                         <v-radio-group v-model="user_gender" row>
                             <v-radio label="Male" value="Male" color="green"></v-radio>
@@ -23,45 +23,45 @@
                         <v-layout row wrap>
                             <v-flex xs4>
                                 <v-text-field
-                                v-model="user_year"
-                                placeholder="Year"
-                                required
-                                color="green"
+                                        v-model="user_year"
+                                        placeholder="Year"
+                                        required
+                                        color="green"
                                 ></v-text-field>
                             </v-flex>
                             <v-flex xs4>
                                 <v-select
-                                v-model="user_month"
-                                :items="month"
-                                label="Month"
-                                color="green"
-                                single-line
+                                        v-model="user_month"
+                                        :items="month"
+                                        label="Month"
+                                        color="green"
+                                        single-line
                                 ></v-select>
                             </v-flex>
                             <v-flex xs4>
                                 <v-text-field
-                                v-model="user_day"
-                                placeholder="Day"
-                                required
-                                append-icon="cake"
-                                color="green"></v-text-field>
+                                        v-model="user_day"
+                                        placeholder="Day"
+                                        required
+                                        append-icon="cake"
+                                        color="green"></v-text-field>
                             </v-flex>
                         </v-layout>
                         <v-text-field
-                        v-model="user_email"
-                        placeholder="Email"
-                        required
-                        append-icon="email"
-                        color="green"></v-text-field>
+                                v-model="user_email"
+                                placeholder="Email"
+                                required
+                                append-icon="email"
+                                color="green"></v-text-field>
                         <v-select
-                        v-model="user_country"
-                        :items="country"
-                        label="Country"
-                        single-line
-                        auto
-                        append-icon="language"
-                        hide-details
-                        color="green"
+                                v-model="user_country"
+                                :items="country"
+                                label="Country"
+                                single-line
+                                auto
+                                append-icon="language"
+                                hide-details
+                                color="green"
                         ></v-select>
                     </v-card-text>
                 </v-card>
@@ -69,26 +69,26 @@
                 <v-card v-if="user_category">
                     <v-card-text>
                         <v-select
-                        v-model="user_favorite"
-                        :items="food"
-                        label="Favorite Food (max 3 items)"
-                        single-line
-                        auto
-                        hide-details
-                        multiple
-                        chips
-                        color="green"
+                                v-model="user_favorite"
+                                :items="food"
+                                label="Favorite Food (max 3 items)"
+                                single-line
+                                auto
+                                hide-details
+                                multiple
+                                chips
+                                color="green"
                         ></v-select>
                         <v-select
-                        v-model="user_region"
-                        :items="ddbkList"
-                        label="Favorite Region"
-                        single-line
-                        auto
-                        append-icon="location_on"
-                        hide-details
-                        chips
-                        color="green"
+                                v-model="user_region"
+                                :items="ddbkList"
+                                label="Favorite Region"
+                                single-line
+                                auto
+                                append-icon="location_on"
+                                hide-details
+                                chips
+                                color="green"
                         ></v-select>
                     </v-card-text>
                 </v-card>
@@ -99,13 +99,13 @@
             </v-flex>
         </v-container>
         <v-snackbar
-        v-model="snackbar"
-        :timeout="timeout"
-        top
-        vertical
+                v-model="snackbar"
+                :timeout="timeout"
+                top
+                vertical
         >
-        {{ snackText }}
-        <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+            {{ snackText }}
+            <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
         </v-snackbar>
     </v-app>
 </template>
@@ -144,7 +144,7 @@
                     '神奈川', '新潟', '富山', '石川',
                     '福井', '山梨', '長野', '岐阜',
                     '靜岡', '愛知', '三重', '滋賀',
-                    '兵庫', '奈良', '和歌山', '鳥取', 
+                    '兵庫', '奈良', '和歌山', '鳥取',
                     '島根', '岡山', '廣島', '山口',
                     '德島', '香川', '愛媛', '高知',
                     '福岡', '佐賀', '長崎', '熊本',
@@ -157,36 +157,36 @@
             }
         },
         mounted: function() {
-            var url = "/getInfo"
+            var url = "/getUserInfo"
             axios.post(url, {user_id : this.$session.get('user_id')})
-                    .then(response => {
-                        //console.log(response.data[0].category);
-                        //this.user_category = response.data[0].category;
-                        this.user_category  = response.data[0].category;
-                        this.user_name      = response.data[0].name;
-                        this.user_gender    = response.data[0].gender == '0' ? "Male" : "Female";
-                        let user_birthday   = response.data[0].birthday.split('-');
-                        this.user_year      = user_birthday[0];
-                        this.user_month     = user_birthday[1];
-                        this.user_day       = user_birthday[2];
-                        this.user_email     = response.data[0].email;
-                        this.user_country   = response.data[0].country;
-                        if(this.user_category) {
-                            if(response.data[0].favorite_1 != null) {
-                                this.user_favorite.push(response.data[0].favorite_1);
-                                if(response.data[0].favorite_2 != null) {
-                                    this.user_favorite.push(response.data[0].favorite_2);
-                                    if(response.data[0].favorite_3 != null) {
-                                        this.user_favorite.push(response.data[0].favorite_3);
-                                    }
+                .then(response => {
+                    //console.log(response.data[0].category);
+                    //this.user_category = response.data[0].category;
+                    this.user_category  = response.data[0].category;
+                    this.user_name      = response.data[0].name;
+                    this.user_gender    = response.data[0].gender == '0' ? "Male" : "Female";
+                    let user_birthday   = response.data[0].birthday.split('-');
+                    this.user_year      = user_birthday[0];
+                    this.user_month     = user_birthday[1];
+                    this.user_day       = user_birthday[2];
+                    this.user_email     = response.data[0].email;
+                    this.user_country   = response.data[0].country;
+                    if(this.user_category) {
+                        if(response.data[0].favorite_1 != null) {
+                            this.user_favorite.push(response.data[0].favorite_1);
+                            if(response.data[0].favorite_2 != null) {
+                                this.user_favorite.push(response.data[0].favorite_2);
+                                if(response.data[0].favorite_3 != null) {
+                                    this.user_favorite.push(response.data[0].favorite_3);
                                 }
                             }
                         }
-                        this.user_region    = response.data[0].favorite_region;
-                    })
-                    .catch(error => {
-                        alert(error);
-                    });
+                    }
+                    this.user_region = response.data[0].favorite_region;
+                })
+                .catch(error => {
+                    alert(error);
+                });
         },
         methods: {
             editInfo() {
@@ -229,7 +229,7 @@
                     }
                 }
 
-                var url = "/editInfo";
+                var url = "/editUserInfo";
                 var sendData = {
                     user_id         : this.$session.get('user_id'),
                     email           : this.user_email,
@@ -247,6 +247,10 @@
                 axios.post(url, sendData)
                     .then(response => {
                         this.$session.set('user_name', this.user_name);
+                        this.$session.set('favorite_1', this.user_favorite[0]);
+                        this.$session.set('favorite_2', this.user_favorite[1]);
+                        this.$session.set('favorite_3', this.user_favorite[2]);
+                        this.$session.set('region', this.user_region);
                         location.replace("/");
                     })
                     .catch(error => {

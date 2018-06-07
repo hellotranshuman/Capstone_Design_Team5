@@ -89,14 +89,14 @@ class RegisterController extends Controller
             'password' => Hash::make($request->get('password')),
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'gender'=> $request->get('gender') == 'true' ? true : false,
+            'gender'=> $request->get('gender') == 'Female' ? true : false,
             'country' => $request->get('country'),
             'birthday' => $request->get('birthday'),
             'category' => $category,
             'user_id' => $request->get('user_id'),
-            'favorite_1' => $request->get('favorite1'),
-            'favorite_2' => $request->get('favorite2'),
-            'favorite_3' => $request->get('favorite3'),
+            'favorite_1' => $request->get('favorite_1'),
+            'favorite_2' => $request->get('favorite_2'),
+            'favorite_3' => $request->get('favorite_3'),
             'favorite_region' => $request->get('favorite_region'),
         ]);
 
