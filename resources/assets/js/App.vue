@@ -85,7 +85,7 @@
                             <v-toolbar dark color="grey darken-3">
                                 <v-toolbar-title>Communication</v-toolbar-title>
                                 <v-spacer></v-spacer>
-                                <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어 
+                                <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어
                                 출력된 모달창을 사라지도록 한다는 것 -->
                                 <v-btn icon @click.native="communicationDialog = false" dark>
                                     <v-icon>close</v-icon>

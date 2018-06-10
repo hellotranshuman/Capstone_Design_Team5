@@ -22,7 +22,7 @@
             </v-layout>
             <v-layout>
                 <v-spacer></v-spacer>
-                <v-flex xs12 sm10>
+                <v-flex xs12 sm6>
                     <!-- 리뷰 갯수 만큼 반복 -->
                     <ul>
                         <li v-for= "reviewData in reviewDataList" :key="reviewData['id']" v-if="reviewData['id']">

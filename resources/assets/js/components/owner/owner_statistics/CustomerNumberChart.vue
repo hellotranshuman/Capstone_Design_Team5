@@ -46,7 +46,7 @@ export default {
 
       // console.log('손님수 배열');
       // console.log(this.getCustomerScore);
-      // console.log(response.data['translatedText']);
+      // console.log(response.data['test']);
       // console.log('haha');
 
       // 월별 사용자수를 가공합니다.
@@ -118,16 +118,20 @@ export default {
 
       for(var iCount = 0; iCount < 12; iCount++){
         if(iCount < Number(dateArr[1])){
+
+          // 반환된 달별 손님수가 null값일 경우 0을 대입합니다.
+          if(this.getCustomerScore[iCount][0]['customer'] == null){
+            this.getCustomerScore[iCount][0]['customer'] = 0;
+          }
+
           this.filterCustomerScore.push(this.getCustomerScore[iCount][0]['customer']);
         } else {
           this.filterCustomerScore.push(null);
         }
       }
-      // console.log('translatedText hahaha');
-      // console.log(this.filterCustomerScore);
+      console.log('test hahaha');
+      console.log(this.filterCustomerScore);
     },
   },
-
-
 }
 </script>

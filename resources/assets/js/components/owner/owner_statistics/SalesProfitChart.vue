@@ -44,9 +44,9 @@ export default {
     then((response)=>{
       this.getSalesScore = response.data['salesData'];  // 전달받은 월별 매출값을 대입합니다.
 
-      // console.log('돌려받은 매출값');
-      // console.log(this.getSalesScore);
-      // console.log(response.data['translatedText']);
+      console.log('돌려받은 매출값');
+      console.log(this.getSalesScore);
+      // console.log(response.data['test']);
       // console.log('haha');
 
       // 월별 사용자수를 가공합니다.
@@ -121,13 +121,18 @@ export default {
 
       for(var iCount = 0; iCount < 12; iCount++){
         if(iCount < Number(dateArr[1])){
+          // 반환된 달별 매출값이 null값일 경우 0을 대입합니다.
+          if(this.getSalesScore[iCount][0]['total'] == null){
+            this.getSalesScore[iCount][0]['total'] = 0;
+          }
+
           this.filterSalesScore.push(this.getSalesScore[iCount][0]['total']);
         } else {
           this.filterSalesScore.push(null);
         }
       }
-      // console.log('translatedText hahaha');
-      // console.log(this.filterSalesScore);
+      console.log('test hahaha2');
+      console.log(this.filterSalesScore);
     },
   },
   

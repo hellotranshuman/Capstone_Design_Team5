@@ -216,7 +216,7 @@
                                             </div>
                                         </v-card-title>
                                         <v-card-actions>
-                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData(), res_Okey()">확인</v-btn>
+                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData()" @click.native="reservation_snackbar = true">확인</v-btn>
                                             <v-btn color="primary" flat @click.native="dialog_ok = false, dialog = false">취소</v-btn>
                                         </v-card-actions>
                                     </v-card>
@@ -274,7 +274,7 @@
                                             <!-- 아이콘 -->
                                             <v-list-tile-action>
                                                 <!-- 쿠폰 다운 -->
-                                                <v-btn flat icon color="error" @click="Download(item)">
+                                                <v-btn flat icon color="error" @click="Download(item)"  @click.native="coupon_snackbar = true">
                                                     <v-icon>get_app</v-icon>
                                                 </v-btn>
                                             </v-list-tile-action>
@@ -384,6 +384,28 @@
                 <span id="privateroom" class="resInfo"> 개인실 : </span>
             </span>
             </div>
+
+            <!-- snackber (reservation) -->
+            <v-snackbar
+                :timeout="5000"
+                v-model="reservation_snackbar"    
+                :vertical="'vertical'"
+                :top="'top'"
+            >
+                예약이 완료되었습니다.
+                <v-btn flat color="white" @click.native="reservation_snackbar = false">Close</v-btn>
+            </v-snackbar>
+
+            <!-- snackber (coupon) -->
+            <v-snackbar
+                :timeout="5000"
+                v-model="coupon_snackbar"
+                 :vertical="'vertical'"
+                :top="'top'"
+            >
+                " 마이페이지-쿠폰함 " 에 담겼습니다.
+                <v-btn flat color="white" @click.native="coupon_snackbar = false">Close</v-btn>
+            </v-snackbar>
         </v-app>
     </div>
 </template>
@@ -416,6 +438,10 @@
     export default{
         data() {
             return {
+                // snackbar 
+                reservation_snackbar : false,
+                coupon_snackbar : false,
+
                 shop_id : null,
                 shopLike : false,           // 가게 좋아요. true일 경우 좋아요, false일 경우 좋아요 x
 
@@ -462,33 +488,14 @@
                 reservation_selectMenu : 1,
 
                 /* 기본 식당 시간 */
-                lunch_open  : '09:00',
-                lunch_close : '14:00',
-                dinner_open : '17:00',
-                dinner_close : '22:00',
+                lunch_open  : '',
+                lunch_close : '',
+                dinner_open : '',
+                dinner_close : '',
 
                 /* DB에서 받아 온 값 - reservation_set */
                 items:[
-                    {
-                        impossible  : '예약 불가능',
-                        pick_date   : '2018-05-03',
-                    },
-                    {
-                        impossible  : '예약 가능',
-                        pick_date   : '2018-05-04',
-                        set_time : [
-                            "11:00", "12:00", "13:30"
-                        ]
-
-                    },
-                    {
-                        impossible  : '예약 불가능',
-                        pick_date   : '2018-05-05'
-                    },
-                    {
-                        impossible  : '예약 불가능',
-                        pick_date   : '2018-05-07'
-                    }
+                    
                 ],
 
                 /* 쿠폰 */
@@ -554,10 +561,10 @@
                     this.reservation_selectMenu = response.data.menuSelectData[0].reservation_selectMenu;
 
                     /* 기본 가게 정보 */
-                    this.lunch_open = this.resData[0].lunch_open;
-                    this.lunch_close = this.resData[0].lunch_close;
-                    this.dinner_open = this.resData[0].dinner_open;
-                    this.dinner_close = this.resData[0].dinner_close;
+                    this.lunch_open = response.data.restaurantData[0].lunch_open;
+                    this.lunch_close = response.data.restaurantData[0].lunch_close;
+                    this.dinner_open = response.data.restaurantData[0].dinner_open;
+                    this.dinner_close = response.data.restaurantData[0].dinner_close;
                 })
 
                 axios.post('/getCouponList', {
@@ -854,30 +861,33 @@
             },
 
             setTime() {
+               let shop_id = this.$route.params.shop_id;
+                
                 /* date가 클릭시 item안의 set_time[]을 select 문에 넣기 */
-                var maxIndex = this.items.length;
                 this.states = [];
 
-                /* true/ false로 날짜가 배열안에 있는지 없는지 파악 */
-                var check = false;
+                // db에서 데이터 받기
+                axios.post('/getReservationSettingByDate', {
+                    shop_id    : shop_id,
+                    click_date : this.start_date,
+                }).then((response) => {
 
-                for(var i = 0; i < maxIndex; i++)
-                {
-                    // 배열안의 예약 가능 시간 빼오기
-                    if(this.start_date == this.items[i].pick_date && this.items[i].impossible == "예약 가능")
+                    var pick_time = response.data.settingData;
+
+                    if(pick_time != '')
                     {
-                        check = true;
-                        for(var j = 0; j < this.items[i].set_time.length; j++)
+                        for(var i = 0; i < pick_time.length; i++)
                         {
-                            this.states.push(this.items[i].set_time[j])
+                            // 배열안의 예약 가능 시간 빼오기
+                            this.states.push(pick_time[i].start_time.substr(0,5));
                         }
                     }
-                }
+                    /* 사장님이 지정한 시간대가 없을 경우 */
 
-                /* 사장님이 지정한 설정 배열에 날짜가 존재하지 않는 경우 */
-                if(check == false) {
-                    this.basic_time();
-                }
+                    else {
+                        this.basic_time();
+                    }
+                });
             },
 
             // 기본 시간 으로 설정

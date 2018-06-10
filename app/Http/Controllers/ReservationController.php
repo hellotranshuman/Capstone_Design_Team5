@@ -378,13 +378,14 @@ class ReservationController extends Controller
     // <-- 달력 클릭시 해당 달력의 날짜로 검색
     public function getReservationSettingByDate(Request $request) {
 
-        $settingData = Resset::where('shop_id', $request->get('shop_id'))
-            ->where('setting_date', $request->get('click_date'))
-            ->get()
-            ->toArray();
+        $settingData = Resset::select('start_time')
+                            ->where('shop_id', $request->get('shop_id'))
+                            ->where('setting_date', $request->get('click_date'))
+                            ->get()
+                            ->toArray();
 
         return response()->json([
-            'settingData'       => $settingData,
+            'settingData'     => $settingData,
         ]);
     }
 

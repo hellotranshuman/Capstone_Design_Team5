@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Hashtag;
 use App\Reservation;
 use App\Restaurant;
+use App\Upload;
 use App\UserCoupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -495,8 +496,31 @@ class MainController extends Controller
                             ->get()
                             ->toArray();
 
+      // <-- 각 가게 이미지 가져오기
+      $regionShopIdData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
+            ->select(DB::raw('ROUND(AVG(review.rating), 2) as totalRating,
+            restaurants.id   as shop_id'))
+            ->where('restaurants.dodobuken', $regionData)
+            ->groupBy('review.shop_id')
+            ->orderByRaw('totalRating desc')
+            ->limit($limit)
+            ->get();
+
+      $fileNameArray = array();
+
+      foreach ($regionShopIdData as $regionShopId) {
+          $currentId = $regionShopId->shop_id;
+
+          $fileName = Upload::select('filename')
+                        ->where('shop_id', $currentId)
+                        ->first();
+
+          array_push($fileNameArray, $fileName);
+      }
+
       return response()->json([
           'regionShopData'      => $regionShopData,
+          'fileName'            => $fileNameArray,
       ]);
    }
 
@@ -505,7 +529,7 @@ class MainController extends Controller
 
        // <-- 각 업종의 가게 Data
        $type = $request->get('');
-       $limitData    = $request->get('');
+       $limitData    = $request->get('limit');
 
        $typeShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
                                ->select(DB::raw('

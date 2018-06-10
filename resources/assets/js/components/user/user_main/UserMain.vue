@@ -21,7 +21,7 @@
                                             class="white--text"
                                             :src="item.src"
                                             height="200px"
-                                            @click="clickRestaurantList(item.postVar)"
+                                            @click="clickRestaurantList(item.postRegion, item.listLimit)"
                                     >
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
@@ -47,7 +47,7 @@
                                             class="white--text"
                                             :src="item.src"
                                             height="200px"
-                                            @click="clickRestaurantList(item.postVar)"
+                                            @click="clickRestaurantList(item.postRegion, item.listLimit)"
                                     >
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
@@ -73,7 +73,7 @@
                                             class="black--text"
                                             :src="item.src"
                                             height="200px"
-                                            @click="clickRestaurantList(item.postVar)"
+                                            @click="clickRestaurantList(item.postRegion, item.listLimit)"
                                     >
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
@@ -108,34 +108,40 @@
             return {
                 area: [
                     {
-                        name: '도쿄 베스트 10',
+                        name: '도쿄 베스트 7',
                         src: '/images/toukyou.jpg',
-                        postVar: '東京'
+                        postRegion: '東京',
+                        listLimit: 7
                     },
                     {
-                        name: '오사카 베스트 10',
+                        name: '오사카 베스트 7',
                         src: '/images/oosaka.jpg',
-                        postVar: '大阪'
+                        postRegion: '大阪',
+                        listLimit: 7
                     },
                     {
-                        name: '교토 베스트 10',
+                        name: '교토 베스트 7',
                         src: '/images/kyouto.jpg',
-                        postVar: '京都'
+                        postRegion: '京都',
+                        listLimit: 7
                     },
                     {
-                        name: '후쿠오카 베스트 10',
+                        name: '후쿠오카 베스트 5',
                         src: '/images/hukuoka.jpg',
-                        postVar: '福岡'
+                        postRegion: '福岡',
+                        listLimit: 5
                     },
                     {
-                        name: '홋카이도 베스트 10',
+                        name: '홋카이도 베스트 5',
                         src: '/images/hokkaido.jpg',
-                        postVar: '北海道'
+                        postRegion: '北海道',
+                        listLimit: 5
                     },
                     {
-                        name: '오키나와 베스트 10',
+                        name: '오키나와 베스트 5',
                         src: '/images/okinawa.jpg',
-                        postVar: '沖縄'
+                        postRegion: '沖縄',
+                        listLimit: 5
                     },
                 ],
 
@@ -193,16 +199,11 @@
                 this.$parent.$parent.$parent.gps_search = true;
             },
 
-            clickRestaurantList(postVar) {
+            clickRestaurantList(postRegion, listLimit) {
                 var url = "/getRegionShopData";
-                axios.post(url,
-                    {
-                        'region': postVar,
-                        'limit' : 10
-                    }
-                    )
+                axios.post(url, {'region': postRegion, 'limit': listLimit})
                     .then(response => {
-                        console.log(response);
+                        this.$router.push({ name: 'topList', params: {region: postRegion, listLimit: listLimit, restaurantList: response.data.regionShopData}})
                     })
                     .catch(error => {
                         alert(error);

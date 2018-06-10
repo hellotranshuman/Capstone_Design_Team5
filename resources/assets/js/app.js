@@ -36,9 +36,10 @@ import { Bar, HorizontalBar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
 
 // <— User Main Page Component Import
 import Home                 from './components/user/user_main/UserMain.vue';
+// <— User Main Page Component Import
+import TopList                 from './components/TopList.vue';
 // <— User Register Page Component Import
 import Register         from './components/Register.vue';
-
 
 // <— Edit Information
 import EditInformation from './components/EditInformation';
@@ -68,8 +69,6 @@ import OwnerRestaurant from './components/owner/owner_restaurant/OwnerRestaurant
 import OwnerCreateCoupon from './components/owner/owner_coupon/createCoupon.vue';
 
 // <— 전자메뉴판 설정
-// 전자 메뉴판 설정 Page Component Import
-import OwnerMenu from './components/owner/owner_menu/OwnerMenu.vue';
 // 전자메뉴판 메뉴 추가 Page Component Import
 import OwnerMenuOperate from './components/owner/owner_menu/OwnerMenuOperate.vue';
 // 전자메뉴판 메뉴 리스트 Page Component Import
@@ -119,6 +118,12 @@ const router = new VueRouter({
                 path: '/register',
                 name: 'register',
                 component: Register
+            },
+            {
+                path: '/topList',
+                name: 'topList',
+                component: TopList,
+                props: true
             },
             // <— 회원 정보 수정
             {

@@ -164,6 +164,7 @@ class RestaurantController extends Controller
 
     // <-- 레스토랑 정보 수정시 가져올 레스토랑 정보
     public function getEditRestaurantInfo(Request $request) {
+        /*
         $shop_id = $request->get('shop_id');
 
         $restaurantInfo = Restaurant::where('id', $shop_id)
@@ -207,7 +208,7 @@ class RestaurantController extends Controller
                     'dinner_open' => $request->input('dinner_open'),
                     'dinner_close' => $request->input('dinner_close'),
                     'dinner_lo' => $request->input('dinner_lo'),
-                ]);
+                ]); */
 
         /*
          * 바뀔 이미지가 있는 경우 현재 이미지 다 지우고
@@ -218,6 +219,67 @@ class RestaurantController extends Controller
          * 3. 새로운 이미지 갯수에 따라서 새로운 이미지로 교체
          * 4. DB 삭제후 다시 등록... (갯수변동때메)
          * */
+
+        /*
+        // gallery 이미지 갯수
+        $imageNum = $request->get('num');
+        // db에 저장할 경로
+        $dbPath = '/images/'. $shop_id . '/';
+
+        if($request->file('titleImg')) {
+
+            $selectFileName = '%' . $shop_id . '_titleImg%';
+
+            $fileData = Upload::where('filename', 'like', $selectFileName)
+                ->first();
+
+            $fileName = $fileData->filename;
+
+            $deleteFileName = '/'. $shop_id . '/'. $fileName;
+
+            Storage::delete($deleteFileName);
+
+            // title Img 가져오기
+            $titleImg = $request->file('titleImg');
+
+            // File Name Setting
+            $fileName = $shop_id . '_titleImg' . '.' . $titleImg->getClientOriginalExtension();
+
+            // Upload File Save
+            $titleImg->storeAs($shop_id, $fileName);
+
+            Upload::where('filename', 'like', $selectFileName)
+                ->update([
+                    'filename' => $fileName,
+                    'shop_id' => $shop_id,
+                    'path' => $dbPath
+                ]);
+
+        } // <-- If End
+        else if(is_null($request->get('titleImg'))) {
+            $selectFileName = '%' . $shop_id . '_titleImg%';
+
+            $fileData = Upload::where('filename', 'like', $selectFileName)
+                ->first();
+
+            $fileName = $fileData->filename;
+
+            $deleteFileName = '/'. $shop_id . '/'. $fileName;
+
+            Storage::delete($deleteFileName);
+
+            Upload::where('filename', 'like', $selectFileName)
+                ->delete();
+        }
+
+        for($imageIndex = 0 ; $imageNum < $imageNum ; $imageIndex++ ) {
+
+            $galleryFileName = $shop_id . '_gallaryImg_' . $imageIndex;
+
+
+
+        }
+
 
         if($request->file('')) {
 
@@ -249,12 +311,7 @@ class RestaurantController extends Controller
                 // Upload File Save
                 $titleImg->storeAs($shop_id, $fileName);
 
-                // Create Upload File Column in Upload Table
-                \App\Upload::create([
-                    'filename'   => $fileName,
-                    'shop_id'    => $shop_id,
-                    'path'       => $dbPath
-                ]);
+
             }
 
             if($imageNum != 0) {
@@ -281,6 +338,7 @@ class RestaurantController extends Controller
                 }
             }
         }
+        */
 
     }
 

@@ -2,242 +2,324 @@
 <template>
 <div class="container" style="border:1px solid"><br>
 <form id="upload_info" enctype="multipart/form-data" action="/test" method="post"> 
-    <v-container style="width:98%; margin:auto">
-        <v-layout style="overflow:hi">
-            <v-flex xs10>
-                <h1 style="font-size:60px;"> 가게 정보 입력 </h1>    
-            </v-flex>
-            <v-flex xs2>
-                <v-btn dark class="submit_btn" @click="save_data">저장하기</v-btn> 
-            </v-flex>
-        </v-layout> <br>
- 
+<v-container style="width:98%; margin:auto">
+    <v-layout style="overflow:hi">
+        <v-flex xs10>
+            <h1 style="font-size:60px;"> 가게 정보 입력 </h1>    
+        </v-flex>
+        <v-flex xs2>
+            <v-btn color="error" class="submit_btn" @click="save_data">저장하기</v-btn> 
+        </v-flex>
+    </v-layout> <br>
+
 <!--******************************************** 가게 기본 정보 *******************************************-->       
+    
+    <h1> 가게 기본 정보</h1> 
+    <!-- 가게 명 -->
+    <v-layout mt-1> 
+        <v-flex xs12 mr-4> 
+            <v-text-field id="name" label="가게명" v-if="resData !== null" 
+                v-model="resData[0].name" :rules="nameRule" prepend-icon="home">                             
+            </v-text-field>
+            <v-text-field v-model="ipt_data.name" v-else label="가게명" prepend-icon="home" :rules="nameRule"> 
+            </v-text-field>
+        </v-flex> 
+    </v-layout> 
+
+    <!-- 가게 설명 -->
+    <v-layout mt-1> 
+        <v-flex xs12 mr-4>
+            <v-text-field id="explanation" label="가게 설명" v-if="resData !== null"
+                v-model="resData[0].explanation" :rules="explanationRule" prepend-icon="assignment" multi-line>
+            </v-text-field>
+            <v-text-field v-model="ipt_data.explanation" v-else label="가게 설명" 
+                :rules="explanationRule" prepend-icon="assignment" multi-line>
+            </v-text-field>
+        </v-flex> 
+    </v-layout> 
         
-        <h1> 가게 기본 정보</h1> 
-        <v-layout mt-1> 
-            <v-flex xs12 mr-4> 
-                <v-text-field label="가게명" 
-                    v-model="ipt_data.name" :rules="nameRule" required 
-                    prepend-icon="home"></v-text-field>
-            </v-flex> 
-        </v-layout> 
+    <!-- 가게 주소 -->
+    <v-layout mt-1> 
+        <v-flex xs2 mr-4> 
+            <v-select label="주소 : 도도부현" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].dodobuken" item-value="text" :items="ddbkList" prepend-icon="location_on">
+            </v-select>
+            <v-select label="주소 : 도도부현" v-else persistent-hint single-line
+                v-model="ipt_data.dodobuken" :items="ddbkList" prepend-icon="location_on">
+            </v-select>
+        </v-flex>   
+        <v-flex xs5 mr-4> 
+            <v-text-field id="cities" label="상세주소1" v-if="resData !== null" 
+                v-model="resData[0].cities" :rules="citiesRule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.cities" label="상세주소1" v-else :rules="citiesRule"></v-text-field> 
+        </v-flex>                
+        <v-flex xs5 mr-4> 
+            <v-text-field id="address" label="상세주소2" v-if="resData !== null"
+                v-model="resData[0].address" :rules="addressRule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.address" label="상세주소2" v-else :rules="addressRule"></v-text-field> 
+        </v-flex>
+    </v-layout>
 
-        <v-layout mt-1> 
-            <v-flex xs12 mr-4>
-                <v-text-field label="가게 설명" 
-                    v-model="ipt_data.explanation" :rules="explanationRule" required
-                    prepend-icon="assignment" multi-line></v-text-field>
-            </v-flex> 
-        </v-layout> 
-         
-        <v-layout mt-1> 
-            <v-flex xs2 mr-4> 
-                <v-select label="주소 : 도도부현" 
-                    v-model="ipt_data.dodobuken" :items="ddbkList" single-line
-                    prepend-icon="location_on"></v-select>
-            </v-flex>   
-            <v-flex xs5 mr-4> 
-                <v-text-field label="상세주소1" 
-                    v-model="ipt_data.cities" :rules="citiesRule" required></v-text-field> 
-            </v-flex>                
-            <v-flex xs5 mr-4> 
-                <v-text-field label="상세주소2" 
-                    v-model="ipt_data.address" :rules="addressRule" required></v-text-field> 
-            </v-flex>
-        </v-layout>
+    <!-- 업종 -->
+    <v-layout mt-1>
+        <v-flex xs6 mr-4> 
+            <v-select id="type" label="업종" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].type" item-value="text" :items="typeList" prepend-icon="local_dining">
+            </v-select> 
+            <v-select id="type" label="업종" v-else persistent-hint single-line
+                v-model="ipt_data.type" :items="typeList" prepend-icon="local_dining">
+            </v-select> 
+        </v-flex>                
+        <v-flex xs6 mr-4> 
+            <v-text-field id="phone" label="전화번호 ex) 000-000-0000" v-if="resData !== null" 
+                v-model="resData[0].phone" :rules="phoneRule" prepend-icon="phone">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.phone" label="전화번호 ex) 000-000-0000" v-else 
+                :rules="phoneRule" prepend-icon="phone">
+            </v-text-field> 
+        </v-flex>
+    </v-layout>
+    
+    <v-layout mt-1>
+        <!-- 결제 방식 -->
+        <v-flex xs6 mr-4>  
+            <v-select id="payment" label="결제방식" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].payment" item-value="text" :items="paymentList" prepend-icon="attach_money">
+            </v-select>  
+            <v-select id="payment" label="결제방식" v-else persistent-hint single-line
+                v-model="ipt_data.payment" :items="paymentList" prepend-icon="attach_money">
+            </v-select> 
+        </v-flex>   
 
-        <v-layout mt-1>
-            <v-flex xs6 mr-4> 
-                <v-select label="업종" 
-                    v-model="ipt_data.type" :items="typeList" single-line
-                    prepend-icon="local_dining"></v-select> 
-            </v-flex>                
-            <v-flex xs6 mr-4> 
-                <v-text-field label="전화번호 ex) 000-000-0000" 
-                    v-model="ipt_data.phone" :rules="phoneRule" required 
-                    prepend-icon="phone"></v-text-field> 
-            </v-flex>
-        </v-layout>
-
-        <v-layout mt-1>
-            <v-flex xs6 mr-4>  
-                <v-select label="결제방식"
-                    v-model="ipt_data.payment" :items="paymentList" single-line
-                    prepend-icon="attach_money"></v-select> 
-            </v-flex>                
-            <v-flex xs6 mr-4> 
-                <v-text-field label="좌석 수" 
-                    v-model="ipt_data.seat_num" :rules="seat_numRule" required
-                    prepend-icon="airline_seat_recline_normal"></v-text-field> 
-            </v-flex>
-        </v-layout>
+        <!-- 좌석 수 -->            
+        <v-flex xs6 mr-4> 
+            <v-text-field id="seat_num" label="좌석 수" v-if="resData !== null"
+                v-model="resData[0].seat_num" :rules="seat_numRule" prepend-icon="airline_seat_recline_normal">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.seat_num" label="좌석 수" v-else
+                :rules="seat_numRule" prepend-icon="airline_seat_recline_normal">
+            </v-text-field> 
+        </v-flex>
+    </v-layout>
 
 <!--********************************************* 영업 시간 정보 ******************************************-->      
-       
-        <br><br><h1>  영업 시간 정보 </h1> 
+    
+    <br><br><h1>  영업 시간 정보 </h1> 
 
-        <v-layout>
-            <v-flex xs4 mr-4> 
-                <v-text-field label="런치 오픈 ex) 00:00" 
-                    v-model="ipt_data.lunch_open" :rules="lunch_openRule" required
-                    prepend-icon="schedule"></v-text-field> 
-            </v-flex>               
+    <v-layout>
+        <v-flex xs4 mr-4> 
+            <v-text-field id="lunch_open" label="런치 오픈 ex) 00:00" v-if="resData !== null"
+                v-model="resData[0].lunch_open" :rules="lunch_openRule" prepend-icon="schedule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.lunch_open" label="런치 오픈 ex) 00:00" v-else
+                :rules="lunch_openRule" prepend-icon="schedule">
+            </v-text-field> 
+        </v-flex>               
+        
+        <v-flex xs4 mr-4> 
+            <v-text-field id="lunch_close" label="런치 종료 ex) 00:00" v-if="resData !== null"
+                v-model="resData[0].lunch_close" :rules="lunch_closeRule" prepend-icon="schedule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.lunch_close" label="런치 종료 ex) 00:00" v-else
+                :rules="lunch_closeRule" prepend-icon="schedule">
+            </v-text-field> 
+        </v-flex> 
+
+        <v-flex xs4 mr-4> 
+            <v-text-field id="lunch_lo" label="런치 라스트 오더 ex) 00:00" v-if="resData !== null"
+                v-model="resData[0].lunch_lo" :rules="lunch_loRule" prepend-icon="schedule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.lunch_lo" label="런치 라스트 오더 ex) 00:00" v-else
+                :rules="lunch_loRule" prepend-icon="schedule">
+            </v-text-field> 
+        </v-flex> 
+    </v-layout>
+
+    <v-layout>       
+        <v-flex xs4 mr-4> 
+            <v-text-field id="dinner_open" label="디너 오픈 ex) 00:00" v-if="resData !== null"
+                v-model="resData[0].dinner_open" :rules="dinner_openRule" prepend-icon="schedule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.dinner_open" label="디너 오픈 ex) 00:00" v-else
+                :rules="dinner_openRule" prepend-icon="schedule">
+            </v-text-field> 
+        </v-flex>    
             
-            <v-flex xs4 mr-4> 
-                <v-text-field label="런치 종료 ex) 00:00" 
-                    v-model="ipt_data.lunch_close" :rules="lunch_closeRule" required
-                    prepend-icon="schedule"></v-text-field> 
-            </v-flex> 
+        <v-flex xs4 mr-4> 
+            <v-text-field id="dinner_close" label="디너 종료 ex) 00:00" v-if="resData !== null"
+                v-model="resData[0].dinner_close" :rules="dinner_closeRule" prepend-icon="schedule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.dinner_close" label="디너 종료 ex) 00:00" v-else
+                :rules="dinner_closeRule" prepend-icon="schedule">
+            </v-text-field> 
+        </v-flex>    
 
-            <v-flex xs4 mr-4> 
-                <v-text-field label="런치 라스트 오더 ex) 00:00" 
-                    v-model="ipt_data.lunch_lo" :rules="lunch_loRule" required
-                    prepend-icon="schedule"></v-text-field> 
-            </v-flex> 
-        </v-layout>
-
-        <v-layout>       
-            <v-flex xs4 mr-4> 
-                <v-text-field label="디너 오픈 ex) 00:00" 
-                    v-model="ipt_data.dinner_open" :rules="dinner_openRule" required
-                    prepend-icon="schedule"></v-text-field> 
-            </v-flex>    
-             
-            <v-flex xs4 mr-4> 
-                <v-text-field label="디너 종료 ex) 00:00" 
-                    v-model="ipt_data.dinner_close" :rules="dinner_closeRule" required
-                    prepend-icon="schedule"></v-text-field> 
-            </v-flex>    
-
-            <v-flex xs4 mr-4> 
-                <v-text-field label="디너 라스트 오더 ex) 00:00" 
-                    v-model="ipt_data.dinner_lo" :rules="dinner_loRule" required
-                    prepend-icon="schedule"></v-text-field> 
-            </v-flex>
-        </v-layout> 
+        <v-flex xs4 mr-4> 
+            <v-text-field id="dinner_lo" label="디너 라스트 오더 ex) 00:00" v-if="resData !== null"
+                v-model="resData[0].dinner_lo" :rules="dinner_loRule" prepend-icon="schedule">
+            </v-text-field> 
+            <v-text-field v-model="ipt_data.dinner_lo" label="디너 라스트 오더 ex) 00:00" v-else
+                :rules="dinner_loRule" prepend-icon="schedule">
+            </v-text-field> 
+        </v-flex>
+    </v-layout> 
 
 <!--************************************************ 기타 정보 ********************************************-->
-      
-        <br><br><h1> 기타 정보 </h1> 
+    
+    <br><br><h1> 기타 정보 </h1> 
 
-        <v-layout>  
-            <v-flex xs6 mr-4> 
-                <v-select label="아이 동반 가능"
-                    v-model="ipt_data.children" :items="YesOrNo" single-line
-                    prepend-icon="child_care"></v-select>
-            </v-flex>                
-            <v-flex xs6 mr-4> 
-                <v-select label="애완동물 동반"
-                    v-model="ipt_data.pet" :items="YesOrNo" single-line
-                    prepend-icon="pets"></v-select> 
-            </v-flex>
-        </v-layout>
+    <v-layout>  
+        <v-flex xs6 mr-4> 
+            <v-select label="아이 동반 가능" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].children" item-value="text" :items="YesOrNo" prepend-icon="child_care">
+            </v-select>
+            <v-select label="아이 동반 가능" v-else persistent-hint single-line
+                v-model="ipt_data.children" :items="YesOrNo" prepend-icon="child_care">
+            </v-select>
+        </v-flex>                
+        <v-flex xs6 mr-4> 
+            <v-select label="애완동물 동반" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].pet" item-value="text" :items="YesOrNo" prepend-icon="pets">
+            </v-select> 
+            <v-select label="애완동물 동반" v-else persistent-hint single-line
+                v-model="ipt_data.pet" :items="YesOrNo" prepend-icon="pets">
+            </v-select> 
+        </v-flex>
+    </v-layout>
 
-        <v-layout>  
-            <v-flex xs6 mr-4> 
-                <v-select label="주차 공간"
-                    v-model="ipt_data.parking" :items="YesOrNo" single-line
-                    prepend-icon="directions_car"></v-select> 
-            </v-flex>                
-            <v-flex xs6 mr-4> 
-                <v-select label="흡연석"
-                    v-model="ipt_data.smoking" :items="YesOrNo" single-line
-                    prepend-icon="smoking_rooms"></v-select> 
-            </v-flex>
-        </v-layout>
-        
-        <v-layout>  
-            <v-flex xs6 mr-4> 
-                <v-select label="개인실"
-                    v-model="ipt_data.privateroom" :items="YesOrNo" single-line
-                    prepend-icon="account_box"></v-select>
-            </v-flex>   
-            <v-flex xs6 mr-4></v-flex>  
-        </v-layout>
+    <v-layout>  
+        <v-flex xs6 mr-4> 
+            <v-select label="주차 공간" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].parking" item-value="text" :items="YesOrNo" prepend-icon="directions_car">
+            </v-select> 
+            <v-select label="주차 공간" v-else persistent-hint single-line
+                v-model="ipt_data.parking" :items="YesOrNo" prepend-icon="directions_car">
+            </v-select> 
+        </v-flex>                
+        <v-flex xs6 mr-4> 
+            <v-select label="흡연석" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].smoking" item-value="text" :items="YesOrNo" prepend-icon="smoking_rooms">
+            </v-select> 
+            <v-select label="흡연석" v-else persistent-hint single-line
+                v-model="ipt_data.smoking" :items="YesOrNo" prepend-icon="smoking_rooms">
+            </v-select> 
+        </v-flex>
+    </v-layout>
+    
+    <v-layout>  
+        <v-flex xs6 mr-4> 
+            <v-select label="개인실" v-if="resData !== null" persistent-hint single-line
+                v-model="resData[0].privateroom" item-value="text" :items="YesOrNo" prepend-icon="account_box">
+            </v-select>
+            <v-select label="개인실" v-else persistent-hint single-line
+                v-model="ipt_data.privateroom" :items="YesOrNo" prepend-icon="account_box">
+            </v-select>
+        </v-flex>   
+        <v-flex xs6 mr-4></v-flex>  
+    </v-layout>
 
 <!--**************************************** 갤러리, 타이틀 이미지 등록 *************************************-->
-        <br><br><h1> 가게 이미지 등록 </h1> <br>
+    <br><br><h1> 가게 이미지 등록 </h1> <br>
 
-        <v-layout mt-2>
-            <v-icon x-large>image</v-icon>
-            <label for="TitleImgUpload" class="upload_btn"> [타이틀 이미지 업로드] </label> 
-            <input type="file" id="TitleImgUpload" accept=".png, .jpg, .jpeg" 
-                class="upload_btn_hidden" @change="title_img_load"> 
-        </v-layout>
+    <v-layout mt-2>
+        <v-icon x-large>image</v-icon>
+        <label for="TitleImgUpload" class="upload_btn"> [타이틀 이미지 업로드] </label> 
+        <input type="file" id="TitleImgUpload" accept=".png, .jpg, .jpeg" 
+            class="upload_btn_hidden" @change="title_img_load"> 
+    </v-layout>
 
-        <v-layout mt-2>
-            <v-flex xs12>
-                <v-card class="title_div" style="background-color: lightgray;">
-                    <img class="img_style" id="TitleImg" > 
-                </v-card>
-            </v-flex>
-        </v-layout> <br>
-
-        <v-layout mt-2>
-            <v-icon x-large>image</v-icon>
-            <label for="GalleryImgUpload" class="upload_btn"> [갤러리 이미지 업로드] </label> 
-            <input type="file" id="GalleryImgUpload" accept=".png, .jpg, .jpeg" 
-                class="upload_btn_hidden" @change="gallery_img_load"> 
-        </v-layout>
-
-        <div id="gallery_div" style="width:100%; margin:auto; overflow:hidden">
-            <div class="gallery_div">
-                <img class="img_style">
+    <v-layout mt-2>
+        <v-flex xs12>
+            <div class="title_div" style="background-color: lightgray;">
+                <img v-if="resData !== null" class="img_style" id="TitleImg" 
+                    :src="resData[2].path + resData[2].filename"> 
+                <img v-else class="img_style" id="TitleImg"> 
             </div>
+        </v-flex>
+    </v-layout> <br>
 
-            <div class="gallery_div">
-                <img class="img_style">
-            </div>
+    <v-layout mt-2>
+        <v-icon x-large>image</v-icon>
+        <label for="GalleryImgUpload" class="upload_btn"> [갤러리 이미지 업로드] </label> 
+        <input type="file" id="GalleryImgUpload" accept=".png, .jpg, .jpeg" 
+            class="upload_btn_hidden" @change="gallery_img_load"> 
+    </v-layout>
 
-            <div class="gallery_div ">
-                <img class="img_style">
-            </div>
-        </div>
-    </v-container>
+    <div id="gallery"></div>
+    <v-dialog v-model="CancelDialog" width="30%" persistent>
+        <v-card>
+            <v-card-title class="headline">
+                클릭하신 이미지의 업로드를 취소하시겠습니까?
+            </v-card-title> 
+            <v-card-actions> 
+                <v-btn color="success" @click.native="CancelDialog = false" style="margin:auto"
+                    @click="removeImg"> 확인
+                </v-btn>
+                <v-btn color="error" @click.native="CancelDialog = false" style="margin:auto"> 취소 </v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
+</v-container>
 </form>
 </div> 
 </template>
 
 <script type="text/javascript"> 
 import VueAxios from 'vue-axios';
-import axios from 'axios';
+import axios from 'axios'; 
+ 
+export default {     
+    created(){
+        this.shop_id = this.$route.params.shop_id;
+        let url = '/restaurant/' + this.shop_id + '/getInfo';
 
-var num      = 0;                                                           // 갤러리 이미지 갯수 카운트
-var formData = new FormData(document.getElementById("upload_info"));        // 입력 값들을 담아 전송함.
-var clickImg = null;
-
-export default { 
+        axios.get(url).then( (response) => { 
+            this.resData = response.data.restaurant;               
+            this.resImgSet();   
+        })
+        .catch((ex)=>{
+            alert('가게 정보 불러오기 실패!');  
+        }); 
+    },
 
     data(){
         return{
-            ipt_data : [
+            resData      : null,            // 서버한테 받는 데이터. 
+            CancelDialog : false,           // 갤러리 이미지 등록 취소.
+            CancelImg    : null,            // 취소할 이미지
+
+            SaveImg : [],                   // 갤러리 이미지 저장용
+ 
+            // 최초 등록 시 사용
+            ipt_data : {
                 // 기본 정보            
-                name        => null,         // 가게 명
-                explanation => null,         // 가게 설명
-                dodobuken   => null,         // 주소 - 도도부현
-                cities      => null,         // 주소 - 상세주소1
-                address     => null,         // 주소 - 상세주소2
-                type        => null,         // 업종
-                phone       => null,         // 전화번호
-                payment     => null,         // 결제 방법
-                seat_num    => null,         // 좌석 수
+                name        : '',         // 가게 명
+                explanation : '',         // 가게 설명
+                dodobuken   : '',         // 주소 - 도도부현
+                cities      : '',         // 주소 - 상세주소1
+                address     : '',         // 주소 - 상세주소2
+                type        : '',         // 업종
+                phone       : '',         // 전화번호
+                payment     : '',         // 결제 방법
+                seat_num    : '',         // 좌석 수
                 
                 // 영업 시간
-                lunch_open   => null,        // 런치 오픈 시간
-                lunch_close  => null,        // 런치 마감 시간
-                lunch_lo     => null,        // 런치 라스터 오더 시간
-                dinner_open  => null,        // 디너 오픈 시간
-                dinner_close => null,        // 디너 마감 시간
-                dinner_lo    => null,        // 디너 라스트 오더 시간
+                lunch_open   : '',        // 런치 오픈 시간
+                lunch_close  : '',        // 런치 마감 시간
+                lunch_lo     : '',        // 런치 라스터 오더 시간
+                dinner_open  : '',        // 디너 오픈 시간
+                dinner_close : '',        // 디너 마감 시간
+                dinner_lo    : '',        // 디너 라스트 오더 시간
 
                 // 기타 정보 yes or no
-                children    => null,         // 아이 동반 가능 여부
-                pet         => null,         // 애완 동물 동반 가능 여부
-                parking     => null,         // 주차 공간 유무
-                smoking     => null,         // 흡연실 유무
-                privateroom => null,         // 개인실 유무
-            ],  
+                children    : '',         // 아이 동반 가능 여부
+                pet         : '',         // 애완 동물 동반 가능 여부
+                parking     : '',         // 주차 공간 유무
+                smoking     : '',         // 흡연실 유무
+                privateroom : '',         // 개인실 유무
+            },  
             
             // 경고 메세지 출력
             nameRule         : [ v => !!v || '가게 명을 입력해주세요!' ],
@@ -285,6 +367,27 @@ export default {
     },
 
     methods : {
+        // 서버에서 받은 이미지 출력
+        resImgSet : function(){            
+            let gallery    = document.getElementById('gallery');    // 갤러리        
+
+            for(let i=3; i < this.resData.length; i++){                     
+                let createdDiv = document.createElement("div");                     // 새 div 생성
+                let createdImg = document.createElement("img");                     // 새 img 생성
+                let imgPath    = this.resData[i].path + this.resData[i].filename;   // 서버한테 받은 이미지의 경로.     
+
+                createdImg.src = imgPath;                                           // 이미지 삽입
+                createdImg.classList.add("img_style");                              // 새 img alt 속성 추가
+                createdImg.addEventListener("click", this.clickImg);
+
+                createdDiv.classList.add("gallery_div");                            // css 적용
+                createdDiv.appendChild(createdImg);                                 // 추가하기.          
+                gallery.appendChild(createdDiv);                                    // 갤러리에 이미지 추가
+                
+                this.SaveImg.push(imgPath);                                         // 이미지 관리 배열에 추가하기.
+            }  
+        },
+
         // 타이틀 이미지 업로드 메서드
         title_img_load : function(evnet){ 
             let titleImg = document.getElementById("TitleImg");  // 타이틀 이미지
@@ -299,61 +402,100 @@ export default {
 
         // 갤러리 이미지 업로드 메서드
         gallery_img_load : function(event){
-            let file        = event.target.files[0];
-            let reader      = new FileReader();
-            let gallery_div = document.getElementById('gallery_div');  
-            let click_menu  = document.getElementById('click_menu');
-            
-            // 업로드한 이미지가 3개 이하인 경우
-            if(gallery_div.children[2].children[0].src == ''){ 
-                for(let i=0; i < gallery_div.children.length; i++){
-                    let img = gallery_div.children[i].children[0];
+            let file       = event.target.files[0];
+            let reader     = new FileReader();
+            let gallery    = document.getElementById('gallery');             
+            let createdDiv = document.createElement("div");     // 새 div 생성
+            let createdImg = document.createElement("img");     // 새 img 생성
 
-                    if(img.src == ''){ 
-                        reader.onload = function(){ img.src = reader.result; };
-                        break;
-                    }
+            reader.onload = function() { 
+                createdImg.src = reader.result; 
+            };            
+            createdImg.classList.add("img_style");              // 새 img alt 속성 추가
+            createdImg.addEventListener("click", this.clickImg);
+
+            createdDiv.classList.add("gallery_div");            // css 적용
+            createdDiv.appendChild(createdImg);                 // 추가하기.          
+            gallery.appendChild(createdDiv);
+
+            reader.readAsDataURL(file); 
+            this.SaveImg.push(file); 
+        },  
+
+        // 갤러리 이미지 클릭 - 삭제하실?
+        clickImg : function(){
+            this.CancelDialog = true;
+            this.CancelImg = event.target; 
+        },
+
+        // 이미지 삭제
+        removeImg : function(){
+            let div = this.CancelImg.parentNode; 
+            let gallery = document.getElementById('gallery');  
+
+            // 이미지 파일 저장 배열에서도 제거.
+            for(let i=0; i < gallery.children.length; i++){
+                if(div === gallery.children[i]){ 
+                    this.SaveImg.splice(i,1);
                 }
-            }
-            // 업로드한 이미지가 4개 이상인 경우
-            else {
-                let createdDiv = document.createElement("div");     // 새 div 생성
-                let createdImg = document.createElement("img");     // 새 img 생성
-
-                reader.onload = function() { createdImg.src = reader.result; };
-                
-                createdDiv.classList.add("gallery_div");            // css 적용
-                createdImg.classList.add("img_style");              // 새 img alt 속성 추가
-
-                createdDiv.appendChild(createdImg);                 // 추가하기.          
-                gallery_div.appendChild(createdDiv);
-            }  
-            reader.readAsDataURL(file);
-            formData.append('galleryImg'+ num, file); num++;    // 파일 저장
+            }             
+            gallery.removeChild(div);  
         }, 
  
-
-        // 입력한 데이터 저장하기 TitleImgUpload
+        // 입력한 데이터 저장하기 
         save_data :function() {    
-            let TitleImgUpload = document.getElementById("TitleImgUpload");       // 타이틀 input file 
-            let iterator = Object.keys(this.ipt_data); 
- 
+            let formData        = new FormData(document.getElementById("upload_info"));    // 입력 값들을 담아 전송함.
+            let TitleImgUpload  = document.getElementById('TitleImgUpload');               // 업로드한 타이틀 이미지 파일
+            let TitleImg        = document.getElementById('TitleImg');                     // 타이틀 이미지 img 태그
+            let iterator        = null;
+            let datas           = null;                                                    // 입력한 데이터들
+
+            // 수정하기인 경우 
+            if(this.resData !== null){ 
+                iterator = Object.keys(this.resData[0]); 
+                datas    = this.resData[0];
+            }
+            // 가게 정보 최초 등록인 경우 
+            else {  
+                iterator = Object.keys(this.ipt_data);                 
+                datas    = this.ipt_data;
+            }           
+
             // 지정하지 않는 data 배열을 숫자 키값 제외시키기
             for(let key of iterator) {   
-                if(isNaN(key) === true && typeof(this.ipt_data[key]) !== 'object'){ 
-                    formData.append(key, this.ipt_data[key]);
-                }
-                else if (isNaN(key) === true && typeof(this.ipt_data[key]) === 'object'){
-                    formData.append(key, this.ipt_data[key].text);
-                }
-            }
-            
+                let appendData = null;
+
+                // text input 값 담기
+                if(isNaN(key) === true && typeof(datas[key]) !== 'object')
+                    appendData = datas[key];                     
+                // select 값 담기.
+                else if (isNaN(key) === true && typeof(datas[key]) === 'object')
+                    appendData = datas[key].text;    
+                
+                // 모든 정보가 입력되었는지 검사함.
+                if(appendData.replace(/ /gi, "") === '')
+                    return alert('입력하지 않은 정보가 있습니다.');
+                else
+                    formData.append(key, appendData);
+            } 
+             
             // 타이틀 이미지 append
-            if(TitleImgUpload.files.length !== 0) { 
-                formData.append( 'titleImg', TitleImgUpload.files[0] );
+            if(TitleImgUpload.files.length !== 0) 
+                formData.append('titleImg', TitleImgUpload.files[0]);
+            // 타이틀 이미지 없음
+            else if(TitleImg.src ==='')
+                formData.append('titleImg', null);
+            // 가게 정보 수정인 상황에서 타이틀 이미지 수정 안함.
+            else if(this.resData !== null && TitleImgUpload.files.length == 0)
+                formData.append('titleImg', this.resData[2].path + this.resData[2].filename);
+
+            // 갤러리 이미지 넣기.
+            for(let i=0; i < this.SaveImg.length; i++){
+                formData.append('galleryImg'+ i, this.SaveImg[i]);
             }
+
             // 갤러리 이미지 숫자 보내기
-            formData.append('num', num);
+            formData.append('num', this.SaveImg.length);
 
             // 콘솔창에 띄우기
             for(var pair of formData.entries()) {
@@ -363,16 +505,13 @@ export default {
             // 값 보내기
             axios.post('/owner/createRestaurant',formData)
             .then( (response) => {
-
-                 alert(response.data.msg);
-
-                 this.link = response.data.link;
-                 window.location.href = this.link;
+                alert(response.data.msg);
+                this.link = response.data.link;
+                window.location.href = this.link;
             })
             .catch((ex)=>{
-                 console.lg('updatePhoto failed',ex);
+                console.lg('updatePhoto failed',ex);
             })
-
         }
     }
 };
@@ -385,7 +524,20 @@ export default {
     font-size: 1.5rem;
     position: relative;  
     color:lightseagreen;
+    user-select:none;               /* 드래그 방지 */
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none; 
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
 }
+/* 마우스 클릭하고있을때 */
+.upload_btn:active{
+    color: darkseagreen;
+}
+/* 마우스 한번클릭후 */
+.upload_btn:visited{
+    color: cadetblue;
+} 
 /* 이미지 업로드 버튼 스타일 */
 .upload_btn_hidden {
     width: 0%;
@@ -401,51 +553,37 @@ export default {
     overflow: hidden;
     padding-bottom: 35%;
 }
+
+#gallery {
+    width:100%; 
+    min-height: 200px;
+    background-color: lightgrey; 
+    margin:auto; 
+    overflow:hidden
+}
+
 /* 갤러리 이미지 상위 card */
 .gallery_div {
     position: relative;
     float: left;
-    margin: 1%; 
-    background-color: lightgray;
-    border: 1px solid lightgrey;
+    margin: 1%;   
     width: 31%;
     height: 0;
     overflow: hidden; 
     padding-bottom: 22%; 
+    border: none;
 }
 /* 타이틀, 갤러리 이미지 스타일 */
 .img_style { 
-    position: absolute;
     top: 0;
     left: 0;
     width: 105%;
-    height: 105%; 
+    height: 105%;  
     object-fit: cover;
+    position: absolute;
 }   
 /* 저장하기 버튼 스타일 */
 .submit_btn{
     width:80%; height: 80%; font-size:1.5rem; 
 }
-
-.context-menus {
-    width: 20%;
-    border: 1px solid black;
-    z-index:100;
-    text-align: center;
-    position: absolute;
-    display: none;
-}
-.context-menus.active {
-    display: block;
-    background-color: #EFF5FB;
-}
-.context-menus.active>ul>li {
-    list-style: none;
-    padding: 10px;
-    color: #424242;
-}
-.context-menus.active>ul>li:hover {
-    background-color: lightgreen;
-}
-
 </style>
