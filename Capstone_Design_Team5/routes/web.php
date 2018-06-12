@@ -22,11 +22,40 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
-    Route::get('/getOrderList', array(
-        'as' => 'main.getOrderList',
-        'uses' => 'MainController@getOrderList'
+    Route::get('/getSearchData', array(
+        'as' => 'main.getSearchData',
+        'uses' => 'MainController@getSearchData'
     ));
 
+    Route::post('/getUserOrderList', array(
+        'as' => 'main.getUserOrderList',
+        'uses' => 'MainController@getUserOrderList'
+    ));
+
+    Route::post('/getUserCouponList', array(
+        'as' => 'main.getUserCouponList',
+        'uses' => 'MainController@getUserCouponList'
+    ));
+
+    Route::post('/getUserReservationList', array(
+        'as' => 'main.getUserReservationList',
+        'uses' => 'MainController@getUserReservationList'
+    ));
+
+    Route::post('/getUserReservationOrderInfo', array(
+        'as' => 'main.getUserReservationOrderInfo',
+        'uses' => 'MainController@getUserReservationOrderInfo'
+    ));
+
+    Route::post('/getRecommendShopData', array(
+        'as' => 'main.getRecommendShopData',
+        'uses' => 'MainController@getRecommendShopData'
+    ));
+
+    Route::post('/getRegionShopData', array(
+        'as' => 'main.getRegionShopData',
+        'uses' => 'MainController@getRegionShopData'
+    ));
 
 // <-- Show Login Form
     Route::get('login', [
@@ -44,6 +73,18 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('logout', [
         'as' => 'users.doLogout',
         'uses' => 'UsersController@doLogout'
+    ]);
+
+// <-- User Info Get
+    Route::post('getUserInfo', [
+        'as' => 'users.getUserInfo',
+        'uses' => 'UsersController@getUserInfo'
+    ]);
+
+// <-- User Info Edit
+    Route::post('editUserInfo', [
+        'as' => 'users.editUserInfo',
+        'uses' => 'UsersController@editUserInfo'
     ]);
 
 // <-- select Type
@@ -104,6 +145,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MenuController@getLayoutNumber'
     ]);
 
+    Route::post('restaurantsLike', [
+        'as' => 'restaurant.restaurantsLike',
+        'uses' => 'RestaurantController@restaurantsLike'
+    ]);
+
 // <-- User Order Page
     Route::post('makeOrder', [
         'as' => 'order.makeOrder',
@@ -160,6 +206,16 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('loadCustomLayout', [
         'as' => 'layout.loadCustomLayout',
         'uses' => 'LayoutController@loadCustomLayout'
+    ]);
+
+    Route::post('deleteMenu', [
+        'as' => 'menu.deleteMenu',
+        'uses' => 'MenuController@deleteMenu'
+    ]);
+
+    Route::post('updateMenu', [
+        'as' => 'menu.updateMenu',
+        'uses' => 'MenuController@updateMenu'
     ]);
 
 // <-- User Coupon Page
@@ -238,6 +294,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ReservationController@requestReservation'
     ]);
 
+    Route::post('/userReservationWaitCancel',[
+        'as' => 'reservation.userReservationWaitCancel',
+        'uses' => 'ReservationController@userReservationWaitCancel'
+    ]);
+
 // <— Owner Reservation List
 
     Route::get('/owner/{shop_id}/ownerReservationList', [
@@ -294,6 +355,18 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'reservation.updateReservationSelectMenu',
         'uses' =>  'ReservationController@updateReservationSelectMenu'
     ]);
+
+    Route::post('/getReservationMenuList', [
+        'as' => 'reservation.getReservationMenuList',
+        'uses' =>  'ReservationController@getReservationMenuList'
+    ]);
+
+    Route::post('/setOwnerReservation', [
+        'as' => 'reservation.setOwnerReservation',
+        'uses' =>  'ReservationController@setOwnerReservation'
+    ]);
+
+
 
 // <— Owner Statistics Page
     Route::get('/owner/{shop_id}/totalStatistics', [
@@ -377,13 +450,40 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'communication.addUserBookmark',
         'uses' => 'CommunicationController@addUserBookmark'
     ]);
+
+    // <-- User Menu Route
+    Route::get('/userCoupon', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/userPageReservation', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/userOrderHistory', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/userReviewHistory', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
+    Route::get('/editInformation', [
+        'as' => 'main.showUserMenuPage',
+        'uses' => 'MainController@showUserMenuPage'
+    ]);
+
 });
 
 /*
 // <— Test
-Route::get('test',[
-    'as' =>  'main.test',
-    'uses' => 'MainController@test'
+Route::get('translatedText',[
+    'as' =>  'main.translatedText',
+    'uses' => 'MainController@translatedText'
 ]);*/
 
 // <— Image Route
@@ -435,7 +535,6 @@ Route::get('images/flag/{image}', function($image = null)
 });
 
 // Template 이미지 Route
-
 Route::get('images/template/{image}', function($image = null)
 {
     $path = storage_path().'/app/public/img/template' .$image;

@@ -4,16 +4,21 @@
 -->
 <template>
     <div class="container">
-        <v-app>
+        <v-app class="fontSize">
             <!-- 타이틀 이미지와 가게 명이 들어갈 div -->
             <div class="title_div">
                 <div id="title_img">
-                    <div id="name_area"> <b id="name" style="float:left"></b> </div>
-                    <div id="LikeIt" @click="I_Like_It">  
-                        <b>&nbsp;좋아요 &#9829;&nbsp;</b> 
-                    </div>                    
+                    <div id="name_area"> 
+                        <b id="name" style="float:left"></b> 
+                    </div>
+                    <button id="LikeIt" @click="I_Like_It">  
+                        &nbsp;좋아요 &#9829;&nbsp;
+                    </button>  
                 </div>
             </div>
+
+            <b id="totalRating" class='column' 
+                style="margin-bottom: 4%; border-bottom:1px solid #848484; text-align: left;">방문객 평점 :&nbsp;</b>
 
             <!-- 가게 설명이 들어갈 div -->
             <div style="width:100%;">
@@ -21,8 +26,7 @@
                     <b class='column'> 소개 </b>
                 </div>
 
-                <div style="float:right; margin-right:1%; display: flex">
-                    <b id="totalRating" class='column' style="text-align: right;">방문객 평점 :</b>
+                <div style="float:right; margin-right:1%; display: flex">                 
 
                     <!-- 예약 하기 -->
                     <v-dialog v-model="dialog" persistent max-width="500px">
@@ -212,7 +216,7 @@
                                             </div>
                                         </v-card-title>
                                         <v-card-actions>
-                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData(), res_Okey()">확인</v-btn>
+                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData()" @click.native="reservation_snackbar = true">확인</v-btn>
                                             <v-btn color="primary" flat @click.native="dialog_ok = false, dialog = false">취소</v-btn>
                                         </v-card-actions>
                                     </v-card>
@@ -270,7 +274,7 @@
                                             <!-- 아이콘 -->
                                             <v-list-tile-action>
                                                 <!-- 쿠폰 다운 -->
-                                                <v-btn flat icon color="error" @click="Download(item)">
+                                                <v-btn flat icon color="error" @click="Download(item)"  @click.native="coupon_snackbar = true">
                                                     <v-icon>get_app</v-icon>
                                                 </v-btn>
                                             </v-list-tile-action>
@@ -284,14 +288,14 @@
                 </div>
             </div>
 
-            <div id="explanation" class="frame" style="padding:2%;"></div>
+            <div id="explanation" class="frame column_value" style="padding:2%;"></div>
 
             <!-- 갤러리 이미지가 들어갈 div -->
             <b class='column'> 갤러리 </b>
             <div id="gallery_div" class="frame">
-                <!-- 더보기 div 클릭 시 v-dialog 출력 -->
+                <!-- 더보기 div 클릭 시 v-dialog 출력  -->
                 <div id="moreImg" class="gallery" style="display:none">
-                    <div class="gallery_img MoreImg_inner"
+                    <div class="gallery_img MoreImg_inner" 
                          @click="PrtAllGalleryImg"
                          @click.stop="ShowMoreImg=true">더 보기</div>
                 </div>
@@ -308,7 +312,8 @@
                         </v-card-title>
 
                         <!-- 갤러리 이미지 출력 영역 -->
-                        <v-flex xs12 id="prtAllImgs"></v-flex>
+                        <v-flex xs12 id="prtAllImgs">
+                        </v-flex>
                     </v-card>
                 </v-dialog>
             </div>
@@ -353,12 +358,12 @@
                     <span class="timeInfo"> 런치 : </span>
                     <span class="timeInfo" id="lunch_open"> </span>
                     <span class="timeInfo" id="lunch_close"> ~ </span>
-                    <span class="timeInfo" id="lunch_lo"> ( last order : </span> <span> ) </span> <br>
-
+                    <span class="timeInfo" id="lunch_lo"> ( last order : </span> <span class="timeInfo"> ) </span> 
+                    <br>
                     <span class="timeInfo" > 디너 : </span>
                     <span class="timeInfo" id="dinner_open"> </span>
                     <span class="timeInfo" id="dinner_close"> ~ </span>
-                    <span class="timeInfo" id="dinner_lo"> ( last order : </span><span> ) </span>
+                    <span class="timeInfo" id="dinner_lo"> ( last order : </span><span class="timeInfo"> ) </span>
                 </div>
             </div>
 
@@ -379,6 +384,28 @@
                 <span id="privateroom" class="resInfo"> 개인실 : </span>
             </span>
             </div>
+
+            <!-- snackber (reservation) -->
+            <v-snackbar
+                :timeout="5000"
+                v-model="reservation_snackbar"    
+                :vertical="'vertical'"
+                :top="'top'"
+            >
+                예약이 완료되었습니다.
+                <v-btn flat color="white" @click.native="reservation_snackbar = false">Close</v-btn>
+            </v-snackbar>
+
+            <!-- snackber (coupon) -->
+            <v-snackbar
+                :timeout="5000"
+                v-model="coupon_snackbar"
+                 :vertical="'vertical'"
+                :top="'top'"
+            >
+                " 마이페이지-쿠폰함 " 에 담겼습니다.
+                <v-btn flat color="white" @click.native="coupon_snackbar = false">Close</v-btn>
+            </v-snackbar>
         </v-app>
     </div>
 </template>
@@ -411,7 +438,13 @@
     export default{
         data() {
             return {
+                // snackbar 
+                reservation_snackbar : false,
+                coupon_snackbar : false,
+
                 shop_id : null,
+                shopLike : false,           // 가게 좋아요. true일 경우 좋아요, false일 경우 좋아요 x
+
                 dialog: false,
                 dialog_ok : false,
                 menuDialog : false,
@@ -455,33 +488,14 @@
                 reservation_selectMenu : 1,
 
                 /* 기본 식당 시간 */
-                lunch_open  : '09:00',
-                lunch_close : '14:00',
-                dinner_open : '17:00',
-                dinner_close : '22:00',
+                lunch_open  : '',
+                lunch_close : '',
+                dinner_open : '',
+                dinner_close : '',
 
                 /* DB에서 받아 온 값 - reservation_set */
                 items:[
-                    {
-                        impossible  : '예약 불가능',
-                        pick_date   : '2018-05-03',
-                    },
-                    {
-                        impossible  : '예약 가능',
-                        pick_date   : '2018-05-04',
-                        set_time : [
-                            "11:00", "12:00", "13:30"
-                        ]
-
-                    },
-                    {
-                        impossible  : '예약 불가능',
-                        pick_date   : '2018-05-05'
-                    },
-                    {
-                        impossible  : '예약 불가능',
-                        pick_date   : '2018-05-07'
-                    }
+                    
                 ],
 
                 /* 쿠폰 */
@@ -521,67 +535,127 @@
             this.shop_id = this.$route.params.shop_id;
             url = '/restaurant/' + this.shop_id + '/getInfo';
 
-            // url = '/restaurant/1/getInfo';
+            axios.get(url).then( (response) => {
+                get_datas = response.data.restaurant;       
+                this.shopLike = response.data.shopLike;             
 
-            axios.get(url)
-                .then( (response) => {
-                    get_datas = response.data.restaurant;                    
+                // 예약 하기
+                // 메뉴
+                EventBus.$on('select_menus', function(menu) {
+                    obj.push( menu[check] ); check++;
+                });
 
-                    // 예약 하기
-                    // 메뉴
-                    EventBus.$on('select_menus', function(menu) {
-                        obj.push( menu[check] ); check++;
-                    });
+                // 예약하기
+                var set_time_data;
 
-                    // 예약하기
-                    var set_time_data;
-                    axios.post('/getReservationSettingList', {
-                        'shop_id' : this.$route.params.shop_id
-                    }).then((response) => {
-                        /* 그 가게의 예약설정된 Data */
-                        var reservationSettingData = response.data.settingData;
+                axios.post('/getReservationSettingList', {
+                    'shop_id' : this.$route.params.shop_id
+                }).then((response) => {
+                    /* 그 가게의 예약설정된 Data */
+                    var reservationSettingData = response.data.settingData;
 
-                        /* item안에 넣기 */
-                        this.items = reservationSettingData;
+                    /* item안에 넣기 */
+                    this.items = reservationSettingData;
 
-                        /* 메뉴가 선택 가능한 가게인지 아닌지 */
-                        this.reservation_selectMenu = response.data.menuSelectData[0].reservation_selectMenu;
+                    /* 메뉴가 선택 가능한 가게인지 아닌지 */
+                    this.reservation_selectMenu = response.data.menuSelectData[0].reservation_selectMenu;
 
-                        /* 기본 가게 정보 */
-                        this.lunch_open = this.resData[0].lunch_open;
-                        this.lunch_close = this.resData[0].lunch_close;
-                        this.dinner_open = this.resData[0].dinner_open;
-                        this.dinner_close = this.resData[0].dinner_close;
-                    })
-
-
-                    axios.post('/getCouponList', {
-                        'shop_id' : this.$route.params.shop_id
-                    }).then((response) => {
-                        // 쿠폰
-                        var Coupondata = response.data.coupon;
-                        this.items = Coupondata;
-                    });                    
-
-                    // 데이터 바인딩-기본정보
-                    this.enter_data(get_datas[0]);
-
-                    // 데이터 바인딩-평점
-                    this.enter_data(get_datas[1]);
-
-                    // 지도 생성
-                    this.geoCoder(get_datas[0]);
-
-                    // 타이틀 이미지 삽입
-                    this.enter_title(get_datas[2]);
-
-                    // 갤러리 이미지 출력
-                    this.enter_galley();
+                    /* 기본 가게 정보 */
+                    this.lunch_open = response.data.restaurantData[0].lunch_open;
+                    this.lunch_close = response.data.restaurantData[0].lunch_close;
+                    this.dinner_open = response.data.restaurantData[0].dinner_open;
+                    this.dinner_close = response.data.restaurantData[0].dinner_close;
                 })
-                .catch((ex)=>{
-                    alert('왜 안대');
-                })
+
+                axios.post('/getCouponList', {
+                    'shop_id' : this.$route.params.shop_id
+                }).then((response) => {
+                    // 쿠폰
+                    var Coupondata = response.data.coupon;
+                    this.items = Coupondata;
+                });
+
+                // 데이터 바인딩-기본정보
+                this.enter_data(get_datas[0]);
+
+                // 데이터 바인딩-평점
+                this.enter_data(get_datas[1]);
+
+                // 지도 생성
+                this.geoCoder(get_datas[0]);
+
+                // 타이틀 이미지 삽입
+                this.enter_title(get_datas[2]);
+
+                // 갤러리 이미지 출력
+                this.enter_galley();
+
+                // 좋아요 바인딩
+                this.I_Like_It(); 
+            })
+            .catch((ex)=>{
+                alert('가게 정보 불러오기 실패!');
+            })
+
+            // get_datas = [
+            //     {
+            //         'name'          : 'Innovative Cuisine',
+            //         'type'          : '한식',
+            //         'explanation'   : "최고의 재료를 찾아내고 그 재료가 지닌 다양한 맛을 연구해 한식이 지낸 깊은 향과 숨은 맛을 전합니다. " +
+            //                             "최상의 식재료를 선별, 그에 걸맞는 신중한 조리를 통해 재료 본연의 맛을 극대화한 한식,"+
+            //                             "전통 한식 본연의 못브에 대한 셰프의 철학과 감성을 더해 궁극의 요리 예술로서 풀어낸 한식"+
+            //                             "저희는 매일 바뀌는 계절과 에너지의 흐름을 되짚어가며 한식의 성숙하고 자연스러운 맛을"+
+            //                             "오랜 시간의 노고가 스며든 정성스러운 손길로 표현합니다.",
+            //         'dodobuken'     : '도쿄 도',
+            //         'cities'        : '미나토 구',
+            //         'address'       : '아카사카 1-11-6',
+            //         'phone'         : '010-8991-8606',
+            //         'lunch_open'    : '11:30',
+            //         'lunch_close'   : '15:00',
+            //         'lunch_lo'      : '14:30',
+            //         'dinner_open'   : '17:30',
+            //         'dinner_close'  : '22:00',
+            //         'dinner_lo'     : '21:30',
+            //         'payment'       : '카드 결제 가능',
+            //         'seat_num'      : '70석',
+            //         'children'      : 'yes',
+            //         'pet'           : 'yes',
+            //         'parking'       : 'no',
+            //         'smoking'       : 'no',
+            //         'privateroom'   : 'no',
+            //         'shopLike'          : false,
+            //     },
+            //     {'totalRating': 4.7},
+            //     {'filename' : "13_titleImg,jpeg",   'path' : '/images/13/'},
+            //     {'filename' : "13_galleryImg0,jpeg",'path' : '/images/13/'},
+            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
+            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
+            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
+            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
+            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
+            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
+            // ];    
         },
+
+        // updated() {
+        //     // 데이터 바인딩-기본정보
+        //     this.enter_data(get_datas[0]);
+
+        //     // 데이터 바인딩-평점
+        //     this.enter_data(get_datas[1]);
+            
+        //     // 지도 생성
+        //     // this.geoCoder(get_datas[0]);
+
+        //     // 타이틀 이미지 삽입
+        //     this.enter_title(get_datas[2]);
+
+        //     // 갤러리 이미지 출력
+        //     this.enter_galley();
+
+        //     this.shopLike = false; // data.shopLike;
+        //     this.I_Like_It();
+        // },
 
         components : {
             'Layout' : layout
@@ -590,7 +664,7 @@
         methods : {
             // 각 공간에 해당 값들을 삽입함.
             enter_data : function(argArray){
-                let iterator = Object.keys(argArray);
+                let iterator = Object.keys(argArray); 
 
                 for (let key of iterator){
                     if(document.getElementById(key) !== null){
@@ -615,31 +689,62 @@
             },
 
             // 좋아연.
-            I_Like_It : function(){ 
-                let LikeIt = document.getElementById('LikeIt'); 
-                let url = '';
+            I_Like_It : function(){
+                let LikeIt   = document.getElementById('LikeIt');
+                let url      = '/restaurantsLike';
+                let shop_id  = this.$route.params.shop_id;
 
-                // 좋아요
-                if(LikeIt.style.color == 'grey') {
-                    LikeIt.style.color = 'red';
-                    LikeIt.style.borderColor = 'red';                    
-                    url = '서서서서서서서서선주주주주주주주주주주주야야야야야야야';                   
+                // 클릭 시 데이터 보내기.
+                function SendValue(argValue){
+                    // 좋아요 and 좋아요 취소
+                    axios.post(url, {
+                        'shop_id' : shop_id,
+                        'shopLike': argValue
+                    })
+                    // 결과 true(좋아요) or false(좋아요 x)
+                        .then((response) => {
+                            let result = response.data.shopLike;    // 결과
+
+                            if(result === 'failed')
+                                alert('로그인해 주세요!');
+                            else
+                                ChangeColor(response.data.shopLike);
+                        })
+                        // 서버 연결 실패
+                        .catch((ex)=>{
+                            alert('요청 실패');
+                        });
+                };
+
+                // 색깔 바꾸기
+                function ChangeColor(argValue){
+                    if(argValue === true){
+                        LikeIt.style.color       = 'red';
+                        LikeIt.style.borderColor = 'red';
+                    }
+                    else if(argValue === false){
+                        LikeIt.style.color       = 'grey';
+                        LikeIt.style.borderColor = 'grey';
+                    }
                 }
-                // 좋아요 취소
+
+                // 메뉴 클릭한 경우 데이터 보내기.
+                if (event !== undefined && event.target == LikeIt) {
+                    // 좋아요 상태인 경우 좋아요 취소
+                    if(this.shopLike === true) {
+                        this.shopLike = false;
+                    }
+                    // 좋아요 상태가 아니였을 경우 좋아요
+                    else if(this.shopLike === false){
+                        this.shopLike = true;
+                    }
+                    // 변경 사항 서버에 보내기.
+                    SendValue(this.shopLike);
+                }
+                // 페이지를 로드한 경우 색상 적용 시키기
                 else {
-                    LikeIt.style.color = 'grey';
-                    LikeIt.style.borderColor = 'grey';
-                    url = '서서서서서서서서선주주주주주주주주주주주야야야야야야야';  
+                    ChangeColor(this.shopLike);
                 }
-
-                // 좋아요 and 좋아요 취소
-                axios.post(url, {
-                    'shop_id' : this.$route.params.shop_id
-                }).then((response) => {
-                    
-                }).catch((ex)=>{
-                    alert('요청 실패');
-                })
             },
 
             // 갤러리에 이미지 추가하기.
@@ -756,30 +861,33 @@
             },
 
             setTime() {
+               let shop_id = this.$route.params.shop_id;
+                
                 /* date가 클릭시 item안의 set_time[]을 select 문에 넣기 */
-                var maxIndex = this.items.length;
                 this.states = [];
 
-                /* true/ false로 날짜가 배열안에 있는지 없는지 파악 */
-                var check = false;
+                // db에서 데이터 받기
+                axios.post('/getReservationSettingByDate', {
+                    shop_id    : shop_id,
+                    click_date : this.start_date,
+                }).then((response) => {
 
-                for(var i = 0; i < maxIndex; i++)
-                {
-                    // 배열안의 예약 가능 시간 빼오기
-                    if(this.start_date == this.items[i].pick_date && this.items[i].impossible == "예약 가능")
+                    var pick_time = response.data.settingData;
+
+                    if(pick_time != '')
                     {
-                        check = true;
-                        for(var j = 0; j < this.items[i].set_time.length; j++)
+                        for(var i = 0; i < pick_time.length; i++)
                         {
-                            this.states.push(this.items[i].set_time[j])
+                            // 배열안의 예약 가능 시간 빼오기
+                            this.states.push(pick_time[i].start_time.substr(0,5));
                         }
                     }
-                }
+                    /* 사장님이 지정한 시간대가 없을 경우 */
 
-                /* 사장님이 지정한 설정 배열에 날짜가 존재하지 않는 경우 */
-                if(check == false) {
-                    this.basic_time();
-                }
+                    else {
+                        this.basic_time();
+                    }
+                });
             },
 
             // 기본 시간 으로 설정
@@ -851,7 +959,6 @@
 
                 }
             },
-
 
             res_Okey() {
                 confirm('예약이 완료 되었습니다.')
@@ -970,17 +1077,19 @@
     };
 </script>
 
-<style scoped>
+<style>
     /* 모바일 */
     @media (max-width: 639px){
-        html         { font-size: 10px; }
-        #name        { font-size: 1.5rem; }
-        #explanation {max-height: 200px; overflow: scroll;}
-        .column      { font-size: 1.8rem; }
-        .timeInfo    { font-size: 1.5rem; }
-        .resInfo     { font-size: 1.5rem; }
-        .gallery     { width: 48%; padding-bottom: 35%; }
-        .img-outer   { width: 90%; padding-bottom: 60%; }
+        .fontSize       { font-size: 10px; }
+        #name           { font-size: 1.5rem; }    
+        #LikeIt         { font-size: 1.2rem;}
+        #explanation    {max-height: 200px; overflow: scroll;}
+        .column         { font-size: 1.2rem; }     
+        .column_value   { font-size: 1.2rem;}
+        .timeInfo       { font-size: 1.2rem; }
+        .resInfo        { font-size: 1.2rem; }
+        .gallery        { width: 100%; padding-bottom: 75%; }
+        .img-outer      { width: 90%; padding-bottom: 60%; }
 
         /* 예약하기 */
         .total {
@@ -1011,14 +1120,16 @@
     }
     /* 테블릿 */
     @media (min-width: 640px) and (max-width: 1023px){
-        html         { font-size: 12px; }
-        #name        { font-size: 2rem; }
-        #explanation {max-height: 300px; overflow: scroll;}
-        .column      { font-size: 2rem; }
-        .timeInfo    { font-size: 1.5rem; }
-        .resInfo     { font-size: 1.7rem; }
-        .gallery     { width: 48%; padding-bottom: 35%; }
-        .img-outer   { width: 90%; padding-bottom: 60%; }
+        .fontSize       { font-size: 12px; }
+        #name           { font-size: 2rem; }    
+        #LikeIt         { font-size: 2rem;}
+        #explanation    {max-height: 300px; overflow: scroll;}
+        .column         { font-size: 2rem; }     
+        .column_value   { font-size: 1.5rem;}
+        .timeInfo       { font-size: 1.5rem; }
+        .resInfo        { font-size: 1.7rem; }
+        .gallery        { width: 48%; padding-bottom: 35%; }
+        .img-outer      { width: 90%; padding-bottom: 60%; }
 
         /* 예약하기 */
         .total {
@@ -1045,13 +1156,15 @@
     }
     /* 데스트 탑 */
     @media (min-width: 1024px){
-        html        { font-size: 15px; }
-        #name       { font-size: 2rem; }
-        .column     { font-size: 2rem; }
-        .timeInfo   { font-size: 1.5rem; }
-        .resInfo    { font-size: 1.7rem; }
-        .gallery    { width: 31%; padding-bottom: 25%;}
-        .img-outer  { width: 46%; padding-bottom: 40%;}
+        .fontSize       { font-size: 15px; }
+        #name           { font-size: 2rem; }        
+        #LikeIt         { font-size: 2rem;}
+        .column         { font-size: 2rem; }        
+        .column_value   { font-size: 1.7rem;}
+        .timeInfo       { font-size: 1.5rem; }
+        .resInfo        { font-size: 1.7rem; }
+        .gallery        { width: 31%; padding-bottom: 25%;}
+        .img-outer      { width: 46%; padding-bottom: 40%;}
 
         /* 예약하기 */
         .total {
@@ -1081,7 +1194,7 @@
     .frame {
         width: 100%;
         border-top: 1px solid;
-        font-size: 1.8rem;
+        /* font-size: 1.8rem; */
         color: #848484;
         display:inline-block;
         margin-bottom: 5%;
@@ -1113,31 +1226,31 @@
         width: 105%;
         height: 105%;
         background-size: 100% 100%;
-        /* background-image: url('./test1.jpg'); */
+        /* background-image: url('./test4.jpg'); */
         position: absolute;
         object-fit: cover;
     }
 
     /* 가게 명 */
     #name_area {
-        /* top: 0;
-        left: 0; */
+        top: 0;
+        left: 0;
         padding:4px;
         opacity: 0.5;
         background: black;
         color: white;
         text-align: center;
-        float: left;
+        display:inline-block;
     }
 
     /* 좋아여 */
-    #LikeIt { 
+    #LikeIt {   
         margin-right: 7%;
-        font-size: 2rem;
         color: grey;
         border: 3px solid grey; 
         text-align: center; 
-        float: right; 
+        float: right;
+        font-weight: bold;  
     }
 
     /*갤러리 관련.*/
@@ -1203,7 +1316,7 @@
     }
     /* 정보 내용 */
     .column_value{
-        font-size: 1.7rem;
+        /* font-size: 1.7rem; */
         padding: 3px;
         position: relative;
     }

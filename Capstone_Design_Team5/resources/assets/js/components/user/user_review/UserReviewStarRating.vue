@@ -27,73 +27,73 @@ export default {
         'UserStar' : UserStar
     },
     model: {
-        prop: 'rating',
-        event: 'rating-selected'
+        prop    : 'rating',
+        event   : 'rating-selected'
     },
     props: {
         increment: {
-            type: Number,
-            default: 1
+            type    : Number,
+            default : 1
         },
         rating: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         roundStartRating: {
-            type: Boolean,
-            default: true
+            type    : Boolean,
+            default : true
         },
         activeColor: {
-            type: String,
-            default: '#ffd055'
+            type    : String,
+            default : '#ffd055'
         },
         inactiveColor: {
-            type: String,
-            default: '#d8d8d8'
+            type    : String,
+            default : '#d8d8d8'
         },
         maxRating: {
-            type: Number,
-            default: 5
+            type    : Number,
+            default : 5
         },
         starSize: {
-            type: Number,
-            default: 50
+            type    : Number,
+            default : 50
         },
         showRating: {
-            type: Boolean,
-            default: true
+            type    : Boolean,
+            default : true
         },
         readOnly: {
-            type: Boolean,
-            default: false
+            type    : Boolean,
+            default : false
         },
         textClass: {
-            type: String,
-            default: ''
+            type    : String,
+            default : ''
         },
         inline: {
-            type: Boolean,
-            default: false
+            type    : Boolean,
+            default : false
         },
         borderColor: {
-            type: String,
-            default: '#999'
+            type    : String,
+            default : '#999'
         },
         borderWidth: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         padding: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         rtl: {
-            type: Boolean,
-            default: false
+            type    : Boolean,
+            default : false
         },
         fixedPoints: {
-            type: Number,
-            default: null
+            type    : Number,
+            default : null
         }
     },
     created() {
@@ -158,11 +158,11 @@ export default {
     },
     data() {
         return {
-            step: 0,
-            fillLevel: [],
-            currentRating: 0,
-            selectedRating: 0,
-            ratingSelected: false
+            step            : 0,
+            fillLevel       : [],
+            currentRating   : 0,
+            selectedRating  : 0,
+            ratingSelected  : false
         }
     }
 }

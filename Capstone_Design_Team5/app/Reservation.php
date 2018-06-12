@@ -11,6 +11,7 @@ class Reservation extends Model
 
     protected $fillable = [
         'shop_id', 'user_num', 'reservation_date', 'person',
-        'child', 'message', 'menu_select', 'accept', 'order_num'
+        'child', 'message', 'menu_select', 'accept', 'order_num',
+        'refused_message'
     ];
 }

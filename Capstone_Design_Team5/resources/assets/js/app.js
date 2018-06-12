@@ -34,26 +34,27 @@ Vue.use(VueGoogleMaps, {
 import VueCharts from 'vue-chartjs'
 import { Bar, HorizontalBar, Line, Pie, Doughnut, Radar } from 'vue-chartjs'
 
-// <-- User Main Page Component Import
+// <— User Main Page Component Import
 import Home                 from './components/user/user_main/UserMain.vue';
-// <-- User Register Page Component Import
+// <— User Main Page Component Import
+import TopList                 from './components/TopList.vue';
+// <— User Register Page Component Import
 import Register         from './components/Register.vue';
 
-
-// <-- Edit Information
+// <— Edit Information
 import EditInformation from './components/EditInformation';
 
 
-// <-- User Restaurant Page Component Import
+// <— User Restaurant Page Component Import
 import UserRestaurantMain   from './components/user/user_common/UserRestaurantMain.vue';
 
-// <-- Owner Common Page Component Import
+// <— Owner Common Page Component Import
 import OwnerPage                from './components/owner/owner_common/OwnerPage.vue';
 import OwnerPageSideReservation from './components/owner/owner_common/OwnerPageSideReservation.vue';
 import OwnerPageSideSetting     from './components/owner/owner_common/OwnerPageSideSetting.vue';
-import OwnerPageSideStatistics from './components/owner/owner_common/OwnerPageSideStatistics.vue';
+import OwnerPageSideStatistics  from './components/owner/owner_common/OwnerPageSideStatistics.vue';
 
-// <-- Owner Reservation Page
+// <— Owner Reservation Page
 // Owner Reservation List Import
 import OwnerReservationList     from './components/owner/owner_reservation/OwnerReservationlist.vue';
 // Owner Reservation Accept Page Import
@@ -61,15 +62,13 @@ import OwnerReservationAccept   from './components/owner/owner_reservation/Owner
 // Owner Reservation Setting Page Import
 import OwnerReservationSetting  from './components/owner/owner_reservation/OwnerReservationSetting.vue';
 
-// <-- Create Restaurant Page
+// <— Create Restaurant Page
 // Create Restaurant Information Import
 import OwnerRestaurant from './components/owner/owner_restaurant/OwnerRestaurant.vue';
 // Create Coupon Page Import
 import OwnerCreateCoupon from './components/owner/owner_coupon/createCoupon.vue';
 
-// <-- 전자메뉴판 설정
-// 전자 메뉴판 설정 Page Component Import
-import OwnerMenu from './components/owner/owner_menu/OwnerMenu.vue';
+// <— 전자메뉴판 설정
 // 전자메뉴판 메뉴 추가 Page Component Import
 import OwnerMenuOperate from './components/owner/owner_menu/OwnerMenuOperate.vue';
 // 전자메뉴판 메뉴 리스트 Page Component Import
@@ -77,7 +76,7 @@ import OwnerMenuList from './components/owner/owner_menu/OwnerMenuList.vue';
 // 전자메뉴판 메뉴 레이아웃 선택 Page Component Import
 import OwnerMenuSelectLayout from './components/owner/owner_menu/OwnerMenuSelectLayout.vue';
 
-// <-- user Menu & Review
+// <— user Menu & Review
 // 가게 정보 페이지 컴포넌트 import
 import MenuMain from './components/user/user_menu/MenuMain.vue';
 // 메뉴판 페이지 컴포넌트 import
@@ -87,13 +86,13 @@ import UserRestaurant from './components/user/user_restaurant/UserRestaurant.vue
 // 리뷰 작성 페이지 컴포넌트 import
 import UserWriteReview from './components/user/user_review/UserWriteReview.vue';
 
-// <-- user Reservation
+// <— user Reservation
 import CustomerAddReservation from './components/user/user_reservation/CustomerAddReservation.vue';
 
-// <-- owner statistics
+// <— owner statistics
 import OwnerTotalStatistics from './components/owner/owner_statistics/OwnerTotalStatistics.vue';
 // 손님 통계
-import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCustomerStatistics.vue';   
+import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCustomerStatistics.vue';
 // 매출 통계
 import OwnerSalesStatistics from './components/owner/owner_statistics/OwnerSalesStatistics.vue';
 
@@ -108,19 +107,25 @@ import UserOrderHistory from './components/user/user_restaurant/UserOrderHistory
 
 const router = new VueRouter({
         routes: [
-            // <-- main Page
+            // <— main Page
             {
                 path: '/',
                 name: 'home',
                 component: Home
             },
-            // <-- 회원 가입
+            // <— 회원 가입
             {
                 path: '/register',
                 name: 'register',
                 component: Register
             },
-            // <-- 회원 정보 수정
+            {
+                path: '/topList',
+                name: 'topList',
+                component: TopList,
+                props: true
+            },
+            // <— 회원 정보 수정
             {
                 path: '/editInformation',
                 name: 'EditInformation',
@@ -129,28 +134,28 @@ const router = new VueRouter({
             {
                 // 쿠폰함
                 name: 'UserCoupon',
-                path: '/UserCoupon',
+                path: '/userCoupon',
                 component: UserCoupon,
             },
             {
                 // 예약내역
                 name: 'UserPageReservation',
-                path: '/UserPageReservation',
+                path: '/userPageReservation',
                 component: UserPageReservation,
             },
             {
                 // 리뷰내역
                 name: 'UserReviewHistory',
-                path: '/UserReviewHistory',
+                path: '/userReviewHistory',
                 component: UserReviewHistory,
             },
             {
                 // 주문내역
                 name: 'UserOrderHistory',
-                path: '/UserOrderHistory',
+                path: '/userOrderHistory',
                 component: UserOrderHistory,
             },
-            // <-- 가게 페이지 공통
+            // <— 가게 페이지 공통
             {
                 path: '/restaurant',
                 name: 'UserRestaurantMain',
@@ -221,7 +226,7 @@ const router = new VueRouter({
                                 // Restaurant 수정
                                 name: 'OwnerRestaurant',
                                 path: '/owner/:shop_id/editRestaurant',
-                                    // '/owner/createRestaurant',
+                                // '/owner/createRestaurant',
                                 // '/owner/:shop_id/editRestaurant',
                                 component: OwnerRestaurant
                             },
@@ -232,30 +237,22 @@ const router = new VueRouter({
                                 component: OwnerCreateCoupon
                             },
                             {
-                                // 전자 메뉴판 설정
-                                name: 'OwnerMenu',
-                                path: '/owner/:shop_id/menu',
-                                component: OwnerMenu,
-                                children: [
-                                    {
-                                        // 전자메뉴판 메뉴 추가
-                                        name: 'OwnerMenuOperate',
-                                        path: '/owner/:shop_id/menuOperate',
-                                        component: OwnerMenuOperate
-                                    },
-                                    {
-                                        // 전자메뉴판 메뉴 리스트
-                                        name: 'OwnerMenuList',
-                                        path: '/owner/:shop_id/menuList',
-                                        component: OwnerMenuList
-                                    },
-                                    {
-                                        // 전자메뉴판 레이아웃 설정
-                                        name: 'OwnerMenuSelectLayout',
-                                        path: '/owner/:shop_id/menuLayout',
-                                        component: OwnerMenuSelectLayout
-                                    },
-                                ]
+                                // 전자메뉴판 메뉴 추가
+                                name: 'OwnerMenuOperate',
+                                path: '/owner/:shop_id/menuOperate',
+                                component: OwnerMenuOperate
+                            },
+                            {
+                                // 전자메뉴판 메뉴 리스트
+                                name: 'OwnerMenuList',
+                                path: '/owner/:shop_id/menuList',
+                                component: OwnerMenuList
+                            },
+                            {
+                                // 전자메뉴판 레이아웃 설정
+                                name: 'OwnerMenuSelectLayout',
+                                path: '/owner/:shop_id/menuLayout',
+                                component: OwnerMenuSelectLayout
                             }
                         ]
                     },
@@ -285,7 +282,12 @@ const router = new VueRouter({
                                     component: OwnerSalesStatistics
                                 }
                             ]
-                    }              
+                    },
+                    {
+                        name: 'CreateRestaurant',
+                        path: '/owner/createRestaurant',
+                        component: OwnerRestaurant
+                    }
                 ],
             },
             {

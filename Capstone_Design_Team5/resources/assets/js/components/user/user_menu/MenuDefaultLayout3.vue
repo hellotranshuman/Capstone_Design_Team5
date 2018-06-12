@@ -266,7 +266,7 @@ export default {
 }// end of export default
 </script>
 
-<style scoped>
+<style>
 .tem_img {
     position: relative;
     width: 100%;

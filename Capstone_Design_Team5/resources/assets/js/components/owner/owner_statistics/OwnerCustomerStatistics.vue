@@ -228,7 +228,7 @@
         <v-layout justify-space-around>
           <v-spacer></v-spacer>
           <v-flex xs7>
-            <CustomerRatingChart :height="300" :chart-data="ratingData"></CustomerRatingChart>
+            <CustomerRatingChart :height="300" :chart-data="ratingData" :options="customerRateOptions"></CustomerRatingChart>
           </v-flex>
           <v-flex xs3 class="card-text-style">
             <br><br>
@@ -513,6 +513,7 @@ import MenuRankingChart       from './MenuRankingChart.vue';      // 메뉴 주�
         customerGenderData  : [],   // 그래프를 그리기 위한 판매량 대비 방문 손님 성비 데이터가 저장될 변수
         customerAgeData     : [],   // 그래프를 그리기 위한 판매량 대비 방문 손님 연령대 데이터가 저장될 변수
         customerCountryData : [],   // 그래프를 그리기 위한 판매량 대비 방문 손님 국적 데이터가 저장될 변수
+        customerRateOptions : {},   // CustomerRatingChar 그래프에 사용될 option이 저장될 변수
 
         getRatingScore  : [         // 그래프를 그리기 위한 평점 배열을 저장할 배열, 값을 초기화 해둡니다.
           {'totalRating'  : 0},
@@ -524,7 +525,6 @@ import MenuRankingChart       from './MenuRankingChart.vue';      // 메뉴 주�
 
         topDateBar      : true,  // 날짜 상단바의 현재 상태를 저장하는 변수
         topDateBarSize  : 83,    // 날짜 상단바의 크기를 저장하는 변수
-
         nowEasing       : 'easeInQuad', // 페이지 이동 방식
         nowOffset       : 0,            // 페이지 offset 설정 (이동 위치에서 남길만큼의 위치값)
         nowUpPosition   : 0,            // 최상단 페이지 이동 위치
@@ -842,6 +842,18 @@ import MenuRankingChart       from './MenuRankingChart.vue';      // 메뉴 주�
                 pointBackgroundColor  : 'rgba(000,102,255,0.7)',    // 포인터의 배경색깔
               },
             ]
+          }
+
+          // option을 저장합니다.
+          this.customerRateOptions = {
+            scale: {
+              ticks: {
+                beginAtZero: true,
+                min: 0,
+                max: 5,
+                stepSize:0.5,
+              }
+            }
           }
         }).catch(console.log('Oh my god!!, Failed'));
       },

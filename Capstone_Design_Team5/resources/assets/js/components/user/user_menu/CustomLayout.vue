@@ -4,22 +4,22 @@
 <div class="container" style="width:100%; border:1px solid; "> 
 <v-container style="color:white">
     <!-- 카테고리 영역 -->
-    <v-layout xs12> 
+    <v-layout xs12>
         <v-card style="margin:auto">
             <v-bottom-nav :value="true" :active.sync="e2">
-                <v-btn v-for="(value,key) in categorys" :key="key" @click="click_category">
-                    {{ value }} 
+                <v-btn v-for="(value,key) in categorys" :key="key"
+                       :value="value" @click="click_category">
+                    {{ value }}
                 </v-btn>
             </v-bottom-nav>
         </v-card>
-    </v-layout> 
-    
+    </v-layout>
     <!-- 메뉴 영역 -->
     <div name="createdMenu" v-for="n in range(0, menu_num-1)" :key="n" class="menu_body">        
         <!-- 메뉴 이미지 -->
         <div name="createdImg">
-            <img src="./example7.jpg" class="inner-img">
-            <!-- <img :src="get_menus[n].path + get_menus[n].filename"> -->
+            <!-- <img src="./example7.jpg" class="inner-img"> -->
+            <img :src="get_menus[n].path + get_menus[n].filename">
         </div>
             
         <!-- 메뉴 명 -->
@@ -62,18 +62,21 @@ import { EventBus } from './eventBus.js';
   
 export default {
     created() {
-        let url = '선주야 부탁한다.';
+        let url = '/menu/getCategory';
         let get_categorys = null;                       // 카테고리 값들을 받을 변수
         let get_menuData  = null;                       // 커스텀마이징 메뉴판 JSON 값 받을 변수
         this.shop_id = this.$route.params.shop_id;      // 샵 아이디 
 
         // 카테고리 && 커스텀 메뉴판 JSON 값 요청 요청하기.
-        axios.post()
+        axios.post(url, {
+            'shop_id' : this.$route.params.shop_id,
+        })
         .then( (response) => {
             get_categorys  = response.data.category;            // 카테고리 값 받기
-            get_menuData   = response.data.custom;              // 커스텀 메뉴판 값
+            get_menuData   = response.data.layout[0].layout_data;              // 커스텀 메뉴판 값
             this.categorys = this.unique(get_categorys);        // 카테고리 중복 값 제거.
             this.MenuData  = JSON.parse(get_menuData);          
+
         })
         .catch((ex)=>{alert('메뉴 로드 실패');});     
     }, 
@@ -169,7 +172,7 @@ export default {
             url = '/menu/getMenu/' + this.shop_id + '/' + category;
  
             // 클릭한 카테고리의 메뉴 호출
-            axios.post(url)
+            axios.get(url)
             .then( (response) => {
                 this.get_menus = response.data.menu; 
                 this.menu_num  = this.get_menus.length;                  

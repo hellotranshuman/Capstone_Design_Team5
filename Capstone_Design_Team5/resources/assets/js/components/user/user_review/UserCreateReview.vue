@@ -180,73 +180,73 @@ export default {
     props : {
         // 리뷰 번호
         reviewID:{
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         // 사용자 아이디
         userID: {
-            type: String,
-            default: ""  
+            type    : String,
+            default : ""  
         },
         // 국적
         country: {
-            type: String,
-            default: ""
+            type    : String,
+            default : ""
         },
         // 작성 날짜
         writeDate: {
-            type: String,
-            default: ""
+            type    : String,
+            default : ""
         },
         //리뷰 좋아요 개수
         likeNum: {
-            type: [String, Number],
-            default: 0
+            type    : [String, Number],
+            default : 0
         },
         // 리뷰 좋아요가 선택된 리뷰인지 여부
         reviewLike: {
-            type: Boolean,
-            default: false
+            type    : Boolean,
+            default : false
         },
         // 총 평점
         rating: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         // 맛
         taste: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         // 서비스
         service: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         // 분위기
         mood: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         // 가격
         price: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         // 이미지배열
         image: {
-            type: Array,
-            default: []
+            type    : Array,
+            default : []
         },
         // 리뷰 내용
         content: {
-            type: String,
-            default: ""
+            type    : String,
+            default : ""
         },
         // 해시 태그
         hashTag: {
-            type: Array,
-            default: []
+            type    : Array,
+            default : []
         },
     },
     // 컴포넌트 선언
@@ -257,40 +257,38 @@ export default {
     data() {
         return { 
             slide1: [{
-                src:  "../../images/review/" + this.image[0],
-                msrc: "../../images/review/" + this.image[0],
-                alt: 'picture1',
-                title: 'Image1',
-                w: 600,
-                h: 400
+                src     :  "../../images/review/" + this.image[0],
+                msrc    : "../../images/review/" + this.image[0],
+                alt     : 'picture1',
+                title   : 'Image1',
+                w       : 600,
+                h       : 400
                 },
             ],
             slide2: [{
-                src:  "../../images/review/" + this.image[1],
-                msrc: "../../images/review/" + this.image[1],
-                alt: 'picture2',
-                title: 'Image2',
-                w: 600,
-                h: 400
+                src     :  "../../images/review/" + this.image[1],
+                msrc    : "../../images/review/" + this.image[1],
+                alt     : 'picture2',
+                title   : 'Image2',
+                w       : 600,
+                h       : 400
                 },
             ],
 
             slide3: [{
-                src:  "../../images/review/" + this.image[2],
-                msrc: "../../images/review/" + this.image[2],
-                alt: 'picture3',
-                title: 'Image3',
-                w: 600,
-                h: 400
+                src     :  "../../images/review/" + this.image[2],
+                msrc    : "../../images/review/" + this.image[2],
+                alt     : 'picture3',
+                title   : 'Image3',
+                w       : 600,
+                h       : 400
                 },
             ],
             reviewLikeBut : this.reviewLike,    // 리뷰 좋아요 버튼을 눌렸는지 아닌지 구분하는 값을 저장하는 변수
             reviewLikeNum : this.likeNum,       // 전달 받은 리뷰 좋아요를 받은 개수값을 변수에 저장합니다.
-
-            starColor : "#ffd055",
-            inactiveStarColor : "#ffd055",
-
-            flag : "../../images/flag/" + this.country + ".svg",  // 국적에 맞는 깃발 이미지 주소
+            starColor           : "#ffd055",
+            inactiveStarColor   : "#ffd055",
+            flag                : "../../images/flag/" + this.country + ".svg",  // 국적에 맞는 깃발 이미지 주소
         }
     },
 
@@ -299,10 +297,6 @@ export default {
         likeButClick(){
             this.reviewLikeBut = !this.reviewLikeBut;
         }
-    },
-
-    created(){
-
     },
 
     // watch 속성은 데이터 변화를 감지해서 자동으로 특정 로직을 수행함
@@ -318,23 +312,21 @@ export default {
             else
                 this.reviewLikeNum--;
 
-            console.log("리뷰 좋아요버튼 상태 : ");
-            console.log(this.reviewLikeBut);
-            console.log(typeof this.reviewLikeBut);
-            console.log("리뷰 좋아요 값 : ");
-            console.log(this.reviewLikeNum);
-            console.log(typeof this.reviewLikeNum);
-            console.log("리뷰 글 번호 : ");
-            console.log(this.reviewID);
+            // console.log("리뷰 좋아요버튼 상태 : ");
+            // console.log(this.reviewLikeBut);
+            // console.log(typeof this.reviewLikeBut);
+            // console.log("리뷰 좋아요 값 : ");
+            // console.log(this.reviewLikeNum);
+            // console.log(typeof this.reviewLikeNum);
+            // console.log("리뷰 글 번호 : ");
+            // console.log(this.reviewID);
 
             // 리뷰id값, 리뷰 좋아요 상태를 post로 전송합니다.
             axios.post('/review/like',{
                 "review_id"     : this.reviewID,        // 리뷰 id값
                 "review_status" : this.reviewLikeBut    // 리뷰 좋아요 상태 (true : 누름, false : 안누름)
             }).then(function (response) {
-
-                alert(response.data.msg);
-
+                // alert(response.data.msg);
             }).catch(console.log('is catch'));
         }
     },

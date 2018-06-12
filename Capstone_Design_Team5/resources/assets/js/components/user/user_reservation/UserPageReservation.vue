@@ -23,13 +23,13 @@
                                                 :key="index"
                                         >
                                             <v-card>
-                                           
+                                                <!-- 사진 -->
                                                 <v-card-media
                                                         :src="card.src"
                                                         height="150px"
                                                 >
                                                 </v-card-media>
-                                           
+                                                <!-- 내용 -->
                                                 <v-card-text>
                                                     <div>
                                                         <B>{{Acceptcards[index].shopName}}</B><br>
@@ -39,7 +39,7 @@
                                                     </div>
                                                 </v-card-text>
                                                 <v-card-actions>
-                                                    <v-btn small color="primary" flat @click.stop="AcceptSpendMenu(card)">상세보기</v-btn>
+
                                                 </v-card-actions>
                                             </v-card>
                                         </v-flex>
@@ -64,13 +64,13 @@
                                                 :key="index"
                                         >
                                             <v-card>
-                                           
+                                                <!-- 사진 -->
                                                 <v-card-media
                                                         :src="card.src"
                                                         height="150px"
                                                 >
                                                 </v-card-media>
-                                         
+                                                <!-- 내용 -->
                                                 <v-card-title>
                                                     <div>
                                                         <B>{{StandBycards[index].shopName}}</B><br>
@@ -81,12 +81,12 @@
                                                 </v-card-title>
                                                 <v-card-actions>
                                                     <v-spacer></v-spacer>
-                                                    <v-btn small color="primary" flat @click.stop="StandBySpendMenu(card)">상세보기</v-btn>
 
                                                     <v-btn small color="error" dark @click.stop="dialog = true">예약 취소
                                                         <v-icon small dark right>check_circle</v-icon>
                                                     </v-btn>
 
+                                                    <!-- 예약 취소 Dialog -->
                                                     <v-dialog v-model="dialog" max-width="500px">
                                                         <v-card>
                                                             <v-card-text>
@@ -94,7 +94,7 @@
                                                                 <v-text-field
                                                                         v-model="WhyCancel"
                                                                         label="예약 취소 사유"
-                                                                        class="input-group—focused"
+                                                                        class="input-group--focused"
                                                                         color="error"
                                                                 ></v-text-field>
                                                             </v-card-text>
@@ -129,13 +129,13 @@
                                                 :key="index"
                                         >
                                             <v-card>
-                                               
+                                                <!-- 사진 -->
                                                 <v-card-media
                                                         :src="card.src"
                                                         height="150px"
                                                 >
                                                 </v-card-media>
-                                               
+                                                <!-- 내용 -->
                                                 <v-card-title>
                                                     <div>
                                                         <B>{{Cancelcards[index].shopName}}</B><br>
@@ -164,7 +164,6 @@
         data() {
             return {
                 dialog : false,
-                menu_dialog : false,
 
                 // 이유
                 WhyCancel : '',
@@ -178,7 +177,6 @@
                 // 취소 예약 배열
                 Cancelcards: [],
 
-                orderMenu : '',
             }
         },
         created: function () {
@@ -206,6 +204,7 @@
                         acceptarray[i]['date']     = acceptreservationData[i].reservation_date;
                         acceptarray[i]['adult']    = acceptreservationData[i].person;
                         acceptarray[i]['child']    = acceptreservationData[i].child;
+                        acceptarray[i]['orderCheck']   = acceptreservationData[i].order_num;
                     }
 
                     this.Acceptcards = acceptarray;
@@ -224,6 +223,7 @@
                         standByarray[i]['date']     = standByreservationData[i].reservation_date;
                         standByarray[i]['adult']    = standByreservationData[i].person;
                         standByarray[i]['child']    = standByreservationData[i].child;
+                        standByarray[i]['orderCheck']   = standByreservationData[i].order_num;
                     }
 
                     this.StandBycards = standByarray;
@@ -256,9 +256,26 @@
                     id          : this.Acceptcards[index].id,
                 }).then((response)=> {
                     var MenuorderData = response.data.currentOrder;
+                    var MenuList = '';
 
-                    console.log(MenuorderData);
+                    // 1. 주문 메뉴 옵션 합치기s
+                    for(var i = 0 ; i < MenuorderData.length; i++)
+                    {
+                        MenuList = (i+1)+'번 :' + MenuorderData[i]['menu_name' + (i+1)]
+                            + ' 가격:' + MenuorderData[i]['menu_price' + (i+1)];
 
+                        // 옵션 개수…도..
+                        var OptionCount = MenuorderData[i]['optionNum'+(i+1)];
+
+                        // 메뉴
+                        for(var j = 0; j < OptionCount; j++)
+                        {
+                            MenuList  += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
+                                + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
+                        }
+                    }
+
+                    this.hello = MenuList;
 
                 }).catch(console.log('test '));
             },
@@ -269,34 +286,29 @@
                     id          : this.StandBycards[index].id,
                 }).then((response)=> {
                     var MenuorderData = response.data.currentOrder;
+                    var MenuList = '';
 
-                    this.MenuList(MenuorderData);
+                    // 1. 주문 메뉴 옵션 합치기s
+                    for(var i = 0 ; i < MenuorderData.length; i++)
+                    {
+                        MenuList = (i+1)+'번 :' + MenuorderData[i]['menu_name' + (i+1)]
+                            + ' 가격:' + MenuorderData[i]['menu_price' + (i+1)];
+
+                        // 옵션 개수…도..
+                        var OptionCount = MenuorderData[i]['optionNum'+(i+1)];
+
+                        // 메뉴
+                        for(var j = 0; j < OptionCount; j++)
+                        {
+                            MenuList  += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
+                                + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
+                        }
+                    }
+
+                    this.StandBycards[index]['orderMenu'] = MenuList;
+                    alert(this.StandBycards[index]['orderMenu']);
 
                 }).catch(console.log('test '));
-            },
-
-            MenuList(MenuorderData) {
-                var MenuorderData = MenuorderData;
-                var MenuList;
-
-                // 1. 주문 메뉴 옵션 합치기s
-                for(var i = 0 ; i < MenuorderData.length; i++)
-                {
-                    MenuList = (i+1)+'번 :' + MenuorderData[i]['menu_name' + (i+1)]
-                        + ' 가격:' + MenuorderData[i]['menu_price' + (i+1)];
-
-                    // 옵션 개수…도..
-                    var OptionCount = MenuorderData[i]['optionNum'+(i+1)];
-
-                    // 메뉴
-                    for(var j = 0; j < OptionCount; j++)
-                    {
-                        MenuList  += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
-                            + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
-                    }
-                }
-
-                this.orderMenu = MenuList;
             },
 
             // 예약을 취소 할 경우
@@ -314,7 +326,5 @@
         }
     }
 </script>
-
 <style>
-
 </style>

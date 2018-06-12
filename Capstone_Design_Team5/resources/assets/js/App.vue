@@ -2,12 +2,12 @@
     <div>
         <v-app>
             <v-navigation-drawer
-                v-model="menu"
-                clipped
-                fixed
-                app
-                temporary
-                hide-overlay
+                    v-model="menu"
+                    clipped
+                    fixed
+                    app
+                    temporary
+                    hide-overlay
             >
                 <v-list>
                     <v-list-tile avatar to="/editInformation">
@@ -24,7 +24,7 @@
                 <v-divider></v-divider>
                 <v-list v-if="!checkRestaurant()">
                     <!-- 주문 내역 -->
-                    <v-list-tile to="/UserOrderHistory">
+                    <v-list-tile to="/userOrderHistory">
                         <v-list-tile-action>
                             <v-icon large>assignment</v-icon>
                         </v-list-tile-action>
@@ -33,7 +33,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                     <!-- 예약 내역 -->
-                    <v-list-tile to="/UserPageReservation">
+                    <v-list-tile to="/userPageReservation">
                         <v-list-tile-action>
                             <v-icon large>date_range</v-icon>
                         </v-list-tile-action>
@@ -42,7 +42,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                     <!-- 리뷰 내역 -->
-                    <v-list-tile to="/UserReviewHistory">
+                    <v-list-tile to="/userReviewHistory">
                         <v-list-tile-action>
                             <v-icon large>rate_review</v-icon>
                         </v-list-tile-action>
@@ -51,7 +51,7 @@
                         </v-list-tile-content>
                     </v-list-tile>
                     <!-- 쿠폰함 -->
-                    <v-list-tile to="/UserCoupon">
+                    <v-list-tile to="/userCoupon">
                         <v-list-tile-action>
                             <v-icon large>loyalty</v-icon>
                         </v-list-tile-action>
@@ -77,7 +77,7 @@
                             <v-list-tile-content>
                                 <v-list-tile-title>
                                     Communication
-                                </v-list-tile-title> 
+                                </v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
                         <!-- 출력될 modal창 내용-->
@@ -85,7 +85,7 @@
                             <v-toolbar dark color="grey darken-3">
                                 <v-toolbar-title>Communication</v-toolbar-title>
                                 <v-spacer></v-spacer>
-                                <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어 
+                                <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어
                                 출력된 모달창을 사라지도록 한다는 것 -->
                                 <v-btn icon @click.native="communicationDialog = false" dark>
                                     <v-icon>close</v-icon>
@@ -149,14 +149,14 @@
                 </v-list>
             </v-navigation-drawer>
             <v-toolbar
-                app
-                color='green lighten-3'
-                dark
-                dense
-                scroll-off-screen
-                :scroll-threshold="0"
+                    app
+                    color='green lighten-3'
+                    dark
+                    dense
+                    scroll-off-screen
+                    :scroll-threshold="0"
             ><!-- scroll-off-screen: 스크롤을 내리면 toolbar가 숨겨짐 -->
-            <!-- scroll-threshold: 스크롤 민감도 -->
+                <!-- scroll-threshold: 스크롤 민감도 -->
                 <v-btn icon @click="openMenu()">
                     <v-icon large>menu</v-icon>
                 </v-btn>
@@ -172,17 +172,17 @@
                     <v-icon large color="blue">account_circle</v-icon>
                 </v-btn>
                 <v-menu v-else offset-y>
-                <v-btn icon slot="activator">
-                    <v-icon large color="blue">account_circle</v-icon>
-                </v-btn>
-                <v-list>
-                    <v-list-tile @click="logout()">
-                        <v-list-tile-action>
-                            <v-icon large color="blue">directions_run</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-title>Logout</v-list-tile-title>
-                    </v-list-tile>
-                </v-list>
+                    <v-btn icon slot="activator">
+                        <v-icon large color="blue">account_circle</v-icon>
+                    </v-btn>
+                    <v-list>
+                        <v-list-tile @click="logout()">
+                            <v-list-tile-action>
+                                <v-icon large color="blue">directions_run</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-title>Logout</v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
                 </v-menu>
             </v-toolbar>
             <!-- 컴포넌트 출력 -->
@@ -218,8 +218,8 @@
             </v-card>
         </v-dialog>
         <v-dialog
-            v-model='loginForm'
-            max-width='300px'
+                v-model='loginForm'
+                max-width='300px'
         >
             <v-card>
                 <v-card-text>
@@ -242,25 +242,25 @@
                     </v-form>
                 </v-card-text>
                 <v-card-actions>
-                        <v-btn color="green" block large outline @click="login()">로그인</v-btn>
-                        <router-link to="register" style="text-decoration: none">
-                            <v-btn color="blue" block large outline @click="loginForm = false">회원가입</v-btn>
-                        </router-link>
+                    <v-btn color="green" block large outline @click="login()">로그인</v-btn>
+                    <router-link to="register" style="text-decoration: none">
+                        <v-btn color="blue" block large outline @click="loginForm = false">회원가입</v-btn>
+                    </router-link>
                 </v-card-actions>
             </v-card>
         </v-dialog>
         <v-snackbar
-        v-model="snackbar"
-        :timeout="timeout"
-        top
-        vertical
+                v-model="snackbar"
+                :timeout="timeout"
+                top
+                vertical
         >
-        {{ snackText }}
-        <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+            {{ snackText }}
+            <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
         </v-snackbar>
     </div>
 </template>
-        
+
 
 <script>
     import axios  from 'axios';
@@ -318,7 +318,7 @@
                         if(response.data.restaurant_id != "/") { // 사장인지 손님인지 체크
                             if(response.data.restaurant_id != "noneRestaurant") // 가게를 만든 사장인지 체크
                                 this.$session.set('restaurant_id', response.data.restaurant_id); // 가게를 만든 사장이라면, 가게 id set
-                            else 
+                            else
                                 this.$session.set('restaurant_id', 'needCreate');
                         }
 
@@ -329,12 +329,12 @@
                         if(this.$session.get('restaurant_id')) { // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
                             if(!(this.$session.get('restaurant_id') == 'needCreate')) { // 가게를 만들지 않은 사장인지 체크
                                 var restaurant_id = this.$session.get('restaurant_id');
-                                location.replace('/owner/' + restaurant_id + '/menu');
+                                location.replace('/owner/' + restaurant_id + '/editRestaurant');
                             } else {
                                 location.replace('/owner/createRestaurant');
                             }
                         } else
-                            location.replace(response.data.restaurant_id); 
+                            location.replace(response.data.restaurant_id);
                     })
                     .catch(error => {
                         this.snackbar = true;
@@ -360,7 +360,7 @@
 
             moveMyMenu() {
                 var restaurant_id = this.$session.get('restaurant_id');
-                location.replace('/owner/' + restaurant_id + '/menu');
+                location.replace('/owner/' + restaurant_id + '/menuOperate');
             },
 
             moveMyReservation() {
@@ -411,8 +411,8 @@
 </script>
 <style>
     /* 링크를 클릭하려고 마우스를 가져갔을 때 */
-    a:hover { 
-        color: #FF3300; 
+    a:hover {
+        color: #FF3300;
         text-decoration: none;
     }
 </style>

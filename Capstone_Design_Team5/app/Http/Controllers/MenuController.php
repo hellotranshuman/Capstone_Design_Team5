@@ -33,6 +33,7 @@ class MenuController extends Controller
         return view('user.userMenu');
     }
 
+    // <-- 해당 가게의 레이아웃, 메뉴 카테고리 불러오기
     public function getCategory(Request $request) {
         $shop_id = $request->get('shop_id');
         $layout = '';
@@ -60,6 +61,7 @@ class MenuController extends Controller
         ]);
     }
 
+    // <-- 해당 카테고리의 메뉴 정보 가져오기
     public function getMenu($shop_id, $category) {
 
         // <-- 메뉴정보를 저장할 Array
@@ -140,6 +142,7 @@ class MenuController extends Controller
 
     }
 
+    // <-- 메뉴 등록
     public function createMenu(Request $request) {
 
         $shopId = $request->get('shop_id');
@@ -196,7 +199,7 @@ class MenuController extends Controller
                     ]);
                 }
 
-            }
+            } // <-- option for End
         }
 
         // Current Save Shop Image Route
@@ -241,6 +244,7 @@ class MenuController extends Controller
 
     }
 
+    // <--  현재 선택된 레이아웃 번호 불러오기
     public function getLayoutNumber(Request $request) {
         $layoutData =Restaurant::select('selectLayout')
                     ->where('id', $request->get('shop_id'))
@@ -251,6 +255,129 @@ class MenuController extends Controller
         return response()->json([
             'layoutNum' => $layoutNum,
         ]);
+    }
+
+    // <-- Menu 삭제
+    public function deleteMenu(Request $request) {
+        $shop_id = $request->get('menu_id');
+
+        Menu::where('id', $shop_id)
+            ->delete();
+
+        return response()->json([
+            'msg'   => true,
+        ]);
+    }
+
+    // <-- Menu  수정
+    public function updateMenu(Request $request)
+    {
+        // 메뉴, 가게 id 가져오기
+        $menu_id = $request->get('menu_id');
+        $shopId = $request->get('shop_id');
+
+        // 메뉴 정보 업데이트
+        Menu::where('id', $menu_id)
+            ->update([
+                'name'          => $request->get('name'),
+                'price'         => $request->get('price'),
+                'category'      => $request->get('category'),
+                'explanation'   => $request->get('explanation'),
+                'remark'        => $request->get('remark'),
+            ]);
+
+        // add Option Value in Option table
+        if ($request->has('option')) {
+
+            $opDataList = \App\Menu_Option::where('menu_id', $menu_id)
+                        ->get();
+
+            // 옵션 데이터가 있을 경우 먼저 삭제 한 후 다시 Insert
+            foreach ($opDataList as $opData) {
+                $opNum = $opData->opnum;
+
+                Suboption::where('opnum', $opNum)
+                    ->delete();
+            }
+
+            $opArr = $request->get('option');
+
+            // 옵션 추가
+            for ($opNum = 0; $opNum < count($opArr); $opNum++) {
+                $opName = $opArr[$opNum]['name'];
+
+                \App\Menu_Option::create([
+                    'menu_id'   => $menu_id,
+                    'name'      => $opName,
+                ]);
+
+                $optionNum = DB::table('menu_option')
+                    ->select('opnum')
+                    ->where('menu_id', $menu_id)
+                    ->orderByRaw('opnum DESC')
+                    ->first();
+
+                $currentOpNum = $optionNum->opnum;
+
+                // add SubOption Value in SubOption Table
+                $subOpNum = $opArr[$opNum]['num'];
+
+                for ($num = 0; $num < $subOpNum; $num++) {
+                    $opName = 'value' . $num;
+
+                    \App\Suboption::create([
+                        'opnum'     => $currentOpNum,
+                        'name'      => $opArr[$opNum][$opName],
+                    ]);
+                }
+
+            } // <-- option for End
+
+        } // <-- if End
+
+        // Current Save Shop Image Route
+        $dbPath = '/images/menu/' . $shopId . '/';
+
+        $dir = '/menu/'. $shopId;
+
+        if($request->file('menu_img')) {
+          $menuImageData = \App\Menu_Image::where('menu_id', $menu_id)
+                            ->first();
+
+          $menuImageFileName = $menuImageData->filename;
+
+          $deleteFileName = $dir . '/' . $menuImageFileName;
+
+          Storage::delete($deleteFileName);
+
+            // menu Img 가져오기
+            $menuImg = $request->file('menu_img');
+
+            // File Name Setting
+            $fileName = $shopId . '_menuImg_' . $menu_id . '.' . $menuImg->getClientOriginalExtension();
+
+            // Upload File Save
+            $menuImg->storeAs($dir, $fileName);
+
+            // Create Upload File Column in Upload Table
+            \App\Menu_Image::where('menu_id', $menu_id)
+                ->update([
+                'filename'   => $fileName,
+                'shop_id'    => $shopId,
+                'path'       => $dbPath,
+            ]);
+
+            return response()->json([
+                'content' => '메뉴 등록 성공!!',
+            ]);
+
+        }
+        else {
+            return response()->json([
+                'content' => '메뉴 등록 성공!!',
+            ]);
+        }
+
     }
 
 }

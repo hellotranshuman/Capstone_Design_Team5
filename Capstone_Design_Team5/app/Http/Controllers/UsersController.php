@@ -22,6 +22,7 @@ class UsersController extends Controller
             return View('user.login');
     }
 
+    // <-- 로그인
     public function doLogin(Request $request) {
         /*
         // <-- 유효성 검사 규칙 정의
@@ -91,6 +92,7 @@ class UsersController extends Controller
 
     }
 
+    // <-- 로그아웃
     public function doLogout(Request $request) {
 
         $request->session()->flush();
@@ -100,7 +102,8 @@ class UsersController extends Controller
         return redirect('/');
     }
 
-    public function getInfo(Request $request) {
+    // <-- User 정보 받아오기
+    public function getUserInfo(Request $request) {
         $user_id = $request->get('user_id');
 
         $userInfo = DB::table('users')
@@ -108,5 +111,21 @@ class UsersController extends Controller
             ->get();
 
         return $userInfo;
+    }
+
+    // <-- User 정보 수정
+    public function editUserInfo(Request $request) {
+        User::where('id', auth()->user()->id)
+            ->update([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'gender'=> $request->get('gender') == 'Female' ? true : false,
+                'country' => $request->get('country'),
+                'birthday' => $request->get('birthday'),
+                'favorite_1' => $request->get('favorite_1'),
+                'favorite_2' => $request->get('favorite_2'),
+                'favorite_3' => $request->get('favorite_3'),
+                'favorite_region' => $request->get('favorite_region'),
+            ]);
     }
 }

@@ -17,6 +17,11 @@ class CouponController extends Controller
     // <-- create Coupon in Coupon Table
     public function createCoupon(Request $request) {
 
+        if($request->get('add_product') == 0)
+            $addProduct = NULL;
+        else
+            $addProduct = $request->get('add_product');
+
          \App\Coupon::create([
             'name'            => $request->get('name'),
             'shop_id'         => $request->get('shop_id'),
@@ -25,7 +30,7 @@ class CouponController extends Controller
             'price_condition' => $request->get('price_condition'),
             'start_date'      => $request->get('start_date'),
             'expiry_date'     => $request->get('expiry_date'),
-            'add_product'     => $request->get('add_product'),
+            'add_product'     => $addProduct,
         ]);
 
         return response()->json([
@@ -37,7 +42,7 @@ class CouponController extends Controller
     // <-- get Coupon List in Coupon Table
     public function getCouponList(Request $request) {
 
-        $couponList = Coupon::join('menu', 'menu.id', '=', 'coupon.add_product')
+        $couponList = Coupon::leftJoin('menu', 'menu.id', '=', 'coupon.add_product')
                         ->select(DB::raw('coupon.id as id, coupon.category as category,
                                            coupon.name as name, coupon.discount as discount,
                                            coupon.price_condition as price_condition,

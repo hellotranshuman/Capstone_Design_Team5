@@ -241,7 +241,7 @@
         <v-layout justify-space-around>
           <v-spacer></v-spacer>
           <v-flex xs7>
-            <CustomerRatingChart :height="300" :chart-data="ratingData"></CustomerRatingChart>
+            <CustomerRatingChart :height="300" :chart-data="ratingData" :options="customerRateOptions"></CustomerRatingChart>
           </v-flex>
           <v-flex xs3 class="card-text-style">
             <br><br>
@@ -732,6 +732,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
         salesGenderData     : [],   // 그래프를 그리기 위한 매출 대비 방문 손님 성비 데이터가 저장될 변수
         salesAgeData        : [],   // 그래프를 그리기 위한 매출 대비 방문 손님 연령대 데이터가 저장될 변수
         salesCountryData    : [],   // 그래프를 그리기 위한 매출 대비 방문 손님 국적 데이터가 저장될 변수
+        customerRateOptions : {},   // CustomerRatingChar 그래프에 사용될 option이 저장될 변수
 
         getRatingScore  : [         // 그래프를 그리기 위한 평점 배열을 저장할 배열, 값을 초기화 해둡니다.
           {'totalRating'  : 0},
@@ -1105,8 +1106,21 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
                 pointBorderColor      : '#3366CC  ',                // 포인터의 색깔
                 pointBackgroundColor  : 'rgba(000,102,255,0.7)',    // 포인터의 배경색깔
               },
-            ]
+            ],
           }
+
+          // option을 저장합니다.
+          this.customerRateOptions = {
+            scale: {
+              ticks: {
+                beginAtZero: true,
+                min: 0,
+                max: 5,
+                stepSize:0.5,
+              }
+            }
+          }
+
         }).catch(console.log('Oh my god!!, Failed'));
       },
 
@@ -1325,7 +1339,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           // 데이터를 정렬해주는 함수 (계산할 숫자값(퍼센트로 가공), 카테고리명, 그래프색상)
           var getGraphData = this.getDataSort(countrySalesValueArray, countrySalesNameData, countrySalesGraphColor);
 
-          // console.log('test');
+          // console.log('translatedText');
           // console.log(getGraphData);
 
           // Overwriting base render method with actual data.
@@ -1345,16 +1359,16 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
 
       //************************* 판매량 대비 메뉴 데이터를 받아 그래프를 그리는 함수 *************************
        getMenuRankData(){
-        console.log('국가');
-        console.log(this.rankingCountrySelect['countryNum']);
-        console.log('성별');
-        console.log(this.rankingGenderSelect['genderNum']);
-        console.log('연령');
-        console.log(this.rankingAgeSelect['ageNum']);
-        console.log('시작 날짜');
-        console.log(this.startDate);
-        console.log('마지막 날짜');
-        console.log(this.endDatePlusOne);
+        // console.log('국가');
+        // console.log(this.rankingCountrySelect['countryNum']);
+        // console.log('성별');
+        // console.log(this.rankingGenderSelect['genderNum']);
+        // console.log('연령');
+        // console.log(this.rankingAgeSelect['ageNum']);
+        // console.log('시작 날짜');
+        // console.log(this.startDate);
+        // console.log('마지막 날짜');
+        // console.log(this.endDatePlusOne);
 
         // axios http 라이브러리 
         axios.post('/owner/getMenuData', {
@@ -1373,8 +1387,8 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
 
           var menuData = this.setMenuData(getMenuData, 1);
 
-          console.log('정리된 메뉴 데이터');
-          console.log(menuData);
+          // console.log('정리된 메뉴 데이터');
+          // console.log(menuData);
 
           // 그래프 데이터
           this.menuRankData = {
@@ -1492,7 +1506,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
 
       // 마지막 날짜의 + 1일 값을 구하는 함수를 실행합니다.
       this.endDatePlusOneDate();
-      console.log('마지막 날 짜르기 : ' + this.endDatePlusOne);
+      // console.log('마지막 날 짜르기 : ' + this.endDatePlusOne);
     }
   }
 </script>

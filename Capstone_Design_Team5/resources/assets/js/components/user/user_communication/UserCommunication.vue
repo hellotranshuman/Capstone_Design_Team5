@@ -9,15 +9,13 @@
     <!-- 커뮤니케이션 버튼 상단바 -->
     <v-layout>
       <v-flex>
-        <v-toolbar color="grey darken-3">
-          <v-spacer></v-spacer>
+        <v-toolbar dense color="grey darken-3" dark>
           <v-toolbar-items>
-            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(0)">즐겨찾기</v-btn>
-            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(1)">기본</v-btn>
-            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(2)">주문</v-btn>
-            <v-btn flat small color="white" class="toolbar-style" v-on:click="selectCategory(3)">계산</v-btn>
+            <v-btn flat class="toolbar-style" v-on:click="selectCategory(0)">즐겨찾기</v-btn>
+            <v-btn flat class="toolbar-style" v-on:click="selectCategory(1)">기본</v-btn>
+            <v-btn flat class="toolbar-style" v-on:click="selectCategory(2)">주문</v-btn>
+            <v-btn flat class="toolbar-style" v-on:click="selectCategory(3)">계산</v-btn>
           </v-toolbar-items>
-          <v-spacer></v-spacer>
         </v-toolbar>
       </v-flex>
     </v-layout>

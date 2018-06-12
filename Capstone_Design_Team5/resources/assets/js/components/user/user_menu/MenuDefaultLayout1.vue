@@ -1,8 +1,8 @@
 <!-- 기본 제공 레이아웃 1  persistent-->
 
 <template>
-<div class="container" style="width:100%; border:1px solid; "> 
-<v-container style="color:white">
+<div class="container" style="width:100%; border:1px solid; " >
+<v-container class="text_set" style="color:white">
     
     <!-- 카테고리 영역 -->
     <v-layout xs12> 
@@ -22,7 +22,7 @@
             <v-card color="white" style="color: black;">                
                 <!-- 메뉴 이미지 -->
                 <div class="tem_img">
-                    <img :src="get_menus[n].path + get_menus[n].filename">                    
+                    <img class="inner_img" :src="get_menus[n].path + get_menus[n].filename">
                 </div>
 
                 <!-- 메뉴 정보 -->
@@ -161,24 +161,24 @@ export default {
 }// end of export default
 </script> 
 
-<style scoped>
+<style>
 /* 모바일 */
 @media (max-width: 639px){  
-    html       { font-size: 15px; } 
+    .text_set       { font-size: 15px; }
     .menu_body { width:100%; margin:2%;} 
     .menu_expl { padding-bottom: 15%; }
 }
 
 /* 테블릿 */
-@media (min-width: 640px) and (max-width: 1023px){  
-    html       { font-size: 13px; } 
+@media (min-width: 640px) and (max-width: 1023px){
+    .text_set       { font-size: 13px; }
     .menu_body { width:47%; margin:1%; }
     .menu_expl { padding-bottom: 15%; }
 }
 
 /* 데스트 탑 */
-@media (min-width: 1024px){  
-    html       { font-size: 12px; } 
+@media (min-width: 1024px){
+    .text_set       { font-size: 12px; }
     .menu_body { width:31%; margin :1%;}
     .menu_expl { padding-bottom: 25%; }
 } 
@@ -197,11 +197,11 @@ export default {
     position: relative;
 }
 /* 메뉴 이미지 안쪽 */
-img { 
+.inner_img {
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%; 
+    width: 105%;
+    height: 105%;
     position: absolute;
 } 
 

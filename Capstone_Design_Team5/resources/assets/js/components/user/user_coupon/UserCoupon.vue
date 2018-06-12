@@ -105,26 +105,7 @@
 
                 /* 저장 & 편집 & 삭제 */
                 items: [
-                    {
-                        id : 1,
-                        name : '선주',
-                        category : '상품 제공',
-                        discount : '',
-                        add_product : 'ㅇㅇ',
-                        price_condition : '10000',
-                        start_date : '2018-02-03',
-                        expiry_date : '2018=34=34'
-                    },
-                    {
-                        id : 2,
-                        name : '상원이',
-                        category : '가격 할인',
-                        discount : '1000',
-                        add_product : '',
-                        price_condition : '10000',
-                        start_date : '2018-02-03',
-                        expiry_date : '2018=34=34'
-                    }
+
                 ],
 
                 /* 번역할 내용 */
@@ -141,13 +122,13 @@
             }
         },
         created: function () {
-            axios.post('/owner/getCouponList', {
+            axios.post('/getUserCouponList', {
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
                 /* DB Coupon Data */
                 var Index = response.data.couponNum;
 
-                var Coupondata = response.data.coupon;
+                var Coupondata = response.data.coupon_data;
 
                 this.items = Coupondata;
             })

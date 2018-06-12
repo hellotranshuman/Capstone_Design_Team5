@@ -12,29 +12,29 @@
                 <v-card>
                     <v-card-text>
                         <v-text-field
-                        v-model="user_id"
-                        placeholder="ID"
-                        required
-                        color="green"
-                        :rules="idRules"
+                                v-model="user_id"
+                                placeholder="ID"
+                                required
+                                color="green"
+                                :rules="idRules"
                         ></v-text-field>
                         <v-text-field
-                        v-model="user_pw1"
-                        :append-icon="hidePw1 ? 'visibility' : 'visibility_off'"
-                        :append-icon-cb="() => (hidePw1 = !hidePw1)"
-                        :type="hidePw1 ? 'password' : 'text'"
-                        label="Enter your password"
-                        color="green"
-                        :rules="pwRules"
+                                v-model="user_pw1"
+                                :append-icon="hidePw1 ? 'visibility' : 'visibility_off'"
+                                :append-icon-cb="() => (hidePw1 = !hidePw1)"
+                                :type="hidePw1 ? 'password' : 'text'"
+                                label="Enter your password"
+                                color="green"
+                                :rules="pwRules"
                         ></v-text-field>
                         <v-text-field
-                        v-model="user_pw2"
-                        :append-icon="hidePw2 ? 'visibility' : 'visibility_off'"
-                        :append-icon-cb="() => (hidePw2 = !hidePw2)"
-                        :type="hidePw2 ? 'password' : 'text'"
-                        label="Enter your password confirm"
-                        color="green"
-                        :rules="pwRules"
+                                v-model="user_pw2"
+                                :append-icon="hidePw2 ? 'visibility' : 'visibility_off'"
+                                :append-icon-cb="() => (hidePw2 = !hidePw2)"
+                                :type="hidePw2 ? 'password' : 'text'"
+                                label="Enter your password confirm"
+                                color="green"
+                                :rules="pwRules"
                         ></v-text-field>
                     </v-card-text>
                 </v-card>
@@ -42,10 +42,10 @@
                 <v-card>
                     <v-card-text>
                         <v-text-field
-                        v-model="user_name"
-                        placeholder="Name"
-                        required
-                        color="green"
+                                v-model="user_name"
+                                placeholder="Name"
+                                required
+                                color="green"
                         ></v-text-field>
                         <v-radio-group v-model="user_gender" row>
                             <v-radio label="Male" value="Male" color="green"></v-radio>
@@ -54,45 +54,45 @@
                         <v-layout row wrap>
                             <v-flex xs4>
                                 <v-text-field
-                                v-model="user_year"
-                                placeholder="Year"
-                                required
-                                color="green"
+                                        v-model="user_year"
+                                        placeholder="Year"
+                                        required
+                                        color="green"
                                 ></v-text-field>
                             </v-flex>
                             <v-flex xs4>
                                 <v-select
-                                v-model="user_month"
-                                :items="month"
-                                label="Month"
-                                color="green"
-                                single-line
+                                        v-model="user_month"
+                                        :items="month"
+                                        label="Month"
+                                        color="green"
+                                        single-line
                                 ></v-select>
                             </v-flex>
                             <v-flex xs4>
                                 <v-text-field
-                                v-model="user_day"
-                                placeholder="Day"
-                                required
-                                append-icon="cake"
-                                color="green"></v-text-field>
+                                        v-model="user_day"
+                                        placeholder="Day"
+                                        required
+                                        append-icon="cake"
+                                        color="green"></v-text-field>
                             </v-flex>
                         </v-layout>
                         <v-text-field
-                        v-model="user_email"
-                        placeholder="Email"
-                        required
-                        append-icon="email"
-                        color="green"></v-text-field>
+                                v-model="user_email"
+                                placeholder="Email"
+                                required
+                                append-icon="email"
+                                color="green"></v-text-field>
                         <v-select
-                        v-model="user_country"
-                        :items="country"
-                        label="Country"
-                        single-line
-                        auto
-                        append-icon="language"
-                        hide-details
-                        color="green"
+                                v-model="user_country"
+                                :items="country"
+                                label="Country"
+                                single-line
+                                auto
+                                append-icon="language"
+                                hide-details
+                                color="green"
                         ></v-select>
                     </v-card-text>
                 </v-card>
@@ -100,26 +100,26 @@
                 <v-card v-if="user_categoty">
                     <v-card-text>
                         <v-select
-                        v-model="user_favorite"
-                        :items="food"
-                        label="Favorite Food (max 3 items)"
-                        single-line
-                        auto
-                        hide-details
-                        multiple
-                        chips
-                        color="green"
+                                v-model="user_favorite"
+                                :items="food"
+                                label="Favorite Food (max 3 items)"
+                                single-line
+                                auto
+                                hide-details
+                                multiple
+                                chips
+                                color="green"
                         ></v-select>
                         <v-select
-                        v-model="user_region"
-                        :items="ddbkList"
-                        label="Favorite Region"
-                        single-line
-                        auto
-                        append-icon="location_on"
-                        hide-details
-                        chips
-                        color="green"
+                                v-model="user_region"
+                                :items="ddbkList"
+                                label="Favorite Region"
+                                single-line
+                                auto
+                                append-icon="location_on"
+                                hide-details
+                                chips
+                                color="green"
                         ></v-select>
                     </v-card-text>
                 </v-card>
@@ -133,13 +133,13 @@
             </v-flex>
         </v-container>
         <v-snackbar
-        v-model="snackbar"
-        :timeout="timeout"
-        top
-        vertical
+                v-model="snackbar"
+                :timeout="timeout"
+                top
+                vertical
         >
-        {{ snackText }}
-        <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+            {{ snackText }}
+            <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
         </v-snackbar>
     </v-app>
 </template>
@@ -192,7 +192,7 @@
                     '神奈川', '新潟', '富山', '石川',
                     '福井', '山梨', '長野', '岐阜',
                     '靜岡', '愛知', '三重', '滋賀',
-                    '兵庫', '奈良', '和歌山', '鳥取', 
+                    '兵庫', '奈良', '和歌山', '鳥取',
                     '島根', '岡山', '廣島', '山口',
                     '德島', '香川', '愛媛', '高知',
                     '福岡', '佐賀', '長崎', '熊本',
@@ -289,8 +289,21 @@
 
                 axios.post(url, sendData)
                     .then(response => {
-                        var url = response.data.url;
-                        location.replace(url);
+                        if(response.data.url != "/") { // 사장인지 손님인지 체크
+                            this.$session.set('restaurant_id', 'needCreate');
+                            alert("사장");
+                        } else {
+                            this.$session.set('favorite_1', this.favorite_1);
+                            this.$session.set('favorite_2', this.favorite_2);
+                            this.$session.set('favorite_3', this.favorite_3);
+                            this.$session.set('region', this.user_region);
+                        }
+
+                        this.$session.set('loginStatus', true);                     // 로그인 상태 true
+                        this.$session.set('user_id', this.user_id);        // user_id set
+                        this.$session.set('user_name', this.user_name);    // user_name set
+
+                        location.replace(response.data.url);
                     })
                     .catch(error => {
                         alert(error);
