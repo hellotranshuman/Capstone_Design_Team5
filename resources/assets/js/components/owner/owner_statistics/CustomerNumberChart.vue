@@ -1,7 +1,5 @@
-<!-- 
-※ 방문 손님수를 그리는 차트
+<!-- ※ 방문 손님수를 그리는 차트 -->
 
--->
 <script>
 // axios 라이브러리 import
 import VueAxios from 'vue-axios';
@@ -12,13 +10,13 @@ export default {
   props : {
     // 통계 시작 날짜
     startDay:{
-      type: String,
-      default: ""
+      type    : String,
+      default : ""
     },
     // 통계 마지막 날짜
     endDay:{
-      type: String,
-      default: ""
+      type    : String,
+      default : ""
     },
   },
 
@@ -129,8 +127,8 @@ export default {
           this.filterCustomerScore.push(null);
         }
       }
-      console.log('test hahaha');
-      console.log(this.filterCustomerScore);
+      // console.log('test hahaha');
+      // console.log(this.filterCustomerScore);
     },
   },
 }

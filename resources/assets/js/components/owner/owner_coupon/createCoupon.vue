@@ -6,20 +6,27 @@
             원하는 쿠폰을 제작하여 등록할 수 있습니다.
             <hr><br>
             <v-dialog v-model="dialog" max-width="500px">
-                <v-btn color="#424242" dark slot="activator">쿠폰 추가</v-btn>
+                <!-- 쿠폰 추가 버튼 -->
+                <v-btn color="teal lighten-1" slot="activator" style="color:white">쿠폰 추가</v-btn>
                 <v-card>
+                    <v-toolbar color="teal lighten-1" style="height:20px">
+                    </v-toolbar>
+
                     <!-- v-card title -->
                     <v-card-title>
-                        <span class="headline">쿠폰 추가</span>
+                        <span class="headline"> <B> 쿠폰 추가 </B> </span>
                     </v-card-title>
+
                     <!-- v-card 본문 -->
                     <v-card-text>
                         <v-container grid-list-md>
                             <v-layout wrap>
+
                                 <!-- 쿠폰 이름 -->
                                 <v-flex xs12>
                                     <v-text-field label="쿠폰 이름" required v-model="CouponItem.CouponName"></v-text-field>
                                 </v-flex>
+
                                 <!-- 쿠폰 종류 -->
                                 <v-flex xs12 sm6 md4>
                                     <v-select
@@ -29,9 +36,13 @@
                                             v-model="CouponItem.CouponType"
                                     ></v-select>
                                 </v-flex>
+
+                                <!-- 가격 할인 -->
                                 <v-flex xs12 sm6 md4 v-if="CouponItem.CouponType == '가격 할인'">
                                     <v-text-field label="할인 가격" required v-model="CouponItem.Discount"></v-text-field>
                                 </v-flex>
+
+                                <!-- 상품 제공 -->
                                 <v-flex xs12 sm6 md4 v-else-if="CouponItem.CouponType == '상품 제공'">
                                     <v-select
                                             label="상품 선택"
@@ -106,8 +117,8 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                        <v-btn color="blue darken-1" flat @click.native="save">Save</v-btn>
+                        <v-btn color="error" flat @click.native="dialog = false">Close</v-btn>
+                        <v-btn color="blue darken-1" flat @click.native="save()">Save</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-dialog>
@@ -134,24 +145,34 @@
                 </template>
             </v-data-table>
         </div>
+
+        <!-- error snackbar -->
+        <v-snackbar
+                :timeout="1000"
+                v-model="createCoupon_snackbar"
+                :top="'top'"
+        >
+            <v-icon dark>announcement</v-icon> {{ createCoupon_text }}
+        </v-snackbar>
     </v-app>
 </template>
 
 <script>
     import VueAxios         from 'vue-axios';
     import axios            from 'axios';
-
     export default {
         data() {
             return {
+                /* snackbar */
+                createCoupon_snackbar : false,
+                createCoupon_text : '쿠폰 이름을 입력해 주세요',
+
                 /* date picker */
                 start_date: null,
                 start_menu: false,
                 modal: false,
-
                 end_date: null,
                 end_menu: false,
-
                 clickCouponid: 0,
 
                 /* table */
@@ -159,23 +180,19 @@
                 headers: [
                     { text: '쿠폰 이름',    value: 'name' },
                     { text: '쿠폰 종류',    value: 'category' },
-                    { text: '할인율',    value: 'discount' },
+                    { text: '할인율',       value: 'discount' },
                     { text: '제공 상품',    value: 'menu_name' },
                     { text: '쿠폰 조건',    value: 'price_condition' },
-                    { text: '사용 시작일',   value: 'start_date' },
-                    { text: '사용 종료일',   value: 'end_date' },
-                    { text: 'Actions',    value: 'name', sortable: false }
+                    { text: '사용 시작일',  value: 'start_date' },
+                    { text: '사용 종료일',  value: 'end_date' },
+                    { text: 'Actions',     value: 'name',           sortable: false }
                 ],
-
                 /* 저장 & 편집 & 삭제 */
                 items: [],
-
                 /* 메뉴 선택 */
                 AddProductSelect : [],
                 menu_id : 0,
-
                 menuDataList : [],
-
                 CouponItem: {
                     name: '',
                     category: '',
@@ -187,27 +204,20 @@
                 }
             }
         },
-
         /* 데이터 값 받기 */
         created: function () {
             axios.post('/owner/getCouponList', {
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
                 /* DB Coupon Data */
-                var Index = response.data.couponNum;
-
-                this.items = response.data.coupon;
-
+                var Index       = response.data.couponNum;
+                this.items      = response.data.coupon;
                 /* menu_data */
-                var menuData = response.data.menuList;
+                var menuData    = response.data.menuList;
                 this.menuDataList = menuData;
-
                 this.menu_data_product();
             })
-
-
         },
-
         methods: {
             menu_data_product() {
                 // 0: id / name
@@ -216,53 +226,69 @@
                     this.AddProductSelect.push(this.menuDataList[i].name);
                 }
             },
-
             deleteItem (item) {
                 const index = this.items.indexOf(item);
                 this.clickCouponid = this.items[index].id;
+
                 axios.post('/owner/deleteCoupon', {
                     'coupon_id'         : this.clickCouponid
                 }).then((response) => {
-                    console.log(this.clickCouponid);
-                    alert(response.data.msg);
                     location.reload();
-
                 })
                     .catch(console.log('test'));
             },
 
-            close () {
-                this.dialog = false
-            },
-
-            save () {
-                /* 메뉴id 찾기 */
-                for(var i = 0; i < this.menuDataList.length; i++)
+            save() {
+                /* 유효성 검사 */
+                if(this.CouponItem.CouponName == null)
                 {
-                    if(this.CouponItem.add_product == this.menuDataList[i].name)
-                    {
-                        this.menu_id = this.menuDataList[i].id;
-                        break;
-                    }
+                    this.createCoupon_snackbar = true;
                 }
-
-                /* Data 송신 */
-                axios.post('/owner/createCoupon', {
-                    name                : this.CouponItem.CouponName,
-                    shop_id             : this.$route.params.shop_id,
-                    category            : this.CouponItem.CouponType,
-                    discount            : this.CouponItem.Discount,
-                    add_product         : this.menu_id,
-                    price_condition     : this.CouponItem.Condition,
-                    start_date          : this.CouponItem.start_date,
-                    expiry_date         : this.CouponItem.end_date,
-
-                }).then((response) => {
-                    location.reload();
-                })
-                    .catch(console.log('test'));
-
-                this.close()
+                else if(this.CouponItem.CouponType == null){
+                    this.createCoupon_text = " 쿠폰 종류를 선택하세요. "
+                    this.createCoupon_snackbar = true;
+                }
+                else if(this.CouponItem.CouponType == "가격 할인" && this.CouponItem.Discount == null){
+                    this.createCoupon_text = " 할인 가격을 입력하세요. "
+                    this.createCoupon_snackbar = true;
+                }
+                else if(this.CouponItem.CouponType == "상품 제공" && this.CouponItem.add_product == null){
+                    this.createCoupon_text = " 제공 상품을 선택하세요."
+                    this.createCoupon_snackbar = true;
+                }
+                else if(this.CouponItem.Condition == null){
+                    this.createCoupon_text = " 쿠폰 조건을 입력하세요. "
+                    this.createCoupon_snackbar = true;
+                }
+                else if( this.CouponItem.start_date == null || this.CouponItem.end_date == null) {
+                    this.createCoupon_text = "날짜를 선택해 주세요"
+                }
+                else{
+                    /* 메뉴id 찾기 */
+                    for(var i = 0; i < this.menuDataList.length; i++)
+                    {
+                        if(this.CouponItem.add_product == this.menuDataList[i].name)
+                        {
+                            this.menu_id = this.menuDataList[i].id;
+                            break;
+                        }
+                    }
+                    /* Data 송신 */
+                    axios.post('/owner/createCoupon', {
+                        name                : this.CouponItem.CouponName,
+                        shop_id             : this.$route.params.shop_id,
+                        category            : this.CouponItem.CouponType,
+                        discount            : this.CouponItem.Discount,
+                        add_product         : this.menu_id,
+                        price_condition     : this.CouponItem.Condition,
+                        start_date          : this.CouponItem.start_date,
+                        expiry_date         : this.CouponItem.end_date,
+                    }).then((response) => {
+                        this.dialog = false
+                        location.reload();
+                    })
+                        .catch(console.log('test'));
+                }
             }
         }
     }

@@ -3,8 +3,6 @@
     <v-app>
         <div id="UserPageCoupon">
             <br>
-            <B>{{ userName }}</B> 님 반갑습니다.
-            <hr>
             <h4><B> 나의 할인쿠폰 </B></h4><br>
             <v-tabs color="dark"
                     dark
@@ -58,15 +56,12 @@
                                                     </v-card-title>
                                                     <v-card-text>
                                                         <div class="Trans_Main">
-                                                            <B>카테고리 : </B>{{ trans.category }} <br>
-                                                            <span v-if="trans.category == '상품 제공'">
-                                                            <B>제공되는 상품 : </B>{{ trans.add_product }}
-                                                        </span>
-                                                            <span v-else-if="trans.category == '가격 할인'">
-                                                            <B>할인 가격 : </B>{{ trans.discount }}
-                                                        </span><br>
-                                                            <B>쿠폰 조건 : </B>{{ trans.price_condition }} <br>
-                                                            <B>사용 기간 : </B>{{ trans.start_date }} ~ {{ trans.expiry_date }}
+                                                            <b> {{ trans.name }} </b>
+                                                            <b> {{ trans.category }} </b>
+                                                            <b> {{ trans.price_addpro }} </b>
+                                                            <b> {{ trans.condition }} </b>
+                                                            <b> {{ trans.usedate }} </b>
+
                                                         </div>
                                                     </v-card-text>
                                                     <v-card-actions>
@@ -89,6 +84,38 @@
                 </v-tab-item>
             </v-tabs>
         </div>
+
+        <!-- snackbar -->
+        <v-snackbar
+                :timeout="1500"
+                v-model="coupon_snackbar"
+                :top="'top'"
+                :vertical="'vertical'"
+        >
+            쿠폰이 사용 되었습니다.
+            <v-btn flat color="cyan darken-2" @click.native="coupon_snackbar = false">Close</v-btn>
+        </v-snackbar>
+
+        <!-- snackbar -->
+        <v-snackbar
+                :timeout="1500"
+                v-model="coupon_delete_snackbar"
+                :top="'top'"
+                :vertical="'vertical'"
+        >
+            쿠폰이 삭제 되었습니다.
+            <v-btn flat color="cyan darken-2" @click.native="coupon_delete_snackbar = false">Close</v-btn>
+        </v-snackbar>
+
+        <v-snackbar
+                :timeout="1500"
+                v-model="coupon_usedateOver"
+                :top="'top'"
+                :vertical="'vertical'"
+        >
+            쿠폰 사용기한이 지났습니다.
+            <v-btn flat color="cyan darken-2" @click.native="coupon_usedateOver = false">Close</v-btn>
+        </v-snackbar>
     </v-app>
 </template>
 
@@ -99,34 +126,32 @@
     export default {
         data() {
             return {
-                userName : '윤진주',
                 spendDialog : false,
                 clickCoupon : null,
+                coupon_snackbar : false,
+                coupon_delete_snackbar : false,
+                coupon_usedateOver : false,
 
                 /* 저장 & 편집 & 삭제 */
-                items: [
-
-                ],
+                items: [],
 
                 /* 번역할 내용 */
                 trans : {
-                    id : 0,
                     name : '',
                     category : '',
-                    discount : 0,
-                    add_product : '',
-                    price_condition : 0,
-                    start_date : '',
-                    expiry_date : ''
-                }
+                    price_addpro : '',
+                    condition : '',
+                    usedate : ''
+                },
+
+                couponId : 0,
             }
         },
         created: function () {
             axios.post('/getUserCouponList', {
-                'shop_id' : this.$route.params.shop_id
+
             }).then((response) => {
                 /* DB Coupon Data */
-                var Index = response.data.couponNum;
 
                 var Coupondata = response.data.coupon_data;
 
@@ -137,31 +162,40 @@
             /* 번역 */
             TransCoupon(item) {
                 const index = this.items.indexOf(item);
+                this.couponId = this.items[index].id
 
-                this.trans.id       = this.items[index].id;
-                this.trans.name         = this.items[index].name;
-                this.trans.category     = this.items[index].category;
+                axios.post('/getCouponTransData', {
+                    id          :  this.couponId
+                }).then((response) => {
+                    /* 번역 data 보내주기 */
+                    let responseText = JSON.parse(response.data.content);
 
-                if(this.items[index].category == '상품 제공')
-                {
-                    this.trans.add_product = this.items[index].add_product;
-                }
-                else if(this.items[index].category == '가격 할인'){
-                    this.trans.discount = this.items[index].discount;
-                }
+                    var translatedText = responseText.message.result.translatedText;
 
-                this.trans.price_condition  = this.items[index].price_condition;
-                this.trans.start_date       = this.items[index].start_date;
-                this.trans.expiry_date      = this.items[index].expiry_date;
+                    var transText = translatedText.split("#");
 
+                    console.log(transText);
 
+                    this.trans.name            = transText[0];
+                    this.trans.category        = transText[1];
+                    this.trans.price_addpro    = transText[2];
+                    this.trans.condition       = transText[3];
+                    this.trans.usedate         = transText[4];
+
+                }).catch(console.log('test '));
             },
             /* data보내기 */
             SpendData() {
-                alert('쿠폰이 사용 되었습니다.');
-                axios.post('/useCoupon', {
-                    id          :  this.trans.id
-                }).then(console.log('success')).catch(console.log('test '));
+                this.coupon_snackbar = true;
+
+                axios.post('/setCouponUpdate', {
+                    id          :  this.couponId
+                }).then((response) => {
+                    if(response.data.msg == false)
+                    {
+                        this.coupon_usedateOver = true;
+                    }
+                }).catch(console.log('test '));
             },
 
 
@@ -171,12 +205,16 @@
                 const index     = this.items.indexOf(item)
                 this.clickCoupon = this.items[index].id
 
-                axios.post('/useCoupon', {
+                axios.post('/deleteUserCoupon', {
                     id          :   this.clickCoupon
-                }).then(console.log('success')).catch(console.log('test '));
+                }).then((response) => {
+                    if(response.data.msg == true)
+                    {
+                        location.reload();
+                    }
+                }).catch(console.log('test '));
 
-
-                alert('쿠폰이 삭제되었습니다.');
+                this.coupon_delete_snackbar = true;
             }
         }
     }

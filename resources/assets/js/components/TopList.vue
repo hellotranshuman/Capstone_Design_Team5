@@ -3,9 +3,9 @@
         <v-layout row>
             <v-flex xs12>
                 <v-alert @click="open_gps_dialog()" :value="true" outline color="success" icon="gps_fixed" style="cursor:pointer">
-                    {{ searchAddress[0] }}
+                    {{ region }}
                 </v-alert>
-                <GoogleMap :currentCenter=searchAddress[1]></GoogleMap>
+                <GoogleMap :currentCenter=topCenter></GoogleMap>
             </v-flex>
         </v-layout>
         <br>
@@ -43,7 +43,7 @@
             GoogleMap
         },
 
-        props: ['searchAddress', 'region', 'listLimit', 'restaurantList'],
+        props: ['topCenter', 'region', 'listLimit', 'restaurantList'],
 
         data(){
             return {
@@ -52,7 +52,7 @@
         },
 
         mounted() {
-            console.log(this.restaurantList);
+
         },
 
         methods: {

@@ -42,8 +42,9 @@ import TopList                 from './components/TopList.vue';
 import Register         from './components/Register.vue';
 
 // <— Edit Information
-import EditInformation from './components/EditInformation';
+import EditInformation from './components/EditInformation.vue';
 
+import SearchPage from './components/SearchPage.vue';
 
 // <— User Restaurant Page Component Import
 import UserRestaurantMain   from './components/user/user_common/UserRestaurantMain.vue';
@@ -60,7 +61,7 @@ import OwnerReservationList     from './components/owner/owner_reservation/Owner
 // Owner Reservation Accept Page Import
 import OwnerReservationAccept   from './components/owner/owner_reservation/OwnerReservationAccept.vue';
 // Owner Reservation Setting Page Import
-import OwnerReservationSetting  from './components/owner/owner_reservation/OwnerReservationSetting.vue';
+import OwnerReservationSetting  from './components/owner/owner_reservation/ownerReservationSetting.vue';
 
 // <— Create Restaurant Page
 // Create Restaurant Information Import
@@ -113,17 +114,25 @@ const router = new VueRouter({
                 name: 'home',
                 component: Home
             },
-            // <— 회원 가입
-            {
-                path: '/register',
-                name: 'register',
-                component: Register
-            },
+            // <— Top List
             {
                 path: '/topList',
                 name: 'topList',
                 component: TopList,
                 props: true
+            },
+            // <— Search Page
+            {
+                path: '/search',
+                name: 'search',
+                component: SearchPage,
+                props: true
+            },
+            // <— 회원 가입
+            {
+                path: '/register',
+                name: 'register',
+                component: Register
             },
             // <— 회원 정보 수정
             {

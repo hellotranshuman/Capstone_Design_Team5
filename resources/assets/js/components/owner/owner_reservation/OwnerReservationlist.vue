@@ -20,7 +20,7 @@
                             <v-layout wrap>
                                 <!-- 예약자 이름 -->
                                 <v-flex xs12>
-                                    <v-text-field  prepend-icon="face" label="예약자 명" required v-model="ReservationItem.usernum"></v-text-field>
+                                    <v-text-field  prepend-icon="face" label="예약자 명" required v-model="ReservationItem.name"></v-text-field>
                                 </v-flex>
                                 <!-- 예약 날짜 -->
                                 <v-flex xs11 sm5 >
@@ -104,7 +104,6 @@
                     <template slot="items" slot-scope="props">
                         <td class="text-xs-left">{{ props.item.name }}</td>
                         <td class="text-xs-left">{{ props.item.reservation_date }}</td>
-                        <td class="text-xs-left">{{ props.item.time }}</td>
                         <td class="text-xs-left">{{ props.item.person }}</td>
                         <td class="text-xs-left">{{ props.item.child }}</td>
 
@@ -117,7 +116,12 @@
                                 </v-toolbar>
                                 <v-card>
                                     <v-card-text style="color : black">
-                                        <B> {{orderMenu}} </B>
+                                        <div
+                                                v-for="(card, index) in orderMenu"
+                                                :key="index"
+                                        >
+                                            <B> {{orderMenu[index]}} </B>
+                                        </div>
                                     </v-card-text>
                                     <v-btn color="teal lighten-1"
                                            style="color:white"
@@ -133,6 +137,16 @@
                 </v-data-table>
             </div>
         </div>
+
+        <!-- error snackbar -->
+        <v-snackbar
+                :timeout="1000"
+                v-model="addreservation_snackbar"
+                :top="'top'"
+        >
+            <v-icon dark>announcement</v-icon> {{ addreservation_text }}
+        </v-snackbar>
+
     </v-app>
 </template>
 
@@ -143,6 +157,10 @@
     export default {
         data() {
             return {
+                /* snackbar */
+                addreservation_snackbar : false,
+                addreservation_text     : '',
+
                 /* dialog */
                 Dialog : false,
                 menuLoad : false,
@@ -163,17 +181,15 @@
                 /* table */
                 dialog: false,
                 headers: [
-                    { text: '예약자 명', value: 'name' },
-                    { text: '예약 날짜', value: 'reservation_date' },
-                    { text: '예약 시간', value: 'time' },
-                    { text: '어른', value: 'person' },
-                    { text: '아이', value: 'child' },
-                    { text: '메뉴',    value: 'menu_select' },
+                    { text: '예약자 명',    value: 'name' },
+                    { text: '예약 날짜/시간',    value: 'reservation_date' },
+                    { text: '어른',         value: 'person' },
+                    { text: '아이',         value: 'child' },
+                    { text: '메뉴',         value: 'menu_select' },
                 ],
 
                 /* 저장 & 편집 & 삭제 */
-                items: [
-                ],
+                items: [],
                 ReservationItem: {
                     name            : '',
                     reservation_date: '',
@@ -182,7 +198,7 @@
                     menuList        : ''
                 },
 
-                orderMenu : null,
+                orderMenu : [],
             }
         },
         // DB에서 값 받기
@@ -190,9 +206,6 @@
             axios.post('/getReservationList', {
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
-                /* DB Coupon Data */
-                console.log(response.data.resData);
-
                 var ReservationListData = response.data.resData;
 
                 this.items = ReservationListData;
@@ -203,55 +216,67 @@
                 const index = this.items.indexOf(item)
                 var reservation_id = this.items[index].id;
 
-                this.orderMenu = reservation_id;
-
                 axios.post('/getReservationMenuList', {
                     id : reservation_id
                 }).then((response) => {
                     var MenuorderData = response.data.currentOrder;
 
-                    console.log(response.data.currentOrder);
-
                     // 임시
                     var MenuArray = '';
 
                     // 1. 주문 메뉴 옵션 합치기s
-                    for(var i = 0 ; i < MenuorderData.length; i++)
+                    for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
                     {
-                        MenuArray = (i+1)+'번 :' + MenuorderData[i]['menu_name' + (i+1)]
-                            + ' 가격:' + MenuorderData[i]['menu_price' + (i+1)];
+                        MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
+                            + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
 
-                        // 옵션 개수...도..
-                        var OptionCount = MenuorderData[i]['optionNum'+(i+1)];
+                        // 옵션 개수…도..
+                        var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
 
                         // 메뉴
                         for(var j = 0; j < OptionCount; j++)
                         {
-                            MenuArray += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
-                                + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
+                            MenuArray += ' ' + MenuorderData[0]['menu'+(i+1)+'-'+'option'+(j+1)]
+                                + ':' + MenuorderData[0]['menu'+(i+1)+'-'+'subOption'+(j+1)];
                         }
 
-                        console.log(MenuArray);
-                        this.orderMenu = MenuArray;
+                        this.orderMenu[i] = MenuArray;
                     }
                 });
             },
 
             save () {
-                /* Data 송신 */
-                axios.post('/setOwnerReservation', {
-                    shop_id         : this.$route.params.shop_id,
-                    username        : this.ReservationItem.username,
-                    start_date      : this.ReservationItem.start_date,
-                    time            : this.ReservationItem.time,
-                    adult_person    : this.ReservationItem.adult_person,
-                    child_person    : this.ReservationItem.child_person
-                }).then((response) => {
-                    location.reload();
-                })
-                    .catch(console.log('test'));
-
-                this.close()
+                /* 유효성 검사 */
+                if(this.ReservationItem.name == null)
+                {
+                    this.addreservation_text = "예약자 명을 입력 해주세요"
+                    this.addreservation_snackbar = true;
+                }
+                else if(this.ReservationItem.start_date == null)
+                {
+                    this.addreservation_text = " 예약 날짜를 선택 해주세요."
+                    this.addreservation_snackbar = true;
+                }
+                else if(this.ReservationItem.time == null)
+                {
+                    this.addreservation_text = " 예약 시간을 선택 해주세요."
+                    this.addreservation_snackbar = true;
+                }
+                else {
+                    /* Data 송신 */
+                    axios.post('/setOwnerReservation', {
+                        shop_id         : this.$route.params.shop_id,
+                        username        : this.ReservationItem.name,
+                        start_date      : this.ReservationItem.start_date,
+                        time            : this.ReservationItem.time,
+                        adult_person    : this.ReservationItem.adult_person,
+                        child_person    : this.ReservationItem.child_person
+                    }).then((response) => {
+                        this.dialog = false;
+                        // location.reload();
+                    })
+                        .catch(console.log('test'));
+                }
             }
         }
     }

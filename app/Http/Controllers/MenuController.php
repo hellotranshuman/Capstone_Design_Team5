@@ -44,8 +44,8 @@ class MenuController extends Controller
 
         $layoutNum = $layoutData->selectLayout;
 
-        if($layoutNum == 0) {
-          $layout  = Layout::where('shop_id', $shop_id)
+        if($layoutNum > 4) {
+          $layout  = Layout::where('id', $layoutNum)
                         ->get()
                         ->toArray();
         }
@@ -251,6 +251,10 @@ class MenuController extends Controller
                     ->first();
 
         $layoutNum = $layoutData->selectLayout;
+
+        if($layoutNum > 4) {
+            $layoutNum = 0;
+        }
 
         return response()->json([
             'layoutNum' => $layoutNum,

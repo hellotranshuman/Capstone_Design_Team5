@@ -10,6 +10,21 @@
 <template>
     <transition name="fade">
         <v-content grid-list-md text-xs-center>
+            <!-- 경고창 -->
+            <v-snackbar
+            :timeout="loginCheckSnackbarTimeout"
+            :top="loginCheckSnackbarY === 'top'"
+            :bottom="loginCheckSnackbarY === 'bottom'"
+            :right="loginCheckSnackbarX === 'right'"
+            :left="loginCheckSnackbarX === 'left'"
+            :multi-line="loginCheckSnackbarMode === 'multi-line'"
+            :vertical="loginCheckSnackbarMode === 'vertical'"
+            v-model="loginCheckSnackbar"
+            >
+            {{this.loginCheckErrorCode}}
+                <v-btn flat color="pink" @click.native="loginCheckSnackbar = false">Close</v-btn>
+            </v-snackbar>
+
             <v-layout>
                 <v-spacer></v-spacer>
                 <!-- 리뷰 작성 버튼 -->
@@ -109,21 +124,28 @@ export default {
             url         : "",             // 리뷰를 하는 페이지 URL
             sortSelect  : { sort: '작성일순', sortNum: 1 },     // 선택된 정렬 기준
             sortItems   : [                                     // 정렬 기준들
-                { sort: '작성일순', sortNum: 1 },
-                { sort: '좋아요순',   sortNum: 2 },
+                { sort  : '작성일순', sortNum: 1 },
+                { sort  : '좋아요순',   sortNum: 2 },
             ],
 
             filterSelect    : { country: '국가 선택', countryNum: 0 },  // 선택된 국가 필터링 기준
             filterItems     : [                                         // 국가 필터링 기준들
-                { country: 'all',   countryNum: 0 },
-                { country: 'China', countryNum: 1 },
-                { country: 'Japan', countryNum: 2 },
-                { country: 'Korea', countryNum: 3 },
-                { country: 'USA',   countryNum: 4 },
+                { country   : 'all',   countryNum: 0 },
+                { country   : 'China', countryNum: 1 },
+                { country   : 'Japan', countryNum: 2 },
+                { country   : 'Korea', countryNum: 3 },
+                { country   : 'USA',   countryNum: 4 },
             ],
             fab         : false,    
             writeCheck  : "",       // 리뷰 작성페이지 주소가 저장 되는 변수
 
+
+            loginCheckErrorCode         : "로그인 해주세요.",   // 경고창에 띄울 문장이 저장되는 변수
+            loginCheckSnackbar          : false,                // snackbar 출력여부 확인
+            loginCheckSnackbarY         : 'top',                // snackbar Y축 값
+            loginCheckSnackbarX         : null,                 // snackbar X축 값
+            loginCheckSnackbarMode      : '',                   // snackbar mode 값
+            loginCheckSnackbarTimeout   : 2000,                 //snackbar 지속시간
         }
     },
 
@@ -131,7 +153,10 @@ export default {
         // 리뷰 작성시 로그인 여부 체크 함수
         checkLogin() {
             if(!(this.$session.get('loginStatus'))){
-                alert('로그인 한 뒤 리뷰를 작성해주세요.');
+                this.loginCheckSnackbar = true;
+            }
+            else {
+                this.loginCheckSnackbar = false;
             }
         }
     },

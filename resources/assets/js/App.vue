@@ -23,8 +23,7 @@
                 </v-list>
                 <v-divider></v-divider>
                 <v-list v-if="!checkRestaurant()">
-                    <!-- 주문 내역 -->
-                    <v-list-tile to="/userOrderHistory">
+                    <v-list-tile to="/userPageOrder">
                         <v-list-tile-action>
                             <v-icon large>assignment</v-icon>
                         </v-list-tile-action>
@@ -32,17 +31,7 @@
                             <v-list-tile-title>주문 내역</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <!-- 예약 내역 -->
-                    <v-list-tile to="/userPageReservation">
-                        <v-list-tile-action>
-                            <v-icon large>date_range</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>예약 내역</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                    <!-- 리뷰 내역 -->
-                    <v-list-tile to="/userReviewHistory">
+                    <v-list-tile>
                         <v-list-tile-action>
                             <v-icon large>rate_review</v-icon>
                         </v-list-tile-action>
@@ -50,7 +39,14 @@
                             <v-list-tile-title>리뷰 내역</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <!-- 쿠폰함 -->
+                    <v-list-tile to="/userPageReservation">
+                        <v-list-tile-action>
+                            <v-icon large>history</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>예약 내역</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
                     <v-list-tile to="/userCoupon">
                         <v-list-tile-action>
                             <v-icon large>loyalty</v-icon>
@@ -59,7 +55,6 @@
                             <v-list-tile-title>쿠폰함</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <!-- 찜 목록 -->
                     <v-list-tile>
                         <v-list-tile-action>
                             <v-icon large>favorite</v-icon>
@@ -157,22 +152,29 @@
                     :scroll-threshold="0"
             ><!-- scroll-off-screen: 스크롤을 내리면 toolbar가 숨겨짐 -->
                 <!-- scroll-threshold: 스크롤 민감도 -->
-                <v-btn icon @click="openMenu()">
+                <v-btn class="mr-0" icon @click="openMenu()">
                     <v-icon large>menu</v-icon>
                 </v-btn>
-                <v-toolbar-title><router-link to="/" style="text-decoration: none" class="white--text">AIOF</router-link> <router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">Restaurant</router-link></v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-btn icon>
-                    <v-icon large color="red">search</v-icon>
+                <v-toolbar-title class="logo mr-2">
+                    <router-link to="/" style="text-decoration: none" class="white--text">SMART</router-link><router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">さしすせそ</router-link>
+                </v-toolbar-title>
+                <v-text-field
+                        v-model="searchDataInput"
+                        prepend-icon="search"
+                        label="식당 또는 음식"
+                        solo-inverted
+                        autocomplete
+                        flat
+                        @keypress.enter="searching()"
+                ></v-text-field>
+                <v-btn class="mr-0" icon @click.native.stop="gps_modal = true">
+                    <v-icon large color="red">gps_fixed</v-icon>
                 </v-btn>
-                <v-btn icon @click.native.stop="gps_modal = true">
-                    <v-icon large color="amber">gps_fixed</v-icon>
-                </v-btn>
-                <v-btn v-if="!checkLogin()" icon @click="loginForm=true">
-                    <v-icon large color="blue">account_circle</v-icon>
+                <v-btn v-if="!checkLogin()" class="mx-1" icon @click="loginForm=true">
+                    <v-icon large color="white">account_circle</v-icon>
                 </v-btn>
                 <v-menu v-else offset-y>
-                    <v-btn icon slot="activator">
+                    <v-btn class="mx-1" icon slot="activator">
                         <v-icon large color="blue">account_circle</v-icon>
                     </v-btn>
                     <v-list>
@@ -187,7 +189,8 @@
             </v-toolbar>
             <!-- 컴포넌트 출력 -->
             <v-content>
-                <router-view :searchAddress=searchAddress></router-view>
+                <router-view v-if="searchAddress != ''" :searchAddress=searchAddress></router-view>
+                <router-view v-else :searchAddress=defaultGoogleMapCenter></router-view>
             </v-content>
         </v-app>
         <v-dialog v-model="gps_modal" max-width="400">
@@ -206,10 +209,13 @@
                             <v-card-title class="headline">위치를 입력하세요</v-card-title>
                             <v-card-actions>
                                 <v-flex>
-                                    <gmap-autocomplete @place_changed="setPlace"></gmap-autocomplete>
+                                    <gmap-autocomplete
+                                            class="searchBar"
+                                            @place_changed="setPlace"
+                                            @keypress="setPlace"
+                                    ></gmap-autocomplete>
                                 </v-flex>
-                                <v-spacer></v-spacer>
-                                <v-btn color="amber lighten-1" @click.native="gps_search = false; gps_modal = false; searching()">검색</v-btn>
+                                <v-btn color="amber lighten-1" @click.native="gps_search = false; gps_modal = false; searchingAddress()">검색</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -229,6 +235,7 @@
                     <v-form>
                         <v-text-field
                                 placeholder="ID"
+                                autofocus
                                 required
                                 v-model='idValue'
                         ></v-text-field>
@@ -261,7 +268,6 @@
     </div>
 </template>
 
-
 <script>
     import axios  from 'axios';
     // 커뮤니케이션 버튼
@@ -290,16 +296,16 @@
                 snackText:  "",
                 timeout:    3000,
 
+                searchAddress: "",
                 searchAddressInput: "",
-                searchAddress: ['대한민국 대구광역시 북구 복현2동 복현로 35', { lat: 35.8963134, lng: 128.6198624 }]
+                defaultGoogleMapCenter: ['대한민국 대구광역시 북구 복현2동 복현로 35', { lat: 35.8963134, lng: 128.6198624 }],
+
+                searchDataInput: "",
             }
         },
 
         created: function() {
-            // GoogleMap 위치 검색을 한 이력이 있으면 그 위치를 초기값으로 함
-            if(this.$session.get("searchAddressHistory")) {
-                this.searchAddress = this.$session.get("searchAddressHistory");
-            }
+
         },
 
         methods: {
@@ -320,6 +326,11 @@
                                 this.$session.set('restaurant_id', response.data.restaurant_id); // 가게를 만든 사장이라면, 가게 id set
                             else
                                 this.$session.set('restaurant_id', 'needCreate');
+                        } else {
+                            this.$session.set('favorite_1', response.data.favorite_1);
+                            this.$session.set('favorite_2', response.data.favorite_2);
+                            this.$session.set('favorite_3', response.data.favorite_3);
+                            this.$session.set('region', response.data.favorite_region);
                         }
 
                         this.$session.set('loginStatus', true);                     // 로그인 상태 true
@@ -396,23 +407,50 @@
                 this.searchAddressInput = AddressInput;
             },
 
-            searching() {
+            searchingAddress() {
                 if(this.searchAddressInput.formatted_address) {
-                    this.searchAddress = [this.searchAddressInput.formatted_address, {
-                        lat: this.searchAddressInput.geometry.location.lat(),
-                        lng: this.searchAddressInput.geometry.location.lng()
-                    }]
-                    this.$session.set("searchAddressHistory", this.searchAddress);
-                    location.replace('/');
+                    this.searchAddress = [
+                        this.searchAddressInput.formatted_address,
+                        {
+                            lat: this.searchAddressInput.geometry.location.lat(),
+                            lng: this.searchAddressInput.geometry.location.lng()
+                        }
+                    ]
+                    this.$router.push('/');
                 }
+            },
+
+            searching() {
+                if(this.searchDataInput == "")
+                    return;
+                var url = "/getSearchData";
+                axios.post(url, {'searchData': this.searchDataInput})
+                    .then(response => {
+                        this.$session.set('searchKeyword', this.searchDataInput);
+                        this.$session.set('searchData', response.data);
+
+                        if(this.$route.path != '/search')
+                            this.$router.push('search');
+                        else
+                            this.$router.go(this.$router.currentRoute);
+                    })
+                    .catch(error => {
+                        alert(error);
+                    })
             }
         }
     }
 </script>
 <style>
-    /* 링크를 클릭하려고 마우스를 가져갔을 때 */
-    a:hover {
-        color: #FF3300;
-        text-decoration: none;
+    @media screen and (max-width: 500px){
+        .logo {
+            width: 13px;
+        }
+    }
+
+    .searchBar {
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
     }
 </style>

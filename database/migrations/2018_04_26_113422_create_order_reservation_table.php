@@ -20,6 +20,7 @@ class CreateOrderReservationTable extends Migration
             $table->dateTime('reservation_date');
             $table->unsignedInteger('person');
             $table->unsignedInteger('child');
+            $table->string('name', 50)->nullable();
             $table->string('message')->nullable();
             $table->boolean('menu_select');
             $table->boolean('accept')->nullable();

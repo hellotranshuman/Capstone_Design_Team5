@@ -27,7 +27,12 @@
                                 </v-toolbar>
                                 <v-card>
                                     <v-card-text style="color : black">
-                                        <B> {{orderMenu}} </B>
+                                        <div
+                                                v-for="(card, index) in orderMenu"
+                                                :key="index"
+                                        >
+                                            <B> {{orderMenu[index]}} </B>
+                                        </div>
                                     </v-card-text>
                                     <v-card-actions>
                                         <v-btn color="teal lighten-1" style="color:white" @click.stop="menuLoad = false">
@@ -102,17 +107,17 @@
     export default {
         data() {
             return {
-                dialog: false,
+                dialog       : false,
                 Acceptdialog : false,
                 Canceldialog : false,
-                menuLoad : false,
+                menuLoad     : false,
 
                 /* 수락한손님 */
                 AcceptCustomer : null,
 
                 /* 취소한 손님 */
-                CancelCustomer : null,
-                WhyCancel : '',
+                CancelCustomer  : null,
+                WhyCancel       : '',
 
                 headers: [
                     { text: '예약자 명',    value: 'name' },
@@ -125,11 +130,9 @@
                 ],
 
                 /* 저장 & 편집 & 삭제 */
-                items: [
+                items: [],
 
-                ],
-
-                orderMenu : null,
+                orderMenu : [],
             }
         },
         /* DB에서 데이터 값 받기 */
@@ -145,8 +148,8 @@
         // 예약 수락, 거절 할 시 둘다 table delete!!!!!!!!!! 시켜주기
         methods: {
             menu(item) {
-                const index = this.items.indexOf(item)
-                var reservation_id = this.items[index].id;
+                const index         = this.items.indexOf(item)
+                var reservation_id  = this.items[index].id;
 
                 axios.post('/getReservationMenuList', {
                     id : reservation_id
@@ -157,42 +160,41 @@
                     var MenuArray = '';
 
                     // 1. 주문 메뉴 옵션 합치기s
-                    for(var i = 0 ; i < MenuorderData.length; i++)
+                    for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
                     {
-                        MenuArray = (i+1)+'번 :' + MenuorderData[i]['menu_name' + (i+1)]
-                            + ' 가격:' + MenuorderData[i]['menu_price' + (i+1)];
+                        MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
+                            + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
 
                         // 옵션 개수...도..
-                        var OptionCount = MenuorderData[i]['optionNum'+(i+1)];
+                        var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
 
                         // 메뉴
                         for(var j = 0; j < OptionCount; j++)
                         {
-                            MenuArray += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
-                                + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
+                            MenuArray += ' ' + MenuorderData[0]['menu'+(i+1)+'-'+'option'+(j+1)]
+                                + ':' + MenuorderData[0]['menu'+(i+1)+'-'+'subOption'+(j+1)];
                         }
 
-                        console.log(MenuArray);
-                        this.orderMenu = MenuArray;
+                        this.orderMenu[i] = MenuArray;
                     }
                 });
             },
             AcceptItem (item) {
                 const index = this.items.indexOf(item);
-                var id = this.items[index].user_num;
+                var id      = this.items[index].id;
 
                 axios.post('/acceptReservation', {
                     // 수락한 유저 이름
                     id : id,
                     accept   : true,
                 }).then((response) => {
-                    location.reload();
+                   location.reload();
                 }).catch(console.log('test '));
             },
 
             CancelItem (item) {
                 const index = this.items.indexOf(item);
-                var id = this.items[index].user_num;
+                var id      = this.items[index].id;
 
                 axios.post('/acceptReservation', {
                     // 거절한 유저 이름

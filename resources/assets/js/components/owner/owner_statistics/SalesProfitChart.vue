@@ -1,7 +1,4 @@
-<!-- 
-※ 전체 매출을 그리는 그래프
-
--->
+<!-- ※ 전체 매출을 그리는 그래프 -->
 <script>
 // axios 라이브러리 import
 import VueAxios from 'vue-axios';
@@ -12,13 +9,13 @@ export default {
   props : {
     // 통계 시작 날짜
     startDay:{
-      type: String,
-      default: ""
+      type    : String,
+      default : ""
     },
     // 통계 마지막 날짜
     endDay:{
-      type: String,
-      default: ""
+      type    : String,
+      default : ""
     },
   },
 
@@ -44,8 +41,8 @@ export default {
     then((response)=>{
       this.getSalesScore = response.data['salesData'];  // 전달받은 월별 매출값을 대입합니다.
 
-      console.log('돌려받은 매출값');
-      console.log(this.getSalesScore);
+      // console.log('돌려받은 매출값');
+      // console.log(this.getSalesScore);
       // console.log(response.data['test']);
       // console.log('haha');
 
@@ -131,8 +128,8 @@ export default {
           this.filterSalesScore.push(null);
         }
       }
-      console.log('test hahaha2');
-      console.log(this.filterSalesScore);
+      // console.log('test hahaha2');
+      // console.log(this.filterSalesScore);
     },
   },
   

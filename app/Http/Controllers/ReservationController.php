@@ -170,7 +170,7 @@ class ReservationController extends Controller
 
     // <-- get Reservation List
     public function getReservationList(Request $request) {
-        $resData = Reservation::join('users', 'users.id', '=', 'reservation.user_num')
+        $resData = Reservation::leftjoin('users', 'users.id', '=', 'reservation.user_num')
             ->select('users.name', 'reservation.*')
             ->where('shop_id', $request->get('shop_id'))
             ->where('accept', true)
@@ -201,7 +201,7 @@ class ReservationController extends Controller
 
         // 현재 유저의 전체 주문번호와 메뉴, 옵션 갯수 Count
         $orderCountData = Order_List::join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
-            ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
+            ->leftjoin('order_option', 'order_option.order_menu_id', 'order_menu.id')
             ->select(DB::raw('order_list.order_num as order_num, 
                                            count(order_list.order_num) as orderCount'))
             ->where('order_list.order_num', $currentOrderNum)
@@ -221,8 +221,8 @@ class ReservationController extends Controller
                 ->join('restaurants', 'order_list.shop_id', '=', 'restaurants.id')
                 ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                 ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
-                ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
-                ->join('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
+                ->leftjoin('order_option', 'order_option.order_menu_id', 'order_menu.id')
+                ->leftjoin('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
                 ->leftJoin('suboption', 'order_option.subop_num', '=', 'suboption.sub_opnum')
                 ->select(DB::raw('order_list.order_num as order_num, 
                                                         restaurants.name as restaurant_name,
@@ -378,7 +378,7 @@ class ReservationController extends Controller
     // <-- 달력 클릭시 해당 달력의 날짜로 검색
     public function getReservationSettingByDate(Request $request) {
 
-        $settingData = Resset::select('start_time')
+        $settingData = Resset::select('setting_date', 'start_time', 'end_time')
                             ->where('shop_id', $request->get('shop_id'))
                             ->where('setting_date', $request->get('click_date'))
                             ->get()
@@ -442,11 +442,13 @@ class ReservationController extends Controller
             $request->get('time');
 
         Reservation::create([
+            'name'               => $request->get('username'),
             'shop_id'            => $request->get('shop_id'),
             'reservation_date'   => $resDateTime,
             'message'            => $request->get('message'),
             'person'             => $request->get('adult_person'),
             'child'              => $request->get('child_person'),
+            'accept'             => true,
             'menu_select'        => false,
         ]);
     }

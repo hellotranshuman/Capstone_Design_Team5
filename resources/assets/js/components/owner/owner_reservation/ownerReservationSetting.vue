@@ -16,7 +16,7 @@
                         <v-radio label="주문 가능" value="true"></v-radio>
                         <v-radio label="주문 불가능" value="false"></v-radio>
                     </v-radio-group>
-                    <v-btn color="primary" @click="menuoption_save">저장하기</v-btn>
+                    <v-btn color="primary" @click.native="menuoption_save">저장하기</v-btn>
                 </v-tab-item>
                 <v-tab>
                     <h5><B>&nbsp; 예약 날짜/시간 설정 &nbsp;</B></h5>
@@ -99,11 +99,17 @@
                     <div>
                         <br>
                         <div class="reservation_calender">
-                            <v-date-picker
-                                    v-model="reservationCal"
-                                    event-color="error"
-                                    :events="arrayEvents">
-                            </v-date-picker>
+                            <v-layout justify-space-between wrap>
+                                <v-flex class="my-3">
+                                    <v-date-picker
+                                            v-model="reservationCal"
+                                            event-color="error"
+                                            :events="arrayEvents">
+                                    </v-date-picker>
+                                </v-flex>
+                                <v-btn color="primary" @click="date_click()"> 조회하기 </v-btn>
+                            </v-layout>
+
                         </div>
                         <div class="reservation_set_table">
                             <br>
@@ -125,17 +131,6 @@
                                         >
                                             <v-icon color="pink">delete</v-icon>
                                         </v-btn>
-                                        <v-dialog v-model="setdialog" max-width="500px">
-                                            <v-card>
-                                                <v-card-text>
-                                                    예약 설정이 삭제 되었습니다.
-                                                </v-card-text>
-                                                <v-btn icon class="mx-0"  @click.stop="setdialog = false"
-                                                >
-                                                    <v-icon color="error">확인</v-icon>
-                                                </v-btn>
-                                            </v-card>
-                                        </v-dialog>
                                     </td>
                                 </template>
                             </v-data-table>
@@ -144,6 +139,29 @@
                 </v-tab-item>
             </v-tabs>
         </div>
+
+        <!-- snackbar -->
+        <v-snackbar
+                :timeout="1500"
+                v-model="menuoption_snackbar"
+                :top="'top'"
+                :vertical="'vertical'"
+        >
+            예약 주문 상태가 설정 되었습니다.
+            <v-btn flat color="cyan darken-2" @click.native="Ordercheck = false">Close</v-btn>
+        </v-snackbar>
+
+        <!-- snackbar -->
+        <v-snackbar
+                :timeout="1500"
+                v-model="setdialog"
+                :top="'top'"
+                :vertical="'vertical'"
+        >
+            예약 설정이 삭제 되었습니다.
+            <v-btn flat color="cyan darken-2" @click.native="setdialog = false">Close</v-btn>
+        </v-snackbar>
+
     </v-app>
 </template>
 
@@ -154,6 +172,9 @@
     export default {
         data() {
             return {
+                /* snackbar */
+                menuoption_snackbar : false,
+
                 /* dialog */
                 setdialog : false,
 
@@ -214,9 +235,8 @@
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
                 var reservationSettingData = response.data.settingData;
-                this.items          = reservationSettingData;
-                this.resData        = response.data.restaurantData;
-                this.selectData     = response.data.menuSelectData;
+                this.items   = reservationSettingData;
+                this.resData = response.data.restaurantData;
 
                 /* 가게 lunch.dinner open/close */
                 this.lunch_open = this.resData[0].lunch_open;
@@ -224,18 +244,16 @@
                 this.dinner_open = this.resData[0].dinner_open;
                 this.dinner_close = this.resData[0].dinner_close;
 
-                this.menuSelectData = this.selectData[0].reservation_selectMenu;
+                this.menuSelectData = response.data.menuSelectData[0].reservation_selectMenu;
 
-                if(this.menuSelectData === 1)
+                if(this.menuSelectData == true)
                 {
                     this.menuSelectData = '주문 가능';
                 }
-                else if(this.menuSelectData === 0){
+                else if(this.menuSelectData == false){
                     this.menuSelectData = '주문 불가능';
                 }
-
             })
-
         },
 
         mounted () {
@@ -402,6 +420,8 @@
                     .catch(console.log('test'));
             },
             menuoption_save() {
+                this.menuoption_snackbar = true;
+
                 /* Data 송신 */
                 axios.post('/updateReservationSelectMenu', {
                     shop_id         : this.$route.params.shop_id,

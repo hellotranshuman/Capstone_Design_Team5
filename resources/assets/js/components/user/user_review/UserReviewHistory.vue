@@ -50,7 +50,7 @@
 </template>
 <script>
 import VueAxios from 'vue-axios';
-import axios from 'axios';
+import axios    from 'axios';
 
   export default {
     data() {
@@ -61,6 +61,7 @@ import axios from 'axios';
     },
 
     methods: {
+        // 리뷰평점 데이터의 자료형을 Number로 변경합니다.
         getReviewListDataTypeChange(){
             for(var iCount = 0; iCount < this.getReviewList.length; iCount++){
                 this.getReviewList[iCount]['rating'] = Number(this.getReviewList[iCount]['rating']);

@@ -21,40 +21,40 @@
 export default {
     props: {
         fill: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         size: {
-            type: Number,
-            default: 50
+            type    : Number,
+            default : 50
         },
         starId: {
-            type: Number,
-            required: true
+            type     : Number,
+            required : true
         },
         activeColor: {
-            type: String,
-            required: true
+            type     : String,
+            required : true
         },
         inactiveColor: {
-            type: String,
-            required: true
+            type     : String,
+            required : true
         },
         borderColor: {
-            type: String,
-            default: '#000'
+            type    : String,
+            default : '#000'
         },
         borderWidth: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         padding: {
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         rtl: {
-            type: Boolean,
-            default: false
+            type    : Boolean,
+            default : false
         }
     },
     created() {

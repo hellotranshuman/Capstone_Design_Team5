@@ -39,7 +39,32 @@
                                                     </div>
                                                 </v-card-text>
                                                 <v-card-actions>
-
+                                                    <!-- 메뉴 보기 -->
+                                                    <div v-if="Acceptcards[index].orderCheck != null">
+                                                        <v-btn
+                                                                flat small color="teal lighten-1"
+                                                                @click="clickshopid = Acceptcards[index].id , MenuList(), menuLoad = true"> 메뉴 보기 </v-btn>
+                                                    </div>
+                                                    <v-dialog v-model="menuLoad" max-width="500px">
+                                                        <v-toolbar color="teal lighten-1">
+                                                            <h3 style="color:white; margin:auto" > MENU </h3>
+                                                        </v-toolbar>
+                                                        <v-card>
+                                                            <v-card-text style="color : black">
+                                                                <div
+                                                                        v-for="(card, index) in orderMenu"
+                                                                        :key="index"
+                                                                >
+                                                                    <B> {{orderMenu[index]}} </B>
+                                                                </div>
+                                                            </v-card-text>
+                                                            <v-card-actions>
+                                                                <v-btn color="teal lighten-1" style="color:white" @click.stop="menuLoad = false">
+                                                                    확인
+                                                                </v-btn>
+                                                            </v-card-actions>
+                                                        </v-card>
+                                                    </v-dialog>
                                                 </v-card-actions>
                                             </v-card>
                                         </v-flex>
@@ -81,8 +106,34 @@
                                                 </v-card-title>
                                                 <v-card-actions>
                                                     <v-spacer></v-spacer>
-
-                                                    <v-btn small color="error" dark @click.stop="dialog = true">예약 취소
+                                                    <!-- 메뉴 보기 -->
+                                                    <div v-if="StandBycards[index].orderCheck != null">
+                                                        <v-btn
+                                                                flat small color="teal lighten-1"
+                                                                @click="clickshopid = StandBycards[index].id , MenuList(), menuLoad = true"> 메뉴 보기 </v-btn>
+                                                    </div>
+                                                    <v-dialog v-model="menuLoad" max-width="500px">
+                                                        <v-toolbar color="teal lighten-1">
+                                                            <h3 style="color:white; margin:auto" > MENU </h3>
+                                                        </v-toolbar>
+                                                        <v-card>
+                                                            <v-card-text style="color : black">
+                                                                <div
+                                                                        v-for="(card, index) in orderMenu"
+                                                                        :key="index"
+                                                                >
+                                                                    <B> {{orderMenu[index]}} </B>
+                                                                </div>
+                                                            </v-card-text>
+                                                            <v-card-actions>
+                                                                <v-btn color="teal lighten-1" style="color:white" @click.stop="menuLoad = false">
+                                                                    확인
+                                                                </v-btn>
+                                                            </v-card-actions>
+                                                        </v-card>
+                                                    </v-dialog>
+                                                    <v-btn small color="error" dark @click.stop="dialog = true">
+                                                        예약 취소
                                                         <v-icon small dark right>check_circle</v-icon>
                                                     </v-btn>
 
@@ -164,12 +215,24 @@
         data() {
             return {
                 dialog : false,
+                menuLoad : false,
 
                 // 이유
                 WhyCancel : '',
 
                 // 수락한 예약 배열
-                Acceptcards: [],
+                Acceptcards: [
+                    {
+                        id : 1,
+                        shopName : 'aa',
+                        order_num : 1,
+                    },
+                    {
+                        id : 2,
+                        shopName : 'aa',
+                        order_num : 3,
+                    }
+                ],
 
                 // 수락 대기중인 예약 배열
                 StandBycards: [],
@@ -177,6 +240,8 @@
                 // 취소 예약 배열
                 Cancelcards: [],
 
+                clickshopid : 0,
+                orderMenu : [],
             }
         },
         created: function () {
@@ -249,9 +314,42 @@
         },
 
         methods : {
+            MenuList() {
+                var shopid = this.clickshopid;
+
+                axios.post('/getReservationMenuList', {
+                    id          : shopid
+                }).then((response)=> {
+                    var MenuorderData = response.data.currentOrder;
+
+                    // 임시
+                    var MenuArray = '';
+
+                    // 1. 주문 메뉴 옵션 합치기s
+                    for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
+                    {
+                        MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
+                            + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
+
+                        // 옵션 개수...도..
+                        var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
+
+                        // 메뉴
+                        for(var j = 0; j < OptionCount; j++)
+                        {
+                            MenuArray += ' ' + MenuorderData[0]['menu'+(i+1)+'-'+'option'+(j+1)]
+                                + ':' + MenuorderData[0]['menu'+(i+1)+'-'+'subOption'+(j+1)];
+                        }
+
+                        this.orderMenu[i] = MenuArray;
+                    }
+
+
+                }).catch(console.log('test '));
+            },
             AcceptSpendMenu(card) {
                 const index = this.Acceptcards.indexOf(card);
-                alert(this.Acceptcards[index].id);
+
                 axios.post('/getUserReservationOrderInfo', {
                     id          : this.Acceptcards[index].id,
                 }).then((response)=> {
@@ -275,7 +373,7 @@
                         }
                     }
 
-                    this.hello = MenuList;
+                    this.MenuList.list = MenuList;
 
                 }).catch(console.log('test '));
             },
@@ -286,29 +384,29 @@
                     id          : this.StandBycards[index].id,
                 }).then((response)=> {
                     var MenuorderData = response.data.currentOrder;
-                    var MenuList = '';
+
+                    // 임시
+                    var MenuArray = '';
 
                     // 1. 주문 메뉴 옵션 합치기s
-                    for(var i = 0 ; i < MenuorderData.length; i++)
+                    for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
                     {
-                        MenuList = (i+1)+'번 :' + MenuorderData[i]['menu_name' + (i+1)]
-                            + ' 가격:' + MenuorderData[i]['menu_price' + (i+1)];
+                        MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
+                            + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
 
-                        // 옵션 개수…도..
-                        var OptionCount = MenuorderData[i]['optionNum'+(i+1)];
+                        // 옵션 개수...도..
+                        var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
 
                         // 메뉴
                         for(var j = 0; j < OptionCount; j++)
                         {
-                            MenuList  += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
-                                + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
+                            MenuArray += ' ' + MenuorderData[0]['menu'+(i+1)+'-'+'option'+(j+1)]
+                                + ':' + MenuorderData[0]['menu'+(i+1)+'-'+'subOption'+(j+1)];
                         }
+
+                        this.orderMenu[i] = MenuArray;
                     }
-
-                    this.StandBycards[index]['orderMenu'] = MenuList;
-                    alert(this.StandBycards[index]['orderMenu']);
-
-                }).catch(console.log('test '));
+                })
             },
 
             // 예약을 취소 할 경우

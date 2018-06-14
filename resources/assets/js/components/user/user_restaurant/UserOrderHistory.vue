@@ -52,9 +52,7 @@
                 dialog : false,
 
                 // 주문 내역 배열
-                orderMenu: [
-
-                ],
+                orderMenu: [],
             }
         },
 
@@ -86,10 +84,9 @@
                         MenuArray[i]['menu_select'] += ' ' + MenuorderData[i]['menu'+(i+1)+'-'+'option'+(j+1)]
                             + ':' + MenuorderData[i]['menu'+(i+1)+'-'+'subOption'+(j+1)];
                     }
-
-                    console.log(MenuArray);
-                    this.orderMenu = MenuArray;
                 }
+
+                this.orderMenu = MenuArray;
             })
         }
     }

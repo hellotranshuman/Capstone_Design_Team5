@@ -25,7 +25,7 @@
         v-model="snackbarCheck"
         >
         {{this.alertErrorCode}}
-        <v-btn flat color="pink" @click.native="snackbarCheck = false">Close</v-btn>
+            <v-btn flat color="pink" @click.native="snackbarCheck = false">Close</v-btn>
         </v-snackbar>
         <v-layout>
             <v-flex>
@@ -218,7 +218,7 @@ export default {
         },
 
         change(tag){
-            alert('haha')
+            
         },
 
         // 리뷰 관련 데이터를 전송하는 함수

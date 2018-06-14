@@ -1,7 +1,5 @@
-<!-- 
-※ 현재 페이지 참고사항
+<!-- ※ 현재 페이지 참고사항 -->
 
--->
 <template>
     <transition name="fade">
         <v-content>
@@ -54,18 +52,18 @@ export default {
     props : {
         // 국적을 나타내는 숫자 (0:all, 1:china, 2:japan 3:korea, 3:USA)
         countryNum:{
-            type: Number,
-            default: 0
+            type    : Number,
+            default : 0
         },
         // 국적을 나타내는 문자열 (all:모든 국가)
         countryName:{
-            type: String,
-            default: "all"
+            type    : String,
+            default : "all"
         },
         // 정렬 기준을 나타내는 숫자 (1:작성일 순, 2:좋아요순)
         sortNum:{
-            type: Number,
-            default: 1
+            type    : Number,
+            default : 1
         },
     },
 
@@ -249,7 +247,6 @@ export default {
                 this.hashTagList[iCount]['review_id']   = Number(this.hashTagList[iCount]['review_id']);
                 this.hashTagList[iCount]['tag_num']     = Number(this.hashTagList[iCount]['tag_num ']);
             }
-
         },
 
         // 리뷰좋아요 값 중 review_id 에 해당하는 값의 타입을 String에서 Number로 변경하는 함수
@@ -262,7 +259,7 @@ export default {
         // 리뷰데이터 값 중 9가지 값의 타입을 String에서 Number로 변경하는 함수
         reviewDataTypeChange(){
             for(var iCount = 0; iCount < this.reviewDataList.length; iCount++){
-                this.reviewDataList[iCount]['img_num']  = Number(this.reviewDataList[iCount]['img_num']);
+                this.reviewDataList[iCount]['img_num'] = Number(this.reviewDataList[iCount]['img_num']);
                 this.reviewDataList[iCount]['likeNum'] = Number(this.reviewDataList[iCount]['likeNum']);
                 this.reviewDataList[iCount]['mood']    = Number(this.reviewDataList[iCount]['mood']);
                 this.reviewDataList[iCount]['price']   = Number(this.reviewDataList[iCount]['price']);
@@ -272,7 +269,6 @@ export default {
                 this.reviewDataList[iCount]['taste']   = Number(this.reviewDataList[iCount]['taste']);
                 this.reviewDataList[iCount]['writer']  = Number(this.reviewDataList[iCount]['writer']);
             }
-
         },
     },
 
@@ -331,7 +327,6 @@ export default {
             // console.log 출력
             // console.log("----- 최종 처리 배열 값  -----"),
             // console.log(this.reviewDataList)
-
         }).catch(console.log('Oh my god!!, Failed'));
     },
 }

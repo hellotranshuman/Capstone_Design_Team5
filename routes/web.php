@@ -22,7 +22,7 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
-    Route::get('/getSearchData', array(
+    Route::post('/getSearchData', array(
         'as' => 'main.getSearchData',
         'uses' => 'MainController@getSearchData'
     ));
@@ -114,6 +114,13 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'RestaurantController@createRestaurant'
     ]);
 
+    Route::post('owner/updateRestaurantInfo', [
+        'as' => 'restaurant.updateRestaurantInfo',
+        'uses' => 'RestaurantController@updateRestaurantInfo'
+    ]);
+
+
+
 // <-- user Restaurant Route
     Route::get('restaurant/{shop_id}/info', [
         'as' => 'restaurant.showRestaurantInfoForm',
@@ -203,10 +210,23 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'LayoutController@saveSelectedLayout'
     ]);
 
-    Route::get('loadCustomLayout', [
+    Route::post('updateCustomLayout', [
+        'as' => 'layout.updateCustomLayout',
+        'uses' => 'LayoutController@updateCustomLayout'
+    ]);
+
+    Route::post('loadCustomLayout', [
         'as' => 'layout.loadCustomLayout',
         'uses' => 'LayoutController@loadCustomLayout'
     ]);
+
+    Route::post('deleteSelectedLayout', [
+        'as' => 'layout.deleteSelectedLayout',
+        'uses' => 'LayoutController@deleteSelectedLayout'
+    ]);
+
+
+
 
     Route::post('deleteMenu', [
         'as' => 'menu.deleteMenu',
@@ -229,6 +249,20 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'CouponController@getCouponList'
     ]);
 
+    Route::post('getCouponTransData', [
+        'as' => 'coupon.getCouponTransData',
+        'uses' => 'CouponController@getCouponTransData'
+    ]);
+
+    Route::post('setCouponUpdate', [
+        'as' => 'coupon.setCouponUpdate',
+        'uses' => 'CouponController@setCouponUpdate'
+    ]);
+
+    Route::post('deleteUserCoupon', [
+        'as' => 'coupon.deleteUserCoupon',
+        'uses' => 'CouponController@deleteUserCoupon'
+    ]);
 
 // <-- Owner Coupon Page
     Route::get('owner/{shop_id}/createCoupon', [

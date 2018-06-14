@@ -26,6 +26,14 @@ class RestaurantController extends Controller
 
     public function showRestaurantInfo($shop_id) {
 
+        $resCheck = Restaurant::where('id', $shop_id)
+                    ->count();
+
+        if($resCheck == 0)
+            return response()->json([
+                'restaurant' => null,
+            ]);
+
         $restaurant = Restaurant::where('id', $shop_id)
                                  ->get()
                                  ->toArray();
@@ -162,26 +170,6 @@ class RestaurantController extends Controller
 
     }
 
-    // <-- 레스토랑 정보 수정시 가져올 레스토랑 정보
-    public function getEditRestaurantInfo(Request $request) {
-        /*
-        $shop_id = $request->get('shop_id');
-
-        $restaurantInfo = Restaurant::where('id', $shop_id)
-                            ->get()
-                            ->toArray();
-
-        $file = Upload::select('path', 'filename')
-                    ->where('shop_id', $shop_id)
-                    ->get()
-                    ->toArray();
-
-        return response()->json([
-           'restaurant'     => $restaurantInfo,
-            'file'          => $file,
-        ]);
-    }
-
     public function updateRestaurantInfo(Request $request) {
         $shop_id = $request->get('shop_id');
 
@@ -208,7 +196,7 @@ class RestaurantController extends Controller
                     'dinner_open' => $request->input('dinner_open'),
                     'dinner_close' => $request->input('dinner_close'),
                     'dinner_lo' => $request->input('dinner_lo'),
-                ]); */
+                ]);
 
         /*
          * 바뀔 이미지가 있는 경우 현재 이미지 다 지우고
@@ -220,11 +208,12 @@ class RestaurantController extends Controller
          * 4. DB 삭제후 다시 등록... (갯수변동때메)
          * */
 
-        /*
+
         // gallery 이미지 갯수
         $imageNum = $request->get('num');
         // db에 저장할 경로
         $dbPath = '/images/'. $shop_id . '/';
+        $deleteFlag = false;
 
         if($request->file('titleImg')) {
 
@@ -235,9 +224,11 @@ class RestaurantController extends Controller
 
             $fileName = $fileData->filename;
 
-            $deleteFileName = '/'. $shop_id . '/'. $fileName;
+            if($fileName != '') {
+                $deleteFileName = '/'. $shop_id . '/'. $fileName;
 
-            Storage::delete($deleteFileName);
+                Storage::delete($deleteFileName);
+            }
 
             // title Img 가져오기
             $titleImg = $request->file('titleImg');
@@ -260,85 +251,134 @@ class RestaurantController extends Controller
             $selectFileName = '%' . $shop_id . '_titleImg%';
 
             $fileData = Upload::where('filename', 'like', $selectFileName)
-                ->first();
+                            ->first();
 
             $fileName = $fileData->filename;
 
-            $deleteFileName = '/'. $shop_id . '/'. $fileName;
+            if($fileName != '') {
+                $deleteFileName = '/'. $shop_id . '/'. $fileName;
 
-            Storage::delete($deleteFileName);
+                Storage::delete($deleteFileName);
 
-            Upload::where('filename', 'like', $selectFileName)
-                ->delete();
-        }
-
-        for($imageIndex = 0 ; $imageNum < $imageNum ; $imageIndex++ ) {
-
-            $galleryFileName = $shop_id . '_gallaryImg_' . $imageIndex;
-
-
+                Upload::where('filename', 'like', $selectFileName)
+                    ->delete();
+            }
 
         }
 
+        for($imageIndex = 0 ; $imageIndex < $imageNum ; $imageIndex++ ) {
 
-        if($request->file('')) {
+            $galleryIndexName = 'galleryImg' . $imageIndex;
+            $selectGalleryFileName = '%' . $shop_id . '_galleryImg_' . $imageIndex . '%';
 
-          $uploadData = Upload::where('shop_id', $shop_id)
-                            ->get();
+            /*
+             *
+             *  파일일 경우..
+             * 　해당 갤러리 이미지 번호에 이미 이미지가 있을경우
+             * */
 
-          foreach ($uploadData as $upload) {
-              $fileName = $upload->filename;
+            if($request->file($galleryIndexName)) {
 
-              $deleteFileName = '/'. $shop_id . '/'. $fileName;
+                $fileCount = Upload::where('filename', 'like', $selectGalleryFileName)
+                                ->count();
 
-              Storage::delete($deleteFileName);
-          }
+                if($fileCount != 0) {
+                    $fileData = Upload::where('filename', 'like', $selectGalleryFileName)
+                        ->first();
 
-          Upload::where('shop_id', $shop_id)
-              ->delete();
+                    $galleryName = $fileData->filename;
 
-          $imageNum = $request->get('');
-          $path = storage_path() . '/app/public/img/' . $shop_id;
-          $dbPath = '/images/'. $shop_id . '/';
+                    $deleteFileName = '/'. $shop_id . '/'. $galleryName;
 
-            if($request->file('titleImg')) {
-                // title Img 가져오기
-                $titleImg = $request->file('titleImg');
+                    Storage::delete($deleteFileName);
+
+                    Upload::where('filename', 'like', $selectGalleryFileName)
+                        ->delete();
+                }
+
+                // gallery Img 가져오기
+                $galleryImg = $request->file($galleryIndexName);
 
                 // File Name Setting
-                $fileName = $shop_id . '_titleImg' . '.' . $titleImg->getClientOriginalExtension();
+                $fileName = $shop_id . '_galleryImg_' . $imageIndex . '.' . $galleryImg->getClientOriginalExtension();
 
                 // Upload File Save
-                $titleImg->storeAs($shop_id, $fileName);
+                $galleryImg->storeAs($shop_id, $fileName);
 
-
-            }
-
-            if($imageNum != 0) {
-                for ($num = 0; $num < $imageNum; $num++) {
-                    // 업로드한 파일 인덱스 찾기
-                    $uploadName = 'galleryImg' . $num;
-
-                    // 이미지 파일 가져오기
-                    $image = $request->file($uploadName);
-
-                    // File Name Setting
-                    $fileName = $shop_id . '_' . 'galleryImg' . '_' . $num .
-                        '.' . $image->getClientOriginalExtension();
-
-                    // Upload File Save
-                    $image->storeAs($shop_id, $fileName);
-
-                    // DB에 저장
-                    \App\Upload::create([
+                Upload::create([
                         'filename' => $fileName,
                         'shop_id' => $shop_id,
-                        'path' => $dbPath
+                        'path' => $dbPath,
                     ]);
-                }
+
             }
-        }
-        */
+            else if ($request->get($galleryIndexName) == 'dd') {
+
+                $fileCount = Upload::where('filename', 'like', $selectGalleryFileName)
+                            ->count();
+
+                if($fileCount != 0) {
+
+                    $fileData = Upload::where('filename', 'like', $selectGalleryFileName)
+                        ->first();
+
+                    $galleryName = $fileData->filename;
+
+                    $deleteFileName = '/'. $shop_id . '/'. $galleryName;
+
+                    Storage::delete($deleteFileName);
+
+                    Upload::where('filename', 'like', $selectGalleryFileName)
+                        ->delete();
+
+                    $deleteFlag = true;
+                }
+
+            }
+            else {
+
+                $fileData = Upload::where('filename', 'like' ,$selectGalleryFileName)
+                             ->first();
+
+                if($deleteFlag)
+                    $fileNumber = $imageIndex - 1;
+                else
+                    $fileNumber = $imageIndex;
+
+                $currentGalleryName = $shop_id . '_galleryImg_' . $fileNumber;
+                $fileName = $fileData->filename;
+
+                $fileNameArray = explode('.', $fileName);
+                $galleryName = $fileNameArray[0];
+
+                // 해당 갤러리 번호와 다른 번호일 경우 지우고 다시 업뎃  아닐경우 업데이트 x
+                if($currentGalleryName != $galleryName) {
+                    $beforeName = '/'. $shop_id . '/' . $fileName;
+                    $moveFileName = '/'. $shop_id . '/'. $currentGalleryName . '.' . $fileNameArray[1];
+
+                    Storage::move($beforeName, $moveFileName);
+
+                   Upload::where('filename', 'like' ,$selectGalleryFileName)
+                       ->delete();
+
+                   $currentGalleryName .= '.' . $fileNameArray[1];
+
+                   Upload::create([
+                       'filename' => $currentGalleryName,
+                       'shop_id' =>  $shop_id,
+                       'path' => $fileData->path,
+                   ]);
+                }
+            } // <-- if End
+
+        } // <-- gallery For End
+
+        $link = route('restaurant.showRestaurantInfoForm' , ['shop_id' => $shop_id]);
+
+        return response()->json([
+           'msg' => true,
+            'link' => $link,
+        ]);
 
     }
 

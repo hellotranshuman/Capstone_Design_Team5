@@ -1,9 +1,4 @@
-<!-- 
-※ 유저 커뮤니케이션 버튼
-
-1. 
-
--->
+<!-- ※ 유저 커뮤니케이션 버튼 -->
 
 <template>
   <v-app>
@@ -129,198 +124,160 @@ import VueAxios from 'vue-axios';
 import axios    from 'axios';
 
 export default {
-    props : {
-        // 이모티콘 카테고리를 나타내는 값
-        selectValue:{
-            type: Number,
-            default: 0
-        },
-    },
-
-    watch: {
-        // selectValue 값을 감시합니다.
-        selectValue: function(){
-
-          switch(this.selectValue){
-            // 즐겨찾기
-            case 0:
-              this.emoticonData = this.getBookmarkList            
-              break;
-            
-            // 기본
-            case 1:
-              this.emoticonData = this.basicsList;
-              break;
-            
-            // 주문
-            case 2:
-              this.emoticonData = this.getOrderList;
-              break;
-
-            // 계산 
-            case 3:
-              this.emoticonData = this.getPayList;
-              break;
-          }
-        },
-    },
-
-    data() {
-        return {
-          // 모든 이모티콘의 정보가 들어있는 배열 (key : value), key값 : 이모티콘 번호, value : 이모티콘이 저장된 주소
-          emoticonInfo : [
-            // {url : 'images/emoticon/confused.svg', number : 1},             // 혼란스러운
-            // {url : 'images/emoticon/desperate.svg', number : 2},            // 절망
-            // {url : 'images/emoticon/good.svg', number : 3},                 // 좋아요
-            // {url : 'images/emoticon/sad.svg', number : 4},                  // 슬퍼요
-            // {url : 'images/emoticon/smiling.svg', number : 5},              // 기뻐요
-            // {url : 'images/emoticon/surprised.svg', number : 6},            // 놀라운
-            // {url : 'images/emoticon/suspicious.svg', number : 7},           // 의심스러운
-            // {url : 'images/emoticon/thinking.svg', number : 8},             // 생각해볼게요
-            // {url : 'images/emoticon/bathroom.svg', number : 9},             // 화장실
-            // {url : 'images/emoticon/water.svg', number : 10},               // 물
-            // {url : 'images/emoticon/chopsticks.svg', number : 11},          // 젓가락
-            // {url : 'images/emoticon/spoon.svg', number : 12},               // 숟가락
-            // {url : 'images/emoticon/fork.svg', number : 13},                // 포크
-            // {url : '/images/emoticon/cutlery.svg', number : 14},             // 식기 주세요
-            // {url : 'images/emoticon/bowl.svg', number : 15},                // 그릇 주세요
-            // {url : 'images/emoticon/dish.svg', number : 16},                // 접시 주세요
-            // {url : 'images/emoticon/seasoning.svg', number : 17},           // 소스 더 주세요.
-
-            // {url : 'images/emoticon/question.svg', number : 18},            // 질문이요
-            // {url : 'images/emoticon/menu.svg', number : 19},                // 메뉴판 주세요
-            // {url : 'images/emoticon/recommended.svg', number : 20},         // 추천해 주세요
-            // {url : 'images/emoticon/choices.svg', number : 21},             // 주문이요
-            // {url : 'images/emoticon/cancel.svg', number : 22},              // 취소 할 수 있나요
-            // {url : 'images/emoticon/change.svg', number : 23},              // 변경 할 수 있나요
-            // {url : 'images/emoticon/reserved.svg', number : 24},            // 예약했는데요.
-
-            // {url : 'images/emoticon/voucher.svg', number : 25},             // 쿠폰 사용 할 수 있나요
-            // {url : 'images/emoticon/cash.svg', number : 26},                // 현금 결제요
-            // {url : 'images/emoticon/debitCard.svg', number : 27},           // 카드 결제요
-            // {url : 'images/emoticon/visa.svg', number : 28},                // 비자 카드 결제요
-            // {url : 'images/emoticon/maestro.svg', number : 29},             // 마에스트로 카드 결제요
-            // {url : 'images/emoticon/unionPay.svg', number : 30},            // 유니온 페이 결제요
-            // {url : 'images/emoticon/jcb.svg', number : 31},                 // jcb 결제요
-            // {url : 'images/emoticon/invoice.svg', number : 32},             // 결제 할게요
-            // {url : 'images/emoticon/bill.svg', number : 33},                // 영수증 주세요
-          ],
-           
-            modalSize       : 500,      // 첫번째 모달창 크기
-            clickImgURL     : "",       // 모달창에 출력해야 하는 클릭한 이미지의 URL을 저장하는 변수
-            clickImg        : null,     // 모달창에 출력해야 하는 이미지 객체
-            dialog          : false,    // 작은 모달창의 출력 여부를 나타내는 값
-            secondDialog    : false,    // 마지막 모달창의 출력 여부를 나타내는 값
-            bookmarkCheck   : false,    // 이모티콘을 즐겨찾기를 등록했는지 여부가 저장되는 변수
-            getBookmarkList : [],       // 전송받은 즐겨찾기 목록이 저장되는 배열         
-            emoticonData    : [],       // 현재 선택한 카테고리의 즐겨찾기 목록이 저장되는 배열
-            basicsList      : [],       // 기본 이모티콘 목록을 저장하는 배열
-            getOrderList    : [],       // 주문 이모티콘 목록을 저장하는 배열
-            getPayList      : [],       // 계산 이모티콘 목록을 저장하는 배열
-        }
-    },
-
-    methods:{
-      // 이모티콘 즐겨찾기 취소에 사용되는 필터 함수
-      emoticonFilter(emoticonList, exceptEmoticon){
-        return emoticonList.filter(function(emoticon){
-          for(var iCount = 0; iCount < emoticonList.length; iCount++){
-            return emoticon['id'] != exceptEmoticon['id'];
-          };
-        });
+  props : {
+      // 이모티콘 카테고리를 나타내는 값
+      selectValue:{
+          type: Number,
+          default: 0
       },
+  },
 
-      // 출력할 Dialogs 이미지의 URL 및 즐겨찾기 등록 여부를 변경합니다.
-      changeDialogsData(imgName, imgObj){
-        this.clickImgURL = imgName;
-        this.clickImg    = imgObj;
+  watch: {
+      // selectValue 값을 감시합니다.
+      selectValue: function(){
 
-        var includeCheck = null;
+        switch(this.selectValue){
+          // 즐겨찾기
+          case 0:
+            this.emoticonData = this.getBookmarkList            
+            break;
+            
+          // 기본
+          case 1:
+            this.emoticonData = this.basicsList;
+            break;
+            
+          // 주문
+          case 2:
+            this.emoticonData = this.getOrderList;
+            break;
 
-        // 현재 클릭한 이미지가 즐겨찾기에 추가되어 있는지 여부를 확인하는 함수
-        for (var iCount = 0; iCount < this.getBookmarkList.length; iCount++){
-          if(this.getBookmarkList[iCount]['id'] == this.clickImg['id']){
-            includeCheck = true;
-          }    
+          // 계산 
+          case 3:
+            this.emoticonData = this.getPayList;
+            break;
         }
-
-        // 현재 클릭한 이모티콘이 즐겨찾기에 등록되어 있으면 bookmarkCheck의 값을 true를
-        // 등록되어 있지 않으면 false를 대입합니다.
-        if(includeCheck){
-          this.bookmarkCheck = true
-          // console.log('포함');
-        } 
-        else {
-          this.bookmarkCheck = false
-            // console.log('미포함');
-        }
-        // 세션에 저장된 사용자 id를 불러옵니다.
-        // sessionStorage.getItem('userId');
-        // console.log(sessionStorage.getItem('userId'));
-      },    
-
-      // 즐겨찾기 버튼을 클릭하면 실행되는 함수
-      bookmarkClick(){
-        // 즐겨찾기 등록 여부를 나타내는 값을 반대로 합니다.
-        this.bookmarkCheck = !this.bookmarkCheck;
-
-        // axios로 즐겨찾기 등록을 한 이모티콘의 번호를 전송합니다.
-        axios.post('/addUserBookmark', {
-          "emoticon_num"    : this.clickImg['id'],  // 이모티콘 번호
-          "bookmark_status" : this.bookmarkCheck,   // 즐겨찾기 등록 상태 (true : 누름, false : 안누름)
-        }).
-        then((response)=>{
-          alert(response.data['msg']);
-          // 즐겨찾기에 추가한 이모티콘을 배열에 저장합니다.
-          if(this.bookmarkCheck){
-            this.getBookmarkList.push(this.clickImg);
-          } 
-          // 즐겨찾기에 등록된 이모티콘을 배열에서 제거합니다.
-          else {
-            // 즐겨찾기를 제외한 이모티콘 배열을 구하는 함수를 실행합니다.
-            this.getBookmarkList  = this.emoticonFilter(this.getBookmarkList, this.clickImg);
-            // 출력하는 이모티콘 배열을 가지는 변수의 값에 즐겨찾기 리스트를 대입합니다.
-            this.emoticonData     = this.getBookmarkList;
-          }
-        }).catch(console.log('Oh my god!!, Failed'));
       },
+  },
 
-      // 카테고리별로 이모티콘을 분류하는 함수 (1:기본, 2:주문, 3:계산)
-      emoticonGrouping(){
-        for(var iCount = 0; iCount < this.emoticonInfo.length; iCount++){
-          if(this.emoticonInfo[iCount]["category"] == 1)
-            this.basicsList.push(this.emoticonInfo[iCount]);
-          else if(this.emoticonInfo[iCount]["category"] == 2)
-            this.getOrderList.push(this.emoticonInfo[iCount]);
-          else if(this.emoticonInfo[iCount]["category"] == 3)
-            this.getPayList.push(this.emoticonInfo[iCount]);
-        }
+  data() {
+      return {
+        emoticonInfo    : [],       // 모든 이모티콘의 정보가 들어있는 배열 
+        modalSize       : 500,      // 첫번째 모달창 크기
+        clickImgURL     : "",       // 모달창에 출력해야 하는 클릭한 이미지의 URL을 저장하는 변수
+        clickImg        : null,     // 모달창에 출력해야 하는 이미지 객체
+        dialog          : false,    // 작은 모달창의 출력 여부를 나타내는 값
+        secondDialog    : false,    // 마지막 모달창의 출력 여부를 나타내는 값
+        bookmarkCheck   : false,    // 이모티콘을 즐겨찾기를 등록했는지 여부가 저장되는 변수
+        getBookmarkList : [],       // 전송받은 즐겨찾기 목록이 저장되는 배열         
+        emoticonData    : [],       // 현재 선택한 카테고리의 즐겨찾기 목록이 저장되는 배열
+        basicsList      : [],       // 기본 이모티콘 목록을 저장하는 배열
+        getOrderList    : [],       // 주문 이모티콘 목록을 저장하는 배열
+        getPayList      : [],       // 계산 이모티콘 목록을 저장하는 배열
       }
+  },
+
+  methods:{
+    // 이모티콘 즐겨찾기 취소에 사용되는 필터 함수
+    emoticonFilter(emoticonList, exceptEmoticon){
+      return emoticonList.filter(function(emoticon){
+        for(var iCount = 0; iCount < emoticonList.length; iCount++){
+          return emoticon['id'] != exceptEmoticon['id'];
+        };
+      });
     },
 
-    created() { 
-      // axios http 라이브러리.
-      axios.post('/getEmoticonList').
+    // 출력할 Dialogs 이미지의 URL 및 즐겨찾기 등록 여부를 변경합니다.
+    changeDialogsData(imgName, imgObj){
+      this.clickImgURL = imgName;
+      this.clickImg    = imgObj;
+
+      var includeCheck = null;
+
+      // 현재 클릭한 이미지가 즐겨찾기에 추가되어 있는지 여부를 확인하는 함수
+      for (var iCount = 0; iCount < this.getBookmarkList.length; iCount++){
+        if(this.getBookmarkList[iCount]['id'] == this.clickImg['id']){
+          includeCheck = true;
+        }    
+      }
+
+      // 현재 클릭한 이모티콘이 즐겨찾기에 등록되어 있으면 bookmarkCheck의 값을 true를
+      // 등록되어 있지 않으면 false를 대입합니다.
+      if(includeCheck){
+        this.bookmarkCheck = true
+        // console.log('포함');
+      } 
+      else {
+        this.bookmarkCheck = false
+          // console.log('미포함');
+      }
+      // 세션에 저장된 사용자 id를 불러옵니다.
+      // sessionStorage.getItem('userId');
+      // console.log(sessionStorage.getItem('userId'));
+    },    
+
+    // 즐겨찾기 버튼을 클릭하면 실행되는 함수
+    bookmarkClick(){
+      // 즐겨찾기 등록 여부를 나타내는 값을 반대로 합니다.
+      this.bookmarkCheck = !this.bookmarkCheck;
+
+      // axios로 즐겨찾기 등록을 한 이모티콘의 번호를 전송합니다.
+      axios.post('/addUserBookmark', {
+        "emoticon_num"    : this.clickImg['id'],  // 이모티콘 번호
+        "bookmark_status" : this.bookmarkCheck,   // 즐겨찾기 등록 상태 (true : 누름, false : 안누름)
+      }).
       then((response)=>{
-        // 즐겨찾기 목록을 배열에 저장합니다.
-        this.getBookmarkList  = response.data['userBookmark'];
-        // 이모티콘 목록을 배열에 저장합니다.
-        this.emoticonInfo     = response.data['emoticonList'];
+        alert(response.data['msg']);
+        // 즐겨찾기에 추가한 이모티콘을 배열에 저장합니다.
+        if(this.bookmarkCheck){
+          this.getBookmarkList.push(this.clickImg);
+        } 
+        // 즐겨찾기에 등록된 이모티콘을 배열에서 제거합니다.
+        else {
+          // 즐겨찾기를 제외한 이모티콘 배열을 구하는 함수를 실행합니다.
+          this.getBookmarkList  = this.emoticonFilter(this.getBookmarkList, this.clickImg);
+          // 출력하는 이모티콘 배열을 가지는 변수의 값에 즐겨찾기 리스트를 대입합니다.
+          this.emoticonData     = this.getBookmarkList;
+        }
+      }).catch(console.log('Oh my god!!, Failed'));
+    },
 
-        // console.log('즐겨찾기 리스트');
-        // console.log(this.getBookmarkList);
-        // console.log('이모티콘 리스트');
-        // console.log(this.emoticonInfo);
-
-        // 이모티콘을 카테고리별로 분류합니다.
-        this.emoticonGrouping();
-
-        // 필터링한 즐겨찾기 목록의 정보를 emoticonData 배열에 저장합니다.
-        // 처음 커뮤니케이션 버튼에 들어갔을때 보이는 페이지가 즐겨찾기 카테고리이기 때문.
-        this.emoticonData = this.getBookmarkList;
-
-      }).catch(console.log('emoticon Oh my god!!, Failed'));
+    // 카테고리별로 이모티콘을 분류하는 함수 (1:기본, 2:주문, 3:계산)
+    emoticonGrouping(){
+      for(var iCount = 0; iCount < this.emoticonInfo.length; iCount++){
+        if(this.emoticonInfo[iCount]["category"] == 1)
+          this.basicsList.push(this.emoticonInfo[iCount]);
+        else if(this.emoticonInfo[iCount]["category"] == 2)
+          this.getOrderList.push(this.emoticonInfo[iCount]);
+        else if(this.emoticonInfo[iCount]["category"] == 3)
+          this.getPayList.push(this.emoticonInfo[iCount]);
+      }
     }
+  },
+
+  created() { 
+    // axios http 라이브러리.
+    axios.post('/getEmoticonList').
+    then((response)=>{
+      // 즐겨찾기 목록을 배열에 저장합니다.
+      this.getBookmarkList  = response.data['userBookmark'];
+      // 이모티콘 목록을 배열에 저장합니다.
+      this.emoticonInfo     = response.data['emoticonList'];
+
+      // console.log('즐겨찾기 리스트');
+      // console.log(this.getBookmarkList);
+      // console.log('이모티콘 리스트');
+      // console.log(this.emoticonInfo);
+
+      // 이모티콘을 카테고리별로 분류합니다.
+      this.emoticonGrouping();
+
+      // 필터링한 즐겨찾기 목록의 정보를 emoticonData 배열에 저장합니다.
+      // 처음 커뮤니케이션 버튼에 들어갔을때 보이는 페이지가 즐겨찾기 카테고리이기 때문.
+      this.emoticonData = this.getBookmarkList;
+
+    }).catch(console.log('emoticon Oh my god!!, Failed'));
+  }
 }
 </script>
 

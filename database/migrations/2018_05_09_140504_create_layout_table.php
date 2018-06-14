@@ -17,6 +17,7 @@ class CreateLayoutTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('shop_id');
             $table->json('layout_data');
+            $table->string('layout_name', 50);
             $table->foreign('shop_id')
                 ->references('id')->on('restaurants')
                 ->onDelete('cascade');
