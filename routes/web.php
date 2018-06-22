@@ -17,6 +17,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@showMainPage'
     ));
 
+    Route::get('/topList', array(
+        'as' => 'main.showMainPage',
+        'uses' => 'MainController@showMainPage'
+    ));
+
     Route::get('/search', array(
         'as' => 'main.showMainPage',
         'uses' => 'MainController@showMainPage'
@@ -55,6 +60,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/getRegionShopData', array(
         'as' => 'main.getRegionShopData',
         'uses' => 'MainController@getRegionShopData'
+    ));
+
+    Route::post('/getTypeShopData', array(
+        'as' => 'main.getTypeShopData',
+        'uses' => 'MainController@getTypeShopData'
     ));
 
 // <-- Show Login Form
@@ -155,6 +165,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('restaurantsLike', [
         'as' => 'restaurant.restaurantsLike',
         'uses' => 'RestaurantController@restaurantsLike'
+    ]);
+
+    Route::post('getShopLikeData', [
+        'as' => 'main.getShopLikeData',
+        'uses' => 'MainController@getShopLikeData'
     ]);
 
 // <-- User Order Page

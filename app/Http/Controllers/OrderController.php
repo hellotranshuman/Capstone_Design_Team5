@@ -110,19 +110,19 @@ class OrderController extends Controller
 
         switch (auth()->user()->country) {
 
-            case 'korea' :
+            case 'Korea' :
                 {
                     $source = 'ko';
                     break;
                 }
 
-            case 'china' :
+            case 'China' :
                 {
                     $source = 'zh-CN';
                     break;
                 }
 
-            case 'usa' :
+            case 'Usa' :
                 {
                     $source = 'en';
                     break;
@@ -137,8 +137,6 @@ class OrderController extends Controller
         $subOpArray = $request->get('subOption');
         $subOpCount = $request->get('subOpCount');
         $transBeforeText = '';
-
-
 
         for ($orderIndex = 0; $orderIndex < $menuCount; $orderIndex++) {
 
@@ -187,11 +185,13 @@ class OrderController extends Controller
 
         if($status_code == 200)
             return response()->json([
+                'flag'    => true,
                 'content' => $response,
             ]);
         else
             return response()->json([
-                'content' =>'error! ' . $response,
+                'flag'    => false,
+                'content' => $transBeforeText,
             ]);
     }
 }

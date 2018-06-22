@@ -200,7 +200,7 @@ export default {
         },
         //리뷰 좋아요 개수
         likeNum: {
-            type    : [String, Number],
+            type    : Number,
             default : 0
         },
         // 리뷰 좋아요가 선택된 리뷰인지 여부
@@ -330,6 +330,10 @@ export default {
             }).catch(console.log('is catch'));
         }
     },
+
+    created() {
+
+    }
 }
 </script>
 
@@ -346,11 +350,11 @@ export default {
         /* border: 3px solid gray; */
     }
     .review-image { 
-        position: absolute;
+        position: relative;
         top: 0;
         left: 0;
-        width: 130%;
-        height: 130%; 
+        width: 125%;
+        height: 125%; 
     }
 
     /* 별점 정렬 CSS */

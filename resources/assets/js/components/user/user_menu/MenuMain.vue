@@ -382,10 +382,16 @@
                     OpCount: this.OpCount,
                     subOpCount: this.subOpCount
                 }).then((response) => {
-                    let responseText = JSON.parse(response.data.content);
+                    if(response.data.flag) {
+                        let responseText = JSON.parse(response.data.content);
 
-                    var translatedText = responseText.message.result.translatedText;
-                    this.MenuList = translatedText.split("@");
+                        var translatedText = responseText.message.result.translatedText;
+                        this.MenuList = translatedText.split("@");
+                    }
+                    else {
+                        this.MenuList = response.data.content.split("@");
+                    }
+
 
 
                 });

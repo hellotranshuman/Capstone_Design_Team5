@@ -13,7 +13,7 @@
                         class="elevation-1"
                 >
                     <template slot="items" slot-scope="props">
-                        <td>{{ props.item.name }}</td>
+                        <td>{{ props.item.user_name }}</td>
                         <td class="text-xs-left">{{ props.item.reservation_date }}</td>
                         <td class="text-xs-left">{{ props.item.person }}</td>
                         <td class="text-xs-left">{{ props.item.child }}</td>
@@ -49,7 +49,7 @@
 
                             <!-- 수락 버튼 -->
                             <v-btn small color="primary" dark @click.stop="Acceptdialog = true"
-                                   @click="AcceptCustomer = props.item.name, AcceptItem(props.item)"
+                                   @click="AcceptCustomer = props.item.user_name, AcceptItem(props.item)"
                             >
                                 Accept <v-icon dark right>check_circle</v-icon>
                             </v-btn>
@@ -120,7 +120,7 @@
                 WhyCancel       : '',
 
                 headers: [
-                    { text: '예약자 명',    value: 'name' },
+                    { text: '예약자 명',    value: 'user_name' },
                     { text: '예약 날짜',    value: 'reservation_date' },
                     { text: '어른 인원',    value: 'person' },
                     { text: '아이 인원',    value: 'child' },

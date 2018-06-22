@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Hashtag;
 use App\Reservation;
 use App\Restaurant;
+use App\Shop_like;
 use App\UserCoupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,19 @@ use App\Order_List;
 
 class MainController extends Controller
 {
+    const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
+    const client_secret = "pevANwIHvX";
+
+    private $url     = "https://openapi.naver.com/v1/language/translate";
+    private $is_post = true;
+    private $headers = array();
+
+    function __construct()
+    {
+        $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id ;
+        $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
+    }
+
     public function showMainPage(Request $request) {
 
         if($request->session()->has('restaurantId'))
@@ -52,18 +66,21 @@ class MainController extends Controller
 
         // 현재 유저의 전체 주문번호와 메뉴, 옵션 갯수 Count
         $orderCountData = Order_List::join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
-            ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
+            ->leftjoin('order_option', 'order_option.order_menu_id', 'order_menu.id')
             ->select(DB::raw('order_list.order_num as order_num, 
-                                           count(order_list.order_num) as orderCount'))
+                                           count(order_list.order_num) as order_count'))
             ->where('order_list.user_num', auth()->user()->id)
             ->groupBy('order_list.order_num')
             ->orderByRaw('order_list.order_date DESC')
             ->get();
 
+
+
         // 현재 주문번호의 데이터 받아와 전체 주문 내역에 저장
         foreach ($orderCountData as $orderCount) {
             // 현재 주문번호의 행 갯수
-            $currentOrderCount = $orderCount->orderCount;
+            $currentOrderCount = $orderCount->order_count;
+
             // 현재 주문번호
             $currentOrderNum = $orderCount->order_num;
 
@@ -72,8 +89,8 @@ class MainController extends Controller
                 ->join('restaurants', 'order_list.shop_id', '=', 'restaurants.id')
                 ->join('order_menu', 'order_menu.order_num', '=', 'order_list.order_num')
                 ->join('menu', 'order_menu.menu_id', '=', 'menu.id')
-                ->join('order_option', 'order_option.order_menu_id', 'order_menu.id')
-                ->join('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
+                ->leftjoin('order_option', 'order_option.order_menu_id', 'order_menu.id')
+                ->leftjoin('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
                 ->leftJoin('suboption', 'order_option.subop_num', '=', 'suboption.sub_opnum')
                 ->select(DB::raw('order_list.order_num as order_num, 
                                                         restaurants.name as restaurant_name,
@@ -145,6 +162,10 @@ class MainController extends Controller
 
     // <-- 사용자 예약 내역 출력
     public function getUserReservationList() {
+        if(!auth()->check())
+            return response()->json([
+                'resAcceptData'  => false,
+            ]);
 
         // 예약 신청 완료된 예약 List
         $resAcceptData = Reservation::join('restaurants', 'reservation.shop_id', '=', 'restaurants.id')
@@ -320,11 +341,16 @@ class MainController extends Controller
 
     // <-- 사용자 쿠폰 내역 출력
     public function getUserCouponList() {
+        if(!auth()->check())
+            return response([
+                'coupon_data' => false,
+            ]);
+
 
         // 현재 사용자의 쿠폰 내역 조회
         $couponData =  UserCoupon::join('coupon', 'coupon.id', '=', 'user_coupon.coupon_id')
             ->join('restaurants', 'restaurants.id', '=', 'coupon.shop_id')
-            ->join('menu', 'menu.id', '=', 'coupon.add_product')
+            ->leftjoin('menu', 'menu.id', '=', 'coupon.add_product')
             ->select(DB::raw('user_coupon.id as id,
                                     coupon.name as name,
                                     coupon.category as category,
@@ -472,6 +498,11 @@ class MainController extends Controller
             한식 베스트, 일식 베스트, 중식 베스트
          * */
 
+        if(!$request->has('region') || !$request->has('limit'))
+            return response()->json([
+                'regionShopData'      => false,
+            ]);
+
         // <-- 지역별 가게 추천 Data
         $regionData   = $request->get('region');
         $limit        = $request->get('limit');
@@ -503,9 +534,14 @@ class MainController extends Controller
     // <— 업종별 평점 기준 가게 데이터
     public function getTypeShopData(Request $request) {
 
+        if(!$request->has('type') || !$request->has('limit'))
+            return response()->json([
+                'typeShopData'      => false,
+            ]);
+
         // <— 각 업종의 가게 Data
-        $type = $request->get('');
-        $limitData    = $request->get('');
+        $typeData = $request->get('type');
+        $limit    = $request->get('limit');
 
         $typeShopData =  Restaurant::join('review', 'review.shop_id', '=', 'restaurants.id')
             ->select(DB::raw('
@@ -519,10 +555,11 @@ class MainController extends Controller
                                     restaurants.cities as shop_cities,
                                     restaurants.address as shop_address
                                 '))
-            ->where('restaurants.type', $type)
+
             ->groupBy('review.shop_id')
             ->orderByRaw('totalRating desc')
-            ->limit()
+            ->where('restaurants.type', 'like' , $typeData)
+            ->limit($limit)
             ->get()
             ->toArray();
 
@@ -533,6 +570,11 @@ class MainController extends Controller
 
     // <— 검색을 누른 키워드에 대한 데이터 get
     public function getSearchData(Request $request) {
+
+        if(!$request->has('searchData'))
+            return response()->json([
+                'shopSearchData'    => false,
+            ]);
 
         // <— 가게 이름으로 검색
         $shopNameKeyword = '%' . $request->get('searchData') . '%';
@@ -553,10 +595,10 @@ class MainController extends Controller
                                     restaurants.type as shop_type,
                                     restaurants.explanation as shop_explanation,
                                     restaurants.phone as shop_phone,
-                                    concat(dodobuken, cities, address) as shop_address,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
                                     AVG(review.rating) as totalRating
                                 '))
-            ->where('address', 'like', $regionKeyword)
+            ->having('shop_address', 'like', $regionKeyword)
             ->groupBy('restaurants.id')
             ->orderByRaw('totalRating desc')
             ->get()
@@ -588,5 +630,35 @@ class MainController extends Controller
             'tagSearchData'     => $tagSearchData
         ]);
     }
+
+    // <-- 가게 좋아요 목록 출력 (찜목록)
+    public function getShopLikeData() {
+
+        if(!auth()->check())
+            return response([
+               'shopLikeList' => false,
+            ]);
+        else
+           $shopLikeList =  Shop_like::join('restaurants', 'restaurants.id', '=', 'shop_like.shop_id')
+                            ->select(DB::raw('
+                                            restaurants.id   as shop_id,
+                                            restaurants.name as shop_name,
+                                            restaurants.type as shop_type,
+                                            restaurants.explanation as shop_explanation,
+                                            restaurants.phone as shop_phone,
+                                            restaurants.dodobuken as shop_ddobuken,
+                                            restaurants.cities as shop_cities,
+                                            restaurants.address as shop_address
+                            '))
+                            ->where('shop_like.user_num', auth()->user()->id)
+                            ->get()
+                            ->toArray();
+
+            return response()->json([
+               'shopLikeList' =>  $shopLikeList,
+            ]);
+
+    }
+
 
 }

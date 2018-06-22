@@ -13,7 +13,7 @@ class CreateLayoutTable extends Migration
      */
     public function up()
     {
-        Schema::create('layout', function (Blueprint $table) {
+        Schema::create('layoutTable', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('shop_id');
             $table->json('layout_data');

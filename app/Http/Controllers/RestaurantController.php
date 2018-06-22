@@ -201,11 +201,6 @@ class RestaurantController extends Controller
         /*
          * 바뀔 이미지가 있는 경우 현재 이미지 다 지우고
          * 새로운 이미지로 교체 하기
-         *
-         * 1. 기존 이미지 갯수 DB로 가져오기
-         * 2. 기존 이미지 전부 삭제
-         * 3. 새로운 이미지 갯수에 따라서 새로운 이미지로 교체
-         * 4. DB 삭제후 다시 등록... (갯수변동때메)
          * */
 
 
@@ -307,8 +302,8 @@ class RestaurantController extends Controller
 
                 Upload::create([
                         'filename' => $fileName,
-                        'shop_id' => $shop_id,
-                        'path' => $dbPath,
+                        'shop_id'  => $shop_id,
+                        'path'     => $dbPath,
                     ]);
 
             }

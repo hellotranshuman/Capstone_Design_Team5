@@ -180,7 +180,7 @@
                 headers: [
                     { text: '쿠폰 이름',    value: 'name' },
                     { text: '쿠폰 종류',    value: 'category' },
-                    { text: '할인율',       value: 'discount' },
+                    { text: '할인 가격',       value: 'discount' },
                     { text: '제공 상품',    value: 'menu_name' },
                     { text: '쿠폰 조건',    value: 'price_condition' },
                     { text: '사용 시작일',  value: 'start_date' },

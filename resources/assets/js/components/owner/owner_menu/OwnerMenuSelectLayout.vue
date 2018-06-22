@@ -29,7 +29,7 @@
                     </v-card>
                 </v-flex>
                 <v-flex xs2 style="font-size: 2rem;">
-                    <v-btn color="error" block style="height:90%; font-weight:bold" @click="save_data">
+                    <v-btn color="error" block style="font-size:1.5rem; height:90%; font-weight:bold" @click="save_data">
                         저장하기
                     </v-btn>
                 </v-flex>
@@ -65,68 +65,102 @@
             <!-- 기본 메뉴판 템플릿 선택하기. -->
             <v-layout text-xs-center mb-5>
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿1 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+                <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
                         <v-card-text> <b>기본 템플릿1</b> </v-card-text>
 
                         <div class="tem_img"> <img class="inner_img" :src="exImg1"> </div>
 
                         <!-- 모달 출력 버튼 -->
-                        <v-btn color="primary" @click="ExTemplete=true; selectTemplete=1"> 예시 보기 </v-btn>
-                        <v-btn color="success" @click="basicTem=true; selectTemplete=1"> 템플릿 선택 </v-btn>
+                        <v-card-actions>
+                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=1"> 예시 보기 </v-btn>
+                            <v-btn color="success" block @click="basicTem=true; selectTemplete=1"> 템플릿 선택 </v-btn>
+                        </v-card-actions>
                     </v-card>
                 </v-flex>
 
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿2 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+                <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
                         <v-card-text> <b>기본 템플릿2</b> </v-card-text>
 
                         <div class="tem_img"> <img class="inner_img" :src="exImg2"> </div>
 
                         <!-- 모달 출력 버튼 -->
-                        <v-btn color="primary" @click="ExTemplete=true; selectTemplete=2"> 예시 보기 </v-btn>
-                        <v-btn color="success" @click="basicTem=true; selectTemplete=2"> 템플릿 선택 </v-btn>
+                        <v-card-actions>
+                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=2"> 예시 보기 </v-btn>
+                            <v-btn color="success" block @click="basicTem=true; selectTemplete=2"> 템플릿 선택 </v-btn>
+                        </v-card-actions>
                     </v-card>
                 </v-flex>
 
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿3 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+                <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
                         <v-card-text> <b>기본 템플릿3</b> </v-card-text>
 
                         <div class="tem_img"> <img class="inner_img" :src="exImg3"> </div>
 
                         <!-- 모달 출력 버튼 -->
-                        <v-btn color="primary" @click="ExTemplete=true; selectTemplete=3"> 예시 보기 </v-btn>
-                        <v-btn color="success" @click="basicTem=true; selectTemplete=3"> 템플릿 선택 </v-btn>
+                        <v-card-actions>
+                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=3"> 예시 보기 </v-btn>
+                            <v-btn color="success" block @click="basicTem=true; selectTemplete=3"> 템플릿 선택 </v-btn>
+                        </v-card-actions>
                     </v-card>
                 </v-flex>
 
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿4 -->
-                <v-flex xs3 style="font-size: 1.2rem;" elevation-3>
+                <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
                         <v-card-text> <b>기본 템플릿4</b> </v-card-text>
 
                         <div class="tem_img"> <img class="inner_img" :src="exImg4"> </div>
 
                         <!-- 모달 출력 버튼 -->
-                        <v-btn color="primary" @click="ExTemplete=true; selectTemplete=4"> 예시 보기 </v-btn>
-                        <v-btn color="success" @click="basicTem=true; selectTemplete=4"> 템플릿 선택 </v-btn>
+                        <v-card-actions>
+                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=4"> 예시 보기 </v-btn>
+                            <v-btn color="success" block @click="basicTem=true; selectTemplete=4"> 템플릿 선택 </v-btn>
+                        </v-card-actions>
                     </v-card>
                 </v-flex>
             </v-layout>
 
             <!--************************************************ 커스터마이징 설정 ***************************************************-->
             <!-- 메뉴판 템블릿 커스터마이징 -->
-            <v-layout elevation-3>
-                <v-flex xs12 style="font-size: 2rem;">
+            <v-layout elevation-5>
+                <v-flex xs10 style="font-size: 2rem;">
                     <v-card>
-                        <v-card-text>
-                            <b> 커스텀마이징 템플릿 </b>
-                        </v-card-text>
+                        <v-card-text> <b> 커스텀마이징 템플릿 </b> </v-card-text>
                     </v-card>
                 </v-flex>
+                <v-flex xs2>
+                    <v-btn color="error" @click="workSpace_set" @click.stop="createMode=true" block
+                           style="font-size:1.5rem; height:90%; font-weight:bold">
+                        메뉴판 제작
+                    </v-btn>
+                </v-flex>
+            </v-layout>
+
+            <!-- 사용자가 만든 커스텀마이징 템플릿 리스트 div 출력 -->
+            <v-layout elevation-3 v-if="loadTemplateList !== null">
+                <div style="width:100%;">
+                    <v-flex v-for="n in range(0, loadListNum-1)" :key="n" elevation-10
+                            style="width:31%; margin:1%; float:left; font-size: 1.2rem; background-color:#F2F2F2">
+                        <v-card>
+                            <v-card-text style="max-height:60px; font-size:1.5rem; font-weight:bold;">
+                                {{loadTemplateList[n].layout_name}}
+                            </v-card-text>
+                            <div class="tem_img">
+                                <img class="inner_img" :src="loadTemplateList[n].thumbnail">
+                            </div>
+                            <v-card-actions>
+                                <v-btn color="primary" block @click="ExCustom=true; selectCustomTem=n;">예시 보기</v-btn>
+                                <v-btn color="success" block @click="customTem=true; selectCustomTem=n;">선택</v-btn>
+                                <v-btn color="error" block @click="customDeleteDialog=true; selectCustomTem=n;">삭제</v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-flex>
+                </div>
             </v-layout>
 
             <!-- 커스텀마이징 템플릿 예시보기 -->
@@ -165,56 +199,34 @@
                 </v-card>
             </v-dialog>
 
-            <!-- 사용자가 만든 커스텀마이징 템플릿 리스트 div 출력 -->
-            <v-layout elevation-3 v-if="loadTemplateList !== null">
-                <div id="custom" style="width:100%; max-height:400px; overflow:auto; background-color:#F2F2F2">
-                    <div v-for="n in range(0, loadListNum-1)" :key="n" style="width:31%; margin:1%; float:left; font-size: 1.2rem;">
-                        <v-card>
-                            <v-card-text style="max-height:60px; font-size:1.5rem; font-weight:bold;">
-                                {{loadTemplateList[n].layout_name}}
-                            </v-card-text>
-                            <div class="tem_img">
-                                <img class="inner_img" :src="loadTemplateList[n].thumbnail">
-                            </div>
-                            <v-btn color="primary" @click="ExCustom=true; selectCustomTem=n;">예시 보기</v-btn>
-                            <v-btn color="success" @click="customTem=true; selectCustomTem=n;">선택</v-btn>
-                            <v-btn color="error" @click="customDeleteDialog=true; selectCustomTem=n;">삭제</v-btn>
-                        </v-card>
-                    </div>
-                </div>
-            </v-layout>
-
-            <!-- 제작 툴 열기 -->
-            <v-layout elevation-3>
-                <v-flex xs12>
-                    <v-card>
-                        <v-card-text style="font-size: 1rem;">
-                            <v-btn color="error" @click="workSpace_set" @click.stop="createMode=true">메뉴판 제작</v-btn>
-                            제작 툴을 사용하여 자신만의 메뉴판을 직접 제작합니다.
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
 
             <!--**************************************************** 제작 툴********************************************************-->
             <v-layout row justify-center>
-                <v-dialog v-model="createMode" fullscreen hide-overlay transition="dialog-bottom-transition">
-                    <v-card>
+                <v-dialog v-model="createMode" fullscreen transition="dialog-bottom-transition">
+                    <v-card class="ban_drag">
                         <!-- 상단 툴바 -->
-                        <v-layout style="padding:0.5%; border-top:1px solid #A4A4A4; border-bottom:1px solid #A4A4A4;">
-                            <span style="font-size:3rem; margin-left:3%;"><b>메뉴판 제작</b></span>
-                            <v-spacer></v-spacer>
+                        <v-layout>
+                            <div id="topToolBar" style="width:100%; padding:0.5%; border-bottom:1px solid #A4A4A4;">
+                                <b style="font-size:3rem; margin-left:10px; float:left"> 메뉴판 제작 </b>
 
-                            <!-- 불러오기 저장하기 나가기 버튼 -->
-                            <v-btn large color="primary" @click="loadMenuDialog = true">
-                                불러오기
-                            </v-btn>
+                                <!-- 불러오기 저장하기 나가기 버튼 -->
+                                <v-card-actions style="float:right">
+                                    <v-btn large color="info" @click="loadMenuDialog=true"
+                                           style="font-size:1.5rem;" block>
+                                        불러오기
+                                    </v-btn>
 
-                            <v-btn large class="white--text" color="red lighten-1"
-                                   @click.stop="saveMenuDialog=true"> 저장하기 </v-btn>
+                                    <v-btn large color="error" block
+                                           style="font-size:1.5rem;" @click.stop="saveMenuDialog=true">
+                                        저장하기
+                                    </v-btn>
 
-                            <v-btn large class="white--text" color="grey darken-1"
-                                   @click.stop="createCancelDialog=true"> 나가기 </v-btn>
+                                    <v-btn large color="blue-grey" class="white--text" block
+                                           style="font-size:1.5rem;" @click.stop="createCancelDialog=true">
+                                        나가기
+                                    </v-btn>
+                                </v-card-actions>
+                            </div>
                         </v-layout>
 
                         <!-- 불러오기 모달 -->
@@ -248,9 +260,17 @@
                                         메뉴판 저장하기
                                     </div>
                                 </v-card-title>
-                                <div style="width: 100%; height: 50px; border-top:1.2px solid gray; padding-left:10px;">
-                                    <v-text-field label="템플릿 명 설정" v-model="temName"></v-text-field>
+                                <div style="width:100%; height:50px; border-top:1.2px solid gray; padding-left:10px; margin-bottom:20px;">
+                                    <v-text-field
+                                            label="템플릿 명 설정"
+                                            v-model="temName"
+                                            full-width
+                                            :rules="[(v) => v.length <= 15 || '최대 15자입니다.']"
+                                            :counter="15"
+                                            autofocus >
+                                    </v-text-field>
                                 </div>
+
                                 <ul style="height:200px; overflow:auto; border-top:1.2px solid gray; border-bottom:1.2px solid gray;">
                                     <li v-for="i in range(0, loadListNum-1)" :key="i" class="menuList"
                                         v-if="loadTemplateList !== null"
@@ -281,9 +301,9 @@
                         </v-dialog>
 
                         <!-- 하단 작업 공간 & 툴바 -->
-                        <v-layout style="width:100%;">
+                        <v-layout style="width:100%; border-bottom:1px solid #585858;">
                             <!-- 왼쪽 사이드 툴바 : 메뉴 생성 -->
-                            <v-flex xs2 style="border-right:1px solid #585858;">
+                            <v-flex id='leftToolBar' xs2 style="border-right:1px solid #585858;">
                                 <v-list id="selectColumn" style="background-color:#F2F2F2;">
                                     <v-list-tile avatar>
                                         <v-list-tile-content>
@@ -382,7 +402,7 @@
 
                                 <div class="designSet_tr">
                                     <b class="designSet_name"> 세로 비율 설정</b> <br>
-                                    <input type="text" id="menuRatio" class="designSet_ipt" value="50">%
+                                    <input type="text" id="menuRatio" class="designSet_ipt">%
                                     <button style="width: 30%; margin-left:2%; font-weight:bold"
                                             @click="setMenuRatio">적용</button>
                                 </div>
@@ -404,8 +424,8 @@
 
                                     <select id="MenuNum" class="designSet_ipt">
                                         <option value=1> 1 </option>
-                                        <option value=2 selected> 2 </option>
-                                        <option value=3> 3 </option>
+                                        <option value=2> 2 </option>
+                                        <option value=3 selected> 3 </option>
                                         <option value=4> 4 </option>
                                     </select> 개
                                 </div>
@@ -580,10 +600,11 @@
     export default {
         created(){
             // 메뉴 레이아웃 가져오기
-            var url = '';
+            var url       = '';
             var layoutNum = null;
-            var shop_id = this.$route.params.shop_id;
+            var shop_id   = this.$route.params.shop_id;
             url = '/owner/' + shop_id + '/getLayout';
+
             // 카테고리 요청하기.
             axios.get(url)
                 .then( (response) => {
@@ -594,7 +615,9 @@
                         this.selected_template = "커스터마이징 템플릿 - " + response.data.layoutName;
                 })
                 .catch((ex)=>{
-                    alert('레이아웃 로드 실패');
+                    this.snackbar_text = '레이아웃 로드 실패';
+                    this.snackbar      = true;
+                    return null;
                 });
 
             this.loadCreateMenuList();
@@ -646,8 +669,9 @@
                 designSetDialog : false,                // 영역 서식 용
                 colorDialog     : false,                // 색 선택
 
-                // 선 색 || 영역 색상 구분용
-                appColor : null,
+                appColor : null,                        // 선 색, 영역 색상 구분용
+
+                longWidth : true,                       // true : 너비가 높이 보다 더 김, false : 높이가 너비보다 더 김
             }
         },
         methods : {
@@ -662,7 +686,7 @@
                 }
                 // 커스텀 템플릿 선택 시
                 else if(this.selectWhat=='cos'){
-                    select_tem = this.loadTemplateList[this.selectCostemTem].id;
+                    select_tem = this.loadTemplateList[this.selectCustomTem].id;
                 }
                 // 아무것도 선택하지 않았을 경우
                 else if (this.selectWhat === null) {
@@ -718,7 +742,7 @@
                     .then( (response) => {
                         if(response.data.layoutData != null){
                             this.loadTemplateList = response.data.layoutData;                      // 제작한 메뉴판 리스트
-                            this.loadListNum = this.loadTemplateList.length;            // 제작한 메뉴판 갯수
+                            this.loadListNum      = this.loadTemplateList.length;            // 제작한 메뉴판 갯수
                         } else {
                             this.snackbar_text = '저장된 템플릿이 없습니다.';
                             this.snackbar      = true;
@@ -728,52 +752,6 @@
                         this.snackbar_text = '메뉴 리스트 불러오기 실패';
                         this.snackbar      = true;
                     });
-
-                // this.loadTemplateList = [
-                //     {
-                //         id   : 0,
-                //         layout_name : 'save1',
-                //         menu : '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":50,"border":"","borderRadius":"","color":"","backgroundColor":""},"createdImg":{"width":"57%","height":"88%","top":"7%","left":"1%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdName":{"width":"36%","height":"14%","top":"8%","left":"61%","border":"2px solid rgb(103, 85, 60)","borderRadius":"0px","color":"black","backgroundColor":"rgb(228, 171, 171)"},"createdExpl":{"width":"37%","height":"23%","top":"27%","left":"61%","border":"2px solid rgb(234, 30, 176)","borderRadius":"0px","color":"black","backgroundColor":""},"createdL_D":{"width":"37%","height":"12%","top":"53%","left":"61%","border":"2px solid rgb(243, 228, 228)","borderRadius":"0px","color":"rgb(187, 12, 12)","backgroundColor":"rgb(161, 129, 129)"},"createdPrice":{"width":"38%","height":"13%","top":"67%","left":"61%","border":"2px solid rgb(6, 248, 220)","borderRadius":"0px","color":"rgb(65, 64, 84)","backgroundColor":"rgb(220, 224, 247)"},"createdSelect":{"width":"38%","height":"10%","top":"86%","left":"61%","border":"2px solid rgb(6, 248, 220)","borderRadius":"0px","color":"rgb(65, 64, 84)","backgroundColor":"rgb(220, 224, 247)"}}',
-                //         thumbnail : null
-                //     },
-                //     {
-                //         id   : 1,
-                //         layout_name : 'save2',
-                //         menu : '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":35,"border":"","borderRadius":"","color":"","backgroundColor":""},"createdImg":{"width":"48%","height":"100%","top":"5%","left":"0%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdName":{"width":"52%","height":"13%","top":"5%","left":"48%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdExpl":{"width":"52%","height":"28%","top":"18%","left":"48%","border":"2px solid black","borderRadius":"0px","color":"black","backgroundColor":"rgb(244, 225, 225)"},"createdL_D":{"width":"52%","height":"15%","top":"46%","left":"48%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdPrice":{"width":"52%","height":"13%","top":"61%","left":"48%","border":"2px solid black","borderRadius":"0px","color":"black","backgroundColor":"rgb(244, 225, 225)"},"createdSelect":{"width":"52%","height":"15%","top":"74%","left":"48%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""}}',
-                //         thumbnail : null
-                //     },
-                //     {
-                //         id   : 2,
-                //         layout_name : 'save3',
-                //         menu : '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":61,"border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdImg":{"width":"73%","height":"96%","top":"5%","left":"2%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdName":{"width":"59%","height":"11%","top":"5%","left":"77%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(251, 246, 246)"},"createdExpl":{"width":"59%","height":"34%","top":"20%","left":"77%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(251, 246, 246)"},"createdL_D":{"width":"60%","height":"16%","top":"57%","left":"76%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(251, 246, 246)"},"createdPrice":{"width":"60%","height":"10%","top":"77%","left":"76%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(251, 246, 246)"},"createdSelect":{"width":"61%","height":"10%","top":"90%","left":"76%","border":"5px solid rgb(15, 12, 12)","borderRadius":"0px","color":"black","backgroundColor":""}}',
-                //         thumbnail : null
-                //     },
-                //     {
-                //         id   : 3,
-                //         layout_name : 'save4',
-                //         menu : '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":49,"border":"5px dashed rgb(82, 85, 51)","borderRadius":"20px","color":"black","backgroundColor":""},"createdImg":{"width":"47%","height":"76%","top":"15%","left":"4%","border":"0px","borderRadius":"20px","color":"black","backgroundColor":""},"createdName":{"width":"45%","height":"9%","top":"13%","left":"53%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdExpl":{"width":"46%","height":"24%","top":"25%","left":"53%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdL_D":{"width":"47%","height":"13%","top":"51%","left":"52%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdPrice":{"width":"47%","height":"9%","top":"67%","left":"52%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdSelect":{"width":"47%","height":"10%","top":"79%","left":"52%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""}}',
-                //         thumbnail : null
-                //     },
-                //     {
-                //         id   : 4,
-                //         layout_name : 'AASDF',
-                //         menu : '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":49,"border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(243, 239, 239)"},"createdImg":{"width":"53%","height":"81%","top":"10%","left":"2%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdName":{"width":"34%","height":"14%","top":"10%","left":"59%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdExpl":{"width":"37%","height":"25%","top":"28%","left":"58%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdL_D":{"width":"39%","height":"15%","top":"56%","left":"57%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdPrice":{"width":"24%","height":"11%","top":"74%","left":"56%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdSelect":{"width":"31%","height":"11%","top":"89%","left":"65%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""}}',
-                //         thumbnail : null
-                //     },
-                //     {
-                //         id   : 5,
-                //         layout_name : 'save6',
-                //         menu : '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":50,"border":"5px dashed rgb(82, 85, 51)","borderRadius":"20px","color":"black","backgroundColor":""},"createdImg":{"width":"40%","height":"62%","top":"7%","left":"2%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdName":{"width":"41%","height":"11%","top":"72%","left":"2%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdExpl":{"width":"45%","height":"31%","top":"8%","left":"48%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdL_D":{"width":"46%","height":"8%","top":"43%","left":"49%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(241, 218, 218)"},"createdPrice":{"width":"47%","height":"11%","top":"56%","left":"49%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdSelect":{"width":"13%","height":"25%","top":"75%","left":"74%","border":"2px solid rgb(9, 7, 7)","borderRadius":"100%","color":"black","backgroundColor":""}}'
-                //         ,thumbnail : null
-                //     },
-                //     {
-                //         id   : 6,
-                //         layout_name : 'save7',
-                //         menu : '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":50,"border":"5px dashed rgb(82, 85, 51)","borderRadius":"20px","color":"black","backgroundColor":""},"createdImg":{"width":"40%","height":"62%","top":"7%","left":"2%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdName":{"width":"41%","height":"11%","top":"72%","left":"2%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdExpl":{"width":"45%","height":"31%","top":"8%","left":"48%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdL_D":{"width":"46%","height":"8%","top":"43%","left":"49%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(241, 218, 218)"},"createdPrice":{"width":"47%","height":"11%","top":"56%","left":"49%","border":"0px","borderRadius":"0px","color":"black","backgroundColor":""},"createdSelect":{"width":"13%","height":"25%","top":"75%","left":"74%","border":"2px solid rgb(9, 7, 7)","borderRadius":"100%","color":"black","backgroundColor":""}}'
-                //         ,thumbnail : null
-                //     },
-                // ];
-                // this.loadListNum = this.loadTemplateList.length;
             },
 
             // 제작한 메뉴 불러와서 menu div에 삽입
@@ -782,19 +760,18 @@
                 if(this.loadMenuDialog == false) return null;
 
                 let clickTem     = this.loadTemplateList[event.target.value];    // 클릭한 템플릿
-                let loadTemplate = JSON.parse(clickTem.layout_data);                    // 선택한 템플릿 설정 값 가져오기
+                let loadTemplate = JSON.parse(clickTem.layout_data);             // 선택한 템플릿 설정 값 가져오기
+                let workSpace    = document.getElementById('workSpace');         // 작업 영역
+                let workSpace_w  = workSpace.clientWidth;                        // 작업 영역 너비
+                let workSpace_h  = workSpace.clientHeight;                       // 작업 영역 높이
                 let menu         = document.getElementById('menu');              // 메뉴 가져오기
                 let menuRatio    = document.getElementById('menuRatio');         // 세로 비율 설정
                 let MenuNum      = document.getElementById('MenuNum');           // 1줄에 출력될 메뉴 갯수
                 let MenuMargin   = document.getElementById('MenuMargin');        // 메뉴 간격
-                let ElementArea  = document.getElementById('ElementArea');       // 드래그 div
                 let MenuElement  = [                                             // 메뉴 요소들
                     'createdExpl','createdImg','createdL_D',
                     'createdName','createdPrice','createdSelect'
                 ];
-                let menuW = menu.offsetWidth;                                    // 메뉴 너비 픽셀 값
-                let menuH = menu.offsetHeight;                                   // 메뉴 높이 픽셀 값
-
                 // 메뉴 영역 요소들 지우기
                 this.menuAreaCleaner();
 
@@ -802,6 +779,20 @@
                 MenuMargin.value = loadTemplate.MenuMargin;                             // 메뉴 간의 간격
                 menuRatio.value  = loadTemplate.createdMenu.ratio;                      // 메뉴 세로 비율
                 this.setMenuRatio();                                                    // 메뉴 세로 비율 값 적용
+
+                let menu_w = menu.style.width.replace('px', '');                        // 메뉴 너비 픽셀 값
+                let menu_h = menu.style.height.replace('px', '');                       // 메뉴 높이 픽셀 값
+                let menu_l = 0;                                                         // 메뉴 top 픽셀 값
+                let menu_t = 0;                                                         // 메뉴 left 픽셀 값
+
+                // 메뉴 영역 left, top 값 설정
+                if(this.longWidth){
+                    menu_t = Math.floor(workSpace_h * 0.03);                            // 패딩 값
+                    menu_l = Math.floor(workSpace_w * 0.03);
+                }else{
+                    menu_l = Math.floor((workSpace_w - menu_w) / 2);                    // (작업 공간 높이 - 메뉴 영역 높이)/2
+                    menu_t = Math.floor((workSpace_h - menu_h) / 2);
+                }
 
                 menu.style.color           = loadTemplate.createdMenu.color;            // 메뉴 글자 색
                 menu.style.border          = loadTemplate.createdMenu.border;           // 메뉴 테두리 값
@@ -817,17 +808,19 @@
                     let w = loadTemplate[MenuElement[i]].width.replace('%', '');
                     let h = loadTemplate[MenuElement[i]].height.replace('%', '');
 
-                    element.style.top             = Math.floor( menuH * t/100) + Math.floor( menuH * 3/100) +'px';
-                    element.style.left            = Math.floor( menuW * l/100) + Math.floor( menuW * 3/100) +'px';
-                    element.style.width           = Math.floor( menuW * w/100) + 'px';
-                    element.style.height          = Math.floor( menuH * h/100) + 'px';
+                    element.style.top             = Math.floor( menu_h * t/100) + menu_t +'px';
+                    element.style.left            = Math.floor( menu_w * l/100) + menu_l +'px';
+                    element.style.width           = Math.floor( menu_w * w/100) + 'px';
+                    element.style.height          = Math.floor( menu_h * h/100) + 'px';
                     element.style.border          = loadTemplate[MenuElement[i]].border;
+                    element.style.zIndex          = loadTemplate[MenuElement[i]].zIndex;
                     element.style.color           = loadTemplate[MenuElement[i]].color;
                     element.style.backgroundColor = loadTemplate[MenuElement[i]].backgroundColor;
                     element.style.borderRadius    = loadTemplate[MenuElement[i]].borderRadius;
                     element.style.position        = 'absolute';
 
                     switch(MenuElement[i]){
+                        case 'createdImg'   : element.innerText = '메뉴 이미지';      break;
                         case 'createdExpl'  : element.innerText = '메뉴 설명';      break;
                         case 'createdL_D'   : element.innerText = '런치 / 디너';    break;
                         case 'createdName'  : element.innerText = '메뉴명';         break;
@@ -836,7 +829,7 @@
                     }
                     element.classList.add(MenuElement[i]);
                     element.classList.add('dragElement');
-                    element.onmousedown  = this.startDrag;
+                    element.onmousedown = this.startDrag;
                     element.addEventListener("contextmenu", this.ShowContextmenu);     // 마우스 오른쪽 클릭 시 메뉴 창 열기.
 
                     // element 크기 조절기
@@ -847,7 +840,6 @@
                     element.appendChild(reSizer);
                     menu.appendChild(element);
                 }
-                // console.log(loadTemplate);
                 this.loadMenuDialog = false;                                        // 모달 창 닫기
             },
 
@@ -880,7 +872,7 @@
                 this.temName = event.target.innerText
             },
 
-            // 섬네일 만들기
+            // 섬네일 만들기 및 검사
             makeThumbnail : function(){
                 let menu          = document.getElementById('menu');        // 파일로 만들 div
                 let save          = this.createSave;                        // 저장하기
@@ -896,9 +888,15 @@
                 }
                 // 템플릿 명 설정 유효성 검사
                 else if(this.temName.replace(/ /gi, "") === ''){
-                    this.snackbar_text = '템플릿 명을 입력해주세요!'
+                    this.snackbar_text = '템플릿 명을 입력해주세요!';
                     this.snackbar = true;
                     return null;
+                }
+                // 입력된 글자가 18자를 넘길 경우 경고
+                else if(this.temName.toString().length > 15){
+                    this.snackbar_text = '입력 가능한 글자 수는 최대 15자 입니다.';
+                    this.snackbar      = true;
+                    return;
                 }
 
                 // 메뉴 캡쳐하기.
@@ -911,9 +909,9 @@
             // convert base64/URLEncoded data component to raw binary data held in a string
             // 섬네일을 이미지 파일로 만들기.
             dataURItoBlob : function (dataURI) {
-                var byteString = null;
-                var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];     // 마임타입 추출
-                var ia         = null;                                                  // write the bytes of the string to a typed array
+                let byteString = null;
+                let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];     // 마임타입 추출
+                let ia         = null;                                                  // write the bytes of the string to a typed array
 
                 if (dataURI.split(',')[0].indexOf('base64') >= 0)
                     byteString = atob(dataURI.split(',')[1]);
@@ -930,18 +928,34 @@
 
             // 메뉴판 제작 - 작업 내용 저장하기.
             createSave : function() {
-                let formData   = new FormData();                                // 엘리먼트들을 담음
-                let MenuNum    = document.getElementById('MenuNum');            // 한줄에 표시될 메뉴 갯수
-                let MenuMargin = document.getElementById('MenuMargin');         // 메뉴들 간격 설정
-                let workSpace  = document.getElementById('workSpace');          // 작업 공간 div 가져오기
-                let ElementArea = document.getElementById('ElementArea');       // 비교 용
-                let array      = {};                                            // 요소들의 css 값을 담을 배열, json으로 변환
+                let formData    = new FormData();                                // 엘리먼트들을 담음
+                let MenuNum     = document.getElementById('MenuNum');            // 한줄에 표시될 메뉴 갯수
+                let MenuMargin  = document.getElementById('MenuMargin');         // 메뉴들 간격 설정
+                let workSpace   = document.getElementById('workSpace');          // 작업 공간 div 가져오기
+                let workSpace_w =  workSpace.clientWidth;
+                let workSpace_h =  workSpace.clientHeight;
+                let ElementArea = document.getElementById('ElementArea');        // 비교 용
+                let array       = {};                                            // 요소들의 css 값을 담을 배열, json으로 변환
 
                 // 메뉴 영역
                 let menu   = document.getElementById('menu');
-                let menu_w = menu.clientWidth;                                  // 너비를 %값이 아닌 px 값으로 받음
-                let menu_h = menu.clientHeight;                                 // 높이를 %값이 아닌 px 값으로 받음
+                let menu_t = 0;                                         // top 값을 %값이 아닌 px 값으로 받음
+                let menu_l = 0;                                         // left 값을 %값이 아닌 px 값으로 받음
+                let menu_w = menu.clientWidth;                          // 너비를 %값이 아닌 px 값으로 받음
+                let menu_h = menu.clientHeight;                         // 높이를 %값이 아닌 px 값으로 받음
                 let ratio  = Math.floor(menu_h/menu_w*100);
+
+                // 메뉴 영역 top, left 설정
+                // 너비가 높이 보다 더 긴 경우 패딩 값 3%가 메뉴 영역의 left 값이 됨
+                if(this.longWidth) {
+                    menu_l = Math.floor(workSpace_w * 0.03);
+                }
+                // 높이가 너비 보다 더 긴 경우
+                else {
+                    // menu_t = Math.floor((workSpace_h - menu_h) / 2);
+                    menu_l = Math.floor((workSpace_w - menu_w) / 2);
+                }
+                menu_t = Math.floor(workSpace_h * 0.03);
 
                 array['MenuNum']    = MenuNum.value;                    // 한 줄에 출력 될 메뉴의 갯수
                 array['MenuMargin'] = MenuMargin.value;                 // 메뉴 간의 간격 설정
@@ -960,18 +974,22 @@
                     if( menu.children[i] !== ElementArea ){
                         // 메뉴 영역 안의 메뉴 요소들 스타일 값, 클래스
                         let element   = menu.children[i];
-                        let item_w    = element.style.width.replace('px', '');
-                        let item_h    = element.style.height.replace('px', '');
-                        let item_t    = element.style.top.replace('px', '');
-                        let item_l    = element.style.left.replace('px', '');
-                        let className = element.getAttribute('class').split(' ')[0];         // 클래스 명 찾기
+                        let eWidth    = element.clientWidth;                            // 엘리먼트 너비 값
+                        let eHeight   = element.clientHeight;                           // 엘리먼트 높이 값
+                        let eTop      = element.style.top.replace('px', '');;           // 엘리먼트 top 값
+                        let eLeft     = element.style.left.replace('px', '');           // 엘리먼트 left 값
+                        let className = element.getAttribute('class').split(' ')[0];    // 클래스 명 찾기
+
+                        let get_l = eLeft - menu_l;     // padding 값을 없앰
+                        let get_t = eTop - menu_t;
 
                         // 배열에 style 값 담기
                         array[className] ={
-                            'width'           : Math.floor( item_w / menu_w * 100 ) + "%",
-                            'height'          : Math.floor( item_h / menu_h * 100 ) + "%",
-                            'top'             : Math.floor( item_t / menu_h * 100 ) -3 + "%",   // 작업 div 패딩값 만큼 뺌
-                            'left'            : Math.floor( item_l / menu_w * 100 ) -3 + "%",   // 작업 div 패딩값 만큼 뺌
+                            'width'           : Math.floor( eWidth / menu_w * 100 ) + "%",
+                            'height'          : Math.floor( eHeight / menu_h * 100 ) + "%",
+                            'top'             : Math.floor( get_t / menu_h * 100 +1)+ "%",
+                            'left'            : Math.floor( get_l / menu_w * 100 +1) + "%",
+                            'zIndex'          : element.style.zIndex,
                             'border'          : element.style.border,
                             'borderRadius'    : element.style.borderRadius,
                             'color'           : element.style.color,
@@ -999,9 +1017,9 @@
                 formData.append('menu', JSON.stringify(array));             // 메뉴 스타일.
                 formData.append('shop_id', this.$route.params.shop_id);     // shopID
 
-                // console.log(JSON.stringify(array)); // 체크 용
+                console.log(JSON.stringify(array)); // 체크 용
 
-                // formData 확인하기
+                // // formData 확인하기
                 // for(var pair of formData.entries()) {
                 //     console.log(pair[0]+ ': '+ pair[1]);
                 // }
@@ -1060,7 +1078,7 @@
                 let click_menu = document.getElementById('click_menu');
 
                 menu.style.width  = '100%';
-                menu.style.height = '50%';
+                menu.style.height = '70%';
 
                 // 마우스 오른쪽 클릭 시 메뉴 창 열기.
                 menu.addEventListener("contextmenu", this.ShowContextmenu);
@@ -1071,27 +1089,49 @@
                 });
 
                 // 높이 퍼센트 조절
-                workSpace.style.height = Math.floor(window.outerHeight*0.9) + "px";
+                workSpace.style.height = Math.floor(window.innerHeight * 0.9) + "px";
             },
 
             // 메뉴 영역 비율 설정하기.
             setMenuRatio : function(){
-                let menu      = document.getElementById('menu');                // 메뉴 영역
-                let menuRatio = document.getElementById('menuRatio').value;     // 사이드 바 - 비율 입력 값
-                let w         = menu.offsetWidth;
-                let h         = menuRatio / 100;
+                let menu      = document.getElementById('menu');                        // 메뉴 영역
+                let menuRatio = document.getElementById('menuRatio').value;             // 비율 입력 값
+                let workSpace = document.getElementById('workSpace');                   // 작업 공간
+                let max_w     = Math.floor( parseInt(workSpace.clientWidth) * 0.97 );   // 최대 너비 - 패딩 값
+                let max_h     = Math.floor( parseInt(workSpace.clientHeight) * 0.97 );  // 최대 높이 - 패딩 값
 
+                // 빈 값인지 유효성 검사.
                 if(menuRatio.replace(/ /gi, "") === ''){
                     this.snackbar_text = '값을 입력해 주세요';
                     this.snackbar      = true;
                     return null;
                 }
+                // 숫자 값이 맞는지 검사
                 else if ( isNaN(menuRatio) == true){
                     this.snackbar_text = '숫자 값을 입력해 주세요';
                     this.snackbar      = true;
                     return null;
                 }
-                else menu.style.height = Math.floor(w*h) +'px';
+                // 세로 비율 적용 값이 최대 너비 값 이상인 경우
+                // 메뉴 영역의 높이를 최대 값으로 설정하고 메뉴 영역의 너비를 비율 값으로 설정
+                else if( Math.floor( max_w * menuRatio / 100) >= max_h ){
+                    menu.style.height = '100%';
+
+                    let h = menu.clientHeight;
+                    menu.style.width = Math.floor(h * 100 / menuRatio) +'px';
+                    menu.style.height = h +'px';
+                    this.longWidth = false;
+                }
+                // 세로 비율 적용 값이 최대 너비 값 미만인 경우
+                // 메뉴 영역의 너비를 최대 값으로 설정하고 메뉴 영역의 높이를 비율 값으로 설정
+                else {
+                    menu.style.width  = '100%';
+
+                    let w = menu.clientWidth;
+                    menu.style.width = w +'px';
+                    menu.style.height = Math.floor(w * menuRatio / 100) +'px';
+                    this.longWidth = true;
+                }
             },
 
             // 메뉴 요소 생성 클릭
@@ -1104,25 +1144,88 @@
 
             // 드래그로 메뉴 요소가 만들어질 영역 표시.
             dragAreaStart : function(){
-                let menu = document.getElementById('menu');
-                let ElementArea  = document.getElementById('ElementArea');
+                let ElementArea = document.getElementById('ElementArea');
+                let menu        = document.getElementById('menu');
+                let margin = 5;
 
                 ElementArea.classList.add('active');
-                ElementArea.style.top  = (event.offsetY) + "px";
-                ElementArea.style.left = (event.offsetX) + "px";
+                ElementArea.style.top    = (event.offsetY) + "px";
+                ElementArea.style.left   = (event.offsetX) + "px";
+                ElementArea.style.width  = '5px';
+                ElementArea.style.height = '5px';
 
                 // 마우스 이동 시 이벤트 : 셀렉터 크기 조절
-                menu.addEventListener('mousemove', function(){
-                    event.preventDefault();
+                menu.onmousemove = this.dragAreaSet;
+            },
+
+            // 드래그 ing : 셀렉터 크기 조절
+            dragAreaSet : function(){
+                let margin = 10;
+                let menu   = document.getElementById('menu');
+
+                let obj_t  = parseInt(this.getTop(ElementArea));            // 드래그 셀렉터의 top
+                let obj_l  = parseInt(this.getLeft(ElementArea));           // left 값
+                let obj_r  = obj_l + parseInt(ElementArea.offsetWidth);     // right 값
+                let obj_b  = obj_t + parseInt(ElementArea.offsetHeight);    // bottom 값
+
+                let menu_t = parseInt(menu.offsetTop);                      // 메뉴 영역의 top 값
+                let menu_l = parseInt(menu.offsetLeft);                     // left 값
+                let menu_r = menu_l + parseInt(menu.offsetWidth);           // right 값
+                let menu_b = menu_t + parseInt(menu.offsetHeight);          // bottom 값
+
+                // 드래그 셀렉터의 시작 점이 메뉴 영역에 안 벗어나게 하기.
+                // 왼쪽 & 위쪽 벗어남
+                if(obj_l < menu_l && obj_t < menu_t){
+                    ElementArea.style.left = menu_l + margin +"px";
+                    ElementArea.style.top  = menu_t + margin +"px";
+                }
+                // 왼쪽 & 아래쪽 벗어남
+                else if(obj_l < menu_l && obj_b > menu_b){
+                    ElementArea.style.left = menu_l + margin +"px";
+                    ElementArea.style.top  = menu_b - parseInt(ElementArea.offsetHeight) - margin +"px";
+                }
+                // 오른쪽 & 위쪽 벗어남
+                else if(obj_r > menu_r && obj_t < menu_t){
+                    ElementArea.style.left = menu_r - parseInt(ElementArea.offsetWidth) - margin +"px";
+                    ElementArea.style.top  = menu_t + margin +"px";
+                }
+                // 위쪽 벗어남
+                else if(obj_t < menu_t){
+                    ElementArea.style.top  = menu_t + margin +"px";
+                }
+                // 왼쪽 벗어남
+                else if(obj_l < menu_l){
+                    ElementArea.style.left = menu_l + margin +"px";
+                }
+
+                // 드래그 셀렉터의 크기를 조절할 때 셀렉터의 크기가 메뉴 영역을 넘지 않도록 함.
+                // 오른쪽 & 아래쪽 벗어남
+                if(obj_r > menu_r && obj_b > menu_b){
+                    ElementArea.style.width  = ElementArea.style.width.replace('px', '') - margin + 'px';
+                    ElementArea.style.height = ElementArea.style.height.replace('px', '') - margin + 'px';
+                    this.dragAreaStop();
+                }
+                // 오른쪽 벗어남
+                else if(obj_r > menu_r){
+                    ElementArea.style.width  = ElementArea.style.width.replace('px', '') - margin + 'px';
+                    this.dragAreaStop();
+                }
+                // 아래쪽 벗어남
+                else if(obj_b > menu_b){
+                    ElementArea.style.height = ElementArea.style.height.replace('px', '') - margin + 'px';
+                    this.dragAreaStop();
+                }
+                // 벗어난 부분 없이 메뉴 영역 안에 있음
+                else {
                     ElementArea.style.width  = (event.clientX - ElementArea.offsetLeft) + 'px';
                     ElementArea.style.height = (event.clientY - ElementArea.offsetTop)  + 'px';
-                }, false);
+                }
             },
 
             // 드래그 종료 - 메뉴 요소 만들기
             dragAreaStop :function(){
-                let menu = document.getElementById('menu');
-                let ElementArea  = document.getElementById('ElementArea');
+                let menu        = document.getElementById('menu');
+                let ElementArea = document.getElementById('ElementArea');
 
                 this.area      = [];
                 this.area['t'] = ElementArea.style.top;
@@ -1142,7 +1245,7 @@
 
             // 엘리먼트 움직이기 : 위치 값 얻기 - left
             getLeft : function(argObj){
-                return parseInt(argObj.style.left.replace('px', ''));;
+                return parseInt(argObj.style.left.replace('px', ''));
             },
             // 엘리먼트 움직이기 : 위치 값 얻기 - top
             getTop : function(argObj) {
@@ -1168,29 +1271,142 @@
 
                 // 드래그 하는 element 이동 시키기
                 target_Obj.style.left = move_x +"px";
-                target_Obj.style.top = move_y +"px";
+                target_Obj.style.top  = move_y +"px";
+
                 return false;
             },
             // 엘리먼트 움직이기 : mouseUp
             moveStop : function(){
+                let menu   = document.getElementById('menu');
+                let margin = 5;
+
+                let obj_l  = parseInt(this.getLeft(target_Obj));
+                let obj_t  = parseInt(this.getTop(target_Obj));
+                let obj_r  = obj_l + parseInt(target_Obj.offsetWidth);
+                let obj_b  = obj_t + parseInt(target_Obj.offsetHeight);
+
+                let menu_t = parseInt(menu.offsetTop);
+                let menu_l = parseInt(menu.offsetLeft);
+                let menu_r = menu_l + parseInt(menu.offsetWidth);
+                let menu_b = menu_t + parseInt(menu.offsetHeight);
+
+                // 왼쪽, 위쪽 벗어남
+                if(obj_l < menu_l && obj_t < menu_t){
+                    target_Obj.style.left = menu_l + margin +"px";
+                    target_Obj.style.top  = menu_t + margin +"px";
+                }
+                // 왼쪽, 아래쪽 벗어남
+                else if(obj_l < menu_l && obj_b > menu_b){
+                    target_Obj.style.left = menu_l + margin +"px";
+                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) - margin +"px";
+                }
+                // 오른쪽, 위쪽 벗어남
+                else if(obj_r > menu_r && obj_t < menu_t){
+                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth) - margin +"px";
+                    target_Obj.style.top  = menu_t + margin +"px";
+                }
+                // 오른쪽, 아래쪽 벗어남
+                else if(obj_r > menu_r && obj_b > menu_b){
+                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth)  - margin +"px";
+                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) - margin +"px";
+                }
+                // 왼쪽 벗어남
+                else if(obj_l < menu_l){
+                    target_Obj.style.left = menu_l + margin +"px";
+                }
+                // 오른쪽 벗어남
+                else if(obj_r > menu_r){
+                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth) - margin +"px";
+                }
+                // 위쪽 벗어남
+                else if(obj_t < menu_t){
+                    target_Obj.style.top  = menu_t + margin +"px";
+                }
+                // 아래쪽 벗어남
+                else if(obj_b > menu_b){
+                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) - margin +"px";
+                }
                 document.onmousemove = null;
                 document.onmouseup   = null;
             },
 
             // 엘리먼트 크기 조절 - mouseDown
             initResize : function() {
-                this.Resizer = event.target.parentNode;
+                this.Resizer     = event.target.parentNode;
                 document.addEventListener('mousemove', this.Resize, false);
                 document.addEventListener('mouseup', this.stopResize, false);
             },
             // 엘리먼트 크기 조절 - mouseMove
             Resize : function() {
                 event.preventDefault();
-                this.Resizer.style.width  = (event.clientX  - this.Resizer.offsetLeft) + 'px';
-                this.Resizer.style.height = (event.clientY  - this.Resizer.offsetTop ) + 'px';
+                let menu   = document.getElementById('menu');
+                let margin = 5;
+
+                let obj_l  = parseInt(this.getLeft(this.Resizer));
+                let obj_t  = parseInt(this.getTop(this.Resizer));
+                let obj_r  = obj_l + parseInt(this.Resizer.offsetWidth);
+                let obj_b  = obj_t + parseInt(this.Resizer.offsetHeight);
+
+                let menu_t = parseInt(menu.offsetTop);
+                let menu_l = parseInt(menu.offsetLeft);
+                let menu_r = menu_l + parseInt(menu.offsetWidth);
+                let menu_b = menu_t + parseInt(menu.offsetHeight);
+
+                // 크기가 오른쪽, 아래쪽 벗어남
+                if(obj_r > menu_r && obj_b > menu_b){
+                    this.Resizer.style.width  = this.Resizer.style.width.replace('px', '') - margin + 'px';
+                    this.Resizer.style.height = this.Resizer.style.height.replace('px', '') - margin + 'px';
+                    this.stopResize();
+                }
+                // 오른쪽 벗어남
+                else if(obj_r > menu_r){
+                    this.Resizer.style.width  = this.Resizer.style.width.replace('px', '') - margin + 'px';
+                    this.stopResize();
+                }
+                // 아래쪽 벗어남
+                else if(obj_b > menu_b){
+                    this.Resizer.style.height = this.Resizer.style.height.replace('px', '') - margin + 'px';
+                    this.stopResize();
+                }
+                else {
+                    let workSpace   = document.getElementById('workSpace');      // 작업 공간 div 가져오기
+                    let workSpace_w = workSpace.clientWidth;
+                    let workSpace_h = workSpace.clientHeight;
+                    let menu_w      = menu.clientWidth;                          // 너비를 %값이 아닌 px 값으로 받음
+                    let menu_h      = menu.clientHeight;                         // 높이를 %값이 아닌 px 값으로 받음
+                    let leftToolBar = document.getElementById('leftToolBar').clientWidth;
+                    let topToolBar  = document.getElementById('topToolBar').clientHeight;
+
+                    // 너비가 높이 보다 더 긴 경우 패딩 값 3%가 메뉴 영역의 left 값이 됨
+                    if(this.longWidth) {
+                        menu_l = Math.floor(workSpace_w * 0.03);
+                    }
+                    // 높이가 너비 보다 더 긴 경우
+                    else {
+                        menu_l = Math.floor((workSpace_w - menu_w) / 2);
+                    }
+                    // 메뉴 top 값 설정.
+                    menu_t = Math.floor(workSpace_h * 0.03);
+
+                    /**********************************************************
+                     event.clientX : 마우스 x 축 좌표 값
+                     obj_l         : 메뉴 영역과 메뉴 요소의 너비 차
+                     menu_l        : 작업 영역과 메뉴 영역의 너비 차
+                     leftToolBar   : 좌측 툴바와 작업 영역의 너비 차
+
+                     event.clientY : 마우스 y 축 좌표 값
+                     obj_t         : 메뉴 영역과 메뉴 요소의 높이 차
+                     menu_t        : 작업 영역과 메뉴 영역의 높이 차
+                     topToolBar    : 상단 툴바와 작업 영역의 높이 차
+                     ************************************************************/
+                    this.Resizer.style.width  = (event.clientX - obj_l - menu_l - leftToolBar) + 'px';
+                    this.Resizer.style.height = (event.clientY - obj_t - menu_t - topToolBar) + 'px';
+                }
+
             },
             // 엘리먼트 크기 조절 - mouseUp
             stopResize: function() {
+                document.removeEventListener('mousedown', this.initResize, false);
                 document.removeEventListener('mousemove', this.Resize, false);
                 document.removeEventListener('mouseup', this.stopResize, false);
             },
@@ -1457,6 +1673,14 @@
 </script>
 
 <style>
+    .ban_drag{
+        user-select:none;               /* 드래그 방지 */
+        -ms-user-select: none;
+        -moz-user-select: -moz-none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+    }
+
     /* 이미지 비율용 스타일 */
     .tem_img {
         width: 100%;
@@ -1476,7 +1700,6 @@
     /* 메뉴 제작 작업 공간 */
     #workSpace {
         width: 100%;
-        height: 100%;
         position: relative;
         overflow: auto;
         margin: auto;
@@ -1538,6 +1761,7 @@
         font-size: 1.5rem;
         z-index: 1;
         border: 2px solid black;
+        margin: auto;
         text-align: center;
         overflow: hidden;
         background-color: white;
@@ -1717,5 +1941,4 @@
         float: left;
         color: #6E6E6E;
     }
-
 </style>

@@ -36,6 +36,7 @@
                                                         예약 날짜 : {{Acceptcards[index].date}}<br>
                                                         어른 인원 : {{Acceptcards[index].adult}}<br>
                                                         아이 인원 : {{Acceptcards[index].child}}<br>
+                                                        요구 사항 : {{Acceptcards[index].message}}
                                                     </div>
                                                 </v-card-text>
                                                 <v-card-actions>
@@ -102,6 +103,7 @@
                                                         예약 날짜 : {{StandBycards[index].date}}<br>
                                                         어른 인원 : {{StandBycards[index].adult}}<br>
                                                         아이 인원 : {{StandBycards[index].child}}<br>
+                                                        요구 사항 : {{StandBycards[index].message}}
                                                     </div>
                                                 </v-card-title>
                                                 <v-card-actions>
@@ -191,7 +193,7 @@
                                                     <div>
                                                         <B>{{Cancelcards[index].shopName}}</B><br>
                                                         예약 날짜 : {{Cancelcards[index].date}}<br>
-                                                        취소 사유 : {{Cancelcards[index].cancel}}
+                                                        취소 사유 : {{Cancelcards[index].message}}
                                                     </div>
                                                 </v-card-title>
                                             </v-card>
@@ -270,6 +272,7 @@
                         acceptarray[i]['adult']    = acceptreservationData[i].person;
                         acceptarray[i]['child']    = acceptreservationData[i].child;
                         acceptarray[i]['orderCheck']   = acceptreservationData[i].order_num;
+                        acceptarray[i]['message']   = acceptreservationData[i].message;
                     }
 
                     this.Acceptcards = acceptarray;
@@ -289,6 +292,7 @@
                         standByarray[i]['adult']    = standByreservationData[i].person;
                         standByarray[i]['child']    = standByreservationData[i].child;
                         standByarray[i]['orderCheck']   = standByreservationData[i].order_num;
+                        standByarray[i]['message']   = standByreservationData[i].message;
                     }
 
                     this.StandBycards = standByarray;

@@ -2,10 +2,15 @@
     <div>
         <v-layout row>
             <v-flex xs12>
-                <v-alert @click="open_gps_dialog()" :value="true" outline color="success" icon="gps_fixed" style="cursor:pointer">
-                    {{ searchAddress[0] }}
+                <!-- App.vue 에서 address value 를 넘겨 받았을 때와 받지 못했을 때 -->
+                <v-alert v-if="searchAddress" @click="open_gps_dialog()" :value="true" outline color="success" icon="gps_fixed" style="cursor:pointer">
+                    {{ searchAddress.name }}
                 </v-alert>
-                <GoogleMap :currentCenter=searchAddress[1]></GoogleMap>
+                <v-alert v-else @click="open_gps_dialog()" :value="true" outline color="success" icon="gps_fixed" style="cursor:pointer">
+                    대한민국 대구광역시 북구 복현2동 복현로 35
+                </v-alert>
+                <GoogleMap v-if="searchAddress" :currentCenter=searchAddress.geometry.location></GoogleMap>
+                <GoogleMap v-else :currentCenter="{ lat: 35.8963134, lng: 128.6198624 }"></GoogleMap>
             </v-flex>
         </v-layout>
         <br>
@@ -21,7 +26,7 @@
                                             class="white--text"
                                             :src="item.src"
                                             height="200px"
-                                            @click="clickRestaurantList(item.postRegion, item.listLimit, item.center)"
+                                            @click="clickRegionList(item.postRegion, item.listLimit, item.showRegion)"
                                     >
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
@@ -47,7 +52,7 @@
                                             class="white--text"
                                             :src="item.src"
                                             height="200px"
-                                            @click="clickRestaurantList(item.postRegion, item.listLimit, item.center)"
+                                            @click="clickTypeList(item.postType, item.listLimit)"
                                     >
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
@@ -63,17 +68,17 @@
                     </v-container>
                 </v-card>
                 <br>
-                <v-card v-if="$session.get('region') != '' || favoriteFood_1 != ''">
+                <v-card v-if="$session.get('region') != undefined || $session.get('favorite_1') != undefined">
                     <v-card-title class="headline orange--text">사용자 맞춤</v-card-title>
                     <v-container fluid grid-list-sm>
                         <v-layout row wrap>
                             <v-flex md4 xs12 v-for="(item, i) in favorite" :key="i">
                                 <v-card>
                                     <v-card-media
-                                            class="black--text"
+                                            class="white--text"
                                             :src="item.src"
                                             height="200px"
-                                            @click="clickRestaurantList(item.postRegion, item.listLimit, item.center)"
+                                            @click="item.function(item.name, item.listLimit)"
                                     >
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
@@ -111,42 +116,42 @@
                         name: '도쿄 베스트 7',
                         src: '/images/toukyou.jpg',
                         postRegion: '東京',
-                        center: { lat: 35.6693863, lng: 139.6012973 },
+                        showRegion: '도쿄',
                         listLimit: 7
                     },
                     {
                         name: '오사카 베스트 7',
                         src: '/images/oosaka.jpg',
                         postRegion: '大阪',
-                        center: { lat: 34.6784656, lng: 135.4601306 },
+                        showRegion: '오사카',
                         listLimit: 7
                     },
                     {
                         name: '교토 베스트 7',
                         src: '/images/kyouto.jpg',
                         postRegion: '京都',
-                        center: { lat: 35.0061653, lng: 135.7259306 },
+                        showRegion: '교토',
                         listLimit: 7
                     },
                     {
                         name: '후쿠오카 베스트 5',
                         src: '/images/hukuoka.jpg',
                         postRegion: '福岡',
-                        center: { lat: 33.5988166, lng: 130.3522306 },
+                        showRegion: '후쿠오카',
                         listLimit: 5
                     },
                     {
                         name: '삿포로 베스트 5',
                         src: '/images/hokkaido.jpg',
                         postRegion: '札幌',
-                        center: { lat: 43.0595074, lng: 141.3354806 },
+                        showRegion: '삿포로',
                         listLimit: 5
                     },
                     {
                         name: '오키나와 베스트 5',
                         src: '/images/okinawa.jpg',
                         postRegion: '沖縄',
-                        center: { lat: 26.3628668, lng: 127.7787335 },
+                        showRegion: '오키나와',
                         listLimit: 5
                     },
                 ],
@@ -154,21 +159,47 @@
                 food: [
                     {
                         name: '한식 베스트 10',
-                        src: '/images/koreanFood.jpg'
+                        src: '/images/koreanFood.jpg',
+                        postType: '한식',
+                        listLimit: 10
                     },
                     {
                         name: '일식 베스트 10',
-                        src: '/images/japaneseFood.jpg'
+                        src: '/images/japaneseFood.jpg',
+                        postType: '일식',
+                        listLimit: 10
                     },
                     {
                         name: '중식 베스트 10',
-                        src: '/images/chineseFood.jpg'
+                        src: '/images/chineseFood.jpg',
+                        postType: '중식',
+                        listLimit: 10
                     },
                 ],
 
                 favorite: [
 
                 ],
+
+                translateValue: {
+                    '東京': 'toukyou',
+                    '한식': 'koreanFood',
+                    '일식': 'japaneseFood',
+                    '중식': 'chineseFood',
+                    '양식': 'westernfood',
+                    '분식': 'bunsik',
+                    '덮밥': 'dupbab',
+                    '스시': 'sushi',
+                    '패스트 푸드': 'fastfood',
+                    '찜': 'jjim',
+                    '탕': 'tang',
+                    '도시락': 'bento',
+                    '카페&디저트': 'cafe',
+                    '술집': 'osake',
+                    '면류': 'men',
+                    '제과': 'bbang',
+                    '': '',
+                }
             }
         },
 
@@ -176,24 +207,32 @@
             if(this.$session.get('region')) {
                 this.favorite.push({
                     name: this.$session.get('region'),
-                    src: "/images/" + this.$session.get('region') + ".jpg"
+                    src: "/images/" + this.translate(this.$session.get('region')) + ".jpg",
+                    function: this.clickRegionList,
+                    listLimit: 5
                 });
             }
 
             if(this.$session.get('favorite_1')) {
                 this.favorite.push({
                     name: this.$session.get('favorite_1'),
-                    src: "/images/" + this.$session.get('favorite_1') + ".jpg"
+                    src: "/images/" + this.translate(this.$session.get('favorite_1')) + ".jpg",
+                    function: this.clickTypeList,
+                    listLimit: 5
                 });
                 if(this.$session.get('favorite_2')) {
                     this.favorite.push({
                         name: this.$session.get('favorite_2'),
-                        src: "/images/" + this.$session.get('favorite_2') + ".jpg"
+                        src: "/images/" + this.translate(this.$session.get('favorite_2')) + ".jpg",
+                        function: this.clickTypeList,
+                        listLimit: 5
                     });
                     if(this.$session.get('favorite_3')) {
                         this.favorite.push({
                             name: this.$session.get('favorite_3'),
-                            src: "/images/" + this.$session.get('favorite_3') + ".jpg"
+                            src: "/images/" + this.translate(this.$session.get('favorite_3')) + ".jpg",
+                            function: this.clickTypeList,
+                            listLimit: 5
                         });
                     }
                 }
@@ -205,16 +244,40 @@
                 this.$parent.$parent.$parent.gps_search = true;
             },
 
-            clickRestaurantList(postRegion, listLimit, postCenter) {
+            clickRegionList(postRegion, listLimit, showRegion) {
                 var url = "/getRegionShopData";
                 axios.post(url, {'region': postRegion, 'limit': listLimit})
                     .then(response => {
-                        this.$router.push({ name: 'topList', params: { region: postRegion, listLimit: listLimit, topCenter: postCenter, restaurantList: response.data.regionShopData }})
+                        this.$session.set('top_mode', 'region');
+                        this.$session.set('top_region', postRegion);
+                        this.$session.set('top_show_region', showRegion);
+                        this.$session.set('top_listLimit', listLimit);
+                        this.$session.set('top_restaurantList', response.data.regionShopData);
+                        this.$router.push('topList');
                     })
                     .catch(error => {
                         alert(error);
                     })
-            }
+            },
+
+            clickTypeList(postType, listLimit, postCenter) {
+                var url = "/getTypeShopData";
+                axios.post(url, {'type': postType, 'limit': listLimit})
+                    .then(response => {
+                        this.$session.set('top_mode', 'type');
+                        this.$session.set('top_type', postType);
+                        this.$session.set('top_listLimit', listLimit);
+                        this.$session.set('top_restaurantList', response.data.typeShopData);
+                        this.$router.push('topList');
+                    })
+                    .catch(error => {
+                        alert(error);
+                    })
+            },
+
+            translate(value) {
+                return this.translateValue[value];
+            },
         }
     }
 </script>

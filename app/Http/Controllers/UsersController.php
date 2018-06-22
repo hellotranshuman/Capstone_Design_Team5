@@ -75,18 +75,34 @@ class UsersController extends Controller
                     $restaurant_id = $restaurant->id;
                 else
                     $restaurant_id = "noneRestaurant";
+
+                return response()->json([
+                    'login' => true,
+                    'restaurant_id' => $restaurant_id,
+                    'user_id' => auth()->user()->user_id,
+                    'user_name' => auth()->user()->name,
+                ]);
             }
-            else
+            else {
                 $restaurant_id = '/';
+                $userInfo = User::where('id', auth()->user()->id)
+                    ->get()
+                    ->first();
+
+                return response()->json([
+                    'login' => true,
+                    'restaurant_id' => $restaurant_id,
+                    'user_id' => auth()->user()->user_id,
+                    'user_name' => auth()->user()->name,
+                    'favorite_region' => $userInfo->favorite_region,
+                    'favorite_1' => $userInfo->favorite_1,
+                    'favorite_2' => $userInfo->favorite_2,
+                    'favorite_3' => $userInfo->favorite_3,
+                ]);
+            }
 
             // auth()->user()->id
             // auth()->user()->name
-            return response()->json([
-                'login' => true,
-                'restaurant_id' => $restaurant_id,
-                'user_id' => auth()->user()->user_id,
-                'user_name' => auth()->user()->name
-            ]);
         }
 
 

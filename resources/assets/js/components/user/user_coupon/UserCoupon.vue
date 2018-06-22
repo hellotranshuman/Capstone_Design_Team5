@@ -56,11 +56,11 @@
                                                     </v-card-title>
                                                     <v-card-text>
                                                         <div class="Trans_Main">
-                                                            <b> {{ trans.name }} </b>
-                                                            <b> {{ trans.category }} </b>
-                                                            <b> {{ trans.price_addpro }} </b>
-                                                            <b> {{ trans.condition }} </b>
-                                                            <b> {{ trans.usedate }} </b>
+                                                            <b> {{ trans.name }} </b>       <br>
+                                                            <b> {{ trans.category }} </b>   <br>
+                                                            <b> {{ trans.price_addpro }} </b><br>
+                                                            <b> {{ trans.condition }} </b>  <br>
+                                                            <b> {{ trans.usedate }} </b>    <br>
 
                                                         </div>
                                                     </v-card-text>

@@ -13,6 +13,19 @@ use \App\Restaurant;
 
 class MenuController extends Controller
 {
+    const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
+    const client_secret = "pevANwIHvX";
+
+    private $url     = "https://openapi.naver.com/v1/language/translate";
+    private $is_post = true;
+    private $headers = array();
+
+    function __construct()
+    {
+        $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id ;
+        $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
+    }
+
     public function showMenuForm() {
         return view('restaurant.ownerMenu');
     }
@@ -45,7 +58,8 @@ class MenuController extends Controller
         $layoutNum = $layoutData->selectLayout;
 
         if($layoutNum > 4) {
-          $layout  = Layout::where('id', $layoutNum)
+          $layout  = Layout::select(DB::raw('CAST(layout_data as CHAR) as layout_data, id, shop_id, layout_name, thumbnail'))
+                        ->where('id', $layoutNum)
                         ->get()
                         ->toArray();
         }
@@ -63,6 +77,29 @@ class MenuController extends Controller
 
     // <-- 해당 카테고리의 메뉴 정보 가져오기
     public function getMenu($shop_id, $category) {
+        $target = '';
+
+        switch (auth()->user()->country) {
+
+            case 'Korea' :
+                {
+                    $target = 'ko';
+                    break;
+                }
+
+            case 'China' :
+                {
+                    $target = 'zh-CN';
+                    break;
+                }
+
+            case 'Usa' :
+                {
+                    $target = 'en';
+                    break;
+                }
+
+        } // <-- switch end
 
         // <-- 메뉴정보를 저장할 Array
         $totalMenuArray = array();
@@ -81,17 +118,66 @@ class MenuController extends Controller
            $menuArray = array();
 
            $menuArray['id'] = $menu->id;
-           $menuArray['name'] = $menu->name;
-           $menuArray['explanation'] = $menu->explanation;
+
+           // <-- 메뉴 이름 번역
+            $encText = urlencode($menu->name);
+            $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+            $ch  = curl_init();
+
+            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_POST, $this->is_post);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+            $response    = curl_exec ($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close ($ch);
+
+            if($status_code == 200) {
+                $responseData = json_decode($response);
+
+                $menuArray['name']  = $responseData->message->result->translatedText;
+            }
+            else
+                $menuArray['name'] = $menu->name;
+
+            // <-- 메뉴 설명 번역
+            $encText = urlencode($menu->explanation);
+            $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+            $ch  = curl_init();
+
+            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_POST, $this->is_post);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+            $response    = curl_exec ($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close ($ch);
+
+            if($status_code == 200) {
+                $responseData = json_decode($response);
+
+                $menuArray['explanation']  = $responseData->message->result->translatedText;
+            }
+            else
+                $menuArray['explanation'] = $menu->explanation;
+
            $menuArray['price'] = $menu->price;
            $menuArray['remark'] = $menu->remark;
            $menuArray['path'] = $menu->path;
            $menuArray['filename'] = $menu->filename;
 
            // <-- Option Data Select
-           $optionData  = Menu_Option::where('menu_id', $menuArray['id'])
+            $optionData  = Menu_Option::where('menu_id', $menuArray['id'])
                                         ->get();
-           $optionCount = Menu_Option::where('menu_id', $menuArray['id'])
+            $optionCount = Menu_Option::where('menu_id', $menuArray['id'])
                             ->count();
             $menuArray['opNum'] = $optionCount;
             $optionKey = 1;
@@ -105,7 +191,31 @@ class MenuController extends Controller
                $opIdName = 'optionId' . $optionKey;
                $menuArray[$opIdName] = $opNum;
                $keyName = 'optionName' . $optionKey;
-               $menuArray[$keyName] = $option->name;
+
+                // <-- 옵션 이름 번역
+               $encText = urlencode($option->name);
+               $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+               $ch  = curl_init();
+
+               curl_setopt($ch,CURLOPT_URL, $this->url);
+               curl_setopt($ch,CURLOPT_POST, $this->is_post);
+               curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+               curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+               curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+               curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+               $response    = curl_exec ($ch);
+               $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+               curl_close ($ch);
+
+               if($status_code == 200 && auth()->user()->country != 'Japan') {
+                   $responseData = json_decode($response);
+
+                   $menuArray[$keyName]  = $responseData->message->result->translatedText;
+               }
+               else
+                   $menuArray[$keyName] = $option->name;
 
                // <-- SubOption Data Select
                $subOptionData = Suboption::where('opnum', $opNum)
@@ -118,7 +228,33 @@ class MenuController extends Controller
                    // <-- SubOption Data Save in Array
                    $subOpKeyName = $optionKey .'optionValue' . $subOpKey;
                    $subOpIDName = $optionKey .'subOptionId' . $subOpKey;
-                   $menuArray[$subOpKeyName]  = $subOption->name;
+
+                   // <-- 옵션 이름 번역
+                   $encText = urlencode($subOption->name);
+                   $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+                   $ch  = curl_init();
+
+                   curl_setopt($ch,CURLOPT_URL, $this->url);
+                   curl_setopt($ch,CURLOPT_POST, $this->is_post);
+                   curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+                   curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+                   curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+                   curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+                   $response    = curl_exec ($ch);
+                   $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                   curl_close ($ch);
+
+                   if($status_code == 200) {
+                       $responseData = json_decode($response);
+
+                       $menuArray[$subOpKeyName]  = $responseData->message->result->translatedText;
+                   }
+                   else
+                       $menuArray[$subOpKeyName] = $subOption->name;
+
+                   // $menuArray[$subOpKeyName]  = $subOption->name;
                    $menuArray[$subOpIDName]   = $subOption->sub_opnum;
 
                    $subOpKey++;
@@ -246,11 +382,11 @@ class MenuController extends Controller
 
     // <--  현재 선택된 레이아웃 번호 불러오기
     public function getLayoutNumber(Request $request) {
-        $layoutData =Restaurant::select('selectLayout')
-                    ->where('id', $request->get('shop_id'))
-                    ->first();
+        $layoutData = Restaurant::select('selectlayout')
+                        ->where('id', $request->get('shop_id'))
+                        ->first();
 
-        $layoutNum = $layoutData->selectLayout;
+        $layoutNum = $layoutData->selectlayout;
 
         if($layoutNum > 4) {
             $layoutNum = 0;

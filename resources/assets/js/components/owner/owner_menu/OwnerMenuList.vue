@@ -1,26 +1,39 @@
 <template>
 <div class="container" style="width:100%;">
 <v-app>
+<!-- 스낵바 : 경고 창 출력 -->
+<v-snackbar :timeout="timeout" :top="'top'" v-model="snackbar">
+    {{ snackbar_text }}
+    <v-btn flat color="pink" icon @click.native="snackbar = false">
+        <v-icon large> close </v-icon>
+    </v-btn>
+</v-snackbar>    
+
 <div id="menus">
     <!-- 카테고리 영역 -->
     <div style="width:100%"> 
         <div style="max-width:100%; margin:auto">
             <v-bottom-nav :value="true" :active.sync="e2">
-                <v-btn v-for="(value,key) in categorys" :key="key" :value="value" @click="click_category">
-                    <b style="color: black">{{value}}</b>  
+                <v-btn 
+                    style="color:black; font-weight:bold"
+                    v-for="(value,key) in categorys" 
+                    :key="key" 
+                    :value="value" 
+                    @click="click_category">
+                    {{value}}
                 </v-btn>
             </v-bottom-nav>
         </div>
     </div> 
 
-    <!-- 메뉴들 -->
-    <div id="prtArea">
-        <div class="Inner" style="overflow:auto;"> 
+    <!-- 메뉴들 class="Inner" style="overflow:auto;"-->
+    <v-layout id="prtArea">
+        <v-flex xs12> 
             <!-- 메뉴 영역 --> 
-            <div v-for="n in range(0, menu_num-1)" :key="n" class="menuBody" :id="n+1">                
+            <v-card v-for="n in range(0, menu_num-1)" :key="n" class="menuBody" :id="n+1">                
                 <!-- 메뉴 이미지 -->
                 <div class="menuOuter">
-                    <!-- <img src="./image.jpg" class="menuImg"> -->
+                    <!-- <img src="./ny2.png" class="menuImg"> -->
                     <img class="menuImg" :src="get_menus[n].path + get_menus[n].filename">
                 </div>
 
@@ -56,8 +69,8 @@
                                 @click.stop="OptionDialog=true" style="background-color:#E1F5A9;">
                                 옵션 보기
                             </button>
-                            <v-dialog v-model="OptionDialog" width="50%" scrollable="" persistent>
-                                <v-card>
+                            <v-dialog v-model="OptionDialog" width="50%" scrollable="">
+                                <v-card @click.native="OptionDialog = false">
                                     <!-- 타이틀, x 버튼 -->
                                     <v-card-title>
                                         <h1 style="margin: auto"> Options </h1>
@@ -68,18 +81,16 @@
 
                                     <!-- 옵션 출력 영역 --> 
                                     <div id="prtOptions" style="padding-bottom:10%;" v-if="OptionDialog==true">                                       
-                                        <div v-if="clickedMenu === null">    
+                                        <div v-if="clickedMenu === null" style="margin-top:5%; text-align:center">    
                                             <h1> 등록된 옵션이 없습니다. </h1>   
                                         </div>  
-                                        <div v-else v-for="i in range(1, clickedMenu.num)" :key="i" style="margin-top:8%;">
+                                        <div v-else v-for="i in range(1, clickedMenu.num)" :key="i" style="margin-top:4%;">
                                             <b class="opName">
                                                 {{clickedMenu[i]['name']}}
-                                            </b><br>
-                                            <select class="opSelect">
-                                                <option v-for="j in range(1, clickedMenu[i].length-1)" :key="j">
-                                                    {{clickedMenu[i][j]}}
-                                                </option>
-                                            </select>
+                                            </b><br> 
+                                            <div class="opSelect" v-for="j in range(1, clickedMenu[i].length-1)" :key="j">
+                                                {{clickedMenu[i][j]}}
+                                            </div>
                                         </div>           
                                     </div>
                                 </v-card>
@@ -121,11 +132,12 @@
                         </div>                        
                     </div>
                 </div>  
-            </div> 
-        </div>
-    </div>  
+            </v-card> 
+        </v-flex>
+    </v-layout>  
 </div>
 
+<!-- 메뉴 수정하기. -->
 <div style="width:100%">
     <v-card v-if="editMenu !== null">
         <!-- 타이틀 -->
@@ -241,28 +253,25 @@ export default {
         .then( (response) => {
             get_categorys = response.data.category;
             this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+            this.click_category(this.categorys[0]);
         })
-        .catch((ex)=>{alert('메뉴 로드 실패');});      
-        
-        // get_categorys = [   
-        //     {"category" : '특식'},
-        //     {"category" : '추천 메뉴'},
-        //     {"category" : '식사류'},
-        //     {"category" : '찌개류'},
-        //     {"category" : '안주류'},
-        //     {"category" : '음료'},
-        //     {"category" : '커피'},
-        //     {"category" : '디저트'}, 
-        // ]
-        // this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
+        .catch((ex)=>{
+           this.snackbar_text = '레이아웃 로드 실패';
+           this.snackbar      = true; 
+        });  
     },
  
     data() {
-        return {                  
+        return {        
+            // 스낵바 설정값
+            timeout         : 2000,
+            snackbar_text   : '',
+            snackbar        : false,
+            
             shop_id         : null,           // 가게 아이디
             e2              : null,           // 카테고리 클릭 값
             categorys       : null,           // 카테고리 
-            clickedCategory : null,         // 클릭한 카테고리
+            clickedCategory : null,           // 클릭한 카테고리
             get_menus       : null,           // 서버에서 보내준 메뉴들 
             menu_num        : 0,              // 메뉴 갯수
             OptionDialog    : false,          // 옵션 보기 다이얼로그 
@@ -309,16 +318,23 @@ export default {
         },
 
         // 메뉴 카테고리 클릭
-        click_category : function() {
+        click_category : function(argMenu) { 
             let url = "";                           // 서버에 요청할 주소 
-            this.clickedCategory = event.target;    // 선택한 카테고리 
+            
+            // 클릭으로 호출
+            if(argMenu === event){
+                this.clickedCategory = event.target;
 
-            // 클릭한 값 검사
-            if(this.clickedCategory.value === undefined) { 
-                this.clickedCategory = this.clickedCategory.parentNode.value;
-            } else { 
-                this.clickedCategory = this.clickedCategory.value;
-            }     
+                // 클릭한 값 검사
+                if(this.clickedCategory.value === undefined)  
+                    this.clickedCategory = this.clickedCategory.parentNode.value;
+                else  
+                    this.clickedCategory = this.clickedCategory.value;                
+            }
+            // 최초 호출 
+            else {
+                this.clickedCategory = argMenu;
+            }
 
             url = '/menu/getMenu/' + this.shop_id + '/' + this.clickedCategory;
  
@@ -329,173 +345,9 @@ export default {
                 this.menu_num  = this.get_menus.length;                  
             })
             .catch((ex)=>{
-                alert('메뉴 로드 실패');
-            });   
-            // this.get_menus = [
-            //       {                     
-            //         "id"            : 1, 
-            //         "category"      : '특선',
-            //         "name"          : "짬뽕" ,
-            //         "explanation"   : "짬뽕입니다." ,
-            //         "price"         : 9000 ,
-            //         "remark"        : "디너 메뉴" ,
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_1.jpeg" ,
-            //         "opNum"         : 6,
-
-            //         "optionId1"      : 1,
-            //         "optionName1"    : "맵기 조절" ,
-            //         "1suboptionId1"  : 1,
-            //         "1optionValue1"  : "순한맛" ,
-            //         "1suboptionId2"  : 2,
-            //         "1optionValue2"  : "보통맛" ,
-            //         "1suboptionId3"  : 3,
-            //         "1optionValue3"  : "매운맛" ,
-            //         "subOpNum1"      : 3,
-
-            //         "optionId2"      : 2,
-            //         "optionName2"   : "샐러드",
-            //         "2suboptionId1"  : 1,
-            //         "2optionValue1" : "제공",
-            //         "2suboptionId2"  : 2,
-            //         "2optionValue2" : "미제공",
-            //         "subOpNum2"      : 2,
-
-            //         "optionId3"      : 3,
-            //         "optionName3"   : "딸기",
-            //         "3suboptionId1"  : 1,
-            //         "3optionValue1" : "제공",
-            //         "3suboptionId2"  : 2,
-            //         "3optionValue2" : "미제공",
-            //         "subOpNum3"      : 2,
-
-            //         "optionId4"      : 4,
-            //         "optionName4"    : "옵션4" ,
-            //         "4suboptionId1"  : 1,
-            //         "4optionValue1"  : "배고파1" ,
-            //         "4suboptionId2"  : 2,
-            //         "4optionValue2"  : "배고파2" ,
-            //         "4suboptionId3"  : 3,
-            //         "4optionValue3"  : "배고파3" ,
-            //         "4suboptionId4"  : 4,
-            //         "4optionValue4"  : "배고파4" ,
-            //         "4suboptionId5"  : 5,
-            //         "4optionValue5"  : "배고파5" ,
-            //         "subOpNum4"      : 5,
-
-            //         "optionId5"      : 5,
-            //         "optionName5"   : "집에가고 싶다",
-            //         "5suboptionId1"  : 1,
-            //         "5optionValue1" : "갈까",
-            //         "5suboptionId2"  : 2,
-            //         "5optionValue2" : "말까",
-            //         "subOpNum5"      : 2,
-
-            //         "optionId3"      : 6,
-            //         "optionName6"   : "구두 사야돼",
-            //         "6suboptionId1"  : 1,
-            //         "6optionValue1" : "내일",
-            //         "6suboptionId2"  : 2,
-            //         "6optionValue2" : "모레",
-            //         "subOpNum6"      : 2,
-            //     },
-            //     {                     
-            //         "id"            : 2, 
-            //         "category"      : '안주류',
-            //         "name"          : "케이크" ,
-            //         "explanation"   : "케이크입니다." ,
-            //         "price"         : 3000 ,
-            //         "remark"        : "상관 없음" ,
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_1.jpeg" 
-            //     },
-            //     {                     
-            //         "id"            : 3, 
-            //         "category"      : '식사류',
-            //         "name"          : "짜장면" ,
-            //         "explanation"   : "맛있는 짜장면" ,
-            //         "price"         : 9000 ,
-            //         "remark"        : "런치 메뉴" ,
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_1.jpeg" ,
-            //         "opNum"         : 2,
-
-            //         "optionId1"      : 1,
-            //         "optionName1"   : "맵기 조절" ,
-            //         "1suboptionId1"  : 1,
-            //         "1optionValue1"  : "순한맛" ,
-            //         "1suboptionId2"  : 2,
-            //         "1optionValue2"  : "보통맛" ,
-            //         "1suboptionId3"  : 3,
-            //         "1optionValue3"  : "매운맛" ,
-            //         "subOpNum1"      : 3,
-
-            //         "optionId2"      : 2,
-            //         "optionName2"   : "샐러드",
-            //         "2suboptionId1"  : 1,
-            //         "2optionValue1" : "제공",
-            //         "2suboptionId2"  : 2,
-            //         "2optionValue2" : "미제공",
-            //         "subOpNum2"      : 2, 
-            //     },
-            //     {                     
-            //         "id"            : 4, 
-            //         "category"      : '추천메뉴',
-            //         "name"          : "고르곤졸라 피자" ,
-            //         "explanation"   : "꿀 찍어 먹는 얇은 ㅍ자" ,
-            //         "price"         : 18000 ,
-            //         "remark"        : "상관 없음" ,
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_1.jpeg" ,
-            //         "opNum"         : 2,
-
-            //         "optionId1"      : 1,
-            //         "optionName1"   : "사이즈" ,
-            //         "1suboptionId1"  : 1,
-            //         "1optionValue1"  : "m" ,
-            //         "1suboptionId2"  : 2,
-            //         "1optionValue2"  : "r" ,
-            //         "1suboptionId3"  : 3,
-            //         "1optionValue3"  : "l" ,
-            //         "subOpNum1"      : 3,
-
-            //         "optionId2"      : 2,
-            //         "optionName2"   : "샐러드",
-            //         "2suboptionId1"  : 1,
-            //         "2optionValue1" : "제공",
-            //         "2suboptionId2"  : 2,
-            //         "2optionValue2" : "미제공",
-            //         "subOpNum2"      : 2, 
-            //     },
-            //     {                     
-            //         "id"            : 5, 
-            //         "category"      : '식사류',
-            //         "name"          : "감자탕" ,
-            //         "explanation"   : "뼈와 살을 발라 먹는 맛" ,
-            //         "price"         : 7500 ,
-            //         "remark"        : "상관 없음" ,
-            //         "path"          : "/images/menu/1/" ,
-            //         "filename"      : "1_menuImg_1.jpeg" ,
-            //         "opNum"         : 2,
-
-            //         "optionId1"      : 1,
-            //         "optionName1"   : "뼈 추가" ,
-            //         "1suboptionId1"  : 1,
-            //         "1optionValue1"  : "추가" ,
-            //         "1suboptionId2"  : 2,
-            //         "1optionValue2"  : "안함" , 
-            //         "subOpNum1"      : 2,
-
-            //         "optionId2"      : 2,
-            //         "optionName2"   : "샐러드",
-            //         "2suboptionId1"  : 1,
-            //         "2optionValue1" : "제공",
-            //         "2suboptionId2"  : 2,
-            //         "2optionValue2" : "미제공",
-            //         "subOpNum2"      : 2, 
-            //     },
-            // ];
-            // this.menu_num  = this.get_menus.length;        
+                this.snackbar_text = '메뉴 로드 실패';
+                this.snackbar      = true; 
+            });                       
         },  
 
         // 옵션 보기 
@@ -574,7 +426,9 @@ export default {
                         let optionName = optionBox.children[0].children[0];
                         
                         if(optionName.tagName !== 'B' || optionName.innerText === ''){
-                            return alert('입력이 완료 되지 않은 옵션 명이 있습니다!');
+                            this.snackbar_text = '입력이 완료 되지 않은 옵션 명이 있습니다!';
+                            this.snackbar      = true;
+                            return null;  
                         }
                         // 옵션 이름, 옵션 값 갯수 담기.
                         formData.append('option['+ i +'][name]', optionName.innerText);
@@ -587,12 +441,16 @@ export default {
 
                                 // 옵션 값이 입력 창인 상태이거나 옵션 명이 입력되지 않은 경우 경고 메세지 출력
                                 if(optionValue.tagName !== 'B' || optionValue.innerText === ''){
-                                    return alert('입력이 완료 되지 않은 옵션 값이 있습니다!');
+                                    this.snackbar_text = '입력이 완료 되지 않은 옵션 값이 있습니다!';
+                                    this.snackbar      = true; 
+                                    return null; 
                                 }
                                 formData.append('option['+ i +'][value' + j+']',optionValue.innerText);
                             }
                         } else {
-                            return alert('옵션의 선택 값을 2개 이상 생성해주세요!');
+                            this.snackbar_text = '옵션의 선택 값을 2개 이상 생성해주세요!';
+                            this.snackbar      = true;
+                            return null; 
                         }
                         
                     }
@@ -605,16 +463,20 @@ export default {
                 /* 선주야 이거 해줘 */   
                 axios.post('/updateMenu',formData)
                 .then( (response) => { 
-                    alert('수정 완료'); 
+                    this.snackbar_text = '수정 완료';
+                    this.snackbar      = true;                
                     this.modifyCancel();
+                    return null;
                 })
                 .catch((ex)=>{
                     console.log('failed',ex);
                 });                
             }
             // 메뉴 정보가 모두 입력되지 않은 경우 경고 메세지 출력
-            else {
-                alert('메뉴 정보를 모두 입력해 주세요');
+            else { 
+                this.snackbar_text = '메뉴 정보를 모두 입력해 주세요';
+                this.snackbar      = true;                 
+                return null;  
             } 
         },
 
@@ -652,13 +514,15 @@ export default {
 
                     switch(a){
                         case 0:
-                            created_btns[a].value   = '삭제';
+                            created_btns[a].value   = '삭제';                  
+                            created_btns[a].style.color = 'cadetblue';
                             created_btns[a].onclick = this.delete_option; break;
                         case 1:
                             created_btns[a].value   = '옵션 값 생성';
                             created_btns[a].onclick = this.add_opionValue; break;
                         case 2: 
-                            created_btns[a].value   = '수정';
+                            created_btns[a].value   = '수정';                            
+                            created_btns[a].style.color = 'cadetblue';
                             created_btns[a].onclick = this.rename_option; break;
                     }                    
                     created_option.appendChild(created_btns[a]);
@@ -687,7 +551,8 @@ export default {
                                 Value_btns[b].value   = '삭제';
                                 Value_btns[b].onclick = this.delete_optionValue; break;
                             case 1:
-                                Value_btns[b].value   = '수정';
+                                Value_btns[b].value   = '수정';                  
+                                Value_btns[b].style.color = 'cadetblue';
                                 Value_btns[b].onclick = this.rename_option; break; 
                         }                        
                         optionValue.appendChild(Value_btns[b]);
@@ -739,21 +604,23 @@ export default {
 
                 switch(i){
                     case 0:
-                        created_btns[i].value   = '삭제';
-                        created_btns[i].onclick = this.delete_option; break;
+                        created_btns[i].value       = '삭제';
+                        created_btns[i].style.color = 'cadetblue';
+                        created_btns[i].onclick     = this.delete_option; break;
                     case 1:
                         created_btns[i].value   = '옵션 값 생성';
                         created_btns[i].onclick = this.add_opionValue; break;
                     case 2: 
-                        created_btns[i].value   = '완료';
-                        created_btns[i].onclick = this.rename_complete; break;
+                        created_btns[i].value       = '완료';
+                        created_btns[i].style.color = 'cadetblue';
+                        created_btns[i].onclick     = this.rename_complete; break;
                 }
                 created_option.appendChild(created_btns[i]);
             }
             // 옵션 목록 div에 옵션 삽입 
             options_box.classList.add('ed_op_box');
             options_box.appendChild(created_option);
-            editOptions.appendChild (options_box);  
+            editOptions.appendChild(options_box);  
         }, // end of create_option
 
         // 수정하기 - 옵션 명 수정하기
@@ -779,7 +646,9 @@ export default {
             let created_b   = document.createElement('b');      // 카테고리 명 생성.
  
             if(get_iptText.value.replace(/ /gi, "") === ''){
-                return alert('값을 입력해 주세요!');
+                this.snackbar_text = '값을 입력해 주세요!';
+                this.snackbar      = true;                 
+                return null; 
             }
             created_b.innerText = get_iptText.value;                                                   
             created_b.classList.add('ed_op_b');
@@ -810,8 +679,9 @@ export default {
                         created_btns[i].value   = '삭제';
                         created_btns[i].onclick = this.delete_optionValue; break;
                     case 1:
-                        created_btns[i].value   = '완료';
-                        created_btns[i].onclick = this.rename_complete; break; 
+                        created_btns[i].value       = '완료';
+                        created_btns[i].style.color = 'cadetblue';
+                        created_btns[i].onclick     = this.rename_complete; break; 
                 }
                 optionValue.appendChild(created_btns[i]);
             } 
@@ -850,13 +720,19 @@ export default {
                 let result = response.data.result;      // 삭제 성공 / 실패 여부
                 if(true){                    
                     prtArea.removeChild(get_menu);
-                    alert('삭제 되었습니다.');
-                } else {                    
-                    alert('삭제 실패.');
+                    this.snackbar_text = '삭제 되었습니다.';
+                    this.snackbar      = true;                 
+                    return null; 
+                } else {                 
+                    this.snackbar_text = '삭제 실패.';
+                    this.snackbar      = true;                 
+                    return null;    
                 }                
             })
             .catch((ex)=>{
-                alert('서버 연결 실패');
+                this.snackbar_text = '서버 연결 실패';
+                this.snackbar      = true;                 
+                return null; 
             });       
         } 
     }
@@ -870,25 +746,25 @@ export default {
 /* 메뉴 전체 */
 #prtArea {
     width: 100%; 
-    height: 0;
+    /* height: 0; */
     margin-top: 2%;
     padding-bottom: 50%; 
     position: relative;
-    overflow: hidden;  
+    overflow: auto;  
 } 
 
 /* 옵션 보기 모달 */
 #prtOptions {    
     width: 100%;
     height: 95%;
-    border-top: 1px solid black; 
+    border-top: 2px solid #6E6E6E; 
     color : black;
     background-color: white;  
     overflow: auto;
 }
 /* 옵션 이름 */
 .opName{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: cadetblue;
     margin-left: 7%;
 }
@@ -899,14 +775,14 @@ export default {
     margin-top: 1.5%; 
     margin-left: 10%;  
     font-size: 1.5rem;
-    border-bottom: 2px solid black; 
+    border-bottom: 2px solid #6E6E6E; 
 }
 
 /* 메뉴 */
 .menuBody {
     width: 100%; 
     margin-top: 2%;
-    border: 1px solid black;
+    border: 1px solid #6E6E6E;
     color: black; 
     overflow: hidden;
 }
@@ -915,7 +791,7 @@ export default {
     width: 33.3%;
     height: 0;
     padding-bottom: 25%;
-    /* border: 1px solid black; */
+    /* border: 1px solid #6E6E6E; */
     position: relative;
     overflow: hidden;
     float: left;
@@ -942,7 +818,8 @@ export default {
     width: 100%;
     height: 33.3%;
     padding: 1%;
-    border-bottom: 1px solid black;
+    border-left: 1px solid #6E6E6E;
+    border-bottom: 1px solid #6E6E6E;
     position: relative;
     overflow: auto;
 }
@@ -950,7 +827,7 @@ export default {
 .menuBtn{    
     width: 100%;
     height: 20%;
-    border: 1px solid black;
+    border: 1px solid #6E6E6E;
     position: relative; 
 }
 /* 버튼 */
@@ -967,7 +844,7 @@ export default {
     width: 100%;
     height: 80%;
     padding: 1%;
-    border: 1px solid black;
+    border: 1px solid #6E6E6E;
     position: relative;
     overflow: auto;
 }
@@ -1065,7 +942,7 @@ export default {
     margin: 1%;
     float: right;
     position: relative;
-    color: cadetblue; 
+    color: rgb(135, 194, 196);  
     font-weight: bold;
 }
 /* 옵션의 값 */

@@ -3,10 +3,10 @@
         <v-app>
             <v-navigation-drawer
                     v-model="menu"
-                    clipped
                     fixed
                     app
                     temporary
+                    touchless
                     hide-overlay
             >
                 <v-list>
@@ -189,8 +189,7 @@
             </v-toolbar>
             <!-- 컴포넌트 출력 -->
             <v-content>
-                <router-view v-if="searchAddress != ''" :searchAddress=searchAddress></router-view>
-                <router-view v-else :searchAddress=defaultGoogleMapCenter></router-view>
+                <router-view :searchAddress=searchAddress></router-view>
             </v-content>
         </v-app>
         <v-dialog v-model="gps_modal" max-width="400">
@@ -280,27 +279,26 @@
 
         data() {
             return {
-                menu: false,
-                loginForm: false,
-                gps_modal: false,
-                gps_search: false,
-                idValue: '',
-                pwValue: '',
+                menu: false,        // navigation-drawer(왼쪽 메뉴바)
+                loginForm: false,   // login dialog
+                gps_modal: false,   // gps dialog
+                gps_search: false,  // gps search dialog
+                idValue: '',        // login form user id
+                pwValue: '',        // login form user pw
 
-                user_id: this.$session.get('user_id'),
-                user_name: this.$session.get('user_name'),
+                user_id: this.$session.get('user_id'),      // user id
+                user_name: this.$session.get('user_name'),  // user name
 
                 communicationDialog: false,     // 커뮤니케이션 버튼을 통해 모달창을 출력하는데 사용
 
-                snackbar:   false,
-                snackText:  "",
-                timeout:    3000,
+                snackbar:   false,  // snackbar 상태
+                snackText:  "",     // snackbar 내용
+                timeout:    3000,   // snackbar 표시 시간
 
-                searchAddress: "",
-                searchAddressInput: "",
-                defaultGoogleMapCenter: ['대한민국 대구광역시 북구 복현2동 복현로 35', { lat: 35.8963134, lng: 128.6198624 }],
+                searchAddress: "",      // 데이터 값을 가지고 있는 address value
+                searchAddressInput: "", // 사용자가 입력한 address value
 
-                searchDataInput: "",
+                searchDataInput: "",    // 사용자가 입력한 search value
             }
         },
 
@@ -327,10 +325,16 @@
                             else
                                 this.$session.set('restaurant_id', 'needCreate');
                         } else {
-                            this.$session.set('favorite_1', response.data.favorite_1);
-                            this.$session.set('favorite_2', response.data.favorite_2);
-                            this.$session.set('favorite_3', response.data.favorite_3);
-                            this.$session.set('region', response.data.favorite_region);
+                            if(response.data.favorite_region)
+                                this.$session.set('region', response.data.favorite_region);
+                            if(response.data.favorite_1) {
+                                this.$session.set('favorite_1', response.data.favorite_1);
+                                if(response.data.favorite_2) {
+                                    this.$session.set('favorite_2', response.data.favorite_2);
+                                    if(response.data.favorite_3)
+                                        this.$session.set('favorite_3', response.data.favorite_3);
+                                }
+                            }
                         }
 
                         this.$session.set('loginStatus', true);                     // 로그인 상태 true
@@ -409,13 +413,7 @@
 
             searchingAddress() {
                 if(this.searchAddressInput.formatted_address) {
-                    this.searchAddress = [
-                        this.searchAddressInput.formatted_address,
-                        {
-                            lat: this.searchAddressInput.geometry.location.lat(),
-                            lng: this.searchAddressInput.geometry.location.lng()
-                        }
-                    ]
+                    this.searchAddress = this.searchAddressInput;
                     this.$router.push('/');
                 }
             },
@@ -430,7 +428,7 @@
                         this.$session.set('searchData', response.data);
 
                         if(this.$route.path != '/search')
-                            this.$router.push('search');
+                            this.$router.push('/search');
                         else
                             this.$router.go(this.$router.currentRoute);
                     })

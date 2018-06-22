@@ -49,6 +49,7 @@
     export default {
         data() {
             return {
+
                 dialog : false,
 
                 // 주문 내역 배열

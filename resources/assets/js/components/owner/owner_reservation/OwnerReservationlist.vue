@@ -102,7 +102,7 @@
                         class="elevation-1"
                 >
                     <template slot="items" slot-scope="props">
-                        <td class="text-xs-left">{{ props.item.name }}</td>
+                        <td class="text-xs-left">{{ props.item.reservation_name }}</td>
                         <td class="text-xs-left">{{ props.item.reservation_date }}</td>
                         <td class="text-xs-left">{{ props.item.person }}</td>
                         <td class="text-xs-left">{{ props.item.child }}</td>
@@ -181,7 +181,7 @@
                 /* table */
                 dialog: false,
                 headers: [
-                    { text: '예약자 명',    value: 'name' },
+                    { text: '예약자 명',    value: 'reservation_name' },
                     { text: '예약 날짜/시간',    value: 'reservation_date' },
                     { text: '어른',         value: 'person' },
                     { text: '아이',         value: 'child' },
@@ -208,7 +208,22 @@
             }).then((response) => {
                 var ReservationListData = response.data.resData;
 
-                this.items = ReservationListData;
+                for(var i = 0; i < ReservationListData.length; i++)
+                {
+                    this.items[i] = [];
+                    if(ReservationListData[i].reservation_name == null)
+                    {
+                        this.items[i]['reservation_name'] = ReservationListData[i].user_name;
+                    }
+                    else
+                    {
+                        this.items[i]['reservation_name'] =ReservationListData[i].reservation_name;
+                    }
+                    this.items[i]['reservation_date']   = ReservationListData[i].reservation_date;
+                    this.items[i]['person']             = ReservationListData[i].person;
+                    this.items[i]['child']              = ReservationListData[i].child;
+                    this.items[i]['menu_select']        = ReservationListData[i].menu_select;
+                }
             })
         },
         methods: {

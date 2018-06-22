@@ -141,19 +141,19 @@ class CouponController extends Controller
 
         switch (auth()->user()->country) {
 
-            case 'korea' :
+            case 'Korea' :
                 {
                     $source = 'ko';
                     break;
                 }
 
-            case 'china' :
+            case 'China' :
                 {
                     $source = 'zh-CN';
                     break;
                 }
 
-            case 'usa' :
+            case 'Usa' :
                 {
                     $source = 'en';
                     break;

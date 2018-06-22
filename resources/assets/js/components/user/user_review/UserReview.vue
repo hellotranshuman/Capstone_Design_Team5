@@ -121,9 +121,11 @@ export default {
 
     data() {
         return {
-            url         : "",             // 리뷰를 하는 페이지 URL
-            sortSelect  : { sort: '작성일순', sortNum: 1 },     // 선택된 정렬 기준
-            sortItems   : [                                     // 정렬 기준들
+            // sns 이미지 주소 배열
+            snsImageList : ['/images/review/facebook.svg', '/images/review/twitter.svg', '/images/review/weibo.svg'],
+            url         : "",                               // 리뷰를 하는 페이지 URL
+            sortSelect  : { sort: '작성일순', sortNum: 1 }, // 선택된 정렬 기준
+            sortItems   : [                                 // 정렬 기준들
                 { sort  : '작성일순', sortNum: 1 },
                 { sort  : '좋아요순',   sortNum: 2 },
             ],
@@ -136,10 +138,9 @@ export default {
                 { country   : 'Korea', countryNum: 3 },
                 { country   : 'USA',   countryNum: 4 },
             ],
+
             fab         : false,    
             writeCheck  : "",       // 리뷰 작성페이지 주소가 저장 되는 변수
-
-
             loginCheckErrorCode         : "로그인 해주세요.",   // 경고창에 띄울 문장이 저장되는 변수
             loginCheckSnackbar          : false,                // snackbar 출력여부 확인
             loginCheckSnackbarY         : 'top',                // snackbar Y축 값
@@ -158,6 +159,16 @@ export default {
             else {
                 this.loginCheckSnackbar = false;
             }
+        },
+
+        // 이미지를 preloading 하는 함수
+        preloading (imageArray){
+            let n = imageArray.length; 
+        
+            for (let i = 0; i < n; i++){
+            let img = new Image(); 
+            img.src = imageArray[i]; 
+            } 
         }
     },
 
@@ -170,6 +181,9 @@ export default {
         if(this.$session.get('loginStatus')){
             this.writeCheck = "writeReview";
         }
+
+        // sns이미지를 preroding 합니다.
+        this.preloading(this.snsImageList);
     }
 }
 </script>
@@ -187,6 +201,6 @@ export default {
     }
     /* 최상단 버튼 관련 CSS */
     .up-button {
-        z-index: 10000;
+        z-index: 10;
     }
 </style>

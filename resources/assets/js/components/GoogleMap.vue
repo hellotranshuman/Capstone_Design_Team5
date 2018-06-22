@@ -1,8 +1,9 @@
 <template>
   <div>
     <gmap-map
+            id='g-map'
             :center=currentCenter
-            :zoom="14"
+            :zoom="18"
             style="width:100%;  height: 300px;"
     >
       <gmap-marker
@@ -57,27 +58,6 @@
         mounted: function() {
             this.geolocate();
 
-            /*var url = "/getRestaurantInfo"
-            axios.post(url, {nowRegion: '福岡', favorite_1: '일식'})
-                    .then(response => {
-                        while((key, value) in {
-                          'rest1': {
-                            'position': {lat: 35.8962134, lng: 128.6194624},
-                            'icon': "/images/restaurant.png",
-                            'restaurantId': '7'
-                          },
-                          'rest2': {
-                            'position': {lat: 35.8962534, lng: 128.6199624},
-                            'icon': "/images/restaurant.png",
-                            'restaurantId': '8'
-                          },
-                        }) {
-
-                        }
-                    })
-                    .catch(error => {
-                        alert(error);
-                    });*/
             var tp = "";
             var temp = [
                 {

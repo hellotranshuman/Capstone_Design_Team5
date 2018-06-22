@@ -5,6 +5,14 @@
 <template>
     <div class="container">
         <v-app class="fontSize">
+            <!--스낵바 : 경고 창 출력-->
+            <v-snackbar :timeout="timeout" :top="'top'" v-model="snackbar">
+                {{ snackbar_text }}
+                <v-btn flat color="pink" icon @click.native="snackbar = false">
+                    <v-icon large> close </v-icon>
+                </v-btn>
+            </v-snackbar>
+
             <!-- 타이틀 이미지와 가게 명이 들어갈 div -->
             <div class="title_div">
                 <div id="title_img">
@@ -22,7 +30,7 @@
 
             <!-- 가게 설명이 들어갈 div -->
             <div style="width:100%;">
-                <div style=" float:left; display: flex" >
+                <div style=" float:left; display: flex">
                     <b class='column'> 소개 </b>
                 </div>
 
@@ -293,16 +301,17 @@
             <!-- 갤러리 이미지가 들어갈 div -->
             <b class='column'> 갤러리 </b>
             <div id="gallery_div" class="frame">
+
                 <!-- 더보기 div 클릭 시 v-dialog 출력  -->
                 <div id="moreImg" class="gallery" style="display:none">
-                    <div class="gallery_img MoreImg_inner"
-                         @click="PrtAllGalleryImg"
-                         @click.stop="ShowMoreImg=true">더 보기</div>
+                    <div class="gallery_img MoreImg_inner" @click="PrtAllGalleryImg" @click.stop="ShowMoreImg=true">
+                        더 보기
+                    </div>
                 </div>
 
                 <!-- 갤러리 이미지 더 보기. -->
                 <v-dialog v-model="ShowMoreImg" width="95%" scrollable="">
-                    <v-card>
+                    <v-card @click.native="ShowMoreImg=false">
                         <!-- 타이틀, x 버튼 -->
                         <v-card-title>
                             <h2 class="column" style="margin: auto"> Gallery </h2>
@@ -312,8 +321,7 @@
                         </v-card-title>
 
                         <!-- 갤러리 이미지 출력 영역 -->
-                        <v-flex xs12 id="prtAllImgs">
-                        </v-flex>
+                        <v-flex xs12 id="prtAllImgs"> </v-flex>
                     </v-card>
                 </v-dialog>
             </div>
@@ -353,7 +361,7 @@
 
             <!-- 이용 시간 출력 div -->
             <div class="frame_small">
-                <div class="column"  style="float:left;"> <b>이용 시간</b> </div>
+                <div class="column" style="float:left;"> <b>이용 시간</b> </div>
                 <div class="column_value" style="float:left;">
                     <span class="timeInfo"> 런치 : </span>
                     <span class="timeInfo" id="lunch_open"> </span>
@@ -403,7 +411,7 @@
                     :vertical="'vertical'"
                     :top="'top'"
             >
-                마이페이지-쿠폰함 에 담겼습니다.
+                {{coupon_text}}
                 <v-btn flat color="white" @click.native="coupon_snackbar = false">Close</v-btn>
             </v-snackbar>
 
@@ -429,6 +437,7 @@
     // 예약 하기
     import { EventBus } from '../user_menu/eventBus.js';
     import DefaultLayout1 from '../user_menu/MenuDefaultLayout1.vue';
+    import { isUpdateExpression } from 'babel-types';
 
     var layout = DefaultLayout1;     // 사장이 선택한 메뉴판 탬플릿
     var obj    = [];                 // 클릭한 배열 담기
@@ -441,16 +450,22 @@
     //     }
     // });
 
-    var restaurant_id = '';           // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
+    var restaurant_id = '';          // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
     var get_datas  = null;           // 요청한 데이터들이 담길 변수 JSON으로 받을 예정
     var url = '';
 
     export default{
         data() {
             return {
+                // 스낵바 설정값
+                timeout         : 2000,
+                snackbar_text   : '',
+                snackbar        : false,
+
                 // snackbar
                 reservation_snackbar    : false,
                 coupon_snackbar         : false,
+                coupon_text             : '',
                 addreservation_snackbar : false,
                 addreservation_text     : '',
 
@@ -506,9 +521,7 @@
                 dinner_close : '',
 
                 /* DB에서 받아 온 값 - reservation_set */
-                items:[
-
-                ],
+                items:[],
 
                 /* 쿠폰 */
                 translateTextDownDialog : false,
@@ -516,27 +529,7 @@
                 clickCouponid : null,
                 clickCouponname : null,
 
-                items: [
-                    {
-                        id : '1',
-                        name : '안녕fsdfsd',
-                        category : '상품 제공',
-                        price_condition : '1000',
-                        add_product : '제공',
-                        start_date : '2018-03-02',
-                        expiry_date : '2019-04-03'
-                    },
-                    {
-                        id : '2',
-                        name : 'd',
-                        category : '가격 할인',
-                        price_condition : '1000',
-                        discount : '200',
-                        start_date : '2018-03-02',
-                        expiry_date : '2019-04-03'
-
-                    }
-                ],
+                items: [],
 
                 /* 갤러리 이미지 더 보기. */
                 ShowMoreImg : false
@@ -606,68 +599,10 @@
                 this.I_Like_It();
             })
                 .catch((ex)=>{
-                    alert('가게 정보 불러오기 실패!');
+                    this.snackbar_text = '가게 정보 불러오기 실패!';
+                    this.snackbar      = true;
                 })
-
-            // get_datas = [
-            //     {
-            //         'name'          : 'Innovative Cuisine',
-            //         'type'          : '한식',
-            //         'explanation'   : "최고의 재료를 찾아내고 그 재료가 지닌 다양한 맛을 연구해 한식이 지낸 깊은 향과 숨은 맛을 전합니다. " +
-            //                             "최상의 식재료를 선별, 그에 걸맞는 신중한 조리를 통해 재료 본연의 맛을 극대화한 한식,"+
-            //                             "전통 한식 본연의 못브에 대한 셰프의 철학과 감성을 더해 궁극의 요리 예술로서 풀어낸 한식"+
-            //                             "저희는 매일 바뀌는 계절과 에너지의 흐름을 되짚어가며 한식의 성숙하고 자연스러운 맛을"+
-            //                             "오랜 시간의 노고가 스며든 정성스러운 손길로 표현합니다.",
-            //         'dodobuken'     : '도쿄 도',
-            //         'cities'        : '미나토 구',
-            //         'address'       : '아카사카 1-11-6',
-            //         'phone'         : '010-8991-8606',
-            //         'lunch_open'    : '11:30',
-            //         'lunch_close'   : '15:00',
-            //         'lunch_lo'      : '14:30',
-            //         'dinner_open'   : '17:30',
-            //         'dinner_close'  : '22:00',
-            //         'dinner_lo'     : '21:30',
-            //         'payment'       : '카드 결제 가능',
-            //         'seat_num'      : '70석',
-            //         'children'      : 'yes',
-            //         'pet'           : 'yes',
-            //         'parking'       : 'no',
-            //         'smoking'       : 'no',
-            //         'privateroom'   : 'no',
-            //         'shopLike'          : false,
-            //     },
-            //     {'totalRating': 4.7},
-            //     {'filename' : "13_titleImg,jpeg",   'path' : '/images/13/'},
-            //     {'filename' : "13_galleryImg0,jpeg",'path' : '/images/13/'},
-            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
-            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
-            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
-            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
-            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
-            //     {'filename' : "13_galleryImg1,jpeg",'path' : '/images/13/'},
-            // ];
         },
-
-        // updated() {
-        //     // 데이터 바인딩-기본정보
-        //     this.enter_data(get_datas[0]);
-
-        //     // 데이터 바인딩-평점
-        //     this.enter_data(get_datas[1]);
-
-        //     // 지도 생성
-        //     // this.geoCoder(get_datas[0]);
-
-        //     // 타이틀 이미지 삽입
-        //     this.enter_title(get_datas[2]);
-
-        //     // 갤러리 이미지 출력
-        //     this.enter_galley();
-
-        //     this.shopLike = false; // data.shopLike;
-        //     this.I_Like_It();
-        // },
 
         components : {
             'Layout' : layout
@@ -717,14 +652,18 @@
                         .then((response) => {
                             let result = response.data.shopLike;    // 결과
 
-                            if(result === 'failed')
-                                alert('로그인해 주세요!');
-                            else
+                            if(result === 'failed'){
+                                this.snackbar_text = '로그인해 주세요!';
+                                this.snackbar      = true;
+                            }
+                            else {
                                 ChangeColor(response.data.shopLike);
+                            }
                         })
                         // 서버 연결 실패
                         .catch((ex)=>{
-                            alert('요청 실패');
+                            this.snackbar_text = '요청 실패';
+                            this.snackbar      = true;
                         });
                 };
 
@@ -761,53 +700,66 @@
 
             // 갤러리에 이미지 추가하기.
             enter_galley : function(){
+                // 넘어온 데이터 배열 갯수 : 0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지
+                let argNum    = get_datas.length;
+                let browser_w = window.outerWidth;                                      // 브라우저 너비
                 let gallery_div = document.getElementById('gallery_div');
 
-                // 넘어온 데이터 배열 갯수 : 0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지
-                let argNum = get_datas.length;
+                // 갤러리에 이미지 생성해서 넣기.
+                function appendImg (Index) {
+                    // div, img 생성
+                    let createdDiv = document.createElement('div');
+                    let createdImg = document.createElement('img');
+
+                    // 생성한 div와 img에 css와 src를 추가함.
+                    createdImg.src = get_datas[Index].path + get_datas[Index].filename;
+                    createdImg.classList.add('gallery_img');
+                    createdDiv.classList.add('gallery');
+
+                    // 생성한 div와 img를 갤러리 div에 추가.
+                    createdDiv.appendChild(createdImg);
+                    gallery_div.prepend(createdDiv);
+                }
 
                 // 등록된 이미지가 없으면 메세지 출력
                 if(argNum -3 == 0) {
                     gallery_div.innerText = "등록된 이미지가 없습니다.";
+                    return;
                 }
-                // 등록된 이미지가 6개 이하.
-                else if(argNum -3 < 7) {
-                    for (let i=3; i < argNum; i++){
-                        // div, img 생성
-                        let createdDiv = document.createElement('div');
-                        let createdImg = document.createElement('img');
 
-                        // 생성한 div와 img에 css와 src를 추가함.
-                        createdImg.src = get_datas[i].path + get_datas[i].filename;
-                        createdImg.classList.add('gallery_img');
-                        createdDiv.classList.add('gallery');
-
-                        // 생성한 div와 img를 갤러리 div에 추가.
-                        createdDiv.appendChild(createdImg);
-                        gallery_div.prepend(createdDiv);
+                // 모바일 환경 이미지 2개만.
+                if(browser_w < 639){
+                    // 등록된 이미지가 2개 이하.
+                    if(argNum -3 < 3) {
+                        for (let i=3; i < argNum; i++){
+                            appendImg(i);
+                        }
+                    }
+                    // 등록된 이미지가 2개 초과
+                    else {
+                        // 더 보기 display none에서 block으로
+                        document.getElementById('moreImg').style.display = 'block';
+                        for (let i=3; i < 5; i++){
+                            appendImg(i);
+                        }
                     }
                 }
-                // 등록된 이미지가 6개 초과
+                // 모바일 이외의 환경
                 else {
-                    // 더 보기 display none에서 block으로
-                    let moreImg = document.getElementById('moreImg');
-                    moreImg.style.display = 'block';
-
-                    for (let i=3; i < 8; i++){
-                        // div, img 생성
-                        let createdDiv = document.createElement('div');
-                        let createdImg = document.createElement('img');
-
-                        // 생성한 div와 img에 css와 src를 추가함.
-                        createdImg.src = get_datas[i].path + get_datas[i].filename;
-                        createdImg.classList.add('gallery_img');
-                        createdDiv.classList.add('gallery');
-
-                        // 생성한 div와 img를 갤러리 div에 추가.
-                        createdDiv.appendChild(createdImg);
-                        gallery_div.prepend(createdDiv);
+                    // 등록된 이미지가 6개 이하.
+                    if(argNum -3 < 7) {
+                        for (let i=3; i < argNum; i++){
+                            appendImg(i);
+                        }
                     }
-
+                    // 등록된 이미지가 6개 초과
+                    else {
+                        // 더 보기 display none에서 block으로
+                        document.getElementById('moreImg').style.display = 'block';
+                        for (let i=3; i < 8; i++){
+                            appendImg(i);
+                        }
+                    }
                 }
             },
 
@@ -848,7 +800,8 @@
                             position: results[0].geometry.location
                         });
                     } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
+                        this.snackbar_text = 'Geocode was not successful for the following reason: ' + status;
+                        this.snackbar      = true;
                     }
                 });
             },
@@ -998,7 +951,8 @@
                 this.sum_price  = this.sum_price - this.click_menu[id].menu.price;   // 총 가격 빼기
                 this.click_menu.splice(id, 1);                                       // 선택한 메뉴 배열에서 취소한 메뉴 삭제
 
-                alert('선택한 메뉴를 취소하였습니다.');
+                this.snackbar_text = '선택한 메뉴를 취소하였습니다.';
+                this.snackbar      = true;
             },
 
             // 옵션 선택
@@ -1088,7 +1042,16 @@
                 axios.post('/userCouponCreate', {
                     // 쿠폰ID
                     id  :  this.clickCouponid
-                }).then(console.log('success')).catch(console.log('test '));
+                }).then((response) => {
+                    var CouponAlready = response.data.msg;
+
+                    if(CouponAlready == true)
+                    {
+
+                    }
+
+                })
+                    .catch(console.log('test'));
             }
         }
     };
@@ -1211,7 +1174,7 @@
     .frame {
         width: 100%;
         border-top: 1px solid;
-        /* font-size: 1.8rem; */
+        word-break: break-all;
         color: #848484;
         display:inline-block;
         margin-bottom: 5%;

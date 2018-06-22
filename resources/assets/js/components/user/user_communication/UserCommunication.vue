@@ -52,7 +52,44 @@ export default {
             basicsSelect    : false,
             orderSelect     : false,
             paySelect       : false,
-            selectValue     : 0,          // 이모티콘 카테고리를 나타내는 값            
+            selectValue     : 0,          // 이모티콘 카테고리를 나타내는 값         
+            
+            // 이모티콘 이미지 주소 배열
+            emoticonList : [
+                              '/images/emoticon/confused.svg',
+                              '/images/emoticon/desperate.svg',
+                              '/images/emoticon/good.svg',
+                              '/images/emoticon/sad.svg',
+                              '/images/emoticon/smiling.svg',
+                              '/images/emoticon/surprised.svg',
+                              '/images/emoticon/suspicious.svg',
+                              '/images/emoticon/thinking.svg',
+                              '/images/emoticon/bathroom.svg',
+                              '/images/emoticon/water.svg',
+                              '/images/emoticon/chopsticks.svg',
+                              '/images/emoticon/spoon.svg',
+                              '/images/emoticon/fork.svg',
+                              '/images/emoticon/cutlery.svg',
+                              '/images/emoticon/bowl.svg',
+                              '/images/emoticon/dish.svg',
+                              '/images/emoticon/seasoning.svg',
+                              '/images/emoticon/question.svg',
+                              '/images/emoticon/menu.svg',
+                              '/images/emoticon/recommended.svg',
+                              '/images/emoticon/choices.svg',
+                              '/images/emoticon/cancel.svg',
+                              '/images/emoticon/change.svg',
+                              '/images/emoticon/reserved.svg',
+                              '/images/emoticon/voucher.svg',
+                              '/images/emoticon/cash.svg',
+                              '/images/emoticon/debitCard.svg',
+                              '/images/emoticon/visa.svg',
+                              '/images/emoticon/maestro.svg',
+                              '/images/emoticon/unionPay.svg',
+                              '/images/emoticon/jcb.svg',
+                              '/images/emoticon/invoice.svg',
+                              '/images/emoticon/bill.svg'
+                            ]
         }
     },
 
@@ -60,7 +97,22 @@ export default {
       selectCategory(selectNum){
         this.selectValue = selectNum;
       },
+
+      // 이미지를 preloading 하는 함수
+      preloading (imageArray){
+        let n = imageArray.length; 
+        
+        for (let i = 0; i < n; i++){
+          let img = new Image(); 
+          img.src = imageArray[i]; 
+        } 
+      }
     },
+
+    created() {
+      // 이미지를 preloading 하는 함수
+      this.preloading(this.emoticonList);
+    }
 }
 </script>
 <style>

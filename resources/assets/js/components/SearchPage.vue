@@ -14,71 +14,66 @@
                 <v-card>
                     <v-card-title class="headline orange--text">가게명 검색 결과</v-card-title>
                     <v-container fluid grid-list-sm>
-                        <v-layout row wrap>
+                        <v-layout row wrap v-if="restaurantNameResult.length != 0">
                             <v-flex md4 xs12 v-for="(item, i) in restaurantNameResult" :key="i">
                                 <v-card>
                                     <v-card-media
-                                        :src="`/images/${item.id}/${item.id}_titleImg.jpg`"
-                                        height="250px"
-                                        @click="moveRestaurant(item.id)"
+                                            :src="`/images/${item.id}/${item.id}_titleImg.jpg`"
+                                            height="250px"
+                                            @click="moveRestaurant(item.id)"
                                     ></v-card-media>
                                     <v-card-title class="headline">{{ item.name }}<v-spacer></v-spacer><span class="orange--text">{{ item.totalRating }}</span></v-card-title>
-                                    <v-card-actions>{{ item.dodobuken }} - {{ item.type }}</v-card-actions>
+                                    <v-card-actions><h2>{{ item.dodobuken }} - {{ item.type }}</h2></v-card-actions>
                                 </v-card>
                             </v-flex>
                         </v-layout>
+                        <v-card-text v-else>
+                            검색 결과가 없습니다.
+                        </v-card-text>
                     </v-container>
                 </v-card>
                 <br>
                 <v-card>
                     <v-card-title class="headline orange--text">지역명 검색 결과</v-card-title>
                     <v-container fluid grid-list-sm>
-                        <v-layout row wrap>
-                            <v-flex md4 xs12 v-for="(item, i) in food" :key="i">
+                        <v-layout row wrap v-if="restaurantAreaResult.length != 0">
+                            <v-flex md4 xs12 v-for="(item, i) in restaurantAreaResult" :key="i">
                                 <v-card>
                                     <v-card-media
-                                        class="white--text"
-                                        :src="item.src"
-                                        height="200px"
-                                        @click="clickRestaurantList(item.postRegion, item.listLimit, item.center)"
-                                    >
-                                    <v-container fill-height fluid>
-                                        <v-layout fill-height>
-                                            <v-flex xs12 align-end flexbox>
-                                                <span class="headline"><b>{{ item.name }}</b></span>
-                                            </v-flex>
-                                        </v-layout>
-                                    </v-container>
-                                    </v-card-media>
+                                            :src="`/images/${item.shop_id}/${item.shop_id}_titleImg.jpg`"
+                                            height="250px"
+                                            @click="moveRestaurant(item.shop_id)"
+                                    ></v-card-media>
+                                    <v-card-title class="headline">{{ item.shop_name }}<v-spacer></v-spacer><span class="orange--text">{{ item.totalRating }}</span></v-card-title>
+                                    <v-card-actions><h2>{{ item.shop_address }} - {{ item.shop_type }}</h2></v-card-actions>
                                 </v-card>
                             </v-flex>
                         </v-layout>
+                        <v-card-text v-else>
+                            검색 결과가 없습니다.
+                        </v-card-text>
                     </v-container>
                 </v-card>
                 <br>
                 <v-card>
                     <v-card-title class="headline orange--text">해시 태그 검색 결과</v-card-title>
                     <v-container fluid grid-list-sm>
-                        <v-layout row wrap>
-                            <v-flex md4 xs12 v-for="(item, i) in favorite" :key="i">
+                        <v-layout row wrap v-if="restaurantHashtagResult.length != 0">
+                            <v-flex md4 xs12 v-for="(item, i) in restaurantHashtagResult" :key="i">
                                 <v-card>
                                     <v-card-media
-                                        class="black--text"
-                                        :src="item.src"
-                                        height="200px"
-                                        @click="clickRestaurantList(item.postRegion, item.listLimit, item.center)"
-                                    >
-                                    <v-container fill-height fluid>
-                                        <v-layout fill-height>
-                                            <v-flex xs12 align-end flexbox>
-                                                <span class="headline"><b>{{ item.name }}</b></span>
-                                            </v-flex>
-                                        </v-layout>
-                                    </v-container>
-                                    </v-card-media>
+                                            :src="`/images/${item.shop_id}/${item.shop_id}_titleImg.jpg`"
+                                            height="250px"
+                                            @click="moveRestaurant(item.shop_id)"
+                                    ></v-card-media>
+                                    <v-card-title class="headline">{{ item.shop_name }}<v-spacer></v-spacer><span class="orange--text">{{ item.totalRating }}</span></v-card-title>
+                                    <v-card-actions><h2>{{ item.shop_ddobuken }} - {{ item.shop_type }}</h2></v-card-actions>
                                 </v-card>
                             </v-flex>
                         </v-layout>
+                        <v-card-text v-else>
+                            검색 결과가 없습니다.
+                        </v-card-text>
                     </v-container>
                 </v-card>
                 <br>
@@ -90,31 +85,28 @@
 <script>
     import GoogleMap from "./GoogleMap";
     import axios from 'axios';
-    
+
     export default {
         components: {
             GoogleMap
         },
-        props: ['searchData'],
         data() {
             return {
                 searchKeyword: this.$session.get('searchKeyword'),
                 restaurantNameResult: this.$session.get('searchData').shopSearchData,
                 restaurantAreaResult: this.$session.get('searchData').regionSearchData,
-                restaurantHashtagResult: this.$session.get('searchData').searchDatatagSearchData,
-                food: {},
-                favorite: {},
+                restaurantHashtagResult: this.$session.get('searchData').tagSearchData,
             }
         },
 
-        mounted: function() {
-            console.log(this.$session.get('searchData'));
+        created() {
+            this.geoCoder(this.$session.get('searchData').regionSearchData[0].shop_address);
         },
 
         methods: {
             moveRestaurant(shop_id) {
                 this.$router.push('/restaurant/' + shop_id + '/info');
-            }
+            },
         }
     }
 </script>

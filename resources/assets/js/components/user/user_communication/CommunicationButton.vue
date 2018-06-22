@@ -266,8 +266,8 @@ export default {
 
       // console.log('즐겨찾기 리스트');
       // console.log(this.getBookmarkList);
-      // console.log('이모티콘 리스트');
-      // console.log(this.emoticonInfo);
+      console.log('이모티콘 리스트');
+      console.log(this.emoticonInfo);
 
       // 이모티콘을 카테고리별로 분류합니다.
       this.emoticonGrouping();

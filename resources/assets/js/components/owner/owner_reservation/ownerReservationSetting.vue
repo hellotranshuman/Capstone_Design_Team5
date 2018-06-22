@@ -126,8 +126,7 @@
                                     <td class="text-xs-left">{{ props.item.start_time }}</td>
                                     <td class="text-xs-left">{{ props.item.end_time }}</td>
                                     <td class="justify-center layout px-0">
-                                        <v-btn icon class="mx-0" @click.stop=" setdialog = true"
-                                               @click="deleteItem(props.item)"
+                                        <v-btn icon class="mx-0"    @click="deleteItem(props.item)"
                                         >
                                             <v-icon color="pink">delete</v-icon>
                                         </v-btn>
@@ -148,7 +147,7 @@
                 :vertical="'vertical'"
         >
             예약 주문 상태가 설정 되었습니다.
-            <v-btn flat color="cyan darken-2" @click.native="Ordercheck = false">Close</v-btn>
+            <v-btn flat color="cyan darken-2" @click.native="menuoption_snackbar = false">Close</v-btn>
         </v-snackbar>
 
         <!-- snackbar -->
@@ -160,6 +159,17 @@
         >
             예약 설정이 삭제 되었습니다.
             <v-btn flat color="cyan darken-2" @click.native="setdialog = false">Close</v-btn>
+        </v-snackbar>
+
+        <!-- 예약 설정 추가 -->
+        <v-snackbar
+                :timeout="1500"
+                v-model="reservation_set_snackbar"
+                :top="'top'"
+                :vertical="'vertical'"
+        >
+            {{reservation_text}}
+            <v-btn flat color="cyan darken-2" @click.native="reservation_set_snackbar = false">Close</v-btn>
         </v-snackbar>
 
     </v-app>
@@ -174,6 +184,8 @@
             return {
                 /* snackbar */
                 menuoption_snackbar : false,
+                reservation_set_snackbar : false,
+                reservation_text : '',
 
                 /* dialog */
                 setdialog : false,
@@ -216,7 +228,7 @@
                     { text: '예약 날짜', value: 'setting_date' },
                     { text: '예약 가능 여부', value: 'remark' },
                     { text: '예약 가능 시작 시간', value: 'start_time' },
-                    {text: '예약 가능 끝나는 시간', value: 'end_time'},
+                    { text: '예약 가능 끝나는 시간', value: 'end_time'},
                     { text: 'Actions', value: 'name', sortable: false }
                 ],
 
@@ -253,7 +265,11 @@
                 else if(this.menuSelectData == false){
                     this.menuSelectData = '주문 불가능';
                 }
+
+                this.checkDate();
             })
+
+
         },
 
         mounted () {
@@ -267,37 +283,54 @@
             /* 그 날짜에 가능.불가능이 존재하는지 파악 */
             check() {
                 var date        = this.ReservationSettingItem.pick_date;
-                var impossible  = this.ReservationSettingItem.impossible;
                 var index       = this.items.length;
+                var res_check   = 0;
+                var impossible  = false;
+
+                // impossible -> true / false
+                if(this.ReservationSettingItem.impossible == "예약 가능")
+                {
+                    impossible = 1;
+                }
+                else {
+                    impossible = 0;
+                }
+
+
+
 
                 if(index != 0)
                 {
-                    for(var i=0; i < index; i++)
+                    for(var i = 0; i < index; i++)
                     {
+                        // 그 날짜가 items안에 있을 경우
                         if(date == this.items[i].setting_date)
                         {
-                            if(impossible != this.ReservationSettingItem.impossible)
+                            // 그날짜의
+                            if(this.items[i].remark != impossible)
                             {
-                                confirm('같은 날짜에 다른 설정(예약 가능/불가능)이 존재할 수 없습니다.');
+                                this.reservation_text = '같은 날짜에 다른 설정(예약 가능/불가능)이 존재할 수 없습니다.';
+                                this.reservation_set_snackbar = true;
+                                res_check = false;
                                 break;
                             }
                             else {
-                                if(this.ReservationSettingItem.impossible == "예약 불가능")
-                                {
-                                    confirm('이미 존재하는 설정입니다.');
-                                    break;
-                                }
-                                else {
-                                    this.save();
-                                }
+                                res_check = true;
+                                break;
                             }
                         }
                         else {
-                            this.save();
+                            res_check = true;
+                            break;
                         }
                     }
                 }
                 else {
+                    res_check = true;
+                }
+
+                if(res_check == true)
+                {
                     this.save();
                 }
 
@@ -323,8 +356,8 @@
             },
 
             // 예약 불가능 날짜 설정 메서드
-            checkDate(dateitems) {
-                var itemIndex   = dateitems.length;
+            checkDate() {
+                var itemIndex   = this.items.length;
                 for(var i = 0; i < itemIndex; i++)
                 {
                     if(this.items[i].remark === 0)
@@ -407,6 +440,7 @@
             },
 
             deleteItem (item) {
+                this.setdialog = true;
                 const index = this.items.indexOf(item);
                 this.clickItem = this.items[index].resset_num;
 
@@ -444,11 +478,7 @@
                     /* 달력 날짜 클릭 시 넘어오는 날짜 값 */
                     click_date        : this.reservationCal
                 }).then((response) => {
-
-                    if(response.data.flag === 'true')
-                        alert('예약 설정이 완료되었습니다.');
-
-                    location.reload();
+                   // location.reload();
                 })
                     .catch(console.log('test'));
 

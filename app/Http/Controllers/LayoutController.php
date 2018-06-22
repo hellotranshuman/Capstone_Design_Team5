@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Restaurant;
 use \App\Layout;
+use Illuminate\Support\Facades\DB;
 
 class LayoutController extends Controller
 {
@@ -47,18 +48,6 @@ class LayoutController extends Controller
 
          $dbPath = '/images/'. $shopId . '/';
 
-         // 레이아웃 이름 중복 검사 (한 가게에서 중복 방지)
-        $layoutData = Layout::where('shop_id', $shopId)
-                        ->get();
-
-        foreach ($layoutData as $layout) {
-            if($layout->layout_name == $name) {
-                return response()->json([
-                    'msg' => false,
-                ]);
-            }
-        }
-
         if($request->file('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $fileName = $name . '_thumbnail' . '.png';
@@ -77,7 +66,7 @@ class LayoutController extends Controller
             'shop_id'        => $shopId,
             'layout_data'    => $layout,
             'layout_name'    => $name,
-            'thumbnail'       => $dbFileName,
+            'thumbnail'      => $dbFileName,
          ]);
 
        $layoutIdData = Layout::select('id')
@@ -99,25 +88,19 @@ class LayoutController extends Controller
     public function loadCustomLayout(Request $request) {
         $shopId     = $request->get('shop_id');
 
-        $layoutData = Restaurant::select('selectLayout')
-                        ->where('id', $shopId)
-                        ->first();
-
-        $currentLayoutId = $layoutData->selectLayout;
-
         $layoutCount = Layout::select('layout_data')
-                    ->where('id', $currentLayoutId)
-                    ->count();
+                        ->where('shop_id', $shopId)
+                        ->count();
 
         if($layoutCount == 0)
             return response()->json([
                 'layoutData' => null,
             ]);
-
-        $layoutData = Layout::select('id', 'layout_name', 'layout_data', 'thumbnail')
-                        ->where('shop_id', $shopId)
-                        ->get()
-                        ->toArray();
+        else
+            $layoutData = Layout::select(DB::raw('CAST(layout_data as CHAR) as layout_data, id, shop_id, layout_name, thumbnail'))
+                            ->where('shop_id', $shopId)
+                            ->get()
+                            ->toArray();
 
         return response()->json([
             'layoutData' => $layoutData,
@@ -130,18 +113,6 @@ class LayoutController extends Controller
         $shopId = $request->get('shop_id');
         $name   = $request->get('name');
         $dbPath = '/images/'. $shopId . '/';
-
-        // 레이아웃 이름 중복 검사 (한 가게에서 중복 방지)
-        $layoutData = Layout::where('shop_id', $shopId)
-                        ->get();
-
-        foreach ($layoutData as $layout) {
-            if($layout->name == $name) {
-                return response()->json([
-                    'msg' => false,
-                ]);
-            }
-        }
 
         if($request->file('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
@@ -160,7 +131,7 @@ class LayoutController extends Controller
 
         Layout::where('id', $layoutId)
             ->update([
-               'layout_data'        => $request->get('menu'),
+                'layout_data'       => $request->get('menu'),
                 'layout_name'       => $name,
                 'thumbnail'         => $dbFileName,
             ]);

@@ -136,7 +136,7 @@ class ReservationController extends Controller
     public function getReservationRequestList(Request $request) {
 
        $resData = Reservation::join('users', 'users.id', '=', 'reservation.user_num')
-                    ->select('users.name', 'reservation.*')
+                    ->select(DB::raw('users.name as user_name, reservation.*'))
                     ->where('shop_id', $request->get('shop_id'))
                     ->whereNull('accept')
                     ->get()
@@ -170,12 +170,18 @@ class ReservationController extends Controller
 
     // <-- get Reservation List
     public function getReservationList(Request $request) {
+        if(!$request->has('shop_id'))
+            return response()->json([
+                'resData' => false,
+            ]);
+
         $resData = Reservation::leftjoin('users', 'users.id', '=', 'reservation.user_num')
-            ->select('users.name', 'reservation.*')
-            ->where('shop_id', $request->get('shop_id'))
-            ->where('accept', true)
-            ->get()
-            ->toArray();
+                        ->select('users.name as user_name', 'reservation.reservation_name as reservation_name',
+                        'reservation.*')
+                        ->where('shop_id', $request->get('shop_id'))
+                        ->where('accept', true)
+                        ->get()
+                        ->toArray();
 
         return response()->json([
             'resData' => $resData,
@@ -442,7 +448,7 @@ class ReservationController extends Controller
             $request->get('time');
 
         Reservation::create([
-            'name'               => $request->get('username'),
+            'reservation_name'   => $request->get('username'),
             'shop_id'            => $request->get('shop_id'),
             'reservation_date'   => $resDateTime,
             'message'            => $request->get('message'),
