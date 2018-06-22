@@ -227,7 +227,7 @@ export default {
         "bookmark_status" : this.bookmarkCheck,   // 즐겨찾기 등록 상태 (true : 누름, false : 안누름)
       }).
       then((response)=>{
-        alert(response.data['msg']);
+        // alert(response.data['msg']);
         // 즐겨찾기에 추가한 이모티콘을 배열에 저장합니다.
         if(this.bookmarkCheck){
           this.getBookmarkList.push(this.clickImg);
