@@ -163,7 +163,7 @@ const router = new VueRouter({
             {
                 // 리뷰내역
                 name: 'UserReviewHistory',
-                path: '/userReview',
+                path: '/userReviewHistory',
                 component: UserReviewHistory,
             },
             {

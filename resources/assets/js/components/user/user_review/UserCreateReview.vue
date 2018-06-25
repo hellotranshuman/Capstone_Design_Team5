@@ -30,15 +30,11 @@
                 <v-container>
                     <!-- 아이디 이미지, 아이디, 사용자 국적, 공뷰 버튼 -->
                     <v-layout align-center>
-                        <v-flex xs4 sm1>사용자이미지</v-flex>
-                        <v-flex xs3 sm2>{{this.userID}}</v-flex>
                         <v-flex xs3 sm1>
                             <img v-bind:src= "flag" onmousedown="return false;">
                         </v-flex>
-                    </v-layout>
-                    <!-- 작성 날짜, 리뷰 좋아요 갯수 -->
-                    <v-layout align-center>
-                        <v-flex xs9 sm10>{{this.writeDate}}</v-flex>
+                        <!-- <v-flex xs4 sm1>사용자이미지</v-flex> -->
+                        <v-flex xs5 sm8>{{this.userID}}</v-flex>
                         <!-- 좋아요를 눌렀을 경우 하트 모양이 채워진 이미지를 출력 하도록 변경하기 -->
                         <v-flex xs3 sm2>
                             <v-btn flat color="pink lighten-3" v-if="!(this.reviewLikeBut)"
@@ -53,6 +49,10 @@
                             </v-btn>
                         </v-flex>
                     </v-layout>
+                    <!-- 작성 날짜, 리뷰 좋아요 갯수 -->
+                    <v-layout align-center>
+                        <v-flex xs8 sm9>{{this.writeDate}}</v-flex>
+                    </v-layout>
                     <!-- 총점 -->
                     <v-layout align-start align-center>
                         <v-flex xs2>총점</v-flex>
@@ -65,7 +65,7 @@
                             </v-layout>
                         </v-flex>                        
                         <v-spacer></v-spacer>
-                    </v-layout><br>
+                    </v-layout>
                     <!-- 맛 -->
                     <v-layout align-start align-center v-if="(this.taste != 0)">
                         <v-flex xs2>맛</v-flex>

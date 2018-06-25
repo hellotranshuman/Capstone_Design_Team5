@@ -31,7 +31,7 @@
                             <v-list-tile-title>주문 내역</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile>
+                    <v-list-tile to="/userReviewHistory">
                         <v-list-tile-action>
                             <v-icon large>rate_review</v-icon>
                         </v-list-tile-action>

@@ -282,8 +282,8 @@ export default {
         axios.post('/review', shopData).
         then((response)=>{
 
-            // console.log("-----review value get-----");
-            // console.log(response.data['review']);
+            console.log("-----review value get-----");
+            console.log(response.data['review']);
             // 리뷰 좋아요 데이터
             // console.log("-----review like get-----");
             // console.log(response.data['reviewLike']);

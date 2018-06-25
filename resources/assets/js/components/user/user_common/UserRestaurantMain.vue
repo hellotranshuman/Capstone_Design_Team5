@@ -7,14 +7,18 @@
         <v-layout>
             <!-- 정보, 메뉴, 리뷰 중 선택합니다. -->
             <v-spacer></v-spacer>
-            <v-flex xs3 sm3>
+            <v-flex xs4 sm3>
                 <v-btn large color="error" to="info" class="select-font-style">정보</v-btn>
             </v-flex>
-            <v-flex xs3 sm3>
+            <v-flex xs4 sm3>
                 <v-btn large color="error" to="menu" class="select-font-style">메뉴</v-btn>
             </v-flex>
-            <v-flex xs3 sm3>                    
-                <v-btn large color="error" to="review" class="select-font-style">리뷰</v-btn>
+            <v-flex xs4 sm3>                    
+                <v-layout>
+                    <v-flex xs11>
+                        <v-btn large color="error" to="review" class="select-font-style">리뷰</v-btn>
+                    </v-flex>
+                </v-layout>
             </v-flex>
             <v-spacer></v-spacer>
         </v-layout>

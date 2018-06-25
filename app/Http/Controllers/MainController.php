@@ -523,7 +523,7 @@ class MainController extends Controller
                                                 restaurants.dodobuken as shop_ddobuken,
                                                 restaurants.cities as shop_cities,
                                                 restaurants.address as shop_address,
-                                                restaurants.coordinate as restaurants.coordinate,
+                                                restaurants.coordinate as coordinate
                                             '))
                     ->where('restaurants.dodobuken', auth()->user()->favorite_region)
                     ->groupBy('review.shop_id')
@@ -544,7 +544,7 @@ class MainController extends Controller
                                                     restaurants.dodobuken as shop_ddobuken,
                                                     restaurants.cities as shop_cities,
                                                     restaurants.address as shop_address,
-                                                    restaurants.coordinate as restaurants.coordinate,
+                                                    restaurants.coordinate as coordinate
                                             '))
                     ->where('restaurants.dodobuken', auth()->user()->favorite_region)
                     ->groupBy('review.shop_id')
@@ -568,7 +568,7 @@ class MainController extends Controller
                                                     restaurants.dodobuken as shop_ddobuken,
                                                     restaurants.cities as shop_cities,
                                                     restaurants.address as shop_address,
-                                                    restaurants.coordinate as restaurants.coordinate,
+                                                    restaurants.coordinate as coordinate
                                                 '))
                     ->where('restaurants.type', auth()->user()->favorite_1)
                     ->groupBy('review.shop_id')
@@ -589,7 +589,7 @@ class MainController extends Controller
                                                             restaurants.dodobuken as shop_ddobuken,
                                                             restaurants.cities as shop_cities,
                                                             restaurants.address as shop_address,
-                                                            restaurants.coordinate as restaurants.coordinate,
+                                                            restaurants.coordinate as coordinate
                                                     '))
                     ->where('restaurants.dodobuken', auth()->user()->favorite_1)
                     ->groupBy('review.shop_id')
@@ -640,7 +640,7 @@ class MainController extends Controller
                                 restaurants.dodobuken as shop_ddobuken,
                                 restaurants.cities as shop_cities,
                                 restaurants.address as shop_address,
-                                restaurants.coordinate as restaurants.coordinate,
+                                restaurants.coordinate as coordinate
                             '))
             ->where('restaurants.dodobuken', $regionData)
             ->groupBy('review.shop_id')
@@ -677,7 +677,7 @@ class MainController extends Controller
                                     restaurants.dodobuken as shop_ddobuken,
                                     restaurants.cities as shop_cities,
                                     restaurants.address as shop_address,
-                                    restaurants.coordinate as restaurants.coordinate,
+                                    restaurants.coordinate as coordinate
                                 '))
 
             ->groupBy('review.shop_id')
@@ -721,7 +721,7 @@ class MainController extends Controller
                                     restaurants.phone as shop_phone,
                                     concat_ws(dodobuken, cities, address) as shop_address,
                                     AVG(review.rating) as totalRating,
-                                    restaurants.coordinate as restaurants.coordinate
+                                    restaurants.coordinate as coordinate
                                 '))
             ->having('shop_address', 'like', $regionKeyword)
             ->groupBy('restaurants.id')
@@ -743,7 +743,7 @@ class MainController extends Controller
                                 restaurants.dodobuken as shop_ddobuken,
                                 restaurants.cities as shop_cities,
                                 restaurants.address as shop_address,
-                                restaurants.coordinate as restaurants.coordinate
+                                restaurants.coordinate as coordinate
                             '))
             ->where('hashtag.tag', 'like', $hashTagKeyword)
             ->groupBy('shop_id')

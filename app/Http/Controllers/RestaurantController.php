@@ -12,6 +12,19 @@ use App\Review;
 
 class RestaurantController extends Controller
 {
+    const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
+    const client_secret = "pevANwIHvX";
+
+    private $url     = "https://openapi.naver.com/v1/language/translate";
+    private $is_post = true;
+    private $headers = array();
+
+    function __construct()
+    {
+        $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id ;
+        $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
+    }
+
     public function showRestaurantForm() {
         if(!auth()->check() || auth()->user()->category == true)
             return 'failed!!!!!@@@';
@@ -34,9 +47,84 @@ class RestaurantController extends Controller
                 'restaurant' => null,
             ]);
 
+        $target = '';
+
+        switch (auth()->user()->country) {
+
+            case 'Korea' :
+                {
+                    $target = 'ko';
+                    break;
+                }
+
+            case 'China' :
+                {
+                    $target = 'zh-CN';
+                    break;
+                }
+
+            case 'Usa' :
+                {
+                    $target = 'en';
+                    break;
+                }
+
+        } // <-- switch end
+
         $restaurant = Restaurant::where('id', $shop_id)
                                  ->get()
                                  ->toArray();
+
+        // <-- 가게이름 & 설명 번역
+        $encText = urlencode($restaurant[0]['name']);
+        $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+        $ch  = curl_init();
+
+        curl_setopt($ch,CURLOPT_URL, $this->url);
+        curl_setopt($ch,CURLOPT_POST, $this->is_post);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+        $response    = curl_exec ($ch);
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close ($ch);
+
+        if($status_code == 200) {
+            $responseData = json_decode($response);
+
+            $restaurant[0]['trans_name']  = $responseData->message->result->translatedText;
+        }
+        else {
+            $restaurant[0]['trans_name']  = null;
+        }
+
+        $encText = urlencode($restaurant[0]['explanation']);
+        $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+        $ch  = curl_init();
+
+        curl_setopt($ch,CURLOPT_URL, $this->url);
+        curl_setopt($ch,CURLOPT_POST, $this->is_post);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+        $response    = curl_exec ($ch);
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close ($ch);
+
+        if($status_code == 200) {
+            $responseData = json_decode($response);
+
+            $restaurant[0]['trans_explanation']  = $responseData->message->result->translatedText;
+        }
+        else {
+            $restaurant[0]['trans_explanation']  = null;
+        }
 
         $totalRating = Review::select(DB::raw('ROUND(AVG(rating), 2) as totalRating'))
                         ->where('shop_id', $shop_id)
