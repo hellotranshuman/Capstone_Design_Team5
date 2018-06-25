@@ -23,7 +23,7 @@
                 </v-list>
                 <v-divider></v-divider>
                 <v-list v-if="!checkRestaurant()">
-                    <v-list-tile to="/userPageOrder">
+                    <v-list-tile to="/userOrderHistory">
                         <v-list-tile-action>
                             <v-icon large>assignment</v-icon>
                         </v-list-tile-action>
@@ -145,33 +145,35 @@
             </v-navigation-drawer>
             <v-toolbar
                     app
-                    color='green lighten-3'
-                    dark
+                    color='white'
                     dense
                     scroll-off-screen
                     :scroll-threshold="0"
             ><!-- scroll-off-screen: 스크롤을 내리면 toolbar가 숨겨짐 -->
                 <!-- scroll-threshold: 스크롤 민감도 -->
                 <v-btn class="mr-0" icon @click="openMenu()">
-                    <v-icon large>menu</v-icon>
+                    <v-icon large color="grey">menu</v-icon>
                 </v-btn>
-                <v-toolbar-title class="logo mr-2">
-                    <router-link to="/" style="text-decoration: none" class="white--text">SMART</router-link><router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text">さしすせそ</router-link>
+                <v-toolbar-title class="logo-title">
+                    <router-link to="/" style="text-decoration: none" class="orange--text logo1">SMART</router-link><router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text logo1">さしすせそ</router-link>
+                    <router-link to="/" style="text-decoration: none" class="orange--text logo2">SMART</router-link><router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text logo2">S</router-link>
                 </v-toolbar-title>
                 <v-text-field
+                        v-if="$route.path != '/'"
                         v-model="searchDataInput"
                         prepend-icon="search"
                         label="식당 또는 음식"
-                        solo-inverted
-                        autocomplete
+                        solo
                         flat
+                        color="orange"
                         @keypress.enter="searching()"
                 ></v-text-field>
+                <v-spacer v-if="$route.path == '/'"></v-spacer>
                 <v-btn class="mr-0" icon @click.native.stop="gps_modal = true">
                     <v-icon large color="red">gps_fixed</v-icon>
                 </v-btn>
                 <v-btn v-if="!checkLogin()" class="mx-1" icon @click="loginForm=true">
-                    <v-icon large color="white">account_circle</v-icon>
+                    <v-icon large color="grey">account_circle</v-icon>
                 </v-btn>
                 <v-menu v-else offset-y>
                     <v-btn class="mx-1" icon slot="activator">
@@ -188,8 +190,8 @@
                 </v-menu>
             </v-toolbar>
             <!-- 컴포넌트 출력 -->
-            <v-content>
-                <router-view :searchAddress=searchAddress></router-view>
+            <v-content v-scroll="onScroll" column align-center justify-center>
+                <router-view></router-view>
             </v-content>
         </v-app>
         <v-dialog v-model="gps_modal" max-width="400">
@@ -229,7 +231,7 @@
             <v-card>
                 <v-card-text>
                     <v-flex xs3>
-                        <span class="headline">Login</span>
+                        <span class="headline"><strong>Login</strong></span>
                     </v-flex>
                     <v-form>
                         <v-text-field
@@ -253,6 +255,7 @@
                         <v-btn color="blue" block large outline @click="loginForm = false">회원가입</v-btn>
                     </router-link>
                 </v-card-actions>
+                <br>
             </v-card>
         </v-dialog>
         <v-snackbar
@@ -264,6 +267,20 @@
             {{ snackText }}
             <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
         </v-snackbar>
+        <v-fab-transition>
+            <v-btn
+                    v-if="scrollTopButton"
+                    @click="scrollToTop()"
+                    color="orange"
+                    dark
+                    fixed
+                    bottom
+                    right
+                    fab
+            >
+                <v-icon>keyboard_arrow_up</v-icon>
+            </v-btn>
+        </v-fab-transition>
     </div>
 </template>
 
@@ -295,10 +312,12 @@
                 snackText:  "",     // snackbar 내용
                 timeout:    3000,   // snackbar 표시 시간
 
-                searchAddress: "",      // 데이터 값을 가지고 있는 address value
                 searchAddressInput: "", // 사용자가 입력한 address value
 
                 searchDataInput: "",    // 사용자가 입력한 search value
+
+                offsetTop: 0,
+                scrollTopButton: false,
             }
         },
 
@@ -413,8 +432,8 @@
 
             searchingAddress() {
                 if(this.searchAddressInput.formatted_address) {
-                    this.searchAddress = this.searchAddressInput;
-                    this.$router.push('/');
+                    this.$session.set('searchAddress', this.searchAddressInput.geometry.location);
+                    this.$router.push('searchAddress');
                 }
             },
 
@@ -435,14 +454,43 @@
                     .catch(error => {
                         alert(error);
                     })
+            },
+
+            onScroll (e) {
+                this.offsetTop = document.documentElement.scrollTop
+                if(this.offsetTop >= 300) {
+                    this.scrollTopButton = true;
+                } else {
+                    this.scrollTopButton = false;
+                }
+            },
+
+            scrollToTop() {
+                document.documentElement.scrollTop = 0;
             }
         }
     }
 </script>
 <style>
-    @media screen and (max-width: 500px){
-        .logo {
-            width: 13px;
+    @media screen and (max-width: 500px) {
+        .logo1 {
+            font-size: 0pt;
+        }
+
+        .logo2 {
+            font-size: 14pt;
+        }
+
+        .logo-title {
+            margin-left: 0px;
+            letter-spacing: 0px;
+        }
+    }
+
+    @media screen and (min-width: 500px) {
+
+        .logo2 {
+            font-size: 0pt;
         }
     }
 

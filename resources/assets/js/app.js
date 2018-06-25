@@ -40,7 +40,8 @@ import Home                 from './components/user/user_main/UserMain.vue';
 import TopList                 from './components/TopList.vue';
 // <— User Register Page Component Import
 import Register         from './components/Register.vue';
-
+// <— SearchPage Component Import
+import SearchAddress                 from './components/SearchAddress.vue';
 // <— Edit Information
 import EditInformation from './components/EditInformation.vue';
 
@@ -128,6 +129,13 @@ const router = new VueRouter({
                 component: SearchPage,
                 props: true
             },
+            // <— Search Address
+            {
+                path: '/searchAddress',
+                name: 'searchAddress',
+                component: SearchAddress,
+                props: true
+            },
             // <— 회원 가입
             {
                 path: '/register',
@@ -155,7 +163,7 @@ const router = new VueRouter({
             {
                 // 리뷰내역
                 name: 'UserReviewHistory',
-                path: '/userReviewHistory',
+                path: '/userReview',
                 component: UserReviewHistory,
             },
             {

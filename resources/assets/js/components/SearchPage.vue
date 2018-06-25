@@ -1,10 +1,11 @@
 <template>
     <div>
         <v-layout row>
-            <v-flex xs12>
-                <v-alert :value="true" outline color="info" icon="search">
-                    "{{ searchKeyword }}" 검색 결과
-                </v-alert>
+            <v-flex xs12 sm10 offset-sm1>
+                <v-card-title class="headline orange--text">
+                    {{ searchKeyword }} 검색 결과 <v-spacer></v-spacer>
+                    <v-btn color="grey" flat @click="filter = true"><v-icon large>filter_list</v-icon>필터</v-btn>
+                </v-card-title>
                 <GoogleMap :currentCenter='{ lat: 35.8963134, lng: 128.6198624 }'></GoogleMap>
             </v-flex>
         </v-layout>
@@ -79,6 +80,31 @@
                 <br>
             </v-flex>
         </v-layout>
+        <v-dialog
+                v-model="filter"
+                fullscreen
+                hide-overlay
+                transition="dialog-bottom-transition"
+                scrollable
+        >
+            <v-card>
+                <v-toolbar>
+                    <v-btn icon @click="filter = false">
+                        <v-icon>close</v-icon>
+                    </v-btn>
+                    <v-toolbar-title>Fillter</v-toolbar-title>
+                </v-toolbar>
+                <v-card-text>
+                    <v-divider></v-divider>
+                    <span class="headline">검색 필터</span>
+                    <v-radio-group v-model="option1" row>
+                        <v-radio label="평점순" value="1" color="orange"></v-radio>
+                        <v-radio label="인기순" value="2" color="orange"></v-radio>
+                    </v-radio-group>
+                    <v-divider></v-divider>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
     </div>
 </template>
 
@@ -92,6 +118,8 @@
         },
         data() {
             return {
+                filter: false,
+                option1: "1",
                 searchKeyword: this.$session.get('searchKeyword'),
                 restaurantNameResult: this.$session.get('searchData').shopSearchData,
                 restaurantAreaResult: this.$session.get('searchData').regionSearchData,
@@ -100,7 +128,7 @@
         },
 
         created() {
-            this.geoCoder(this.$session.get('searchData').regionSearchData[0].shop_address);
+
         },
 
         methods: {

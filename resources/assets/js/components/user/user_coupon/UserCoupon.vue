@@ -27,7 +27,7 @@
                                                 {{ item.category }}
                                             </v-list-tile-sub-title>
                                             <v-list-tile-sub-title v-if="item.category == '상품 제공'">
-                                                {{item.price_condition}}이상일 경우, &nbsp; {{ item.add_product }} 제공
+                                                {{item.price_condition}}이상일 경우, &nbsp; {{ item.menu_name }} 제공
                                             </v-list-tile-sub-title>
                                             <v-list-tile-sub-title v-else-if="item.category == '가격 할인'">
                                                 {{item.price_condition}}이상일 경우, &nbsp; {{ item.discount }} 할인
@@ -56,11 +56,11 @@
                                                     </v-card-title>
                                                     <v-card-text>
                                                         <div class="Trans_Main">
-                                                            <b> {{ trans.name }} </b>       <br>
-                                                            <b> {{ trans.category }} </b>   <br>
-                                                            <b> {{ trans.price_addpro }} </b><br>
-                                                            <b> {{ trans.condition }} </b>  <br>
-                                                            <b> {{ trans.usedate }} </b>    <br>
+                                                            <b> クーポン名前 : </b> {{ trans.name }}       <br>
+                                                            <b> カテゴリー : </b>  {{ trans.category }} <br>
+                                                            <b>  {{ trans.price_addpro }} </b> <br>
+                                                            <b> 使用条件 : </b>{{ trans.condition }}  <br>
+                                                            <b> 使用期限 : </b>{{ trans.start_date }} ~ {{ trans.expiry_date }}  <br>
 
                                                         </div>
                                                     </v-card-text>
@@ -141,7 +141,8 @@
                     category : '',
                     price_addpro : '',
                     condition : '',
-                    usedate : ''
+                    start_date : '',
+                    expiry_date : ''
                 },
 
                 couponId : 0,
@@ -168,19 +169,23 @@
                     id          :  this.couponId
                 }).then((response) => {
                     /* 번역 data 보내주기 */
-                    let responseText = JSON.parse(response.data.content);
+                    var transText = response.data.couponData;
 
-                    var translatedText = responseText.message.result.translatedText;
+                    this.trans.name            = transText.name;
+                    this.trans.category        = transText.category;
 
-                    var transText = translatedText.split("#");
+                    if(transText.discount != null)
+                    {
+                        this.trans.price_addpro    = transText.discount;
+                    }
+                    else(transText.add_product != null)
+                    {
+                        this.trans.price_addpro    = transText.menu_name;
+                    }
 
-                    console.log(transText);
-
-                    this.trans.name            = transText[0];
-                    this.trans.category        = transText[1];
-                    this.trans.price_addpro    = transText[2];
-                    this.trans.condition       = transText[3];
-                    this.trans.usedate         = transText[4];
+                    this.trans.condition          = transText.price_condition;
+                    this.trans.start_date         = transText.start_date;
+                    this.trans.expiry_date         = transText.expiry_date;
 
                 }).catch(console.log('test '));
             },

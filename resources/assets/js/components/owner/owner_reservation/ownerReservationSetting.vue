@@ -454,35 +454,52 @@
                     .catch(console.log('test'));
             },
             menuoption_save() {
-                this.menuoption_snackbar = true;
-
                 /* Data 송신 */
                 axios.post('/updateReservationSelectMenu', {
                     shop_id         : this.$route.params.shop_id,
                     reservation_selectMenu     : this.reservation_selectMenu
                 }).then((response) => {
+                    this.menuoption_snackbar = true;
                     location.reload();
                 })
                     .catch(console.log('test'));
             },
             save() {
-                /* Data 송신 */
-                axios.post('/setReservationSetting', {
-                    shop_id           : this.$route.params.shop_id,
-                    setting_date      : this.ReservationSettingItem.pick_date,
-                    impossible        : this.ReservationSettingItem.impossible,
-                    set_time          : this.ReservationSettingItem.reservation_time,
-                    /* 배열 개수 */
-                    set_time_length   : this.ReservationSettingItem.reservation_time.length,
+                var check = true;
 
-                    /* 달력 날짜 클릭 시 넘어오는 날짜 값 */
-                    click_date        : this.reservationCal
-                }).then((response) => {
-                   // location.reload();
-                })
-                    .catch(console.log('test'));
+                if(this.ReservationSettingItem.pick_date == null)
+                {
+                    this.reservation_text = " 예약 설정 날짜를 선택 해주세요."
+                    this.reservation_set_snackbar = true;
+                    var check = false;
+                }
+                else if(this.ReservationSettingItem.reservation_time == null)
+                {
+                    this.reservation_text = " 예약 가능 시간대를 선택 해주세요."
+                    this.reservation_set_snackbar = true;
+                    var check = false;
+                }
 
-                this.dialog = false
+                
+                if(check == true) {
+                    /* Data 송신 */
+                    axios.post('/setReservationSetting', {
+                        shop_id           : this.$route.params.shop_id,
+                        setting_date      : this.ReservationSettingItem.pick_date,
+                        impossible        : this.ReservationSettingItem.impossible,
+                        set_time          : this.ReservationSettingItem.reservation_time,
+                        /* 배열 개수 */
+                        set_time_length   : this.ReservationSettingItem.reservation_time.length,
+
+                        /* 달력 날짜 클릭 시 넘어오는 날짜 값 */
+                        click_date        : this.reservationCal
+                    }).then((response) => {
+                    // location.reload();
+                    })
+                        .catch(console.log('test'));
+
+                    this.dialog = false
+                }
             }
         }
     }

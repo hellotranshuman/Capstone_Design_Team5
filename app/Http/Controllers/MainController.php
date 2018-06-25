@@ -93,6 +93,7 @@ class MainController extends Controller
                 ->leftjoin('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
                 ->leftJoin('suboption', 'order_option.subop_num', '=', 'suboption.sub_opnum')
                 ->select(DB::raw('order_list.order_num as order_num, 
+                                                        restaurants.id as id,
                                                         restaurants.name as restaurant_name,
                                                         order_list.order_date as order_date,
                                                         order_list.total as total,
@@ -120,6 +121,7 @@ class MainController extends Controller
                     $currentOrderArray['order_num']         = $currentOrderNum;
                     $currentOrderArray['order_date']        = $orderListData[$orderIndex]['order_date'];
                     $currentOrderArray['restaurant_name']   = $orderListData[$orderIndex]['restaurant_name'];
+                    $currentOrderArray['id']                = $orderListData[$orderIndex]['id'];
                     $currentOrderArray['total']             = $orderListData[$orderIndex]['total'];
                 }
 
@@ -271,13 +273,13 @@ class MainController extends Controller
                 ->join('menu_option', 'order_option.op_num', '=', 'menu_option.opnum')
                 ->leftJoin('suboption', 'order_option.subop_num', '=', 'suboption.sub_opnum')
                 ->select(DB::raw('order_list.order_num as order_num, 
-                                                                        restaurants.name as restaurant_name,
-                                                                        order_list.order_date as order_date,
-                                                                        order_list.total as total,
-                                                                        menu.name as menu_name,
-                                                                        menu.price as menu_price,
-                                                                        menu_option.name as option_name,
-                                                                        suboption.name as suboption_name'))
+                        restaurants.name as restaurant_name,
+                        order_list.order_date as order_date,
+                        order_list.total as total,
+                        menu.name as menu_name,
+                        menu.price as menu_price,
+                        menu_option.name as option_name,
+                        suboption.name as suboption_name'))
                 ->where('order_list.order_num', $currentOrderNum)
                 ->orderByRaw('order_list.order_date DESC')
                 ->get()
@@ -346,9 +348,32 @@ class MainController extends Controller
                 'coupon_data' => false,
             ]);
 
+        $target = '';
+
+        switch (auth()->user()->country) {
+
+            case 'Korea' :
+                {
+                    $target = 'ko';
+                    break;
+                }
+
+            case 'China' :
+                {
+                    $target = 'zh-CN';
+                    break;
+                }
+
+            case 'Usa' :
+                {
+                    $target = 'en';
+                    break;
+                }
+
+        } // <-- switch end
 
         // 현재 사용자의 쿠폰 내역 조회
-        $couponData =  UserCoupon::join('coupon', 'coupon.id', '=', 'user_coupon.coupon_id')
+        $couponDataList =  UserCoupon::join('coupon', 'coupon.id', '=', 'user_coupon.coupon_id')
             ->join('restaurants', 'restaurants.id', '=', 'coupon.shop_id')
             ->leftjoin('menu', 'menu.id', '=', 'coupon.add_product')
             ->select(DB::raw('user_coupon.id as id,
@@ -362,11 +387,104 @@ class MainController extends Controller
                                     user_coupon.start_date as start_date,
                                     user_coupon.expiry_date as expiry_date'))
             ->where('user_coupon.user_num', auth()->user()->id)
-            ->get()
-            ->toArray();
+            ->get();
+
+        $couponArray = array();
+        $index = 0; // 배열 인덱스
+
+        //  쿠폰 데이터 번역
+        foreach ($couponDataList as $couponData) {
+            // 쿠폰 이름 번역
+            $encText = urlencode($couponData->name);
+            $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+            $ch  = curl_init();
+
+            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_POST, $this->is_post);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+            $response    = curl_exec ($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close ($ch);
+
+            if($status_code == 200 && auth()->user()->country != 'Japan') {
+                $responseData = json_decode($response);
+
+                $couponArray[$index]['name']  = $responseData->message->result->translatedText;
+            }
+            else
+                $couponArray[$index]['name'] = $couponData->name;
+
+            // 쿠폰 카테고리 번역
+            $encText = urlencode($couponData->category);
+            $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+            $ch  = curl_init();
+
+            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_POST, $this->is_post);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+            $response    = curl_exec ($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close ($ch);
+
+            if($status_code == 200 && auth()->user()->country != 'Japan') {
+                $responseData = json_decode($response);
+
+                $couponArray[$index]['category']  = $responseData->message->result->translatedText;
+            }
+            else
+                $couponArray[$index]['category'] = $couponData->category;
+
+            // 쿠폰 메뉴 이름 번역
+            $encText = urlencode($couponData->menu_name);
+            $postValues = 'source=ja&target=' . $target . '&text='.$encText;
+            $ch  = curl_init();
+
+            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_POST, $this->is_post);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+            $response    = curl_exec ($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close ($ch);
+
+            if($status_code == 200 && auth()->user()->country != 'Japan') {
+                $responseData = json_decode($response);
+
+                $couponArray[$index]['menu_name']  = $responseData->message->result->translatedText;
+            }
+            else
+                $couponArray[$index]['menu_name'] = $couponData->menu_name;
+
+
+            // 나머지 데이터 넣기
+
+            $couponArray[$index]['id'] = $couponData->id;
+            $couponArray[$index]['discount'] = $couponData->discount;
+            $couponArray[$index]['price_condition'] = $couponData->price_condition;
+            $couponArray[$index]['restaurants_name'] = $couponData->restaurants_name;
+            $couponArray[$index]['use_check'] = $couponData->use_check;
+            $couponArray[$index]['start_date'] = $couponData->start_date;
+            $couponArray[$index]['expiry_date'] = $couponData->expiry_date;
+
+            $index++;
+        }
 
         return response()->json([
-            'coupon_data' => $couponData,
+            'coupon_data' => $couponArray,
         ]);
     }
 
@@ -404,7 +522,8 @@ class MainController extends Controller
                                                 restaurants.phone as shop_phone,
                                                 restaurants.dodobuken as shop_ddobuken,
                                                 restaurants.cities as shop_cities,
-                                                restaurants.address as shop_address
+                                                restaurants.address as shop_address,
+                                                restaurants.coordinate as restaurants.coordinate,
                                             '))
                     ->where('restaurants.dodobuken', auth()->user()->favorite_region)
                     ->groupBy('review.shop_id')
@@ -424,7 +543,8 @@ class MainController extends Controller
                                                     restaurants.phone as shop_phone,
                                                     restaurants.dodobuken as shop_ddobuken,
                                                     restaurants.cities as shop_cities,
-                                                    restaurants.address as shop_address
+                                                    restaurants.address as shop_address,
+                                                    restaurants.coordinate as restaurants.coordinate,
                                             '))
                     ->where('restaurants.dodobuken', auth()->user()->favorite_region)
                     ->groupBy('review.shop_id')
@@ -447,7 +567,8 @@ class MainController extends Controller
                                                     restaurants.phone as shop_phone,
                                                     restaurants.dodobuken as shop_ddobuken,
                                                     restaurants.cities as shop_cities,
-                                                    restaurants.address as shop_address
+                                                    restaurants.address as shop_address,
+                                                    restaurants.coordinate as restaurants.coordinate,
                                                 '))
                     ->where('restaurants.type', auth()->user()->favorite_1)
                     ->groupBy('review.shop_id')
@@ -467,7 +588,8 @@ class MainController extends Controller
                                                             restaurants.phone as shop_phone,
                                                             restaurants.dodobuken as shop_ddobuken,
                                                             restaurants.cities as shop_cities,
-                                                            restaurants.address as shop_address
+                                                            restaurants.address as shop_address,
+                                                            restaurants.coordinate as restaurants.coordinate,
                                                     '))
                     ->where('restaurants.dodobuken', auth()->user()->favorite_1)
                     ->groupBy('review.shop_id')
@@ -517,7 +639,8 @@ class MainController extends Controller
                                 restaurants.phone as shop_phone,
                                 restaurants.dodobuken as shop_ddobuken,
                                 restaurants.cities as shop_cities,
-                                restaurants.address as shop_address
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as restaurants.coordinate,
                             '))
             ->where('restaurants.dodobuken', $regionData)
             ->groupBy('review.shop_id')
@@ -553,7 +676,8 @@ class MainController extends Controller
                                     restaurants.phone as shop_phone,
                                     restaurants.dodobuken as shop_ddobuken,
                                     restaurants.cities as shop_cities,
-                                    restaurants.address as shop_address
+                                    restaurants.address as shop_address,
+                                    restaurants.coordinate as restaurants.coordinate,
                                 '))
 
             ->groupBy('review.shop_id')
@@ -580,7 +704,7 @@ class MainController extends Controller
         $shopNameKeyword = '%' . $request->get('searchData') . '%';
 
         $shopSearchData = Restaurant::select(DB::raw('id, name, type,
-                            explanation, phone, dodobuken, cities, address'))
+                            explanation, phone, dodobuken, cities, address, coordinate'))
             ->where('name', 'like', $shopNameKeyword)
             ->get()
             ->toArray();
@@ -596,7 +720,8 @@ class MainController extends Controller
                                     restaurants.explanation as shop_explanation,
                                     restaurants.phone as shop_phone,
                                     concat_ws(dodobuken, cities, address) as shop_address,
-                                    AVG(review.rating) as totalRating
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as restaurants.coordinate
                                 '))
             ->having('shop_address', 'like', $regionKeyword)
             ->groupBy('restaurants.id')
@@ -617,7 +742,8 @@ class MainController extends Controller
                                 restaurants.phone as shop_phone,
                                 restaurants.dodobuken as shop_ddobuken,
                                 restaurants.cities as shop_cities,
-                                restaurants.address as shop_address
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as restaurants.coordinate
                             '))
             ->where('hashtag.tag', 'like', $hashTagKeyword)
             ->groupBy('shop_id')

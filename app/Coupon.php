@@ -10,6 +10,6 @@ class Coupon extends Model
 
     protected $fillable = [
         'id', 'category', 'shop_id', 'name', 'price_condition',
-         'discount', 'start_date', 'expiry_date', 'add_product'
+         'discount', 'start_date', 'expiry_date', 'add_product', 'coupon_count'
     ];
 }

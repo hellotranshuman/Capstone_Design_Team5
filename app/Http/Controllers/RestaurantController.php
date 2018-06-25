@@ -94,6 +94,9 @@ class RestaurantController extends Controller
             'dinner_open' => $request->input('dinner_open'),
             'dinner_close' => $request->input('dinner_close'),
             'dinner_lo' => $request->input('dinner_lo'),
+            'namer'     => $request->input('namer'),
+            'coordinate' => $request->input('coordinate'),
+            'qrcode' => $request->input('qrcode'),
         ]);
 
         // check Shop Id
@@ -196,6 +199,9 @@ class RestaurantController extends Controller
                     'dinner_open' => $request->input('dinner_open'),
                     'dinner_close' => $request->input('dinner_close'),
                     'dinner_lo' => $request->input('dinner_lo'),
+                    'namer'     => $request->input('namer'),
+                    'coordinate' => $request->input('coordinate'),
+                    'qrcode' => $request->input('qrcode'),
                 ]);
 
         /*
@@ -241,7 +247,7 @@ class RestaurantController extends Controller
                     'path' => $dbPath
                 ]);
 
-        } // <-- If End
+        }
         else if(is_null($request->get('titleImg'))) {
             $selectFileName = '%' . $shop_id . '_titleImg%';
 
@@ -259,7 +265,7 @@ class RestaurantController extends Controller
                     ->delete();
             }
 
-        }
+        } // <-- titleImg If End
 
         for($imageIndex = 0 ; $imageIndex < $imageNum ; $imageIndex++ ) {
 

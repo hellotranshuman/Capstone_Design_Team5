@@ -169,10 +169,10 @@ class MenuController extends Controller
             else
                 $menuArray['explanation'] = $menu->explanation;
 
-           $menuArray['price'] = $menu->price;
-           $menuArray['remark'] = $menu->remark;
-           $menuArray['path'] = $menu->path;
-           $menuArray['filename'] = $menu->filename;
+           $menuArray['price']      = $menu->price;
+           $menuArray['remark']     = $menu->remark;
+           $menuArray['path']       = $menu->path;
+           $menuArray['filename']   = $menu->filename;
 
            // <-- Option Data Select
             $optionData  = Menu_Option::where('menu_id', $menuArray['id'])

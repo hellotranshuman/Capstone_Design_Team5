@@ -23,6 +23,7 @@ class CreateCouponTable extends Migration
             $table->unsignedInteger('add_product')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('expiry_date');
+            $table->integer('couponCount')->nullable();
             $table->timestamps();
             $table->foreign('add_product')
                 ->references('id')->on('menu')

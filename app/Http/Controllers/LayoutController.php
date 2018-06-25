@@ -12,11 +12,11 @@ class LayoutController extends Controller
     // <-- 현재 선택된 템플릿 번호 불러오기
     public function getSelectedLayout($shop_id) {
 
-        $layoutData = Restaurant::select('selectLayout')
+        $layoutData = Restaurant::select('selectlayout')
                         ->where('id', $shop_id)
                         ->first();
 
-        $layoutNum = $layoutData->selectLayout;
+        $layoutNum = $layoutData->selectlayout;
 
         if($layoutNum > 4) {
 

@@ -16,17 +16,17 @@
             <!-- 타이틀 이미지와 가게 명이 들어갈 div -->
             <div class="title_div">
                 <div id="title_img">
-                    <div id="name_area">
-                        <b id="name" style="float:left"></b>
+                    <div id="name_area"> 
+                        <b id="name" style="float:left"></b> 
                     </div>
-                    <button id="LikeIt" @click="I_Like_It">
+                    <button id="LikeIt" @click="I_Like_It">  
                         &nbsp;좋아요 &#9829;&nbsp;
-                    </button>
+                    </button>  
                 </div>
             </div>
 
-            <b id="totalRating" class='column'
-               style="margin-bottom: 4%; border-bottom:1px solid #848484; text-align: left;">방문객 평점 :&nbsp;</b>
+            <b id="totalRating" class='column' 
+                style="margin-bottom: 4%; border-bottom:1px solid #848484; text-align: left;">방문객 평점 :&nbsp;</b>
 
             <!-- 가게 설명이 들어갈 div -->
             <div style="width:100%;">
@@ -34,8 +34,8 @@
                     <b class='column'> 소개 </b>
                 </div>
 
-                <div style="float:right; margin-right:1%; display: flex">
-
+                <div style="float:right; margin-right:1%; display: flex">                 
+                    
                     <!-- 예약 하기 -->
                     <v-dialog v-model="dialog" persistent max-width="500px">
                         <v-btn color="#424242" dark slot="activator" class="addReservation_btn">예약 하기</v-btn>
@@ -266,17 +266,16 @@
                                                     <B> {{ item.name }} </B>
                                                 </v-list-tile-title>
                                                 <!-- 카테고리 -->
-                                                <v-list-tile-sub-title class="text--primary">
-                                                    {{ item.category }}
-                                                </v-list-tile-sub-title>
                                                 <v-list-tile-sub-title v-if="item.category == '상품 제공'">
-                                                    {{item.price_condition}}이상일 경우, &nbsp; {{ item.add_product }} 제공
+                                                    {{item.price_condition}} 경우, &nbsp; {{ item.menu_name }} 제공
                                                 </v-list-tile-sub-title>
                                                 <v-list-tile-sub-title v-if="item.category == '가격 할인'">
-                                                    {{item.price_condition}}이상일 경우, &nbsp; {{ item.discount }} 할인
+                                                    {{item.price_condition}} 경우, &nbsp; {{ item.discount }} 할인
                                                 </v-list-tile-sub-title>
                                                 <v-list-tile-sub-title>
-                                                    [ {{ item.start_date }} ~ {{ item.expiry_date}} ]
+                                                    [ {{ item.start_date }} ~ {{ item.expiry_date}} ] 
+                                                    &nbsp; &nbsp; 
+                                                    남은 개수 : {{ item.use_check }}
                                                 </v-list-tile-sub-title>
                                             </v-list-tile-content>
                                             <!-- 아이콘 -->
@@ -366,7 +365,7 @@
                     <span class="timeInfo"> 런치 : </span>
                     <span class="timeInfo" id="lunch_open"> </span>
                     <span class="timeInfo" id="lunch_close"> ~ </span>
-                    <span class="timeInfo" id="lunch_lo"> ( last order : </span> <span class="timeInfo"> ) </span>
+                    <span class="timeInfo" id="lunch_lo"> ( last order : </span> <span class="timeInfo"> ) </span> 
                     <br>
                     <span class="timeInfo" > 디너 : </span>
                     <span class="timeInfo" id="dinner_open"> </span>
@@ -395,10 +394,10 @@
 
             <!-- snackber (reservation) -->
             <v-snackbar
-                    :timeout="5000"
-                    v-model="reservation_snackbar"
-                    :vertical="'vertical'"
-                    :top="'top'"
+                :timeout="5000"
+                v-model="reservation_snackbar"    
+                :vertical="'vertical'"
+                :top="'top'"
             >
                 예약이 완료되었습니다.
                 <v-btn flat color="white" @click.native="reservation_snackbar = false">Close</v-btn>
@@ -406,10 +405,10 @@
 
             <!-- snackber (coupon) -->
             <v-snackbar
-                    :timeout="5000"
-                    v-model="coupon_snackbar"
-                    :vertical="'vertical'"
-                    :top="'top'"
+                :timeout="5000"
+                v-model="coupon_snackbar"
+                 :vertical="'vertical'"
+                :top="'top'"
             >
                 {{coupon_text}}
                 <v-btn flat color="white" @click.native="coupon_snackbar = false">Close</v-btn>
@@ -419,9 +418,9 @@
             <!-- error snackbar -->
             <v-snackbar
                     :timeout="1000"
-                    v-model="addreservation_snackbar"
+                    v-model="addreservation_snackbar"   
                     :top="'top'"
-            >
+                >
                 <v-icon dark>announcement</v-icon> {{ addreservation_text }}
             </v-snackbar>
         </v-app>
@@ -437,7 +436,7 @@
     // 예약 하기
     import { EventBus } from '../user_menu/eventBus.js';
     import DefaultLayout1 from '../user_menu/MenuDefaultLayout1.vue';
-    import { isUpdateExpression } from 'babel-types';
+import { isUpdateExpression } from 'babel-types';
 
     var layout = DefaultLayout1;     // 사장이 선택한 메뉴판 탬플릿
     var obj    = [];                 // 클릭한 배열 담기
@@ -463,7 +462,7 @@
                 snackbar        : false,
 
                 // snackbar
-                reservation_snackbar    : false,
+               reservation_snackbar    : false,
                 coupon_snackbar         : false,
                 coupon_text             : '',
                 addreservation_snackbar : false,
@@ -541,8 +540,8 @@
             url = '/restaurant/' + this.shop_id + '/getInfo';
 
             axios.get(url).then( (response) => {
-                get_datas = response.data.restaurant;
-                this.shopLike = response.data.shopLike;
+                get_datas = response.data.restaurant;       
+                this.shopLike = response.data.shopLike;             
 
                 // 예약 하기
                 // 메뉴
@@ -566,10 +565,10 @@
                     this.reservation_selectMenu = response.data.menuSelectData[0].reservation_selectMenu;
 
                     /* 기본 가게 정보 */
-                    this.lunch_open = response.data.restaurantData[0].lunch_open;
-                    this.lunch_close = response.data.restaurantData[0].lunch_close;
-                    this.dinner_open = response.data.restaurantData[0].dinner_open;
-                    this.dinner_close = response.data.restaurantData[0].dinner_close;
+                    this.lunch_open = this.resData[0].lunch_open;
+                    this.lunch_close = this.resData[0].lunch_close;
+                    this.dinner_open = this.resData[0].dinner_open;
+                    this.dinner_close = this.resData[0].dinner_close;
                 })
 
                 axios.post('/getCouponList', {
@@ -596,14 +595,14 @@
                 this.enter_galley();
 
                 // 좋아요 바인딩
-                this.I_Like_It();
+                this.I_Like_It(); 
             })
-                .catch((ex)=>{
-                    this.snackbar_text = '가게 정보 불러오기 실패!';
-                    this.snackbar      = true;
-                })
+            .catch((ex)=>{
+                this.snackbar_text = '가게 정보 불러오기 실패!';
+                this.snackbar      = true;
+            })            
         },
-
+ 
         components : {
             'Layout' : layout
         },
@@ -611,7 +610,7 @@
         methods : {
             // 각 공간에 해당 값들을 삽입함.
             enter_data : function(argArray){
-                let iterator = Object.keys(argArray);
+                let iterator = Object.keys(argArray); 
 
                 for (let key of iterator){
                     if(document.getElementById(key) !== null){
@@ -636,47 +635,47 @@
             },
 
             // 좋아연.
-            I_Like_It : function(){
-                let LikeIt   = document.getElementById('LikeIt');
+            I_Like_It : function(){ 
+                let LikeIt   = document.getElementById('LikeIt'); 
                 let url      = '/restaurantsLike';
                 let shop_id  = this.$route.params.shop_id;
-
+                 
                 // 클릭 시 데이터 보내기.
-                function SendValue(argValue){
+                function SendValue(argValue){                
                     // 좋아요 and 좋아요 취소
                     axios.post(url, {
                         'shop_id' : shop_id,
                         'shopLike': argValue
                     })
                     // 결과 true(좋아요) or false(좋아요 x)
-                        .then((response) => {
-                            let result = response.data.shopLike;    // 결과
+                    .then((response) => {        
+                        let result = response.data.shopLike;    // 결과
 
-                            if(result === 'failed'){
-                                this.snackbar_text = '로그인해 주세요!';
-                                this.snackbar      = true;
-                            }
-                            else {
-                                ChangeColor(response.data.shopLike);
-                            }
-                        })
-                        // 서버 연결 실패
-                        .catch((ex)=>{
-                            this.snackbar_text = '요청 실패';
+                        if(result === 'failed'){                     
+                            this.snackbar_text = '로그인해 주세요!';
                             this.snackbar      = true;
-                        });
+                        }                      
+                        else {                            
+                            ChangeColor(response.data.shopLike);   
+                        }          
+                    })
+                    // 서버 연결 실패
+                    .catch((ex)=>{ 
+                        this.snackbar_text = '요청 실패';
+                        this.snackbar      = true;
+                    });                           
                 };
-
+                
                 // 색깔 바꾸기
-                function ChangeColor(argValue){
+                function ChangeColor(argValue){  
                     if(argValue === true){
                         LikeIt.style.color       = 'red';
-                        LikeIt.style.borderColor = 'red';
+                        LikeIt.style.borderColor = 'red';                     
                     }
                     else if(argValue === false){
                         LikeIt.style.color       = 'grey';
-                        LikeIt.style.borderColor = 'grey';
-                    }
+                        LikeIt.style.borderColor = 'grey'; 
+                    }    
                 }
 
                 // 메뉴 클릭한 경우 데이터 보내기.
@@ -685,25 +684,26 @@
                     if(this.shopLike === true) {
                         this.shopLike = false;
                     }
-                    // 좋아요 상태가 아니였을 경우 좋아요
-                    else if(this.shopLike === false){
-                        this.shopLike = true;
+                    // 좋아요 상태가 아니였을 경우 좋아요 
+                    else if(this.shopLike === false){ 
+                        this.shopLike = true;                    
                     }
                     // 변경 사항 서버에 보내기.
-                    SendValue(this.shopLike);
-                }
+                    SendValue(this.shopLike);       
+                }    
                 // 페이지를 로드한 경우 색상 적용 시키기
                 else {
-                    ChangeColor(this.shopLike);
-                }
-            },
+                    ChangeColor(this.shopLike); 
+                }                             
+            },            
 
             // 갤러리에 이미지 추가하기.
             enter_galley : function(){
                 // 넘어온 데이터 배열 갯수 : 0은 기본 데이터 , 1은 평점, 2는 타이틀 이미지
-                let argNum    = get_datas.length;
+                let argNum    = get_datas.length;       
                 let browser_w = window.outerWidth;                                      // 브라우저 너비
                 let gallery_div = document.getElementById('gallery_div');
+
 
                 // 갤러리에 이미지 생성해서 넣기.
                 function appendImg (Index) {
@@ -728,18 +728,18 @@
                 }
 
                 // 모바일 환경 이미지 2개만.
-                if(browser_w < 639){
+                if(browser_w < 639){  
                     // 등록된 이미지가 2개 이하.
                     if(argNum -3 < 3) {
-                        for (let i=3; i < argNum; i++){
+                        for (let i=3; i < argNum; i++){                     
                             appendImg(i);
                         }
                     }
                     // 등록된 이미지가 2개 초과
                     else {
                         // 더 보기 display none에서 block으로
-                        document.getElementById('moreImg').style.display = 'block';
-                        for (let i=3; i < 5; i++){
+                        document.getElementById('moreImg').style.display = 'block';                       
+                        for (let i=3; i < 5; i++){      
                             appendImg(i);
                         }
                     }
@@ -755,12 +755,12 @@
                     // 등록된 이미지가 6개 초과
                     else {
                         // 더 보기 display none에서 block으로
-                        document.getElementById('moreImg').style.display = 'block';
+                        document.getElementById('moreImg').style.display = 'block'; 
                         for (let i=3; i < 8; i++){
                             appendImg(i);
                         }
                     }
-                }
+                }                
             },
 
             // 모든 갤러리 이미지 출력
@@ -799,9 +799,9 @@
                             map: map,
                             position: results[0].geometry.location
                         });
-                    } else {
+                    } else {                        
                         this.snackbar_text = 'Geocode was not successful for the following reason: ' + status;
-                        this.snackbar      = true;
+                        this.snackbar      = true; 
                     }
                 });
             },
@@ -826,8 +826,8 @@
             },
 
             setTime() {
-                let shop_id = this.$route.params.shop_id;
-
+               let shop_id = this.$route.params.shop_id;
+                
                 /* date가 클릭시 item안의 set_time[]을 select 문에 넣기 */
                 this.states = [];
 
@@ -951,8 +951,7 @@
                 this.sum_price  = this.sum_price - this.click_menu[id].menu.price;   // 총 가격 빼기
                 this.click_menu.splice(id, 1);                                       // 선택한 메뉴 배열에서 취소한 메뉴 삭제
 
-                this.snackbar_text = '선택한 메뉴를 취소하였습니다.';
-                this.snackbar      = true;
+                alert('선택한 메뉴를 취소하였습니다.');
             },
 
             // 옵션 선택
@@ -1000,18 +999,41 @@
             },
 
             SpendData() {
+                var check = true;
+
                 /* 유효성 검사 */
                 if(this.start_date == null)
                 {
-                    this.addreservation_text = " 예약 날짜를 선택 해 주세요."
+                    this.addreservation_text = " 예약 날짜를 선택 해주세요."
                     this.addreservation_snackbar = true;
-                    if(this.pick_time == null)
-                    {ㄴ
-                        this.addreservation_text = " 예약 시간을 선택 해 주세요."
-                        this.addreservation_snackbar = true;
-                    }
+                    check = false;
                 }
-                else{
+                else if(this.pick_time == null)
+                {
+                    this.addreservation_text = " 예약 시간을 선택 해주세요."
+                    this.addreservation_snackbar = true;
+                    check = false;
+                }
+                else if(this.adult_person != null || this.child_person != null)
+                {
+                    // 숫자만 가능
+                    var regNumber = /^[0-9]*$/;
+
+                    if(!regNumber.test(this.adult_person)) {
+                         this.addreservation_text = "어른 인원 항목은 숫자만 입력해주세요";
+                         this.addreservation_snackbar = true;
+                         check = false;
+                    }
+
+                    if(!regNumber.test(this.child_person)) {
+                         this.addreservation_text = "아이 인원 항목은 숫자만 입력해주세요";
+                         this.addreservation_snackbar = true;
+                         check = false;
+                    }
+
+                }
+                
+                if(check == true){
                     // axios http 라이브러리
                     // -- 사장님 수락 리스트에 등록 --
                     axios.post('/requestReservation', {
@@ -1047,11 +1069,16 @@
 
                     if(CouponAlready == true)
                     {
-
+                        this.coupon_text = '마이페이지 - 쿠폰함을 확인해주세요';
+                        this.coupon_snackbar = true;
+                    }
+                    else {
+                        this.coupon_text = '이미 발급되었거나 쿠폰이 소진되었습니다.';
+                        this.coupon_snackbar = true;
                     }
 
                 })
-                    .catch(console.log('test'));
+                .catch(console.log('test'));
             }
         }
     };
@@ -1061,10 +1088,10 @@
     /* 모바일 */
     @media (max-width: 639px){
         .fontSize       { font-size: 10px; }
-        #name           { font-size: 1.5rem; }
+        #name           { font-size: 1.5rem; }    
         #LikeIt         { font-size: 1.2rem;}
         #explanation    {max-height: 200px; overflow: scroll;}
-        .column         { font-size: 1.2rem; }
+        .column         { font-size: 1.2rem; }     
         .column_value   { font-size: 1.2rem;}
         .timeInfo       { font-size: 1.2rem; }
         .resInfo        { font-size: 1.2rem; }
@@ -1101,10 +1128,10 @@
     /* 테블릿 */
     @media (min-width: 640px) and (max-width: 1023px){
         .fontSize       { font-size: 12px; }
-        #name           { font-size: 2rem; }
+        #name           { font-size: 2rem; }    
         #LikeIt         { font-size: 2rem;}
         #explanation    {max-height: 300px; overflow: scroll;}
-        .column         { font-size: 2rem; }
+        .column         { font-size: 2rem; }     
         .column_value   { font-size: 1.5rem;}
         .timeInfo       { font-size: 1.5rem; }
         .resInfo        { font-size: 1.7rem; }
@@ -1137,9 +1164,9 @@
     /* 데스트 탑 */
     @media (min-width: 1024px){
         .fontSize       { font-size: 15px; }
-        #name           { font-size: 2rem; }
+        #name           { font-size: 2rem; }        
         #LikeIt         { font-size: 2rem;}
-        .column         { font-size: 2rem; }
+        .column         { font-size: 2rem; }        
         .column_value   { font-size: 1.7rem;}
         .timeInfo       { font-size: 1.5rem; }
         .resInfo        { font-size: 1.7rem; }
@@ -1174,7 +1201,7 @@
     .frame {
         width: 100%;
         border-top: 1px solid;
-        word-break: break-all;
+        /* font-size: 1.8rem; */
         color: #848484;
         display:inline-block;
         margin-bottom: 5%;
@@ -1224,13 +1251,13 @@
     }
 
     /* 좋아여 */
-    #LikeIt {
+    #LikeIt {   
         margin-right: 7%;
         color: grey;
-        border: 3px solid grey;
-        text-align: center;
+        border: 3px solid grey; 
+        text-align: center; 
         float: right;
-        font-weight: bold;
+        font-weight: bold;  
     }
 
     /*갤러리 관련.*/

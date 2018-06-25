@@ -11,19 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class CouponController extends Controller
 {
-    const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
-    const client_secret = "pevANwIHvX";
-
-    private $url     = "https://openapi.naver.com/v1/language/translate";
-    private $is_post = true;
-    private $headers = array();
-
-    function __construct()
-    {
-        $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id ;
-        $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
-    }
-
     public function showCouponForm() {
         return view('restaurant.createCoupon');
     }
@@ -44,11 +31,12 @@ class CouponController extends Controller
             'price_condition' => $request->get('price_condition'),
             'start_date'      => $request->get('start_date'),
             'expiry_date'     => $request->get('expiry_date'),
+            'coupon_count'     => $request->get('count'),
             'add_product'     => $addProduct,
         ]);
 
         return response()->json([
-           'content' => '등록이 완료되었습니다',
+           'content' => true,
         ]);
 
     }
@@ -63,6 +51,7 @@ class CouponController extends Controller
                                            coupon.add_product as add_product,
                                            coupon.start_date as start_date,
                                            coupon.expiry_date as expiry_date,
+                                           coupon.coupon_count as coupon_count,
                                            menu.name as menu_name'))
                         ->where('coupon.shop_id', $request->get('shop_id'))
                         ->get()
@@ -92,7 +81,7 @@ class CouponController extends Controller
                 ->delete();
 
         return response()->json([
-           'msg'        => '삭제되었습니다',
+           'msg'        => true,
         ]);
     }
 
@@ -112,107 +101,72 @@ class CouponController extends Controller
                'msg' => false,
             ]);
 
+        // 현재 받을려는 쿠폰 갯수 확인
         $couponData = Coupon::where('id', $currentCouponId)
                         ->get()
                         ->first();
 
         $expiryDate = $couponData->expiry_date;
         $startDate = $couponData->start_date;
+        $couponCount = $couponData->coupon_count;
 
-        UserCoupon::create([
-            'user_num' => auth()->user()->id,
-            'coupon_id' => $currentCouponId,
-            'use_check' => false,
-            'start_date' => $startDate,
-            'expiry_date' => $expiryDate
-        ]);
+        if(is_null($couponCount) || $couponCount != 0) {
+            UserCoupon::create([
+                'user_num' => auth()->user()->id,
+                'coupon_id' => $currentCouponId,
+                'use_check' => false,
+                'start_date' => $startDate,
+                'expiry_date' => $expiryDate
+            ]);
 
-        return response()->json([
-            'msg' => '쿠폰 발급이 완료되었습니다!'
-        ]);
+            if(!is_null($couponCount)) {
 
+                Coupon::where('id', $currentCouponId)
+                    ->update([
+                       'coupon_count' => --$couponCount,
+                    ]);
+
+            }
+
+            return response()->json([
+                'msg' => true,
+            ]);
+        }
+
+        else {
+            return response()->json([
+                'msg' => false,
+            ]);
+        }
 
     }
 
     public function getCouponTransData(Request $request) {
-
-        $source = '';
         $userCouponId = $request->get('id');
-
-        switch (auth()->user()->country) {
-
-            case 'Korea' :
-                {
-                    $source = 'ko';
-                    break;
-                }
-
-            case 'China' :
-                {
-                    $source = 'zh-CN';
-                    break;
-                }
-
-            case 'Usa' :
-                {
-                    $source = 'en';
-                    break;
-                }
-
-        } // <-- switch end
 
         // 현재 유저 쿠폰 조회
         $couponData =  UserCoupon::join('coupon', 'coupon.id', '=', 'user_coupon.coupon_id')
                         ->join('restaurants', 'restaurants.id', '=', 'coupon.shop_id')
                         ->leftjoin('menu', 'menu.id', '=', 'coupon.add_product')
                         ->select(DB::raw('user_coupon.id as id,
-                                                coupon.name as name,
-                                                coupon.category as category,
-                                                coupon.discount as discount,
-                                                coupon.price_condition as price_condition,
-                                                menu.name as menu_name,
-                                                restaurants.name as restaurants_name,
-                                                user_coupon.use_check as use_check,
-                                                user_coupon.start_date as start_date,
-                                                user_coupon.expiry_date as expiry_date'))
+                                coupon.name as name,
+                                coupon.category as category,
+                                coupon.discount as discount,
+                                coupon.price_condition as price_condition,
+                                coupon.add_product as add_product,
+                                menu.name as menu_name,
+                                restaurants.name as restaurants_name,
+                                user_coupon.use_check as use_check,
+                                user_coupon.start_date as start_date,
+                                user_coupon.expiry_date as expiry_date'))
                         ->where('user_coupon.id', $userCouponId)
-                        ->first();
+                        ->first()
+                        ->toArray();
 
-        $beforeTransText = '쿠폰 이름 : ' . $couponData->name . '#카테고리 : ' . $couponData->category;
 
-        if ($couponData->category == '가격 할인')
-            $beforeTransText .= '#할인 가격 : ' . $couponData->discount .
-                                '#쿠폰 조건 : ' . $couponData->price_condition;
-        else if($couponData->category == '상품 제공')
-            $beforeTransText .= '#제공 상품 : ' . $couponData->menu_name .
-                '#쿠폰 조건 : ' . $couponData->price_condition;
-
-        $beforeTransText .= '#사용 기간 : ' . $couponData->start_date . '~' . $couponData->expiry_date;
-
-        $encText = urlencode($beforeTransText);
-        $postValues = 'source=' . $source . '&target=ja&text='.$encText;
-        $ch  = curl_init();
-
-        curl_setopt($ch,CURLOPT_URL, $this->url);
-        curl_setopt($ch,CURLOPT_POST, $this->is_post);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
-        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
-
-        $response    = curl_exec ($ch);
-        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        curl_close ($ch);
-
-        if($status_code == 200)
-            return response()->json([
-                'content' => $response,
-            ]);
-        else
-            return response()->json([
-                'content' =>'error! ' . $response,
-            ]);
+        return response()->json([
+           'couponData' => $couponData,
+        ]);
     }
 
     public function setCouponUpdate(Request $request) {

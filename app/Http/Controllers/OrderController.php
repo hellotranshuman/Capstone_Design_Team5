@@ -136,62 +136,139 @@ class OrderController extends Controller
         $opCount = $request->get('OpCount');
         $subOpArray = $request->get('subOption');
         $subOpCount = $request->get('subOpCount');
-        $transBeforeText = '';
+        $translateArray = array();
 
         for ($orderIndex = 0; $orderIndex < $menuCount; $orderIndex++) {
 
             $currentOpCount = $opCount[$orderIndex];
             $currentSubOpCount = $subOpCount[$orderIndex];
 
-            $transBeforeText .= $menuArray[$orderIndex] . '=';
+            $encText = urlencode($menuArray[$orderIndex]);
+            $postValues = 'source=' . $source . '&target=ja&text='.$encText;
+            $ch  = curl_init();
+
+            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_POST, $this->is_post);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+            $response    = curl_exec ($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close ($ch);
+
+            $indexName = 'menu' . $orderIndex;
+
+            if($status_code == 200) {
+                $responseData = json_decode($response);
+
+                $translateArray[$indexName]  = $responseData->message->result->translatedText;
+            }
+            else
+                $translateArray[$indexName] = $menuArray[$orderIndex];
 
 
             for ($optionIndex = 0; $optionIndex < $currentOpCount; $optionIndex++) {
 
                 if ($currentSubOpCount != 0) {
-                    $transBeforeText .= $opArray[$orderIndex][$optionIndex] . ' : ';
 
-                    if($currentSubOpCount == 1)
-                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . '@';
+                    $encText = urlencode($opArray[$orderIndex][$optionIndex]);
+                    $postValues = 'source=' . $source . '&target=ja&text='.$encText;
+                    $ch  = curl_init();
+
+                    curl_setopt($ch,CURLOPT_URL, $this->url);
+                    curl_setopt($ch,CURLOPT_POST, $this->is_post);
+                    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+                    curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+                    curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+                    $response    = curl_exec ($ch);
+                    $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                    curl_close ($ch);
+
+                    $indexName = 'option' . $orderIndex;
+
+                    if($status_code == 200) {
+                        $responseData = json_decode($response);
+
+                        $translateArray[$indexName]  = $responseData->message->result->translatedText;
+                    }
                     else
-                        $transBeforeText .= $subOpArray[$orderIndex][$optionIndex] . ',';
+                        $translateArray[$indexName] = $opArray[$orderIndex][$optionIndex];
+
                     $currentSubOpCount--;
+
+                    $encText = urlencode($subOpArray[$orderIndex][$optionIndex]);
+                    $postValues = 'source=' . $source . '&target=ja&text='.$encText;
+                    $ch  = curl_init();
+
+                    curl_setopt($ch,CURLOPT_URL, $this->url);
+                    curl_setopt($ch,CURLOPT_POST, $this->is_post);
+                    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+                    curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+                    curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+                    $response    = curl_exec ($ch);
+                    $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                    curl_close ($ch);
+
+
+                    if($status_code == 200) {
+                        $responseData = json_decode($response);
+
+                        $translateArray[$indexName]  = $responseData->message->result->translatedText;
+                    }
+                    else {
+                        $translateArray[$indexName] = $subOpArray[$orderIndex][$optionIndex];
+                    }
 
                 }
                 else {
-                    $transBeforeText .= $opArray[$orderIndex][$optionIndex] . '@';
-                }
+                    $encText = urlencode($opArray[$orderIndex][$optionIndex]);
+                    $postValues = 'source=' . $source . '&target=ja&text='.$encText;
+                    $ch  = curl_init();
 
+                    curl_setopt($ch,CURLOPT_URL, $this->url);
+                    curl_setopt($ch,CURLOPT_POST, $this->is_post);
+                    curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+                    curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+                    curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+                    $response    = curl_exec ($ch);
+                    $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                    curl_close ($ch);
+
+                    $indexName = 'option' . $orderIndex;
+
+                    if($status_code == 200) {
+                        $responseData = json_decode($response);
+
+                        $translateArray[$indexName]  = $responseData->message->result->translatedText;
+                    }
+                    else
+                        $translateArray[$indexName] = $opArray[$orderIndex][$optionIndex];
+                }
 
             } // <-- option For End
 
         } // <-- menu For end
 
-        $encText = urlencode($transBeforeText);
-        $postValues = 'source=' . $source . '&target=ja&text='.$encText;
-        $ch  = curl_init();
-
-        curl_setopt($ch,CURLOPT_URL, $this->url);
-        curl_setopt($ch,CURLOPT_POST, $this->is_post);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
-        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
-
-        $response    = curl_exec ($ch);
-        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        curl_close ($ch);
-
         if($status_code == 200)
             return response()->json([
                 'flag'    => true,
-                'content' => $response,
+                'content' => $translateArray,
             ]);
         else
             return response()->json([
                 'flag'    => false,
-                'content' => $transBeforeText,
             ]);
     }
 }

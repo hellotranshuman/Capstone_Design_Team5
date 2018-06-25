@@ -1,4 +1,4 @@
-<template>
+`<template>
     <v-app>
         <div class="create_coupon">
             <br>
@@ -7,11 +7,10 @@
             <hr><br>
             <v-dialog v-model="dialog" max-width="500px">
                 <!-- 쿠폰 추가 버튼 -->
-                <v-btn color="teal lighten-1" slot="activator" style="color:white">쿠폰 추가</v-btn>
+                <v-btn color="orange darken-1" slot="activator" style="color:white">
+                    <v-icon dark color="white">add</v-icon> 쿠폰 추가
+                </v-btn>
                 <v-card>
-                    <v-toolbar color="teal lighten-1" style="height:20px">
-                    </v-toolbar>
-
                     <!-- v-card title -->
                     <v-card-title>
                         <span class="headline"> <B> 쿠폰 추가 </B> </span>
@@ -110,9 +109,16 @@
                                             <v-btn flat color="primary" @click="$refs.end_menu.save(CouponItem.end_date)">OK</v-btn>
                                         </v-date-picker>
                                     </v-menu>
-
                                 </v-flex>
+                                <v-spacer></v-spacer>
                             </v-layout>
+                            <!-- 쿠폰 갯수 (개수제한) -->
+                            <v-flex>
+                                <v-checkbox :label="'쿠폰 개수 설정'" v-model="coupon_count"></v-checkbox>
+                                <div v-if="coupon_count == true">
+                                    <v-text-field label="쿠폰 발행 개수" required v-model="CouponItem.count"></v-text-field>
+                                </div>
+                            </v-flex>
                         </v-container>
                     </v-card-text>
                     <v-card-actions>
@@ -132,11 +138,11 @@
                 <template slot="items" slot-scope="props">
                     <td>{{ props.item.name }}</td>
                     <td class="text-xs-left">{{ props.item.category }}</td>
-                    <td class="text-xs-left">{{ props.item.discount }}</td>
-                    <td class="text-xs-left">{{ props.item.menu_name }}</td>
+                    <td class="text-xs-left">{{ props.item.discount_product }}</td>
                     <td class="text-xs-left">{{ props.item.price_condition }}</td>
                     <td class="text-xs-left">{{ props.item.start_date }}</td>
                     <td class="text-xs-left">{{ props.item.expiry_date }}</td>
+                    <td class="text-xs-left">{{ props.item.coupon_count }}</td>
                     <td class="justify-center layout px-0">
                         <v-btn icon class="mx-0" @click="deleteItem(props.item)">
                             <v-icon color="pink">delete</v-icon>
@@ -175,16 +181,19 @@
                 end_menu: false,
                 clickCouponid: 0,
 
+                /* coupont count */
+                coupon_count : false,
+
                 /* table */
                 dialog: false,
                 headers: [
                     { text: '쿠폰 이름',    value: 'name' },
                     { text: '쿠폰 종류',    value: 'category' },
-                    { text: '할인 가격',       value: 'discount' },
-                    { text: '제공 상품',    value: 'menu_name' },
+                    { text: ' ',           value: 'discount_product' },
                     { text: '쿠폰 조건',    value: 'price_condition' },
                     { text: '사용 시작일',  value: 'start_date' },
-                    { text: '사용 종료일',  value: 'end_date' },
+                    { text: '사용 종료일',  value: 'expiry_date' },
+                    { text: '쿠폰 개수',    value: 'coupon_count'},
                     { text: 'Actions',     value: 'name',           sortable: false }
                 ],
                 /* 저장 & 편집 & 삭제 */
@@ -200,7 +209,8 @@
                     add_product: null,
                     price_condition: null,
                     start_date: null,
-                    expiry_date: null
+                    expiry_date: null,
+                    count : 0
                 }
             }
         },
@@ -210,11 +220,34 @@
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
                 /* DB Coupon Data */
-                var Index       = response.data.couponNum;
-                this.items      = response.data.coupon;
+                var CouponData     = response.data.coupon;
+                var CouponArray = [];
+
+                // 넣기
+                for(var i = 0; i < CouponData.length; i++)
+                {
+                    CouponArray[i] = [];
+                    CouponArray[i]['name']       = CouponData[i].name;
+                    CouponArray[i]['category']   = CouponData[i].category;
+                    if(CouponData[i].category == '가격 할인')
+                    {
+                        CouponArray[i]['discount_product'] = CouponData[i].discount;
+                    }
+                    else if(CouponData[i].category == '상품 제공'){
+                        CouponArray[i]['discount_product'] = CouponData[i].menu_name;
+                    }
+                    CouponArray[i]['price_condition'] = CouponData[i].price_condition;
+                    CouponArray[i]['start_date']      = CouponData[i].start_date;
+                    CouponArray[i]['end_date']        = CouponData[i].end_date;
+                    // 쿠폰 개수
+                    CouponArray[i]['count']           = CouponData[i].count;
+                }
+
+                this.items = CouponArray;
+
                 /* menu_data */
-                var menuData    = response.data.menuList;
-                this.menuDataList = menuData;
+                var menuData        = response.data.menuList;
+                this.menuDataList   = menuData;
                 this.menu_data_product();
             })
         },
@@ -239,31 +272,66 @@
             },
 
             save() {
+                var check = true;
+
                 /* 유효성 검사 */
                 if(this.CouponItem.CouponName == null)
                 {
                     this.createCoupon_snackbar = true;
+                    check = false;
                 }
                 else if(this.CouponItem.CouponType == null){
-                    this.createCoupon_text = " 쿠폰 종류를 선택하세요. "
+                    this.createCoupon_text = " 쿠폰 종류를 선택하세요. ";
                     this.createCoupon_snackbar = true;
+                    check = false;
                 }
                 else if(this.CouponItem.CouponType == "가격 할인" && this.CouponItem.Discount == null){
-                    this.createCoupon_text = " 할인 가격을 입력하세요. "
+                    this.createCoupon_text = " 할인 가격을 입력하세요. ";
                     this.createCoupon_snackbar = true;
+                    check = false;
+
+                }
+                else if(this.CouponItem.CouponType == "가격 할인" && this.CouponItem.Discount != null)
+                {
+                    // 숫자만 가능
+                    var regNumber = /^[0-9]*$/;
+
+                    if(!regNumber.test(this.CouponItem.Discount)) {
+                        this.createCoupon_text = "할인 가격 항목은 숫자만 입력해주세요";
+                        this.createCoupon_snackbar = true;
+                        check = false;
+                    }
+
                 }
                 else if(this.CouponItem.CouponType == "상품 제공" && this.CouponItem.add_product == null){
-                    this.createCoupon_text = " 제공 상품을 선택하세요."
+                    this.createCoupon_text = " 제공 상품을 선택하세요.";
                     this.createCoupon_snackbar = true;
+                    check = false;
                 }
                 else if(this.CouponItem.Condition == null){
-                    this.createCoupon_text = " 쿠폰 조건을 입력하세요. "
+                    this.createCoupon_text = " 쿠폰 조건을 입력하세요. ";
                     this.createCoupon_snackbar = true;
+                    check = false;
                 }
                 else if( this.CouponItem.start_date == null || this.CouponItem.end_date == null) {
-                    this.createCoupon_text = "날짜를 선택해 주세요"
+                    this.createCoupon_text = "날짜를 선택해 주세요";
+                    this.createCoupon_snackbar = true;
+                    check = false;
                 }
-                else{
+                else if( this.CouponItem.count != null)
+                {
+                    // 숫자만 가능
+                    var regNumber = /^[0-9]*$/;
+
+                    if(!regNumber.test(this.CouponItem.count)) {
+                        this.createCoupon_text = "쿠폰 발행 개수 항목은 숫자만 입력해주세요";
+                        this.createCoupon_snackbar = true;
+                        check = false;
+                    }
+                }
+
+                if(check == true)
+                {
                     /* 메뉴id 찾기 */
                     for(var i = 0; i < this.menuDataList.length; i++)
                     {
@@ -283,11 +351,13 @@
                         price_condition     : this.CouponItem.Condition,
                         start_date          : this.CouponItem.start_date,
                         expiry_date         : this.CouponItem.end_date,
+                        count               : this.CouponItem.count
                     }).then((response) => {
-                        this.dialog = false
                         location.reload();
                     })
                         .catch(console.log('test'));
+
+                    this.dialog = false;
                 }
             }
         }

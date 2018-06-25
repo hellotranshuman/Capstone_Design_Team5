@@ -1,21 +1,66 @@
 <template>
     <div>
-        <v-layout row>
-            <v-flex xs12>
-                <!-- App.vue 에서 address value 를 넘겨 받았을 때와 받지 못했을 때 -->
-                <v-alert v-if="searchAddress" @click="open_gps_dialog()" :value="true" outline color="success" icon="gps_fixed" style="cursor:pointer">
-                    {{ searchAddress.name }}
-                </v-alert>
-                <v-alert v-else @click="open_gps_dialog()" :value="true" outline color="success" icon="gps_fixed" style="cursor:pointer">
-                    대한민국 대구광역시 북구 복현2동 복현로 35
-                </v-alert>
-                <GoogleMap v-if="searchAddress" :currentCenter=searchAddress.geometry.location></GoogleMap>
-                <GoogleMap v-else :currentCenter="{ lat: 35.8963134, lng: 128.6198624 }"></GoogleMap>
-            </v-flex>
-        </v-layout>
+        <v-card>
+            <v-card-media
+                    class="white--text"
+                    src="images/main.jpg"
+                    height="350px"
+            >
+                <v-container fill-height fluid>
+                    <v-layout fill-height>
+                        <v-flex fill-height>
+                            <v-card-title
+                                    class="titleText"
+                            ><strong>
+                                두렵지 않은 해외 여행<br>
+                                맛있는 추천, <span class="orange--text">SMART</span> <span class="red--text">S</span>
+                            </strong>
+                            </v-card-title>
+                            <v-card-actions>
+                                <v-text-field
+                                        v-model="$parent.$parent.$parent.searchDataInput"
+                                        prepend-icon="search"
+                                        color="grey"
+                                        solo
+                                        label="식당 또는 음식"
+                                        @keypress.enter="$parent.$parent.$parent.searching()"
+                                ></v-text-field>
+                                <v-btn color="orange" large @click="$parent.$parent.$parent.searching()">검색</v-btn>
+                            </v-card-actions>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </v-card-media>
+        </v-card>
         <br>
         <v-layout row>
             <v-flex xs12 sm10 offset-sm1>
+                <v-card v-if="$session.get('region') != undefined || $session.get('favorite_1') != undefined">
+                    <v-card-title class="headline orange--text">사용자 맞춤</v-card-title>
+                    <v-container fluid grid-list-sm>
+                        <v-layout row wrap>
+                            <v-flex md4 xs12 v-for="(item, i) in favorite" :key="i">
+                                <v-card>
+                                    <v-card-media
+                                            class="white--text"
+                                            :src="item.src"
+                                            height="200px"
+                                            @click="item.function(item.name, item.listLimit)"
+                                    >
+                                        <v-container fill-height fluid>
+                                            <v-layout fill-height>
+                                                <v-flex xs12 align-end flexbox>
+                                                    <span class="headline"><b>{{ item.name }}</b></span>
+                                                </v-flex>
+                                            </v-layout>
+                                        </v-container>
+                                    </v-card-media>
+                                </v-card>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-card>
+                <br>
                 <v-card>
                     <v-card-title class="headline orange--text">지역별 평점 베스트</v-card-title>
                     <v-container fluid grid-list-sm>
@@ -53,32 +98,6 @@
                                             :src="item.src"
                                             height="200px"
                                             @click="clickTypeList(item.postType, item.listLimit)"
-                                    >
-                                        <v-container fill-height fluid>
-                                            <v-layout fill-height>
-                                                <v-flex xs12 align-end flexbox>
-                                                    <span class="headline"><b>{{ item.name }}</b></span>
-                                                </v-flex>
-                                            </v-layout>
-                                        </v-container>
-                                    </v-card-media>
-                                </v-card>
-                            </v-flex>
-                        </v-layout>
-                    </v-container>
-                </v-card>
-                <br>
-                <v-card v-if="$session.get('region') != undefined || $session.get('favorite_1') != undefined">
-                    <v-card-title class="headline orange--text">사용자 맞춤</v-card-title>
-                    <v-container fluid grid-list-sm>
-                        <v-layout row wrap>
-                            <v-flex md4 xs12 v-for="(item, i) in favorite" :key="i">
-                                <v-card>
-                                    <v-card-media
-                                            class="white--text"
-                                            :src="item.src"
-                                            height="200px"
-                                            @click="item.function(item.name, item.listLimit)"
                                     >
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
@@ -183,6 +202,13 @@
 
                 translateValue: {
                     '東京': 'toukyou',
+                    '北海度': 'hokkaido',
+                    '大阪': 'toukyou',
+                    '京都': 'toukyou',
+                    '東京': 'toukyou',
+                    '東京': 'toukyou',
+                    '東京': 'toukyou',
+                    '東京': 'toukyou',
                     '한식': 'koreanFood',
                     '일식': 'japaneseFood',
                     '중식': 'chineseFood',
@@ -240,10 +266,6 @@
         },
 
         methods: {
-            open_gps_dialog() {
-                this.$parent.$parent.$parent.gps_search = true;
-            },
-
             clickRegionList(postRegion, listLimit, showRegion) {
                 var url = "/getRegionShopData";
                 axios.post(url, {'region': postRegion, 'limit': listLimit})
@@ -283,5 +305,7 @@
 </script>
 
 <style>
-
+    .titleText {
+        font-size: 22pt
+    }
 </style>
