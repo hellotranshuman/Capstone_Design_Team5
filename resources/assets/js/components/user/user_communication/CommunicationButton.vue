@@ -73,7 +73,7 @@
                     <v-card>
                       <!-- 상단바 -->
                       <v-card-title>
-                        <v-toolbar dark color="amber darken-4">
+                        <v-toolbar dark id="final-modal-outer">
                             <v-toolbar-title class="final-modal-title">Communication</v-toolbar-title>
                             <v-spacer></v-spacer>
                             <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어 
@@ -98,7 +98,7 @@
                       <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-flex xs10 sm4>
-                          <v-btn dark outline block color="amber darken-1" @click.native="secondDialog = false" class="ok-but">
+                          <v-btn dark outline block color="brown lighten-1" @click.native="secondDialog = false" class="ok-but">
                             확인
                           </v-btn>
                         </v-flex>
@@ -295,5 +295,9 @@ export default {
 
   .final-modal-title {
     font-size: 2em;
+  }
+
+  #final-modal-outer {
+    background-color : #9d724b;
   }
 </style>

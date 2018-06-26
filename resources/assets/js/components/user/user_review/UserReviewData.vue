@@ -149,24 +149,6 @@ export default {
             });
         },
 
-        // 반올림 함수
-        round(number, precision) {
-            var numArray = 0;
-
-            if(number != null){
-                var shift = function (number, precision, reverseShift) {
-                if (reverseShift) {
-                    precision = -precision;
-                }  
-                numArray = ("" + number).split("e");
-                return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
-                };
-            return shift(Math.round(shift(number, precision, false)), precision, true);
-            }
-
-            return 0;
-        },
-
         // 리뷰 데이터 값과 이미지 값을 분리하는 메서드
         arrayClassification(array){
             // 전달받은 전테 데이터배열의 길이만큼 반복
@@ -260,7 +242,7 @@ export default {
         reviewDataTypeChange(){
             for(var iCount = 0; iCount < this.reviewDataList.length; iCount++){
                 this.reviewDataList[iCount]['img_num'] = Number(this.reviewDataList[iCount]['img_num']);
-                this.reviewDataList[iCount]['likeNum'] = Number(this.reviewDataList[iCount]['likeNum']);
+                this.reviewDataList[iCount]['likeNum'] = Number(this.reviewDataList[iCount]['likenum']);
                 this.reviewDataList[iCount]['mood']    = Number(this.reviewDataList[iCount]['mood']);
                 this.reviewDataList[iCount]['price']   = Number(this.reviewDataList[iCount]['price']);
                 this.reviewDataList[iCount]['rating']  = Number(this.reviewDataList[iCount]['rating']);
@@ -282,8 +264,9 @@ export default {
         axios.post('/review', shopData).
         then((response)=>{
 
-            console.log("-----review value get-----");
-            console.log(response.data['review']);
+            // console.log("-----review value get-----");
+            // console.log(response.data['review']);
+           
             // 리뷰 좋아요 데이터
             // console.log("-----review like get-----");
             // console.log(response.data['reviewLike']);
@@ -304,10 +287,15 @@ export default {
 
             // reviewDataList배열에 리뷰 데이터목록을 저장합니다.    Object.keys(배열);
             this.reviewDataList = response.data['review'],
+
             // 리뷰 평점의 값을 reviewDataList배열에서 shift하여 대입합니다.
             this.totalRating = this.reviewDataList.shift(),
+
+            this.totalRating = this.totalRating["totalrating"];
+
             // 소수점 셋째자리에서 반올림 (둘째짜리까지 출력되도록)
-            this.totalRating = this.round(this.totalRating['totalRating'], 2),
+            this.totalRating = Number(this.totalRating.toFixed(2));
+
             // reviewDataList배열 값 타입 변경
             this.reviewDataTypeChange();
             // ********************   리뷰목록 사용 데이터 get 및 자료형 변경 끝   ********************

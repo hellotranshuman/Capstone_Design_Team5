@@ -2,7 +2,7 @@
   <div>
     <gmap-map
             id='g-map'
-            :center=currentCenter
+            :center=googleMapCenter
             :zoom="18"
             style="width:100%;  height: 300px;"
     >
@@ -37,9 +37,10 @@
     import axios  from 'axios';
     export default {
         name: "GoogleMap",
-        props: ['currentCenter'],
+        props: ['currentCenter', 'googleMapMode'],
         data() {
             return {
+                googleMapCenter: this.currentCenter,
                 restaurantInfo: false,
                 restaurantTitle: "test",
                 restaurantImg: "",
@@ -55,32 +56,40 @@
             };
         },
 
-        mounted: function() {
+        created: function() {
             this.geolocate();
 
-            var tp = "";
-            var temp = [
-                {
-                    'position': {lat: 35.8962134, lng: 128.6197624},
-                    'icon': "/images/restaurant.png",
-                    'restaurantId': 1,
-                    'restaurantName' : '식당이름1'
-                },
-                {
-                    'position': {lat: 35.8964134, lng: 128.6192624},
-                    'icon': "/images/restaurant.png",
-                    'restaurantId': 2,
-                    'restaurantName' : '식당이름2'
-                },
-                {
-                    'position': {lat: 35.8968134, lng: 128.6198624},
-                    'icon': "/images/restaurant.png",
-                    'restaurantId': 3,
-                    'restaurantName' : '식당이름3'
-                },
-            ]
-            while(tp = temp.pop()) {
-                this.markers.push(tp);
+            if(!this.currentCenter) {
+                if(this.googleMapMode == 'top') {
+                    var restaurantList = this.$session.get('top_restaurantList');
+                } else if(this.googleMapMode == 'search') {
+                    var restaurantList = [];
+                    restaurantList.push(this.$session.get('searchData').shopSearchData);
+                    restaurantList.push(this.$session.get('searchData').regionSearchData);
+                    restaurantList.push(this.$session.get('searchData').tagSearchData);
+                    console.log(this.$session.get('searchData'));
+                }
+                var avg_lat = 0;
+                var avg_lng = 0;
+                var count = 0;
+
+                for(var key in restaurantList) {
+                    var temp = restaurantList[key].coordinate.replace('(', '');
+                    var temp2 = temp.replace(')', '');
+                    var temp3 = temp2.split(', ');
+                    avg_lat += Number(temp3[0]);
+                    avg_lng += Number(temp3[1]);
+                    count++;
+
+                    this.markers.push({
+                        'position': {lat: Number(temp3[0]), lng: Number(temp3[1])},
+                        'icon': "/images/restaurant.png",
+                        'restaurantId': restaurantList[key].shop_id,
+                        'restaurantName' : restaurantList[key].shop_name
+                    });
+                }
+
+                this.googleMapCenter = {'lat': avg_lat / count, 'lng': avg_lng / count};
             }
         },
 

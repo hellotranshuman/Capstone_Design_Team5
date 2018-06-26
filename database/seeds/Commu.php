@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CommunicationTable extends Seeder
+class Commu extends Seeder
 {
     /**
      * Run the database seeds.

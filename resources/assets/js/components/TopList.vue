@@ -5,10 +5,7 @@
                 <v-alert v-if="$session.get('top_mode') == 'region'" @click="open_gps_dialog()" :value="true" outline color="success" icon="gps_fixed" style="cursor:pointer">
                     {{ $session.get('top_region') }}
                 </v-alert>
-                <!--<GoogleMap v-if="$session.get('top_mode') == 'region'" :currentCenter="latlngProps"></GoogleMap>-->
-                <div v-if="$session.get('top_mode') == 'region'" id="google_map">
-
-                </div>
+                <GoogleMap v-if="$session.get('top_mode') == 'region'" googleMapMode="top"></GoogleMap>
             </v-flex>
         </v-layout>
         <br>
@@ -54,9 +51,8 @@
             }
         },
 
-        mounted() {
-            if(this.$session.get('top_mode') == 'region')
-                this.geoCoder(this.$session.get('top_region'));
+        created() {
+
         },
 
         methods: {
@@ -66,19 +62,6 @@
 
             moveRestaurant(shop_id) {
                 this.$router.push('/restaurant/' + shop_id + '/info');
-            },
-
-            geoCoder(argAddress) {
-                var address = argAddress;
-                var map = new google.maps.Map(document.getElementById('google_map'), {zoom: 14});
-                var geocoder = new google.maps.Geocoder();
-
-                geocoder.geocode({'address': address}, function(results, status) {
-                    if(status === google.maps.GeocoderStatus.OK) {
-                        map.setCenter(results[0].geometry.location);
-                    } else
-                        console.log(status);
-                });
             },
         }
     }

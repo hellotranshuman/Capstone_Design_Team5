@@ -227,7 +227,7 @@
         </v-layout>
         <v-layout justify-space-around>
           <v-spacer></v-spacer>
-          <v-flex xs7>
+          <v-flex xs5>
             <CustomerRatingChart :height="300" :chart-data="ratingData" :options="customerRateOptions"></CustomerRatingChart>
           </v-flex>
           <v-flex xs3 class="card-text-style">
@@ -320,7 +320,7 @@
     <!-- 방문 손님 그래프 출력 -->
     <v-layout>
       <v-spacer></v-spacer>
-      <v-flex xs10>
+      <v-flex xs8>
         <CustomerNumberChart :height="200" :startDay="startDate" :endDay="endDatePlusOne"></CustomerNumberChart>
       </v-flex>
       <v-spacer></v-spacer>
@@ -429,11 +429,11 @@
         <v-layout justify-space-around>
           <!-- 인기 메뉴 순위 -->
           <v-flex xs3>
-                <h2>인기 메뉴 순위 (그릇)</h2>
+            <h2>인기 메뉴 순위 (그릇)</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
-          <v-flex>
+          <v-flex xs8>
             <MenuRankingChart :height="200" :chart-data="menuRankData"></MenuRankingChart>
           </v-flex>
         </v-layout>

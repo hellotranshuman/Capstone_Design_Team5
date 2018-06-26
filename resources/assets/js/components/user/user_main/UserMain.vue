@@ -50,7 +50,7 @@
                                         <v-container fill-height fluid>
                                             <v-layout fill-height>
                                                 <v-flex xs12 align-end flexbox>
-                                                    <span class="headline"><b>{{ item.name }}</b></span>
+                                                    <span class="headline"><b>{{ translateKor(item.name) }} 베스트 {{ item.listLimit }}</b></span>
                                                 </v-flex>
                                             </v-layout>
                                         </v-container>
@@ -225,7 +225,28 @@
                     '면류': 'men',
                     '제과': 'bbang',
                     '': '',
-                }
+                },
+
+                translateKorValue: {
+                    '東京': '도쿄',
+                    '한식': '한식',
+                    '일식': '일식',
+                    '중식': '중식',
+                    '양식': '양식',
+                    '분식': '분식',
+                    '덮밥': '덮밥',
+                    '스시': '스시',
+                    '패스트 푸드': '패스트 푸드',
+                    '찜': '찜',
+                    '탕': '탕',
+                    '도시락': '도시락',
+                    '카페&디저트': '카페&디저트',
+                    '술집': '술집',
+                    '면류': '면류',
+                    '제과': '제과',
+                    '': '',
+                    '': '',
+                },
             }
         },
 
@@ -235,7 +256,7 @@
                     name: this.$session.get('region'),
                     src: "/images/" + this.translate(this.$session.get('region')) + ".jpg",
                     function: this.clickRegionList,
-                    listLimit: 5
+                    listLimit: 7
                 });
             }
 
@@ -300,6 +321,10 @@
             translate(value) {
                 return this.translateValue[value];
             },
+
+            translateKor(value) {
+                return this.translateKorValue[value];
+            }
         }
     }
 </script>

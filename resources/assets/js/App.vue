@@ -77,7 +77,7 @@
                         </v-list-tile>
                         <!-- 출력될 modal창 내용-->
                         <v-card>
-                            <v-toolbar dark color="amber darken-1">
+                            <v-toolbar dark id="communication-toolbar">
                                 <v-toolbar-title>Communication</v-toolbar-title>
                                 <v-spacer></v-spacer>
                                 <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어
@@ -445,6 +445,7 @@
                     .then(response => {
                         this.$session.set('searchKeyword', this.searchDataInput);
                         this.$session.set('searchData', response.data);
+                        console.log(response.data.shopSearchData);
 
                         if(this.$route.path != '/search')
                             this.$router.push('/search');
@@ -499,4 +500,10 @@
         font-size: 20px;
         text-align: center;
     }
+
+    #communication-toolbar {
+        background-color : #9d724b;
+    }
+
+
 </style>

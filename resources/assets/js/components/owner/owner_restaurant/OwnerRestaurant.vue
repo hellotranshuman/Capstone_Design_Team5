@@ -591,10 +591,18 @@
 </div> 
 </template>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
+    import Vue      from 'vue';
 import VueAxios from 'vue-axios';
 import axios from 'axios';  
 import * as VueGoogleMaps from 'vue2-google-maps';
+
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: "AIzaSyDTHKQzISVxAAfuBGp0HKj5GpMPNqR_Ovo",
+        libraries: "places" // necessary for places input
+    }
+})
 
 var coordinate = null;
 
@@ -611,8 +619,8 @@ export default {
             }  
         })
         .catch((ex)=>{
-            // this.snackbar_text = '서버 연결 실패';
-            // this.snackbar = true;
+            this.snackbar_text = '서버 연결 실패';
+            this.snackbar = true;  
         });       
     },
 

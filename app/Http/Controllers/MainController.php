@@ -749,6 +749,8 @@ class MainController extends Controller
             $langCode  = $responseData->langCode;
         }
 
+
+
         // <-- 언어 감지후 일본어나 영어가 아니면 번역 기능 실행하기 (현재는 한쿡어만...)
         if($langCode == "ko") {
             $encText = urlencode($keyword);
@@ -767,7 +769,7 @@ class MainController extends Controller
 
             curl_close ($ch);
 
-            if($status_code == 200 && auth()->user()->country != 'Japan') {
+            if($status_code == 200) {
                 $responseData = json_decode($response);
 
                 $keyword  = $responseData->message->result->translatedText;
@@ -777,12 +779,18 @@ class MainController extends Controller
 
         $searchKeyword = '%' . $keyword . '%';
 
+        // <-- 검색 별점 순, 인기 순
         if(!$request->has('searchType') || $request->get('searchType') == 1) {
 
-            // 이거 버그잇음 뷰에서 출력이 제대로 안됨 이상;
-            // <— 가게 이름으로 검색
-          $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
-              ->select(DB::raw('
+            // <-- 지역 선택 Data 없을시
+            if(!$request->has('searchArea')) {
+
+                // <-- 매뉴 가격 필터링 Data 없을시
+                if(!$request->has('searchPrice')) {
+                    // 이거 버그잇음 뷰에서 출력이 제대로 안됨 이상;
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
                                     restaurants.id as shop_id,
                                     restaurants.name as shop_name,
                                     restaurants.type as shop_type,
@@ -792,15 +800,15 @@ class MainController extends Controller
                                     AVG(review.rating) as totalRating,
                                     restaurants.coordinate as coordinate
                                 '))
-              ->where('name', 'like', $searchKeyword)
-              ->groupBy('restaurants.id')
-              ->orderByRaw('totalRating desc')
-              ->get()
-              ->toArray();
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
 
-            // <—————————————— 식당 위치 지역 명으로 검색
-            $regionSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
-                ->select(DB::raw('
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
                                     restaurants.id as shop_id,
                                     restaurants.name as shop_name,
                                     restaurants.type as shop_type,
@@ -810,16 +818,17 @@ class MainController extends Controller
                                     AVG(review.rating) as totalRating,
                                     restaurants.coordinate as coordinate
                                 '))
-                ->having('shop_address', 'like', $searchKeyword)
-                ->groupBy('restaurants.id')
-                ->orderByRaw('totalRating desc')
-                ->get()
-                ->toArray();
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
 
-            // <—————————————— 해시태그로 검색
-            $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
-                ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
-                ->select(DB::raw('
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                AVG(review.rating) as totalRating,
                                 restaurants.id   as shop_id,
                                 restaurants.name as shop_name,
                                 restaurants.type as shop_type,
@@ -830,14 +839,15 @@ class MainController extends Controller
                                 restaurants.address as shop_address,
                                 restaurants.coordinate as coordinate
                             '))
-                ->where('hashtag.tag', 'like', $searchKeyword)
-                ->groupBy('shop_id')
-                ->get()
-                ->toArray();
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->groupBy('shop_id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
 
-            // <--- 업종으로 검색
-            $typeSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
-                ->select(DB::raw('
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
                                     restaurants.id as shop_id,
                                     restaurants.name as shop_name,
                                     restaurants.type as shop_type,
@@ -847,23 +857,313 @@ class MainController extends Controller
                                     AVG(review.rating) as totalRating,
                                     restaurants.coordinate as coordinate
                                 '))
-                ->where('restaurants.type', 'like', $searchKeyword)
-                ->groupBy('restaurants.id')
-                ->orderByRaw('totalRating desc')
-                ->get()
-                ->toArray();
-        }
+                        ->where('restaurants.type', 'like', $request->get('searchData'))
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+                }
+                // <-- 가격 데이터 있을시
+                else {
+                  $menuPriceMinData = $request->get('searchPriceMin');
+                  $menuPriceMaxData = $request->get('searchPriceMax');
+
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                               '))
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                AVG(review.rating) as totalRating,
+                                restaurants.id   as shop_id,
+                                restaurants.name as shop_name,
+                                restaurants.type as shop_type,
+                                restaurants.explanation as shop_explanation,
+                                restaurants.phone as shop_phone,
+                                restaurants.dodobuken as shop_ddobuken,
+                                restaurants.cities as shop_cities,
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as coordinate,
+                                ROUND(AVG(menu.price),2) as price
+                            '))
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('shop_id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('restaurants.type', 'like', $request->get('searchData'))
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                }
+
+            }
+            else {
+
+                $regionData = $request->get('searchArea');
+
+                // <-- 매뉴 가격 필터링 Data 없을시
+                if(!$request->has('searchPrice')) {
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate
+                                '))
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate
+                                '))
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                AVG(review.rating) as totalRating,
+                                restaurants.id   as shop_id,
+                                restaurants.name as shop_name,
+                                restaurants.type as shop_type,
+                                restaurants.explanation as shop_explanation,
+                                restaurants.phone as shop_phone,
+                                restaurants.dodobuken as shop_ddobuken,
+                                restaurants.cities as shop_cities,
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as coordinate
+                            '))
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->groupBy('shop_id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate
+                                '))
+                        ->where('restaurants.type', 'like', $request->get('searchData'))
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                }
+                // 가격 데이터 있을시
+                else {
+                    $menuPriceMinData = $request->get('searchPriceMin');
+                    $menuPriceMaxData = $request->get('searchPriceMax');
+
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate,
+                                     ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                AVG(review.rating) as totalRating,
+                                restaurants.id   as shop_id,
+                                restaurants.name as shop_name,
+                                restaurants.type as shop_type,
+                                restaurants.explanation as shop_explanation,
+                                restaurants.phone as shop_phone,
+                                restaurants.dodobuken as shop_ddobuken,
+                                restaurants.cities as shop_cities,
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as coordinate,
+                                ROUND(AVG(menu.price),2) as price
+                            '))
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('shop_id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('restaurants.type', 'like', $request->get('searchData'))
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('totalRating desc')
+                        ->get()
+                        ->toArray();
+
+                } // <-- price If
+
+
+            } // <-- region If
+
+
+        } // <-- review Rating If
         else {
-            // <— 가게 이름으로 검색
-            $shopSearchData = Restaurant::select(DB::raw('id, name, type,
-                            explanation, phone, dodobuken, cities, address, coordinate'))
-                ->where('name', 'like', $searchKeyword)
-                ->get()
-                ->toArray();
 
-            // <—————————————— 식당 위치 지역 명으로 검색
-            $regionSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
-                ->select(DB::raw('
+            // <-- 지역 선택 Data 없을시
+            if(!$request->has('searchArea')) {
+
+                // <-- 가격 데이터 없을시
+                // <-- 매뉴 가격 필터링 Data 없을시
+                if(!$request->has('searchPrice')) {
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
                                     restaurants.id as shop_id,
                                     restaurants.name as shop_name,
                                     restaurants.type as shop_type,
@@ -873,16 +1173,215 @@ class MainController extends Controller
                                     SUM(order_list.order_num) as order_num,
                                     restaurants.coordinate as coordinate
                                 '))
-                ->having('shop_address', 'like', $searchKeyword)
-                ->groupBy('restaurants.id')
-                ->orderByRaw('order_num desc')
-                ->get()
-                ->toArray();
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
 
-            // <—————————————— 해시태그로 검색
-            $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
-                ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
-                ->select(DB::raw('
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate
+                                '))
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftjoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                restaurants.id   as shop_id,
+                                restaurants.name as shop_name,
+                                restaurants.type as shop_type,
+                                restaurants.explanation as shop_explanation,
+                                restaurants.phone as shop_phone,
+                                restaurants.dodobuken as shop_dodobuken,
+                                restaurants.cities as shop_cities,
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as coordinate,
+                                SUM(order_list.order_num) as order_num
+                            '))
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->groupBy('shop_id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate
+                                '))
+                        ->where('restaurants.type', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+                }
+                // <-- 지역데이터 X but 가격 데이터 있을시
+                else {
+                    $menuPriceMinData = $request->get('searchPriceMin');
+                    $menuPriceMaxData = $request->get('searchPriceMax');
+
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftjoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                restaurants.id   as shop_id,
+                                restaurants.name as shop_name,
+                                restaurants.type as shop_type,
+                                restaurants.explanation as shop_explanation,
+                                restaurants.phone as shop_phone,
+                                restaurants.dodobuken as shop_dodobuken,
+                                restaurants.cities as shop_cities,
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as coordinate,
+                                SUM(order_list.order_num) as order_num,
+                                ROUND(AVG(menu.price),2) as price
+                            '))
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('shop_id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('restaurants.type', 'like', $searchKeyword)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+                } // <-- price If
+
+
+            } // <-- region If
+            else {
+                $regionData = $request->get('searchArea');
+
+                // <-- 지역은 있는데 가격 data x
+                if(!$request->has('searchPrice')) {
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                                    restaurants.id as shop_id,
+                                                    restaurants.name as shop_name,
+                                                    restaurants.type as shop_type,
+                                                    restaurants.explanation as shop_explanation,
+                                                    restaurants.phone as shop_phone,
+                                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                                    SUM(order_list.order_num) as order_num,
+                                                    restaurants.coordinate as coordinate
+                                                '))
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                                        restaurants.id as shop_id,
+                                                        restaurants.name as shop_name,
+                                                        restaurants.type as shop_type,
+                                                        restaurants.explanation as shop_explanation,
+                                                        restaurants.phone as shop_phone,
+                                                        concat_ws(dodobuken, cities, address) as shop_address,
+                                                        SUM(order_list.order_num) as order_num,
+                                                        restaurants.coordinate as coordinate
+                                                    '))
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
                                 restaurants.id   as shop_id,
                                 restaurants.name as shop_name,
                                 restaurants.type as shop_type,
@@ -893,14 +1392,15 @@ class MainController extends Controller
                                 restaurants.address as shop_address,
                                 restaurants.coordinate as coordinate
                             '))
-                ->where('hashtag.tag', 'like', $searchKeyword)
-                ->groupBy('shop_id')
-                ->get()
-                ->toArray();
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->groupBy('shop_id')
+                        ->get()
+                        ->toArray();
 
-            // <--- 업종으로 검색
-            $typeSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
-                ->select(DB::raw('
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
                                     restaurants.id as shop_id,
                                     restaurants.name as shop_name,
                                     restaurants.type as shop_type,
@@ -910,12 +1410,114 @@ class MainController extends Controller
                                     SUM(order_list.order_num) as order_num,
                                     restaurants.coordinate as coordinate
                                 '))
-                ->where('restaurants.type', 'like', $searchKeyword)
-                ->groupBy('restaurants.id')
-                ->orderByRaw('order_num desc')
-                ->get()
-                ->toArray();
-        }
+                        ->where('restaurants.type', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+                }
+                // <-- 지역 데이터  O and 가격데이터 O
+                else {
+                    $menuPriceMinData = $request->get('searchPriceMin');
+                    $menuPriceMaxData = $request->get('searchPriceMax');
+
+                    // <— 가게 이름으로 검색
+                    $shopSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                                    restaurants.id as shop_id,
+                                                    restaurants.name as shop_name,
+                                                    restaurants.type as shop_type,
+                                                    restaurants.explanation as shop_explanation,
+                                                    restaurants.phone as shop_phone,
+                                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                                    SUM(order_list.order_num) as order_num,
+                                                    restaurants.coordinate as coordinate,
+                                                    ROUND(AVG(menu.price),2) as price
+                                                '))
+                        ->where('restaurants.name', 'like', $searchKeyword)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 식당 위치 지역 명으로 검색
+                    $regionSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                                        restaurants.id as shop_id,
+                                                        restaurants.name as shop_name,
+                                                        restaurants.type as shop_type,
+                                                        restaurants.explanation as shop_explanation,
+                                                        restaurants.phone as shop_phone,
+                                                        concat_ws(dodobuken, cities, address) as shop_address,
+                                                        SUM(order_list.order_num) as order_num,
+                                                        restaurants.coordinate as coordinate,
+                                                        ROUND(AVG(menu.price),2) as price
+                                                    '))
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->having('shop_address', 'like', $searchKeyword)
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+
+                    // <—————————————— 해시태그로 검색
+                    $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                        ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                restaurants.id   as shop_id,
+                                restaurants.name as shop_name,
+                                restaurants.type as shop_type,
+                                restaurants.explanation as shop_explanation,
+                                restaurants.phone as shop_phone,
+                                restaurants.dodobuken as shop_ddobuken,
+                                restaurants.cities as shop_cities,
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as coordinate,
+                                ROUND(AVG(menu.price),2) as price
+                            '))
+                        ->where('hashtag.tag', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('shop_id')
+                        ->get()
+                        ->toArray();
+
+                    // <--- 업종으로 검색
+                    $typeSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                        ->leftJoin('menu', 'menu.shop_id', '=', 'restaurants.id')
+                        ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate,
+                                    ROUND(AVG(menu.price),2) as price
+                                '))
+                        ->where('restaurants.type', 'like', $searchKeyword)
+                        ->where('restaurants.dodobuken', 'like', $regionData)
+                        ->where('menu.price', '>=', $menuPriceMinData)
+                        ->where('menu.price', '<=', $menuPriceMaxData)
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('order_num desc')
+                        ->get()
+                        ->toArray();
+                } // <-- price If
+
+
+            } // <-- region If
+
+        } // <-- orderData if
 
         return response()->json([
             'shopSearchData'    => $shopSearchData,

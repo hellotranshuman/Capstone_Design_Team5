@@ -256,7 +256,7 @@
         <!-- 매출 그래프 -->
         <v-layout justify-space-around>
           <v-spacer></v-spacer>
-          <v-flex xs10>
+          <v-flex xs8>
             <SalesProfitChart :height="200" :startDay="startDate" :endDay="endDatePlusOne"></SalesProfitChart>
           </v-flex>
           <v-spacer></v-spacer>
@@ -370,7 +370,7 @@
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
-          <v-flex>
+          <v-flex xs8>
             <MenuSalesChart :height="200" :chart-data="menuSalesData"></MenuSalesChart>
           </v-flex>
         </v-layout>

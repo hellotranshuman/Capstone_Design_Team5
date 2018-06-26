@@ -30,7 +30,7 @@
         <v-layout>
             <v-flex>
                 <!-- 상단바 -->
-                <v-toolbar flat dark tabs color="amber darken-1">
+                <v-toolbar dark id="review-write-topBar">
                     <v-layout justify-space-between align-center>
                         <v-flex xs10 sm10>
                             <v-toolbar-title class="review-write-font">
@@ -136,31 +136,33 @@
         </v-card>
 
         <!-- 이미지 -->
-        <v-layout row wrap>
-            <v-spacer></v-spacer>
-            <v-flex xs4 sm3>
-                <PictureInput ref="image1" removable @change="onChange" 
-                margin="10" radius="10" height="200" width="300"
-                accept="image/*" size="10" buttonClass="btn" :z-index="0"
-                :customStrings="setPictureString">
-                </PictureInput> 
-            </v-flex>
-            <v-flex xs4 sm3>
-                <PictureInput ref="image2" removable @change="onChange" 
-                margin="10" radius="10" height="200" width="300"
-                accept="image/*" size="10" buttonClass="btn" :z-index="0"
-                :customStrings="setPictureString">
-                </PictureInput> 
-            </v-flex>
-            <v-flex xs4 sm3>
-                <PictureInput ref="image3" removable @change="onChange" 
-                margin="10" radius="10" height="200" width="300"
-                accept="image/*" size="10" buttonClass="btn" :z-index="0"
-                :customStrings="setPictureString">
-                </PictureInput> 
-            </v-flex>
-            <v-spacer></v-spacer>
-        </v-layout>
+        <v-card flat>
+            <v-layout row wrap>
+                <v-spacer></v-spacer>
+                <v-flex xs4 sm3>
+                    <PictureInput ref="image1" removable @change="onChange" 
+                    margin="10" radius="10" height="200" width="300"
+                    accept="image/*" size="10" buttonClass="btn" :z-index="0"
+                    :customStrings="setPictureString">
+                    </PictureInput> 
+                </v-flex>
+                <v-flex xs4 sm3>
+                    <PictureInput ref="image2" removable @change="onChange" 
+                    margin="10" radius="10" height="200" width="300"
+                    accept="image/*" size="10" buttonClass="btn" :z-index="0"
+                    :customStrings="setPictureString">
+                    </PictureInput> 
+                </v-flex>
+                <v-flex xs4 sm3>
+                    <PictureInput ref="image3" removable @change="onChange" 
+                    margin="10" radius="10" height="200" width="300"
+                    accept="image/*" size="10" buttonClass="btn" :z-index="0"
+                    :customStrings="setPictureString">
+                    </PictureInput> 
+                </v-flex>
+                <v-spacer></v-spacer>
+            </v-layout>
+        </v-card>
     </v-content>
 </template>
 
@@ -364,5 +366,9 @@ export default {
 
     .review-write-font {
         font-weight: bold;
+    }
+
+    #review-write-topBar {
+        background-color : #9d724b;
     }
 </style>

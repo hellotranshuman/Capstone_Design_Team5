@@ -18,9 +18,11 @@ class CreateOrderOptionTable extends Migration
             $table->unsignedInteger('subop_num')->nullable();
             $table->unsignedInteger('order_menu_id');
             $table->foreign('op_num')
-                ->references('opnum')->on('menu_option');
+                ->references('opnum')->on('menu_option')
+                ->onDelete('cascade');
             $table->foreign('subop_num')
-                ->references('sub_opnum')->on('suboption');
+                ->references('sub_opnum')->on('suboption')
+                ->onDelete('cascade');
             $table->foreign('order_menu_id')
                 ->references('id')->on('order_menu')
                 ->onDelete('cascade');

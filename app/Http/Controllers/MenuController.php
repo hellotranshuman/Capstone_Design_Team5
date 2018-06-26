@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Layout;
+use App\Order_Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -436,7 +437,7 @@ class MenuController extends Controller
             foreach ($opDataList as $opData) {
                 $opNum = $opData->opnum;
 
-                Suboption::where('opnum', $opNum)
+               Menu_Option::where('opnum', $opNum)
                     ->delete();
             }
 

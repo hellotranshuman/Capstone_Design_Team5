@@ -3,451 +3,692 @@
     가게 주인이 입력한 정보, 업로드한 이미지를 바탕으로 가게 페이지를 동적으로 제작함.
 -->
 <template>
-    <div class="container">
-        <v-app class="fontSize">
-            <!--스낵바 : 경고 창 출력-->
-            <v-snackbar :timeout="timeout" :top="'top'" v-model="snackbar">
-                {{ snackbar_text }}
-                <v-btn flat color="pink" icon @click.native="snackbar = false">
-                    <v-icon large> close </v-icon>
-                </v-btn>
-            </v-snackbar>
+<div class="container">
+<v-app class="fontSize">
+    <!--스낵바 : 경고 창 출력-->
+    <v-snackbar 
+        v-model="snackbar"
+        :timeout="timeout" 
+        :top="'top'" 
+    >
+        {{ snackbar_text }}
 
-            <!-- 타이틀 이미지와 가게 명이 들어갈 div -->
-            <div class="title_div">
-                <div id="title_img">
-                    <div id="name_area"> 
-                        <b id="name" style="float:left"></b> 
-                    </div>
-                    <button id="LikeIt" @click="I_Like_It">  
-                        &nbsp;좋아요 &#9829;&nbsp;
-                    </button>  
-                </div>
+        <v-btn 
+            @click.native="snackbar = false"
+            color="pink"
+            flat icon 
+        >
+            <v-icon large> close </v-icon>
+        </v-btn>
+    </v-snackbar> 
+
+    <!-- 타이틀 -->
+    <div class="title_div">        
+        <!-- 타이틀 데스트 탑인 경우 -->
+        <div id="title_inner" v-if="browser_state === 'com'">             
+            <!-- 서비스 로고 -->
+            <div class="title_contents" style="height:15%;">    
+                <b id="smarts"> SMART'S </b>
             </div>
 
-            <b id="totalRating" class='column' 
-                style="margin-bottom: 4%; border-bottom:1px solid #848484; text-align: left;">방문객 평점 :&nbsp;</b>
+            <!-- 식당 이름 -->
+            <div class="title_contents" style="height:35%;">                
+                <b id="name"></b> 
 
-            <!-- 가게 설명이 들어갈 div -->
-            <div style="width:100%;">
-                <div style=" float:left; display: flex">
-                    <b class='column'> 소개 </b>
+                <hr style="border:2px solid;">  
+
+                <b id="namer"></b> 
+
+                <!-- 식당 평점 star star_border star_half -->
+                <div class="title_contents" style="width:100%; margin-top:3%;">
+                    <div id="prtStar" style="width:100%;">
+                        <v-icon large color="yellow darken-2"> star_border </v-icon>
+                        <v-icon large color="yellow darken-2"> star_border </v-icon>
+                        <v-icon large color="yellow darken-2"> star_border </v-icon>
+                        <v-icon large color="yellow darken-2"> star_border </v-icon>
+                        <v-icon large color="yellow darken-2"> star_border </v-icon>
+                    </div> 
+                    <b id="totalRating" style="font-size:2rem;"> </b>
                 </div>
+            </div>           
 
-                <div style="float:right; margin-right:1%; display: flex">                 
-                    
-                    <!-- 예약 하기 -->
-                    <v-dialog v-model="dialog" persistent max-width="500px">
-                        <v-btn color="#424242" dark slot="activator" class="addReservation_btn">예약 하기</v-btn>
-                        <v-card>
-                            <!-- v-card title -->
-                            <v-card-title>
-                                <span class="headline">예약 하기</span>
-                            </v-card-title>
-                            <!-- v-card 본문 -->
-                            <v-card-text>
-                                <v-container grid-list-md>
-                                    <v-layout wrap>
-                                        <!-- 예약 날짜 -->
-                                        <v-flex xs11 sm5 >
-                                            <!-- datepicker -->
-                                            <v-menu
-                                                    ref="reservation_menu"
-                                                    lazy
-                                                    :close-on-content-click="false"
-                                                    v-model="reservation_menu"
-                                                    transition="scale-transition"
-                                                    offset-y
-                                                    full-width
-                                                    :nudge-right="40"
-                                                    min-width="290px"
-                                                    :return-value.sync="start_date"
-                                            >
-                                                <v-text-field
-                                                        slot="activator"
-                                                        label="예약 날짜"
-                                                        v-model="start_date"
-                                                        prepend-icon="event"
-                                                        readonly
-                                                ></v-text-field>
+            <!-- 식당 설명 스크롤바 숨기기 -->
+            <div  
+                class="title_contents" 
+                style= "height:40%; 
+                        overflow:hidden;
+                        border:2px solid white;" 
+            >
+                <div id="explanation"></div>
+            </div>
 
-                                                <!-- 예약 날짜 -->
-                                                <v-date-picker v-model="start_date" no-title scrollable :allowed-dates="allowedDates">
-                                                    <v-spacer></v-spacer>
-                                                    <v-btn flat color="primary" @click.stop="reservation_menu = false">Cancel</v-btn>
-                                                    <v-btn flat color="primary" @click="$refs.reservation_menu.save(start_date), setTime()">OK</v-btn>
-                                                </v-date-picker>
-                                            </v-menu>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                            <!-- 예약 시간 -->
-                                            <v-select
-                                                    :items="states"
-                                                    v-model="pick_time"
-                                                    label="예약 시간"
-                                                    single-line
-                                            ></v-select>
-                                        </v-flex>
-                                        <!-- 인원수 -->
-                                        <v-flex xs12 sm6 md4>
-                                            <v-text-field label="어른 인원" required v-model="adult_person"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                            <v-text-field label="아이 인원" required v-model="child_person"></v-text-field>
-                                        </v-flex>
-
-                                        <!-- 메뉴 선택 (1:true)-->
-                                        <div v-if="this.reservation_selectMenu == 1">
-                                            <B> 메뉴 예약이 가능한 가게 입니다. </B><br>
-                                            <v-btn color="primary" @click="menuDialog = true"> 메뉴 선택하기 </v-btn>
-
-                                            <!-- 메뉴판 -->
-                                            <v-dialog
-                                                    v-model="menuDialog"
-                                            >
-                                                <v-stepper v-model="Menu_Order" dark>
-                                                    <!-- Header -->
-                                                    <v-stepper-header>
-                                                        <!-- 1. 메뉴선택 -->
-                                                        <v-stepper-step step="1" :complete="Menu_Order > 1">메뉴 선택</v-stepper-step>
-                                                        <v-divider></v-divider>
-
-                                                        <!-- 2. 메뉴 확인 -->
-                                                        <v-stepper-step step="2" :complete="Menu_Order > 2">메뉴 확인</v-stepper-step>
-                                                        <v-divider></v-divider>
-                                                    </v-stepper-header>
-                                                    <!-- Main -->
-                                                    <v-stepper-items>
-                                                        <!-- 1. 메뉴선택 -->
-                                                        <v-stepper-content step="1" color="error">
-
-                                                            <v-card color="white lighten-1" class="mb-5" style="overflow:hidden">
-                                                                <Layout></Layout>
-                                                            </v-card>
-
-                                                            <!-- btn -->
-                                                            <v-btn color="error" @click.native="Menu_Order = 2"
-                                                                   @click="order_menu">
-                                                                확인
-                                                            </v-btn>
-                                                            <v-btn flat @click="menuDialog = false">취소</v-btn>
-                                                        </v-stepper-content>
-
-                                                        <!-- 2. 메뉴 확인  height="200px" -->
-                                                        <v-stepper-content step="2">
-                                                            <v-card color="white lighten-1" class="mb-5" >
-                                                                <v-container :id="'menu_check_container'">
-                                                                    <v-layout v-for="i in range(0, click_menu.length-1)" :key="i"
-                                                                              :id="'menu_layout'+i"  mb-3>
-                                                                        <v-flex sm12>
-                                                                            <v-card elevation-20>
-                                                                                <v-card-text style="font-size:1.2rem">
-                                                                                    <div>
-                                                                                        <b> 메뉴명 : {{click_menu[i].menu.name}} </b>
-                                                                                        <v-btn icon
-                                                                                               style="float : right"
-                                                                                               @click="click_cancel"
-                                                                                               :id="i"
-                                                                                        >
-                                                                                            <v-icon dark> close </v-icon>
-                                                                                        </v-btn><br>
-                                                                                        <b> 가격 : {{click_menu[i].menu.price}} </b> <br>
-                                                                                        <!-- 옵션 선택 -->
-                                                                                        <v-flex xs6 v-if="click_menu[i].menu.opNum != 0">
-                                                                                            <b> [ 옵션 ] </b> <br>
-                                                                                            <!-- 옵션 배열 길이 만큼 돌기 -->
-                                                                                            <span v-for="(option, index) in optionArray[i]" :key="index">
-                                                                                        <!-- 옵션 이름 -->
-                                                                                        <b v-text="option['Name']"></b>
-                                                                                                <!-- 옵션 세부 사항 -->
-
-                                                                                        <v-select
-                                                                                                :items="optionArray[i][index]"
-                                                                                                v-model="optionselect[i][index]"
-                                                                                                single-line
-                                                                                        ></v-select>
-                                                                                    </span>
-                                                                                        </v-flex>
-                                                                                    </div>
-                                                                                </v-card-text>
-                                                                            </v-card>
-                                                                        </v-flex>
-                                                                    </v-layout>
-                                                                </v-container>
-                                                            </v-card>
-                                                            <v-flex>
-                                                                <v-card>
-                                                                    <b class="total"> 총 : {{click_menu.length}} 개 </b> <br>
-                                                                    <b class="total"> 합계 : {{sum_price}} 円 </b>
-                                                                </v-card>
-                                                            </v-flex>
-                                                            <!-- btn -->
-                                                            <v-btn color="error" @click.native="Menu_Order = 2" @click="OrderMenu()"
-                                                            >
-                                                                메뉴 선택
-                                                            </v-btn>
-                                                            <v-btn flat @click.native="Menu_Order = 1">취소</v-btn>
-                                                        </v-stepper-content>
-                                                    </v-stepper-items>
-                                                </v-stepper>
-                                            </v-dialog>
-                                        </div>
-                                    </v-layout>
-                                    <!-- 요청 사항 -->
-                                    <v-flex>
-                                        <v-text-field
-                                                v-model="message"
-                                                label="요구 사항"
-                                                required
-                                        ></v-text-field>
-                                    </v-flex>
-                                </v-container>
-                            </v-card-text>
-                            <v-card-actions>
-                                <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" flat @click.native="dialog = false">닫기</v-btn>
-                                <v-btn color="blue darken-1" flat  @click.stop="dialog_ok = true">예약 하기</v-btn>
-                                <!-- 확인 버튼 -->
-                                <v-dialog v-model="dialog_ok" max-width="500px">
-                                    <v-card>
-                                        <v-card-title>
-                                            <div>
-                                                <div class="reservationCheck_title"><b>예약 확인</b></div>
-                                                <hr>
-                                                <div class="reservationCheck_main">
-                                                    <B> 예약 날짜 : </B> {{this.start_date}}    <br>
-                                                    <B> 예약 시간 : </B> {{this.pick_time}}     <br>
-                                                    <B> 어른 인원 : </B> {{this.adult_person}}  <br>
-                                                    <B> 아이 인원 : </B> {{this.child_person}}  <br>
-                                                    <B> 요구 사항 : </B> {{this.message}}
-                                                </div>
-                                            </div>
-                                        </v-card-title>
-                                        <v-card-actions>
-                                            <v-btn color="primary" flat @click.stop="dialog_ok=false, dialog = false" @click="SpendData()" @click.native="reservation_snackbar = true">확인</v-btn>
-                                            <v-btn color="primary" flat @click.native="dialog_ok = false, dialog = false">취소</v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-dialog>
-                            </v-card-actions>
-                        </v-card>
-                    </v-dialog>
-
+            <!-- 버튼 -->
+            <div class="title_contents" style="height:10%;">
+                <v-layout>
+                    <!-- 좋아요 favorite_border favorite -->
+                    <v-flex xs4>
+                        <v-btn 
+                            id="LikeIt" 
+                            @click="I_Like_It" 
+                            class="btns" 
+                            outline round block                            
+                        >                                  
+                            <v-icon id="LikeIcon" large color="red"> favorite_border </v-icon> &nbsp; 좋아요
+                        </v-btn>
+                    </v-flex>
+                       
                     <!-- 쿠폰 다운 -->
-                    <v-btn
-                            small
+                    <v-flex xs4> 
+                        <v-btn 
                             color="cyan darken-1"
-                            @click="dialog2 = true"
-                            style="color:white"
-                    ><B>쿠폰 다운</B></v-btn>
-                    <v-dialog
-                            v-model="dialog2"
-                            fullscreen
-                            hide-overlay
-                    >
-                        <v-card>
-                            <v-toolbar card dark color="cyan darken-1">
-                                <v-btn icon dark @click.native="dialog2 = false">
-                                    <v-icon>close</v-icon>
-                                </v-btn>
-                                <v-toolbar-title></v-toolbar-title>
-                                <v-spacer></v-spacer>
-                            </v-toolbar>
-
-                            <v-card-text>
-                                <div class="CouponDownTitle"><B>쿠폰 다운 받기</B></div>
-                                <hr>
-                                <div class="CouponDownMain">
-                                    <template v-for="(item, index) in items">
-                                        <!-- 쿠폰 리스트 -->
-                                        <v-list-tile :key="item.name" avatar ripple >
-                                            <v-list-tile-content style="height:700px; padding-top:2%;padding-bottom:2%;">
-                                                <v-list-tile-title>
-                                                    <B> {{ item.name }} </B>
-                                                </v-list-tile-title>
-                                                <!-- 카테고리 -->
-                                                <v-list-tile-sub-title v-if="item.category == '상품 제공'">
-                                                    {{item.price_condition}} 경우, &nbsp; {{ item.menu_name }} 제공
-                                                </v-list-tile-sub-title>
-                                                <v-list-tile-sub-title v-if="item.category == '가격 할인'">
-                                                    {{item.price_condition}} 경우, &nbsp; {{ item.discount }} 할인
-                                                </v-list-tile-sub-title>
-                                                <v-list-tile-sub-title>
-                                                    [ {{ item.start_date }} ~ {{ item.expiry_date}} ] 
-                                                    &nbsp; &nbsp; 
-                                                    남은 개수 : {{ item.use_check }}
-                                                </v-list-tile-sub-title>
-                                            </v-list-tile-content>
-                                            <!-- 아이콘 -->
-                                            <v-list-tile-action>
-                                                <!-- 쿠폰 다운 -->
-                                                <v-btn flat icon color="error" @click="Download(item)"  @click.native="coupon_snackbar = true">
-                                                    <v-icon>get_app</v-icon>
-                                                </v-btn>
-                                            </v-list-tile-action>
-                                        </v-list-tile>
-                                        <v-divider v-if="index + 1 < items.length" :key="index"></v-divider>
-                                    </template>
-                                </div>
-                            </v-card-text>
-                        </v-card>
-                    </v-dialog>
-                </div>
+                            @click="dialog2 = true" 
+                            class="btns light-green accent-2" 
+                            round block
+                        >
+                            <v-icon large> restaurant_menu </v-icon> &nbsp; 쿠폰 다운
+                        </v-btn>  
+                    </v-flex>
+                                                
+                    <!-- 예약 하기 -->               
+                    <v-flex xs4>          
+                        <v-btn 
+                            color="#424242"  
+                            @click="dialog=true" 
+                            class="btns yellow darken-2" 
+                            round block 
+                        >
+                            <v-icon large> alarm </v-icon> &nbsp; 예약 하기
+                        </v-btn>
+                    </v-flex> 
+                </v-layout>                             
             </div>
+        </div>
 
-            <div id="explanation" class="frame column_value" style="padding:2%;"></div>
+        <!-- 타이틀 스마트폰인 경우 -->
+        <div id="title_inner" v-else-if="browser_state === 'phone'">  
+            <div class="title_contents_phone" style="margin:auto">               
+                <!-- 가게 명 -->
+                <b id="name"></b> &nbsp;
 
-            <!-- 갤러리 이미지가 들어갈 div -->
-            <b class='column'> 갤러리 </b>
-            <div id="gallery_div" class="frame">
+                <!-- 식당 평점 star star_border star_half -->
+                <span id="prtStar" style="width:100%;">
+                    <v-icon small color="yellow darken-2"> star_border </v-icon>
+                    <v-icon small color="yellow darken-2"> star_border </v-icon>
+                    <v-icon small color="yellow darken-2"> star_border </v-icon>
+                    <v-icon small color="yellow darken-2"> star_border </v-icon>
+                    <v-icon small color="yellow darken-2"> star_border </v-icon>
+                </span>  
+                <hr style="width:95%; border:1px solid;">  
 
-                <!-- 더보기 div 클릭 시 v-dialog 출력  -->
-                <div id="moreImg" class="gallery" style="display:none">
-                    <div class="gallery_img MoreImg_inner" @click="PrtAllGalleryImg" @click.stop="ShowMoreImg=true">
-                        더 보기
-                    </div>
-                </div>
+                <!-- 가게 명 로마자 -->
+                <b id="namer"></b>    
+            </div>             
+        </div>
+        <!-- 타이틀 이미지 -->
+        <img id="title_img">
+    </div>
 
-                <!-- 갤러리 이미지 더 보기. -->
-                <v-dialog v-model="ShowMoreImg" width="95%" scrollable="">
-                    <v-card @click.native="ShowMoreImg=false">
-                        <!-- 타이틀, x 버튼 -->
+    <v-layout v-if="browser_state=='phone'">        
+        <!-- 좋아요 favorite_border favorite -->
+        <v-flex xs4 mr-1>
+            <v-btn 
+                id="LikeIt" 
+                @click="I_Like_It" 
+                class="btns"  
+                style="border:1px solid black; color:black;"
+                small block
+            >                                  
+                <v-icon id="LikeIcon" small color="red"> favorite_border </v-icon> &nbsp;좋아요 
+            </v-btn>
+        </v-flex> 
+
+        
+        <!-- 쿠폰 다운 -->
+        <v-flex xs4 mr-1>
+            <v-btn 
+                color="cyan darken-1"
+                @click="dialog2 = true" 
+                class="btns light-green accent-2"  
+                small block
+            >
+                <v-icon small> restaurant_menu </v-icon> &nbsp; 쿠폰
+            </v-btn>  
+        </v-flex> 
+
+        <!-- 예약 하기 -->
+        <v-flex xs4 mr-1>         
+            <v-btn 
+                color="#424242"  
+                @click="dialog=true" 
+                class="btns yellow darken-2"  
+                small block
+            >
+                <v-icon small> alarm </v-icon> &nbsp;예약
+            </v-btn> 
+        </v-flex> 
+    </v-layout>     
+
+    <!-- 예약 하기 모달 창 --> 
+    <v-dialog v-model="dialog" max-width="500px" persistent>
+        <v-card>
+            <!-- v-card title -->
+            <v-card-title>
+                <span class="headline">예약 하기</span>
+            </v-card-title>
+            
+            <!-- v-card 본문 -->
+            <v-card-text>
+                <v-container grid-list-md>
+                    <v-layout wrap>
+                        <!-- 예약 날짜 -->
+                        <v-flex xs11 sm5 >
+                            <!-- datepicker -->
+                            <v-menu
+                                ref="reservation_menu"
+                                lazy
+                                :close-on-content-click="false"
+                                v-model="reservation_menu"
+                                transition="scale-transition"
+                                offset-y
+                                full-width
+                                :nudge-right="40"
+                                min-width="290px"
+                                :return-value.sync="start_date"
+                            >
+                                <v-text-field
+                                    slot="activator"
+                                    label="예약 날짜"
+                                    v-model="start_date"
+                                    prepend-icon="event"
+                                    readonly
+                                ></v-text-field>
+
+                                <!-- 예약 날짜 -->
+                                <v-date-picker 
+                                    v-model="start_date" 
+                                    no-title 
+                                    scrollable 
+                                    :allowed-dates="allowedDates"
+                                >
+                                    <v-spacer></v-spacer>
+
+                                    <v-btn 
+                                        flat color="primary" 
+                                        @click.stop="reservation_menu = false"
+                                    >
+                                        Cancel
+                                    </v-btn>
+
+                                    <v-btn 
+                                        flat 
+                                        color="primary" 
+                                        @click="$refs.reservation_menu.save(start_date), setTime()"
+                                    >
+                                        OK
+                                    </v-btn>
+                                </v-date-picker>
+                            </v-menu>
+                        </v-flex>
+                        <v-flex xs12 sm6 md4>
+                            <!-- 예약 시간 -->
+                            <v-select
+                                :items="states"
+                                v-model="pick_time"
+                                label="예약 시간"
+                                single-line
+                            ></v-select>
+                        </v-flex>
+                        <!-- 인원수 -->
+                        <v-flex xs12 sm6 md4>
+                            <v-text-field 
+                                label="어른 인원" 
+                                v-model="adult_person"
+                                required 
+                            ></v-text-field>
+                        </v-flex>
+
+                        <v-flex xs12 sm6 md4>
+                            <v-text-field 
+                                label="아이 인원" 
+                                v-model="child_person"
+                                required
+                            ></v-text-field>
+                        </v-flex>
+
+                        <!-- 메뉴 선택 (1:true)-->
+                        <div v-if="this.reservation_selectMenu == 1">
+                            <B> 메뉴 예약이 가능한 가게 입니다. </B><br>
+                            <v-btn color="primary" @click="menuDialog = true"> 메뉴 선택하기 </v-btn>
+
+                            <!-- 메뉴판 -->
+                            <v-dialog v-model="menuDialog">
+                                <v-stepper v-model="Menu_Order" dark>
+                                    <!-- Header -->
+                                    <v-stepper-header>
+                                        <!-- 1. 메뉴선택 -->
+                                        <v-stepper-step step="1" :complete="Menu_Order > 1">
+                                            메뉴 선택
+                                        </v-stepper-step>
+                                        <v-divider></v-divider>
+
+                                        <!-- 2. 메뉴 확인 -->
+                                        <v-stepper-step step="2" :complete="Menu_Order > 2">
+                                            메뉴 확인
+                                        </v-stepper-step>
+                                        <v-divider></v-divider>
+                                    </v-stepper-header>
+
+                                    <!-- Main -->
+                                    <v-stepper-items>
+                                        <!-- 1. 메뉴선택 -->
+                                        <v-stepper-content step="1" color="error">
+                                            <v-card 
+                                                color="white lighten-1" 
+                                                class="mb-5" 
+                                                style="overflow:hidden"
+                                            >
+                                                <Layout></Layout>
+                                            </v-card>
+
+                                            <!-- btn -->
+                                            <v-btn 
+                                                color="error" 
+                                                @click="order_menu"
+                                                @click.native="Menu_Order = 2"
+                                            >
+                                                확인
+                                            </v-btn>
+                                            <v-btn flat @click="menuDialog = false"> 취소 </v-btn>
+                                        </v-stepper-content>
+
+                                        <!-- 2. 메뉴 확인  height="200px" -->
+                                        <v-stepper-content step="2">
+                                            <v-card color="white lighten-1" class="mb-5" >
+                                                <v-container :id="'menu_check_container'">
+                                                    <v-layout 
+                                                        v-for="i in range(0, click_menu.length-1)" 
+                                                        :key="i"
+                                                        :id="'menu_layout'+i"  
+                                                        mb-3
+                                                    >
+                                                        <v-flex sm12>
+                                                            <v-card elevation-20>
+                                                                <v-card-text style="font-size:1.2rem">
+                                                                    <div>
+                                                                        <b> 메뉴명 : {{click_menu[i].menu.name}} </b>
+                                                                        <v-btn 
+                                                                            style="float : right"
+                                                                            @click="click_cancel"
+                                                                            :id="i" icon
+                                                                        >
+                                                                            <v-icon dark> close </v-icon>
+                                                                        </v-btn> <br>
+
+                                                                        <b> 가격 : {{click_menu[i].menu.price}} </b> <br>
+
+                                                                        <!-- 옵션 선택 -->
+                                                                        <v-flex xs6 v-if="click_menu[i].menu.opNum != 0">
+                                                                            <b> [ 옵션 ] </b> 
+                                                                            <br>
+                                                                            <!-- 옵션 배열 길이 만큼 돌기 -->
+                                                                            <span v-for="(option, index) in optionArray[i]" :key="index">
+                                                                                <!-- 옵션 이름 -->
+                                                                                <b v-text="option['Name']"></b>
+                                                                                        <!-- 옵션 세부 사항 -->
+                                                                                <v-select
+                                                                                    :items="optionArray[i][index]"
+                                                                                    v-model="optionselect[i][index]"
+                                                                                    single-line
+                                                                                ></v-select>
+                                                                            </span>
+                                                                        </v-flex>
+                                                                    </div>
+                                                                </v-card-text>
+                                                            </v-card>
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-container>
+                                            </v-card>
+                                            <v-flex>
+                                                <v-card>
+                                                    <b class="total"> 
+                                                        총 : {{click_menu.length}} 개 
+                                                    </b> 
+                                                    <br>
+
+                                                    <b class="total"> 
+                                                        합계 : {{sum_price}} 円 
+                                                    </b>
+                                                </v-card>
+                                            </v-flex>
+                                            <!-- btn -->
+                                            <v-btn 
+                                                color="error" 
+                                                @click="OrderMenu()"
+                                                @click.native="Menu_Order = 2" 
+                                            >
+                                                메뉴 선택
+                                            </v-btn>
+                                            <v-btn flat @click.native="Menu_Order = 1">취소</v-btn>
+                                        </v-stepper-content>
+                                    </v-stepper-items>
+                                </v-stepper>
+                            </v-dialog>
+                        </div>
+                    </v-layout>
+                    <!-- 요청 사항 -->
+                    <v-flex>
+                        <v-text-field
+                            v-model="message"
+                            label="요구 사항"
+                            required
+                        ></v-text-field>
+                    </v-flex>
+                </v-container>
+            </v-card-text>
+
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" flat @click.native="dialog = false">닫기</v-btn>
+                <v-btn color="blue darken-1" flat @click.stop="dialog_ok = true">예약 하기</v-btn>
+
+                <!-- 확인 버튼 -->
+                <v-dialog v-model="dialog_ok" max-width="500px">
+                    <v-card>
                         <v-card-title>
-                            <h2 class="column" style="margin: auto"> Gallery </h2>
-                            <v-btn icon style="float:right" @click="ShowMoreImg=false">
-                                <v-icon large> clear </v-icon>
-                            </v-btn>
+                            <div>
+                                <div class="reservationCheck_title"><b>예약 확인</b></div>
+                                <hr>
+                                <div class="reservationCheck_main">
+                                    <B> 예약 날짜 : </B> {{this.start_date}}    <br>
+                                    <B> 예약 시간 : </B> {{this.pick_time}}     <br>
+                                    <B> 어른 인원 : </B> {{this.adult_person}}  <br>
+                                    <B> 아이 인원 : </B> {{this.child_person}}  <br>
+                                    <B> 요구 사항 : </B> {{this.message}}
+                                </div>
+                            </div>
                         </v-card-title>
+                        <v-card-actions>
+                            <v-btn 
+                                @click="SpendData()" 
+                                @click.stop="dialog_ok=false, dialog = false" 
+                                color="primary" flat 
+                            >
+                                확인
+                            </v-btn>
 
-                        <!-- 갤러리 이미지 출력 영역 -->
-                        <v-flex xs12 id="prtAllImgs"> </v-flex>
+                            <v-btn 
+                                @click.native="dialog_ok = false, dialog = false"
+                                color="primary" flat 
+                            >
+                                취소
+                            </v-btn>
+                        </v-card-actions>
                     </v-card>
                 </v-dialog>
-            </div>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 
-            <!-- 구글 맵스, 텍스트 주소가 출력 될 div -->
-            <b class='column'> 주소 </b>
-            <div class="frame">
-                <div class="title_div" style="margin-top:1%; margin-bottom: 1%;">
-                    <!-- 구글 맵스 -->
-                    <div id="map"></div>
+    <!-- 쿠폰 다운 모달 창 -->
+    <v-dialog
+        v-model="dialog2"
+        fullscreen
+        hide-overlay >
+        
+        <v-card>
+            <v-toolbar card dark color="cyan darken-1">
+                <v-btn icon dark @click.native="dialog2 = false">
+                    <v-icon>close</v-icon>
+                </v-btn>
+                <v-toolbar-title></v-toolbar-title>
+                <v-spacer></v-spacer>
+            </v-toolbar>
+
+            <v-card-text>
+                <div class="CouponDownTitle">
+                    <B>쿠폰 다운 받기</B>
                 </div>
-                <div>
-                    <b class='column'> 상세 주소 : </b>
-                    <div id="dodobuken" class="resInfo" style="margin-right: 3px;"></div>
-                    <div id="cities"    class="resInfo" style="margin-right: 3px;"></div>
-                    <div id="address"   class="resInfo" style="margin-right: 3px;"></div>
+                <hr>
+
+                <div class="CouponDownMain">
+                    <template v-for="(item, index) in items">
+                        <!-- 쿠폰 리스트 -->
+                        <v-list-tile :key="item.name" avatar ripple >
+                            <v-list-tile-content style="height:700px; padding-top:2%;padding-bottom:2%;">
+                                <v-list-tile-title>
+                                    <B> {{ item.name }} </B>
+                                </v-list-tile-title>
+
+                                <!-- 카테고리 -->
+                                <v-list-tile-sub-title v-if="item.category == '상품 제공'">
+                                    {{item.price_condition}} 경우, &nbsp; {{ item.menu_name }} 제공
+                                </v-list-tile-sub-title>
+
+                                <v-list-tile-sub-title v-if="item.category == '가격 할인'">
+                                    {{item.price_condition}} 경우, &nbsp; {{ item.discount }} 할인
+                                </v-list-tile-sub-title>
+
+                                <v-list-tile-sub-title>
+                                    [ {{ item.start_date }} ~ {{ item.expiry_date}} ] 
+                                    &nbsp; &nbsp; 
+                                    남은 개수 : {{ item.use_check }}
+                                </v-list-tile-sub-title>
+                            </v-list-tile-content>
+
+                            <!-- 아이콘 -->
+                            <v-list-tile-action>
+                                <!-- 쿠폰 다운 -->
+                                <v-btn 
+                                    flat icon 
+                                    color="error" 
+                                    @click="Download(item)"  
+                                    @click.native="coupon_snackbar = true"
+                                >
+                                    <v-icon>get_app</v-icon>
+                                </v-btn>
+                            </v-list-tile-action>
+                        </v-list-tile>
+                        <v-divider v-if="index + 1 < items.length" :key="index"></v-divider>
+                    </template>
                 </div>
-            </div>
+            </v-card-text>
+        </v-card>
+    </v-dialog>
 
-            <!-- 요리 유형 출력 div -->
-            <div class="frame_small">
-                <span class="column"> <b>요리 유형</b> </span>
-                <span id="type" class="column_value"> </span>
-            </div>
-
-            <!-- 좌석 수 출력 div -->
-            <div class="frame_small">
-                <span class="column"> <b>좌석 수</b> </span>
-                <span id="seat_num" class="column_value"> </span>
-            </div>
-
-            <!-- 전화번호 출력 div -->
-            <div class="frame_small">
-                <span class="column"> <b>전화번호</b> </span>
-                <span id="phone" class="column_value"> </span>
-            </div>
-
-            <!-- 이용 시간 출력 div -->
-            <div class="frame_small">
-                <div class="column" style="float:left;"> <b>이용 시간</b> </div>
-                <div class="column_value" style="float:left;">
-                    <span class="timeInfo"> 런치 : </span>
-                    <span class="timeInfo" id="lunch_open"> </span>
-                    <span class="timeInfo" id="lunch_close"> ~ </span>
-                    <span class="timeInfo" id="lunch_lo"> ( last order : </span> <span class="timeInfo"> ) </span> 
-                    <br>
-                    <span class="timeInfo" > 디너 : </span>
-                    <span class="timeInfo" id="dinner_open"> </span>
-                    <span class="timeInfo" id="dinner_close"> ~ </span>
-                    <span class="timeInfo" id="dinner_lo"> ( last order : </span><span class="timeInfo"> ) </span>
-                </div>
-            </div>
-
-            <!-- 결제 방식 출력 div -->
-            <div class="frame_small">
-                <span class="column"> <b>결제 방식</b> </span>
-                <span id="payment" class="column_value"> </span>
-            </div>
-
-            <!-- 기타 정보 출력 div -->
-            <div class="frame_small">
-                <span class="column"> <b>이용 안내</b> </span>
-                <span class="column_value">
-                <span id="children"    class="resInfo"> 아이 동반 : </span>
-                <span id="pet"         class="resInfo"> 애완 동물 동반 : </span>
-                <span id="parking"     class="resInfo"> 주차 : </span>
-                <span id="smoking"     class="resInfo"> 흡연 : </span>
-                <span id="privateroom" class="resInfo"> 개인실 : </span>
-            </span>
-            </div>
-
-            <!-- snackber (reservation) -->
-            <v-snackbar
-                :timeout="5000"
-                v-model="reservation_snackbar"    
-                :vertical="'vertical'"
-                :top="'top'"
-            >
-                예약이 완료되었습니다.
-                <v-btn flat color="white" @click.native="reservation_snackbar = false">Close</v-btn>
-            </v-snackbar>
-
-            <!-- snackber (coupon) -->
-            <v-snackbar
-                :timeout="5000"
-                v-model="coupon_snackbar"
-                 :vertical="'vertical'"
-                :top="'top'"
-            >
-                {{coupon_text}}
-                <v-btn flat color="white" @click.native="coupon_snackbar = false">Close</v-btn>
-            </v-snackbar>
-
-            <!-- snackbar (add reservation) -->
-            <!-- error snackbar -->
-            <v-snackbar
-                    :timeout="1000"
-                    v-model="addreservation_snackbar"   
-                    :top="'top'"
-                >
-                <v-icon dark>announcement</v-icon> {{ addreservation_text }}
-            </v-snackbar>
-        </v-app>
+    <!-- 식당 설명 스크롤바 숨기기 -->
+    <b v-if="browser_state=='phone'" class='column'> 
+        소개 
+    </b>
+    <div  
+        v-if="browser_state=='phone'"
+        class= "frame" 
+        style= "height:0;
+                padding-bottom:50%; 
+                overflow:hidden; 
+                position:relative;"
+    >
+        <div id= "explanation"></div>
     </div>
+
+    <!-- 갤러리 이미지가 들어갈 div -->
+    <b class='column'> 갤러리 </b>
+    <div id="gallery_div" class="frame">
+
+        <!-- 더보기 div 클릭 시 v-dialog 출력  -->
+        <div 
+            id="moreImg" 
+            class="gallery" 
+            style="display:none"
+        >
+            <div 
+                @click="PrtAllGalleryImg" 
+                @click.stop="ShowMoreImg=true"
+                class="gallery_img MoreImg_inner" 
+            >
+                더 보기
+            </div>
+        </div>
+
+        <!-- 갤러리 이미지 더 보기. -->
+        <v-dialog 
+            v-model="ShowMoreImg" 
+            width="95%" 
+            scrollable=""
+        >
+            <v-card @click.native="ShowMoreImg=false">
+                <!-- 타이틀, x 버튼 -->
+                <v-card-title>
+                    <h2 class="column" style="margin: auto"> Gallery </h2>
+                    <v-btn icon style="float:right" @click="ShowMoreImg=false">
+                        <v-icon large> clear </v-icon>
+                    </v-btn>
+                </v-card-title>
+
+                <!-- 갤러리 이미지 출력 영역 -->
+                <v-flex xs12 id="prtAllImgs"> </v-flex>
+            </v-card>
+        </v-dialog>
+    </div>
+
+    <!-- 구글 맵스, 텍스트 주소가 출력 될 div -->
+    <b class='column'> 주소 </b>
+    <div class="frame">
+        <div class="title_div" style="margin-top:1%; margin-bottom: 1%;">
+            <!-- 구글 맵스 -->
+            <div id="map"></div>
+        </div>
+        <div>
+            <b v-if="browser_state==='com'" class='column'> 상세 주소 : </b>
+            <div id="dodobuken" class="resInfo" style="margin-right: 3px;"></div>
+            <div id="cities"    class="resInfo" style="margin-right: 3px;"></div>
+            <div id="address"   class="resInfo" style="margin-right: 3px;"></div>
+        </div>
+    </div>
+
+    <!-- 요리 유형 출력 div -->
+    <div class="column"> 
+        <b>요리 유형</b> 
+    </div>
+    <div class="frame_small">
+        <span id="type" class="column_value"> </span>
+    </div>
+
+    <!-- 좌석 수 출력 div -->
+    <div class="column"> 
+        <b>좌석 수</b> 
+    </div>
+    <div class="frame_small">
+        <span id="seat_num" class="column_value"> </span>
+    </div>
+
+    <!-- 전화번호 출력 div -->
+    <div class="column"> 
+        <b>전화번호</b> 
+    </div>
+    <div class="frame_small">
+        <span id="phone" class="column_value"> </span>
+    </div>
+
+    <!-- 이용 시간 출력 div -->
+    <div class="column" style="float:left;"> 
+        <b>이용 시간</b> 
+    </div>
+    <div class="frame_small">
+        <div class="column_value" style="float:left;">
+            <span class="timeInfo"> 런치 : </span>
+            <span class="timeInfo" id="lunch_open"> </span>
+            <span class="timeInfo" id="lunch_close"> ~ </span> 
+            <br v-if="browser_state=='phone'">
+            <span class="timeInfo" id="lunch_lo"> ( last order : </span> <span class="timeInfo"> ) </span> 
+            
+            <br>
+            <br v-if="browser_state=='phone'">
+            
+            <span class="timeInfo" > 디너 : </span>
+            <span class="timeInfo" id="dinner_open"> </span>
+            <span class="timeInfo" id="dinner_close"> ~ </span> 
+            <br v-if="browser_state=='phone'">
+            <span class="timeInfo" id="dinner_lo"> ( last order : </span><span class="timeInfo"> ) </span>
+        </div>
+    </div>
+
+    <!-- 결제 방식 출력 div -->
+    <div class="column"> 
+        <b>결제 방식</b> 
+    </div>
+    <div class="frame_small">
+        <span id="payment" class="column_value"> </span>
+    </div>
+
+    <!-- 기타 정보 출력 div -->
+    <div class="column"> 
+        <b>이용 안내</b> 
+    </div>
+    <div class="frame_small"> 
+        <div id="children"    class="column_value"> 아이 동반 : </div>
+        <div id="pet"         class="column_value"> 애완 동물 : </div>
+        <div id="parking"     class="column_value"> 주차 : </div>
+        <div id="smoking"     class="column_value"> 흡연 : </div>
+        <div id="privateroom" class="column_value"> 개인실 : </div> 
+    </div>
+
+    <!-- snackber (reservation) -->
+    <v-snackbar
+        v-model="reservation_snackbar"  
+        :timeout="5000"  
+        :vertical="'vertical'"
+        :top="'top'"
+    >
+        예약이 완료되었습니다.
+        <v-btn flat color="white" @click.native="reservation_snackbar = false">Close</v-btn>
+    </v-snackbar>
+
+    <!-- snackber (coupon) -->
+    <v-snackbar
+        v-model="coupon_snackbar"
+        :timeout="5000"
+        :vertical="'vertical'"
+        :top="'top'"
+    >
+        {{coupon_text}}
+        <v-btn flat color="white" @click.native="coupon_snackbar = false">Close</v-btn>
+    </v-snackbar>
+
+    <!-- snackbar (add reservation) -->
+    <!-- error snackbar -->
+    <v-snackbar
+        :timeout="1000"
+        v-model="addreservation_snackbar"   
+        :top="'top'"
+    >
+        <v-icon dark>announcement</v-icon> {{ addreservation_text }}
+    </v-snackbar>
+</v-app>
+</div>
 </template>
 
 <script type="text/javascript">
     import Vue      from 'vue';
     import VueAxios from 'vue-axios';
     import axios    from 'axios';
-    // import * as VueGoogleMaps from 'vue2-google-maps';
+    import * as VueGoogleMaps from 'vue2-google-maps';
 
     // 예약 하기
     import { EventBus } from '../user_menu/eventBus.js';
     import DefaultLayout1 from '../user_menu/MenuDefaultLayout1.vue';
-import { isUpdateExpression } from 'babel-types';
+    import { isUpdateExpression } from 'babel-types';
 
     var layout = DefaultLayout1;     // 사장이 선택한 메뉴판 탬플릿
     var obj    = [];                 // 클릭한 배열 담기
     var check  = 0;                  // 클릭한 배열 index용 변수
 
-    // // 구글 맵스 키 값
-    // Vue.use(VueGoogleMaps, {
-    //     load: {
-    //         key: 'AIzaSyDeu-HoB1RsF5Vf0xjEvBwwCKodP8mkgWQ',
-    //     }
-    // });
+    // 구글 맵스 키 값
+    Vue.use(VueGoogleMaps, {
+        load: {
+            key: 'AIzaSyDeu-HoB1RsF5Vf0xjEvBwwCKodP8mkgWQ',
+        }
+    });
 
     var restaurant_id = '';          // 유저(관광객)가 클릭한 식당의 아이디 값. 식당의 아이디 값으로 데이터를 요청함.
     var get_datas  = null;           // 요청한 데이터들이 담길 변수 JSON으로 받을 예정
@@ -531,14 +772,25 @@ import { isUpdateExpression } from 'babel-types';
                 items: [],
 
                 /* 갤러리 이미지 더 보기. */
-                ShowMoreImg : false
+                ShowMoreImg : false,
+
+                /* 브라우저 크기 */
+                browser_state : null
             }
         },
-        created() {
+        created(){           
+            if(window.outerWidth < 1024){ 
+                this.browser_state = 'phone';
+            }
+            else {                 
+                this.browser_state = 'com';
+            }
+        },
+
+        mounted() {
             // 값 보내기
             this.shop_id = this.$route.params.shop_id;
             url = '/restaurant/' + this.shop_id + '/getInfo';
-
             axios.get(url).then( (response) => {
                 get_datas = response.data.restaurant;       
                 this.shopLike = response.data.shopLike;             
@@ -600,7 +852,8 @@ import { isUpdateExpression } from 'babel-types';
             .catch((ex)=>{
                 this.snackbar_text = '가게 정보 불러오기 실패!';
                 this.snackbar      = true;
-            })            
+            })    
+            
         },
  
         components : {
@@ -617,8 +870,8 @@ import { isUpdateExpression } from 'babel-types';
                         let get_div = document.getElementById(key);
 
                         switch(argArray[key]){
-                            case 1      : get_div.innerText += '가능';          break;
-                            case 0      : get_div.innerText += '불가';          break;
+                            case true   : get_div.innerText += '가능';          break;
+                            case false  : get_div.innerText += '불가';          break;
                             case 'yes'  : get_div.innerText += '가능';          break;
                             case 'no'   : get_div.innerText += '불가';          break;
                             case null   : get_div.innerText += 0;               break;
@@ -630,15 +883,14 @@ import { isUpdateExpression } from 'babel-types';
 
             // 타이틀 이미지 삽입하기
             enter_title : function(argImgArray){
-                document.getElementById('title_img').style.backgroundImage
-                    = "url(" + argImgArray.path + argImgArray.filename + ")";
+                document.getElementById('title_img').src = argImgArray.path + argImgArray.filename;
             },
 
             // 좋아연.
-            I_Like_It : function(){ 
-                let LikeIt   = document.getElementById('LikeIt'); 
+            I_Like_It : function(){  
+                let LikeIcon = document.getElementById('LikeIcon'); 
                 let url      = '/restaurantsLike';
-                let shop_id  = this.$route.params.shop_id;
+                let shop_id  = this.$route.params.shop_id; 
                  
                 // 클릭 시 데이터 보내기.
                 function SendValue(argValue){                
@@ -655,7 +907,7 @@ import { isUpdateExpression } from 'babel-types';
                             this.snackbar_text = '로그인해 주세요!';
                             this.snackbar      = true;
                         }                      
-                        else {                            
+                        else {                     
                             ChangeColor(response.data.shopLike);   
                         }          
                     })
@@ -666,36 +918,53 @@ import { isUpdateExpression } from 'babel-types';
                     });                           
                 };
                 
-                // 색깔 바꾸기
+                // 색깔 바꾸기 빈 하트 -> 하트 -> 빈하트
                 function ChangeColor(argValue){  
                     if(argValue === true){
-                        LikeIt.style.color       = 'red';
-                        LikeIt.style.borderColor = 'red';                     
+                        LikeIcon.innerText = 'favorite';                    
                     }
                     else if(argValue === false){
-                        LikeIt.style.color       = 'grey';
-                        LikeIt.style.borderColor = 'grey'; 
+                        LikeIcon.innerText = 'favorite_border'; 
                     }    
-                }
+                } 
 
-                // 메뉴 클릭한 경우 데이터 보내기.
-                if (event !== undefined && event.target == LikeIt) {
+                // 좋아요 버튼 클릭한 경우 데이터 보내기.
+                if (event !== undefined) { 
                     // 좋아요 상태인 경우 좋아요 취소
-                    if(this.shopLike === true) {
+                    if(this.shopLike === true) { 
                         this.shopLike = false;
                     }
                     // 좋아요 상태가 아니였을 경우 좋아요 
-                    else if(this.shopLike === false){ 
+                    else if(this.shopLike === false){  
                         this.shopLike = true;                    
                     }
                     // 변경 사항 서버에 보내기.
-                    SendValue(this.shopLike);       
+                    SendValue(this.shopLike);    
                 }    
                 // 페이지를 로드한 경우 색상 적용 시키기
                 else {
                     ChangeColor(this.shopLike); 
                 }                             
-            },            
+            },         
+
+            // 별점 찍기 star, star_border, star_half
+            prtStarRate : function(argValue){
+                let prtStar = document.getElementById('prtStar');
+                let score   = Math.floor(argValue);                 // 소수점 이하를 제외한 점수
+                let point   = parseFloat(argValue) - score;         // 소수점 첫번째 자리
+
+                point =  Math.floor(point * 10);                    // 소수점 첫번째 자리 구하기.
+  
+                for(let i=0; i < score; i++){
+                    prtStar.children[i].innerText = 'star';
+                }
+
+                if(point !== 0){
+                    if(point > 4) {  
+                        prtStar.children[score].innerText = 'star_half';
+                    }
+                } 
+            },   
 
             // 갤러리에 이미지 추가하기.
             enter_galley : function(){
@@ -703,7 +972,6 @@ import { isUpdateExpression } from 'babel-types';
                 let argNum    = get_datas.length;       
                 let browser_w = window.outerWidth;                                      // 브라우저 너비
                 let gallery_div = document.getElementById('gallery_div');
-
 
                 // 갤러리에 이미지 생성해서 넣기.
                 function appendImg (Index) {
@@ -728,7 +996,7 @@ import { isUpdateExpression } from 'babel-types';
                 }
 
                 // 모바일 환경 이미지 2개만.
-                if(browser_w < 639){  
+                if(browser_w < 639){   
                     // 등록된 이미지가 2개 이하.
                     if(argNum -3 < 3) {
                         for (let i=3; i < argNum; i++){                     
@@ -787,8 +1055,8 @@ import { isUpdateExpression } from 'babel-types';
             geoCoder : function (argAddress) {
                 let map      = new google.maps.Map(document.getElementById('map'), {zoom: 18}); // 구글 맵스 생성
                 let address  = argAddress.dodobuken +
-                    argAddress.cities +
-                    argAddress.address;                              // 사장이 입력한 주소 값 더하기
+                               argAddress.cities +
+                               argAddress.address;                              // 사장이 입력한 주소 값 더하기
                 let geocoder = new google.maps.Geocoder();                                      // 지오 코더
 
                 // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
@@ -808,11 +1076,9 @@ import { isUpdateExpression } from 'babel-types';
 
             // 예약하기
             // 불가능 한 날짜 반환.
-            allowedDates(val)
-            {
-                var index = 0;
+            allowedDates(val) {
+                var index     = 0;
                 var maxlength = this.items.length;
-
                 var dateCheck = "";
 
                 for(var $i = 0; $i < maxlength; $i++)
@@ -916,7 +1182,7 @@ import { isUpdateExpression } from 'babel-types';
                         }
                         dinner_minute = '00';
                     }
-                    else if(dinner_minute == '30')
+                    else if(dinner_minute == '30')s
                     {
                         this.states.push(hour + ":" + dinner_minute);
                         dinner_minute = '00';
@@ -999,20 +1265,16 @@ import { isUpdateExpression } from 'babel-types';
             },
 
             SpendData() {
-                var check = true;
-
                 /* 유효성 검사 */
                 if(this.start_date == null)
                 {
                     this.addreservation_text = " 예약 날짜를 선택 해주세요."
                     this.addreservation_snackbar = true;
-                    check = false;
                 }
                 else if(this.pick_time == null)
                 {
                     this.addreservation_text = " 예약 시간을 선택 해주세요."
                     this.addreservation_snackbar = true;
-                    check = false;
                 }
                 else if(this.adult_person != null || this.child_person != null)
                 {
@@ -1022,18 +1284,15 @@ import { isUpdateExpression } from 'babel-types';
                     if(!regNumber.test(this.adult_person)) {
                          this.addreservation_text = "어른 인원 항목은 숫자만 입력해주세요";
                          this.addreservation_snackbar = true;
-                         check = false;
                     }
 
                     if(!regNumber.test(this.child_person)) {
                          this.addreservation_text = "아이 인원 항목은 숫자만 입력해주세요";
                          this.addreservation_snackbar = true;
-                         check = false;
                     }
 
                 }
-                
-                if(check == true){
+                else{
                     // axios http 라이브러리
                     // -- 사장님 수락 리스트에 등록 --
                     axios.post('/requestReservation', {
@@ -1051,6 +1310,7 @@ import { isUpdateExpression } from 'babel-types';
                         suboption   : this.optionselect,         // 서브 옵션
                         sum_price   : this.sum_price
                     }).then((response) => {
+                      this.reservation_snackbar = true;
                     }).catch(console.log('test '));
                 }
             },
@@ -1085,16 +1345,34 @@ import { isUpdateExpression } from 'babel-types';
 </script>
 
 <style>
+    @import url(//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css); 
+
     /* 모바일 */
     @media (max-width: 639px){
         .fontSize       { font-size: 10px; }
-        #name           { font-size: 1.5rem; }    
-        #LikeIt         { font-size: 1.2rem;}
-        #explanation    {max-height: 200px; overflow: scroll;}
+        #name           { font-size: 1.1rem; margin-left: 5px;}  
+        #namer          { font-size: 0.9rem; margin-left: 10px;}   
+        #title_inner{
+            top: 60%;
+            left: 0;
+            width: 100%;
+            height: 40%; 
+            position: absolute;
+        }  
+        .title_div {
+            padding-bottom: 60%;
+        }
+        #explanation {      
+            top:0;
+            left:0;       
+            font-size: 1rem;
+            color: #6d4d35;                    
+            position:absolute;
+        }
         .column         { font-size: 1.2rem; }     
         .column_value   { font-size: 1.2rem;}
         .timeInfo       { font-size: 1.2rem; }
-        .resInfo        { font-size: 1.2rem; }
+        .resInfo        { font-size: 0.9rem; }
         .gallery        { width: 100%; padding-bottom: 75%; }
         .img-outer      { width: 90%; padding-bottom: 60%; }
 
@@ -1128,13 +1406,29 @@ import { isUpdateExpression } from 'babel-types';
     /* 테블릿 */
     @media (min-width: 640px) and (max-width: 1023px){
         .fontSize       { font-size: 12px; }
-        #name           { font-size: 2rem; }    
-        #LikeIt         { font-size: 2rem;}
-        #explanation    {max-height: 300px; overflow: scroll;}
+        #name           { font-size: 2rem; margin-left: 5px;}      
+        #namer          { font-size: 1.5rem; margin-left: 10px;}   
+        #title_inner{
+            top: 60%;
+            left: 0;
+            width: 100%;
+            height: 40%; 
+            position: absolute;
+        }
+        .title_div {
+            padding-bottom: 50%;
+        }
+        #explanation {          
+            top:0;
+            left:0;        
+            font-size: 1.2rem;
+            color: #6d4d35; 
+            position: absolute;
+        }
         .column         { font-size: 2rem; }     
         .column_value   { font-size: 1.5rem;}
         .timeInfo       { font-size: 1.5rem; }
-        .resInfo        { font-size: 1.7rem; }
+        .resInfo        { font-size: 1.2rem; }
         .gallery        { width: 48%; padding-bottom: 35%; }
         .img-outer      { width: 90%; padding-bottom: 60%; }
 
@@ -1164,8 +1458,20 @@ import { isUpdateExpression } from 'babel-types';
     /* 데스트 탑 */
     @media (min-width: 1024px){
         .fontSize       { font-size: 15px; }
-        #name           { font-size: 2rem; }        
-        #LikeIt         { font-size: 2rem;}
+        #name           { font-size: 2.3rem; }   
+        #namer          { font-size: 1.7rem; }     
+        #title_inner{
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 100%; 
+        }        
+        .title_div {
+            padding-bottom: 40%;
+        }
+        #explanation {            
+            font-size: 1.2rem;
+        }
         .column         { font-size: 2rem; }        
         .column_value   { font-size: 1.7rem;}
         .timeInfo       { font-size: 1.5rem; }
@@ -1196,68 +1502,105 @@ import { isUpdateExpression } from 'babel-types';
             text-align: center;
         }
     }
-
+    
     /* 가게 설명, 갤러리, 주소 */
     .frame {
         width: 100%;
-        border-top: 1px solid;
-        /* font-size: 1.8rem; */
-        color: #848484;
+        border-top: 5px solid #ff9a55; 
         display:inline-block;
-        margin-bottom: 5%;
+        margin-bottom: 3%;
     }
 
     /* 요리 유형, 좌석 수, 전화번호, 이용시간, 결제 방식, 이용안내 */
     .frame_small {
         width: 100%;
-        height: auto;
-        padding-top: 3%;
+        padding-top: 1%;
         padding-left: 1%;
-        border-top: 1px solid #848484;
+        border-top: 3px solid #FE9A2E;
         margin-bottom: 3%;
         display:inline-block;
+        height: auto;
     }
 
     /* 가게 메인 이미지 */
     .title_div {
         width: 100%;
         height: 0;
-        padding-bottom: 40%;
-        margin-bottom: 5%;
+        margin-bottom: 3%;
         overflow: hidden;
         position: relative;
     }
-    #title_img{
+    #title_inner{ 
+        z-index: 20;
+        opacity: 0.6;
+        position: absolute; 
+        background-color: black;
+        color: white;       
+    }
+
+    /* 타이틀 용 - 컴 */
+    .title_contents { 
+        width: 45%; 
+        opacity: 1;
+        margin: auto; 
+        text-align: center;   
+        overflow: hidden;
+        /* border: 1px solid white;   */
+    }
+    
+    /* 타이틀 용 - 폰 */
+    .title_contents_phone { 
+        width: 100%; 
+        opacity: 1;
+        padding: 1%; 
+        text-align: left;   
+        overflow: hidden; 
+    }
+
+    #smarts{
+        font-size:1.3rem;
+        z-index: 25;
+        margin-top: 10px;
+        text-align:center;
+        text-decoration: underline; 
+        position: relative;
+    } 
+
+    #explanation {
+        width: 100%;
+        height: 100%;  
+        padding: 2%; 
+        /* padding-right: 17px; */
+        overflow-y: scroll; 
+        box-sizing: content-box;
+
+        /* 디자이너 픽 */
+        /* font-family: 'Nanum Square';  */
+        font-weight: bold;
+        letter-spacing: -50;
+        line-height: 24pt; 
+        text-align: center; 
+    }  
+
+    #title_img {        
         top: 0;
         left: 0;
-        width: 105%;
-        height: 105%;
-        background-size: 100% 100%;
-        /* background-image: url('./test4.jpg'); */
+        width: 100%;
+        height: 100%; 
+        z-index: 10;
         position: absolute;
         object-fit: cover;
     }
 
-    /* 가게 명 */
-    #name_area {
-        top: 0;
-        left: 0;
-        padding:4px;
-        opacity: 0.5;
-        background: black;
-        color: white;
-        text-align: center;
-        display:inline-block;
-    }
-
     /* 좋아여 */
     #LikeIt {   
-        margin-right: 7%;
-        color: grey;
-        border: 3px solid grey; 
-        text-align: center; 
-        float: right;
-        font-weight: bold;  
+        color: white;
+        border: 2px solid white; 
+    }
+
+    .btns {  
+        text-align: center;      
+        font-weight: bolder;  
     }
 
     /*갤러리 관련.*/
@@ -1290,6 +1633,8 @@ import { isUpdateExpression } from 'babel-types';
     .MoreImg_inner {
         font-size:2rem;
         padding-top: 25%;
+        color: #9d724b;
+        font-weight: bold;
         text-align:center;
     }
     #prtAllImgs {
@@ -1316,16 +1661,17 @@ import { isUpdateExpression } from 'babel-types';
     /* 정보 칼럼 */
     .column{
         margin-right: 20px;
-        color: #6E6E6E;
+        color: #9d724b;
         text-align: left;
         position: relative;
         display:inline-block;
     }
     /* 정보 내용 */
     .column_value{
-        /* font-size: 1.7rem; */
         padding: 3px;
         position: relative;
+        font-weight: bold;
+        color: #6d4d35; 
     }
 
     /* 구글 맵스용 */
@@ -1334,12 +1680,14 @@ import { isUpdateExpression } from 'babel-types';
         left: 0;
         width: 100%;
         height: 100%;
-        border: 1px solid #6E6E6E;
+        border: 1px solid #6d4d35;
         position: absolute;
     }
     /* 가게 정보 */
     .resInfo{
         margin-right: 10px;
         display:inline-block;
+        font-weight: bold;
+        color: #6d4d35;
     }
 </style>

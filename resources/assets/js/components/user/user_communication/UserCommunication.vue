@@ -9,7 +9,7 @@
     <!-- 커뮤니케이션 버튼 상단바 -->
     <v-layout>
       <v-flex>
-        <v-toolbar dense color="amber darken-1" dark>
+        <v-toolbar dense dark id="communication-topBar">
           <v-toolbar-items>
             <v-btn flat class="toolbar-style" v-on:click="selectCategory(0)">즐겨찾기</v-btn>
             <v-btn flat class="toolbar-style" v-on:click="selectCategory(1)">기본</v-btn>
@@ -124,5 +124,9 @@ export default {
   .toolbar-style{
     font-size: 1.2em;
     font-weight: bold;
+  }
+
+  #communication-topBar {
+    background-color : #9d724b;
   }
 </style>
