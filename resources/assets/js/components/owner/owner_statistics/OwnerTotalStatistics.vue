@@ -36,13 +36,13 @@
             <v-flex xs2>
               <v-layout>
                 <v-flex>
-                  <v-btn v-on:click="setTopDateBarSize" color="cyan lighten-4">기간 선택</v-btn>
+                  <v-btn dark v-on:click="setTopDateBarSize" color="amber darken-3">접기</v-btn>
                 </v-flex>
               </v-layout>
               <!-- 최상단 이동 버튼 -->
               <v-layout>
                 <v-flex>
-                  <v-btn v-if="!topDateBar" color="light-blue lighten-4"
+                  <v-btn dark v-if="!topDateBar" color="amber darken-3"
                   @click="$vuetify.goTo(nowUpPosition, {duration: nowDuration, offset: nowOffset, easing: nowEasing})">
                     <v-icon>arrow_upward</v-icon>
                   </v-btn>
@@ -51,7 +51,7 @@
               <!-- 최하단 이동 버튼 -->
               <v-layout>
                 <v-flex>
-                  <v-btn v-if="!topDateBar" color="light-blue lighten-4"
+                  <v-btn dark v-if="!topDateBar" color="amber darken-3"
                   @click="$vuetify.goTo(nowDownPosition, {duration: nowDuration, offset: nowOffset, easing: nowEasing})">
                     <v-icon>arrow_downward</v-icon>
                   </v-btn>

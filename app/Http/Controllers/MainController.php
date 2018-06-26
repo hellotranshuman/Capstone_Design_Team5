@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hashtag;
+use App\Keyword;
 use App\Reservation;
 use App\Restaurant;
 use App\Shop_like;
@@ -18,14 +19,17 @@ class MainController extends Controller
     const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
     const client_secret = "pevANwIHvX";
 
-    private $url     = "https://openapi.naver.com/v1/language/translate";
+    private $lang_id       = "1ml1HFOe7ffSU4tD0da7";
+    private $lang_pw       = "qubdYMY8uA";
+    private $lang_url      = "https://openapi.naver.com/v1/papago/detectLangs";
+    private $trans_url     = "https://openapi.naver.com/v1/language/translate";
     private $is_post = true;
     private $headers = array();
 
     function __construct()
     {
-        $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id ;
-        $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
+        $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id;
+        $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret;
     }
 
     public function showMainPage(Request $request) {
@@ -399,7 +403,7 @@ class MainController extends Controller
             $postValues = 'source=ja&target=' . $target . '&text='.$encText;
             $ch  = curl_init();
 
-            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_URL, $this->trans_url);
             curl_setopt($ch,CURLOPT_POST, $this->is_post);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
@@ -424,7 +428,7 @@ class MainController extends Controller
             $postValues = 'source=ja&target=' . $target . '&text='.$encText;
             $ch  = curl_init();
 
-            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_URL, $this->trans_url);
             curl_setopt($ch,CURLOPT_POST, $this->is_post);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
@@ -449,7 +453,7 @@ class MainController extends Controller
             $postValues = 'source=ja&target=' . $target . '&text='.$encText;
             $ch  = curl_init();
 
-            curl_setopt($ch,CURLOPT_URL, $this->url);
+            curl_setopt($ch,CURLOPT_URL, $this->trans_url);
             curl_setopt($ch,CURLOPT_POST, $this->is_post);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
@@ -700,20 +704,85 @@ class MainController extends Controller
                 'shopSearchData'    => false,
             ]);
 
-        // <— 가게 이름으로 검색
-        $shopNameKeyword = '%' . $request->get('searchData') . '%';
 
-        $shopSearchData = Restaurant::select(DB::raw('id, name, type,
-                            explanation, phone, dodobuken, cities, address, coordinate'))
-            ->where('name', 'like', $shopNameKeyword)
-            ->get()
-            ->toArray();
+        $keyword = $request->get('searchData');
 
-        // <—————————————— 식당 위치 지역 명으로 검색
-        $regionKeyword = '%' . $request->get('searchData') . '%';
+        // <-- 키워드 테이블에 있는지 확인후 비슷한 키워드이면 대체하기
+         $keywordData = Keyword::select('keyword', 'change_keyword')
+                            ->where('keyword', 'like', $keyword)
+                            ->count();
 
-        $regionSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
-            ->select(DB::raw('
+        if($keywordData != 0) {
+            $changeKeywordData = Keyword::select('keyword', 'change_keyword')
+                                    ->where('keyword', 'like', $keyword)
+                                    ->first();
+
+            $keyword = $changeKeywordData->change_keyword;
+        }
+
+        // <-- 언어 감지 API로 언어 감지하기
+        $encText = urlencode($keyword);
+        $postValues = 'query=' . $encText;
+        $ch  = curl_init();
+
+        curl_setopt($ch,CURLOPT_URL, $this->lang_url);
+        curl_setopt($ch,CURLOPT_POST, $this->is_post);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+
+        $headers = array();
+        $headers[] = "X-Naver-Client-Id: " . $this->lang_id;
+        $headers[] = "X-Naver-Client-Secret: ".$this->lang_pw;
+        curl_setopt($ch,CURLOPT_HTTPHEADER, $headers);
+
+        $response    = curl_exec ($ch);
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close ($ch);
+
+        $langCode = '';
+
+        if($status_code == 200) {
+            $responseData = json_decode($response);
+
+            $langCode  = $responseData->langCode;
+        }
+
+        // <-- 언어 감지후 일본어나 영어가 아니면 번역 기능 실행하기 (현재는 한쿡어만...)
+        if($langCode == "ko") {
+            $encText = urlencode($keyword);
+            $postValues = 'source=ko&target=ja&text='.$encText;
+            $ch  = curl_init();
+
+            curl_setopt($ch,CURLOPT_URL, $this->trans_url);
+            curl_setopt($ch,CURLOPT_POST, $this->is_post);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $postValues);
+            curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch,CURLOPT_HTTPHEADER, $this->headers);
+
+            $response    = curl_exec ($ch);
+            $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            curl_close ($ch);
+
+            if($status_code == 200 && auth()->user()->country != 'Japan') {
+                $responseData = json_decode($response);
+
+                $keyword  = $responseData->message->result->translatedText;
+            }
+
+        }
+
+        $searchKeyword = '%' . $keyword . '%';
+
+        if(!$request->has('searchType') || $request->get('searchType') == 1) {
+
+            // 이거 버그잇음 뷰에서 출력이 제대로 안됨 이상;
+            // <— 가게 이름으로 검색
+          $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+              ->select(DB::raw('
                                     restaurants.id as shop_id,
                                     restaurants.name as shop_name,
                                     restaurants.type as shop_type,
@@ -723,18 +792,34 @@ class MainController extends Controller
                                     AVG(review.rating) as totalRating,
                                     restaurants.coordinate as coordinate
                                 '))
-            ->having('shop_address', 'like', $regionKeyword)
-            ->groupBy('restaurants.id')
-            ->orderByRaw('totalRating desc')
-            ->get()
-            ->toArray();
+              ->where('name', 'like', $searchKeyword)
+              ->groupBy('restaurants.id')
+              ->orderByRaw('totalRating desc')
+              ->get()
+              ->toArray();
 
-        // <—————————————— 해시태그로 검색
-        $hashTagKeyword = '%' . $request->get('searchData') . '%';
+            // <—————————————— 식당 위치 지역 명으로 검색
+            $regionSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate
+                                '))
+                ->having('shop_address', 'like', $searchKeyword)
+                ->groupBy('restaurants.id')
+                ->orderByRaw('totalRating desc')
+                ->get()
+                ->toArray();
 
-        $tagSearchData =  Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
-            ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
-            ->select(DB::raw('
+            // <—————————————— 해시태그로 검색
+            $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                ->select(DB::raw('
                                 restaurants.id   as shop_id,
                                 restaurants.name as shop_name,
                                 restaurants.type as shop_type,
@@ -745,17 +830,101 @@ class MainController extends Controller
                                 restaurants.address as shop_address,
                                 restaurants.coordinate as coordinate
                             '))
-            ->where('hashtag.tag', 'like', $hashTagKeyword)
-            ->groupBy('shop_id')
-            ->get()
-            ->toArray();
+                ->where('hashtag.tag', 'like', $searchKeyword)
+                ->groupBy('shop_id')
+                ->get()
+                ->toArray();
+
+            // <--- 업종으로 검색
+            $typeSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
+                ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    AVG(review.rating) as totalRating,
+                                    restaurants.coordinate as coordinate
+                                '))
+                ->where('restaurants.type', 'like', $searchKeyword)
+                ->groupBy('restaurants.id')
+                ->orderByRaw('totalRating desc')
+                ->get()
+                ->toArray();
+        }
+        else {
+            // <— 가게 이름으로 검색
+            $shopSearchData = Restaurant::select(DB::raw('id, name, type,
+                            explanation, phone, dodobuken, cities, address, coordinate'))
+                ->where('name', 'like', $searchKeyword)
+                ->get()
+                ->toArray();
+
+            // <—————————————— 식당 위치 지역 명으로 검색
+            $regionSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate
+                                '))
+                ->having('shop_address', 'like', $searchKeyword)
+                ->groupBy('restaurants.id')
+                ->orderByRaw('order_num desc')
+                ->get()
+                ->toArray();
+
+            // <—————————————— 해시태그로 검색
+            $tagSearchData = Hashtag::leftjoin('review', 'review.id', '=', 'hashtag.review_id')
+                ->leftjoin('restaurants', 'review.shop_id', '=', 'restaurants.id')
+                ->select(DB::raw('
+                                restaurants.id   as shop_id,
+                                restaurants.name as shop_name,
+                                restaurants.type as shop_type,
+                                restaurants.explanation as shop_explanation,
+                                restaurants.phone as shop_phone,
+                                restaurants.dodobuken as shop_ddobuken,
+                                restaurants.cities as shop_cities,
+                                restaurants.address as shop_address,
+                                restaurants.coordinate as coordinate
+                            '))
+                ->where('hashtag.tag', 'like', $searchKeyword)
+                ->groupBy('shop_id')
+                ->get()
+                ->toArray();
+
+            // <--- 업종으로 검색
+            $typeSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
+                ->select(DB::raw('
+                                    restaurants.id as shop_id,
+                                    restaurants.name as shop_name,
+                                    restaurants.type as shop_type,
+                                    restaurants.explanation as shop_explanation,
+                                    restaurants.phone as shop_phone,
+                                    concat_ws(dodobuken, cities, address) as shop_address,
+                                    SUM(order_list.order_num) as order_num,
+                                    restaurants.coordinate as coordinate
+                                '))
+                ->where('restaurants.type', 'like', $searchKeyword)
+                ->groupBy('restaurants.id')
+                ->orderByRaw('order_num desc')
+                ->get()
+                ->toArray();
+        }
 
         return response()->json([
             'shopSearchData'    => $shopSearchData,
             'regionSearchData'  => $regionSearchData,
-            'tagSearchData'     => $tagSearchData
+            'tagSearchData'     => $tagSearchData,
+            'typeSearchData'    => $typeSearchData,
         ]);
     }
+
 
     // <-- 가게 좋아요 목록 출력 (찜목록)
     public function getShopLikeData() {

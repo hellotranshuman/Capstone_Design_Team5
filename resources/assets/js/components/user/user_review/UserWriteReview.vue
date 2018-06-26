@@ -24,16 +24,18 @@
         :vertical="snackbarMode === 'vertical'"
         v-model="snackbarCheck"
         >
-        {{this.alertErrorCode}}
+            {{this.alertErrorCode}}
             <v-btn flat color="pink" @click.native="snackbarCheck = false">Close</v-btn>
         </v-snackbar>
         <v-layout>
             <v-flex>
                 <!-- 상단바 -->
-                <v-toolbar flat dark tabs color="grey darken-3">
+                <v-toolbar flat dark tabs color="amber darken-1">
                     <v-layout justify-space-between align-center>
                         <v-flex xs10 sm10>
-                            <v-toolbar-title >리뷰 작성</v-toolbar-title>
+                            <v-toolbar-title class="review-write-font">
+                                리뷰 작성
+                            </v-toolbar-title>
                         </v-flex>
                         <v-spacer></v-spacer>
                     </v-layout>
@@ -43,12 +45,12 @@
                             취소
                         </v-btn>
                         <!-- 활성 등록 버튼 -->
-                            <v-btn flat @click= "sendReviewData" 
+                            <v-btn flat @click= "sendReviewData" class="review-write-font" 
                             v-if="this.nowLoading" @click.native="snackbarCheck = alertCheck">
                                 등록
                             </v-btn>
                             <!-- 비활성 등록 버튼 -->
-                            <v-btn flat @click= "sendReviewData" disabled
+                            <v-btn flat @click= "sendReviewData" class="review-write-font" disabled
                             v-if="!(this.nowLoading)" @click.native="snackbarCheck = alertCheck">
                                 등록
                             </v-btn>
@@ -57,108 +59,108 @@
             </v-flex>
         </v-layout>
         <!-- 별점 시작 -->
-        <v-container>
-            <v-layout>
-                <v-flex>
-                    <v-card>
-                        <v-card-title>총점</v-card-title>
-                        <v-card-text>
-                            <UserReviewStarRating></UserReviewStarRating>
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-            <!-- 별점 상세평가 -->
-            <v-layout>
-                <v-flex>
-                    <v-card>
-                        <v-card-title>상세평가</v-card-title>
-                        <v-card-text>
-                            맛 <UserReviewStarRating></UserReviewStarRating>
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-            <v-layout>
-                <v-flex>
-                    <v-card>
-                        <v-card-text>
-                            서비스 <UserReviewStarRating></UserReviewStarRating>
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-            <v-layout>
-                <v-flex>
-                    <v-card>
-                        <v-card-text>
-                            분위기 <UserReviewStarRating></UserReviewStarRating>
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
-            <v-layout>
-                <v-flex>
-                    <v-card>
-                        <v-card-text>
-                            가격 <UserReviewStarRating></UserReviewStarRating>
-                        </v-card-text>
-                    </v-card>
-                </v-flex>
-            </v-layout>
+        <v-layout>
+            <v-flex>
+                <v-card flat>
+                    <v-card-title class="review-write-font">총점</v-card-title>
+                    <v-card-text>
+                        <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <!-- 별점 상세평가 -->
+        <v-layout>
+            <v-flex>
+                <v-card flat>
+                    <v-card-title class="review-write-font">상세평가</v-card-title>
+                    <v-card-text>
+                        맛 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex>
+                <v-card flat>
+                    <v-card-text>
+                        서비스 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex>
+                <v-card flat>
+                    <v-card-text>
+                        분위기 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <v-layout>
+            <v-flex>
+                <v-card flat>
+                    <v-card-text>
+                        가격 <UserReviewStarRating></UserReviewStarRating>
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <!-- 리뷰 텍스트 -->
+        <v-card flat>
+            <v-card-text>
+                <v-layout>
+                    <v-flex>
+                        <v-text-field multi-line rows="6" row-height="6" 
+                        v-model= "reviewContents" color="black" 
+                        label="리뷰 입력">
+                        </v-text-field>
+                    </v-flex>
+                </v-layout>
+            </v-card-text>
+        </v-card>
+        <!-- 태그 -->
+        <v-card flat>
+            <v-card-text>
+                <v-layout>
+                    <v-flex>
+                        <InputTag @change="change"
+                        v-bind:placeholder  = 'tagPlaceholder' 
+                        v-bind:limit        = 'tagLimit' 
+                        v-bind:tags.sync    = 'tagsArray'>
+                        </InputTag>  
+                    </v-flex>
+                </v-layout>
+            </v-card-text>
+        </v-card>
 
-            <!-- 구분 -->
-            <hr><br>
-            <!-- 리뷰 텍스트 -->
-            <v-layout>
-                <v-flex>
-                    <v-text-field multi-line rows="6" row-height="6" 
-                    v-model= "reviewContents" color="black" 
-                    label="리뷰 입력">
-                    </v-text-field>
-                </v-flex>
-            </v-layout>
-            
-            <!-- 태그 -->
-            <v-layout>
-                <v-flex>
-                    <InputTag @change="change"
-                    v-bind:placeholder  = 'tagPlaceholder' 
-                    v-bind:limit        = 'tagLimit' 
-                    v-bind:tags.sync    = 'tagsArray'>
-                    </InputTag>  
-                </v-flex>
-            </v-layout>
-            <!-- 구분 -->
-            <hr><br>
-            <!-- 이미지 -->
-            <v-layout row wrap>
-                <v-spacer></v-spacer>
-                <v-flex xs12 sm3>
-                    <PictureInput ref="image1" removable @change="onChange" 
-                    margin="10" radius="10" height="300" width="500"
-                    accept="image/*" size="10" buttonClass="btn"
-                    :customStrings="setPictureString">
-                    </PictureInput> 
-                </v-flex>
-                <v-flex xs12 sm3>
-                    <PictureInput ref="image2" removable @change="onChange" 
-                    margin="10" radius="10" height="300" width="500"
-                    accept="image/*" size="10" buttonClass="btn"
-                    :customStrings="setPictureString">
-                    </PictureInput> 
-                </v-flex>
-                <v-flex xs12 sm3>
-                    <PictureInput ref="image3" removable @change="onChange" 
-                    margin="10" radius="10" height="300" width="500"
-                    accept="image/*" size="10" buttonClass="btn"
-                    :customStrings="setPictureString">
-                    </PictureInput> 
-                </v-flex>
-                <v-spacer></v-spacer>
-            </v-layout>
-            <!-- <br><br> -->
-        </v-container>
+        <!-- 이미지 -->
+        <v-layout row wrap>
+            <v-spacer></v-spacer>
+            <v-flex xs4 sm3>
+                <PictureInput ref="image1" removable @change="onChange" 
+                margin="10" radius="10" height="200" width="300"
+                accept="image/*" size="10" buttonClass="btn" :z-index="0"
+                :customStrings="setPictureString">
+                </PictureInput> 
+            </v-flex>
+            <v-flex xs4 sm3>
+                <PictureInput ref="image2" removable @change="onChange" 
+                margin="10" radius="10" height="200" width="300"
+                accept="image/*" size="10" buttonClass="btn" :z-index="0"
+                :customStrings="setPictureString">
+                </PictureInput> 
+            </v-flex>
+            <v-flex xs4 sm3>
+                <PictureInput ref="image3" removable @change="onChange" 
+                margin="10" radius="10" height="200" width="300"
+                accept="image/*" size="10" buttonClass="btn" :z-index="0"
+                :customStrings="setPictureString">
+                </PictureInput> 
+            </v-flex>
+            <v-spacer></v-spacer>
+        </v-layout>
     </v-content>
 </template>
 
@@ -358,5 +360,9 @@ export default {
         width: 30%;
         margin-left: 3%;
         float: left;
+    }
+
+    .review-write-font {
+        font-weight: bold;
     }
 </style>

@@ -77,7 +77,7 @@
                         </v-list-tile>
                         <!-- 출력될 modal창 내용-->
                         <v-card>
-                            <v-toolbar dark color="grey darken-3">
+                            <v-toolbar dark color="amber darken-1">
                                 <v-toolbar-title>Communication</v-toolbar-title>
                                 <v-spacer></v-spacer>
                                 <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어

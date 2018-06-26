@@ -4,7 +4,7 @@
   <v-app>
     <v-layout>
       <v-flex xs12 sm6 offset-sm3>
-        <v-card>
+        <v-card flat>
           <v-card-actions>
             <v-spacer></v-spacer>
           </v-card-actions>
@@ -73,8 +73,8 @@
                     <v-card>
                       <!-- 상단바 -->
                       <v-card-title>
-                        <v-toolbar dark color="grey darken-3">
-                            <v-toolbar-title>Communication</v-toolbar-title>
+                        <v-toolbar dark color="amber darken-4">
+                            <v-toolbar-title class="final-modal-title">Communication</v-toolbar-title>
                             <v-spacer></v-spacer>
                             <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어 
                             출력된 모달창을 사라지도록 한다는 것 -->
@@ -84,7 +84,6 @@
                           </v-toolbar>
                       </v-card-title>
                       <!-- 이모티콘 -->
-                      <br><br>
                       <v-card-media>
                         <v-layout>
                           <v-spacer></v-spacer>
@@ -99,7 +98,7 @@
                       <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-flex xs10 sm4>
-                          <v-btn dark block color="grey darken-3" @click.native="secondDialog = false" class="ok-but">
+                          <v-btn dark outline block color="amber darken-1" @click.native="secondDialog = false" class="ok-but">
                             확인
                           </v-btn>
                         </v-flex>
@@ -255,7 +254,7 @@ export default {
     }
   },
 
-  created() { 
+  created() {
     // axios http 라이브러리.
     axios.post('/getEmoticonList').
     then((response)=>{
@@ -292,5 +291,9 @@ export default {
     height: 100%;
     font-size: 3em;
     font-weight: bold;
+  }
+
+  .final-modal-title {
+    font-size: 2em;
   }
 </style>

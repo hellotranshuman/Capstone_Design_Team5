@@ -41,6 +41,7 @@ class CreateRestaurentTable extends Migration
             $table->boolean('reservation_selectMenu')->default(false);
             $table->string('coordinate');
             $table->string('address');
+            $table->string('qrcode');
             $table->timestamps();
             $table->foreign('user_num')
                 ->references('id')->on('users')

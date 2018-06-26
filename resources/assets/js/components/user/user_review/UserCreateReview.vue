@@ -54,7 +54,7 @@
                         <v-flex xs8 sm9>{{this.writeDate}}</v-flex>
                     </v-layout>
                     <!-- 총점 -->
-                    <v-layout align-start align-center>
+                    <v-layout align-center justify-center>
                         <v-flex xs2>총점</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -63,11 +63,10 @@
                                     <v-icon x-large color="yellow accent-4">star</v-icon>
                                 </v-flex>
                             </v-layout>
-                        </v-flex>                        
-                        <v-spacer></v-spacer>
+                        </v-flex>                               
                     </v-layout>
                     <!-- 맛 -->
-                    <v-layout align-start align-center v-if="(this.taste != 0)">
+                    <v-layout align-center justify-center v-if="(this.taste != 0)">
                         <v-flex xs2>맛</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -79,7 +78,7 @@
                         </v-flex> 
                     </v-layout>
                     <!-- 서비스 -->
-                    <v-layout align-start align-center v-if="(this.service != 0)">
+                    <v-layout align-center justify-center v-if="(this.service != 0)">
                         <v-flex xs2>서비스</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -91,7 +90,7 @@
                         </v-flex> 
                     </v-layout>
                     <!-- 분위기 -->
-                    <v-layout align-start align-center v-if="(this.mood != 0)">
+                    <v-layout align-center justify-center v-if="(this.mood != 0)">
                         <v-flex xs2>분위기</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>
@@ -103,7 +102,7 @@
                         </v-flex>
                     </v-layout>
                     <!-- 가격 -->
-                    <v-layout align-start align-center v-if="(this.price != 0)">
+                    <v-layout align-center justify-center v-if="(this.price != 0)">
                         <v-flex xs2>가격</v-flex>
                         <v-flex xs6 sm4>
                             <v-layout>

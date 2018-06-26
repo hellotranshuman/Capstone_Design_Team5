@@ -71,13 +71,13 @@
             </v-layout>
 
             <!-- 최상단 이동 버튼 -->
-            <v-btn class="up-button" color="grey lighten-2" outline small fixed bottom left fab
+            <!-- <v-btn class="up-button" color="grey lighten-2" outline small fixed bottom left fab
             @click="$vuetify.goTo(0, {duration:250, offset:0, easing:'easeInQuad'})">
                 <v-icon>arrow_upward</v-icon>
-            </v-btn>
+            </v-btn> -->
 
             <!-- SNS 공유 -->
-            <v-speed-dial fixed bottom right direction="top"
+            <v-speed-dial fixed bottom left direction="top"
             transition="slide-y-reverse-transition" v-model="fab">
                 <v-btn slot="activator" color="blue darken-2" dark v-model="fab" fab>
                     <v-icon>share</v-icon>
