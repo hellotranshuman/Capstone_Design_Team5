@@ -780,13 +780,13 @@ class MainController extends Controller
         $searchKeyword = '%' . $keyword . '%';
 
         // <-- 검색 별점 순, 인기 순
-        if(!$request->has('searchType') || $request->get('searchType') == 1) {
+        if($request->get('searchType') == 1 || !$request->has('searchType')) {
 
             // <-- 지역 선택 Data 없을시
             if(!$request->has('searchArea')) {
 
                 // <-- 매뉴 가격 필터링 Data 없을시
-                if(!$request->has('searchPrice')) {
+                if($request->get('searchPriceMax') == 0) {
                     // 이거 버그잇음 뷰에서 출력이 제대로 안됨 이상;
                     // <— 가게 이름으로 검색
                     $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
@@ -967,7 +967,7 @@ class MainController extends Controller
                 $regionData = $request->get('searchArea');
 
                 // <-- 매뉴 가격 필터링 Data 없을시
-                if(!$request->has('searchPrice')) {
+                if($request->get('searchPriceMax') == 0) {
                     // <— 가게 이름으로 검색
                     $shopSearchData = Restaurant::leftJoin('review', 'review.shop_id', '=', 'restaurants.id')
                         ->select(DB::raw('
@@ -1153,6 +1153,7 @@ class MainController extends Controller
 
 
         } // <-- review Rating If
+
         else {
 
             // <-- 지역 선택 Data 없을시
@@ -1160,7 +1161,7 @@ class MainController extends Controller
 
                 // <-- 가격 데이터 없을시
                 // <-- 매뉴 가격 필터링 Data 없을시
-                if(!$request->has('searchPrice')) {
+                if($request->get('searchPriceMax') == 0) {
                     // <— 가게 이름으로 검색
                     $shopSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
                         ->select(DB::raw('
@@ -1341,7 +1342,7 @@ class MainController extends Controller
                 $regionData = $request->get('searchArea');
 
                 // <-- 지역은 있는데 가격 data x
-                if(!$request->has('searchPrice')) {
+                if($request->get('searchPriceMax') == 0) {
                     // <— 가게 이름으로 검색
                     $shopSearchData = Restaurant::leftJoin('order_list', 'order_list.shop_id', '=', 'restaurants.id')
                         ->select(DB::raw('

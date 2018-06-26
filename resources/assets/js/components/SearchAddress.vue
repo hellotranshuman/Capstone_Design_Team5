@@ -19,18 +19,18 @@
                             <v-flex md4 xs12 v-for="(item, i) in area" :key="i">
                                 <v-card>
                                     <v-card-media
-                                        class="white--text"
-                                        :src="item.src"
-                                        height="200px"
-                                        @click="clickRegionList(item.postRegion, item.listLimit, item.showRegion)"
+                                            class="white--text"
+                                            :src="item.src"
+                                            height="200px"
+                                            @click="clickRegionList(item.postRegion, item.listLimit, item.showRegion)"
                                     >
-                                    <v-container fill-height fluid>
-                                        <v-layout fill-height>
-                                            <v-flex xs12 align-end flexbox>
-                                                <span class="headline"><b>{{ item.name }}</b></span>
-                                            </v-flex>
-                                        </v-layout>
-                                    </v-container>
+                                        <v-container fill-height fluid>
+                                            <v-layout fill-height>
+                                                <v-flex xs12 align-end flexbox>
+                                                    <span class="headline"><b>{{ item.name }}</b></span>
+                                                </v-flex>
+                                            </v-layout>
+                                        </v-container>
                                     </v-card-media>
                                 </v-card>
                             </v-flex>
@@ -45,18 +45,18 @@
                             <v-flex md4 xs12 v-for="(item, i) in food" :key="i">
                                 <v-card>
                                     <v-card-media
-                                        class="white--text"
-                                        :src="item.src"
-                                        height="200px"
-                                        @click="clickTypeList(item.postType, item.listLimit)"
+                                            class="white--text"
+                                            :src="item.src"
+                                            height="200px"
+                                            @click="clickTypeList(item.postType, item.listLimit)"
                                     >
-                                    <v-container fill-height fluid>
-                                        <v-layout fill-height>
-                                            <v-flex xs12 align-end flexbox>
-                                                <span class="headline"><b>{{ item.name }}</b></span>
-                                            </v-flex>
-                                        </v-layout>
-                                    </v-container>
+                                        <v-container fill-height fluid>
+                                            <v-layout fill-height>
+                                                <v-flex xs12 align-end flexbox>
+                                                    <span class="headline"><b>{{ item.name }}</b></span>
+                                                </v-flex>
+                                            </v-layout>
+                                        </v-container>
                                     </v-card-media>
                                 </v-card>
                             </v-flex>
@@ -71,18 +71,18 @@
                             <v-flex md4 xs12 v-for="(item, i) in favorite" :key="i">
                                 <v-card>
                                     <v-card-media
-                                        class="white--text"
-                                        :src="item.src"
-                                        height="200px"
-                                        @click="item.function(item.name, item.listLimit)"
+                                            class="white--text"
+                                            :src="item.src"
+                                            height="200px"
+                                            @click="item.function(item.name, item.listLimit)"
                                     >
-                                    <v-container fill-height fluid>
-                                        <v-layout fill-height>
-                                            <v-flex xs12 align-end flexbox>
-                                                <span class="headline"><b>{{ item.name }}</b></span>
-                                            </v-flex>
-                                        </v-layout>
-                                    </v-container>
+                                        <v-container fill-height fluid>
+                                            <v-layout fill-height>
+                                                <v-flex xs12 align-end flexbox>
+                                                    <span class="headline"><b>{{ item.name }}</b></span>
+                                                </v-flex>
+                                            </v-layout>
+                                        </v-container>
                                     </v-card-media>
                                 </v-card>
                             </v-flex>
@@ -105,7 +105,7 @@
 
         data(){
             return {
-                
+
             }
         },
 

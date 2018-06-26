@@ -383,13 +383,12 @@
                     subOpCount: this.subOpCount
                 }).then((response) => {
                     if(response.data.flag) {
-                        let responseText = JSON.parse(response.data.content);
-
-                        var translatedText = responseText.message.result.translatedText;
-                        this.MenuList = translatedText.split("@");
+                        let transText = response.data.content;
+                        console.log(transText);
+                        // this.MenuList = transText;
                     }
                     else {
-                        this.MenuList = response.data.content.split("@");
+                        // this.MenuList = response.data.content.split("@");
                     }
 
 

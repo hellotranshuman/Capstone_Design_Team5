@@ -19,12 +19,12 @@
                             <v-flex md4 xs12 v-for="(item, i) in restaurantNameResult" :key="i">
                                 <v-card>
                                     <v-card-media
-                                            :src="`/images/${item.id}/${item.id}_titleImg.jpg`"
+                                            :src="`/images/${item.shop_id}/${item.shop_id}_titleImg.jpg`"
                                             height="250px"
-                                            @click="moveRestaurant(item.id)"
+                                            @click="moveRestaurant(item.shop_id)"
                                     ></v-card-media>
-                                    <v-card-title class="headline">{{ item.name }}<v-spacer></v-spacer><span class="orange--text">{{ item.totalRating }}</span></v-card-title>
-                                    <v-card-actions><h2>{{ item.dodobuken }} - {{ item.type }}</h2></v-card-actions>
+                                    <v-card-title class="headline">{{ item.shop_name }}<v-spacer></v-spacer><span class="orange--text">{{ item.totalRating }}</span></v-card-title>
+                                    <v-card-actions><h2>{{ item.shop_address }} - {{ item.shop_type }}</h2></v-card-actions>
                                 </v-card>
                             </v-flex>
                         </v-layout>

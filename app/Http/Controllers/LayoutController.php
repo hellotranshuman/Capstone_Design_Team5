@@ -148,6 +148,8 @@ class LayoutController extends Controller
         $shopId         = $request->get('shop_id');
         $selectLayout   = $request->get('slt_tem');
 
+
+
         Restaurant::where('id', $shopId)
                     ->update(['selectLayout' => $selectLayout]);
 

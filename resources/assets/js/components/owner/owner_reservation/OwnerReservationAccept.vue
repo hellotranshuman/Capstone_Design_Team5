@@ -1,9 +1,9 @@
 <template>
     <v-app>
-        <div class="create_coupon">
+        <div class="reservation_Accept">
             <br>
-            <h3><B>예약 수락</B></h3>
-            신청한 예약을 수락 할 수 있습니다.
+            <h2 class="Main_title"><B>예약 수락</B></h2>
+            <span class="sub_title">신청한 예약을 수락 할 수 있습니다.</span>
             <hr><br>
             <div class="coupon_table">
                 <v-data-table
@@ -17,7 +17,7 @@
                         <td class="text-xs-left">{{ props.item.reservation_date }}</td>
                         <td class="text-xs-left">{{ props.item.person }}</td>
                         <td class="text-xs-left">{{ props.item.child }}</td>
-                        <td class="text-xs-left">{{ props.item.refused_message }}</td>
+                        <td class="text-xs-left">{{ props.item.message }}</td>
                         <td class="justify-left"  v-if="props.item.order_num != null">
                             <!-- 메뉴 보기 버튼 -->
                             <v-btn flat small color="teal lighten-1" @click="menu(props.item), menuLoad = true">메뉴보기</v-btn>
@@ -48,10 +48,13 @@
                         <td class="justify-left layout px-0">
 
                             <!-- 수락 버튼 -->
-                            <v-btn small color="primary" dark @click.stop="Acceptdialog = true"
-                                   @click="AcceptCustomer = props.item.user_name, AcceptItem(props.item)"
+                            <v-btn  small
+                                    style="color:white; background-color:#ff9a55"
+                                    dark
+                                    @click.stop="Acceptdialog = true"
+                                    @click="AcceptCustomer = props.item.user_name, AcceptItem(props.item)"
                             >
-                                Accept <v-icon dark right>check_circle</v-icon>
+                                <v-icon small dark left>check_circle</v-icon>  Accept
                             </v-btn>
                             <!-- 수락 Dislog -->
                             <v-dialog v-model="Acceptdialog" max-width="400px">
@@ -69,7 +72,7 @@
                             </v-dialog>
                             <!-- 거절 버튼 -->
                             <v-btn small color="error" @click.stop="Canceldialog = true">
-                                <v-icon dark left>remove_circle</v-icon>Cancel
+                                <v-icon small dark left>remove_circle</v-icon>Cancel
                             </v-btn>
                             <v-dialog v-model="Canceldialog" max-width="400px">
                                 <v-card>
@@ -103,7 +106,6 @@
 <script>
     import VueAxios         from 'vue-axios';
     import axios            from 'axios';
-
     export default {
         data() {
             return {
@@ -111,27 +113,22 @@
                 Acceptdialog : false,
                 Canceldialog : false,
                 menuLoad     : false,
-
                 /* 수락한손님 */
                 AcceptCustomer : null,
-
                 /* 취소한 손님 */
                 CancelCustomer  : null,
                 WhyCancel       : '',
-
                 headers: [
                     { text: '예약자 명',    value: 'user_name' },
                     { text: '예약 날짜',    value: 'reservation_date' },
                     { text: '어른 인원',    value: 'person' },
                     { text: '아이 인원',    value: 'child' },
-                    { text: '요청 사항',    value: 'refused_message'},
+                    { text: '요청 사항',    value: 'message'},
                     { text: '메뉴',         value: 'menu_select' },
                     { text: '수락 & 거절',  value: 'Accept', sortable: false },
                 ],
-
                 /* 저장 & 편집 & 삭제 */
-                items: [],
-
+                items: [ ],
                 orderMenu : [],
             }
         },
@@ -141,7 +138,6 @@
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
                 var reservationAccept = response.data.resData;
-
                 this.items = reservationAccept;
             })
         },
@@ -150,31 +146,25 @@
             menu(item) {
                 const index         = this.items.indexOf(item)
                 var reservation_id  = this.items[index].id;
-
                 axios.post('/getReservationMenuList', {
                     id : reservation_id
                 }).then((response) => {
                     var MenuorderData = response.data.currentOrder;
-
                     // 임시
                     var MenuArray = '';
-
                     // 1. 주문 메뉴 옵션 합치기s
                     for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
                     {
                         MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
                             + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
-
                         // 옵션 개수...도..
                         var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
-
                         // 메뉴
                         for(var j = 0; j < OptionCount; j++)
                         {
                             MenuArray += ' ' + MenuorderData[0]['menu'+(i+1)+'-'+'option'+(j+1)]
                                 + ':' + MenuorderData[0]['menu'+(i+1)+'-'+'subOption'+(j+1)];
                         }
-
                         this.orderMenu[i] = MenuArray;
                     }
                 });
@@ -182,20 +172,17 @@
             AcceptItem (item) {
                 const index = this.items.indexOf(item);
                 var id      = this.items[index].id;
-
                 axios.post('/acceptReservation', {
                     // 수락한 유저 이름
                     id : id,
                     accept   : true,
                 }).then((response) => {
-                   location.reload();
+                    location.reload();
                 }).catch(console.log('test '));
             },
-
             CancelItem (item) {
                 const index = this.items.indexOf(item);
                 var id      = this.items[index].id;
-
                 axios.post('/acceptReservation', {
                     // 거절한 유저 이름
                     id : id,
@@ -209,4 +196,15 @@
     }
 </script>
 <style>
+    .Main_title {
+        color: #6d4d35;
+    }
+
+    .sub_title {
+        color : #9d724b;
+    }
+    .reservation_Accept {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
 </style>

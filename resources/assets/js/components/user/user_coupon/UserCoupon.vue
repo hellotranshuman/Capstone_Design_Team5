@@ -1,12 +1,12 @@
 <!-- 유저 쿠폰함 -->
 <template>
     <v-app>
-        <div id="UserPageCoupon">
+        <div class="user_page">
             <br>
-            <h4><B> 나의 할인쿠폰 </B></h4><br>
+            <h2><B> 나의 할인쿠폰 </B></h2><br>
             <v-tabs color="dark"
                     dark
-                    slider-color="red"
+                    slider-color="orange darken-1"
             >
                 <v-tab>
                     사용 가능한 쿠폰
@@ -48,7 +48,7 @@
                                                     hide-overlay
                                                     max-width="500px"
                                             >
-                                                <v-card>
+                                                <v-card >
                                                     <v-card-title>
                                                         <div class="Trans_Title">
                                                             <b> {{ trans.name }} </b>
@@ -225,6 +225,10 @@
     }
 </script>
 <style>
+    .user_page {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
     /* 반응형 웹 */
     /* 모바일 */
     @media (max-width: 639px){

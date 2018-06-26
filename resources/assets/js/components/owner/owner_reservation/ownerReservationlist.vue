@@ -2,15 +2,19 @@
     <v-app>
         <div class="Reservation_list">
             <br>
-            <h3><B>예약 현황</B></h3>
-            현재 예약 현황을 알 수 있습니다.
+            <h2 class="Main_title"><B>예약 현황</B></h2>
+            <span class="sub_title"> 현재 예약 현황을 알 수 있습니다. </span>
             <hr><br>
             <v-dialog v-model="dialog" persistent max-width="500px">
-                <v-btn color="orange darken-1" slot="activator" style="color:white">예약 추가</v-btn>
-                <v-card>
+                <v-btn  style="color:white; background-color:#ff9a55"
+                        slot="activator"
+                >
+                    예약 추가
+                </v-btn>
+                <v-card style="border: 10px solid #efe2bd; ">
                     <!-- v-card title -->
                     <v-card-title>
-                        <span class="headline" style="margin:auto"><B>예약 추가</B></span>
+                        <span class="Main_title" style="margin:auto"><h2><B><v-icon large>alarm</v-icon> &nbsp; 예약 추가</B></h2></span>
                     </v-card-title>
                     <!-- v-card 본문 -->
                     <v-card-text>
@@ -18,7 +22,13 @@
                             <v-layout wrap>
                                 <!-- 예약자 이름 -->
                                 <v-flex xs12>
-                                    <v-text-field  prepend-icon="face" label="예약자 명" required v-model="ReservationItem.name"></v-text-field>
+                                    <v-text-field
+                                            prepend-icon="face"
+                                            label="예약자 명"
+                                            required
+                                            v-model="ReservationItem.name"
+                                            color="orange darken-1"
+                                    ></v-text-field>
                                 </v-flex>
                                 <!-- 예약 날짜 -->
                                 <v-flex xs11 sm5 >
@@ -41,9 +51,13 @@
                                                 v-model="ReservationItem.start_date"
                                                 prepend-icon="event"
                                                 readonly
+                                                color="orange darken-1"
                                         ></v-text-field>
 
-                                        <v-date-picker v-model="ReservationItem.start_date" no-title scrollable>
+                                        <v-date-picker v-model="ReservationItem.start_date"
+                                                       no-title scrollable
+                                                       color="orange darken-1"
+                                        >
                                             <v-spacer></v-spacer>
                                             <v-btn flat color="primary" @click="reservation_menu = false">Cancel</v-btn>
                                             <v-btn flat color="primary" @click="$refs.reservation_menu.save(ReservationItem.start_date)">OK</v-btn>
@@ -71,24 +85,36 @@
                                                 v-model="ReservationItem.time"
                                                 prepend-icon="access_time"
                                                 readonly
+                                                color="orange darken-1"
                                         ></v-text-field>
-                                        <v-time-picker v-model="ReservationItem.time" @change="$refs.menu.save(ReservationItem.time)"></v-time-picker>
+                                        <v-time-picker v-model="ReservationItem.time"
+                                                       @change="$refs.menu.save(ReservationItem.time)"
+                                                       color="orange darken-1"
+                                        ></v-time-picker>
                                     </v-menu>
                                 </v-flex>
                                 <!-- 인원수 -->
                                 <v-flex xs12 sm6 md4>
-                                    <v-text-field label="어른 인원" required v-model="ReservationItem.adult_person"></v-text-field>
+                                    <v-text-field label="어른 인원"
+                                                  required
+                                                  v-model="ReservationItem.adult_person"
+                                                  color="orange darken-1"
+                                    ></v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm6 md4>
-                                    <v-text-field label="아이 인원" required v-model="ReservationItem.child_person"></v-text-field>
+                                    <v-text-field label="아이 인원"
+                                                  required
+                                                  v-model="ReservationItem.child_person"
+                                                  color="orange darken-1"
+                                    ></v-text-field>
                                 </v-flex>
                             </v-layout>
                         </v-container>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="teal lighten-1" flat @click.native="dialog = false">Close</v-btn>
-                        <v-btn color="teal lighten-1" flat @click.native="save">Save</v-btn>
+                        <v-btn style="color:white; background-color:#6d4d35" @click.native="dialog = false">Close</v-btn>
+                        <v-btn style="color:white; background-color:#ff9a55" @click.native="save">Save</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-dialog>
@@ -151,31 +177,25 @@
 <script>
     import VueAxios         from 'vue-axios';
     import axios            from 'axios';
-
     export default {
         data() {
             return {
                 /* snackbar */
                 addreservation_snackbar : false,
                 addreservation_text     : '예약자 명을 입력 해주세요',
-
                 /* dialog */
                 Dialog : false,
                 menuLoad : false,
-
                 /* date picker */
                 start_date: null,
                 reservation_menu: false,
                 modal: false,
-
                 /* time picker */
                 time: null,
                 menu2: false,
                 modal2: false,
-
                 /* clickItem */
                 clickId : 0,
-
                 /* table */
                 dialog: false,
                 headers: [
@@ -185,7 +205,6 @@
                     { text: '아이',         value: 'child' },
                     { text: '메뉴',         value: 'menu_select' },
                 ],
-
                 /* 저장 & 편집 & 삭제 */
                 items: [
                 ],
@@ -196,7 +215,6 @@
                     child           : 0,
                     menuList        : ''
                 },
-
                 orderMenu : [],
             }
         },
@@ -206,7 +224,6 @@
                 'shop_id' : this.$route.params.shop_id
             }).then((response) => {
                 var ReservationListData = response.data.resData;
-
                 var ReservationArray = [];
                 for(var i = 0; i < ReservationListData.length; i++)
                 {
@@ -224,7 +241,6 @@
                     ReservationArray[i]['child']              = ReservationListData[i].child;
                     ReservationArray[i]['menu_select']        = ReservationListData[i].menu_select;
                 }
-
                 this.items = ReservationArray;
             })
         },
@@ -233,42 +249,34 @@
             menu(item) {
                 const index = this.items.indexOf(item)
                 var reservation_id = this.items[index].id;
-
                 axios.post('/getReservationMenuList', {
                     id : reservation_id
                 }).then((response) => {
                     var MenuorderData = response.data.currentOrder;
-
                     // 임시
                     var MenuArray = '';
-
                     // 1. 주문 메뉴 옵션 합치기s
                     for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
                     {
                         MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
                             + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
-
                         // 옵션 개수…도..
                         var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
-
                         // 메뉴
                         for(var j = 0; j < OptionCount; j++)
                         {
                             MenuArray += ' ' + MenuorderData[0]['menu'+(i+1)+'-'+'option'+(j+1)]
                                 + ':' + MenuorderData[0]['menu'+(i+1)+'-'+'subOption'+(j+1)];
                         }
-
                         this.orderMenu[i] = MenuArray;
                     }
                 });
             },
-
             // db로 값 보내기
             save () {
                 var check = true;
-
                 /* 유효성 검사 */
-                if(this.ReservationItem.name = null)
+                if(this.ReservationItem.name == null)
                 {
                     this.addreservation_snackbar = true;
                     var check = false;
@@ -289,21 +297,17 @@
                 {
                     // 숫자만 가능
                     var regNumber = /^[0-9]*$/;
-
                     if(!regNumber.test(this.ReservationItem.adult_person)) {
-                         this.addreservation_text = "어른 인원 항목은 숫자만 입력해주세요";
-                         this.addreservation_snackbar = true;
-                         var check = false;
+                        this.addreservation_text = "어른 인원 항목은 숫자만 입력해주세요";
+                        this.addreservation_snackbar = true;
+                        var check = false;
                     }
-
                     if(!regNumber.test(this.ReservationItem.child_person)) {
-                         this.addreservation_text = "아이 인원 항목은 숫자만 입력해주세요";
-                         this.addreservation_snackbar = true;
-                         var check = false;
+                        this.addreservation_text = "아이 인원 항목은 숫자만 입력해주세요";
+                        this.addreservation_snackbar = true;
+                        var check = false;
                     }
-
                 }
-
                 if(check == true) {
                     /* Data 송신 */
                     axios.post('/setOwnerReservation', {
@@ -316,8 +320,7 @@
                     }).then((response) => {
                         location.reload();
                     })
-                    .catch(console.log('test'));
-
+                        .catch(console.log('test'));
                     this.dialog = false;
                 }
             }
@@ -329,4 +332,13 @@
         padding-left: 5%;
         padding-right: 5%;
     }
+
+    .Main_title {
+        color: #6d4d35;
+    }
+
+    .sub_title {
+        color : #9d724b;
+    }
+
 </style>

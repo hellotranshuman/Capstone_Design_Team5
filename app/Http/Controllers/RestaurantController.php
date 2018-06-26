@@ -12,8 +12,8 @@ use App\Review;
 
 class RestaurantController extends Controller
 {
-    const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
-    const client_secret = "pevANwIHvX";
+    const client_id     = "1ml1HFOe7ffSU4tD0da7";
+    const client_secret = "qubdYMY8uA";
 
     private $url     = "https://openapi.naver.com/v1/language/translate";
     private $is_post = true;

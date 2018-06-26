@@ -1,10 +1,10 @@
 <template>
     <v-app>
-        <div>
-            <h4><B> 주문 내역</B></h4><br>
-            <v-tabs color="dark"
+        <div class="user_page">
+            <h2><B> 주문 내역</B></h2><br>
+            <v-tabs
                     dark
-                    slider-color="red"
+                    slider-color="orange darken-1"
             >
                 <v-tab>
                     주문 내역
@@ -120,3 +120,9 @@
         }
     }
 </script>
+<style>
+    .user_page {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+</style>

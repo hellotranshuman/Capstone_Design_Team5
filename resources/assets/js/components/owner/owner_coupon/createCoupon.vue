@@ -1,29 +1,36 @@
-`<template>
+<template>
     <v-app>
         <div class="create_coupon">
-            <br>
-            <h3><B>쿠폰 추가</B></h3>
-            원하는 쿠폰을 제작하여 등록할 수 있습니다.
-            <hr><br>
-            <v-dialog v-model="dialog" max-width="500px">
-                <!-- 쿠폰 추가 버튼 -->
-                <v-btn color="orange darken-1" slot="activator" style="color:white">
-                    <v-icon dark color="white">add</v-icon> 쿠폰 추가
-                </v-btn>
-                <v-card>
-                    <!-- v-card title -->
-                    <v-card-title>
-                        <span class="headline"> <B> 쿠폰 추가 </B> </span>
-                    </v-card-title>
 
+            <br>
+            <h2 class="Main_title"><B>쿠폰 추가</B></h2>
+            <span class="sub_title"><B> 원하는 쿠폰을 제작하여 등록할 수 있습니다. </B></span>
+            <hr class="Main_title"><br>
+
+            <v-dialog v-model="dialog" max-width="500px" >
+                <!-- 쿠폰 추가 버튼 -->
+                <v-btn slot="activator"
+                       style="color:white; background-color:#ff9a55">
+                    쿠폰 추가
+                </v-btn>
+                <v-card class="card_color"
+                        style="border: 10px solid #efe2bd; ">
                     <!-- v-card 본문 -->
+                    <v-card-title>
+                        <span  class="Main_title" style="margin:auto"> &nbsp;  <h2><B> <v-icon large> restaurant_menu </v-icon> &nbsp;쿠폰 추가 </B></h2> </span>
+                    </v-card-title>
                     <v-card-text>
                         <v-container grid-list-md>
                             <v-layout wrap>
 
                                 <!-- 쿠폰 이름 -->
                                 <v-flex xs12>
-                                    <v-text-field label="쿠폰 이름" required v-model="CouponItem.CouponName"></v-text-field>
+                                    <v-text-field
+                                            label="쿠폰 이름"
+                                            required
+                                            v-model="CouponItem.CouponName"
+                                            color="orange darken-1"
+                                    ></v-text-field>
                                 </v-flex>
 
                                 <!-- 쿠폰 종류 -->
@@ -33,12 +40,18 @@
                                             required
                                             :items="['가격 할인', '상품 제공']"
                                             v-model="CouponItem.CouponType"
+                                            color="orange darken-1"
                                     ></v-select>
                                 </v-flex>
 
                                 <!-- 가격 할인 -->
                                 <v-flex xs12 sm6 md4 v-if="CouponItem.CouponType == '가격 할인'">
-                                    <v-text-field label="할인 가격" required v-model="CouponItem.Discount"></v-text-field>
+                                    <v-text-field
+                                            label="할인 가격"
+                                            required
+                                            v-model="CouponItem.Discount"
+                                            color="orange darken-1"
+                                    ></v-text-field>
                                 </v-flex>
 
                                 <!-- 상품 제공 -->
@@ -48,10 +61,16 @@
                                             required
                                             :items="AddProductSelect"
                                             v-model="CouponItem.add_product"
+                                            color="orange darken-1"
                                     ></v-select>
                                 </v-flex>
                                 <v-flex xs12>
-                                    <v-text-field label="쿠폰 조건" required v-model="CouponItem.Condition"></v-text-field>
+                                    <v-text-field
+                                            label="쿠폰 조건"
+                                            required
+                                            v-model="CouponItem.Condition"
+                                            color="orange darken-1"
+                                    ></v-text-field>
                                 </v-flex>
                                 <v-flex xs11 sm5>
                                     <!-- datepicker -->
@@ -73,12 +92,19 @@
                                                 v-model="CouponItem.start_date"
                                                 prepend-icon="event"
                                                 readonly
+                                                color="orange darken-1"
+
                                         ></v-text-field>
 
-                                        <v-date-picker v-model="CouponItem.start_date" no-title scrollable>
+                                        <v-date-picker
+                                                v-model="CouponItem.start_date"
+                                                no-title
+                                                scrollable
+                                                color="orange darken-1"
+                                        >
                                             <v-spacer></v-spacer>
-                                            <v-btn flat color="primary" @click="start_menu = false">Cancel</v-btn>
-                                            <v-btn flat color="primary" @click="$refs.start_menu.save(CouponItem.start_date)">OK</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="start_menu = false">Cancel</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="$refs.start_menu.save(CouponItem.start_date)">OK</v-btn>
                                         </v-date-picker>
                                     </v-menu>
                                 </v-flex>
@@ -101,30 +127,44 @@
                                                 label="pick end Date"
                                                 v-model="CouponItem.end_date"
                                                 prepend-icon="event"
+                                                color="orange darken-1"
                                                 readonly
                                         ></v-text-field>
-                                        <v-date-picker v-model="CouponItem.end_date" no-title scrollable>
+                                        <v-date-picker
+                                                v-model="CouponItem.end_date"
+                                                no-title
+                                                scrollable
+                                                color="orange darken-1"
+                                        >
                                             <v-spacer></v-spacer>
-                                            <v-btn flat color="primary" @click="end_menu = false">Cancel</v-btn>
-                                            <v-btn flat color="primary" @click="$refs.end_menu.save(CouponItem.end_date)">OK</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="end_menu = false">Cancel</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="$refs.end_menu.save(CouponItem.end_date)">OK</v-btn>
                                         </v-date-picker>
                                     </v-menu>
                                 </v-flex>
                                 <v-spacer></v-spacer>
                             </v-layout>
+
                             <!-- 쿠폰 갯수 (개수제한) -->
                             <v-flex>
-                                <v-checkbox :label="'쿠폰 개수 설정'" v-model="coupon_count"></v-checkbox>
+                                <v-checkbox :label="'쿠폰 개수 설정'"
+                                            v-model="coupon_count"
+                                            color="orange darken-1"
+                                ></v-checkbox>
                                 <div v-if="coupon_count == true">
-                                    <v-text-field label="쿠폰 발행 개수" required v-model="CouponItem.count"></v-text-field>
+                                    <v-text-field label="쿠폰 발행 개수"
+                                                  required
+                                                  v-model="CouponItem.count"
+                                                  color="orange darken-1"
+                                    ></v-text-field>
                                 </div>
                             </v-flex>
                         </v-container>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="error" flat @click.native="dialog = false">Close</v-btn>
-                        <v-btn color="blue darken-1" flat @click.native="save()">Save</v-btn>
+                        <v-btn style="color:white; background-color:#6d4d35" @click.native="dialog = false">Close</v-btn>
+                        <v-btn style="color:white; background-color:#ff9a55"  @click.native="save()">Save</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-dialog>
@@ -238,9 +278,9 @@
                     }
                     CouponArray[i]['price_condition'] = CouponData[i].price_condition;
                     CouponArray[i]['start_date']      = CouponData[i].start_date;
-                    CouponArray[i]['end_date']        = CouponData[i].end_date;
+                    CouponArray[i]['expiry_date']        = CouponData[i].expiry_date;
                     // 쿠폰 개수
-                    CouponArray[i]['count']           = CouponData[i].count;
+                    CouponArray[i]['coupon_count']           = CouponData[i].coupon_count;
                 }
 
                 this.items = CouponArray;
@@ -364,6 +404,14 @@
     }
 </script>
 <style>
+    .Main_title {
+        color: #6d4d35;
+    }
+
+    .sub_title {
+        color : #9d724b;
+    }
+
     .create_coupon {
         padding-left: 5%;
         padding-right: 5%;

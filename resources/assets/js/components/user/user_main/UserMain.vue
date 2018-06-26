@@ -202,9 +202,9 @@
 
                 translateValue: {
                     '東京': 'toukyou',
-                    '北海度': 'hokkaido',
-                    '大阪': 'toukyou',
-                    '京都': 'toukyou',
+                    '北海道': 'hokkaido',
+                    '大阪': 'oosaka',
+                    '京都': 'kyouto',
                     '東京': 'toukyou',
                     '東京': 'toukyou',
                     '東京': 'toukyou',
@@ -229,6 +229,10 @@
 
                 translateKorValue: {
                     '東京': '도쿄',
+                    '北海道': '홋카이도',
+                    '大阪': '오사카',
+                    '福岡': '후쿠오카',
+                    '京都': '교토',
                     '한식': '한식',
                     '일식': '일식',
                     '중식': '중식',

@@ -3,7 +3,7 @@
     <gmap-map
             id='g-map'
             :center=googleMapCenter
-            :zoom="18"
+            :zoom="9"
             style="width:100%;  height: 300px;"
     >
       <gmap-marker
@@ -60,14 +60,29 @@
             this.geolocate();
 
             if(!this.currentCenter) {
+                var restaurantList = [];
+
                 if(this.googleMapMode == 'top') {
-                    var restaurantList = this.$session.get('top_restaurantList');
+                    restaurantList = this.$session.get('top_restaurantList');
                 } else if(this.googleMapMode == 'search') {
-                    var restaurantList = [];
-                    restaurantList.push(this.$session.get('searchData').shopSearchData);
-                    restaurantList.push(this.$session.get('searchData').regionSearchData);
-                    restaurantList.push(this.$session.get('searchData').tagSearchData);
-                    console.log(this.$session.get('searchData'));
+                    for(var key in this.$session.get('searchData').shopSearchData) {
+                        restaurantList.push(this.$session.get('searchData').shopSearchData[key]);
+                    }
+                    for(var key in this.$session.get('searchData').typeSearchData) {
+                        restaurantList.push(this.$session.get('searchData').typeSearchData[key]);
+                    }
+                    for(var key in this.$session.get('searchData').regionSearchData) {
+                        restaurantList.push(this.$session.get('searchData').regionSearchData[key]);
+                    }
+                    for(var key in this.$session.get('searchData').tagSearchData) {
+                        restaurantList.push(this.$session.get('searchData').tagSearchData[key]);
+                    }
+                    console.log(restaurantList);
+                }
+
+                if(restaurantList.length == 0) {
+                    this.googleMapCenter = {'lat': 35.6622958, 'lng': 138.1452445}
+                    return;
                 }
                 var avg_lat = 0;
                 var avg_lng = 0;

@@ -11,8 +11,8 @@ use App\Order_Option;
 
 class OrderController extends Controller
 {
-    const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
-    const client_secret = "pevANwIHvX";
+    const client_id     = "1ml1HFOe7ffSU4tD0da7";
+    const client_secret = "qubdYMY8uA";
 
     private $url     = "https://openapi.naver.com/v1/language/translate";
     private $is_post = true;
@@ -218,6 +218,7 @@ class OrderController extends Controller
 
                     curl_close ($ch);
 
+                    $indexName = 'suboption' . $orderIndex;
 
                     if($status_code == 200) {
                         $responseData = json_decode($response);
@@ -259,6 +260,8 @@ class OrderController extends Controller
 
             } // <-- option For End
 
+            $translateArray["menuNum"] = $menuCount;
+
         } // <-- menu For end
 
         if($status_code == 200)
@@ -269,6 +272,7 @@ class OrderController extends Controller
         else
             return response()->json([
                 'flag'    => false,
+                'content' => $response,
             ]);
     }
 }

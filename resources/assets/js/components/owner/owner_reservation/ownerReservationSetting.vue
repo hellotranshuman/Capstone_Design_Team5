@@ -2,10 +2,13 @@
     <v-app>
         <div class="ownerReservationSetting">
             <br>
-            <h3><B>예약 설정</B></h3>
-            예약 관련된 설정을 할 수 있습니다.
+            <h2 class="Main_title"><B>예약 설정</B></h2>
+            <span class="sub_title"><B> 예약 관련된 설정을 할 수 있습니다. </B></span>
             <hr>
-            <v-tabs left>
+            <v-tabs
+                    left
+                    slider-color="orange darken-1"
+            >
                 <v-tab>
                     <!-- 주문 설정 -->
                     <h5><B>&nbsp; 예약 주문 설정 &nbsp;</B></h5>
@@ -16,7 +19,7 @@
                         <v-radio label="주문 가능" value="true"></v-radio>
                         <v-radio label="주문 불가능" value="false"></v-radio>
                     </v-radio-group>
-                    <v-btn color="primary" @click.native="menuoption_save">저장하기</v-btn>
+                    <v-btn style="color:white; background-color:#ff9a55" @click.native="menuoption_save">저장하기</v-btn>
                 </v-tab-item>
                 <v-tab>
                     <h5><B>&nbsp; 예약 날짜/시간 설정 &nbsp;</B></h5>
@@ -24,11 +27,11 @@
                 <v-tab-item>
                     <br>
                     <v-dialog v-model="dialog" persistent max-width="500px">
-                        <v-btn color="#424242" dark slot="activator" @click="settime()">예약 설정 추가</v-btn>
-                        <v-card>
+                        <v-btn style="color:white; background-color:#ff9a55" dark slot="activator" @click="settime()">예약 설정 추가</v-btn>
+                        <v-card style="border: 10px solid #efe2bd; ">
                             <!-- v-card title -->
                             <v-card-title>
-                                <span class="headline">예약 설정 추가</span>
+                                <span  class="Main_title" style="margin:auto"> &nbsp;  <h3><B> <v-icon large> restaurant_menu </v-icon> &nbsp; 예약 설정 추가 </B></h3> </span>
                             </v-card-title>
                             <!-- v-card 본문 -->
                             <v-card-text>
@@ -56,22 +59,33 @@
                                                         prepend-icon="event"
                                                         readonly
                                                         hint="예약 설정할 날짜 선택"
+                                                        color="orange darken-1"
                                                         persistent-hint
                                                 ></v-text-field>
 
-                                                <v-date-picker v-model="ReservationSettingItem.pick_date" no-title scrollable>
+                                                <v-date-picker
+                                                        v-model="ReservationSettingItem.pick_date"
+                                                        no-title
+                                                        scrollable
+                                                        color="orange darken-1"
+                                                >
                                                     <v-spacer></v-spacer>
-                                                    <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
-                                                    <v-btn flat color="primary" @click="$refs.menu.save(ReservationSettingItem.pick_date)">OK</v-btn>
+                                                    <v-btn flat style="color:#ff9a55" @click="menu = false">Cancel</v-btn>
+                                                    <v-btn flat style="color:#ff9a55" @click="$refs.menu.save(ReservationSettingItem.pick_date)">OK</v-btn>
                                                 </v-date-picker>
                                             </v-menu>
                                         </v-flex>
                                         <br><br>
                                         <v-flex xs11 >
                                             <!-- 예약 가능 / 불가능 -->
-                                            <v-radio-group v-model="ReservationSettingItem.impossible" :mandatory="false"  row>
-                                                <v-radio label="예약 가능" value="예약 가능"></v-radio>
-                                                <v-radio label="예약 불가능" value="예약 불가능"></v-radio>
+                                            <v-radio-group
+                                                    v-model="ReservationSettingItem.impossible"
+                                                    :mandatory="false"
+                                                    row
+                                                    color="orange darken-1"
+                                            >
+                                                <v-radio color="orange darken-1" label="예약 가능" value="예약 가능"></v-radio>
+                                                <v-radio color="orange darken-1" label="예약 불가능" value="예약 불가능"></v-radio>
                                             </v-radio-group>
                                         </v-flex>
                                         <!-- 예약 시간 설정 -->
@@ -83,6 +97,7 @@
                                                     multiple
                                                     label="Select"
                                                     class="input-group--focused"
+                                                    color="orange darken-1"
                                                     item-value="text"
                                             ></v-select>
                                         </v-flex>
@@ -91,8 +106,9 @@
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" flat @click.native="dialog = false">Close</v-btn>
-                                <v-btn color="blue darken-1" flat @click="check()">Save</v-btn>
+                                <v-btn style="color:white; background-color:#6d4d35" @click.native="dialog = false">Close</v-btn>
+                                <v-btn style="color:white; background-color:#ff9a55" @click="check()">Save</v-btn>
+
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -104,10 +120,12 @@
                                     <v-date-picker
                                             v-model="reservationCal"
                                             event-color="error"
-                                            :events="arrayEvents">
+                                            :events="arrayEvents"
+                                            color="orange darken-1"
+                                    >
                                     </v-date-picker>
                                 </v-flex>
-                                <v-btn color="primary" @click="date_click()"> 조회하기 </v-btn>
+                                <v-btn style="color:white; background-color:#6d4d35" @click="date_click()"> 조회하기 </v-btn>
                             </v-layout>
 
                         </div>
@@ -121,7 +139,7 @@
                             >
                                 <template slot="items" slot-scope="props">
                                     <td class="text-xs-left">{{ props.item.setting_date }}</td>
-                                    <td class="text-xs-left" v-if=props.item.remark>예약 가능</td>
+                                    <td class="text-xs-left" v-if="props.item.remark == 1">예약 가능</td>
                                     <td class="text-xs-left" v-else>예약 불가능</td>
                                     <td class="text-xs-left">{{ props.item.start_time }}</td>
                                     <td class="text-xs-left">{{ props.item.end_time }}</td>
@@ -342,6 +360,7 @@
                     'shop_id'           : this.$route.params.shop_id
                 }).then((response) => {
                     var settingData = response.data.settingData;
+                    console.log(settingData);
                     if(this.items != null)
                     {
                         this.items = null,
@@ -480,7 +499,7 @@
                     var check = false;
                 }
 
-                
+
                 if(check == true) {
                     /* Data 송신 */
                     axios.post('/setReservationSetting', {
@@ -494,7 +513,7 @@
                         /* 달력 날짜 클릭 시 넘어오는 날짜 값 */
                         click_date        : this.reservationCal
                     }).then((response) => {
-                    // location.reload();
+                        location.reload();
                     })
                         .catch(console.log('test'));
 
@@ -505,6 +524,14 @@
     }
 </script>
 <style>
+    .Main_title {
+        color: #6d4d35;
+    }
+
+    .sub_title {
+        color : #9d724b;
+    }
+
     .reservation_calender {
         float: left;
         width: 20%;

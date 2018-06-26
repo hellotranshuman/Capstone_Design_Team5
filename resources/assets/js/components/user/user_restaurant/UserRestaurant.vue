@@ -48,7 +48,7 @@
                         <v-icon large color="yellow darken-2"> star_border </v-icon>
                         <v-icon large color="yellow darken-2"> star_border </v-icon>
                     </div> 
-                    <b id="totalRating" style="font-size:2rem;"> </b>
+                    <!-- <b id="totalRating" style="font-size:2rem;"> </b> -->
                 </div>
             </div>           
 
@@ -124,7 +124,7 @@
                 <b id="namer"></b>    
             </div>             
         </div>
-        <!-- 타이틀 이미지 -->
+        <!-- 타이틀 이미지  src="./image.jpg" -->
         <img id="title_img">
     </div>
 
@@ -170,10 +170,10 @@
 
     <!-- 예약 하기 모달 창 --> 
     <v-dialog v-model="dialog" max-width="500px" persistent>
-        <v-card>
+        <v-card style="border: 10px solid #FBC02D;">
             <!-- v-card title -->
             <v-card-title>
-                <span class="headline">예약 하기</span>
+                <span style="margin: auto"> <h2><b><v-icon large> alarm </v-icon> 예약 하기</b></h2></span>
             </v-card-title>
             
             <!-- v-card 본문 -->
@@ -201,6 +201,7 @@
                                     v-model="start_date"
                                     prepend-icon="event"
                                     readonly
+                                    color="brown"
                                 ></v-text-field>
 
                                 <!-- 예약 날짜 -->
@@ -209,19 +210,20 @@
                                     no-title 
                                     scrollable 
                                     :allowed-dates="allowedDates"
+                                    color="brown"
                                 >
                                     <v-spacer></v-spacer>
 
                                     <v-btn 
-                                        flat color="primary" 
+                                        flat color="brown"
                                         @click.stop="reservation_menu = false"
                                     >
                                         Cancel
                                     </v-btn>
 
                                     <v-btn 
-                                        flat 
-                                        color="primary" 
+                                        flat
+                                        color="brown"
                                         @click="$refs.reservation_menu.save(start_date), setTime()"
                                     >
                                         OK
@@ -236,6 +238,7 @@
                                 v-model="pick_time"
                                 label="예약 시간"
                                 single-line
+                                color="brown"
                             ></v-select>
                         </v-flex>
                         <!-- 인원수 -->
@@ -243,7 +246,8 @@
                             <v-text-field 
                                 label="어른 인원" 
                                 v-model="adult_person"
-                                required 
+                                required
+                                color="brown"
                             ></v-text-field>
                         </v-flex>
 
@@ -252,13 +256,14 @@
                                 label="아이 인원" 
                                 v-model="child_person"
                                 required
+                                color="brown"
                             ></v-text-field>
                         </v-flex>
 
                         <!-- 메뉴 선택 (1:true)-->
                         <div v-if="this.reservation_selectMenu == 1">
                             <B> 메뉴 예약이 가능한 가게 입니다. </B><br>
-                            <v-btn color="primary" @click="menuDialog = true"> 메뉴 선택하기 </v-btn>
+                            <v-btn color="brown" @click="menuDialog = true"> 메뉴 선택하기 </v-btn>
 
                             <!-- 메뉴판 -->
                             <v-dialog v-model="menuDialog">
@@ -382,6 +387,7 @@
                             v-model="message"
                             label="요구 사항"
                             required
+                            color="brown"
                         ></v-text-field>
                     </v-flex>
                 </v-container>
@@ -389,8 +395,8 @@
 
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" flat @click.native="dialog = false">닫기</v-btn>
-                <v-btn color="blue darken-1" flat @click.stop="dialog_ok = true">예약 하기</v-btn>
+                <v-btn style="color: white; background-color: #6d4d35"@click.native="dialog = false">닫기</v-btn>
+                <v-btn style="color: white; background-color: #ff9a55;" @click.stop="dialog_ok = true">예약 하기</v-btn>
 
                 <!-- 확인 버튼 -->
                 <v-dialog v-model="dialog_ok" max-width="500px">
@@ -437,7 +443,7 @@
         hide-overlay >
         
         <v-card>
-            <v-toolbar card dark color="cyan darken-1">
+            <v-toolbar card dark color="light-green lighten-1">
                 <v-btn icon dark @click.native="dialog2 = false">
                     <v-icon>close</v-icon>
                 </v-btn>
@@ -447,7 +453,7 @@
 
             <v-card-text>
                 <div class="CouponDownTitle">
-                    <B>쿠폰 다운 받기</B>
+                    <h3><B>쿠폰 다운 받기</B></h3>
                 </div>
                 <hr>
 
@@ -455,7 +461,7 @@
                     <template v-for="(item, index) in items">
                         <!-- 쿠폰 리스트 -->
                         <v-list-tile :key="item.name" avatar ripple >
-                            <v-list-tile-content style="height:700px; padding-top:2%;padding-bottom:2%;">
+                            <v-list-tile-content style="height:700px;">
                                 <v-list-tile-title>
                                     <B> {{ item.name }} </B>
                                 </v-list-tile-title>
@@ -463,16 +469,17 @@
                                 <!-- 카테고리 -->
                                 <v-list-tile-sub-title v-if="item.category == '상품 제공'">
                                     {{item.price_condition}} 경우, &nbsp; {{ item.menu_name }} 제공
+                                    [ {{ item.start_date }} ~ {{ item.expiry_date}} ]
+                                    &nbsp; &nbsp;
+                                    남은 개수 : {{ item.use_check }}
+                                    <span v-if="item.coupon_count != null"> 남은 개수 : {{ item.coupon_count }} </span>
                                 </v-list-tile-sub-title>
 
                                 <v-list-tile-sub-title v-if="item.category == '가격 할인'">
                                     {{item.price_condition}} 경우, &nbsp; {{ item.discount }} 할인
-                                </v-list-tile-sub-title>
-
-                                <v-list-tile-sub-title>
-                                    [ {{ item.start_date }} ~ {{ item.expiry_date}} ] 
-                                    &nbsp; &nbsp; 
-                                    남은 개수 : {{ item.use_check }}
+                                    [ {{ item.start_date }} ~ {{ item.expiry_date}} ]
+                                    &nbsp; &nbsp;
+                                    <span v-if="item.coupon_count != null"> 남은 개수 : {{ item.coupon_count }} </span>
                                 </v-list-tile-sub-title>
                             </v-list-tile-content>
 
@@ -785,6 +792,36 @@
             else {                 
                 this.browser_state = 'com';
             }
+
+            // 예약하기
+            var set_time_data;
+
+            axios.post('/getReservationSettingList', {
+                'shop_id' : this.$route.params.shop_id
+            }).then((response) => {
+                /* 그 가게의 예약설정된 Data */
+                var reservationSettingData = response.data.settingData;
+
+                /* item안에 넣기 */
+                this.items = reservationSettingData;
+
+                /* 메뉴가 선택 가능한 가게인지 아닌지 */
+                this.reservation_selectMenu = response.data.menuSelectData[0].reservation_selectMenu;
+
+                /* 기본 가게 정보 */
+                this.lunch_open = this.resData[0].lunch_open;
+                this.lunch_close = this.resData[0].lunch_close;
+                this.dinner_open = this.resData[0].dinner_open;
+                this.dinner_close = this.resData[0].dinner_close;
+            })
+
+            axios.post('/getCouponList', {
+                'shop_id' : this.$route.params.shop_id
+            }).then((response) => {
+                // 쿠폰
+                var Coupondata = response.data.coupon;
+                this.items = Coupondata;
+            });
         },
 
         mounted() {
@@ -795,47 +832,19 @@
                 get_datas = response.data.restaurant;       
                 this.shopLike = response.data.shopLike;             
 
-                // 예약 하기
-                // 메뉴
+                // 예약 하기 메뉴 
                 EventBus.$on('select_menus', function(menu) {
                     obj.push( menu[check] ); check++;
-                });
-
-                // 예약하기
-                var set_time_data;
-
-                axios.post('/getReservationSettingList', {
-                    'shop_id' : this.$route.params.shop_id
-                }).then((response) => {
-                    /* 그 가게의 예약설정된 Data */
-                    var reservationSettingData = response.data.settingData;
-
-                    /* item안에 넣기 */
-                    this.items = reservationSettingData;
-
-                    /* 메뉴가 선택 가능한 가게인지 아닌지 */
-                    this.reservation_selectMenu = response.data.menuSelectData[0].reservation_selectMenu;
-
-                    /* 기본 가게 정보 */
-                    this.lunch_open = this.resData[0].lunch_open;
-                    this.lunch_close = this.resData[0].lunch_close;
-                    this.dinner_open = this.resData[0].dinner_open;
-                    this.dinner_close = this.resData[0].dinner_close;
-                })
-
-                axios.post('/getCouponList', {
-                    'shop_id' : this.$route.params.shop_id
-                }).then((response) => {
-                    // 쿠폰
-                    var Coupondata = response.data.coupon;
-                    this.items = Coupondata;
                 });
 
                 // 데이터 바인딩-기본정보
                 this.enter_data(get_datas[0]);
 
                 // 데이터 바인딩-평점
-                this.enter_data(get_datas[1]);
+                // this.enter_data(get_datas[1]);
+
+                // 별점 찍기
+                this.prtStarRate(get_datas[1].totalRating);
 
                 // 지도 생성
                 this.geoCoder(get_datas[0]);
@@ -852,8 +861,7 @@
             .catch((ex)=>{
                 this.snackbar_text = '가게 정보 불러오기 실패!';
                 this.snackbar      = true;
-            })    
-            
+            })                  
         },
  
         components : {
@@ -870,12 +878,14 @@
                         let get_div = document.getElementById(key);
 
                         switch(argArray[key]){
-                            case true   : get_div.innerText += '가능';          break;
-                            case false  : get_div.innerText += '불가';          break;
-                            case 'yes'  : get_div.innerText += '가능';          break;
-                            case 'no'   : get_div.innerText += '불가';          break;
-                            case null   : get_div.innerText += 0;               break;
-                            default     : get_div.innerText += argArray[key];   break;
+                            case true  : get_div.innerText += '가능';          break;
+                            case false : get_div.innerText += '불가';          break;
+                            case '1'   : get_div.innerText += '가능';          break;
+                            case '0'   : get_div.innerText += '불가';          break;
+                            case 1     : get_div.innerText += '가능';          break;
+                            case 0     : get_div.innerText += '불가';          break;
+                            case null  : get_div.innerText += 0;               break;
+                            default    : get_div.innerText += argArray[key];   break;
                         }
                     }
                 }
@@ -1276,22 +1286,22 @@
                     this.addreservation_text = " 예약 시간을 선택 해주세요."
                     this.addreservation_snackbar = true;
                 }
-                else if(this.adult_person != null || this.child_person != null)
-                {
-                    // 숫자만 가능
-                    var regNumber = /^[0-9]*$/;
-
-                    if(!regNumber.test(this.adult_person)) {
-                         this.addreservation_text = "어른 인원 항목은 숫자만 입력해주세요";
-                         this.addreservation_snackbar = true;
-                    }
-
-                    if(!regNumber.test(this.child_person)) {
-                         this.addreservation_text = "아이 인원 항목은 숫자만 입력해주세요";
-                         this.addreservation_snackbar = true;
-                    }
-
-                }
+                // else if(this.adult_person != null || this.child_person != null)
+                // {
+                //     // 숫자만 가능
+                //     var regNumber = /^[0-9]*$/;
+                //
+                //     if(!regNumber.test(this.adult_person)) {
+                //          this.addreservation_text = "어른 인원 항목은 숫자만 입력해주세요";
+                //          this.addreservation_snackbar = true;
+                //     }
+                //
+                //     if(!regNumber.test(this.child_person)) {
+                //          this.addreservation_text = "아이 인원 항목은 숫자만 입력해주세요";
+                //          this.addreservation_snackbar = true;
+                //     }
+                //
+                // }
                 else{
                     // axios http 라이브러리
                     // -- 사장님 수락 리스트에 등록 --
@@ -1531,7 +1541,7 @@
         position: relative;
     }
     #title_inner{ 
-        z-index: 20;
+        z-index: 1;
         opacity: 0.6;
         position: absolute; 
         background-color: black;
@@ -1559,7 +1569,7 @@
 
     #smarts{
         font-size:1.3rem;
-        z-index: 25;
+        z-index: 1;
         margin-top: 10px;
         text-align:center;
         text-decoration: underline; 
@@ -1587,7 +1597,7 @@
         left: 0;
         width: 100%;
         height: 100%; 
-        z-index: 10;
+        z-index: 0;
         position: absolute;
         object-fit: cover;
     }

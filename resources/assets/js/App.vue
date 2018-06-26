@@ -378,7 +378,15 @@
 
             logout() {
                 this.$session.clear();
-                location.replace('/');
+
+                var url = "/logout";
+                axios.get(url).then(response => {
+                    location.replace('/');
+                }).catch(error => {
+                    this.snackbar = true;
+                    this.snackText = error;
+                });
+
             },
 
             checkLogin() {

@@ -1,11 +1,11 @@
 <template>
     <v-app>
-        <div style="margin-left:20px; margin-right:20px;">
+        <div class="user_page">
             <hr>
-            <h4><B> 예약 현황 </B></h4><br>
+            <h2><B> 예약 현황 </B></h2><br>
             <v-tabs color="dark"
                     dark
-                    slider-color="red"
+                    slider-color="orange darken-1"
                     centered
             >
                 <v-tab>
@@ -224,16 +224,7 @@
 
                 // 수락한 예약 배열
                 Acceptcards: [
-                    {
-                        id : 1,
-                        shopName : 'aa',
-                        order_num : 1,
-                    },
-                    {
-                        id : 2,
-                        shopName : 'aa',
-                        order_num : 3,
-                    }
+
                 ],
 
                 // 수락 대기중인 예약 배열
@@ -429,4 +420,8 @@
     }
 </script>
 <style>
+    .user_page {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 </style>
