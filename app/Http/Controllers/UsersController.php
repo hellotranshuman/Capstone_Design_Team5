@@ -115,7 +115,9 @@ class UsersController extends Controller
 
         auth()->logout();
 
-        return redirect('/');
+        return response()->json([
+           'flag' => true,
+        ]);
     }
 
     // <-- User 정보 받아오기

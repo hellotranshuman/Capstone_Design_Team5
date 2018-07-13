@@ -380,8 +380,12 @@
                 this.$session.clear();
 
                 var url = "/logout";
+
                 axios.get(url).then(response => {
-                    location.replace('/');
+                    if(response.data.flag)
+                        location.replace('/');
+                    else
+                        console.log("error!");
                 }).catch(error => {
                     this.snackbar = true;
                     this.snackText = error;

@@ -875,6 +875,7 @@
 
                 for (let key of iterator){
                     if(document.getElementById(key) !== null){
+
                         let get_div = document.getElementById(key);
 
                         switch(argArray[key]){

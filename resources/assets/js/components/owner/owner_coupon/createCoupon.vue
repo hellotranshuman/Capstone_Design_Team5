@@ -306,7 +306,8 @@
                 axios.post('/owner/deleteCoupon', {
                     'coupon_id'         : this.clickCouponid
                 }).then((response) => {
-                    location.reload();
+                    console.log(this.clickCouponid);
+                    // location.reload();
                 })
                     .catch(console.log('test'));
             },
