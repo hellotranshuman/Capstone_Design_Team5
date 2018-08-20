@@ -2,8 +2,8 @@
     <v-app>
         <div class="reservation_Accept">
             <br>
-            <h2 class="Main_title"><B>예약 수락</B></h2>
-            <span class="sub_title">신청한 예약을 수락 할 수 있습니다.</span>
+            <h2 class="Main_title"><B>予約受諾</B></h2>
+            <span class="sub_title">お客様の予約を受諾できます。</span>
             <hr><br>
             <div class="coupon_table">
                 <v-data-table
@@ -17,13 +17,13 @@
                         <td class="text-xs-left">{{ props.item.reservation_date }}</td>
                         <td class="text-xs-left">{{ props.item.person }}</td>
                         <td class="text-xs-left">{{ props.item.child }}</td>
-                        <td class="text-xs-left">{{ props.item.message }}</td>
+                        <td class="text-xs-left">{{ props.item.refused_message }}</td>
                         <td class="justify-left"  v-if="props.item.order_num != null">
                             <!-- 메뉴 보기 버튼 -->
-                            <v-btn flat small color="teal lighten-1" @click="menu(props.item), menuLoad = true">메뉴보기</v-btn>
+                            <v-btn flat small color="teal lighten-1" @click="menu(props.item), menuLoad = true">メーニュー</v-btn>
                             <v-dialog v-model="menuLoad" max-width="500px">
                                 <v-toolbar color="teal lighten-1">
-                                    <h3 style="color:white; margin:auto" > MENU </h3>
+                                    <h3 style="color:white; margin:auto" > メーニュー </h3>
                                 </v-toolbar>
                                 <v-card>
                                     <v-card-text style="color : black">
@@ -36,62 +36,62 @@
                                     </v-card-text>
                                     <v-card-actions>
                                         <v-btn color="teal lighten-1" style="color:white" @click.stop="menuLoad = false">
-                                            확인
+                                            確認
                                         </v-btn>
                                     </v-card-actions>
                                 </v-card>
                             </v-dialog>
                         </td>
                         <td v-else>
-                            NO
+                            無し
                         </td>
                         <td class="justify-left layout px-0">
 
                             <!-- 수락 버튼 -->
-                            <v-btn  small
-                                    style="color:white; background-color:#ff9a55"
-                                    dark
+                            <v-btn  small 
+                                    style="color:white; background-color:#ff9a55" 
+                                    dark 
                                     @click.stop="Acceptdialog = true"
                                     @click="AcceptCustomer = props.item.user_name, AcceptItem(props.item)"
                             >
-                                <v-icon small dark left>check_circle</v-icon>  Accept
+                               <v-icon small dark left>check_circle</v-icon> 受諾
                             </v-btn>
                             <!-- 수락 Dislog -->
                             <v-dialog v-model="Acceptdialog" max-width="400px">
                                 <v-card>
                                     <v-card-title>
-                                        <B> 예약 수락 </B>
+                                        <B> 予約受諾 </B>
                                     </v-card-title>
                                     <v-card-text>
-                                        {{AcceptCustomer}}님의 예약이 수락 되었습니다.
+                                        {{AcceptCustomer}}様の予約が受諾されました。
                                     </v-card-text>
                                     <v-btn color="primary" @click.stop="Acceptdialog = false">
-                                        확인
+                                        確認
                                     </v-btn>
                                 </v-card>
                             </v-dialog>
                             <!-- 거절 버튼 -->
                             <v-btn small color="error" @click.stop="Canceldialog = true">
-                                <v-icon small dark left>remove_circle</v-icon>Cancel
+                                <v-icon small dark left>remove_circle</v-icon>拒絶
                             </v-btn>
                             <v-dialog v-model="Canceldialog" max-width="400px">
                                 <v-card>
                                     <v-card-text>
                                         <v-card-title>
-                                            <B> 예약 취소 </B>
+                                            <B> 予約拒絶 </B>
                                         </v-card-title>
                                         <v-card-text>
-                                            예약을 취소하는 사유를 적어주세요 <br>
+                                           　予約を拒絶する理由を記入してください。 <br>
                                             <v-text-field
                                                     v-model="WhyCancel"
-                                                    label="예약 취소 사유"
+                                                    label="予約拒絶理由"
                                                     class="input-group--focused"
                                                     color="error"
                                             ></v-text-field>
                                         </v-card-text>
                                     </v-card-text>
                                     <v-btn color="error" @click.stop="CancelItem(props.item), Canceldialog = false">
-                                        확인
+                                        確認
                                     </v-btn>
                                 </v-card>
                             </v-dialog>
@@ -119,13 +119,13 @@
                 CancelCustomer  : null,
                 WhyCancel       : '',
                 headers: [
-                    { text: '예약자 명',    value: 'user_name' },
-                    { text: '예약 날짜',    value: 'reservation_date' },
-                    { text: '어른 인원',    value: 'person' },
-                    { text: '아이 인원',    value: 'child' },
-                    { text: '요청 사항',    value: 'message'},
-                    { text: '메뉴',         value: 'menu_select' },
-                    { text: '수락 & 거절',  value: 'Accept', sortable: false },
+                    { text: '予約者名',    value: 'user_name' },
+                    { text: '日付',    value: 'reservation_date' },
+                    { text: '大人数',    value: 'person' },
+                    { text: '子供数',    value: 'child' },
+                    { text: '要求事項',    value: 'refused_message'},
+                    { text: 'メーニュー',         value: 'menu_select' },
+                    { text: '受諾・拒絶',  value: 'Accept', sortable: false },
                 ],
                 /* 저장 & 편집 & 삭제 */
                 items: [ ],
@@ -155,8 +155,8 @@
                     // 1. 주문 메뉴 옵션 합치기s
                     for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
                     {
-                        MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
-                            + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
+                        MenuArray = (i+1)+'番 :' + MenuorderData[0]['menu_name' + (i+1)]
+                            + ' 値段:' + MenuorderData[0]['menu_price' + (i+1)];
                         // 옵션 개수...도..
                         var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
                         // 메뉴
@@ -177,7 +177,7 @@
                     id : id,
                     accept   : true,
                 }).then((response) => {
-                    location.reload();
+                   location.reload();
                 }).catch(console.log('test '));
             },
             CancelItem (item) {
@@ -204,7 +204,7 @@
         color : #9d724b;
     }
     .reservation_Accept {
-        padding-left: 5%;
+         padding-left: 5%;
         padding-right: 5%;
     }
 </style>

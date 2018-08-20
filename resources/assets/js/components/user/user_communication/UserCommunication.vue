@@ -6,25 +6,42 @@
 -->
 <template>
   <v-app>
-    <!-- 커뮤니케이션 버튼 상단바 -->
-    <v-layout>
-      <v-flex>
-        <v-toolbar dense dark id="communication-topBar">
-          <v-toolbar-items>
-            <v-btn flat class="toolbar-style" v-on:click="selectCategory(0)">즐겨찾기</v-btn>
-            <v-btn flat class="toolbar-style" v-on:click="selectCategory(1)">기본</v-btn>
-            <v-btn flat class="toolbar-style" v-on:click="selectCategory(2)">주문</v-btn>
-            <v-btn flat class="toolbar-style" v-on:click="selectCategory(3)">계산</v-btn>
-          </v-toolbar-items>
-        </v-toolbar>
-      </v-flex>
-    </v-layout>
-    <!-- 이모티콘 목록 -->
-    <v-layout>
-      <v-flex>
-        <CommunicationButton  :selectValue="this.selectValue"></CommunicationButton>
-      </v-flex>
-    </v-layout>
+    <v-content class="ma-0 pa-0">
+      <!-- 커뮤니케이션 버튼 상단바 -->
+      <v-layout id="communication-topBar">
+        <v-flex xs3>
+          <v-btn color="amber darken-1" flat v-on:click="selectCategory(0)">
+            <v-icon>bookmark</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex xs3>
+          <v-btn color="black" flat v-on:click="selectCategory(1)">
+            <v-icon>question_answer</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex xs3>
+          <v-btn color="black" flat v-on:click="selectCategory(2)">
+            <v-icon>room_service</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex xs3>
+          <v-btn color="black" flat v-on:click="selectCategory(3)">
+            <v-icon>payment</v-icon>
+          </v-btn>
+        </v-flex>
+      </v-layout>
+      <v-layout>
+        <v-flex>
+          <hr class="communication-hr-line">
+        </v-flex>
+      </v-layout>
+      <!-- 이모티콘 목록 -->
+      <v-layout>
+        <v-flex>
+            <CommunicationButton  :selectValue="this.selectValue"></CommunicationButton>
+        </v-flex>
+      </v-layout>
+    </v-content>
   </v-app>
 </template>
 
@@ -39,56 +56,28 @@ export default {
 
     data() {
         return {
-            size: 'xs',
-            items: [
-              { text: 'Extra small (2px)', value: 'xs' },
-              { text: 'Small (4px)', value: 'sm' },
-              { text: 'Medium (8px)', value: 'md' },
-              { text: 'Large (16px)', value: 'lg' },
-              { text: 'Extra large (24px)', value: 'xl' }
-            ],
-
             bookmarkSelect  : true,
             basicsSelect    : false,
             orderSelect     : false,
             paySelect       : false,
             selectValue     : 0,          // 이모티콘 카테고리를 나타내는 값         
-            
+
             // 이모티콘 이미지 주소 배열
             emoticonList : [
-                              '/images/emoticon/confused.svg',
-                              '/images/emoticon/desperate.svg',
-                              '/images/emoticon/good.svg',
-                              '/images/emoticon/sad.svg',
-                              '/images/emoticon/smiling.svg',
-                              '/images/emoticon/surprised.svg',
-                              '/images/emoticon/suspicious.svg',
-                              '/images/emoticon/thinking.svg',
-                              '/images/emoticon/bathroom.svg',
+                              '/images/emoticon/thankyou.svg',
                               '/images/emoticon/water.svg',
+                              '/images/emoticon/toilet.svg',
                               '/images/emoticon/chopsticks.svg',
                               '/images/emoticon/spoon.svg',
                               '/images/emoticon/fork.svg',
-                              '/images/emoticon/cutlery.svg',
                               '/images/emoticon/bowl.svg',
-                              '/images/emoticon/dish.svg',
-                              '/images/emoticon/seasoning.svg',
-                              '/images/emoticon/question.svg',
+                              '/images/emoticon/menuAdd.svg',
+                              '/images/emoticon/menuChange.svg',
+                              '/images/emoticon/menuCancel.svg',
                               '/images/emoticon/menu.svg',
-                              '/images/emoticon/recommended.svg',
-                              '/images/emoticon/choices.svg',
-                              '/images/emoticon/cancel.svg',
-                              '/images/emoticon/change.svg',
-                              '/images/emoticon/reserved.svg',
-                              '/images/emoticon/voucher.svg',
-                              '/images/emoticon/cash.svg',
-                              '/images/emoticon/debitCard.svg',
-                              '/images/emoticon/visa.svg',
-                              '/images/emoticon/maestro.svg',
-                              '/images/emoticon/unionPay.svg',
-                              '/images/emoticon/jcb.svg',
-                              '/images/emoticon/invoice.svg',
-                              '/images/emoticon/bill.svg'
+                              '/images/emoticon/howTime.svg',
+                              '/images/emoticon/cashPay.svg',
+                              '/images/emoticon/cardPay.svg'
                             ]
         }
     },
@@ -120,13 +109,20 @@ export default {
     background: gainsboro;
     cursor: pointer;
   }
-  
-  .toolbar-style{
-    font-size: 1.2em;
-    font-weight: bold;
-  }
 
   #communication-topBar {
-    background-color : #9d724b;
+    background-color : #ffffff;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  hr.communication-hr-line {
+    width: 100%;
+    height: 2px;
+    margin-left: 0%;
+    margin-right: auto;
+    background-color:#d2b07d;
+    color:#d2b07d;
+    border: 0 none;
   }
 </style>

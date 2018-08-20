@@ -58,9 +58,9 @@ import OwnerPageSideStatistics  from './components/owner/owner_common/OwnerPageS
 
 // <— Owner Reservation Page
 // Owner Reservation List Import
-import OwnerReservationList     from './components/owner/owner_reservation/OwnerReservationlist.vue';
+import OwnerReservationList     from './components/owner/owner_reservation/ownerReservationlist.vue';
 // Owner Reservation Accept Page Import
-import OwnerReservationAccept   from './components/owner/owner_reservation/OwnerReservationAccept.vue';
+import OwnerReservationAccept   from './components/owner/owner_reservation/ownerReservationAccept.vue';
 // Owner Reservation Setting Page Import
 import OwnerReservationSetting  from './components/owner/owner_reservation/ownerReservationSetting.vue';
 
@@ -93,10 +93,6 @@ import CustomerAddReservation from './components/user/user_reservation/CustomerA
 
 // <— owner statistics
 import OwnerTotalStatistics from './components/owner/owner_statistics/OwnerTotalStatistics.vue';
-// 손님 통계
-import OwnerCustomerStatistic from './components/owner/owner_statistics/OwnerCustomerStatistics.vue';
-// 매출 통계
-import OwnerSalesStatistics from './components/owner/owner_statistics/OwnerSalesStatistics.vue';
 
 // 쿠폰함
 import UserCoupon from './components/user/user_coupon/UserCoupon.vue';
@@ -106,6 +102,8 @@ import UserPageReservation from './components/user/user_reservation/UserPageRese
 import UserReviewHistory from './components/user/user_review/UserReviewHistory.vue';
 // 주문내역
 import UserOrderHistory from './components/user/user_restaurant/UserOrderHistory.vue';
+// 찜목
+import UserLikeRestaurant from './components/LikeRestaurant.vue';
 
 const router = new VueRouter({
         routes: [
@@ -171,6 +169,12 @@ const router = new VueRouter({
                 name: 'UserOrderHistory',
                 path: '/userOrderHistory',
                 component: UserOrderHistory,
+            },
+            {
+                // 찜목록
+                name: 'UserLikeRestaurant',
+                path: '/userLikeRestaurant',
+                component: UserLikeRestaurant,
             },
             // <— 가게 페이지 공통
             {
@@ -285,18 +289,6 @@ const router = new VueRouter({
                                     name: 'OwnerTotalStatistics',
                                     path: '/owner/:shop_id/totalStatistics',
                                     component: OwnerTotalStatistics
-                                },
-                                {
-                                    // 손님 통계
-                                    name: 'OwnerCustomerStatistic',
-                                    path: '/owner/:shop_id/customerStatistic',
-                                    component: OwnerCustomerStatistic
-                                },
-                                {
-                                    // 매출 통계
-                                    name: 'OwnerSalesStatistics',
-                                    path: '/owner/:shop_id/salesStatistics',
-                                    component: OwnerSalesStatistics
                                 }
                             ]
                     },

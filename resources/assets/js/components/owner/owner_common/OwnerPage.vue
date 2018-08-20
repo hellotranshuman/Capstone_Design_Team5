@@ -17,7 +17,6 @@ export default {
     components : {
         'OwnerPageTop' : OwnerPageTop
     }
-
 }
 </script>
 <style>

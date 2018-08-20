@@ -251,6 +251,7 @@
                         this.$session.set('favorite_2', this.user_favorite[1]);
                         this.$session.set('favorite_3', this.user_favorite[2]);
                         this.$session.set('region', this.user_region);
+                        this.$session.set('user_country', response.data.country);
                         location.replace("/");
                     })
                     .catch(error => {

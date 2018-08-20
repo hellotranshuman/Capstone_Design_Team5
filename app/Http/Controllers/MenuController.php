@@ -80,27 +80,38 @@ class MenuController extends Controller
     public function getMenu($shop_id, $category) {
         $target = '';
 
-        switch (auth()->user()->country) {
+        if(!auth()->check()) {
+            $target = 'ja';
+        }
+        else {
+            switch (auth()->user()->country) {
 
-            case 'Korea' :
-                {
-                    $target = 'ko';
-                    break;
-                }
+                case 'Korea' :
+                    {
+                        $target = 'ko';
+                        break;
+                    }
 
-            case 'China' :
-                {
-                    $target = 'zh-CN';
-                    break;
-                }
+                case 'China' :
+                    {
+                        $target = 'zh-CN';
+                        break;
+                    }
 
-            case 'Usa' :
-                {
-                    $target = 'en';
-                    break;
-                }
+                case 'Usa' :
+                    {
+                        $target = 'en';
+                        break;
+                    }
 
-        } // <-- switch end
+                case 'Japan' :
+                    {
+                        $target = 'ja';
+                        break;
+                    }
+
+            } // <-- switch end
+        }
 
         // <-- 메뉴정보를 저장할 Array
         $totalMenuArray = array();
@@ -230,7 +241,7 @@ class MenuController extends Controller
                    $subOpKeyName = $optionKey .'optionValue' . $subOpKey;
                    $subOpIDName = $optionKey .'subOptionId' . $subOpKey;
 
-                   // <-- 옵션 이름 번역
+                   // <-- subOption 이름 번역
                    $encText = urlencode($subOption->name);
                    $postValues = 'source=ja&target=' . $target . '&text='.$encText;
                    $ch  = curl_init();
@@ -369,13 +380,13 @@ class MenuController extends Controller
             ]);
 
             return response()->json([
-                'content' => '메뉴 등록 성공!!',
+                'content' => 'メニューの登録を完了しました。',
             ]);
 
         }
         else {
             return response()->json([
-                'content' => '파일이 없습니다...',
+                'content' => 'ファイルがないです。',
             ]);
         }
 
@@ -509,13 +520,13 @@ class MenuController extends Controller
             ]);
 
             return response()->json([
-                'content' => '메뉴 등록 성공!!',
+                'content' => 'メニューの登録を完了しました。',
             ]);
 
         }
         else {
             return response()->json([
-                'content' => '메뉴 등록 성공!!',
+                'content' => 'メニューの登録を完了しました。',
             ]);
         }
 

@@ -1,18 +1,19 @@
 <template>
     <v-app>
-        <v-stepper v-model="Menu_Order" dark>
+         <div style="padding-left:8%; padding-right:8%"> 
+        <v-stepper v-model="Menu_Order" style="background-color:#efe2bd">
             <!-- Header -->
             <v-stepper-header>
                 <!-- 1. 메뉴선택 -->
-                <v-stepper-step step="1" :complete="Menu_Order > 1">메뉴 선택</v-stepper-step>
+                <v-stepper-step step="1" :complete="Menu_Order > 1"><B style="font-size:17px">{{trans_menu_select}}</B></v-stepper-step>
                 <v-divider></v-divider>
 
                 <!-- 2. 메뉴 확인 -->
-                <v-stepper-step step="2" :complete="Menu_Order > 2">메뉴 확인</v-stepper-step>
+                <v-stepper-step step="2" :complete="Menu_Order > 2"><B style="font-size:17px">{{trans_menu_check}}</B></v-stepper-step>
                 <v-divider></v-divider>
 
                 <!-- 3. 번역 -->
-                <v-stepper-step step="3">메뉴 번역</v-stepper-step>
+                <v-stepper-step step="3"><B style="font-size:17px">{{trans_menu_trans}}</B ></v-stepper-step>
             </v-stepper-header>
 
             <!-- Main -->
@@ -29,9 +30,9 @@
                     </v-card>
 
                     <!-- btn -->
-                    <v-btn color="error" @click.native="Menu_Order = 2"
+                    <v-btn  style="background-color:#6d4d35; color:white" @click.native="Menu_Order = 2"
                            @click="order_menu">
-                        주문하기
+                        OK
                     </v-btn>
                 </v-stepper-content>
 
@@ -40,23 +41,23 @@
                     <v-card color="white lighten-1" class="mb-5" >
                         <v-container :id="'menu_check_container'">
                             <v-layout v-for="i in range(0, click_menu.length-1)" :key="i"
-                                      :id="'menu_layout'+i"  mb-3>
+                                      :id="'menu_layout'+ i"  mb-3>
                                 <v-flex sm12>
-                                    <v-card elevation-20>
+                                    <v-card elevation-20 style="color:black">
                                         <v-card-text style="font-size:1.2rem">
                                             <div>
-                                                <b> 메뉴명 : {{click_menu[i].menu.name}} </b>
+                                                <b> {{trans_menu_name}} </b> : {{click_menu[i].menu.name}}
                                                 <v-btn icon
                                                        style="float : right"
                                                        @click="click_cancel"
                                                        :id="i"
                                                 >
-                                                    <v-icon dark> close </v-icon>
+                                                    <v-icon> close </v-icon>
                                                 </v-btn><br>
-                                                <b> 가격 : {{click_menu[i].menu.price}} </b> <br>
+                                                <b> {{trans_menu_price}} </b> : {{click_menu[i].menu.price}} <br>
                                                 <!-- 옵션 선택 -->
                                                 <v-flex xs6 v-if="click_menu[i].menu.opNum != 0">
-                                                    <b> [ 옵션 ] </b> <br>
+                                                    <b> [ Option ] </b> <br>
                                                     <!-- 옵션 배열 길이 만큼 돌기 -->
                                                     <span v-for="(option, index) in optionArray[i]" :key="index">
                                                         <!-- 옵션 이름 -->
@@ -79,16 +80,16 @@
                     </v-card>
                     <v-flex>
                         <v-card>
-                            <b class="total"> 총 : {{click_menu.length}} 개 </b> <br>
-                            <b class="total"> 합계 : {{sum_price}} 円 </b>
+                            <b class="total"> {{click_menu.length}} 点 </b> <br>
+                            <b class="total"> {{trans_sum}} : {{sum_price}} 円  </b>
                         </v-card>
                     </v-flex>
                     <!-- btn -->
-                    <v-btn color="error" @click.native="check_option()" @click="translatedText = MenuOrderList()"
+                    <v-btn  style="background-color:#6d4d35; color:white" @click.native="check_option()" @click="translatedText = MenuOrderList()"
                     >
-                        확인
+                        OK
                     </v-btn>
-                    <v-btn flat @click.native="Menu_Order = 1">돌아가기</v-btn>
+                    <v-btn flat @click.native="Menu_Order = 1"><B>Cancel</B></v-btn>
                 </v-stepper-content>
 
                 <!-- 3. 번역  height="200px"-->
@@ -103,8 +104,8 @@
                     </v-card>
 
                     <!-- btn -->
-                    <v-btn color="error"  @click.stop="Ordercheck = true, OrderMenu()">확인</v-btn>
-                    <v-btn flat @click.native="Menu_Order = 2">돌아가기</v-btn>
+                    <v-btn  style="background-color:#6d4d35; color:white"  @click.stop="Ordercheck = true, OrderMenu()">OK</v-btn>
+                    <v-btn flat @click.native="Menu_Order = 2"><B>Cancel</B></v-btn>
 
                     <!-- 주문 확인 창 -->
                     <v-snackbar
@@ -113,8 +114,8 @@
                             :vertical="'vertical'"
                             :top="'top'"
                     >
-                        주문이 완료 되었습니다.
-                        <v-btn flat color="cyan darken-2" @click.native="Ordercheck = false">Close</v-btn>
+                        {{trans_order_ok}}
+                        <v-btn flat color="orange dark-1" @click.native="Ordercheck = false">Close</v-btn>
                     </v-snackbar>
 
                     <!-- 메뉴 선택 -->
@@ -124,8 +125,8 @@
                             :vertical="'vertical'"
                             :top="'top'"
                     >
-                        메뉴를 선택해 주세요.
-                        <v-btn flat color="cyan darken-2" @click.native="menuCheck = false">Close</v-btn>
+                       {{trans_select_menu}}
+                        <v-btn flat color="orange dark-1" @click.native="menuCheck = false">Close</v-btn>
                     </v-snackbar>
 
                     <!-- 메뉴 선택 -->
@@ -135,8 +136,8 @@
                             :vertical="'vertical'"
                             :top="'top'"
                     >
-                        선택한 메뉴를 취소하였습니다.
-                        <v-btn flat color="cyan darken-2" @click.native="deleteMenuCheck = false">Close</v-btn>
+                        {{trans_menu_cancel}}
+                        <v-btn flat color="orange dark-1" @click.native="deleteMenuCheck = false">Close</v-btn>
                     </v-snackbar>
 
                     <!-- 옵션 선택 -->
@@ -146,13 +147,14 @@
                             :vertical="'vertical'"
                             :top="'top'"
                     >
-                        옵션을 선택해 주세요.
-                        <v-btn flat color="cyan darken-2" @click.native="optionCheck = false">Close</v-btn>
+                        {{trans_select_option}}
+                        <v-btn flat color="orange dark-1" @click.native="optionCheck = false">Close</v-btn>
                     </v-snackbar>
 
                 </v-stepper-content>
             </v-stepper-items>
         </v-stepper>
+         </div>
     </v-app>
 </template>
 
@@ -160,19 +162,61 @@
     import { EventBus } from './eventBus.js';
     import VueAxios     from 'vue-axios';
     import axios        from 'axios';
-
     // 사용자 설정에 따라 레이아웃을 선택함.
     import CustomLayout   from './CustomLayout.vue';
     import DefaultLayout1 from './MenuDefaultLayout1.vue';
-    // import DefaultLayout2 from './MenuDefaultLayout2.vue';
-    // import DefaultLayout3 from './MenuDefaultLayout3.vue';
-    // import DefaultLayout4 from './MenuDefaultLayout4.vue';
-
+    import DefaultLayout2 from './MenuDefaultLayout2.vue';
+    import DefaultLayout3 from './MenuDefaultLayout3.vue';
+    import DefaultLayout4 from './MenuDefaultLayout4.vue';
     var obj    = [];                 // 클릭한 배열 담기
     var check  = 0;                  // 클릭한 배열 index용 변수
-
     export default {
         created : function () {
+            // ---- 번역 Korea/Japan/China/USA ----
+            this.country = this.$session.get('user_country');
+            
+            if(this.$session.get('user_country') == 'Korea')
+            {
+                this.trans_menu_select  = '메뉴 선택';
+                this.trans_menu_check   = '메뉴 확인';
+                this.trans_menu_name    = '메뉴명'
+                this.trans_menu_price   = '가격'
+                this.trans_sum          = '합계';
+                this.trans_menu_trans   = '메뉴 번역';
+                this.trans_order_ok     = '주문이 완료되었습니다.';
+                this.trans_select_menu  = '메뉴를 선택해주세요';
+                this.trans_menu_cancel  = '선택한 메뉴가 취소되었습니다.';
+                this.trans_select_option = '옵션을 선택해 주세요';
+            }
+            else if(this.$session.get('user_country') == 'China')
+            {
+                /* 예약 */
+                this.trans_menu_select  = '选择菜单';
+                this.trans_menu_check   = '确认菜单';
+                this.trans_menu_name    = '弥涅名';
+                this.trans_menu_price   = '价格';
+                this.trans_sum          = '合计';
+                this.trans_menu_trans   = '菜单翻译';
+                this.trans_order_ok     = '订单已完成。';
+                this.trans_select_menu  = '请选择菜单。';
+                this.trans_menu_cancel  = '选择的菜单被取消了。';
+                this.trans_select_option = '请选择选项。';
+            }
+            else if(this.$session.get('user_country') == 'USA')
+            {
+                /* 예약 */
+                this.trans_menu_select  = 'Select Menu';
+                this.trans_menu_check   = 'Check Menu';
+                this.trans_menu_name    = 'Menu Name';
+                this.trans_menu_price   = 'Price';
+                this.trans_sum          = 'Sum';
+                this.trans_menu_trans   = 'Menu translation';
+                this.trans_order_ok     = 'Your order is complete.';
+                this.trans_select_menu  = 'Please select a menu.';
+                this.trans_menu_cancel  = 'Selected menu has been cancelled.';
+                this.trans_select_option = 'Please select an option';
+
+            }
 
             // 사장이 선택한 메뉴 템플릿 불러오기.
             axios.post('/menu/getLayoutNumber', {
@@ -186,16 +230,13 @@
                 .catch((ex)=>{
                     alert('메뉴 템플릿 로드 실패!');
                 });
-
             EventBus.$on('select_menus', function(menu) {
                 obj.push( menu[check] ); check++;
             });
         },
-
         data () {
             return {
                 layout : null,          // 사장이 선택한 레이아웃을 담을거임.
-
                 Menu_Order: 0,
                 click_menu:[],          // 클릭한 메뉴들이 담김
                 Ordercheck: false,      // 주문 확인 창
@@ -203,12 +244,10 @@
                 deleteMenuCheck : false,
                 sum_price : 0,          // 선택한 메뉴 총 가격
                 translateText : [],     // 번역한 텍스트 값이 들어갈 배열
-
                 // 옵션 선택
                 optionselect : [],
                 optionArray: [],        // 클릭한 메뉴의 옵션 값을 관리할 배열
                 optionId : [],
-
                 // 메뉴 아이디 배열
                 menuid : [],
                 MenuOrder : [],
@@ -216,26 +255,20 @@
                 OpCount : [],
                 SubOpOrder : [],
                 subOpCount : [],
-
                 // 번역
                 TransMenu : [],
                 MenuList : [],
                 translatedText : null,
-
-
                 layout : null,          // 사장이 선택한 레이아웃을 담을거임.
-
                 Menu_Order: 0,
                 click_menu:[],          // 클릭한 메뉴들이 담김
                 Ordercheck: false,      // 주문 확인 창
                 sum_price : 0,          // 선택한 메뉴 총 가격
                 translateText : [],     // 번역한 텍스트 값이 들어갈 배열
-
                 // 옵션 선택
                 optionselect : [],
                 optionArray: [],        // 클릭한 메뉴의 옵션 값을 관리할 배열
                 optionId : [],
-
                 // 메뉴 아이디 배열
                 menuid : [],
                 MenuOrder : [],
@@ -243,15 +276,28 @@
                 OpCount : [],
                 SubOpOrder : [],
                 subOpCount : [],
-
                 // 번역
                 TransMenu : [],
                 MenuList : [],
                 translatedText : null,
-
                 //
                 menu_layout : true,
                 menuCheck : null,
+
+                /* 국적 */
+                country : '',
+
+                trans_menu_select : 'メーニュー選択',
+                trans_menu_check : 'メニュー確認',
+                trans_menu_name : 'メーニュー名',
+                trans_sum : '小計',
+                trans_menu_price : '値段',
+                trans_menu_name : 'メニュー名',
+                trans_menu_trans : 'メニュー翻訳',
+                trans_order_ok : '注文が完了しました。',
+                trans_select_menu : 'メニューを選択してください',
+                trans_menu_cancel : '選択したメニューが取り消されました',
+                trans_select_option : 'オプションを選択してください'
             }
         },
         methods : {
@@ -259,49 +305,37 @@
             order_menu : function() {
                 this.click_menu = obj;
                 this.sum_price = 0;
-
                 for(let i=0; i< this.click_menu.length; i++){
                     // 문자열 숫자로 변환 시키기
                     this.sum_price = parseInt(this.sum_price);
                     var menu_price = parseInt(this.click_menu[i].menu.price);
-
-
                     this.sum_price = this.sum_price + menu_price;
                 }
-
                 this.select();
             },
-
             // v-for 용 함수, start에서 시작해서 end까지 1식 반환
             range : function (start, end) {
                 return Array(end - start + 1).fill().map((_, idx) => start + idx)
             },
-
             // 메뉴 취소하기
             click_cancel : function() {
                 var id          = event.target.parentNode.id;                        // 클릭한 메뉴 click_menu의 배열 키 값
                 var container   = document.getElementById('menu_check_container');   // 메뉴 확인 창
-
                 this.sum_price        = parseInt(this.sum_price);
                 var delete_menu_price = parseInt(this.click_menu[id].menu.price);
-
                 this.sum_price  = this.sum_price - delete_menu_price;   // 총 가격 빼기
                 this.click_menu.splice(id, 1);                                       // 선택한 메뉴 배열에서 취소한 메뉴 삭제
-
                 this.deleteMenuCheck = true;
             },
-
             // 옵션 선택
             select() {
                 var argId = argId;
                 var MenuMax = this.click_menu.length;
-
                 // 메뉴 길이 만큼 돌기
                 for(var i = 0; i < MenuMax; i++)
                 {
                     // 해당 메뉴 옵션 개수
                     var opNumMax = this.click_menu[i].menu.opNum;
-
                     this.optionArray[i] = [];
                     this.optionselect[i] = [];
                     this.optionId[i] = [];
@@ -309,12 +343,10 @@
                     {
                         // 서브 옵션 개수
                         var supOption = this.click_menu[i].menu['subOpNum' + (j+1)];
-
                         // 옵션 이름 넣기
                         this.optionArray[i][j] = [];
                         this.optionId[i][j] = this.click_menu[i].menu['optionId' + (j+1)]
                         this.optionArray[i][j][ 'Name' ] = this.click_menu[i].menu['optionName' + (j+1)];
-
                         for(var z = 0; z < supOption; z++)
                         {
                             // 옵션 상세 정보
@@ -323,13 +355,11 @@
                     }
                 }
             },
-
             check_option() {
                 // option
                 var selectoption = true;
                 console.log(this.optionselect);
                 console.log(this.optionArray);
-
                 for(var i = 0; i < this.optionArray.length; i++)
                 {
                     if(this.optionselect[i].length == this.optionArray[i].length)
@@ -340,7 +370,6 @@
                         selectoption = false;
                     }
                 }
-
                 if(selectoption == false)
                 {
                     this.optionCheck = true;
@@ -349,7 +378,6 @@
                     this.Menu_Order = 3;
                 }
             },
-
             // 번역 메뉴 목록
             MenuOrderList() {
                 for (var i = 0; i < this.click_menu.length; i++) {
@@ -368,12 +396,10 @@
                             this.SubOpOrder[i][j] = this.optionselect[i][j];
                             subNum++;
                         }
-
                     }
                     this.OpCount[i] = OpNum;
                     this.subOpCount[i] = subNum;
                 }
-
                 axios.post('/translateOrder', {
                     Menu: this.MenuOrder,
                     Option: this.OpOrder,
@@ -384,18 +410,18 @@
                 }).then((response) => {
                     if(response.data.flag) {
                         let transText = response.data.content;
-                        console.log(transText);
-                        // this.MenuList = transText;
+                        for(var i = 0; i < transText.menuNum; i++)
+                        {
+                            this.MenuList[i] = transText['menu' + i] + " ";
+                            if( transText['option' + i] != undefined)
+                            {
+                                this.MenuList[i] += transText['option' + i] + "-";
+                                this.MenuList[i] += transText['suboption'+ i];
+                            }
+                        }
                     }
-                    else {
-                        // this.MenuList = response.data.content.split("@");
-                    }
-
-
-
                 });
             },
-
             // 메뉴 주문 데이터 송신
             OrderMenu() {
                 // 주문한 메뉴

@@ -3,9 +3,17 @@
 <div class="container" style="width:100%; border:1px solid; "> 
 <v-container style="color:white">
     <!--스낵바 : 경고 창 출력-->
-    <v-snackbar :timeout="timeout" :top="'top'" v-model="snackbar">
+    <v-snackbar 
+        v-model="snackbar"
+        :timeout="timeout" 
+        :top="'top'" 
+    >
         {{ snackbar_text }}
-        <v-btn flat color="pink" icon @click.native="snackbar = false">
+        <v-btn 
+            @click.native="snackbar = false"
+            color="pink" 
+            icon flat 
+        >
             <v-icon large> close </v-icon>
         </v-btn>
     </v-snackbar>
@@ -14,7 +22,12 @@
     <v-layout xs12> 
         <v-card style="margin:auto">
             <v-bottom-nav :value="true" :active.sync="e2">
-                <v-btn v-for="(value,key) in categorys" :key="key" :value="value" @click="click_category">
+                <v-btn 
+                    v-for="(value,key) in categorys" 
+                    :key="key" 
+                    :value="value" 
+                    @click="click_category"
+                >
                     {{ value }} 
                 </v-btn>
             </v-bottom-nav>
@@ -22,16 +35,23 @@
     </v-layout> 
     
     <!-- 메뉴 영역 -->
-    <div name="createdMenu" v-for="n in range(0, menu_num-1)" :key="n" class="menu_body">        
+    <div 
+        name="createdMenu" 
+        v-for="n in range(0, menu_num-1)" 
+        :key="n" 
+        class="menu_body"
+    >        
         <!-- 메뉴 이미지 -->
-        <div name="createdImg">
-            <!-- <img class="menu_info" src="./example7.jpg"> -->
-            <img class="inner_img" :src="get_menus[n].path + get_menus[n].filename">
+        <div name="createdImg" style="overflow:hidden">
+            <!-- <img class="menu_img" src="./example7.jpg"> -->
+            <img class="menu_img" :src="get_menus[n].path + get_menus[n].filename">
         </div>
             
         <!-- 메뉴 명 -->
         <div name="createdName">
-            <h3 class="menu_info">{{get_menus[n].name}}</h3>
+            <h3 class="menu_info"> 
+                {{get_menus[n].name}} 
+            </h3>
         </div>                 
 
         <!-- 메뉴 설명 -->
@@ -43,19 +63,23 @@
                     
         <!-- 메뉴 점심 메뉴 / 저녁 메뉴 구분 -->
         <div name="createdL_D">
-            <h4 class="menu_info"> 런치 / 디너 구분 : &nbsp;{{get_menus[n].remark}} </h4>
+            <h4 class="menu_info"> 
+                Time : &nbsp;{{get_menus[n].remark}} 
+            </h4>
         </div> 
                         
         <!-- 메뉴 가격 -->
         <div name="createdPrice">
             <b class="menu_info" style="margin-top:2%; margin-left:2%;"> 
-                가격 : &nbsp;{{get_menus[n].price}} 
+                {{get_menus[n].price}}円
             </b>
         </div> 
                                                                         
         <!-- 주문하기 버튼 -->
-        <div name="createdSelect">      
-            <button :id="n" @click="select_menu" class="SelectBtn"> 선택하기 </button>
+        <div name="createdSelect" class="menu_element">      
+            <button :id="n" @click="select_menu" class="SelectBtn"> 
+                {{selectBtn}} 
+            </button>
         </div>          
     </div> 
 </v-container> 
@@ -72,7 +96,8 @@ export default {
         let url = '/menu/getCategory';
         let get_categorys = null;                       // 카테고리 값들을 받을 변수
         let get_menuData  = null;                       // 커스텀마이징 메뉴판 JSON 값 받을 변수
-        let shop_id = this.$route.params.shop_id;       // 샵 아이디
+        let shop_id = this.$route.params.shop_id;       // 샵 아이디  
+        let notion = this.$session.get('user_country');
 
         // 카테고리 && 커스텀 메뉴판 JSON 값 요청 요청하기.
         axios.post(url, {
@@ -84,27 +109,15 @@ export default {
             this.categorys = this.unique(get_categorys);                // 카테고리 중복 값 제거.
             this.MenuData  = JSON.parse(get_menuData);          
         })
-        .catch((ex)=>{
-            this.snackbar_text = '메뉴 로드 실패';
-            this.snackbar = true;
-            return null; 
-            // get_categorys  = [   
-            //         {"category" : '특식'},
-            //         {"category" : '추천 메뉴'},
-            //         {"category" : '식사류'},
-            //         {"category" : '찌개류'},
-            //         {"category" : '안주류'},
-            //         {"category" : '음료'},
-            //         {"category" : '커피'},
-            //         {"category" : '디저트'}, 
-            // ];
-            // get_menuData = '{"MenuNum":"2","MenuMargin":"1","createdMenu":{"ratio":49,"border":"0px","borderRadius":"0px","color":"black","backgroundColor":"rgb(243, 239, 239)"},"createdImg":{"width":"53%","height":"81%","top":"10%","left":"2%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdName":{"width":"34%","height":"14%","top":"10%","left":"59%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdExpl":{"width":"37%","height":"25%","top":"28%","left":"58%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdL_D":{"width":"39%","height":"15%","top":"56%","left":"57%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdPrice":{"width":"24%","height":"11%","top":"74%","left":"56%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""},"createdSelect":{"width":"31%","height":"11%","top":"89%","left":"65%","border":"2px solid black","borderRadius":"","color":"","backgroundColor":""}}';
-            
-            // console.log(get_menuData);
-            
-            // this.categorys = this.unique(get_categorys);                // 카테고리 중복 값 제거.
-            // this.MenuData  = JSON.parse(get_menuData);             
-        });     
+        .catch((ex)=>{　                  
+        });  
+
+        switch(notion){
+            case 'Korea': this.selectBtn = '선택하기';   break;
+            case 'Japan': this.selectBtn = '選択';      break;
+            case 'China': this.selectBtn = '選択';      break;
+            case 'USA':   this.selectBtn = 'Select';   break;
+        } 
     }, 
     
     data() {
@@ -121,6 +134,8 @@ export default {
             menu_num     : 0,          // 메뉴 출력 v-layout 갯수 
             select_menus : [],         // 상위 컴퍼넌트에 보낼 값
             shop_id      : null,       // 가게 아이디 값 
+
+            selectBtn    : '選択'
         }
     },
 
@@ -162,7 +177,7 @@ export default {
                 createdMenu[i].style.width           = MenuWidth  + '%';            // 메뉴 가로
                 createdMenu[i].style.paddingBottom   = MenuHeight + '%';            // 메뉴 세로
                 createdMenu[i].style.margin          = MenuMargin + '%';            // 메뉴 간격
-                createdMenu[i].style.border          = MenuData.border;             // 선
+                createdMenu[i].style.border          = MenuData.border;             // 선 
                 createdMenu[i].style.color           = MenuData.color;              // 색
                 createdMenu[i].style.backgroundColor = MenuData.backgroundColor;    // 배경색
                 createdMenu[i].style.borderRadius    = MenuData.borderRadius;       // 테두리
@@ -176,6 +191,7 @@ export default {
                     item.style.left            = this.MenuData[index].left;
                     item.style.width           = this.MenuData[index].width;
                     item.style.height          = this.MenuData[index].height;
+                    item.style.zIndex          = this.MenuData[index].zIndex; 
                     item.style.border          = this.MenuData[index].border;
                     item.style.color           = this.MenuData[index].color;
                     item.style.backgroundColor = this.MenuData[index].backgroundColor;
@@ -190,7 +206,7 @@ export default {
             }
         },  // end of setMenuItem
  
-        // 메뉴 카테고리 클릭
+        // 메뉴 카테고리 클릭 > 메뉴 출력
         click_category : function() {
             let category = event.target;                // 선택한 카테고리 
             let shop_id  = this.$route.params.shop_id;  // 가게 아이디
@@ -211,12 +227,44 @@ export default {
                 this.get_menus = response.data.menu; 
                 this.menu_num  = this.get_menus.length;                  
             })
-            .catch((ex)=>{ 
-                this.snackbar_text = '메뉴 로드 실패';
-                this.snackbar = true;
-                return null;          
-            });    
+            .catch((ex)=>{ 　    
+            });  
+            
+            this.translate();
         },  
+        
+        // 칼럼 번역하기.
+        translate : function( ){
+            let notion = this.$session.get('user_country');
+            
+            for(let i=0; i < this.menu_num; i++){
+
+                switch(this.get_menus[i].remark){
+                    case '디너 메뉴' : 
+                             if(notion == 'Korea') this.get_menus[i].remark = '디너 메뉴'
+                        else if(notion == 'Japan') this.get_menus[i].remark = 'ディナ'
+                        else if(notion == 'China') this.get_menus[i].remark = 'Dinner '
+                        else if(notion == 'USA')   this.get_menus[i].remark = 'Dinner '                        
+                    break;
+
+                    case '런치 메뉴' :
+                             if(notion == 'Korea') this.get_menus[i].remark = '런치 메뉴'
+                        else if(notion == 'Japan') this.get_menus[i].remark = 'ランチ'
+                        else if(notion == 'China') this.get_menus[i].remark = 'Lunch'
+                        else if(notion == 'USA')   this.get_menus[i].remark = 'Lunch'  
+                    
+                    break;
+
+                    case '상관 없음' : 
+                             if(notion == 'Korea') this.get_menus[i].remark = '상관 없음'
+                        else if(notion == 'Japan') this.get_menus[i].remark = '関係ない'
+                        else if(notion == 'China') this.get_menus[i].remark = 'All time'
+                        else if(notion == 'USA')   this.get_menus[i].remark = 'All time'                      
+                    break;
+                }
+                
+            }
+        },
 
         // 배열 중복 값 제거, 인자는 서버에 받은 카테고리 목록
         unique : function(argArr) {
@@ -255,17 +303,19 @@ export default {
 <style scoped>
 /* 모바일 */
 @media (max-width: 639px){  
-    .menu_body { width:100%; font-size: 12px;}  
+    .menu_body { width:100%;}
+    .menu_info {font-size: 12px;}
 }
 
 /* 테블릿 */
-@media (min-width: 640px) and (max-width: 1023px){  
-    .menu_body { width:47%; font-size: 13px; }  
+@media (min-width: 640px) and (max-width: 1299px){  
+    .menu_body { width:47%;}
+    .menu_info {font-size: 13px;}  
 }
 
 /* 데스트 탑 */
-@media (min-width: 1024px){  
-    .menu_body { font-size: 15px; }  
+@media (min-width: 1300px){   
+    .menu_info {font-size: 15px;}  
 }  
 
 /* 메뉴 */
@@ -275,27 +325,38 @@ export default {
     border :1px solid;
     position: relative;
     overflow: hidden;
-    text-align: center;
-} 
+}  
+
 .menu_info {
+    padding-left: 3px;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; 
+    word-break:normal;
+    font-weight: bold;
+    overflow: auto; 
+    overflow-x: hidden;
     position: absolute;
+}  
+
+.menu_info::-webkit-scrollbar {
+    width: 0px;                     /* remove scrollbar space */
+    background: transparent;        /* optional: just make scrollbar invisible */
 }
-/* 메뉴 이미지 안쪽 */
-.inner_img {
+
+.menu_img { 
     top: 0;
     left: 0;
     width: 105%;
-    height: 105%;
+    height: 105%; 
     position: absolute;
     object-fit: cover;
-}
+} 
 .SelectBtn{
     width: 100%;
     height: 100%;
     position: relative;
+    font-weight: bold;
 }
 </style>

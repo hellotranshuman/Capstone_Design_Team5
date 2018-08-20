@@ -32,6 +32,12 @@ class ReservationController extends Controller
     }
 
     public function requestReservation(Request $request) {
+        if(!auth()->check()) {
+            return response()->json([
+                'msg' => false,
+            ]);
+        }
+
         $resDateTime = $request->get('date') . ' ' .
                         $request->get('time');
 
@@ -438,7 +444,6 @@ class ReservationController extends Controller
 
     // <-- User 예약 취소 (수락완료)
     public function userReservationCancel(Request $request) {
-
 
     }
 

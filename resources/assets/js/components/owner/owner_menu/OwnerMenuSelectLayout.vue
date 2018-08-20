@@ -6,21 +6,28 @@
             <!-- 스낵바 : 경고 창 출력 -->
             <v-snackbar :timeout="timeout" :top="'top'" v-model="snackbar">
                 {{ snackbar_text }}
-                <v-btn flat color="pink" icon @click.native="snackbar = false">
+
+                <v-btn 
+                    color="pink" 
+                    @click.native="snackbar = false"
+                    flat icon 
+                >
                     <v-icon large> close </v-icon>
                 </v-btn>
             </v-snackbar>
 
-            <!--*************************************************** 기본 레이아웃 ***************************************************-->
+<!--*************************************************** 기본 레이아웃 ***************************************************-->
             <!-- 서비스에서 제공하는 메뉴판 기본 템플릿 중 하나 선택하기. -->
             <v-layout elevation-3>
                 <v-flex xs10 style="font-size: 2rem;">
                     <v-card>
                         <v-card-text>
-                            <b> 메뉴판 템플릿 선택 - 선택한 템플릿 : </b>
-                            <b v-if="selectWhat==null">   {{selected_template}} </b>
+                            <b> メニューのレイアウトを選択 - 選んだレイアウト : </b>
+                            <b v-if="selectWhat==null">   
+                                {{selected_template}} 
+                            </b>
                             <b v-else-if="selectWhat=='bas'">
-                                기본 템플릿 {{selectTemPrt}}
+                                基本のレイアウト {{selectTemPrt}}
                             </b>
                             <b v-else-if="selectWhat=='cos'">
                                 {{selectTemPrt}}
@@ -29,18 +36,31 @@
                     </v-card>
                 </v-flex>
                 <v-flex xs2 style="font-size: 2rem;">
-                    <v-btn color="error" block style="font-size:1.5rem; height:90%; font-weight:bold" @click="save_data">
-                        저장하기
+                    <v-btn 
+                        @click="save_data"  
+                        block  
+                        style=" height:100%;
+                                color: #46362c;
+                                font-size:1.5rem;                                 
+                                font-weight:bold; 
+                                background-color: #d2b07d;
+                                margin:0;"
+                    >
+                        セーブ
                     </v-btn>
                 </v-flex>
             </v-layout>
 
             <!-- 기본 템플릿 예시보기. -->
             <v-dialog v-model="ExTemplete" max-width="50%">
-                <v-card align-content-center @click.native="ExTemplete = false">
-                    <v-card-text style="font-size:1.5rem;">
-                        <b> 기본 템플릿 {{selectTemplete}} </b>
+                <v-card 
+                    align-content-center
+                    @click.native="ExTemplete = false"
+                >
+                    <v-card-text style="background-color: #efe2bd; font-size:1.5rem;">
+                        <b> 基本のレイアウト {{selectTemplete}} </b>
                     </v-card-text>
+
                     <div class="tem_img">
                         <img v-if="selectTemplete == 1" class="inner_img" :src="exImg1">
                         <img v-if="selectTemplete == 2" class="inner_img" :src="exImg2">
@@ -51,13 +71,36 @@
             </v-dialog>
 
             <!-- 기본 템플릿 템플릿 선택 확인하기 : 모달 -->
-            <v-dialog  v-model="basicTem" max-width="20%" persistent>
-                <v-card>
+            <v-dialog  v-model="basicTem" max-width="30%" persistent>
+                <v-card style="padding:1%; background-color:#efe2bd;">
                     <v-card-text>
-                        <h3> 기본 템플릿{{selectTemplete}}으로 적용하시겠습니까? </h3>
-                        <v-btn flat color="green darken-1" @click="basicTem=false; selectWhat='bas'; selectTemPrt=selectTemplete">
-                            예 </v-btn>
-                        <v-btn flat color="green darken-1" @click="basicTem=false"> 아니오 </v-btn>
+                        <div style="width:100%; font-size:1.5rem; text-align:center; font-weight:bold;"> 
+                            基本のレイアウト{{selectTemplete}}に設定しますか? 
+                        </div>
+
+                        <v-layout mt-2>
+                            <v-flex xs6 mr-1>
+                                <v-btn                            
+                                    class="amber lighten-5" 
+                                    @click="basicTem     = false; 
+                                            selectWhat   = 'bas'; 
+                                            selectTemPrt = selectTemplete"
+                                    block
+                                >
+                                    はい 
+                                </v-btn>
+                            </v-flex>
+
+                            <v-flex xs6>
+                                <v-btn       
+                                    class="amber lighten-5"  
+                                    @click="basicTem=false"
+                                    block
+                                > 
+                                     いいえ 
+                                </v-btn>
+                            </v-flex>
+                        </v-layout>                       
                     </v-card-text>
                 </v-card>
             </v-dialog>
@@ -67,14 +110,29 @@
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿1 -->
                 <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
-                        <v-card-text> <b>기본 템플릿1</b> </v-card-text>
+                        <v-card-text> 
+                            <b>基本のレイアウト1</b> 
+                        </v-card-text>
 
-                        <div class="tem_img"> <img class="inner_img" :src="exImg1"> </div>
+                        <div class="tem_img"> 
+                            <img class="inner_img" :src="exImg1"> 
+                        </div>
 
                         <!-- 모달 출력 버튼 -->
-                        <v-card-actions>
-                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=1"> 예시 보기 </v-btn>
-                            <v-btn color="success" block @click="basicTem=true; selectTemplete=1"> 템플릿 선택 </v-btn>
+                        <v-card-actions>                            
+                            <v-btn 
+                                style="background-color:#E7D7B7; font-weight:bold;" block 
+                                @click="ExTemplete=true; selectTemplete=1"
+                            > 
+                                例を見ること 
+                            </v-btn>
+
+                            <v-btn 
+                                style="background-color:#E2C189; font-weight:bold;"  block 
+                                @click="basicTem=true; selectTemplete=1"
+                            > 
+                                選択 
+                            </v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
@@ -82,14 +140,29 @@
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿2 -->
                 <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
-                        <v-card-text> <b>기본 템플릿2</b> </v-card-text>
+                        <v-card-text> 
+                            <b>基本のレイアウト2</b> 
+                        </v-card-text>
 
-                        <div class="tem_img"> <img class="inner_img" :src="exImg2"> </div>
+                        <div class="tem_img"> 
+                            <img class="inner_img" :src="exImg2"> 
+                        </div>
 
                         <!-- 모달 출력 버튼 -->
                         <v-card-actions>
-                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=2"> 예시 보기 </v-btn>
-                            <v-btn color="success" block @click="basicTem=true; selectTemplete=2"> 템플릿 선택 </v-btn>
+                            <v-btn 
+                                style="background-color:#E7D7B7; font-weight:bold;" block 
+                                @click="ExTemplete=true; selectTemplete=2"
+                            > 
+                                例を見ること
+                            </v-btn>
+
+                            <v-btn 
+                                style="background-color:#E2C189; font-weight:bold;" block 
+                                @click="basicTem=true; selectTemplete=2"
+                            > 
+                                選択  
+                            </v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
@@ -97,14 +170,29 @@
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿3 -->
                 <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
-                        <v-card-text> <b>기본 템플릿3</b> </v-card-text>
+                        <v-card-text> 
+                            <b>基本のレイアウト3</b> 
+                        </v-card-text>
 
-                        <div class="tem_img"> <img class="inner_img" :src="exImg3"> </div>
+                        <div class="tem_img"> 
+                            <img class="inner_img" :src="exImg3"> 
+                        </div>
 
-                        <!-- 모달 출력 버튼 -->
+                        <!-- 모달 출력 버튼 -->                        
                         <v-card-actions>
-                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=3"> 예시 보기 </v-btn>
-                            <v-btn color="success" block @click="basicTem=true; selectTemplete=3"> 템플릿 선택 </v-btn>
+                            <v-btn 
+                                style="background-color:#E7D7B7; font-weight:bold;" block 
+                                @click="ExTemplete=true; selectTemplete=3"
+                            > 
+                                例を見ること 
+                            </v-btn>
+
+                            <v-btn 
+                                style="background-color:#E2C189; font-weight:bold;" block 
+                                @click="basicTem=true; selectTemplete=3"
+                            > 
+                                選択 
+                            </v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
@@ -112,63 +200,129 @@
                 <!-- 서비스에서 제공하는 메뉴판 기본 템플릿4 -->
                 <v-flex xs3 style="font-size: 1.4rem;" elevation-3>
                     <v-card>
-                        <v-card-text> <b>기본 템플릿4</b> </v-card-text>
+                        <v-card-text> 
+                            <b>基本のレイアウト4</b> 
+                        </v-card-text>
 
-                        <div class="tem_img"> <img class="inner_img" :src="exImg4"> </div>
+                        <div class="tem_img"> 
+                            <img class="inner_img" :src="exImg4"> 
+                        </div>
 
                         <!-- 모달 출력 버튼 -->
                         <v-card-actions>
-                            <v-btn color="primary" block @click="ExTemplete=true; selectTemplete=4"> 예시 보기 </v-btn>
-                            <v-btn color="success" block @click="basicTem=true; selectTemplete=4"> 템플릿 선택 </v-btn>
+                            <v-btn 
+                                style="background-color:#E7D7B7; font-weight:bold;" block 
+                                @click="ExTemplete=true; selectTemplete=4"
+                            > 
+                                例を見ること 
+                            </v-btn>
+
+                            <v-btn 
+                                style="background-color:#E2C189; font-weight:bold;" block 
+                                @click="basicTem=true; selectTemplete=4"
+                            > 
+                                選択 
+                            </v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
             </v-layout>
 
-            <!--************************************************ 커스터마이징 설정 ***************************************************-->
+<!--************************************************ 커스터마이징 설정 ***************************************************-->
             <!-- 메뉴판 템블릿 커스터마이징 -->
             <v-layout elevation-5>
-                <v-flex xs10 style="font-size: 2rem;">
-                    <v-card>
-                        <v-card-text> <b> 커스텀마이징 템플릿 </b> </v-card-text>
-                    </v-card>
+                <v-flex xs10 style="font-size: 2rem;"> 
+                    <v-card>                                                    
+                        <v-card-text> 
+                            <b> カスタマイズしたレイアウト </b> 
+                        </v-card-text>                           
+                    </v-card> 
                 </v-flex>
-                <v-flex xs2>
-                    <v-btn color="error" @click="workSpace_set" @click.stop="createMode=true" block
-                           style="font-size:1.5rem; height:90%; font-weight:bold">
-                        메뉴판 제작
-                    </v-btn>
+                <v-flex xs2>   
+                    <v-btn  
+                        @click="workSpace_set" 
+                        @click.stop="createMode=true" 
+                        style=" height: 100%;
+                                color: #46362c;
+                                font-size: 1.5rem;                                  
+                                font-weight: bold;
+                                background-color: #d2b07d;
+                                margin:0;"
+                        block
+                    >
+                        レイアウトの制作
+                    </v-btn>                 
                 </v-flex>
             </v-layout>
-
+            
             <!-- 사용자가 만든 커스텀마이징 템플릿 리스트 div 출력 -->
-            <v-layout elevation-3 v-if="loadTemplateList !== null">
+            <v-layout 
+                elevation-3 
+                v-if="loadTemplateList !== null"
+            >
                 <div style="width:100%;">
-                    <v-flex v-for="n in range(0, loadListNum-1)" :key="n" elevation-10
-                            style="width:31%; margin:1%; float:left; font-size: 1.2rem; background-color:#F2F2F2">
+                    <v-flex 
+                        v-for="n in range(0, loadListNum-1)" :key="n" 
+                        style= "width:31%; 
+                                margin:1%; 
+                                float:left; 
+                                font-size:1.2rem; 
+                                background-color:#F2F2F2"
+                        elevation-10
+                    >
                         <v-card>
-                            <v-card-text style="max-height:60px; font-size:1.5rem; font-weight:bold;">
+                            <v-card-text 
+                                style= "max-height:60px; 
+                                        font-size:1.5rem; 
+                                        font-weight:bold;"
+                            >
                                 {{loadTemplateList[n].layout_name}}
                             </v-card-text>
+
                             <div class="tem_img">
                                 <img class="inner_img" :src="loadTemplateList[n].thumbnail">
                             </div>
                             <v-card-actions>
-                                <v-btn color="primary" block @click="ExCustom=true; selectCustomTem=n;">예시 보기</v-btn>
-                                <v-btn color="success" block @click="customTem=true; selectCustomTem=n;">선택</v-btn>
-                                <v-btn color="error" block @click="customDeleteDialog=true; selectCustomTem=n;">삭제</v-btn>
+                                <v-btn 
+                                    style="background-color: #efe2bd; font-weight:bold;" block 
+                                    @click="ExCustom=true; selectCustomTem=n;"
+                                >
+                                    例を見ること
+                                </v-btn>
+
+                                <v-btn 
+                                    style="background-color: #f6e2a1; font-weight:bold;" block 
+                                    @click="customTem=true; selectCustomTem=n;"
+                                >
+                                    選択
+                                </v-btn>
+
+                                <v-btn 
+                                    style="background-color: #d2b07d; font-weight:bold;" block 
+                                    @click="customDeleteDialog=true; selectCustomTem=n;"
+                                >
+                                    削除
+                                </v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-flex>
                 </div>
-            </v-layout>
+            </v-layout> 
 
             <!-- 커스텀마이징 템플릿 예시보기 -->
-            <v-dialog v-model="ExCustom" max-width="50%" v-if="loadTemplateList !== null">
-                <v-card align-content-center @click.native="ExCustom=false">
-                    <v-card-text style="font-size:1.5rem;">
-                        <b style="text-align:center"> {{loadTemplateList[selectCustomTem].layout_name}} </b>
+            <v-dialog 
+                v-if="loadTemplateList !== null"
+                v-model="ExCustom" 
+                max-width="50%" 
+            >
+                <v-card 
+                    align-content-center 
+                    @click.native="ExCustom=false"
+                >
+                    <v-card-text style="background-color: #efe2bd; font-size:1.5rem;">
+                        <b> {{loadTemplateList[selectCustomTem].layout_name}} </b>
                     </v-card-text>
+
                     <div class="tem_img">
                         <img class="inner_img" :src="loadTemplateList[selectCustomTem].thumbnail">
                     </div>
@@ -176,76 +330,182 @@
             </v-dialog>
 
             <!-- 커스텀마이징 템플릿 선택 확인하기 : 모달 -->
-            <v-dialog v-model="customTem" max-width="20%" persistent v-if="loadTemplateList !== null">
-                <v-card>
+            <v-dialog 
+                v-if="loadTemplateList !== null"
+                v-model="customTem" 
+                max-width="30%" 
+                persistent 
+            >
+                <v-card style="padding:1%; background-color:#efe2bd;">
                     <v-card-text>
-                        <h3> {{loadTemplateList[selectCustomTem].layout_name}} 으로 적용하시겠습니까? </h3>
-                        <v-btn @click="customTem=false; selectWhat='cos';
-                                selectTemPrt=loadTemplateList[selectCustomTem].layout_name"
-                               flat color="green darken-1" > 예 </v-btn>
-                        <v-btn flat color="green darken-1" @click="customTem=false"> 아니오 </v-btn>
+                        <div style="width:100%; font-size:1.5rem; text-align:center; font-weight:bold;"> 
+                            {{loadTemplateList[selectCustomTem].layout_name}}に設定しますが。 
+                        </div>
+
+                        <v-layout mt-2>
+                            <v-flex xs6 mr-1>
+                                <v-btn 
+                                    @click="customTem = false; 
+                                            selectWhat = 'cos';
+                                            selectTemPrt = loadTemplateList[selectCustomTem].layout_name"
+                                    class="amber lighten-5"
+                                    block
+                                > 
+                                    はい 
+                                </v-btn>
+                            </v-flex>
+
+                            <v-flex xs6>
+                                <v-btn 
+                                    @click="customTem=false"
+                                    class="amber lighten-5"
+                                    block
+                                > 
+                                    いいえ 
+                                </v-btn>
+                            </v-flex>
+                        </v-layout>     
                     </v-card-text>
                 </v-card>
             </v-dialog>
 
             <!-- 템플릿 삭제하기 : 모달 -->
-            <v-dialog v-model="customDeleteDialog" max-width="20%" persistent v-if="loadTemplateList !== null">
-                <v-card>
-                    <v-card-text style="font-size:1.5rem; font-weight:bold;">
-                        {{loadTemplateList[selectCustomTem].layout_name}} 삭제하시겠습니까?
+            <v-dialog 
+                v-if="loadTemplateList !== null"
+                v-model="customDeleteDialog" 
+                max-width="30%" 
+                persistent 
+            >
+                <v-card style="padding:1%; background-color:#efe2bd;">
+                    <v-card-text>
+                        <div style="width:100%; font-size:1.5rem; text-align:center; font-weight:bold;"> 
+                            {{loadTemplateList[selectCustomTem].layout_name}}を削除しましょうか?
+                        </div>
+
+                        <v-layout mt-2>
+                            <v-flex xs6 mr-1> 
+                                <v-btn 
+                                    @click="customDelete"
+                                    class="amber lighten-5"
+                                    block
+                                >
+                                    はい
+                                </v-btn>
+                            </v-flex>
+
+                            <v-flex xs6>                             
+                                <v-btn 
+                                    @click="customDeleteDialog = false"
+                                    class="amber lighten-5"
+                                    block
+                                >
+                                    いいえ 
+                                </v-btn>
+                            </v-flex>
+                        </v-layout>     
                     </v-card-text>
-                    <v-btn flat color="green darken-1" @click="customDelete"> 예 </v-btn>
-                    <v-btn flat color="green darken-1" @click="customDeleteDialog = false"> 아니오 </v-btn>
                 </v-card>
             </v-dialog>
 
 
-            <!--**************************************************** 제작 툴********************************************************-->
+<!--**************************************************** 제작 툴********************************************************-->
             <v-layout row justify-center>
-                <v-dialog v-model="createMode" fullscreen transition="dialog-bottom-transition">
+                <v-dialog 
+                    v-model="createMode" 
+                    fullscreen 
+                    transition="dialog-bottom-transition"
+                >
                     <v-card class="ban_drag">
-                        <!-- 상단 툴바 -->
-                        <v-layout>
-                            <div id="topToolBar" style="width:100%; padding:0.5%; border-bottom:1px solid #A4A4A4;">
-                                <b style="font-size:3rem; margin-left:10px; float:left"> 메뉴판 제작 </b>
+                        <!-- 상단 툴바 -->                         
+                        <v-layout style="background-color: #efe2bd;"> 
+                            <v-flex xs2 style="background-color: #efe2bd;"></v-flex>
+                            <v-spacer></v-spacer>
 
-                                <!-- 불러오기 저장하기 나가기 버튼 -->
-                                <v-card-actions style="float:right">
-                                    <v-btn large color="info" @click="loadMenuDialog=true"
-                                           style="font-size:1.5rem;" block>
-                                        불러오기
+                            <v-flex xs4 
+                                id="topToolBar" 
+                                style= "padding:0.5%; 
+                                        background-color: #efe2bd;"
+                            >                                                                   
+                                <b style= "font-size:3rem; 
+                                           margin-left:10px; 
+                                           float:left;
+                                           color: #46362c;"
+                                > 
+                                    メニュー制作 
+                                </b>                             
+                            </v-flex> 
+
+                            <!-- 불러오기 저장하기 나가기 버튼 -->
+                            <v-flex xs3 style="background-color: #efe2bd;"> 
+                                <v-card-actions style="width:100%; float:right;">
+                                    <v-btn 
+                                        @click.stop="loadMenuDialog=true" 
+                                        class="tool_topToolBar_btn amber lighten-5"
+                                        block round top
+                                    >
+                                        ロード 
                                     </v-btn>
 
-                                    <v-btn large color="error" block
-                                           style="font-size:1.5rem;" @click.stop="saveMenuDialog=true">
-                                        저장하기
+                                    <v-btn 
+                                        @click.stop="saveMenuDialog=true"
+                                        class="tool_topToolBar_btn amber lighten-5"      
+                                        block round top
+                                    > 
+                                        セーブ
                                     </v-btn>
 
-                                    <v-btn large color="blue-grey" class="white--text" block
-                                           style="font-size:1.5rem;" @click.stop="createCancelDialog=true">
-                                        나가기
+                                    <v-btn 
+                                        @click.stop="createCancelDialog=true"
+                                        class="tool_topToolBar_btn amber lighten-5"  
+                                        block round top
+                                    > 
+                                        キャンセル 
                                     </v-btn>
-                                </v-card-actions>
-                            </div>
+                                </v-card-actions>   
+                            </v-flex>       
+                                
+                            <v-spacer></v-spacer>
+                            <v-flex xs2 style="background-color: #efe2bd;"></v-flex>         
                         </v-layout>
 
                         <!-- 불러오기 모달 -->
-                        <v-dialog v-model="loadMenuDialog" width="40%" scrollable="" persistent>
-                            <v-card>
-                                <v-card-title primary-title>
-                                    <div style="text-align:center; font-size:1.5rem; font-weight:bold; color:grey">
-                                        메뉴판 불러오기
+                        <v-dialog 
+                            v-model="loadMenuDialog" 
+                            width="40%" 
+                            scrollable="" 
+                            persistent
+                        >
+                            <v-card style="padding:2%; background-color:#f6e2a1;">
+                                <v-card-title style="border-bottom:2px solid #46362c; padding:1%;">
+                                    <div 
+                                        style= "font-size:2rem; 
+                                                font-weight:bold; 
+                                                color:#46362c;"
+                                    >
+                                        メニューロード 
                                     </div>
+
                                     <v-spacer></v-spacer>
-                                    <v-btn icon style="float:right" @click="loadMenuDialog = false">
-                                        <v-icon large> clear </v-icon>
+
+                                    <v-btn 
+                                        @click="loadMenuDialog = false"                                         
+                                        style="float:right" icon
+                                    >
+                                        <v-icon x-large> close </v-icon>
                                     </v-btn>
                                 </v-card-title>
 
-                                <ul style="height:300px; overflow:auto; border-top:1.2px solid gray;">
-                                    <li v-for="i in range(0, loadListNum-1)" :key="i" class="menuList"
-                                        v-if="loadTemplateList !== null" :value="i"
-                                        @click="loadCreateMenu" @click.capture="temName = loadTemplateList[i].layout_name">
+                                <ul 
+                                    class="MenuLayoutList_ul"
+                                    style="height:300px;"
+                                >
+                                    <li 
+                                        v-if="loadTemplateList !== null"     :value="i"
+                                        v-for="i in range(0, loadListNum-1)" :key="i" 
+                                        @click="loadCreateMenu" 
+                                        @click.capture="temName = loadTemplateList[i].layout_name"
+                                        class="MenuLayoutList_li"
+                                    >
                                         {{ loadTemplateList[i].layout_name }}
                                     </li>
                                 </ul>
@@ -253,134 +513,215 @@
                         </v-dialog>
 
                         <!-- 저장하기 모달 -->
-                        <v-dialog v-model="saveMenuDialog" width="40%" scrollable="" persistent>
-                            <v-card>
-                                <v-card-title primary-title>
-                                    <div style="text-align:center; font-size:1.5rem; font-weight:bold; color:grey">
-                                        메뉴판 저장하기
+                        <v-dialog 
+                            v-model="saveMenuDialog" 
+                            width="40%" 
+                            scrollable="" 
+                            persistent
+                        >
+                            <v-card style="padding:2%; background-color:#f6e2a1;">
+                                <v-card-title style="padding:1%;">
+                                    <div 
+                                        style= "color       : #46362c;
+                                                font-size   : 2rem; 
+                                                font-weight : bold; "
+                                    >
+                                        作ったメニューをセーブします。
                                     </div>
                                 </v-card-title>
-                                <div style="width:100%; height:50px; border-top:1.2px solid gray; padding-left:10px; margin-bottom:20px;">
-                                    <v-text-field
-                                            label="템플릿 명 설정"
-                                            v-model="temName"
-                                            full-width
-                                            :rules="[(v) => v.length <= 15 || '최대 15자입니다.']"
-                                            :counter="15"
-                                            autofocus >
-                                    </v-text-field>
+
+                                <div 
+                                    style= "width         : 100%; 
+                                            height        : 60px; 
+                                            padding       : 5px;  
+                                            border-top    : 2px solid #46362c; 
+                                            border-bottom : 2px solid #46362c; "
+                                >
+                                    <v-text-field 
+                                        label="テンプレートの名前(最大15字)" 
+                                        v-model="temName"  
+                                        autofocus 
+                                        full-width
+                                        style="height:50px; background-color:white;"
+                                    >
+                                    </v-text-field>                                    
                                 </div>
 
-                                <ul style="height:200px; overflow:auto; border-top:1.2px solid gray; border-bottom:1.2px solid gray;">
-                                    <li v-for="i in range(0, loadListNum-1)" :key="i" class="menuList"
-                                        v-if="loadTemplateList !== null"
-                                        @click="editCreateMenu" :value="i">
+                                <ul 
+                                    class="MenuLayoutList_ul"
+                                    style="height        : 200px;                                              
+                                           border-bottom : 2px solid #46362c;"
+                                >
+                                    <li 
+                                        v-for="i in range(0, loadListNum-1)" :key="i" 
+                                        v-if="loadTemplateList !== null"     :value="i"
+                                        @click="editCreateMenu"             
+                                        class="MenuLayoutList_li"
+                                    >
                                         {{ loadTemplateList[i].layout_name }}
                                     </li>
                                 </ul>
+
                                 <v-card-actions>
-                                    <button class="color_btn" @click="makeThumbnail"> 저장 </button>
-                                    <button class="color_btn" @click="saveMenuDialog=false"> 취소 </button>
+                                    <v-btn 
+                                        @click="makeThumbnail"
+                                        class="tool_topToolBar_btn amber lighten-5"      
+                                        block   
+                                    > 
+                                        セーブ  
+                                    </v-btn>
+                                    <v-btn 
+                                        @click="saveMenuDialog=false"
+                                        class="tool_topToolBar_btn amber lighten-5"      
+                                        block
+                                    > 
+                                        キャンセル 
+                                    </v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
 
                         <!-- 나가기 모달 -->
-                        <v-dialog v-model="createCancelDialog" width="40%" scrollable="" persistent>
-                            <v-card>
-                                <v-card-title primary-title>
-                                    <div style="text-align:center; font-size:2rem; font-weight:bold; color:grey">
-                                        메뉴판 제작을 종료하시겠습니까?
+                        <v-dialog 
+                            v-model="createCancelDialog"
+                            width="40%"  
+                            persistent
+                        >
+                            <v-card style="padding:2%; background-color:#f6e2a1;">
+                                <v-card-title>
+                                    <div 
+                                        style= "width       : 100%;
+                                                font-size   : 2rem; 
+                                                font-weight : bold; 
+                                                text-align  : center; 
+                                                color       : #46362c"
+                                    >
+                                        メニュー作りを終了しますか。
                                     </div>
                                 </v-card-title>
+
                                 <v-card-actions>
-                                    <button class="color_btn" @click="createCancel">예</button>
-                                    <button class="color_btn" @click="createCancelDialog=false">취소</button>
+                                    <v-btn 
+                                        @click="createCancel"
+                                        class="tool_topToolBar_btn amber lighten-5"      
+                                        block
+                                    >
+                                        はい
+                                    </v-btn>
+                                    <v-btn 
+                                        @click="createCancelDialog=false"
+                                        class="tool_topToolBar_btn amber lighten-5"      
+                                        block
+                                    >
+                                        いいえ
+                                    </v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
 
                         <!-- 하단 작업 공간 & 툴바 -->
-                        <v-layout style="width:100%; border-bottom:1px solid #585858;">
+                        <v-layout 
+                            style= "width            : 100%; 
+                                    background-color : #efe2bd;
+                                    border-bottom    : 1px solid #585858;" 
+                        >
+                            <v-spacer></v-spacer>
+
                             <!-- 왼쪽 사이드 툴바 : 메뉴 생성 -->
-                            <v-flex id='leftToolBar' xs2 style="border-right:1px solid #585858;">
-                                <v-list id="selectColumn" style="background-color:#F2F2F2;">
-                                    <v-list-tile avatar>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">
-                                                <b>메뉴판 요소 선택</b>
-                                            </v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </v-list>
+                            <v-flex xs2
+                                id='leftToolBar'  
+                                style="background-color: white; padding: 1%;"
+                            >
+                                <v-flex xs12 
+                                    id="selectColumn" 
+                                    class="toolBarList_title" 
+                                > 
+                                    メニューの要素を選択
+                                </v-flex>
 
-                                <v-list class="pt-0">
-                                    <v-divider></v-divider>
+                                <!-- 메뉴 이미지 -->
+                                <v-flex xs12>
+                                    <v-btn
+                                        @click="dragArea" 
+                                        @click.capture="item = 'createdImg'"
+                                        class="toolBarList_btn amber lighten-4"      
+                                        block round
+                                    >
+                                        <v-icon color="brown darken-4"> image </v-icon>
+                                        &nbsp; メニューのイメージ
+                                    </v-btn>
+                                </v-flex>
 
-                                    <!-- 메뉴 이미지 -->
-                                    <v-list-tile @click="dragArea" class='mt-3' @click.capture="item = 'createdImg'">
-                                        <v-list-tile-action>
-                                            <v-icon>image</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">메뉴 이미지</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
+                                <!-- 메뉴 명 -->
+                                <v-flex xs12>
+                                    <v-btn
+                                        @click="dragArea" 
+                                        @click.capture="item = 'createdName'"
+                                        class="toolBarList_btn amber lighten-4"      
+                                        block round
+                                    >
+                                        <v-icon color="brown darken-4"> title </v-icon>
+                                        &nbsp; メニューの名前
+                                    </v-btn>
+                                </v-flex>
+                                
+                                <!-- 메뉴 설명 -->
+                                <v-flex xs12>
+                                    <v-btn
+                                        @click="dragArea" 
+                                        @click.capture="item = 'createdExpl'"
+                                        class="toolBarList_btn amber lighten-4"      
+                                        block round
+                                    >
+                                        <v-icon color="brown darken-4"> assignment </v-icon>
+                                        &nbsp; メニューの説明
+                                    </v-btn>
+                                </v-flex>
 
-                                    <!-- 메뉴 명 생성 -->
-                                    <v-list-tile @click="dragArea" class='mt-3' @click.capture="item = 'createdName'">
-                                        <v-list-tile-action>
-                                            <v-icon>title</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">메뉴 명</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
+                                <!-- 런치 / 디너 구분 생성 -->
+                                <v-flex xs12>
+                                    <v-btn
+                                        @click="dragArea" 
+                                        @click.capture="item = 'createdL_D'"
+                                        class="toolBarList_btn amber lighten-4"      
+                                        block round
+                                    >
+                                        <v-icon color="brown darken-4"> watch_later </v-icon>
+                                        &nbsp; ランチ / ディナー 
+                                    </v-btn>
+                                </v-flex>
 
-                                    <!-- 메뉴 설명 생성 -->
-                                    <v-list-tile @click="dragArea" class='mt-3' @click.capture="item = 'createdExpl'">
-                                        <v-list-tile-action>
-                                            <v-icon>assignment</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">메뉴 설명</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
+                                <!-- 메뉴 가격 -->
+                                <v-flex xs12>
+                                    <v-btn
+                                        @click="dragArea" 
+                                        @click.capture="item = 'createdPrice'"
+                                        class="toolBarList_btn amber lighten-4"      
+                                        block round
+                                    >
+                                        <v-icon color="brown darken-4"> attach_money </v-icon>
+                                        &nbsp; メニューの価格
+                                    </v-btn>
+                                </v-flex>
 
-                                    <!-- 런치 / 디너 구분 생성 -->
-                                    <v-list-tile @click="dragArea" class='mt-3' @click.capture="item = 'createdL_D'">
-                                        <v-list-tile-action>
-                                            <v-icon>assignment</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">런치 / 디너 구분</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-
-                                    <!-- 메뉴 가격 -->
-                                    <v-list-tile @click="dragArea" class='mt-3' @click.capture="item = 'createdPrice'">
-                                        <v-list-tile-action>
-                                            <v-icon>attach_money</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">메뉴 가격</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-
-                                    <!-- 메뉴 선택 버튼 -->
-                                    <v-list-tile @click="dragArea" class='mt-3' @click.capture="item = 'createdSelect'">
-                                        <v-list-tile-action>
-                                            <v-icon>check_circle</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">메뉴 선택 버튼</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </v-list>
+                                <!-- 메뉴 가격 -->
+                                <v-flex xs12>
+                                    <v-btn
+                                        @click="dragArea" 
+                                        @click.capture="item = 'createdSelect'"
+                                        class="toolBarList_btn amber lighten-4"      
+                                        block round
+                                    >
+                                        <v-icon color="brown darken-4"> check_circle </v-icon>
+                                        &nbsp; メニュー選択のボタン
+                                    </v-btn>
+                                </v-flex>
                             </v-flex>
 
+                            <v-spacer></v-spacer>
+
                             <!-- 작업 공간 -->
-                            <v-flex xs8>
+                            <v-flex xs7>
                                 <div id="workSpace">
                                     <div id="menu" class="createdMenu">
                                         <div id="ElementArea"></div>
@@ -388,184 +729,298 @@
                                 </div>
                             </v-flex>
 
+                            <v-spacer></v-spacer>
+
                             <!-- 오른쪽 사이드 툴바 : 기타 설정 -->
-                            <v-flex xs2 style="border-left:1px solid #A4A4A4;">
-                                <v-list style="background-color:#F2F2F2;">
-                                    <v-list-tile avatar>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">
-                                                <b>메뉴 영역 비율 설정</b>
-                                            </v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </v-list>
+                            <v-flex xs2 style="background-color: white; padding: 1%;">
+                                <v-flex xs12 class="toolBarList_title"> 
+                                    メニューのサイズを設定
+                                </v-flex>
 
-                                <div class="designSet_tr">
-                                    <b class="designSet_name"> 세로 비율 설정</b> <br>
-                                    <input type="text" id="menuRatio" class="designSet_ipt">%
-                                    <button style="width: 30%; margin-left:2%; font-weight:bold"
-                                            @click="setMenuRatio">적용</button>
-                                </div>
+                                <v-flex xs12 mt-3 mb-3> 
+                                    <v-flex xs12 class="rightToolBar_miniTitle">
+                                        メニューの縦の割合を設定
+                                    </v-flex>
 
-                                <v-list style="margin-top:10%; background-color:#F2F2F2;">
-                                    <v-list-tile avatar>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="list-style">
-                                                <b>메뉴 출력 설정</b>
-                                            </v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </v-list>
+                                    <input 
+                                        type="text" 
+                                        id="menuRatio" 
+                                        class="designSet_ipt" 
+                                        @keyup="setMenuRatioByEnterKey"
+                                    > 
+                                    <b> % </b>
 
-                                <v-divider></v-divider>
+                                    <button
+                                        @click="setMenuRatio"
+                                        style= "width: 30%; 
+                                                margin-left:2%; 
+                                                font-size:1.4rem; 
+                                                font-weight:bold; 
+                                                color: #6d4d35;"
+                                    >
+                                        適用
+                                    </button>
+                                </v-flex>
+                               
+                                <v-flex xs12 class="toolBarList_title" mt-5> 
+                                    メニューの出力を設定
+                                </v-flex>
 
-                                <div class="designSet_tr">
-                                    <b class="designSet_name">1줄에 출력될 메뉴의 갯수</b> <br>
-
-                                    <select id="MenuNum" class="designSet_ipt">
+                                <v-flex xs12 mt-3> 
+                                    <v-flex xs12 class="rightToolBar_miniTitle">
+                                        一行に出力するメニューの数
+                                    </v-flex> 
+                                    <select id="MenuNum" class="designSet_ipt" mt-2>
                                         <option value=1> 1 </option>
                                         <option value=2> 2 </option>
                                         <option value=3 selected> 3 </option>
                                         <option value=4> 4 </option>
-                                    </select> 개
-                                </div>
+                                    </select> 
+                                    <b> つ </b>
 
-                                <div class="designSet_tr" style="margin-bottom: 5%">
-                                    <b class="designSet_name">메뉴 간격</b> <br>
-                                    <select id="MenuMargin" class="designSet_ipt">
+                                    <v-flex xs12 class="rightToolBar_miniTitle" mt-3>
+                                        メニューの間隔
+                                    </v-flex>  
+                                    <select id="MenuMargin" class="designSet_ipt" mt-2>
                                         <option value=1 selected> 1 </option>
                                         <option value=2> 2 </option>
                                         <option value=3> 3 </option>
-                                    </select> %
-                                </div>
+                                    </select> 
+                                    <b> % </b>
+                                </v-flex>
                             </v-flex>
+                            <v-spacer></v-spacer>
                         </v-layout>
 
                         <!-- 마우스 오른쪽 버튼 클릭스 나타나는 메뉴 창 -->
                         <div id="click_menu" class="context-menus">
                             <ul class="ul_style">
-                                <li id="goFont" @click="zIndexSet" class="li_style"><b>앞으로</b></li>
+                                <li id="goFont" @click="zIndexSet" class="li_style">
+                                    <b> 前に </b>
+                                </li>
                                 <hr class="hr_style">
 
-                                <li id="goBack" @click="zIndexSet" class="li_style"><b>뒤로</b></li>
+                                <li id="goBack" @click="zIndexSet" class="li_style">
+                                    <b> 後ろに </b>
+                                </li>
                                 <hr class="hr_style">
 
-                                <li @click.stop="CallDesignSet" class="li_style"><b>영역 서식</b></li>
+                                <li @click.stop="CallDesignSet" class="li_style">
+                                    <b> 領域の書式 </b>
+                                </li>
                                 <hr class="hr_style">
 
-                                <li @click="DeleteElement" class="li_style"><b>삭제하기</b></li>
+                                <li @click="DeleteElement" class="li_style">
+                                    <b> 削除 </b>
+                                </li>
                             </ul>
                         </div>
 
                         <!-- 영역 서식 메뉴창 -->
-                        <v-dialog v-model="designSetDialog" width="40%" scrollable="" persistent>
-                            <v-card>
+                        <v-dialog 
+                            v-model="designSetDialog" 
+                            width="40%"
+                            scrollable="" 
+                            persistent
+                        >
+                            <v-card style="padding:2%; background-color:#f6e2a1;">
                                 <!-- 타이틀, 저장, 취소 -->
-                                <v-card-title style="border-bottom:1.2px solid #A4A4A4;">
-                                    <b class="designSet_title"> 영역 서식 </b>
+                                <v-layout style="padding:2%; border-bottom: 2px solid #46362c;" mb-3>
+                                    <v-flex xs10 class="designSet_title"> 
+                                        領域の書式 
+                                    </v-flex>
                                     <v-spacer></v-spacer>
 
-                                    <v-btn icon style="float:right" @click="SetColorAndShape">
-                                        <v-icon large> done </v-icon>
-                                    </v-btn>
-                                    <v-btn icon style="float:right" @click="designSetDialog = false">
-                                        <v-icon large> clear </v-icon>
-                                    </v-btn>
-                                </v-card-title>
+                                    <v-flex xs1>
+                                        <v-btn @click="SetColorAndShape" icon block>
+                                            <v-icon x-large> done </v-icon>
+                                        </v-btn>
+                                    </v-flex>     
+
+                                    <v-flex xs1>
+                                        <v-btn @click="designSetDialog = false" icon block>
+                                            <v-icon x-large> clear </v-icon>
+                                        </v-btn>
+                                    </v-flex>                                    
+                                </v-layout>
 
                                 <!-- 설정 항목 -->
-                                <v-flex xs12 style="overflow: scroll;">
-                                    <div class="designSet_tr" style="margin-top:5%">
-                                        <b class="designSet_name">선 굵기 설정</b> <br>
-                                        <input type="text" id="line_width" class="designSet_ipt" value="2"> px
-                                    </div>
+                                <v-flex xs12 class="designSet_info" style="overflow: scroll;">
+                                    <v-layout>
+                                        <v-flex xs6 class="designSet_area">
+                                            <b class="designSet_name"> 
+                                                線の太さを設定 
+                                            </b> 
+                                            <br>      
+                                            <input type="text" id="line_width" class="designSet_ipt" value="2"> px
+                                        </v-flex>
 
-                                    <div class="designSet_tr">
-                                        <b class="designSet_name">선 스타일 설정</b> <br>
+                                         <v-flex xs6 class="designSet_area">
+                                            <b class="designSet_name">  
+                                                線のスタイルを設定 
+                                            </b> 
+                                            <br>
+                                            <select id="line_style" class="designSet_ipt">
+                                                <option value="solid"> 直線 </option>
+                                                <option value="none"> 無し </option>
+                                                <option value="dotted"> 短い点線 </option>
+                                                <option value="dashed"> 長い点線  </option>
+                                                <option value="double"> ダブル </option>
+                                            </select> (選択)
+                                        </v-flex>
+                                    </v-layout>
 
-                                        <select id="line_style" class="designSet_ipt">
-                                            <option value="solid"> 직선 </option>
-                                            <option value="none"> 없음 </option>
-                                            <option value="dotted"> 짧은 점선 </option>
-                                            <option value="dashed"> 긴 점선 </option>
-                                            <option value="double"> 곂선 </option>
-                                        </select> (선택)
-                                    </div>
+                                    <v-layout>
+                                        <v-flex xs6 class="designSet_area">
+                                            <b class="designSet_name"> 線の色を選択 </b> <br>
+                                            
+                                            <v-layout>
+                                                <v-flex xs4 class="designSet_color_outer">
+                                                    <div 
+                                                        id="line_color" 
+                                                        class="designSet_color_inner"
+                                                        style="background-color:black;"
+                                                    >
+                                                    </div>
+                                                </v-flex>
 
-                                    <div class="designSet_tr">
-                                        <b class="designSet_name">선 색상 선택</b> <br>
+                                                <v-flex xs8>
+                                                    <button 
+                                                        @click="CallColorPicker" 
+                                                        class="designSet_color_btn"  
+                                                        value="line_color" 
+                                                    >
+                                                        選択
+                                                    </button>
 
-                                        <div style="width:100%; overflow:hidden">
-                                            <div class="designSet_color">
-                                                <div id="line_color" class="designSet_color_inner"
-                                                     style="background-color:black;"></div>
-                                            </div>
-                                            <button class="designSet_color_btn" @click="CallColorPicker" value='line_color'>
-                                                선택하기
-                                            </button>
-                                            <button class="designSet_color_btn" @click="ColorNull" value='line_color'>
-                                                색 없음
-                                            </button>
-                                        </div>
-                                    </div>
+                                                    <button 
+                                                        @click="ColorNull" 
+                                                        class="designSet_color_btn" 
+                                                        value="line_color" 
+                                                    >
+                                                        無し
+                                                    </button>
+                                                </v-flex>                                                
+                                            </v-layout>
+                                        </v-flex>
 
-                                    <div class="designSet_tr">
-                                        <b class="designSet_name">글자 색 선택</b> <br>
+                                        <v-flex xs6 class="designSet_area">
+                                            <b class="designSet_name"> 
+                                                字の色を選択 
+                                            </b> 
+                                            <br>                                            
+                                            <v-layout>
+                                                <v-flex xs4 class="designSet_color_outer">
+                                                    <div 
+                                                        id="text_color" 
+                                                        class="designSet_color_inner"
+                                                        style="background-color:black;"
+                                                    >
+                                                    </div>
+                                                </v-flex>
 
-                                        <div style="width:100%; overflow:hidden">
-                                            <div class="designSet_color">
-                                                <div id="text_color" class="designSet_color_inner"
-                                                     style="background-color:black;"></div>
-                                            </div>
-                                            <button class="designSet_color_btn" @click="CallColorPicker" value='text_color'>
-                                                선택하기
-                                            </button>
-                                        </div>
-                                    </div>
+                                                <v-flex xs8>
+                                                    <button
+                                                        @click="CallColorPicker" 
+                                                        class="designSet_color_btn"  
+                                                        value="text_color" 
+                                                    >
+                                                        選択
+                                                    </button>
+                                                </v-flex>                                                
+                                            </v-layout>
+                                        </v-flex>
+                                    </v-layout>
 
-                                    <div class="designSet_tr">
-                                        <b class="designSet_name">영역 색상</b> <br>
-                                        <div style="width:100%; overflow:hidden">
-                                            <div class="designSet_color">
-                                                <div id="area_color" class="designSet_color_inner"></div>
-                                            </div>
-                                            <button class="designSet_color_btn" @click="CallColorPicker" value='area_color'>
-                                                선택하기
-                                            </button>
-                                            <button class="designSet_color_btn" @click="ColorNull" value='area_color'>
-                                                색 없음
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <v-layout>
+                                        <v-flex xs6 class="designSet_area">
+                                            <b class="designSet_name"> 
+                                                領域の色を選択 
+                                            </b> 
+                                            <br>                                            
+                                            <v-layout>
+                                                <v-flex xs4 class="designSet_color_outer">
+                                                    <div 
+                                                        id="area_color" 
+                                                        class="designSet_color_inner"
+                                                        style="background-color:black;"
+                                                    >
+                                                    </div>
+                                                </v-flex>
 
-                                    <div class="designSet_tr">
-                                        <b class="designSet_name">영역 모양 설정</b> <br>
-                                        <select id="area_style" class="designSet_ipt">
-                                            <option value="quadrangle"> 사각형 </option>
-                                            <option value="quadrangle_R"> 둥근 사각형 </option>
-                                            <option value="circle"> 원 </option>
-                                        </select> (선택)
-                                    </div>
+                                                <v-flex xs8>
+                                                    <button 
+                                                        @click="CallColorPicker" 
+                                                        class="designSet_color_btn"  
+                                                        value="area_color" 
+                                                    >
+                                                        選択
+                                                    </button>
+
+                                                    <button  
+                                                        @click="ColorNull" 
+                                                        class="designSet_color_btn" 
+                                                        value="area_color" 
+                                                    >
+                                                        無し
+                                                    </button>
+                                                </v-flex>                                                
+                                            </v-layout>
+                                        </v-flex>
+
+                                        <v-flex xs6 class="designSet_area">                                             
+                                            <b class="designSet_name"> 領域の様子を選択 </b> <br>
+                                            
+                                            <select id="area_style" class="designSet_ipt">
+                                                <option value="quadrangle">  四角形 </option>
+                                                <option value="quadrangle_R"> 丸い四角形 </option>
+                                                <option value="circle"> 丸 </option>
+                                            </select> (選択)
+                                        </v-flex>
+                                    </v-layout> 
                                 </v-flex>
                             </v-card>
                         </v-dialog>
 
                         <!-- 색상 선택 -->
-                        <v-dialog v-model="colorDialog" width="30%" persistent style="display:inline-block;">
-                            <v-card>
+                        <v-dialog 
+                            v-model="colorDialog" 
+                            width="280px" 
+                            persistent 
+                            style="display:inline-block;"
+                        >
+                            <v-card style="background-color: #efe2bd;">
                                 <div>
-                                    <canvas id="palette" @click="Palette_Click"> </canvas>
-                                    <canvas id="bar"     @click="Bar_Click"> </canvas>
+                                    <canvas id="palette" @click="Palette_Click">                                         
+                                    </canvas>
+                                    <canvas id="bar" @click="Bar_Click">                                         
+                                    </canvas>
                                 </div>
 
                                 <div style="width:100%;">
-                                    <div id="click_color">선택한 색상</div>
+                                    <div id="click_color"> 選んだ色 </div>
                                 </div>
 
-                                <v-card-actions>
-                                    <button class="color_btn" @click="SetColor">적용</button>
-                                    <button class="color_btn" @click="colorDialog = false">취소</button>
-                                </v-card-actions>
+                                <v-layout>    
+                                    <v-flex xs6>
+                                        <v-btn 
+                                            class="color_btn amber lighten-5" 
+                                            @click="SetColor"
+                                            block 
+                                        >　
+                                            設定　
+                                        </v-btn>
+                                    </v-flex>
+                                    <v-flex xs6>
+                                        <v-btn 
+                                            class="color_btn amber lighten-5" 
+                                            @click="colorDialog = false"                                        
+                                            block 
+                                        >　
+                                            キャンセル　
+                                        </v-btn>
+                                    </v-flex>
+                                </v-layout>    
                             </v-card>
                         </v-dialog>
                     </v-card>
@@ -605,20 +1060,17 @@
             var shop_id   = this.$route.params.shop_id;
             url = '/owner/' + shop_id + '/getLayout';
 
-            // 카테고리 요청하기.
+            // 선택한 레이아웃 가져오기.
             axios.get(url)
-                .then( (response) => {
-                    layoutNum = response.data.layoutNum;
-                    if(layoutNum < 5)
-                        this.selected_template = response.data.layoutName + layoutNum;
-                    else
-                        this.selected_template = "커스터마이징 템플릿 - " + response.data.layoutName;
-                })
-                .catch((ex)=>{
-                    this.snackbar_text = '레이아웃 로드 실패';
-                    this.snackbar      = true;
-                    return null;
-                });
+            .then( (response) => {
+                layoutNum = response.data.layoutNum;
+                if(layoutNum < 5)
+                    this.selected_template = response.data.layoutName + layoutNum;
+                else
+                    this.selected_template = "カスタマイズレイアウト - " + response.data.layoutName;
+            })
+            .catch((ex)=>{  
+            });
 
             this.loadCreateMenuList();
         },
@@ -668,10 +1120,10 @@
 
                 designSetDialog : false,                // 영역 서식 용
                 colorDialog     : false,                // 색 선택
-
+                
                 appColor : null,                        // 선 색, 영역 색상 구분용
 
-                longWidth : true,                       // true : 너비가 높이 보다 더 김, false : 높이가 너비보다 더 김
+                longWidth : true,                       // true : 너비가 높이 보다 더 김, false : 높이가 너비보다 더 김 
             }
         },
         methods : {
@@ -690,7 +1142,7 @@
                 }
                 // 아무것도 선택하지 않았을 경우
                 else if (this.selectWhat === null) {
-                    this.snackbar_text = '메뉴판 템플릿을 선택해주세요';
+                    this.snackbar_text = 'メニューのレイアウトを選んでください。';
                     this.snackbar      = true;
                     return null;
                 }
@@ -700,15 +1152,13 @@
                     'slt_tem' : select_tem,
                     'shop_id' : this.$route.params.shop_id,
                 })
-                    .then( (response) => {
-                        this.snackbar_text = '저장이 완료 되었습니다';
-                        this.snackbar      = true;
-                        location.reload();
-                    })
-                    .catch((ex)=>{
-                        this.snackbar_text = '저장 실패';
-                        this.snackbar      = true;
-                    })
+                .then( (response) => {
+                    this.snackbar_text = 'セーブ';
+                    this.snackbar      = true;
+                    location.reload();
+                })
+                .catch((ex)=>{ 
+                })
             },
 
             // 커스텀마이징 템플릿 삭제하기
@@ -721,14 +1171,29 @@
                     'costom'  : temData.id
                 })
                     .then( (response) => {
-                        this.snackbar_text = '선택하신 템플릿을 삭제하였습니다.';
+                        this.snackbar_text = '選んだレイアウトを削除しました。';
                         this.snackbar      = true;
                         this.loadCreateMenuList();                              // 메뉴 데이터 다시 불러오기.
                     })
-                    .catch((ex)=>{
-                        this.snackbar_text = '서버 연결 실패!';
-                        this.snackbar      = true;
+                    .catch((ex)=>{ 
                     });
+            },            
+            
+            // 엘리먼트 left 값 얻기
+            getLeft : function(argObj){
+                return parseInt(argObj.style.left.replace('px', ''));
+            },
+            // 엘리먼트 top 값 얻기 
+            getTop : function(argObj) {
+                return parseInt(argObj.style.top.replace('px', ''));
+            },
+            // 엘리먼트 너비 값 얻기
+            getWidth : function(argObj) {
+                return parseInt(argObj.style.width.replace('px', ''));
+            },
+            // 엘리먼트 너비 값 얻기
+            getHeight : function(argObj) {
+                return parseInt(argObj.style.height.replace('px', ''));
             },
 
             // 제작한 메뉴 리스트 불러오기
@@ -739,19 +1204,18 @@
                 axios.post(url, {
                     'shop_id' : this.$route.params.shop_id
                 })
-                    .then( (response) => {
-                        if(response.data.layoutData != null){
-                            this.loadTemplateList = response.data.layoutData;                      // 제작한 메뉴판 리스트
-                            this.loadListNum      = this.loadTemplateList.length;            // 제작한 메뉴판 갯수
-                        } else {
-                            this.snackbar_text = '저장된 템플릿이 없습니다.';
-                            this.snackbar      = true;
-                        }
-                    })
-                    .catch((ex)=>{
-                        this.snackbar_text = '메뉴 리스트 불러오기 실패';
+                .then( (response) => {
+                    if(response.data.layoutData != null){
+                        this.loadTemplateList = response.data.layoutData;                // 제작한 메뉴판 리스트
+                        this.loadListNum      = this.loadTemplateList.length;            // 제작한 메뉴판 갯수
+                    } else {
+                        this.snackbar_text = 'セーブしたレイアウトがありません。';
                         this.snackbar      = true;
-                    });
+                    }
+                })
+                .catch((ex)=>{ 
+                });      
+
             },
 
             // 제작한 메뉴 불러와서 menu div에 삽입
@@ -769,29 +1233,31 @@
                 let MenuNum      = document.getElementById('MenuNum');           // 1줄에 출력될 메뉴 갯수
                 let MenuMargin   = document.getElementById('MenuMargin');        // 메뉴 간격
                 let MenuElement  = [                                             // 메뉴 요소들
-                    'createdExpl','createdImg','createdL_D',
-                    'createdName','createdPrice','createdSelect'
-                ];
+                                    'createdExpl','createdImg','createdL_D',
+                                    'createdName','createdPrice','createdSelect'
+                                ];       
                 // 메뉴 영역 요소들 지우기
                 this.menuAreaCleaner();
 
                 MenuNum.value    = loadTemplate.MenuNum;                                // 한줄에 출력될 메뉴 갯수 설정
                 MenuMargin.value = loadTemplate.MenuMargin;                             // 메뉴 간의 간격
                 menuRatio.value  = loadTemplate.createdMenu.ratio;                      // 메뉴 세로 비율
-                this.setMenuRatio();                                                    // 메뉴 세로 비율 값 적용
 
-                let menu_w = menu.style.width.replace('px', '');                        // 메뉴 너비 픽셀 값
-                let menu_h = menu.style.height.replace('px', '');                       // 메뉴 높이 픽셀 값
-                let menu_l = 0;                                                         // 메뉴 top 픽셀 값
-                let menu_t = 0;                                                         // 메뉴 left 픽셀 값
+                // 메뉴 세로 비율 값 적용
+                this.setMenuRatio();                                                    
 
-                // 메뉴 영역 left, top 값 설정
-                if(this.longWidth){
-                    menu_t = Math.floor(workSpace_h * 0.03);                            // 패딩 값
-                    menu_l = Math.floor(workSpace_w * 0.03);
-                }else{
-                    menu_l = Math.floor((workSpace_w - menu_w) / 2);                    // (작업 공간 높이 - 메뉴 영역 높이)/2
-                    menu_t = Math.floor((workSpace_h - menu_h) / 2);
+                let menu_w = this.getWidth(menu);                       // 메뉴 너비 픽셀 값
+                let menu_h = this.getHeight(menu);                      // 메뉴 높이 픽셀 값
+                let menu_l = 0;                                         // 메뉴 left 픽셀 값
+                let menu_t = Math.floor(workSpace_h * 0.03);            // 메뉴 top 픽셀 값
+
+                // 메뉴 영역 left, top 값 설정 - 가로가 세로 보다 긴 경우
+                if(this.longWidth){  
+                    menu_l = Math.floor(workSpace_w * 0.03);            // 패딩 값 3%
+                }
+                // 세로가 가로 보다 긴 경우 
+                else{
+                    menu_l = Math.floor((workSpace_w - menu_w) / 2);    // (작업 공간 높이 - 메뉴 영역 높이)/2 
                 }
 
                 menu.style.color           = loadTemplate.createdMenu.color;            // 메뉴 글자 색
@@ -820,16 +1286,16 @@
                     element.style.position        = 'absolute';
 
                     switch(MenuElement[i]){
-                        case 'createdImg'   : element.innerText = '메뉴 이미지';      break;
-                        case 'createdExpl'  : element.innerText = '메뉴 설명';      break;
-                        case 'createdL_D'   : element.innerText = '런치 / 디너';    break;
-                        case 'createdName'  : element.innerText = '메뉴명';         break;
-                        case 'createdPrice' : element.innerText = '메뉴 가격';      break;
-                        case 'createdSelect': element.innerText = '메뉴 선택 버튼';  break;
+                        case 'createdImg'   : element.innerText = 'イメージ';           break;
+                        case 'createdExpl'  : element.innerText = '説明';              break;
+                        case 'createdL_D'   : element.innerText = 'ランチ / ディナー';   break;
+                        case 'createdName'  : element.innerText = '名前';              break;
+                        case 'createdPrice' : element.innerText = '価格';              break;
+                        case 'createdSelect': element.innerText = '選択のボタン';       break;
                     }
                     element.classList.add(MenuElement[i]);
                     element.classList.add('dragElement');
-                    element.onmousedown = this.startDrag;
+                    element.onmousedown = this.moveElement;
                     element.addEventListener("contextmenu", this.ShowContextmenu);     // 마우스 오른쪽 클릭 시 메뉴 창 열기.
 
                     // element 크기 조절기
@@ -839,7 +1305,7 @@
                     // 포함 시키기
                     element.appendChild(reSizer);
                     menu.appendChild(element);
-                }
+                } 
                 this.loadMenuDialog = false;                                        // 모달 창 닫기
             },
 
@@ -856,7 +1322,7 @@
                     }, 300);
 
                     intervalG = setInterval(function(){
-                        selectColumn.style.backgroundColor = '#F2F2F2'
+                        selectColumn.style.backgroundColor = 'white';
                         if(count === 6){
                             clearInterval(intervalR);
                             clearInterval(intervalG);
@@ -881,20 +1347,20 @@
 
                 // 메뉴 요소가 모두 생성되지 않았으면 경고창 출력
                 if(menu.children.length !== 7 ){
-                    this.snackbar_text = '메뉴판 요소를 모두 생성해주세요!';
+                    this.snackbar_text = 'メニューの要素を全部作ってください!';
                     this.snackbar      = true;
                     this.selectColumn_sIv_start();
                     return null;
                 }
                 // 템플릿 명 설정 유효성 검사
                 else if(this.temName.replace(/ /gi, "") === ''){
-                    this.snackbar_text = '템플릿 명을 입력해주세요!';
+                    this.snackbar_text = 'レイアウトの名前を書いてください';
                     this.snackbar = true;
                     return null;
                 }
                 // 입력된 글자가 18자를 넘길 경우 경고
                 else if(this.temName.toString().length > 15){
-                    this.snackbar_text = '입력 가능한 글자 수는 최대 15자 입니다.';
+                    this.snackbar_text = '書ける字は最大で15字です。';
                     this.snackbar      = true;
                     return;
                 }
@@ -911,7 +1377,7 @@
             dataURItoBlob : function (dataURI) {
                 let byteString = null;
                 let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];     // 마임타입 추출
-                let ia         = null;                                                  // write the bytes of the string to a typed array
+                let ia         = null;  // write the bytes of the string to a typed array
 
                 if (dataURI.split(',')[0].indexOf('base64') >= 0)
                     byteString = atob(dataURI.split(',')[1]);
@@ -939,34 +1405,32 @@
 
                 // 메뉴 영역
                 let menu   = document.getElementById('menu');
-                let menu_t = 0;                                         // top 값을 %값이 아닌 px 값으로 받음
-                let menu_l = 0;                                         // left 값을 %값이 아닌 px 값으로 받음
+                let menu_t = Math.floor(workSpace_h * 0.03);            // top 값을 %값이 아닌 px 값으로 받음
+                let menu_l = 0;                                         // left 값을 %값이 아닌 px 값으로 받음                
                 let menu_w = menu.clientWidth;                          // 너비를 %값이 아닌 px 값으로 받음
                 let menu_h = menu.clientHeight;                         // 높이를 %값이 아닌 px 값으로 받음
                 let ratio  = Math.floor(menu_h/menu_w*100);
 
                 // 메뉴 영역 top, left 설정
                 // 너비가 높이 보다 더 긴 경우 패딩 값 3%가 메뉴 영역의 left 값이 됨
-                if(this.longWidth) {
-                    menu_l = Math.floor(workSpace_w * 0.03);
-                }
+                if(this.longWidth) {                    
+                    menu_l = Math.floor(workSpace_w * 0.03); 
+                } 
                 // 높이가 너비 보다 더 긴 경우
-                else {
-                    // menu_t = Math.floor((workSpace_h - menu_h) / 2);
-                    menu_l = Math.floor((workSpace_w - menu_w) / 2);
-                }
-                menu_t = Math.floor(workSpace_h * 0.03);
-
+                else { 
+                    menu_l = Math.floor((workSpace_w - menu_w) / 2);  
+                }                 
+    
                 array['MenuNum']    = MenuNum.value;                    // 한 줄에 출력 될 메뉴의 갯수
                 array['MenuMargin'] = MenuMargin.value;                 // 메뉴 간의 간격 설정
 
                 // 배열에 style 값 담기
                 array['createdMenu'] = {
-                    'ratio'           : ratio,
-                    'border'          : menu.style.border,
-                    'borderRadius'    : menu.style.borderRadius,
-                    'color'           : menu.style.color,
-                    'backgroundColor' : menu.style.backgroundColor,
+                    'ratio'          : ratio, 
+                    'border'         : menu.style.border,
+                    'borderRadius'   : menu.style.borderRadius,
+                    'color'          : menu.style.color,
+                    'backgroundColor': menu.style.backgroundColor,
                 };
 
                 // 메뉴 안의 요소들 가공하기 & 배열에 담기.
@@ -974,21 +1438,22 @@
                     if( menu.children[i] !== ElementArea ){
                         // 메뉴 영역 안의 메뉴 요소들 스타일 값, 클래스
                         let element   = menu.children[i];
-                        let eWidth    = element.clientWidth;                            // 엘리먼트 너비 값
-                        let eHeight   = element.clientHeight;                           // 엘리먼트 높이 값
-                        let eTop      = element.style.top.replace('px', '');;           // 엘리먼트 top 값
-                        let eLeft     = element.style.left.replace('px', '');           // 엘리먼트 left 값
+                        let eWidth    = this.getWidth(element);                         // 엘리먼트 너비 값
+                        let eHeight   = this.getHeight(element);                        // 엘리먼트 높이 값
+                        let eTop      = this.getTop(element);                           // 엘리먼트 top 값
+                        let eLeft     = this.getLeft(element);                          // 엘리먼트 left 값
                         let className = element.getAttribute('class').split(' ')[0];    // 클래스 명 찾기
 
                         let get_l = eLeft - menu_l;     // padding 값을 없앰
-                        let get_t = eTop - menu_t;
+                        let get_t = eTop - menu_t; 
+                        // console.log('get_t =' + eTop +"-"+ menu_t);
 
                         // 배열에 style 값 담기
                         array[className] ={
                             'width'           : Math.floor( eWidth / menu_w * 100 ) + "%",
                             'height'          : Math.floor( eHeight / menu_h * 100 ) + "%",
-                            'top'             : Math.floor( get_t / menu_h * 100 +1)+ "%",
-                            'left'            : Math.floor( get_l / menu_w * 100 +1) + "%",
+                            'top'             : Math.floor( get_t / menu_h * 100)+ "%",   
+                            'left'            : Math.floor( get_l / menu_w * 100) + "%",                              
                             'zIndex'          : element.style.zIndex,
                             'border'          : element.style.border,
                             'borderRadius'    : element.style.borderRadius,
@@ -1017,7 +1482,7 @@
                 formData.append('menu', JSON.stringify(array));             // 메뉴 스타일.
                 formData.append('shop_id', this.$route.params.shop_id);     // shopID
 
-                console.log(JSON.stringify(array)); // 체크 용
+                // console.log(JSON.stringify(array)); // 체크 용
 
                 // // formData 확인하기
                 // for(var pair of formData.entries()) {
@@ -1027,40 +1492,36 @@
                 // 수정하기
                 if(Edit){
                     axios.post('/updateCustomLayout', formData )
-                        .then( (response) => {
-                            if(response.data.msg){
-                                this.snackbar_text = '저장이 완료되었습니다';
-                                this.snackbar      = true;
-
-                                // 메뉴 영역 요소들 지우기
-                                this.menuAreaCleaner();
-                                this.createMode = false;
-                                this.loadCreateMenuList();
-                            }
-                        })
-                        .catch((ex)=>{
-                            this.snackbar_text = '저장 실패';
+                    .then( (response) => {
+                        if(response.data.msg){
+                            this.snackbar_text = 'セーブ';
                             this.snackbar      = true;
-                        });
+
+                            // 메뉴 영역 요소들 지우기
+                            this.menuAreaCleaner();
+                            this.createMode = false;
+                            this.loadCreateMenuList();
+                        }
+                    })
+                    .catch((ex)=>{ 
+                    });
                 }
                 // 저장하기.
                 else {
                     axios.post('/saveCustomLayout', formData )
-                        .then( (response) => {
-                            if(response.data.msg){
-                                this.snackbar_text = '저장이 완료되었습니다';
-                                this.snackbar      = true;
-
-                                // 메뉴 영역 요소들 지우기
-                                this.menuAreaCleaner();
-                                this.createMode = false;
-                                this.loadCreateMenuList();
-                            }
-                        })
-                        .catch((ex)=>{
-                            this.snackbar_text = '저장 실패';
+                    .then( (response) => {
+                        if(response.data.msg){
+                            this.snackbar_text = 'セーブ';
                             this.snackbar      = true;
-                        });
+
+                            // 메뉴 영역 요소들 지우기
+                            this.menuAreaCleaner();
+                            this.createMode = false;
+                            this.loadCreateMenuList();
+                        }
+                    })
+                    .catch((ex)=>{ 
+                    });
                 }
             },
 
@@ -1075,12 +1536,12 @@
             workSpace_set : function(){
                 let workSpace  = document.getElementById('workSpace');
                 let menu       = document.getElementById('menu');
-                let click_menu = document.getElementById('click_menu');
-
-                menu.style.width  = '100%';
+                let click_menu = document.getElementById('click_menu'); 
+                 
+                menu.style.width  = '100%'; 
                 menu.style.height = '70%';
 
-                // 마우스 오른쪽 클릭 시 메뉴 창 열기.
+                // 마우스 오른쪽 클릭 시 메뉴 창 열기. 
                 menu.addEventListener("contextmenu", this.ShowContextmenu);
 
                 // 마우스 왼쪽 클릭 시 메뉴 창 닫기.
@@ -1088,10 +1549,14 @@
                     click_menu.classList.remove("active");
                 });
 
-                // 높이 퍼센트 조절
+                // 높이 퍼센트 조절 
                 workSpace.style.height = Math.floor(window.innerHeight * 0.9) + "px";
             },
 
+            // 메뉴 영역 비율 설정하기 - 엔터 키로 호출
+            setMenuRatioByEnterKey : function(){ 
+                if(window.event.keyCode == 13) this.setMenuRatio();
+            },
             // 메뉴 영역 비율 설정하기.
             setMenuRatio : function(){
                 let menu      = document.getElementById('menu');                        // 메뉴 영역
@@ -1102,33 +1567,33 @@
 
                 // 빈 값인지 유효성 검사.
                 if(menuRatio.replace(/ /gi, "") === ''){
-                    this.snackbar_text = '값을 입력해 주세요';
+                    this.snackbar_text = '値を書いてください。';
                     this.snackbar      = true;
                     return null;
                 }
                 // 숫자 값이 맞는지 검사
                 else if ( isNaN(menuRatio) == true){
-                    this.snackbar_text = '숫자 값을 입력해 주세요';
+                    this.snackbar_text = '数字を書いてください。';
                     this.snackbar      = true;
                     return null;
                 }
-                // 세로 비율 적용 값이 최대 너비 값 이상인 경우
-                // 메뉴 영역의 높이를 최대 값으로 설정하고 메뉴 영역의 너비를 비율 값으로 설정
-                else if( Math.floor( max_w * menuRatio / 100) >= max_h ){
+                /* 세로 비율 적용 값이 최대 너비 값 이상인 경우
+                    메뉴 영역의 높이를 최대 값으로 설정하고 메뉴 영역의 너비를 비율 값으로 설정 */
+                else if( Math.floor( max_w * menuRatio / 100) >= max_h ){      
                     menu.style.height = '100%';
 
-                    let h = menu.clientHeight;
-                    menu.style.width = Math.floor(h * 100 / menuRatio) +'px';
+                    let h = menu.clientHeight;                                     
+                    menu.style.width = Math.floor(h * 100 / menuRatio) +'px';                     
                     menu.style.height = h +'px';
                     this.longWidth = false;
-                }
-                // 세로 비율 적용 값이 최대 너비 값 미만인 경우
-                // 메뉴 영역의 너비를 최대 값으로 설정하고 메뉴 영역의 높이를 비율 값으로 설정
-                else {
+                }                
+                /* 세로 비율 적용 값이 최대 너비 값 미만인 경우
+                    메뉴 영역의 너비를 최대 값으로 설정하고 메뉴 영역의 높이를 비율 값으로 설정 */
+                else {                    
                     menu.style.width  = '100%';
 
-                    let w = menu.clientWidth;
-                    menu.style.width = w +'px';
+                    let w = menu.clientWidth;   
+                    menu.style.width = w +'px';    
                     menu.style.height = Math.floor(w * menuRatio / 100) +'px';
                     this.longWidth = true;
                 }
@@ -1141,31 +1606,29 @@
                 menu.onmousedown = this.dragAreaStart;
                 menu.onmouseup   = this.dragAreaStop;
             },
-
             // 드래그로 메뉴 요소가 만들어질 영역 표시.
             dragAreaStart : function(){
-                let ElementArea = document.getElementById('ElementArea');
+                let ElementArea = document.getElementById('ElementArea');                  
                 let menu        = document.getElementById('menu');
-                let margin = 5;
+                let margin = 5;  
 
                 ElementArea.classList.add('active');
                 ElementArea.style.top    = (event.offsetY) + "px";
                 ElementArea.style.left   = (event.offsetX) + "px";
-                ElementArea.style.width  = '5px';
-                ElementArea.style.height = '5px';
+                ElementArea.style.width  = '5px';                    
+                ElementArea.style.height = '5px';  
 
-                // 마우스 이동 시 이벤트 : 셀렉터 크기 조절
-                menu.onmousemove = this.dragAreaSet;
+                // 마우스 이동 시 이벤트 : 셀렉터 크기 조절                
+                menu.onmousemove = this.dragAreaSet; 
             },
-
             // 드래그 ing : 셀렉터 크기 조절
             dragAreaSet : function(){
                 let margin = 10;
                 let menu   = document.getElementById('menu');
 
                 let obj_t  = parseInt(this.getTop(ElementArea));            // 드래그 셀렉터의 top
-                let obj_l  = parseInt(this.getLeft(ElementArea));           // left 값
-                let obj_r  = obj_l + parseInt(ElementArea.offsetWidth);     // right 값
+                let obj_l  = parseInt(this.getLeft(ElementArea));           // left 값   
+                let obj_r  = obj_l + parseInt(ElementArea.offsetWidth);     // right 값           
                 let obj_b  = obj_t + parseInt(ElementArea.offsetHeight);    // bottom 값
 
                 let menu_t = parseInt(menu.offsetTop);                      // 메뉴 영역의 top 값
@@ -1175,59 +1638,58 @@
 
                 // 드래그 셀렉터의 시작 점이 메뉴 영역에 안 벗어나게 하기.
                 // 왼쪽 & 위쪽 벗어남
-                if(obj_l < menu_l && obj_t < menu_t){
-                    ElementArea.style.left = menu_l + margin +"px";
+                if(obj_l < menu_l && obj_t < menu_t){         
+                    ElementArea.style.left = menu_l + margin +"px";                    
                     ElementArea.style.top  = menu_t + margin +"px";
                 }
                 // 왼쪽 & 아래쪽 벗어남
-                else if(obj_l < menu_l && obj_b > menu_b){
-                    ElementArea.style.left = menu_l + margin +"px";
+                else if(obj_l < menu_l && obj_b > menu_b){        
+                    ElementArea.style.left = menu_l + margin +"px";   
                     ElementArea.style.top  = menu_b - parseInt(ElementArea.offsetHeight) - margin +"px";
-                }
+                }                
                 // 오른쪽 & 위쪽 벗어남
-                else if(obj_r > menu_r && obj_t < menu_t){
-                    ElementArea.style.left = menu_r - parseInt(ElementArea.offsetWidth) - margin +"px";
+                else if(obj_r > menu_r && obj_t < menu_t){      
+                    ElementArea.style.left = menu_r - parseInt(ElementArea.offsetWidth) - margin +"px";            
                     ElementArea.style.top  = menu_t + margin +"px";
                 }
-                // 위쪽 벗어남
-                else if(obj_t < menu_t){
+                // 위쪽 벗어남                
+                else if(obj_t < menu_t){                 
                     ElementArea.style.top  = menu_t + margin +"px";
-                }
+                } 
                 // 왼쪽 벗어남
-                else if(obj_l < menu_l){
+                else if(obj_l < menu_l){          
                     ElementArea.style.left = menu_l + margin +"px";
                 }
 
                 // 드래그 셀렉터의 크기를 조절할 때 셀렉터의 크기가 메뉴 영역을 넘지 않도록 함.
                 // 오른쪽 & 아래쪽 벗어남
-                if(obj_r > menu_r && obj_b > menu_b){
-                    ElementArea.style.width  = ElementArea.style.width.replace('px', '') - margin + 'px';
-                    ElementArea.style.height = ElementArea.style.height.replace('px', '') - margin + 'px';
-                    this.dragAreaStop();
+                if(obj_r > menu_r && obj_b > menu_b){                          
+                    ElementArea.style.width  = this.getWidth(ElementArea) - margin + 'px';                    
+                    ElementArea.style.height = this.getHeight(ElementArea) - margin + 'px'; 
+                    this.dragAreaStop(); 
                 }
-                // 오른쪽 벗어남
-                else if(obj_r > menu_r){
-                    ElementArea.style.width  = ElementArea.style.width.replace('px', '') - margin + 'px';
-                    this.dragAreaStop();
-                }
-                // 아래쪽 벗어남
-                else if(obj_b > menu_b){
-                    ElementArea.style.height = ElementArea.style.height.replace('px', '') - margin + 'px';
-                    this.dragAreaStop();
+                // 오른쪽 벗어남                
+                else if(obj_r > menu_r){                 
+                    ElementArea.style.width = this.getWidth(ElementArea) - margin + 'px';    
+                    this.dragAreaStop();                 
+                } 
+                // 아래쪽 벗어남                
+                else if(obj_b > menu_b){                               
+                    ElementArea.style.height = this.getHeight(ElementArea) - margin + 'px'; 
+                    this.dragAreaStop();                       
                 }
                 // 벗어난 부분 없이 메뉴 영역 안에 있음
-                else {
+                else {                       
                     ElementArea.style.width  = (event.clientX - ElementArea.offsetLeft) + 'px';
                     ElementArea.style.height = (event.clientY - ElementArea.offsetTop)  + 'px';
                 }
             },
-
             // 드래그 종료 - 메뉴 요소 만들기
             dragAreaStop :function(){
                 let menu        = document.getElementById('menu');
                 let ElementArea = document.getElementById('ElementArea');
 
-                this.area      = [];
+                this.area      = []; 
                 this.area['t'] = ElementArea.style.top;
                 this.area['l'] = ElementArea.style.left;
                 this.area['w'] = ElementArea.style.width;
@@ -1242,22 +1704,14 @@
 
                 this.createSomething();         // 메뉴판 요소 생성
             },
-
-            // 엘리먼트 움직이기 : 위치 값 얻기 - left
-            getLeft : function(argObj){
-                return parseInt(argObj.style.left.replace('px', ''));
-            },
-            // 엘리먼트 움직이기 : 위치 값 얻기 - top
-            getTop : function(argObj) {
-                return parseInt(argObj.style.top.replace('px', ''));
-            },
+            
             // 엘리먼트 움직이기 : mouseDown
-            startDrag : function() {
+            moveElement : function() {
                 let e_obj  = window.event ? window.event : event;               // 마우스 이벤트
                 target_Obj = event.target;
-
+ 
                 target_L = this.getLeft(target_Obj) - e_obj.clientX;
-                target_T = this.getTop(target_Obj)  - e_obj.clientY;
+                target_T = this.getTop(target_Obj)  - e_obj.clientY;                
 
                 document.onmousemove = this.moveStart;
                 document.onmouseup   = this.moveStop;
@@ -1267,145 +1721,145 @@
                 event.preventDefault();
                 let e_obj  = window.event ? window.event : event;
                 let move_x = parseInt(e_obj.clientX + target_L);
-                let move_y = parseInt(e_obj.clientY + target_T);
+                let move_y = parseInt(e_obj.clientY + target_T);  
 
-                // 드래그 하는 element 이동 시키기
+                // 드래그 하는 element 이동 시키기                              
                 target_Obj.style.left = move_x +"px";
-                target_Obj.style.top  = move_y +"px";
+                target_Obj.style.top  = move_y +"px";      
 
                 return false;
             },
             // 엘리먼트 움직이기 : mouseUp
-            moveStop : function(){
-                let menu   = document.getElementById('menu');
+            moveStop : function(){                
+                let menu   = document.getElementById('menu');  
                 let margin = 5;
 
-                let obj_l  = parseInt(this.getLeft(target_Obj));
-                let obj_t  = parseInt(this.getTop(target_Obj));
-                let obj_r  = obj_l + parseInt(target_Obj.offsetWidth);
+                let obj_l  = parseInt(this.getLeft(target_Obj));             
+                let obj_t  = parseInt(this.getTop(target_Obj));             
+                let obj_r  = obj_l + parseInt(target_Obj.offsetWidth);                
                 let obj_b  = obj_t + parseInt(target_Obj.offsetHeight);
 
                 let menu_t = parseInt(menu.offsetTop);
-                let menu_l = parseInt(menu.offsetLeft);
-                let menu_r = menu_l + parseInt(menu.offsetWidth);
-                let menu_b = menu_t + parseInt(menu.offsetHeight);
+                let menu_l = parseInt(menu.offsetLeft); 
+                let menu_r = menu_l + parseInt(menu.offsetWidth);            
+                let menu_b = menu_t + parseInt(menu.offsetHeight); 
 
                 // 왼쪽, 위쪽 벗어남
-                if(obj_l < menu_l && obj_t < menu_t){
-                    target_Obj.style.left = menu_l + margin +"px";
-                    target_Obj.style.top  = menu_t + margin +"px";
+                if(obj_l < menu_l && obj_t < menu_t){                    
+                    target_Obj.style.left = menu_l +"px";                    
+                    target_Obj.style.top  = menu_t +"px";
                 }
                 // 왼쪽, 아래쪽 벗어남
-                else if(obj_l < menu_l && obj_b > menu_b){
-                    target_Obj.style.left = menu_l + margin +"px";
-                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) - margin +"px";
-                }
+                else if(obj_l < menu_l && obj_b > menu_b){                    
+                    target_Obj.style.left = menu_l +"px";   
+                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) +"px";
+                }                
                 // 오른쪽, 위쪽 벗어남
-                else if(obj_r > menu_r && obj_t < menu_t){
-                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth) - margin +"px";
-                    target_Obj.style.top  = menu_t + margin +"px";
+                else if(obj_r > menu_r && obj_t < menu_t){               
+                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth) +"px";            
+                    target_Obj.style.top  = menu_t +"px";
                 }
                 // 오른쪽, 아래쪽 벗어남
-                else if(obj_r > menu_r && obj_b > menu_b){
-                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth)  - margin +"px";
-                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) - margin +"px";
+                else if(obj_r > menu_r && obj_b > menu_b){               
+                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth) +"px";    
+                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) +"px";
                 }
                 // 왼쪽 벗어남
-                else if(obj_l < menu_l){
-                    target_Obj.style.left = menu_l + margin +"px";
+                else if(obj_l < menu_l){             
+                    target_Obj.style.left = menu_l +"px";
                 }
-                // 오른쪽 벗어남
-                else if(obj_r > menu_r){
-                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth) - margin +"px";
+                // 오른쪽 벗어남                
+                else if(obj_r > menu_r){                                  
+                    target_Obj.style.left = menu_r - parseInt(target_Obj.offsetWidth) +"px";
                 }
-                // 위쪽 벗어남
-                else if(obj_t < menu_t){
-                    target_Obj.style.top  = menu_t + margin +"px";
-                }
-                // 아래쪽 벗어남
-                else if(obj_b > menu_b){
-                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) - margin +"px";
+                // 위쪽 벗어남                
+                else if(obj_t < menu_t){                    
+                    target_Obj.style.top  = menu_t +"px";
+                } 
+                // 아래쪽 벗어남                
+                else if(obj_b > menu_b){                                  
+                    target_Obj.style.top  = menu_b - parseInt(target_Obj.offsetHeight) +"px";
                 }
                 document.onmousemove = null;
                 document.onmouseup   = null;
             },
 
             // 엘리먼트 크기 조절 - mouseDown
-            initResize : function() {
-                this.Resizer     = event.target.parentNode;
+            initResize : function() { 
+                this.Resizer     = event.target.parentNode;   
                 document.addEventListener('mousemove', this.Resize, false);
                 document.addEventListener('mouseup', this.stopResize, false);
             },
             // 엘리먼트 크기 조절 - mouseMove
             Resize : function() {
                 event.preventDefault();
-                let menu   = document.getElementById('menu');
+                let menu   = document.getElementById('menu');  
                 let margin = 5;
 
-                let obj_l  = parseInt(this.getLeft(this.Resizer));
-                let obj_t  = parseInt(this.getTop(this.Resizer));
-                let obj_r  = obj_l + parseInt(this.Resizer.offsetWidth);
+                let obj_l  = parseInt(this.getLeft(this.Resizer));             
+                let obj_t  = parseInt(this.getTop(this.Resizer));             
+                let obj_r  = obj_l + parseInt(this.Resizer.offsetWidth);                
                 let obj_b  = obj_t + parseInt(this.Resizer.offsetHeight);
 
                 let menu_t = parseInt(menu.offsetTop);
-                let menu_l = parseInt(menu.offsetLeft);
-                let menu_r = menu_l + parseInt(menu.offsetWidth);
-                let menu_b = menu_t + parseInt(menu.offsetHeight);
-
+                let menu_l = parseInt(menu.offsetLeft); 
+                let menu_r = menu_l + parseInt(menu.offsetWidth);            
+                let menu_b = menu_t + parseInt(menu.offsetHeight);  
+                  
                 // 크기가 오른쪽, 아래쪽 벗어남
-                if(obj_r > menu_r && obj_b > menu_b){
-                    this.Resizer.style.width  = this.Resizer.style.width.replace('px', '') - margin + 'px';
-                    this.Resizer.style.height = this.Resizer.style.height.replace('px', '') - margin + 'px';
+                if(obj_r > menu_r && obj_b > menu_b){    
+                    this.Resizer.style.width  = this.getWidth(this.Resizer) + 'px';
+                    this.Resizer.style.height = this.getHeight(this.Resizer) + 'px';
+                    this.stopResize();
+                } 
+                // 오른쪽 벗어남                
+                else if(obj_r > menu_r){                    
+                    this.Resizer.style.width  = this.getWidth(this.Resizer) + 'px';
+                    this.stopResize();
+                } 
+                // 아래쪽 벗어남                
+                else if(obj_b > menu_b){                     
+                    this.Resizer.style.height = this.getHeight(this.Resizer) + 'px';
                     this.stopResize();
                 }
-                // 오른쪽 벗어남
-                else if(obj_r > menu_r){
-                    this.Resizer.style.width  = this.Resizer.style.width.replace('px', '') - margin + 'px';
-                    this.stopResize();
-                }
-                // 아래쪽 벗어남
-                else if(obj_b > menu_b){
-                    this.Resizer.style.height = this.Resizer.style.height.replace('px', '') - margin + 'px';
-                    this.stopResize();
-                }
-                else {
+                else {         
                     let workSpace   = document.getElementById('workSpace');      // 작업 공간 div 가져오기
                     let workSpace_w = workSpace.clientWidth;
-                    let workSpace_h = workSpace.clientHeight;
+                    let workSpace_h = workSpace.clientHeight;                   
                     let menu_w      = menu.clientWidth;                          // 너비를 %값이 아닌 px 값으로 받음
                     let menu_h      = menu.clientHeight;                         // 높이를 %값이 아닌 px 값으로 받음
                     let leftToolBar = document.getElementById('leftToolBar').clientWidth;
                     let topToolBar  = document.getElementById('topToolBar').clientHeight;
-
+                    
                     // 너비가 높이 보다 더 긴 경우 패딩 값 3%가 메뉴 영역의 left 값이 됨
-                    if(this.longWidth) {
-                        menu_l = Math.floor(workSpace_w * 0.03);
-                    }
+                    if(this.longWidth) {                  
+                        menu_l = Math.floor(workSpace_w * 0.03); 
+                    } 
                     // 높이가 너비 보다 더 긴 경우
-                    else {
-                        menu_l = Math.floor((workSpace_w - menu_w) / 2);
-                    }
+                    else { 
+                        menu_l = Math.floor((workSpace_w - menu_w) / 2);  
+                    } 
                     // 메뉴 top 값 설정.
-                    menu_t = Math.floor(workSpace_h * 0.03);
+                    menu_t = Math.floor(workSpace_h * 0.03); 
 
                     /**********************************************************
-                     event.clientX : 마우스 x 축 좌표 값
-                     obj_l         : 메뉴 영역과 메뉴 요소의 너비 차
-                     menu_l        : 작업 영역과 메뉴 영역의 너비 차
-                     leftToolBar   : 좌측 툴바와 작업 영역의 너비 차
-
-                     event.clientY : 마우스 y 축 좌표 값
-                     obj_t         : 메뉴 영역과 메뉴 요소의 높이 차
-                     menu_t        : 작업 영역과 메뉴 영역의 높이 차
-                     topToolBar    : 상단 툴바와 작업 영역의 높이 차
-                     ************************************************************/
+                        event.clientX : 마우스 x 축 좌표 값
+                        obj_l         : 메뉴 영역과 메뉴 요소의 너비 차
+                        menu_l        : 작업 영역과 메뉴 영역의 너비 차
+                        leftToolBar   : 좌측 툴바와 작업 영역의 너비 차
+                        
+                        event.clientY : 마우스 y 축 좌표 값
+                        obj_t         : 메뉴 영역과 메뉴 요소의 높이 차
+                        menu_t        : 작업 영역과 메뉴 영역의 높이 차
+                        topToolBar    : 상단 툴바와 작업 영역의 높이 차
+                    ************************************************************/
                     this.Resizer.style.width  = (event.clientX - obj_l - menu_l - leftToolBar) + 'px';
                     this.Resizer.style.height = (event.clientY - obj_t - menu_t - topToolBar) + 'px';
                 }
 
             },
             // 엘리먼트 크기 조절 - mouseUp
-            stopResize: function() {
+            stopResize: function() { 
                 document.removeEventListener('mousedown', this.initResize, false);
                 document.removeEventListener('mousemove', this.Resize, false);
                 document.removeEventListener('mouseup', this.stopResize, false);
@@ -1423,7 +1877,7 @@
 
                     if(created == this.item){
                         this.snackbar      = true;
-                        this.snackbar_text = '이미 생성한 요소입니다.';
+                        this.snackbar_text = 'もう作りました。';
                         return null;
                     }
                 }
@@ -1431,32 +1885,32 @@
                 switch(this.item){
                     // 메뉴 이미지 만들기
                     case 'createdImg' :
-                        createdThing.innerText    = '메뉴 이미지';
+                        createdThing.innerText    = 'イメージ';
                         createdThing.classList.add('createdImg'); break;
 
                     // 메뉴 이름 만들기
                     case 'createdName' :
-                        createdThing.innerText    = '메뉴명';
+                        createdThing.innerText    = '名前';
                         createdThing.classList.add('createdName'); break;
 
                     // 메뉴 설명 만들기
                     case 'createdExpl' :
-                        createdThing.innerText    = '메뉴 설명';
+                        createdThing.innerText    = '説明';
                         createdThing.classList.add('createdExpl'); break;
 
                     // 런디 치더 구분 만들기
                     case 'createdL_D' :
-                        createdThing.innerText    = '런치 / 디너';
+                        createdThing.innerText    = 'ランチ / ディナー';
                         createdThing.classList.add('createdL_D'); break;
 
                     // 메뉴 가격
                     case 'createdPrice' :
-                        createdThing.innerText    = '메뉴 가격';
+                        createdThing.innerText    = '価格';
                         createdThing.classList.add('createdPrice'); break;
 
                     // 메뉴 선택
                     case 'createdSelect' :
-                        createdThing.innerText    = '메뉴 선택 버튼';
+                        createdThing.innerText    = '選択のボタン';
                         createdThing.classList.add('createdSelect'); break;
                 }
                 createdThing.style.width  = this.area.w;
@@ -1470,7 +1924,7 @@
                 createdThing.style.left   = this.area.l;
                 createdThing.style.zIndex = 10;
                 createdThing.style.border = '2px solid black';
-                createdThing.onmousedown  = this.startDrag;
+                createdThing.onmousedown  = this.moveElement;
                 createdThing.classList.add('dragElement');
 
                 // element 크기 조절기
@@ -1639,7 +2093,7 @@
 
                 if(menu === target_Obj){
                     this.snackbar      = true;
-                    this.snackbar_text = '메뉴 영역은 삭제할 수 없습니다.';
+                    this.snackbar_text = 'メニューの領域は削除することができません。';
                 } else{
                     target_Obj.parentNode.removeChild(target_Obj);
                 }
@@ -1674,11 +2128,11 @@
 
 <style>
     .ban_drag{
-        user-select:none;               /* 드래그 방지 */
-        -ms-user-select: none;
-        -moz-user-select: -moz-none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
+         user-select:none;               /* 드래그 방지 */
+        -ms-user-select: none; 
+        -moz-user-select: -moz-none; 
+        -webkit-user-select: none; 
+        -khtml-user-select: none; 
     }
 
     /* 이미지 비율용 스타일 */
@@ -1694,66 +2148,65 @@
         left: 0;
         width: 100%;
         height: 100%;
+        object-fit: contain;
         position: absolute;
+    }
+
+    /* 레이아웃 제작 툴 상단 툴바 버튼 스타일 */
+    .tool_topToolBar_btn { 
+        font-size:1.4rem;
+        font-weight: bold; 
+        border: 2px solid #46362c;
+        color: #46362c;
     }
 
     /* 메뉴 제작 작업 공간 */
     #workSpace {
-        width: 100%;
+        width: 100%; 
         position: relative;
         overflow: auto;
         margin: auto;
-        padding: 3%;
-        background-color: #F2F2F2;
+        padding: 3%; 
+        background-color: white;
     }
 
-    /* 제작한 메뉴판 리스트 불러오기 */
-    .menuList {
+    /* 제작한 메뉴판 리스트 ul */    
+    .MenuLayoutList_ul {
+        overflow-y: auto;
+    }
+    .MenuLayoutList_ul::-webkit-scrollbar {
+        width: 0px;                      
+        background: transparent;        
+    }
+
+    /* 제작한 메뉴판 리스트 li */    
+    .MenuLayoutList_li {
         font-size: 1.5rem;
         margin-top: 10px;
         padding: 10px;
-        color: #424242;
+        color: #46362c;
         font-weight: bold;
+        background-color: white;
         list-style: none;
     }
-    .menuList:hover {
+    .MenuLayoutList_li:hover {
         background-color: lightblue;
     }
 
-    /* 드래그로 div 선택 */
-    #ElementArea {
-        width: 10px;
-        height: 10px;
-        opacity: 0.2;
-        z-index: 100;
-        background-color: lightcoral;
-        position: absolute;
-        display: none;
-    }
-    #ElementArea.active{
-        display: block;
-    }
-
-    /* 메뉴 출력 설정 */
-    #MenuPrt {
-        width: 30%;
-        z-index:100;
-        margin-top: 5%;
-        border: 3px solid #585858;
-        background-color: #EFF5FB;
-        position: absolute;
-        display: none;
-    }
-    #MenuPrt.active {
-        display: block;
-        left : 35%;
-    }
-
     /* 리스트 스타일 */
-    .list-style{
-        font-size: 1.5rem;
+    .toolBarList_title {        
+        font-size: 1.4rem;
         font-weight: bold;
-        color: #6E6E6E;
+        color: #46362c;
+        text-align : center;
+        border-bottom : 2px solid #ff9a55;
+    }
+
+    .toolBarList_btn{
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;        
+        color: #46362c;
     }
 
     /* 메뉴 영역 */
@@ -1805,6 +2258,43 @@
         background-color: white;
     }
 
+    /* 우측 툴바 소 타이틀 */
+    .rightToolBar_miniTitle{        
+        font-size:1.2rem;
+        font-weight: bold;
+        text-align: left;
+        color: #9d724b;
+    }
+
+    /* 드래그로 div 선택 */
+    #ElementArea {
+        width: 10px;
+        height: 10px;
+        z-index: 100;
+        opacity: 0.7;
+        background-color: #d2b07d;
+        position: absolute;
+        display: none;
+    }
+    #ElementArea.active{
+        display: block;
+    }
+
+    /* 메뉴 출력 설정 */
+    #MenuPrt {
+        width: 30%;
+        z-index:100;
+        margin-top: 5%;
+        border: 3px solid #585858;
+        background-color: #EFF5FB;
+        position: absolute;
+        display: none;
+    }
+    #MenuPrt.active {
+        display: block;
+        left : 35%;
+    }
+
     /* 엘리먼트 움직이기 용 */
     .dragElement {
         position: absolute;
@@ -1815,11 +2305,11 @@
         width: 10px;
         height: 10px;
         right: 0;
-        bottom: 0;
+        bottom: 0; 
         z-index: 90;
         position: absolute;
         cursor: se-resize;
-        background-color:salmon;
+        background-color:#ff9a55;
     }
 
     /* 마우스 메뉴 */
@@ -1830,7 +2320,7 @@
     }
     .hr_style {
         margin: 3%;
-        border: thin solid #D8D8D8;
+        border: thin solid #d2b07d;
     }
     .context-menus {
         width: 20%;
@@ -1842,16 +2332,16 @@
     }
     .context-menus.active {
         display: block;
-        background-color: #EFF5FB;
+        background-color: #efe2bd;
     }
     .context-menus.active>.ul_style>.li_style {
         list-style: none;
         padding: 10px;
-        color: #424242;
+        color: #46362c;
         font-weight: bold;
     }
     .context-menus.active>.ul_style>.li_style:hover {
-        background-color: lightgreen;
+        background-color: #d2b07d;
     }
 
     /* 영역 서식 메뉴창 */
@@ -1871,35 +2361,51 @@
         display: block;
     }
     .designSet_title {
-        font-size: 2rem;
-        margin-left: 3%;
-        color: gray;
+        font-size: 2rem;      
+        font-weight: bold;  
+        color: #46362c;        
+    } 
+      
+    .designSet_info {
+        overflow-y: auto;
     }
+    .designSet_info::-webkit-scrollbar {
+        width: 0px;                      
+        background: transparent;        
+    }
+
+    .designSet_area {
+        margin: 1%;
+        padding: 2%;
+        background-color: white;
+    }
+
     .designSet_tr {
         width: 90%;
         font-size: 1.3rem;
         margin: auto;
         margin-bottom: 6%;
     }
-    .designSet_name {color: #6E6E6E;}
+    .designSet_name {
+        font-size: 1.3rem; 
+        margin-bottom: 10px;
+        color: #9d724b;
+    }
     .designSet_ipt{
         width: 50%;
         font-size: 1.3rem;
         margin-left: 5%;
-        text-align: center;
-        color: #6E6E6E;
-        border-bottom: 1.5px solid #6E6E6E;
+        text-align: left;
+        color: #46262c;
+        border-bottom: 2px solid black;
     }
-    .designSet_color {
-        width: 10%;
+    .designSet_color_outer {
+        width: 100%;
         height: 0;
-        border: 1px solid black;
-        margin-left: 5%;
-        margin-right: 3%;
-        position: relative;
-        float: left;
+        border: 1px solid black; 
+        padding-bottom: 30%;
+        position: relative; 
         overflow: hidden;
-        padding-bottom: 9%;
     }
     .designSet_color_inner{
         width: 100%;
@@ -1909,11 +2415,13 @@
         position: absolute;
     }
     .designSet_color_btn {
+        width: 100%;
         font-size: 1.5rem;
-        margin-left: 5%;
-        float: left;
-        font-weight: bold;
-        color: cadetblue;
+        font-weight: bold; 
+        margin: 2%; 
+        margin-left: 3%;
+        color: #46362c;
+        border: 1.5px solid #46362c;
     }
 
     #palette {
@@ -1927,18 +2435,19 @@
     #click_color {
         height:50;
         font-size: 1.5rem;
-        border-top: 2px solid #A4A4A4;
-        border-bottom: 2px solid #A4A4A4;
-        color: gray;
+        border-top: 2px solid #46362c;
+        border-bottom: 2px solid #46362c;
+        color: #46362c;
+        background-color: white;
         text-align: center;
         font-weight: bold;
     }
     .color_btn {
-        width: 50%;
-        font-size: 1.5rem;
+        /* width: 50%; */
+        font-size: 1.3rem;
         text-align: center;
         font-weight: bold;
-        float: left;
-        color: #6E6E6E;
+        /* float: left; */
+        color: #46362c;
     }
 </style>

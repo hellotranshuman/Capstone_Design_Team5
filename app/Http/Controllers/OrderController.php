@@ -26,80 +26,84 @@ class OrderController extends Controller
 
     // <-- 주문하기
     public function makeOrder(Request $request) {
-
-        // 먼저 OrderList Table에 OrderList 추가 후 Reservation Table에 등록
-        Order_List::create([
-            'shop_id' => $request->get('shop_id'),
-            'user_num' => auth()->user()->id,
-            'order_date' => date("Y-m-d H:i:s"),
-            'total'     => $request->get('sum_price')
-        ]);
-
-        $orderData = Order_List::where('shop_id', $request->get('shop_id'))
-            ->where('user_num', auth()->user()->id)
-            ->orderByRaw('order_num DESC')
-            ->first();
-
-        $orderNum = $orderData->order_num;
-
-        // 필요한것 : 주문 Menu 갯수 , Option, SubOption 갯수
-        $menuNum         = $request->get('menulength');
-        $menuArray       = $request->get('menu_id');
-        $optionArray     = $request->get('option');
-        $subOptionArray  = $request->get('suboption');
-
-        for( $menuIndex = 0 ; $menuIndex < $menuNum ; $menuIndex++) {
-            $menuId = $menuArray[$menuIndex];
-
-            Order_Menu::create([
-                'menu_id'    => $menuId,
-                'order_num'  => $orderNum,
+        if(!auth()->check()) {
+            return response()->json([
+                'msg' => false,
+            ]);
+        }
+        else {
+            // 먼저 OrderList Table에 OrderList 추가 후 Reservation Table에 등록
+            Order_List::create([
+                'shop_id' => $request->get('shop_id'),
+                'user_num' => auth()->user()->id,
+                'order_date' => date("Y-m-d H:i:s"),
+                'total'     => $request->get('sum_price')
             ]);
 
-            $orderMenuData  = Order_Menu::where('order_num', $orderNum)
-                ->orderByRaw('id DESC')
+            $orderData = Order_List::where('shop_id', $request->get('shop_id'))
+                ->where('user_num', auth()->user()->id)
+                ->orderByRaw('order_num DESC')
                 ->first();
 
-            $orderMenuId = $orderMenuData->id;
+            $orderNum = $orderData->order_num;
 
-            $thisMenuOption = $optionArray[$menuIndex];
-            $thisSubOption = $subOptionArray[$menuIndex];
+            // 필요한것 : 주문 Menu 갯수 , Option, SubOption 갯수
+            $menuNum         = $request->get('menulength');
+            $menuArray       = $request->get('menu_id');
+            $optionArray     = $request->get('option');
+            $subOptionArray  = $request->get('suboption');
 
-            for($optionIndex = 0 ; $optionIndex < count($thisMenuOption) ; $optionIndex++) {
+            for( $menuIndex = 0 ; $menuIndex < $menuNum ; $menuIndex++) {
+                $menuId = $menuArray[$menuIndex];
 
-                $currentOption       = $thisMenuOption[$optionIndex];
-                if(isset($thisSubOption[$optionIndex])) {
-                    $currentSubOption    = $thisSubOption[$optionIndex];
-
-                    $subOption = Suboption::where('opnum', $currentOption)
-                        ->where('name', $currentSubOption)
-                        ->first();
-
-                    $subOpNum = $subOption->sub_opnum;
-                }
-
-                else
-                    $subOpNum    = null;
-
-                Order_Option::create([
-                    'op_num'          =>  $currentOption,
-                    'subop_num'       =>  $subOpNum,
-                    'order_menu_id'   =>  $orderMenuId,
+                Order_Menu::create([
+                    'menu_id'    => $menuId,
+                    'order_num'  => $orderNum,
                 ]);
 
-            } // <-- option For End
+                $orderMenuData  = Order_Menu::where('order_num', $orderNum)
+                    ->orderByRaw('id DESC')
+                    ->first();
 
+                $orderMenuId = $orderMenuData->id;
+
+                $thisMenuOption = $optionArray[$menuIndex];
+                $thisSubOption = $subOptionArray[$menuIndex];
+
+                for($optionIndex = 0 ; $optionIndex < count($thisMenuOption) ; $optionIndex++) {
+
+                    $currentOption       = $thisMenuOption[$optionIndex];
+                    if(isset($thisSubOption[$optionIndex])) {
+                        $currentSubOption    = $thisSubOption[$optionIndex];
+
+                        $subOption = Suboption::where('opnum', $currentOption)
+                            ->where('name', $currentSubOption)
+                            ->first();
+
+                        $subOpNum = $subOption->sub_opnum;
+                    }
+
+                    else
+                        $subOpNum    = null;
+
+                    Order_Option::create([
+                        'op_num'          =>  $currentOption,
+                        'subop_num'       =>  $subOpNum,
+                        'order_menu_id'   =>  $orderMenuId,
+                    ]);
+
+                } // <-- option For End
+
+            }
+
+            return response()->json([
+                'msg' => count($thisMenuOption),
+            ]);
         }
 
-        return response()->json([
-            'msg' => count($thisMenuOption),
-        ]);
 
 
 
-    }
-
-    public function cancelOrder(Request $request) {
 
     }
 
@@ -107,28 +111,32 @@ class OrderController extends Controller
     public function translateOrder(Request $request)
     {
         $source = '';
+        if(!auth()->check()) {
+            $source = 'ja';
+        }
+        else {
+            switch (auth()->user()->country) {
 
-        switch (auth()->user()->country) {
+                case 'Korea' :
+                    {
+                        $source = 'ko';
+                        break;
+                    }
 
-            case 'Korea' :
-                {
-                    $source = 'ko';
-                    break;
-                }
+                case 'China' :
+                    {
+                        $source = 'zh-CN';
+                        break;
+                    }
 
-            case 'China' :
-                {
-                    $source = 'zh-CN';
-                    break;
-                }
+                case 'Usa' :
+                    {
+                        $source = 'en';
+                        break;
+                    }
 
-            case 'Usa' :
-                {
-                    $source = 'en';
-                    break;
-                }
-
-        } // <-- switch end
+            } // <-- switch end
+        }
 
         $menuArray = $request->get('Menu');
         $menuCount = $request->get('MenuCount');
@@ -271,8 +279,8 @@ class OrderController extends Controller
             ]);
         else
             return response()->json([
-                'flag'    => false,
-                'content' => $response,
+                'flag'    => true,
+                'content' => $translateArray,
             ]);
     }
 }

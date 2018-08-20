@@ -98,6 +98,7 @@ class UsersController extends Controller
                     'favorite_1' => $userInfo->favorite_1,
                     'favorite_2' => $userInfo->favorite_2,
                     'favorite_3' => $userInfo->favorite_3,
+                    'country' => $userInfo->country,
                 ]);
             }
 
@@ -115,9 +116,7 @@ class UsersController extends Controller
 
         auth()->logout();
 
-        return response()->json([
-           'flag' => true,
-        ]);
+        return redirect('/');
     }
 
     // <-- User 정보 받아오기

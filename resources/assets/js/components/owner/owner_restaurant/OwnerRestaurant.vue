@@ -1,7 +1,7 @@
 <!--[ 가게 정보 입력 페이지 ] 가게 사장이 가게 정보 입력하면 입력 받은 정보들을 서버 딴으로 보냄.-->
 <template>
 <div class="container" style="border:1px solid"><br>
-<form id="upload_info" enctype="multipart/form-data" action="/test" method="post"> 
+<form id="upload_info" enctype="multipart/form-data"> 
 <v-container style="width:98%; margin:auto">
     <!--스낵바 : 경고 창 출력-->
     <v-snackbar 
@@ -20,7 +20,6 @@
         </v-btn>
     </v-snackbar>
 
-
     <v-layout style="overflow:hi">
         <v-flex xs8>
             <h1 style="font-size:60px;"> 
@@ -28,18 +27,26 @@
             </h1>    
         </v-flex>
         <v-flex xs2>
-            <v-btn color="error" class="submit_btn" @click="QrCodeDialog = true" block> 
+            <!-- <v-btn color="error" class="submit_btn" @click="QrCodeDialog = true" block> 
                 QR 코드 보기
-            </v-btn> 
+            </v-btn>  -->
         </v-flex>
+        <v-spacer></v-spacer>
         <v-flex xs2>
-            <v-btn color="error" class="submit_btn" @click="geoCoder" block> 
+            <v-btn 
+                style=" background-color: #ff9a55; 
+                        color:white; 
+                        font-weight:bold;" 
+                class="submit_btn" 
+                @click="geoCoderFunction"
+                block
+            > 
                 저장하기
             </v-btn> 
         </v-flex>
     </v-layout> <br>
 
-    <v-dialog
+    <!-- <v-dialog
         v-model="QrCodeDialog" 
         width="500px"
     >        
@@ -50,7 +57,7 @@
                 style="width:500px; height:500px;"
             >
         </v-card>
-    </v-dialog>
+    </v-dialog> -->
 
 <!--***************************************************** 가게 기본 정보 ************************************************-->       
     
@@ -530,7 +537,7 @@
 
     <v-layout mt-2>
         <v-flex xs12>
-            <div class="title_div" style="background-color: lightgray;">
+            <div class="title_div" style="background-color: #efe2bd;">
                 <img 
                     v-if="resData !== null" 
                     id="TitleImg" 
@@ -591,11 +598,11 @@
 </div> 
 </template>
 
-<script type="text/javascript">
-    import Vue      from 'vue';
+<script type="text/javascript"> 
+import Vue      from 'vue';
 import VueAxios from 'vue-axios';
 import axios from 'axios';  
-import * as VueGoogleMaps from 'vue2-google-maps';
+import * as VueGoogleMaps from 'vue2-google-maps'; 
 
 Vue.use(VueGoogleMaps, {
     load: {
@@ -604,7 +611,8 @@ Vue.use(VueGoogleMaps, {
     }
 })
 
-var coordinate = null;
+var coordinateLat = null;
+var coordinateLng = null;
 
 export default {     
     mounted(){ 
@@ -615,12 +623,10 @@ export default {
                 this.resData = response.data.restaurant;     
                 this.setInfo();
                 this.resImgSet(); 
-                this.MakeQrCode();
+                // this.MakeQrCode();
             }  
         })
-        .catch((ex)=>{
-            this.snackbar_text = '서버 연결 실패';
-            this.snackbar = true;  
+        .catch((ex)=>{ 
         });       
     },
 
@@ -823,10 +829,11 @@ export default {
                 }
             }             
             gallery.removeChild(div);  
-        }, 
+        },  
 
         // 구글 맵스 설정하기.
-        geoCoder : function () {                          
+        geoCoderFunction : function () {                          
+            alert('지오코드 시작');
             let geocoder = new google.maps.Geocoder();     
             let address  = null;
             let saveData = this.save_data;
@@ -848,31 +855,32 @@ export default {
                 this.snackbar_text = '주소 값을 입력해 주세요';
                 this.snackbar      = true; 
                 return null;
-            }
+            } 
 
             // 지오 코드 실행 : 텍스트 주소로 해당 주소 경위도 구하기.
             geocoder.geocode( { 'address': address}, function(results, status) {
                 if (status == 'OK') { 
-                    coordinate = results[0].geometry.location; 
+                    var lat = results[0].geometry.location.lat();
+                    var lng = results[0].geometry.location.lng();
+                    coordinateLat = Number(lat);
+                    coordinateLng = Number(lng);
+                    alert('지오코드 만들기');
                     saveData();
-                } else {                        
-                    this.snackbar_text = 'Geocode was not successful for the following reason: ' + status;
-                    this.snackbar      = true; 
-                }
+                }  
             });
         },
  
         // 입력한 데이터 저장하기 
         save_data :function() {    
+            alert('save_data');
             let formData        = new FormData(document.getElementById("upload_info"));    // 입력 값들을 담아 전송함.
             let TitleImgUpload  = document.getElementById('TitleImgUpload');               // 업로드한 타이틀 이미지 파일
             let TitleImg        = document.getElementById('TitleImg');                     // 타이틀 이미지 img 태그
-            let qrcode          = document.getElementById('qrcode');
+            // let qrcode          = document.getElementById('qrcode');
             let iterator        = null;
-            let datas           = null;                                                    // 입력한 데이터들
-            let geocoder        = new google.maps.Geocoder();     
+            let datas           = null;                                                    // 입력한 데이터들 
             let address         = null;
-
+             
             // 가게 정보 최초 입력 시
             if(this.resData == null){ 
                 iterator = Object.keys(this.ipt_data);                 
@@ -914,8 +922,12 @@ export default {
                 }                                      
             } 
 
-            if(coordinate !== null){                        
-                formData.append('coordinate', coordinate);
+            if(coordinateLat !== null){                        
+                formData.append('coordinateLat', coordinateLat);
+            }
+
+            if(coordinateLng !== null){                        
+                formData.append('coordinateLng', coordinateLng);
             }
             
             // 타이틀 이미지 append
@@ -941,7 +953,7 @@ export default {
             formData.append('shop_id', this.$route.params.shop_id); 
 
             // QR 코드 
-            formData.append('qrcode', qrcode.src);
+            // formData.append('qrcode', qrcode.src);
 
             // 콘솔창에 띄우기
             for(var pair of formData.entries()) {
@@ -986,8 +998,9 @@ export default {
 .upload_btn {
     width: 100%;
     font-size: 1.5rem;
+    font-weight: bold;
     position: relative;  
-    color:lightseagreen;
+    color: #9d724b;
     user-select:none;               /* 드래그 방지 */
     -ms-user-select: none; 
     -moz-user-select: -moz-none; 
@@ -996,11 +1009,11 @@ export default {
 }
 /* 마우스 클릭하고있을때 */
 .upload_btn:active{
-    color: darkseagreen;
+    color: #d2b07d;
 }
 /* 마우스 한번클릭후 */
 .upload_btn:visited{
-    color: cadetblue;
+    color: #9d724b;
 } 
 /* 이미지 업로드 버튼 스타일 */
 .upload_btn_hidden {
@@ -1021,7 +1034,7 @@ export default {
 #gallery {
     width:100%; 
     min-height: 200px;
-    background-color: lightgrey; 
+    background-color: #efe2bd; 
     margin:auto; 
     overflow:hidden
 }

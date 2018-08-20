@@ -25,144 +25,213 @@
 -->
 
 <template>
-    <v-container fluid grid-list-md>
-            <v-card>  
-                <v-container>
-                    <!-- 아이디 이미지, 아이디, 사용자 국적, 공뷰 버튼 -->
-                    <v-layout align-center>
-                        <v-flex xs3 sm1>
-                            <img v-bind:src= "flag" onmousedown="return false;">
-                        </v-flex>
-                        <!-- <v-flex xs4 sm1>사용자이미지</v-flex> -->
-                        <v-flex xs5 sm8>{{this.userID}}</v-flex>
-                        <!-- 좋아요를 눌렀을 경우 하트 모양이 채워진 이미지를 출력 하도록 변경하기 -->
-                        <v-flex xs3 sm2>
-                            <v-btn flat color="pink lighten-3" v-if="!(this.reviewLikeBut)"
-                            v-on:click="likeButClick">
-                                <h2>{{this.reviewLikeNum}}</h2>
-                                <v-icon x-large>favorite_border</v-icon>
-                            </v-btn>
-                            <v-btn flat color="pink lighten-3" v-if="(this.reviewLikeBut)"
-                            v-on:click="likeButClick">
-                                <h2>{{this.reviewLikeNum}}</h2>
-                                <v-icon x-large>favorite</v-icon>
-                            </v-btn>
-                        </v-flex>
-                    </v-layout>
-                    <!-- 작성 날짜, 리뷰 좋아요 갯수 -->
-                    <v-layout align-center>
-                        <v-flex xs8 sm9>{{this.writeDate}}</v-flex>
-                    </v-layout>
-                    <!-- 총점 -->
-                    <v-layout align-center justify-center>
-                        <v-flex xs2>총점</v-flex>
-                        <v-flex xs6 sm4>
-                            <v-layout>
-                                <v-flex xs2 sm1 class="star-align" 
-                                v-for= "count in this.rating" :key="count">
-                                    <v-icon x-large color="yellow accent-4">star</v-icon>
-                                </v-flex>
-                            </v-layout>
-                        </v-flex>                               
-                    </v-layout>
-                    <!-- 맛 -->
-                    <v-layout align-center justify-center v-if="(this.taste != 0)">
-                        <v-flex xs2>맛</v-flex>
-                        <v-flex xs6 sm4>
-                            <v-layout>
-                                <v-flex xs2 sm1 class="star-align" 
-                                v-for= "count in this.taste" :key="count">
-                                    <v-icon large color="yellow accent-4">star</v-icon>
-                                </v-flex>
-                            </v-layout>
-                        </v-flex> 
-                    </v-layout>
-                    <!-- 서비스 -->
-                    <v-layout align-center justify-center v-if="(this.service != 0)">
-                        <v-flex xs2>서비스</v-flex>
-                        <v-flex xs6 sm4>
-                            <v-layout>
-                                <v-flex xs2 sm1 class="star-align" 
-                                v-for= "count in this.service" :key="count">
-                                    <v-icon large color="yellow accent-4">star</v-icon>
-                                </v-flex>
-                            </v-layout>
-                        </v-flex> 
-                    </v-layout>
-                    <!-- 분위기 -->
-                    <v-layout align-center justify-center v-if="(this.mood != 0)">
-                        <v-flex xs2>분위기</v-flex>
-                        <v-flex xs6 sm4>
-                            <v-layout>
-                                <v-flex xs2 sm1 class="star-align" 
-                                v-for= "count in this.mood" :key="count">
-                                    <v-icon large color="yellow accent-4">star</v-icon>
-                                </v-flex>
-                            </v-layout>
-                        </v-flex>
-                    </v-layout>
-                    <!-- 가격 -->
-                    <v-layout align-center justify-center v-if="(this.price != 0)">
-                        <v-flex xs2>가격</v-flex>
-                        <v-flex xs6 sm4>
-                            <v-layout>
-                                <v-flex xs2 sm1 class="star-align" 
-                                v-for= "count in this.price" :key="count">
-                                    <v-icon large color="yellow accent-4">star</v-icon>
-                                </v-flex>
-                            </v-layout>
-                        </v-flex>
-                    </v-layout>
-
-                    <!-- 리뷰 내용 -->
-                    <v-layout>
+    <v-container  grid-list-md class="ma-0 pt-1">
+            <v-card class="pa-0 ma-0">  
+                <v-container class="align-center content-bg">
+                    <v-layout class="review-card-style">
                         <v-flex>
+                            <!-- 아이디 이미지, 아이디, 사용자 국적, 공뷰 버튼 -->
+                            <v-layout>
+                                <v-flex xs7 sm6>
+                                    <v-layout align-center class="pa-0 ma-0">
+                                        <!-- 국기 -->
+                                        <v-flex xs3 sm2 class="pa-0 ma-0">
+                                            <img v-bind:src= "flag" onmousedown="return false;">
+                                        </v-flex>
+                                        <!-- 사용자명 -->
+                                        <v-flex xs6 sm8 class="headline">{{this.userID}}</v-flex>
+                                        <v-spacer></v-spacer>
+                                    </v-layout>
+                                    <hr class="review-hr-line">
+                                </v-flex>
+                                <!-- 작성 날짜 -->
+                                <v-flex xs5 sm6>
+                                    <v-layout align-center class="pa-0 ma-0">
+                                        <v-flex>
+                                            <v-layout>
+                                                <v-flex class="subheading review-title-font">{{ this.registrationData }}</v-flex>
+                                            </v-layout>
+                                            <v-layout>
+                                                <v-flex class="caption review-font-color">
+                                                    {{this.writeDate}}
+                                                </v-flex>
+                                            </v-layout>
+                                        </v-flex>
+                                    </v-layout>
+                                    <hr class="review-hr-line">
+                                </v-flex>
+                            </v-layout>
+
+                            <!-- 좋아요 -->
                             <v-layout>
                                 <v-spacer></v-spacer>
-                                <v-flex xs12 sm8>
-                                    <v-text-field
-                                    :value="this.content"
-                                    flat
-                                    solo
-                                    multi-line
-                                    auto-grow
-                                    rows="1"
-                                    readonly>
-                                </v-text-field>
+                                <!-- 좋아요를 눌렀을 경우 하트 모양이 채워진 이미지를 출력 하도록 변경하기 -->
+                                <v-flex xs5 sm4>
+                                    <v-btn flat color="pink lighten-3" v-if="!(this.reviewLikeBut)" v-on:click="likeButClick">
+                                        {{this.reviewLikeNum}}
+                                        <v-icon large>favorite_border</v-icon>
+                                    </v-btn>
+                                    <v-btn flat color="pink lighten-3" v-if="(this.reviewLikeBut)" v-on:click="likeButClick">
+                                            {{this.reviewLikeNum}}
+                                        <v-icon large>favorite</v-icon>
+                                    </v-btn>
                                 </v-flex>
-                                <v-spacer></v-spacer>
+                            </v-layout>
+
+                            <!-- 여기서 부터 점수  -->
+                            <!-- 총점 -->
+                            <v-layout align-center class="mt-3">
+                                <v-flex xs3 class="display-1 review-title-font">{{ this.totalRate }}</v-flex>
+                                <v-flex xs5 sm4>
+                                    <v-layout>
+                                        <v-flex xs2 sm2 class="star-align" 
+                                        v-for= "count in this.rating" :key="count">
+                                            <v-icon x-large color="orange lighten-1">star</v-icon>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-flex>   
+                            </v-layout>
+                            <hr class="review-hr-line">
+
+                            <!-- 맛, 서비스, 분위기, 가격 점수 -->
+                            <v-layout class="mt-3">
+                                <v-flex>
+                                    <!-- 맛, 서비스 -->
+                                    <v-layout>
+                                        <v-flex xs5>
+                                            <!-- 맛 -->
+                                            <v-layout align-center v-if="(this.taste != 0)">
+                                                <v-flex xs5 class="review-font-color">{{ this.tasteRate }}</v-flex>
+                                                <v-flex xs6 sm5>
+                                                    <v-layout>
+                                                        <v-flex xs2 sm1 class="star-align" 
+                                                        v-for= "count in this.taste" :key="count">
+                                                            <v-icon small color="orange lighten-1">star</v-icon>
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-flex> 
+                                            </v-layout>
+                                        </v-flex>
+                                        <v-flex xs5>
+                                            <!-- 서비스 -->
+                                            <v-layout align-center v-if="(this.service != 0)">
+                                                <v-flex xs6 class="review-font-color">{{ this.serviceRate }}</v-flex>
+                                                <v-flex xs6 sm5>
+                                                    <v-layout>
+                                                        <v-flex xs2 sm1 class="star-align" 
+                                                        v-for= "count in this.service" :key="count">
+                                                            <v-icon small color="orange lighten-1">star</v-icon>
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-flex> 
+                                            </v-layout>
+                                        </v-flex>
+                                    </v-layout>
+
+                                    <!-- 분위기, 가격 -->
+                                    <v-layout class="my-2">
+                                        <v-flex xs5>
+                                            <!-- 분위기 -->
+                                            <v-layout align-center v-if="(this.mood != 0)">
+                                                <v-flex xs5 class="review-font-color">{{ this.moodRate }}</v-flex>
+                                                <v-flex xs6 sm5>
+                                                    <v-layout>
+                                                        <v-flex xs2 sm1 class="star-align" 
+                                                        v-for= "count in this.mood" :key="count">
+                                                            <v-icon small color="orange lighten-1">star</v-icon>
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-flex>
+                                            </v-layout>
+
+                                        </v-flex>
+                                        <v-flex xs6>
+                                            <!-- 가격 -->
+                                            <v-layout align-center v-if="(this.price != 0)">
+                                                <v-flex xs5 class="review-font-color">{{ this.priceRate }}</v-flex>
+                                                <v-flex xs6 sm5>
+                                                    <v-layout>
+                                                        <v-flex xs2 sm1 class="star-align" 
+                                                        v-for= "count in this.price" :key="count">
+                                                            <v-icon small color="orange lighten-1">star</v-icon>
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-flex>
+                                            </v-layout>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-flex>
+                            </v-layout>
+
+                            <hr class="review-hr-line">
+
+                            <!-- 해시 태그 -->
+                            <v-layout>
+                                <v-flex xs11 sm8>
+                                    <a v-for="(tag, index) in this.hashTag" :key="index">
+                                        {{"#" + tag}}&nbsp;
+                                    </a>
+                                </v-flex>
+                            </v-layout>
+
+                            <!-- 리뷰 -->
+                            <v-layout class="mt-3">
+                                <v-flex>
+                                    <v-layout>
+                                        <v-flex class="headline review-title-font">
+                                            {{ this.reviewString }}
+                                        </v-flex>
+                                    </v-layout>
+                                    <hr class="review-hr-line">
+
+                                    <!-- 리뷰 내용 -->
+                                    <v-layout>
+                                        <v-flex>
+                                            <v-layout>
+                                                <v-flex xs11 sm8>
+                                                    <v-text-field
+                                                    :value="this.content"
+                                                    flat
+                                                    solo
+                                                    multi-line
+                                                    auto-grow
+                                                    rows="1"
+                                                    readonly>
+                                                </v-text-field>
+                                                </v-flex>
+                                                <v-spacer></v-spacer>
+                                            </v-layout>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-flex>
+                            </v-layout>
+
+                            <!-- 이미지 -->
+                            <v-layout>
+                                <v-flex>
+                                    <v-card-media>
+                                        <v-layout justify-start>
+                                            <v-flex xs4 sm4 v-if="this.image.length > 0">
+                                                <div class="image-div">
+                                                    <vue-preview :slides="slide1" class="review-image"></vue-preview>
+                                                </div>
+                                            </v-flex>
+                                            <v-flex xs4 sm4 v-if="this.image.length > 1">
+                                                <div class="image-div">
+                                                <vue-preview :slides="slide2" class="review-image"></vue-preview>
+                                                </div>
+                                            </v-flex>
+                                            <v-flex xs4 sm4 v-if="this.image.length > 2">
+                                                <div class="image-div">
+                                                <vue-preview :slides="slide3" class="review-image"></vue-preview>
+                                                </div>
+                                            </v-flex>
+                                        </v-layout>
+                                    </v-card-media>
+                                </v-flex>
                             </v-layout>
                         </v-flex>
                     </v-layout>
-
-                    <!-- 해시 태그 -->
-                    <v-layout>
-                        <v-flex xs6 sm6>
-                            <a v-for="(tag, index) in this.hashTag" :key="index">
-                                {{"#" + tag}}&nbsp;
-                            </a>
-                        </v-flex>
-                    </v-layout>
-                    <!-- 이미지 -->
-                    <v-card-media>
-                        <v-layout justify-space-around wrap>
-                            <v-flex xs6 sm4 v-if="this.image.length > 0">
-                                <div class="image-div">
-                                    <vue-preview :slides="slide1" class="review-image"></vue-preview>
-                                </div>
-                            </v-flex>
-                            <v-flex xs6 sm4 v-if="this.image.length > 1">
-                                <div class="image-div">
-                                <vue-preview :slides="slide2" class="review-image"></vue-preview>
-                                </div>
-                            </v-flex>
-                            <v-flex xs12 sm4 v-if="this.image.length > 2">
-                                <div class="image-div">
-                                <vue-preview :slides="slide3" class="review-image"></vue-preview>
-                                </div>
-                            </v-flex>
-                        </v-layout>
-                    </v-card-media>
                 </v-container>
             </v-card>
     </v-container>
@@ -283,6 +352,14 @@ export default {
                 h       : 400
                 },
             ],
+
+            registrationData    : '登録日',
+            totalRate           : '総点',
+            tasteRate           : '味',
+            serviceRate         : 'サービス',
+            moodRate            : '雰囲気',
+            priceRate           : '値段',
+            reviewString        : 'レビュー',
             reviewLikeBut : this.reviewLike,    // 리뷰 좋아요 버튼을 눌렸는지 아닌지 구분하는 값을 저장하는 변수
             reviewLikeNum : this.likeNum,       // 전달 받은 리뷰 좋아요를 받은 개수값을 변수에 저장합니다.
             starColor           : "#ffd055",
@@ -295,6 +372,38 @@ export default {
         // 좋아요 버튼을 눌렸을 때 사용되는 함수
         likeButClick(){
             this.reviewLikeBut = !this.reviewLikeBut;
+        },
+
+
+
+        // 국적에 따라 UI의 언어를 바꾸는 함수
+        languageChange() {
+
+            if(this.$session.get('user_country') == 'Korea') {
+                this.registrationData   = '작성날짜';
+                this.totalRate          = '총점';
+                this.tasteRate          = '맛';
+                this.serviceRate        = '서비스';
+                this.moodRate           = '분위기';
+                this.priceRate          = '가격';
+                this.reviewString       = '리뷰';
+            } else if(this.$session.get('user_country') == 'China') {
+                this.registrationData   = '创建日期';
+                this.totalRate          = '总分';
+                this.tasteRate          = '味';
+                this.serviceRate        = '服务';
+                this.moodRate           = '气氛';
+                this.priceRate          = '价格';
+                this.reviewString       = '回顾';
+            } else if(this.$session.get('user_country') == 'USA') {
+                this.registrationData   = 'Date';
+                this.totalRate          = 'Score';
+                this.tasteRate          = 'flavor';
+                this.serviceRate        = 'service';
+                this.moodRate           = 'mood';
+                this.priceRate          = 'price';
+                this.reviewString       = 'review';
+            }
         }
     },
 
@@ -331,7 +440,20 @@ export default {
     },
 
     created() {
-
+        this.languageChange();
+        // console.log('좋아요 수');
+        // console.log(this.likeNum);
+        // console.log(typeof this.likeNum);
+        // console.log('점수');
+        // console.log(this.rating);
+        // console.log('맛');
+        // console.log(this.taste);
+        // console.log('서비스');
+        // console.log(this.mood);
+        // console.log('분위기');
+        // console.log(this.likeNum);
+        // console.log('값');
+        // console.log(this.price);
     }
 }
 </script>
@@ -359,5 +481,38 @@ export default {
     /* 별점 정렬 CSS */
     .star-align {
         text-align: left;
+    }
+
+    #user-name {
+        /* font-size:  */
+    }
+
+    hr.review-hr-line {
+        width: 90%;
+        height: 2px;
+        margin-left: 0%;
+        margin-right: auto;
+        background-color:#d2b07d;
+        color:#d2b07d;
+        border: 0 none;
+    }
+
+    .content-bg {
+        background-color: #efe2bd;
+        padding: 2%;
+        margin: 0%;
+    }
+
+    .review-card-style {
+        background-color: #fff;
+    }
+
+    .review-font-color {
+        color: #9d724b;
+    }
+
+    .review-title-font {
+        color : #6d4d35;
+        font-weight: bold;
     }
 </style>

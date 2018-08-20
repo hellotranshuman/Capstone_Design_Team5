@@ -1,23 +1,34 @@
 <template>
     <div>
-        <v-layout row>
-            <v-flex xs12 sm10 offset-sm1>
-                <v-card-title class="headline orange--text">
-                    {{ searchKeyword }} 검색 결과 <v-spacer></v-spacer>
-                    <v-btn color="grey" flat @click="filter = true"><v-icon large>filter_list</v-icon>필터</v-btn>
-                </v-card-title>
-                <GoogleMap googleMapMode="search"></GoogleMap>
-            </v-flex>
-        </v-layout>
-        <br>
+        <div style="background-color: #ff9a55; height: 10px"></div>
         <v-layout row>
             <v-flex xs12 sm10 offset-sm1>
                 <v-card>
-                    <v-card-title class="headline orange--text">가게명 검색 결과</v-card-title>
+                    <v-card-title class="headline orange--text">
+                        <strong style="font-size: 24pt">{{ searchKeyword }} {{ searching }}</strong><v-spacer></v-spacer>
+                        <v-btn color="grey" flat @click="filter = true"><v-icon large>filter_list</v-icon>필터</v-btn>
+                    </v-card-title>
+                    <GoogleMap googleMapMode="search"></GoogleMap>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <v-layout row>
+            <v-flex xs12 sm10 offset-sm1>
+                <v-card>
+                    <div style="background-color: #ff9a55; height: 10px"></div>
+                    <v-alert
+                            :value="true"
+                            color="brown"
+                            outline
+                            class="text-xs-center display-1 mx-4"
+                    >
+                        <strong class="bestBanner">{{ restaurantName }}</strong>
+                    </v-alert>
                     <v-container fluid grid-list-sm>
                         <v-layout row wrap v-if="restaurantNameResult.length != 0">
                             <v-flex md4 xs12 v-for="(item, i) in restaurantNameResult" :key="i">
                                 <v-card>
+                                    <div style="background-color: #ff9a55; height: 5px"></div>
                                     <v-card-media
                                             :src="`/images/${item.shop_id}/${item.shop_id}_titleImg.jpg`"
                                             height="250px"
@@ -29,17 +40,22 @@
                             </v-flex>
                         </v-layout>
                         <v-card-text v-else>
-                            검색 결과가 없습니다.
+                            <strong style="font-size: 22pt">{{ noneResult }}</strong>
                         </v-card-text>
                     </v-container>
-                </v-card>
-                <br>
-                <v-card>
-                    <v-card-title class="headline orange--text">식종 검색 결과</v-card-title>
+                    <v-alert
+                            :value="true"
+                            color="brown"
+                            outline
+                            class="text-xs-center display-1 mx-4"
+                    >
+                        <strong class="bestBanner">{{ foodType }}</strong>
+                    </v-alert>
                     <v-container fluid grid-list-sm>
                         <v-layout row wrap v-if="restaurantTypeResult.length != 0">
                             <v-flex md4 xs12 v-for="(item, i) in restaurantTypeResult" :key="i">
                                 <v-card>
+                                    <div style="background-color: #ff9a55; height: 5px"></div>
                                     <v-card-media
                                             :src="`/images/${item.shop_id}/${item.shop_id}_titleImg.jpg`"
                                             height="250px"
@@ -51,17 +67,22 @@
                             </v-flex>
                         </v-layout>
                         <v-card-text v-else>
-                            검색 결과가 없습니다.
+                            <strong style="font-size: 22pt">{{ noneResult }}</strong>
                         </v-card-text>
                     </v-container>
-                </v-card>
-                <br>
-                <v-card>
-                    <v-card-title class="headline orange--text">지역명 검색 결과</v-card-title>
+                    <v-alert
+                            :value="true"
+                            color="brown"
+                            outline
+                            class="text-xs-center display-1 mx-4"
+                    >
+                        <strong class="bestBanner">{{ regionName }}</strong>
+                    </v-alert>
                     <v-container fluid grid-list-sm>
                         <v-layout row wrap v-if="restaurantAreaResult.length != 0">
                             <v-flex md4 xs12 v-for="(item, i) in restaurantAreaResult" :key="i">
                                 <v-card>
+                                    <div style="background-color: #ff9a55; height: 5px"></div>
                                     <v-card-media
                                             :src="`/images/${item.shop_id}/${item.shop_id}_titleImg.jpg`"
                                             height="250px"
@@ -73,17 +94,22 @@
                             </v-flex>
                         </v-layout>
                         <v-card-text v-else>
-                            검색 결과가 없습니다.
+                            <strong style="font-size: 22pt">{{ noneResult }}</strong>
                         </v-card-text>
                     </v-container>
-                </v-card>
-                <br>
-                <v-card>
-                    <v-card-title class="headline orange--text">해시 태그 검색 결과</v-card-title>
+                    <v-alert
+                            :value="true"
+                            color="brown"
+                            outline
+                            class="text-xs-center display-1 mx-4"
+                    >
+                        <strong class="bestBanner">{{ hashTag }}</strong>
+                    </v-alert>
                     <v-container fluid grid-list-sm>
                         <v-layout row wrap v-if="restaurantHashtagResult.length != 0">
                             <v-flex md4 xs12 v-for="(item, i) in restaurantHashtagResult" :key="i">
                                 <v-card>
+                                    <div style="background-color: #ff9a55; height: 5px"></div>
                                     <v-card-media
                                             :src="`/images/${item.shop_id}/${item.shop_id}_titleImg.jpg`"
                                             height="250px"
@@ -95,7 +121,7 @@
                             </v-flex>
                         </v-layout>
                         <v-card-text v-else>
-                            검색 결과가 없습니다.
+                            <strong style="font-size: 22pt">{{ noneResult }}</strong>
                         </v-card-text>
                     </v-container>
                 </v-card>
@@ -194,11 +220,46 @@
                     '福岡', '佐賀', '長崎', '熊本',
                     '大分', '宮崎', '鹿兒島', '沖繩'
                 ],
+                restaurantName: "",
+                foodType: "",
+                regionName: "",
+                hashTag: "",
+                noneResult: "",
+                searching: "",
+
             }
         },
 
         created() {
-
+            if(this.$session.get('user_country') == "Korea") {
+                this.restaurantName = '가게명 검색 결과';
+                this.foodType = '식종 검색 결과';
+                this.regionName = '지역명 검색 결과';
+                this.hashTag = '해시 태그 검색 결과';
+                this.noneResult = '검색 결과가 없습니다.';
+                this.searching = '검색 결과';
+            } else if(this.$session.get('user_country') == "USA") {
+                this.restaurantName = 'Result of searching restaurant name';
+                this.foodType = 'Result of searching food type';
+                this.regionName = 'Result of searching region name';
+                this.hashTag = 'Result of searching hashtag';
+                this.noneResult = 'No results were found for your search.';
+                this.searching = 'Searching';
+            } else if(this.$session.get('user_country') == "China") {
+                this.restaurantName = '';
+                this.foodType = '';
+                this.regionName = '';
+                this.hashTag = '';
+                this.noneResult = '';
+                this.searching = '';
+            } else {
+                this.restaurantName = '食堂名結果';
+                this.foodType = '食事別結果';
+                this.regionName = '地域名結果';
+                this.hashTag = 'ハッシュタグ結果';
+                this.noneResult = '検索結果がありません。';
+                this.searching = 'の検索結果';
+            }
         },
 
         methods: {

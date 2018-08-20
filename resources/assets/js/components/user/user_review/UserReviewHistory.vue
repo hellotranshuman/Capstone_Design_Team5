@@ -12,7 +12,7 @@
 -->
 <template>
     <v-app>
-        <v-content>
+        <v-content id="page-style" class="ma-1 pa-1">
             <v-list three-line>
                 <template v-for="(review, index) in getReviewList">
                     <v-subheader v-if="index == 0" :key="index">{{listHeader}}</v-subheader>
@@ -55,7 +55,7 @@ import axios    from 'axios';
   export default {
     data() {
         return {
-            listHeader      : "리뷰 목록",      // 리뷰 목록 헤더
+            listHeader      : 'レビューリスト',      // 리뷰 목록 헤더
             getReviewList   : [],               // 전달받은 리뷰 목록이 저장되는 배열
         }
     },
@@ -67,9 +67,22 @@ import axios    from 'axios';
                 this.getReviewList[iCount]['rating'] = Number(this.getReviewList[iCount]['rating']);
             }
         },
+
+        // 국적에 따라 UI의 언어를 바꾸는 함수
+        languageChange() {
+            if(this.$session.get('user_country') == 'Korea'){
+                this.listHeader     = '리뷰 목록';
+            } else if(this.$session.get('user_country') == 'China') {
+                this.listHeader     = '评论列表';
+            } else if(this.$session.get('user_country') == 'USA') {
+                this.listHeader     = 'List of reviews';
+            }
+        }
     },
 
     created(){
+        this.languageChange();
+
         // axios http 라이브러리 with Send shopData
         axios.post('/getUserReviewList').
         then((response)=>{       
@@ -89,5 +102,9 @@ import axios    from 'axios';
     a:hover { 
         color: rgb(102, 051, 000); 
         text-decoration: none;
+    }
+
+    #page-style {
+        background-color: #ffffff;
     }
 </style>

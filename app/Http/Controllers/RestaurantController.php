@@ -49,27 +49,32 @@ class RestaurantController extends Controller
 
         $target = '';
 
-        switch (auth()->user()->country) {
+        if(!auth()->check()) {
+            $target = 'ja';
+        }
+        else {
+            switch (auth()->user()->country) {
 
-            case 'Korea' :
-                {
-                    $target = 'ko';
-                    break;
-                }
+                case 'Korea' :
+                    {
+                        $target = 'ko';
+                        break;
+                    }
 
-            case 'China' :
-                {
-                    $target = 'zh-CN';
-                    break;
-                }
+                case 'China' :
+                    {
+                        $target = 'zh-CN';
+                        break;
+                    }
 
-            case 'Usa' :
-                {
-                    $target = 'en';
-                    break;
-                }
+                case 'Usa' :
+                    {
+                        $target = 'en';
+                        break;
+                    }
 
-        } // <-- switch end
+            } // <-- switch end
+        }
 
         $restaurant = Restaurant::where('id', $shop_id)
                                  ->get()
@@ -136,9 +141,14 @@ class RestaurantController extends Controller
                         ->get()
                         ->toArray();
 
-        $shopLikeNumData = Shop_like::where('user_num', auth()->user()->id)
-                            ->where('shop_id', $shop_id)
-                            ->count();
+        if(!auth()->check()) {
+            $shopLikeNumData = 0;
+        }
+        else {
+            $shopLikeNumData = Shop_like::where('user_num', auth()->user()->id)
+                ->where('shop_id', $shop_id)
+                ->count();
+        }
 
         if($shopLikeNumData == 0)
             $shopLike = false;
@@ -171,19 +181,20 @@ class RestaurantController extends Controller
             'address' => $request->input('address'),
             'payment' => $request->input('payment'),
             'seat_num' => $request->input('seat_num'),
-            'children' => $request->input('children') == 'yes' ? true : false,
-            'pet' => $request->input('pet') == 'yes' ? true : false,
-            'parking' => $request->input('parking') == 'yes' ? true : false,
-            'smoking' => $request->input('smoking') == 'yes' ? true : false,
-            'privateroom' => $request->input('privateroom') == 'yes' ? true : false,
+            'children' => $request->input('children') == 'true' ? true : false,
+            'pet' => $request->input('pet') == 'true' ? true : false,
+            'parking' => $request->input('parking') == 'true' ? true : false,
+            'smoking' => $request->input('smoking') == 'true' ? true : false,
+            'privateroom' => $request->input('privateroom') == 'true' ? true : false,
             'lunch_open' => $request->input('lunch_open'),
             'lunch_close' => $request->input('lunch_close'),
             'lunch_lo' => $request->input('lunch_lo'),
             'dinner_open' => $request->input('dinner_open'),
             'dinner_close' => $request->input('dinner_close'),
             'dinner_lo' => $request->input('dinner_lo'),
-            'namer'     => $request->input('namer'),
-            'coordinate' => $request->input('coordinate'),
+            'namer'     => $request->input('nameR'),
+            'coordinate_lat' => $request->input('coordinateLat'),
+            'coordinate_lang' => $request->input('coordinateLng'),
             'qrcode' => $request->input('qrcode'),
         ]);
 
@@ -276,19 +287,20 @@ class RestaurantController extends Controller
                     'address' => $request->input('address'),
                     'payment' => $request->input('payment'),
                     'seat_num' => $request->input('seat_num'),
-                    'children' => $request->input('children') == 'yes' ? true : false,
-                    'pet' => $request->input('pet') == 'yes' ? true : false,
-                    'parking' => $request->input('parking') == 'yes' ? true : false,
-                    'smoking' => $request->input('smoking') == 'yes' ? true : false,
-                    'privateroom' => $request->input('privateroom') == 'yes' ? true : false,
+                    'children' => $request->input('children') == 'true' ? true : false,
+                    'pet' => $request->input('pet') == 'true' ? true : false,
+                    'parking' => $request->input('parking') == 'true' ? true : false,
+                    'smoking' => $request->input('smoking') == 'true' ? true : false,
+                    'privateroom' => $request->input('privateroom') == 'true' ? true : false,
                     'lunch_open' => $request->input('lunch_open'),
                     'lunch_close' => $request->input('lunch_close'),
                     'lunch_lo' => $request->input('lunch_lo'),
                     'dinner_open' => $request->input('dinner_open'),
                     'dinner_close' => $request->input('dinner_close'),
                     'dinner_lo' => $request->input('dinner_lo'),
-                    'namer'     => $request->input('namer'),
-                    'coordinate' => $request->input('coordinate'),
+                    'namer'     => $request->input('nameR'),
+                    'coordinate_lat' => $request->input('coordinateLat'),
+                    'coordinate_lang' => $request->input('coordinateLng'),
                     'qrcode' => $request->input('qrcode'),
                 ]);
 
@@ -473,6 +485,7 @@ class RestaurantController extends Controller
 
     // <-- 식당 좋아요
     public function restaurantsLike(Request $request) {
+        // 로그인 안되어 있을 경우
         if(!auth()->check())
             return response()->json([
                 'shopLike' => 'failed',

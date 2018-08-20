@@ -2,19 +2,33 @@
     <div class="container" style="z-index:300;"> 
     <v-container elevation-5>
         <!-- 스낵바 : 경고 창 출력 -->
-        <v-snackbar :timeout="timeout" :top="'top'" v-model="snackbar">
+        <v-snackbar 
+            v-model="snackbar"
+            :timeout="timeout" 
+            :top="'top'" 
+        >
             {{ snackbar_text }}
-            <v-btn flat color="pink" icon @click.native="snackbar = false">
+
+            <v-btn 
+                @click.native="snackbar = false"
+                color="pink" 
+                flat icon 
+            >
                 <v-icon large> close </v-icon>
             </v-btn>
         </v-snackbar>
 
         <v-layout>
             <v-flex xs10> 
-                <b style="font-size:2rem"> 메뉴추가 </b>
+                <b style="font-size:2rem"> 
+                    메뉴추가 
+                </b>
             </v-flex>  
+
             <v-flex xs2>
-                <v-btn color="error" @click="save_data"> 저장 </v-btn>
+                <v-btn style="width:100%; background-color:#d2b07d; margin:0; font-weight:bold;" @click="save_data"> 
+                    저장 
+                </v-btn>
             </v-flex> 
         </v-layout>
          
@@ -22,9 +36,23 @@
             <!-- 메뉴 이미지 영역 -->
             <v-flex xs4 mr-4>                         
                 <v-card  class="card_style" elevation-5>
-                    <h2 class="card_title"> 메뉴 이미지 </h2>
-                    <input type="file" id="img_upload_btn" accept=".png, .jpg, .jpeg" @change="img_upload">    
-                    <label for="img_upload_btn" class="btn_label"><b>이미지 추가</b></label>
+                    <h2 class="card_title"> 
+                        메뉴 이미지 
+                    </h2>
+
+                    <input 
+                        type="file" 
+                        id="img_upload_btn" 
+                        accept=".png, .jpg, .jpeg" 
+                        @change="img_upload"
+                    >    
+
+                    <label 
+                        for="img_upload_btn" 
+                        class="btn_label"
+                    >
+                        <b>이미지 추가</b>
+                    </label>
 
                     <div class="img_div">
                         <img id="menu_img">
@@ -33,29 +61,72 @@
             </v-flex>
 
             <!-- 메뉴 정보 입력 -->
-            <v-flex xs4 mr-4  elevation-2>
-                <v-card elevation-24 class="card_style">
-                    <h2 class="card_title"> 메뉴 정보 입력 </h2>
+            <v-flex xs4 mr-4 elevation-2>
+                <v-card class="card_style" elevation-24>
+                    <h2 class="card_title"> 
+                        메뉴 정보 입력 
+                    </h2>
 
-                    <v-text-field label="메뉴명" v-model="name" :rules="nameRule"></v-text-field>
+                    <v-text-field 
+                        label="메뉴명" 
+                        v-model="name" 
+                        :rules="nameRule"
+                    >
+                    </v-text-field>
                         
-                    <v-text-field label="가격" v-model="price" :rules="priceRule"></v-text-field>
+                    <v-text-field 
+                        label="가격" 
+                        v-model="price" 
+                        :rules="priceRule"
+                    >
+                    </v-text-field>
 
-                    <v-select v-model="category" :items="states" item-text="name" autocomplete
-                        :filter="customFilter" label="카테고리 설정"></v-select>
+                    <v-select 
+                        label="카테고리 설정"
+                        v-model="category" 
+                        :items="states"
+                        item-text="name" 
+                        :filter="customFilter" 
+                        autocomplete
+                    >
+                    </v-select>
 
-                    <v-select v-model="remark" :items="remarkList" label="런치 / 디너 메뉴 구분"></v-select>                   
+                    <v-select 
+                        label="런치 / 디너 메뉴 구분"
+                        v-model="remark" 
+                        :items="remarkList" 
+                    >
+                    </v-select>                   
 
-                    <v-text-field v-model="explanation" label="메뉴 설명" multi-line></v-text-field>
+                    <v-text-field 
+                        v-model="explanation" 
+                        label="메뉴 설명" 
+                        multi-line
+                    >
+                    </v-text-field>
                 </v-card>
             </v-flex>
  
             <!-- 메뉴 옵션 추가하기 -->
             <v-flex xs4 elevation-2>
-                <v-card elevation-24 class="card_style">
-                    <h2 class="card_title"> 옵션 설정 </h2> 
-                    <label for="create_option" class="btn_label"> <b>옵션 생성</b> </label>
-                    <input type="button" id="create_option" @click="create_option" style="opacity:0;">
+                <v-card class="card_style" elevation-24>
+                    <h2 class="card_title"> 
+                        옵션 설정 
+                    </h2> 
+
+                    <label 
+                        for="create_option" 
+                        class="btn_label"
+                    > 
+                        <b>옵션 생성</b> 
+                    </label>
+
+                    <input 
+                        type="button" 
+                        id="create_option" 
+                        @click="create_option" 
+                        style="opacity:0;"
+                    >
                     <div id="options"></div>                
                 </v-card>
             </v-flex>
@@ -79,7 +150,7 @@ export default {
             snackbar        : false,
 
             // 입력 받을 거
-            name        : null,
+            name        : null,            
             category    : null,
             price       : null,
             remark      : null,
@@ -235,14 +306,14 @@ export default {
                 switch(i){
                     case 0:
                         created_btns[i].value   = '삭제';
-                        created_btns[i].style.color = 'cadetblue';
+                        created_btns[i].style.color = '#6d4d35';
                         created_btns[i].onclick = this.delete_option; break;
                     case 1:
                         created_btns[i].value       = '옵션 값 생성';
                         created_btns[i].onclick     = this.add_opionValue; break;
                     case 2: 
                         created_btns[i].value   = '완료';
-                        created_btns[i].style.color = 'cadetblue';
+                        created_btns[i].style.color = '#6d4d35';
                         created_btns[i].onclick = this.rename_complete; break;
                 }
                 created_option.appendChild(created_btns[i]);
@@ -311,7 +382,7 @@ export default {
                         created_btns[i].onclick = this.delete_optionValue; break;
                     case 1:
                         created_btns[i].value   = '완료';
-                        created_btns[i].style.color = 'cadetblue';
+                        created_btns[i].style.color = '#6d4d35';
                         created_btns[i].onclick = this.rename_complete; break; 
                 }
                 optionValue.appendChild(created_btns[i]);
@@ -360,8 +431,9 @@ export default {
 .btn_label{
     font-size: 1.5rem;
     margin-right: 3%; 
-    color: cadetblue; 
+    font-weight: bold;
     float:right;
+    color: #6d4d35; 
     user-select:none;               /* 드래그 방지 */
     -ms-user-select: none; 
     -moz-user-select: -moz-none; 
@@ -370,11 +442,11 @@ export default {
 }
 /* 마우스 클릭하고있을때 */
 .btn_label:active{
-    color: darkseagreen;
+    color: #9d724b;
 }
 /* 마우스 한번클릭후 */
 .btn_label:visited{
-    color: cadetblue;
+    color: #6d4d35;
 } 
 /* 메뉴 이미지 비율 고정용 */
 .img_div {
@@ -422,7 +494,7 @@ export default {
     margin: 1%;
     float: right;
     position: relative;
-    color: rgb(135, 194, 196); 
+    color: #9d724b; 
     font-weight: bold;
 }
 /* 옵션의 값 */
@@ -444,7 +516,7 @@ export default {
 .op_ipt {
     width: 40%; 
     margin-left: 1%; 
-    background-color: rgb(135, 194, 196);  
+    background-color: #d2b07d;  
     font-size: 1.2rem;
     float: left; 
     font-weight: bold;

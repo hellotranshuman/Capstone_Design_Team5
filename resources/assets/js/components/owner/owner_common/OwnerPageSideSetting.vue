@@ -25,7 +25,7 @@
           </template>
         </v-list>
       </v-flex>
-      <v-flex xl10 lg10 md8 xs9 id="router-view-outer">
+      <v-flex xl10 lg10 md8 xs9 id="router-view-outer" class="pa-5">
         <v-container id="router-view-inner">
           <router-view></router-view>
         </v-container>
@@ -34,38 +34,21 @@
   </v-content>
 </template>
 
-<!-- <div id="sidebar_wrapper">
-            <ul class="sidebar_nav">
-                <li class="sidebar_brand"><B>설정</B></li>
-               a <li><router-link :to="'/restaurant/' + $route.params.shop_id + '/info'">내 가게 페이지</router-link></li>
-
-                <li class="sidebar_brand"><B>가게 관리</B></li>
-            a    <li><router-link to="editRestaurant">가게 정보</router-link></li>
-              a  <li><router-link to="createCoupon">쿠폰</router-link></li>
-
-                <li class="sidebar_brand"><B>전자 메뉴판</B></li>
-            a    <li><router-link to="menuOperate">메뉴 추가</router-link></li>
-             a   <li><router-link to="menuList">메뉴 관리</router-link></li>
-             a   <li><router-link to="menuLayout">레이아웃 설정</router-link></li>
-            </ul>
-        </div> -->
-
-
 <script>
 export default {
   data() {
     return {
         shop_id     : this.$route.params.shop_id,  // 식당 아이디를 저장하는 변수,
         sideBarList : [
-            {name : '내 가게 페이지', url : '/restaurant/' + this.$route.params.shop_id + '/info', listHeaderTitle : '설정'},
-            {name : '가게 정보', url : 'editRestaurant', listHeaderTitle : '가게 관리'},  // 사이드바 목록
-            {name : '쿠폰', url : 'createCoupon', listHeaderTitle : null},
-            {name : '메뉴 추가', url : 'menuOperate', listHeaderTitle : '전자 메뉴판'},
-            {name : '메뉴 관리', url : 'menuList', listHeaderTitle : null},
-            {name : '레이아웃 설정', url : 'menuLayout', titlistHeaderTitlele : null},
+            {name : 'お店へ', url : '/restaurant/' + this.$route.params.shop_id + '/info', listHeaderTitle : '設定'},
+            {name : 'お店情報', url : 'editRestaurant', listHeaderTitle : 'お店管理'},  // 사이드바 목록
+            {name : 'クーポン', url : 'createCoupon', listHeaderTitle : null},
+            {name : 'メニュー追加', url : 'menuOperate', listHeaderTitle : '電子メニュー'},
+            {name : 'メニュー管理', url : 'menuList', listHeaderTitle : null},
+            {name : 'メニューデザイン', url : 'menuLayout', titlistHeaderTitlele : null},
         ] ,
         listHeader : 'MY Restaurant',
-        listHeaderTitle  : '설정'
+        listHeaderTitle  : '設定'
     }
   },
 }

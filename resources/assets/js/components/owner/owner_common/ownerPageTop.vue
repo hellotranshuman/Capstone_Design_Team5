@@ -1,16 +1,22 @@
 <template>
     <div>
-        <v-btn class="topBar-button" color="brown darken-1" flat  to="editRestaurant">설정</v-btn>
+        <v-btn class="topBar-button" color="brown darken-1" flat  to="editRestaurant">{{this.topBarSetup}}</v-btn>
         <div class="topBar-vertical-line"></div>
-        <v-btn class="topBar-button" color="brown darken-1" flat  to="ownerReservationList">예약</v-btn>
+        <v-btn class="topBar-button" color="brown darken-1" flat  to="ownerReservationList">{{this.topBarReservation}}</v-btn>
         <div class="topBar-vertical-line"></div>
-        <v-btn class="topBar-button" color="brown darken-1" flat  to="totalStatistics">통계</v-btn>
+        <v-btn class="topBar-button" color="brown darken-1" flat  to="totalStatistics">{{this.topBarStatistics}}</v-btn>
     </div>
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            topBarSetup         : '設定',
+            topBarReservation   : '予約',
+            topBarStatistics    : 'グラフ'
+        }
+    }
 }
 </script>
 <style>

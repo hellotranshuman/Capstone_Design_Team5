@@ -9,7 +9,7 @@
 
 <template>
     <transition name="fade">
-        <v-content grid-list-md text-xs-center>
+        <v-content grid-list-md text-xs-center class="ma-0 pt-3" id="review-page-style">
             <!-- 경고창 -->
             <v-snackbar
             :timeout="loginCheckSnackbarTimeout"
@@ -29,7 +29,9 @@
                 <v-spacer></v-spacer>
                 <!-- 리뷰 작성 버튼 -->
                 <v-flex xs10 sm10>
-                    <v-btn outline color="red lighten-2" v-on:click="checkLogin" :to="writeCheck" block>리뷰 작성</v-btn>
+                    <v-btn outline id="review-write-button" v-on:click="checkLogin" :to="writeCheck" block>
+                        {{this.reviewWriteButton}}
+                    </v-btn>
                 </v-flex>
                 <v-spacer></v-spacer>
             </v-layout>
@@ -39,7 +41,7 @@
                     <v-select 
                     :items      ="sortItems" 
                     v-model     ="sortSelect" 
-                    label       ="정렬" 
+                    label       ="日付順" 
                     item-text   ="sort" 
                     item-value  ="sortNum" 
                     single-line 
@@ -51,7 +53,7 @@
                     <v-select 
                     :items      ="filterItems" 
                     v-model     ="filterSelect" 
-                    label       ="국가 선택"  
+                    :label       = "this.filterSelect['country']"
                     item-text   ="country"
                     single-line
                     return-object>
@@ -79,7 +81,7 @@
             <!-- SNS 공유 -->
             <v-speed-dial fixed bottom left direction="top"
             transition="slide-y-reverse-transition" v-model="fab">
-                <v-btn slot="activator" color="blue darken-2" dark v-model="fab" fab>
+                <v-btn slot="activator" id="share-button" dark v-model="fab" fab>
                     <v-icon>share</v-icon>
                     <v-icon>close</v-icon>
                 </v-btn>
@@ -124,13 +126,13 @@ export default {
             // sns 이미지 주소 배열
             snsImageList : ['/images/review/facebook.svg', '/images/review/twitter.svg', '/images/review/weibo.svg'],
             url         : "",                               // 리뷰를 하는 페이지 URL
-            sortSelect  : { sort: '작성일순', sortNum: 1 }, // 선택된 정렬 기준
+            sortSelect  : { sort: '日付順', sortNum: 1 }, // 선택된 정렬 기준
             sortItems   : [                                 // 정렬 기준들
-                { sort  : '작성일순', sortNum: 1 },
-                { sort  : '좋아요순',   sortNum: 2 },
+                { sort  : '日付順', sortNum: 1 },
+                { sort  : 'お勧め順',   sortNum: 2 },
             ],
 
-            filterSelect    : { country: '국가 선택', countryNum: 0 },  // 선택된 국가 필터링 기준
+            filterSelect    : { country: '国籍', countryNum: 0 },  // 선택된 국가 필터링 기준
             filterItems     : [                                         // 국가 필터링 기준들
                 { country   : 'all',   countryNum: 0 },
                 { country   : 'China', countryNum: 1 },
@@ -141,15 +143,17 @@ export default {
 
             fab         : false,    
             writeCheck  : "",       // 리뷰 작성페이지 주소가 저장 되는 변수
-            loginCheckErrorCode         : "로그인 해주세요.",   // 경고창에 띄울 문장이 저장되는 변수
+            loginCheckErrorCode         : "ログインしてください。",   // 경고창에 띄울 문장이 저장되는 변수
             loginCheckSnackbar          : false,                // snackbar 출력여부 확인
             loginCheckSnackbarY         : 'top',                // snackbar Y축 값
             loginCheckSnackbarX         : null,                 // snackbar X축 값
             loginCheckSnackbarMode      : '',                   // snackbar mode 값
             loginCheckSnackbarTimeout   : 2000,                 //snackbar 지속시간
+
+            reviewWriteButton : "レビュー作成",
         }
     },
-
+// this.$session.get('user_country')
     methods:{
         // 리뷰 작성시 로그인 여부 체크 함수
         checkLogin() {
@@ -169,6 +173,29 @@ export default {
             let img = new Image(); 
             img.src = imageArray[i]; 
             } 
+        },
+
+        // 국적에 따라 UI의 언어를 바꾸는 함수
+        languageChange() {
+            if(this.$session.get('user_country') == 'Korea'){
+                this.loginCheckErrorCode        = '로그인 해주세요.';
+                this.reviewWriteButton          = '리뷰 작성';
+                this.sortItems[0]['sort']       = '날짜순';
+                this.sortItems[1]['sort']       = '좋아요순';
+                this.filterSelect['country']    = '국적';
+            } else if(this.$session.get('user_country') == 'China') {
+                this.loginCheckErrorCode        = '请登录';
+                this.reviewWriteButton          = '写评论';
+                this.sortItems[0]['sort']       = '按日期';
+                this.sortItems[1]['sort']       = '良好';
+                this.filterSelect['country']    = '国籍';
+            } else if(this.$session.get('user_country') == 'USA') {
+                this.loginCheckErrorCode        = 'Please login.';
+                this.reviewWriteButton          = 'Write a review';
+                this.sortItems[0]['sort']       = 'By date';
+                this.sortItems[1]['sort']       = 'Good';
+                this.filterSelect['country']    = 'Nationality';
+            }
         }
     },
 
@@ -184,6 +211,8 @@ export default {
 
         // sns이미지를 preroding 합니다.
         this.preloading(this.snsImageList);
+
+        this.languageChange();
     }
 }
 </script>
@@ -202,5 +231,19 @@ export default {
     /* 최상단 버튼 관련 CSS */
     .up-button {
         z-index: 10;
+    }
+
+    #review-write-button {
+        background-color: #9d724b;
+        color: #9d724b;
+    }
+
+    #share-button {
+        background-color: #d2b07d;
+        color: #ffffff;
+    }
+
+    #review-page-style {
+        background-color: #ffffff;
     }
 </style>

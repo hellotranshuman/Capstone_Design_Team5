@@ -30,7 +30,7 @@ class LayoutController extends Controller
         }
 
         else
-            $layoutName = '기본 템플릿';
+            $layoutName = 'デフォルトテンプレート';
 
 
         return response()->json([

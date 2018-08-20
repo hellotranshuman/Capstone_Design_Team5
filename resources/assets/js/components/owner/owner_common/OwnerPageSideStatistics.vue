@@ -28,7 +28,7 @@
         </v-list>
       </v-flex>
 
-      <v-flex xl10 lg10 md8 xs9 id="router-view-outer">
+      <v-flex xl10 lg10 md8 xs9 id="router-view-outer" class="pa-5">
         <v-container id="router-view-inner">
           <router-view></router-view>
         </v-container>
@@ -42,12 +42,10 @@ export default {
   data() {
     return {
       sideBarList : [
-        {name : '종합 통계', url : 'totalStatistics'},  // 사이드바 목록
-        {name : '손님 통계', url : 'customerStatistic'},
-        {name : '매출 통계', url : 'salesStatistics'},
+        {name : '総合グラフ', url : 'totalStatistics'},  // 사이드바 목록
       ] ,
       listHeader : 'MY Restaurant',
-      listHeaderTitle  : '통계'
+      listHeaderTitle  : 'グラフ'
     }
   },
 }

@@ -32,6 +32,11 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'MainController@getSearchData'
     ));
 
+    Route::post('/getGPSData', array(
+        'as' => 'main.getGPSData',
+        'uses' => 'MainController@getGPSData'
+    ));
+
     Route::post('/getUserOrderList', array(
         'as' => 'main.getUserOrderList',
         'uses' => 'MainController@getUserOrderList'
@@ -527,13 +532,6 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 
 });
-
-/*
-// <— Test
-Route::get('translatedText',[
-    'as' =>  'main.translatedText',
-    'uses' => 'MainController@translatedText'
-]);*/
 
 // <— Image Route
 

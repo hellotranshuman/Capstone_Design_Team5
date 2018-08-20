@@ -2,19 +2,19 @@
     <v-app>
         <div class="Reservation_list">
             <br>
-            <h2 class="Main_title"><B>예약 현황</B></h2>
-            <span class="sub_title"> 현재 예약 현황을 알 수 있습니다. </span>
+            <h2 class="Main_title"><B>予約リスト</B></h2>
+            <span class="sub_title"> 現在の予約リストを見せてくれます。 </span>
             <hr><br>
             <v-dialog v-model="dialog" persistent max-width="500px">
-                <v-btn  style="color:white; background-color:#ff9a55"
-                        slot="activator"
+                <v-btn  style="color:white; background-color:#ff9a55" 
+                        slot="activator" 
                 >
-                    예약 추가
+               予約追加
                 </v-btn>
                 <v-card style="border: 10px solid #efe2bd; ">
                     <!-- v-card title -->
                     <v-card-title>
-                        <span class="Main_title" style="margin:auto"><h2><B><v-icon large>alarm</v-icon> &nbsp; 예약 추가</B></h2></span>
+                        <span class="Main_title" style="margin:auto"><h3><B>予約追加</B></h3></span>
                     </v-card-title>
                     <!-- v-card 본문 -->
                     <v-card-text>
@@ -22,13 +22,13 @@
                             <v-layout wrap>
                                 <!-- 예약자 이름 -->
                                 <v-flex xs12>
-                                    <v-text-field
-                                            prepend-icon="face"
-                                            label="예약자 명"
-                                            required
-                                            v-model="ReservationItem.name"
-                                            color="orange darken-1"
-                                    ></v-text-field>
+                                    <v-text-field  
+                                        prepend-icon="face" 
+                                        label="予約者名" 
+                                        required 
+                                        v-model="ReservationItem.name"
+                                        color="orange darken-1"
+                                ></v-text-field>
                                 </v-flex>
                                 <!-- 예약 날짜 -->
                                 <v-flex xs11 sm5 >
@@ -47,16 +47,16 @@
                                     >
                                         <v-text-field
                                                 slot="activator"
-                                                label="pick Date"
+                                                label="予約日"
                                                 v-model="ReservationItem.start_date"
                                                 prepend-icon="event"
                                                 readonly
                                                 color="orange darken-1"
                                         ></v-text-field>
 
-                                        <v-date-picker v-model="ReservationItem.start_date"
-                                                       no-title scrollable
-                                                       color="orange darken-1"
+                                        <v-date-picker v-model="ReservationItem.start_date" 
+                                                no-title scrollable
+                                                color="orange darken-1"
                                         >
                                             <v-spacer></v-spacer>
                                             <v-btn flat color="primary" @click="reservation_menu = false">Cancel</v-btn>
@@ -81,31 +81,31 @@
                                     >
                                         <v-text-field
                                                 slot="activator"
-                                                label="pick Time"
+                                                label="予約時間"
                                                 v-model="ReservationItem.time"
                                                 prepend-icon="access_time"
                                                 readonly
                                                 color="orange darken-1"
                                         ></v-text-field>
-                                        <v-time-picker v-model="ReservationItem.time"
-                                                       @change="$refs.menu.save(ReservationItem.time)"
-                                                       color="orange darken-1"
-                                        ></v-time-picker>
+                                        <v-time-picker v-model="ReservationItem.time" 
+                                                    @change="$refs.menu.save(ReservationItem.time)"
+                                                    color="orange darken-1"
+                                                    ></v-time-picker>
                                     </v-menu>
                                 </v-flex>
                                 <!-- 인원수 -->
                                 <v-flex xs12 sm6 md4>
-                                    <v-text-field label="어른 인원"
-                                                  required
-                                                  v-model="ReservationItem.adult_person"
-                                                  color="orange darken-1"
+                                    <v-text-field label="大人数" 
+                                            required 
+                                            v-model="ReservationItem.adult_person"
+                                            color="orange darken-1"
                                     ></v-text-field>
                                 </v-flex>
                                 <v-flex xs12 sm6 md4>
-                                    <v-text-field label="아이 인원"
-                                                  required
-                                                  v-model="ReservationItem.child_person"
-                                                  color="orange darken-1"
+                                    <v-text-field label="子供数" 
+                                            required 
+                                            v-model="ReservationItem.child_person"
+                                            color="orange darken-1"
                                     ></v-text-field>
                                 </v-flex>
                             </v-layout>
@@ -133,10 +133,10 @@
 
                         <td class="justify-left" v-if="props.item.menu_select == true">
                             <!-- 메뉴 보기 버튼 -->
-                            <v-btn flat small color="teal lighten-1" @click="menu(props.item), menuLoad = true">메뉴보기</v-btn>
+                            <v-btn flat small color="teal lighten-1" @click="menu(props.item), menuLoad = true">メーニュー選択</v-btn>
                             <v-dialog v-model="menuLoad" max-width="500px">
                                 <v-toolbar color="teal lighten-1">
-                                    <h3 style="color:white; margin:auto" > MENU </h3>
+                                    <h3 style="color:white; margin:auto" > メーニュー </h3>
                                 </v-toolbar>
                                 <v-card>
                                     <v-card-text style="color : black">
@@ -151,7 +151,7 @@
                                            style="color:white"
                                            @click.stop="menuLoad = false"
                                     >
-                                        확인
+                                        確認
                                     </v-btn>
                                 </v-card>
                             </v-dialog>
@@ -182,7 +182,7 @@
             return {
                 /* snackbar */
                 addreservation_snackbar : false,
-                addreservation_text     : '예약자 명을 입력 해주세요',
+                addreservation_text     : '予約者名を入力してください。',
                 /* dialog */
                 Dialog : false,
                 menuLoad : false,
@@ -199,11 +199,11 @@
                 /* table */
                 dialog: false,
                 headers: [
-                    { text: '예약자 명',    value: 'reservation_name' },
-                    { text: '예약 날짜/시간',    value: 'reservation_date' },
-                    { text: '어른',         value: 'person' },
-                    { text: '아이',         value: 'child' },
-                    { text: '메뉴',         value: 'menu_select' },
+                    { text: '予約者名',         value: 'reservation_name' },
+                    { text: '予約日・時間',     value: 'reservation_date' },
+                    { text: '大人数',           value: 'person' },
+                    { text: '子供数',           value: 'child' },
+                    { text: 'メーニュー',       value: 'menu_select' },
                 ],
                 /* 저장 & 편집 & 삭제 */
                 items: [
@@ -258,8 +258,8 @@
                     // 1. 주문 메뉴 옵션 합치기s
                     for(var i = 0 ; i < MenuorderData[0].menuNum; i++)
                     {
-                        MenuArray = (i+1)+'번 :' + MenuorderData[0]['menu_name' + (i+1)]
-                            + ' 가격:' + MenuorderData[0]['menu_price' + (i+1)];
+                        MenuArray = (i+1)+'番 :' + MenuorderData[0]['menu_name' + (i+1)]
+                            + ' 値段　:' + MenuorderData[0]['menu_price' + (i+1)];
                         // 옵션 개수…도..
                         var OptionCount = MenuorderData[0]['optionNum'+(i+1)];
                         // 메뉴
@@ -283,13 +283,13 @@
                 }
                 else if(this.ReservationItem.start_date == null)
                 {
-                    this.addreservation_text = " 예약 날짜를 선택 해주세요."
+                    this.addreservation_text = " 予約日を選択してください。"
                     this.addreservation_snackbar = true;
                     var check = false;
                 }
                 else if(this.ReservationItem.time == null)
                 {
-                    this.addreservation_text = " 예약 시간을 선택 해주세요."
+                    this.addreservation_text = " 予約時間を選択してください。"
                     this.addreservation_snackbar = true;
                     var check = false;
                 }
@@ -298,14 +298,14 @@
                     // 숫자만 가능
                     var regNumber = /^[0-9]*$/;
                     if(!regNumber.test(this.ReservationItem.adult_person)) {
-                        this.addreservation_text = "어른 인원 항목은 숫자만 입력해주세요";
-                        this.addreservation_snackbar = true;
-                        var check = false;
+                         this.addreservation_text = "大人数の項目は数字だけ記入してください。";
+                         this.addreservation_snackbar = true;
+                         var check = false;
                     }
                     if(!regNumber.test(this.ReservationItem.child_person)) {
-                        this.addreservation_text = "아이 인원 항목은 숫자만 입력해주세요";
-                        this.addreservation_snackbar = true;
-                        var check = false;
+                         this.addreservation_text = "子供数の項目は数字だけ記入してください。";
+                         this.addreservation_snackbar = true;
+                         var check = false;
                     }
                 }
                 if(check == true) {
@@ -320,7 +320,7 @@
                     }).then((response) => {
                         location.reload();
                     })
-                        .catch(console.log('test'));
+                    .catch(console.log('test'));
                     this.dialog = false;
                 }
             }

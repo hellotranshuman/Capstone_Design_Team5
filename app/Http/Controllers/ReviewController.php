@@ -79,27 +79,33 @@ class ReviewController extends Controller
 
     // <-- Review 좋아요
     public function getReviewLike(Request $request) {
-
-        if($request->get('review_status'))
-        {
-            Review_like::create([
-                'review_id' => $request->get('review_id'),
-                'user_num' => auth()->user()->id,
-            ]);
-
+        if(!auth()->check()) {
             return response()->json([
-                'msg' => '좋아요 했습니다.',
+                'msg' => 'failed',
             ]);
         }
-        else
-        {
-            Review_like::where('user_num', auth()->user()->id)
-                ->where('review_id', $request->get('review_id'))
-                ->delete();
+        else {
+            if($request->get('review_status'))
+            {
+                Review_like::create([
+                    'review_id' => $request->get('review_id'),
+                    'user_num' => auth()->user()->id,
+                ]);
 
-            return response()->json([
-                'msg' => '좋아요가 취소되었습니다.',
-            ]);
+                return response()->json([
+                    'msg' => '좋아요 했습니다.',
+                ]);
+            }
+            else
+            {
+                Review_like::where('user_num', auth()->user()->id)
+                    ->where('review_id', $request->get('review_id'))
+                    ->delete();
+
+                return response()->json([
+                    'msg' => '좋아요가 취소되었습니다.',
+                ]);
+            }
         }
 
     }
@@ -187,8 +193,36 @@ class ReviewController extends Controller
 
         $link = route('review.showReviewForm' , ['shop_id' => $request->get('shop_id')]);
 
+        switch (auth()->user()->country) {
+
+            case 'Korea' :
+                {
+                    $message = '리뷰 작성이 완료되었습니다.';
+                    break;
+                }
+
+            case 'China' :
+                {
+                    $message = '完成评价工作已完成';
+                    break;
+                }
+
+            case 'Usa' :
+                {
+                    $message = 'Your review has been completed.';
+                    break;
+                }
+
+            default :
+                {
+                    $message = 'レビューの作成が完了されました。';
+                    break;
+                }
+
+        } // <-- switch end
+
         return response()->json([
-            'content' => '리뷰 작성이 완료되었습니다.',
+            'content' => $message,
             'link'    => $link,
         ]);
 

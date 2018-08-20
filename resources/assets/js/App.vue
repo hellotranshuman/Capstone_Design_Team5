@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-app>
+        <v-app style="background-color:#efe2bd">
             <v-navigation-drawer
                     v-model="menu"
                     fixed
@@ -77,19 +77,21 @@
                         </v-list-tile>
                         <!-- 출력될 modal창 내용-->
                         <v-card>
-                            <v-toolbar dark id="communication-toolbar">
-                                <v-toolbar-title>Communication</v-toolbar-title>
+                            <v-toolbar dark dense fixed  id="communication-toolbar">
+                                <v-toolbar-title id="communication-title">Communication</v-toolbar-title>
                                 <v-spacer></v-spacer>
                                 <!-- 이 버튼을 누르면 communicationDialog의 값을 false로 만들어
                                 출력된 모달창을 사라지도록 한다는 것 -->
-                                <v-btn icon @click.native="communicationDialog = false" dark>
+                                <v-btn flat icon @click.native="communicationDialog = false" color="black">
                                     <v-icon>close</v-icon>
                                 </v-btn>
                             </v-toolbar>
-                            <v-list three-line subheader>
-                                <!-- 커뮤니케이션 버튼 기능 -->
-                                <UserCommunication></UserCommunication>
-                            </v-list>
+                            <v-content>
+                                <v-list three-line subheader>
+                                    <!-- 커뮤니케이션 버튼 기능 -->
+                                    <UserCommunication></UserCommunication>
+                                </v-list>
+                            </v-content>
                         </v-card>
                     </v-dialog>
                     <!-- 커뮤니케이션 버튼 끝 -->
@@ -146,48 +148,46 @@
             <v-toolbar
                     app
                     color='white'
-                    dense
                     scroll-off-screen
                     :scroll-threshold="0"
             ><!-- scroll-off-screen: 스크롤을 내리면 toolbar가 숨겨짐 -->
                 <!-- scroll-threshold: 스크롤 민감도 -->
-                <v-btn class="mr-0" icon @click="openMenu()">
-                    <v-icon large color="grey">menu</v-icon>
-                </v-btn>
-                <v-toolbar-title class="logo-title">
-                    <router-link to="/" style="text-decoration: none" class="orange--text logo1">SMART</router-link><router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text logo1">さしすせそ</router-link>
-                    <router-link to="/" style="text-decoration: none" class="orange--text logo2">SMART</router-link><router-link :to="{ name: 'home' }" style="text-decoration: none" class="red--text logo2">S</router-link>
-                </v-toolbar-title>
-                <v-text-field
-                        v-if="$route.path != '/'"
-                        v-model="searchDataInput"
-                        prepend-icon="search"
-                        label="식당 또는 음식"
-                        solo
-                        flat
-                        color="orange"
-                        @keypress.enter="searching()"
-                ></v-text-field>
-                <v-spacer v-if="$route.path == '/'"></v-spacer>
-                <v-btn class="mr-0" icon @click.native.stop="gps_modal = true">
-                    <v-icon large color="red">gps_fixed</v-icon>
-                </v-btn>
-                <v-btn v-if="!checkLogin()" class="mx-1" icon @click="loginForm=true">
-                    <v-icon large color="grey">account_circle</v-icon>
-                </v-btn>
-                <v-menu v-else offset-y>
-                    <v-btn class="mx-1" icon slot="activator">
-                        <v-icon large color="blue">account_circle</v-icon>
+                <v-layout align-center justify-space-between row fill-height>
+                    <v-btn class="mr-0 ml-1" icon @click="openMenu()">
+                        <img src="../../../storage/app/public/img/menu.png" style="width:35px">
                     </v-btn>
-                    <v-list>
-                        <v-list-tile @click="logout()">
-                            <v-list-tile-action>
-                                <v-icon large color="blue">directions_run</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-title>Logout</v-list-tile-title>
-                        </v-list-tile>
-                    </v-list>
-                </v-menu>
+                    <v-btn flat @click="$router.push('/')">
+                        <img src="../../../storage/app/public/img/logo.png" style="width:120px">
+                    </v-btn>
+                    <v-btn v-if="!checkLogin()" class="mx-1" icon @click="loginForm=true">
+                        <img src="../../../storage/app/public/img/user_nologin.png" style="width:40px">
+                    </v-btn>
+                    <v-menu v-else offset-y>
+                        <v-btn class="mx-1" icon slot="activator">
+                            <img src="../../../storage/app/public/img/user.png" style="width:40px">
+                        </v-btn>
+                        <v-list>
+                            <v-list-tile @click="searchForm = true">
+                                <v-list-tile-action>
+                                    <v-icon large color="orange">search</v-icon>
+                                </v-list-tile-action>
+                                <v-list-tile-title>Search</v-list-tile-title>
+                            </v-list-tile>
+                            <v-list-tile @click="gps_modal = true">
+                                <v-list-tile-action>
+                                    <v-icon large color="red">gps_fixed</v-icon>
+                                </v-list-tile-action>
+                                <v-list-tile-title>GPS</v-list-tile-title>
+                            </v-list-tile>
+                            <v-list-tile @click="logout()">
+                                <v-list-tile-action>
+                                    <v-icon large color="blue">directions_run</v-icon>
+                                </v-list-tile-action>
+                                <v-list-tile-title>Logout</v-list-tile-title>
+                            </v-list-tile>
+                        </v-list>
+                    </v-menu>
+                </v-layout>
             </v-toolbar>
             <!-- 컴포넌트 출력 -->
             <v-content v-scroll="onScroll" column align-center justify-center>
@@ -225,8 +225,8 @@
             </v-card>
         </v-dialog>
         <v-dialog
-                v-model='loginForm'
-                max-width='300px'
+            v-model='loginForm'
+            max-width='300px'
         >
             <v-card>
                 <v-card-text>
@@ -254,6 +254,29 @@
                     <router-link to="register" style="text-decoration: none">
                         <v-btn color="blue" block large outline @click="loginForm = false">회원가입</v-btn>
                     </router-link>
+                </v-card-actions>
+                <br>
+            </v-card>
+        </v-dialog>
+        <v-dialog
+            v-model='searchForm'
+            max-width='500px'
+        >
+            <v-card>
+                <v-card-title>
+                    <Strong class="headline">Search</Strong>
+                </v-card-title>
+                <v-card-actions>
+                    <v-layout column fill-height>
+                    <v-text-field
+                            v-model="searchDataInput"
+                            color="orange"
+                            solo
+                            :label=labelSearch
+                            @keypress.enter="searching()"
+                    ></v-text-field>
+                    <v-btn color="orange" block large outline @click="searching()">검색</v-btn>
+                    </v-layout>
                 </v-card-actions>
                 <br>
             </v-card>
@@ -298,6 +321,7 @@
             return {
                 menu: false,        // navigation-drawer(왼쪽 메뉴바)
                 loginForm: false,   // login dialog
+                searchForm: false,  // search dialog
                 gps_modal: false,   // gps dialog
                 gps_search: false,  // gps search dialog
                 idValue: '',        // login form user id
@@ -313,16 +337,25 @@
                 timeout:    3000,   // snackbar 표시 시간
 
                 searchAddressInput: "", // 사용자가 입력한 address value
-
                 searchDataInput: "",    // 사용자가 입력한 search value
 
                 offsetTop: 0,
                 scrollTopButton: false,
+
+                labelSearch: '',
             }
         },
 
         created: function() {
-
+            if(this.$session.get('user_country') == "Korea") {
+                this.labelSearch = '식당 또는 음식';
+            } else if(this.$session.get('user_country') == "USA") {
+                this.labelSearch = 'Restaurant or food';
+            } else if(this.$session.get('user_country') == "China") {
+                this.labelSearch = '';
+            } else {
+                this.labelSearch = '食堂あるいは食べ物';
+            }
         },
 
         methods: {
@@ -359,6 +392,7 @@
                         this.$session.set('loginStatus', true);                     // 로그인 상태 true
                         this.$session.set('user_id', response.data.user_id);        // user_id set
                         this.$session.set('user_name', response.data.user_name);    // user_name set
+                        this.$session.set('user_country', response.data.country);    // user_country set
 
                         if(this.$session.get('restaurant_id')) { // 사장이라면 가게페이지, 손님이라면 메인페이지로 이동
                             if(!(this.$session.get('restaurant_id') == 'needCreate')) { // 가게를 만들지 않은 사장인지 체크
@@ -378,19 +412,7 @@
 
             logout() {
                 this.$session.clear();
-
-                var url = "/logout";
-
-                axios.get(url).then(response => {
-                    if(response.data.flag)
-                        location.replace('/');
-                    else
-                        console.log("error!");
-                }).catch(error => {
-                    this.snackbar = true;
-                    this.snackText = error;
-                });
-
+                location.replace('/');
             },
 
             checkLogin() {
@@ -457,12 +479,14 @@
                     .then(response => {
                         this.$session.set('searchKeyword', this.searchDataInput);
                         this.$session.set('searchData', response.data);
-                        console.log(response.data.shopSearchData);
+                        this.searchDataInput = "";
 
                         if(this.$route.path != '/search')
                             this.$router.push('/search');
                         else
                             this.$router.go(this.$router.currentRoute);
+
+                        this.searchForm = false;
                     })
                     .catch(error => {
                         alert(error);
@@ -485,37 +509,11 @@
     }
 </script>
 <style>
-    @media screen and (max-width: 500px) {
-        .logo1 {
-            font-size: 0pt;
-        }
-
-        .logo2 {
-            font-size: 14pt;
-        }
-
-        .logo-title {
-            margin-left: 0px;
-            letter-spacing: 0px;
-        }
-    }
-
-    @media screen and (min-width: 500px) {
-
-        .logo2 {
-            font-size: 0pt;
-        }
-    }
-
-    .searchBar {
-        width: 100%;
-        font-size: 20px;
-        text-align: center;
-    }
-
     #communication-toolbar {
-        background-color : #9d724b;
+        background-color : #ffffff;
     }
 
-
+    #communication-title {
+        color: #ff9800;
+    }
 </style>

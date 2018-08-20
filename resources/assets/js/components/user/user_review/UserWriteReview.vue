@@ -12,7 +12,7 @@
 -->
 
 <template>
-    <v-content>
+    <v-content class="ma-0 pt-2">
         <!-- 경고창 -->
         <v-snackbar
         :timeout="snackbarTimeout"
@@ -33,26 +33,26 @@
                 <v-toolbar dark id="review-write-topBar">
                     <v-layout justify-space-between align-center>
                         <v-flex xs10 sm10>
-                            <v-toolbar-title class="review-write-font">
-                                리뷰 작성
+                            <v-toolbar-title class="ma-0 pt-0 title review-write-font">
+                                {{this.reviewTitle}}
                             </v-toolbar-title>
                         </v-flex>
                         <v-spacer></v-spacer>
                     </v-layout>
                     <!-- 상단바 버튼 -->
                     <v-toolbar-items>
-                        <v-btn flat to="review">
-                            취소
+                        <v-btn small flat to="review" class="subheading">
+                            {{this.reviewTitleCancel}}
                         </v-btn>
                         <!-- 활성 등록 버튼 -->
-                            <v-btn flat @click= "sendReviewData" class="review-write-font" 
+                            <v-btn small flat @click= "sendReviewData" class="subheading review-write-font" 
                             v-if="this.nowLoading" @click.native="snackbarCheck = alertCheck">
-                                등록
+                                {{this.reviewTitleSubmit}}
                             </v-btn>
                             <!-- 비활성 등록 버튼 -->
-                            <v-btn flat @click= "sendReviewData" class="review-write-font" disabled
+                            <v-btn flat @click= "sendReviewData" class="subheading review-write-font" disabled
                             v-if="!(this.nowLoading)" @click.native="snackbarCheck = alertCheck">
-                                등록
+                                {{this.reviewTitleSubmit}}
                             </v-btn>
                     </v-toolbar-items>
                 </v-toolbar>
@@ -60,61 +60,91 @@
         </v-layout>
         <!-- 별점 시작 -->
         <v-layout>
-            <v-flex>
+            <v-flex class="headline">
                 <v-card flat>
-                    <v-card-title class="review-write-font">총점</v-card-title>
-                    <v-card-text>
+                    <v-card-title class="review-write-font ma-0 pb-1">{{this.totalRateWrite}}</v-card-title>
+                    <v-card-text class="ma-0 pt-0">
                         <UserReviewStarRating></UserReviewStarRating>
                     </v-card-text>
                 </v-card>
             </v-flex>
         </v-layout>
         <!-- 별점 상세평가 -->
-        <v-layout>
-            <v-flex>
+        <v-layout class="font-weight-black">
+            <v-flex class="title">
                 <v-card flat>
-                    <v-card-title class="review-write-font">상세평가</v-card-title>
-                    <v-card-text>
-                        맛 <UserReviewStarRating></UserReviewStarRating>
+                    <v-card-title class="review-write-font ma-0 pb-1">
+                        {{this.reviewRateString}}
+                    </v-card-title>
+                    <v-card-text class="ma-0 py-2">
+                        <v-layout align-center>
+                            <v-flex xs4 class="review-rate-font title">
+                                {{this.tasteRateWrite}}
+                            </v-flex>
+                            <v-flex>
+                                <UserReviewStarRating :starSize="30"></UserReviewStarRating>
+                            </v-flex>
+                        </v-layout>
                     </v-card-text>
                 </v-card>
             </v-flex>
         </v-layout>
         <v-layout>
-            <v-flex>
+            <v-flex class="title">
                 <v-card flat>
-                    <v-card-text>
-                        서비스 <UserReviewStarRating></UserReviewStarRating>
+                    <v-card-text class="ma-0 py-2">
+                        <v-layout align-center> 
+                            <v-flex xs4 class="review-rate-font title">
+                                {{this.serviceRateWrite}}
+                            </v-flex>
+                            <v-flex>
+                                <UserReviewStarRating :starSize="30"></UserReviewStarRating>
+                            </v-flex>
+                        </v-layout>
                     </v-card-text>
                 </v-card>
             </v-flex>
         </v-layout>
         <v-layout>
-            <v-flex>
+            <v-flex class="title">
                 <v-card flat>
-                    <v-card-text>
-                        분위기 <UserReviewStarRating></UserReviewStarRating>
+                    <v-card-text class="ma-0 py-2">
+                        <v-layout align-center>
+                            <v-flex xs4 class="review-rate-font title">
+                                {{this.moodRateWrite}}
+                            </v-flex>
+                            <v-flex>
+                                <UserReviewStarRating :starSize="30"></UserReviewStarRating>
+                            </v-flex>
+                        </v-layout>
                     </v-card-text>
                 </v-card>
             </v-flex>
         </v-layout>
         <v-layout>
-            <v-flex>
+            <v-flex class="title">
                 <v-card flat>
-                    <v-card-text>
-                        가격 <UserReviewStarRating></UserReviewStarRating>
+                    <v-card-text class="ma-0 py-2">
+                        <v-layout align-center>
+                            <v-flex xs4 class="review-rate-font title">
+                                {{this.priceRateWrite}}
+                            </v-flex>
+                            <v-flex>
+                                <UserReviewStarRating :starSize="30"></UserReviewStarRating>
+                            </v-flex>
+                        </v-layout>
                     </v-card-text>
                 </v-card>
             </v-flex>
         </v-layout>
         <!-- 리뷰 텍스트 -->
         <v-card flat>
-            <v-card-text>
+            <v-card-text class="ma-0 py-1">
                 <v-layout>
                     <v-flex>
                         <v-text-field multi-line rows="6" row-height="6" 
                         v-model= "reviewContents" color="black" 
-                        label="리뷰 입력">
+                        :label="this.reviewTitle">
                         </v-text-field>
                     </v-flex>
                 </v-layout>
@@ -122,10 +152,10 @@
         </v-card>
         <!-- 태그 -->
         <v-card flat>
-            <v-card-text>
+            <v-card-text class="ma-0 py-1">
                 <v-layout>
                     <v-flex>
-                        <InputTag @change="change"
+                        <InputTag
                         v-bind:placeholder  = 'tagPlaceholder' 
                         v-bind:limit        = 'tagLimit' 
                         v-bind:tags.sync    = 'tagsArray'>
@@ -190,13 +220,13 @@ export default {
         return {
             reviewContents      : '',                           // 리뷰 텍스트 값
             tagsArray           : ['#Smartさしすせそ'],         // 태그값 (태그를 입력하면 입력된 값이 배열에 저장됨)
-            tagPlaceholder      : "#Tag",                       // 태그 입력 알림(무엇을 입력해야 하는지 알려주는 역할)
+            tagPlaceholder      : "#tag",                       // 태그 입력 알림(무엇을 입력해야 하는지 알려주는 역할)
             tagLimit            : 10,                           // 태그 제한 개수,
             shop_id             :  this.$route.params.shop_id,  // 가게 아이디
             nowLoading          : true,                         // 리뷰 작성 버튼 클릭 여부를 확인하는 변수
-            setPictureString    : {upload: '사진 업로드', drag: '사진 등록', tap: '사진 등록', change: '사진 변경', 
-                                remove:'사진 제거', select:'사진 선택', selected:'사진 선택 완료', 
-                                fileSize :'파일 사이즈가 큽니다.', fileType :'지원하지 않는 파일입니다.', aspect:'food'},    
+            setPictureString    : {upload: '写真アップロード', drag: '写真登録', tap: '写真登録', change: '写真変更', 
+                                remove:'写真削除', select:'写真選択', selected:'選択完了', 
+                                fileSize :'ファイルが大きすぎます。', fileType :'支援しないファイルです。', aspect:'food'},    
                                 
             alertCheck          : false,                        // 경고창을 띄울지 여부를 나타내는 변수
             alertErrorCode      : "",                           // 경고창에 띄울 문장이 저장되는 변수
@@ -205,6 +235,16 @@ export default {
             snackbarX           : null,                         // snackbar X축 값
             snackbarMode        : '',                           // snackbar mode 값
             snackbarTimeout     : 6000,                         //snackbar 지속시간
+
+            reviewTitle : 'レビュー',
+            reviewTitleCancel : 'キャンセル',
+            reviewTitleSubmit : '確認',
+            reviewRateString  : '点数記入',
+            totalRateWrite      : '総点',
+            tasteRateWrite      : '味',
+            serviceRateWrite    : 'サービス',
+            moodRateWrite       : '雰囲気',
+            priceRateWrite      : '値段',
         }
     },
 
@@ -346,8 +386,59 @@ export default {
                 // 출력할 경고 문장을 대입합니다.
                 this.alertErrorCode = "총점을 입력해 주세요.";
             }
+        },
+
+        // 국적에 따라 UI의 언어를 바꾸는 함수
+        languageChange() {
+            console.log(this.setPictureString);
+
+            if(this.$session.get('user_country') == 'Korea'){
+                this.reviewTitle = '리뷰';
+                this.reviewTitleCancel = '취소';
+                this.reviewTitleSubmit = '등록';
+                this.reviewRateString = '상세점수';
+                this.totalRateWrite = '총점';
+                this.tasteRateWrite = '맛';
+                this.serviceRateWrite = '서비스';
+                this.moodRateWrite = '분위기';
+                this.priceRateWrite = '가격';
+                this.setPictureString = {upload: '사진 업로드', drag: '사진 등록', tap: '사진 등록', change: '사진 변경', 
+                                remove:'사진 삭제', select:'사진 선택', selected:'선택 완료', 
+                                fileSize :'파일 사이즈가 큽니다.', fileType :'지원하지 않는 파일입니다.', aspect:'food'};
+            } else if(this.$session.get('user_country') == 'China') {
+                this.reviewTitle = '回顾';
+                this.reviewTitleCancel = '取消';
+                this.reviewTitleSubmit = '注册';
+                this.reviewRateString = '详细分数';
+                this.totalRateWrite = '总分';
+                this.tasteRateWrite = '味';
+                this.serviceRateWrite = '服务';
+                this.moodRateWrite = '气氛';
+                this.priceRateWrite = '价格';
+                this.setPictureString = {upload: '上传照片', drag: '照片注册', tap: '照片注册', change: '换照片', 
+                                remove:'删除照片', select:'选择照片', selected:'选', 
+                                fileSize :'文件很大。', fileType :'不支持此文件。', aspect:'food'};
+            } else if(this.$session.get('user_country') == 'USA') {
+                this.reviewTitle = 'review';
+                this.reviewTitleCancel = 'cancel';
+                this.reviewTitleSubmit = 'submit';
+                this.reviewRateString = 'Detailed score';
+                this.totalRateWrite = 'Total score';
+                this.tasteRateWrite = 'flavor';
+                this.serviceRateWrite = 'service';
+                this.moodRateWrite = 'atmosphere';
+                this.priceRateWrite = 'price';
+                this.setPictureString = {upload: 'Upload photos', drag: 'Photo registration', tap: 'Photo registration', 
+                                change: '사진 변경', remove:'Delete photo', select:'Select photo', selected:'Selected', 
+                                fileSize :'The file size is large.', fileType :'This file is not supported.', aspect:'food'};
+            }
         }
+
     },
+
+    created() {
+        this.languageChange();
+    }
 }
 </script>
 <style>
@@ -366,6 +457,10 @@ export default {
 
     .review-write-font {
         font-weight: bold;
+    }
+
+    .review-rate-font {
+        font-weight: 400;
     }
 
     #review-write-topBar {

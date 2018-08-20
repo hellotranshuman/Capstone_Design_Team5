@@ -2,9 +2,16 @@
 <div class="container" style="width:100%;">
 <v-app>
 <!-- 스낵바 : 경고 창 출력 -->
-<v-snackbar :timeout="timeout" :top="'top'" v-model="snackbar">
+<v-snackbar 
+    v-model="snackbar"
+    :timeout="timeout" 
+    :top="'top'" 
+>
     {{ snackbar_text }}
-    <v-btn flat color="pink" icon @click.native="snackbar = false">
+    <v-btn 
+        @click.native="snackbar = false"
+        color="pink" icon flat 
+    >
         <v-icon large> close </v-icon>
     </v-btn>
 </v-snackbar>    
@@ -13,13 +20,14 @@
     <!-- 카테고리 영역 -->
     <div style="width:100%"> 
         <div style="max-width:100%; margin:auto">
-            <v-bottom-nav :value="true" :active.sync="e2">
+            <v-bottom-nav :value="true" :active.sync="e2" style="background-color:#d2b07d;">
                 <v-btn 
-                    style="color:black; font-weight:bold"
+                    style="color:black; font-weight:bold; font-size:1.2rem;"
                     v-for="(value,key) in categorys" 
                     :key="key" 
                     :value="value" 
-                    @click="click_category">
+                    @click="click_category"
+                >
                     {{value}}
                 </v-btn>
             </v-bottom-nav>
@@ -30,7 +38,13 @@
     <v-layout id="prtArea">
         <v-flex xs12> 
             <!-- 메뉴 영역 --> 
-            <v-card v-for="n in range(0, menu_num-1)" :key="n" class="menuBody" :id="n+1">                
+            <v-card 
+                v-for="n in range(0, menu_num-1)" 
+                :key="n" 
+                :id="n+1"
+                class="menuBody" 
+                style="background-color:#efe2bd;"
+            >                
                 <!-- 메뉴 이미지 -->
                 <div class="menuOuter">
                     <!-- <img src="./ny2.png" class="menuImg"> -->
@@ -42,19 +56,19 @@
                     <div class="Inner">
                         <!-- 메뉴 명 -->
                         <div class="menuContent">
-                            <b style="color: cadetblue;"> 메뉴 명 </b>  
+                            <b style="color: #6d4d35;"> 메뉴 명 </b>  
                             <h3 class="h3_style"> {{get_menus[n].name}}</h3>
                         </div>              
 
                         <!-- 메뉴 점심 메뉴 / 저녁 메뉴 구분 -->
                         <div class="menuContent">
-                            <b style="color: cadetblue;"> 런치 / 디너 </b>
+                            <b style="color: #6d4d35;"> 런치 / 디너 </b>
                             <h3 class="h3_style"> {{get_menus[n].remark}} </h3>
                         </div> 
                                         
                         <!-- 메뉴 가격 -->
                         <div class="menuContent">
-                            <b style="color: cadetblue;"> 가격 </b> 
+                            <b style="color: #6d4d35;"> 가격 </b> 
                             <h3 class="h3_style"> {{get_menus[n].price}} </h3>
                         </div> 
                     </div>                
@@ -65,30 +79,61 @@
                     <div class="Inner">                 
                         <div class="menuBtn">                            
                             <!-- 메뉴 옵션 출력 -->
-                            <button class="mBtns" :value="n+1" @click="showOptions" 
-                                @click.stop="OptionDialog=true" style="background-color:#E1F5A9;">
+                            <button 
+                                @click="showOptions" 
+                                @click.stop="OptionDialog=true" 
+                                :value="n+1" 
+                                style="background-color:#d2b07d;"
+                                class="mBtns" 
+                            >
                                 옵션 보기
                             </button>
-                            <v-dialog v-model="OptionDialog" width="50%" scrollable="">
+
+                            <v-dialog 
+                                v-model="OptionDialog" 
+                                width="50%" 
+                                scrollable=""
+                            >
                                 <v-card @click.native="OptionDialog = false">
                                     <!-- 타이틀, x 버튼 -->
-                                    <v-card-title>
+                                    <v-card-title style="background-color:#d2b07d;">
                                         <h1 style="margin: auto"> Options </h1>
-                                        <v-btn icon style="float:right" @click="OptionDialog=false">
+                                        <v-btn 
+                                            @click="OptionDialog=false"
+                                            style="float:right" icon 
+                                        >
                                             <v-icon large> clear </v-icon>
                                         </v-btn>
                                     </v-card-title>
 
                                     <!-- 옵션 출력 영역 --> 
-                                    <div id="prtOptions" style="padding-bottom:10%;" v-if="OptionDialog==true">                                       
-                                        <div v-if="clickedMenu === null" style="margin-top:5%; text-align:center">    
+                                    <div 
+                                        v-if="OptionDialog==true"
+                                        id="prtOptions" 
+                                        style="padding-bottom:10%;" 
+                                    >                                       
+                                        <div 
+                                            v-if="clickedMenu === null" 
+                                            style="margin-top:5%; text-align:center"
+                                        >    
                                             <h1> 등록된 옵션이 없습니다. </h1>   
                                         </div>  
-                                        <div v-else v-for="i in range(1, clickedMenu.num)" :key="i" style="margin-top:4%;">
+
+                                        <div 
+                                            v-else 
+                                            v-for="i in range(1, clickedMenu.num)" 
+                                            :key="i" 
+                                            style="margin-top:4%;"
+                                        >
                                             <b class="opName">
                                                 {{clickedMenu[i]['name']}}
                                             </b><br> 
-                                            <div class="opSelect" v-for="j in range(1, clickedMenu[i].length-1)" :key="j">
+
+                                            <div 
+                                                v-for="j in range(1, clickedMenu[i].length-1)" 
+                                                :key="j"
+                                                class="opSelect" 
+                                            >
                                                 {{clickedMenu[i][j]}}
                                             </div>
                                         </div>           
@@ -97,37 +142,70 @@
                             </v-dialog> 
 
                             <!-- 메뉴 수정하기. -->
-                            <button class="mBtns" :value="n+1" @click="modifyMenu" style="background-color:#A9D0F5;">
+                            <button 
+                                @click="modifyMenu" 
+                                :value="n+1" 
+                                class="mBtns" 
+                                style="background-color:#9d724b;"
+                            >
                                 수정
                             </button>                        
                             
                             <!-- 메뉴 삭제하기. -->
-                            <button class="mBtns" :value="n+1" style="background-color:#F5A9A9;"
-                                @click.stop="DeleteDialog = true; clickedMenu = n+1">
+                            <button 
+                                @click.stop="DeleteDialog = true; clickedMenu = n+1"
+                                :value="n+1" 
+                                class="mBtns" 
+                                style="background-color:#d2b07d;"
+                            >
                                 삭제
                             </button>
-                            <v-dialog v-model="DeleteDialog" width="30%" persistent>
-                                <v-card style="padding:3%;">                                    
-                                    <div style="width:100%; text-align:center; margin-bottom:3%;">
-                                        <b style="font-size:1.5rem;"> 메뉴를 삭제하시겠습니까? </b> 
+
+                            <v-dialog 
+                                v-model="DeleteDialog" 
+                                width="30%" 
+                                persistent
+                            >
+                                <v-card style="background-color:#f6e2a1; padding:3%;">                                    
+                                    <div 
+                                        style= "width:100%; 
+                                                text-align:center; 
+                                                margin-bottom:3%;"
+                                    >
+                                        <b style="font-size:1.5rem;"> 
+                                            메뉴를 삭제하시겠습니까? 
+                                        </b> 
                                     </div> 
-                                    <div style="width:100%;">
-                                        <v-btn color="primary" @click="deleteMenu" style="width:45%"  
-                                            large @click.stop="DeleteDialog = false">
-                                            확인
-                                        </v-btn>
-                                        <v-btn color="error" style="width:45%" large 
-                                            @click.stop="DeleteDialog = false">
-                                            취소
-                                        </v-btn>  
-                                    </div>                                                                     
+
+                                    <v-layout>
+                                        <v-flex xs6>
+                                            <v-btn 
+                                                @click="deleteMenu" 
+                                                @click.stop="DeleteDialog = false"
+                                                style="font-weight:bold; background-color:#9d724b;"   
+                                                block 
+                                            >
+                                                확인
+                                            </v-btn>
+                                        </v-flex>
+
+                                        <v-flex xs6>
+                                            <v-btn 
+                                                @click.stop="DeleteDialog = false"
+                                                style="font-weight:bold; background-color:#d2b07d;"
+                                                block 
+                                            >
+                                                취소
+                                            </v-btn>  
+                                        </v-flex>
+                                    </v-layout>                                                                     
                                 </v-card>
                             </v-dialog>
                         </div>
 
                         <!-- 메뉴 설명 -->
                         <div class="menuExpl">
-                            <b style="color: cadetblue;"> 메뉴 설명 </b> 
+                            <b style="color: #6d4d35;"> 메뉴 설명 </b> 
                             <h3 class="h3_style"> {{get_menus[n].explanation}} </h3>                    
                         </div>                        
                     </div>
@@ -140,24 +218,35 @@
 <!-- 메뉴 수정하기. -->
 <div style="width:100%">
     <v-card v-if="editMenu !== null">
-        <!-- 타이틀 -->
-        <v-card-title style="background-color:#E6E6E6">
-            <h1 style="float:left"> 메뉴 수정하기 </h1>
+        <!-- 타이틀 --> 
+        <v-layout>     
+            <v-flex xs4>
+                <h1 style="float:left"> 메뉴 수정하기 </h1>
+            </v-flex>       
             <v-spacer></v-spacer>
-
-            <v-btn color="primary" style="float:right" large @click="modifySave"  >수정</v-btn>
-            <v-btn color="error"   style="float:right" large @click="modifyCancel">취소</v-btn>
-        </v-card-title>   
+  
+            <v-flex xs2>
+                <v-btn block style="background-color: #9d724b; font-weight:bold;" @click="modifySave"  >수정</v-btn> 
+            </v-flex>        
+            <v-flex xs2 ml-3 mr-3> 
+                <v-btn block style="background-color: #d2b07d; font-weight:bold;" @click="modifyCancel">취소</v-btn>
+            </v-flex>        
+        </v-layout>
 
         <!-- 메뉴 수정 영역 -->
         <v-layout style="margin-top:1%;">
             <!-- 이미지 영역 -->
             <v-flex xs4 ml-4 mr-4 elevation-5>
                 <v-card>
-                    <h2 class="card_title"> 메뉴 이미지 </h2>
+                    <div class="card_title"> 메뉴 이미지 </div>
                     
-                    <input type="file" id="img_upload_btn" class="ipt_btn"
-                        accept=".png, .jpg, .jpeg" @change="menuImgEdit">    
+                    <input 
+                        type="file" 
+                        id="img_upload_btn" 
+                        class="ipt_btn"
+                        accept=".png, .jpg, .jpeg" 
+                        @change="menuImgEdit"
+                    >    
                     <label for="img_upload_btn" class="label_style">
                         <b>이미지 추가</b>
                     </label>
@@ -172,11 +261,11 @@
             <!-- 정보 영역 -->
             <v-flex xs4 mr-4 elevation-5>
                 <v-card id="menu">
-                    <div class="editInfo">
-                        <h2 class="card_title"> 메뉴 정보 </h2> 
+                    <div class="card_title">
+                        메뉴 정보
                     </div>
 
-                    <div class="editInfo">
+                    <div class="editInfo" style="margin-top:2%;">
                         <div class="editColumn">메뉴 명</div> 
                         <input type="text" id="ed_name" class="editInput" :value="editMenu.name">
                     </div>
@@ -187,32 +276,56 @@
                     </div>
 
                     <div class="editInfo">
-                        <div class="editColumn">카테고리</div> 
-                        <select class="editInput" id="ed_category">
-                            <option v-for="j in range(0, states.length-1)" :key="j">
+                        <div class="editColumn">
+                            카테고리 (선택)
+                        </div> 
+                        <select id="ed_category" class="editInput">
+                            <option 
+                                v-for="j in range(0, states.length-1)" 
+                                :key="j"
+                            >
                                 <h2 v-if="editMenu.category == states[j].name" selected>
                                     {{states[j].name}}
                                 </h2>
-                                <h2 v-else>{{states[j].name}}</h2>
+
+                                <h2 v-else>
+                                    {{states[j].name}}
+                                </h2>
                             </option>
                         </select>
                     </div>
 
                     <div class="editInfo">
-                        <div class="editColumn">런치 / 디너 구분</div> 
-                        <select class="editInput" id="ed_remark">
-                            <option v-for="j in range(0, remarkList.length-1)" :key="j">
+                        <div class="editColumn">
+                            런치 / 디너 구분 (선택)
+                        </div> 
+
+                        <select id="ed_remark" class="editInput">
+                            <option 
+                                v-for="j in range(0, remarkList.length-1)" 
+                                :key="j"
+                            >
                                 <h2 v-if="editMenu.remark == remarkList[j].text" selected>
                                     {{remarkList[j].text}}
                                 </h2>
-                                <h2 v-else>{{remarkList[j].text}}</h2>                                                            
+
+                                <h2 v-else>
+                                    {{remarkList[j].text}}
+                                </h2>                                                            
                             </option>
                         </select>
                     </div>
 
                     <div class="editInfo">
-                        <div class="editColumn">메뉴 설명</div> 
-                        <textarea class="editInput" id="ed_expl" style="height:200px;" :value="editMenu.explanation">
+                        <div class="editColumn">
+                            메뉴 설명
+                        </div> 
+                        <textarea 
+                            id="ed_expl" 
+                            class="editInput" 
+                            style="height:200px; padding:1%;" 
+                            :value="editMenu.explanation"
+                        >
                         </textarea>
                     </div> 
                 </v-card>
@@ -221,9 +334,24 @@
             <!-- 옵션 영역 -->
             <v-flex xs4 mr-4 elevation-5>
                 <div style="color:black;">
-                    <h2 class="card_title"> 옵션 설정 </h2> 
-                    <label for="create_option" id="create_option_label" class="label_style"> 옵션 생성 </label>
-                    <input type="button" id="create_option" @click="createOption" class="ipt_btn">                    
+                    <h2 class="card_title"> 
+                        옵션 설정 
+                    </h2> 
+                    
+                    <label 
+                        for="create_option" 
+                        id="create_option_label"
+                        class="label_style"
+                    > 
+                        옵션 생성 
+                    </label>
+                    
+                    <input 
+                        type="button" 
+                        id="create_option" 
+                        @click="createOption" 
+                        class="ipt_btn"
+                    >                    
                     <div id="editOptions"></div>
                 </div>
             </v-flex>
@@ -255,10 +383,7 @@ export default {
             this.categorys = this.unique(get_categorys); // 카테고리 중복 값 제거.
             this.click_category(this.categorys[0]);
         })
-        .catch((ex)=>{
-           this.snackbar_text = '레이아웃 로드 실패';
-           this.snackbar      = true; 
-        });  
+        .catch((ex)=>{ });     
     },
  
     data() {
@@ -321,15 +446,15 @@ export default {
         click_category : function(argMenu) { 
             let url = "";                           // 서버에 요청할 주소 
             
+
             // 클릭으로 호출
             if(argMenu === event){
-                this.clickedCategory = event.target;
-
+                this.clickedCategory = event.target; 
                 // 클릭한 값 검사
                 if(this.clickedCategory.value === undefined)  
                     this.clickedCategory = this.clickedCategory.parentNode.value;
                 else  
-                    this.clickedCategory = this.clickedCategory.value;                
+                    this.clickedCategory = this.clickedCategory.value;                        
             }
             // 최초 호출 
             else {
@@ -339,15 +464,13 @@ export default {
             url = '/menu/getMenu/' + this.shop_id + '/' + this.clickedCategory;
  
             // 클릭한 카테고리의 메뉴 호출
-            axios.get(url)
+            axios.post(url)
             .then( (response) => {
                 this.get_menus = response.data.menu; 
                 this.menu_num  = this.get_menus.length;                  
             })
             .catch((ex)=>{
-                this.snackbar_text = '메뉴 로드 실패';
-                this.snackbar      = true; 
-            });                       
+            }); 
         },  
 
         // 옵션 보기 
@@ -456,9 +579,9 @@ export default {
                     }
                 }                                 
                 // 콘솔창에 띄우기
-                for(var pair of formData.entries()) {
-                    console.log(pair[0]+ ', '+ pair[1]); 
-                }
+                // for(var pair of formData.entries()) {
+                //     console.log(pair[0]+ ', '+ pair[1]); 
+                // }
 
                 /* 선주야 이거 해줘 */   
                 axios.post('/updateMenu',formData)
@@ -468,9 +591,7 @@ export default {
                     this.modifyCancel();
                     return null;
                 })
-                .catch((ex)=>{
-                    console.log('failed',ex);
-                });                
+                .catch((ex)=>{});                
             }
             // 메뉴 정보가 모두 입력되지 않은 경우 경고 메세지 출력
             else { 
@@ -515,14 +636,14 @@ export default {
                     switch(a){
                         case 0:
                             created_btns[a].value   = '삭제';                  
-                            created_btns[a].style.color = 'cadetblue';
+                            created_btns[a].style.color = '#9d724b';
                             created_btns[a].onclick = this.delete_option; break;
                         case 1:
                             created_btns[a].value   = '옵션 값 생성';
                             created_btns[a].onclick = this.add_opionValue; break;
                         case 2: 
                             created_btns[a].value   = '수정';                            
-                            created_btns[a].style.color = 'cadetblue';
+                            created_btns[a].style.color = '#9d724b';
                             created_btns[a].onclick = this.rename_option; break;
                     }                    
                     created_option.appendChild(created_btns[a]);
@@ -552,7 +673,7 @@ export default {
                                 Value_btns[b].onclick = this.delete_optionValue; break;
                             case 1:
                                 Value_btns[b].value   = '수정';                  
-                                Value_btns[b].style.color = 'cadetblue';
+                                Value_btns[b].style.color = '#9d724b';
                                 Value_btns[b].onclick = this.rename_option; break; 
                         }                        
                         optionValue.appendChild(Value_btns[b]);
@@ -723,17 +844,9 @@ export default {
                     this.snackbar_text = '삭제 되었습니다.';
                     this.snackbar      = true;                 
                     return null; 
-                } else {                 
-                    this.snackbar_text = '삭제 실패.';
-                    this.snackbar      = true;                 
-                    return null;    
-                }                
+                }             
             })
-            .catch((ex)=>{
-                this.snackbar_text = '서버 연결 실패';
-                this.snackbar      = true;                 
-                return null; 
-            });       
+            .catch((ex)=>{ });       
         } 
     }
 }
@@ -757,15 +870,22 @@ export default {
 #prtOptions {    
     width: 100%;
     height: 95%;
-    border-top: 2px solid #6E6E6E; 
+    border-top: 2px solid #46362c; 
     color : black;
     background-color: white;  
     overflow: auto;
 }
+/* 설명 스크롤바 없애기 */
+#prtOptions::-webkit-scrollbar {
+    width: 0px;                    
+    background: transparent;      
+}
+
+
 /* 옵션 이름 */
 .opName{
     font-size: 1.8rem;
-    color: cadetblue;
+    color: #6d4d35;
     margin-left: 7%;
 }
 /* 옵션 select */
@@ -850,8 +970,13 @@ export default {
 }
   
 .card_title{
-    margin-bottom: 3%;
+    margin-top: 3%;
+    margin-bottom: 1%;
     margin-left: 2%;
+    widows: 100%;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #46362c;
     text-align: left; 
     position: relative;
 }
@@ -866,7 +991,7 @@ export default {
 .label_style{
     font-size: 1.5rem;
     margin-right: 3%; 
-    color: cadetblue; 
+    color: #6d4d35; 
     font-weight: bold;
     float:right;
     user-select:none;               /* 드래그 방지 */
@@ -877,11 +1002,11 @@ export default {
 } 
 /* 마우스 클릭하고있을때 */
 .label_style:active{
-    color: darkseagreen;
+    color:  #9d724b;
 }
 /* 마우스 한번클릭후 */
 .label_style:visited{
-    color: cadetblue;
+    color:  #6d4d35;
 } 
 /* 메뉴 이미지 비율 고정용 */
 .img_div {
@@ -902,15 +1027,17 @@ export default {
 }
 .editColumn {
     font-size: 1.4rem;
-    margin-bottom: 3%;  
+    margin-left: 3%;
+    margin-bottom: 3%;
+    color:#6d4d35;  
     font-weight: bold;
 }
 .editInput {
-    width: 90%;
+    width: 85%;
     height: 10%;    
     font-size: 1.4rem;
     margin-left: 5%; 
-    border-bottom: 2px solid #BDBDBD;
+    border-bottom: 2px solid #6d4d35;
 }
 
 /* 옵션들이 출력될 div 스타일 */
@@ -942,7 +1069,7 @@ export default {
     margin: 1%;
     float: right;
     position: relative;
-    color: rgb(135, 194, 196);  
+    color: #6d4d35;  
     font-weight: bold;
 }
 /* 옵션의 값 */
@@ -965,7 +1092,7 @@ export default {
     width: 40%; 
     margin-left: 1%; 
     font-size: 1.2rem;
-    background-color: rgb(135, 194, 196);  
+    background-color: #9d724b;  
     float: left; 
     font-weight: bold;
 }

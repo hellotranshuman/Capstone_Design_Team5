@@ -18,6 +18,7 @@ class CouponController extends Controller
     // <-- create Coupon in Coupon Table
     public function createCoupon(Request $request) {
 
+        // 메뉴 제공을 선택했을 경우
         if($request->get('add_product') == 0)
             $addProduct = NULL;
         else
@@ -73,7 +74,7 @@ class CouponController extends Controller
         ]);
     }
 
-    // 쿠폰 삭제 -> coupon id가 0이 전송되어 쿼리가 제대로 작동x
+    // <-- 사장 쿠폰 삭제
     public function deleteCoupon(Request $request) {
         $couponId = $request->get('coupon_id');
 
@@ -89,7 +90,6 @@ class CouponController extends Controller
     public function userCouponCreate(Request $request) {
 
         $currentCouponId = $request->get('id');
-
 
         // 현재 받을려는 쿠폰이 이미 존재하는 것인지 확인
         $userCouponCount = UserCoupon::where('user_num', auth()->user()->id)
@@ -144,6 +144,11 @@ class CouponController extends Controller
     public function getCouponTransData(Request $request) {
         $userCouponId = $request->get('id');
 
+        if($userCouponId == null)
+            return response()->json([
+                'msg' => false,
+            ]);
+
         // 현재 유저 쿠폰 조회
         $couponData =  UserCoupon::join('coupon', 'coupon.id', '=', 'user_coupon.coupon_id')
                         ->join('restaurants', 'restaurants.id', '=', 'coupon.shop_id')
@@ -169,6 +174,7 @@ class CouponController extends Controller
         ]);
     }
 
+    // <-- 유저가 쿠폰 사용하기
     public function setCouponUpdate(Request $request) {
         // 현재 user Coupon Id
         $userCouponId = $request->get('id');
@@ -213,6 +219,7 @@ class CouponController extends Controller
         }
     }
 
+    // <-- 유저 쿠폰 삭제
     public function deleteUserCoupon(Request $request) {
         $couponId = $request->get('id');
 

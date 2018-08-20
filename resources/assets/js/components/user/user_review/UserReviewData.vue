@@ -2,21 +2,12 @@
 
 <template>
     <transition name="fade">
-        <v-content>
+        <v-content class="pa-0 ma-0">
             <!-- 리뷰 내용 출력 -->
             <v-layout>
-                <v-spacer></v-spacer>
-                <v-flex xs4 sm2 offset-sm1>
-                    <h2>평점 : {{this.totalRating}}</h2>
+                <v-flex class="headline review-avgRate-font pl-4 pb-2">
+                    {{this.avgRateString}} {{this.totalRating}}
                 </v-flex>
-                <v-spacer></v-spacer>
-            </v-layout>
-            <v-layout>
-                <v-spacer></v-spacer>
-                <v-flex xs11 sm10>
-                    <hr>
-                </v-flex>
-                <v-spacer></v-spacer>
             </v-layout>
             <v-layout>
                 <v-spacer></v-spacer>
@@ -80,6 +71,8 @@ export default {
             reviewLikeList      : [],                           // 리뷰 좋아요 목록이 저장되는 배열
             hashTagList         : [],                           // 해시태그 목록이 저장되는 배열
             totalRating         : 0,                            // 가게별 평균 평점
+
+            avgRateString       : '平均点'
         }
     },
 
@@ -147,6 +140,24 @@ export default {
                     return reviewData['country'] == counrty;
                 };
             });
+        },
+
+        // 반올림 함수
+        round(number, precision) {
+            var numArray = 0;
+
+            if(number != null){
+                var shift = function (number, precision, reverseShift) {
+                if (reverseShift) {
+                    precision = -precision;
+                }  
+                numArray = ("" + number).split("e");
+                return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+                };
+            return shift(Math.round(shift(number, precision, false)), precision, true);
+            }
+
+            return 0;
         },
 
         // 리뷰 데이터 값과 이미지 값을 분리하는 메서드
@@ -242,7 +253,23 @@ export default {
         reviewDataTypeChange(){
             for(var iCount = 0; iCount < this.reviewDataList.length; iCount++){
                 this.reviewDataList[iCount]['img_num'] = Number(this.reviewDataList[iCount]['img_num']);
-                this.reviewDataList[iCount]['likeNum'] = Number(this.reviewDataList[iCount]['likenum']);
+
+
+
+                // console.log('전 likeNum');
+                // console.log(this.reviewDataList[iCount]['likeNum']);
+                // console.log('전 likenum');
+                // console.log(this.reviewDataList[iCount]['likenum']);
+
+
+
+                this.reviewDataList[iCount]['likeNum'] = Number(this.reviewDataList[iCount]['likeNum']);
+
+                // console.log('후 likeNum');
+                // console.log(this.reviewDataList[iCount]['likeNum']);
+                // console.log('후 likenum');
+                // console.log(this.reviewDataList[iCount]['likenum']);
+
                 this.reviewDataList[iCount]['mood']    = Number(this.reviewDataList[iCount]['mood']);
                 this.reviewDataList[iCount]['price']   = Number(this.reviewDataList[iCount]['price']);
                 this.reviewDataList[iCount]['rating']  = Number(this.reviewDataList[iCount]['rating']);
@@ -252,10 +279,24 @@ export default {
                 this.reviewDataList[iCount]['writer']  = Number(this.reviewDataList[iCount]['writer']);
             }
         },
+
+        // 국적에 따라 UI의 언어를 바꾸는 함수
+        languageChange() {
+            if(this.$session.get('user_country') == 'Korea'){
+                this.avgRateString = "평균점수";
+            } else if(this.$session.get('user_country') == 'China') {
+                this.avgRateString = "平均分数";
+            } else if(this.$session.get('user_country') == 'USA') {
+                this.avgRateString = "Average score";
+            }
+        }
+
     },
 
     // 라이프 사이클의 created 단계, DB에서 작성되어 있는 리뷰 데이터를 가지고 옵니다.
     created() {
+        this.languageChange();
+
         // Add shop_id in shopData
         var shopData = new FormData();
         shopData.append('shop_id', this.shop_id);
@@ -291,10 +332,37 @@ export default {
             // 리뷰 평점의 값을 reviewDataList배열에서 shift하여 대입합니다.
             this.totalRating = this.reviewDataList.shift(),
 
-            this.totalRating = this.totalRating["totalrating"];
-
             // 소수점 셋째자리에서 반올림 (둘째짜리까지 출력되도록)
-            this.totalRating = Number(this.totalRating.toFixed(2));
+            this.totalRating = this.round(this.totalRating['totalRating'], 2),
+
+
+
+            // console.log('totalRating value0~~~');
+            // console.log(typeof this.totalRating);
+            // console.log(this.totalRating);
+
+            // console.log('totalRating value1~~~');
+            // console.log(typeof this.totalRating["totalrating"]);
+            // console.log(this.totalRating["totalrating"]);
+
+            // this.totalRating = Number(this.totalRating);
+
+            // console.log('Number 함수 적용 totalRating value2~~~');
+            // console.log(typeof this.totalRating);
+            // console.log(this.totalRating);
+
+            // // 소수점 셋째자리에서 반올림 (둘째짜리까지 출력되도록)
+            // this.totalRating = this.totalRating.toFixed(2);
+
+            // console.log('toFixed 함수 적용 totalRating value3~~~');
+            // console.log(typeof this.totalRating);
+            // console.log(this.totalRating);
+
+
+            
+           
+
+
 
             // reviewDataList배열 값 타입 변경
             this.reviewDataTypeChange();
@@ -345,5 +413,10 @@ export default {
     a:hover { 
         color: #FF6666; 
         text-decoration: none;
+    }
+
+    .review-avgRate-font {
+        color : #6d4d35;
+        font-weight: bold;
     }
 </style>

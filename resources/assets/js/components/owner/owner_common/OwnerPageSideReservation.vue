@@ -28,7 +28,7 @@
         </v-list>
       </v-flex>
 
-      <v-flex xl10 lg10 md8 xs9 id="router-view-outer">
+      <v-flex xl10 lg10 md8 xs9 id="router-view-outer" class="pa-5">
         <v-container id="router-view-inner">
           <router-view></router-view>
         </v-container>
@@ -41,12 +41,12 @@ export default {
   data() {
     return {
       sideBarList : [
-        {name : '예약 현황', url : 'ownerReservationList'},  // 사이드바 목록
-        {name : '예약 수락', url : 'ownerReservationAccept'},
-        {name : '예약 설정', url : 'ownerReservationSetting'},
+        {name : '予約状況', url : 'ownerReservationList'},  // 사이드바 목록
+        {name : '予約受諾', url : 'ownerReservationAccept'},
+        {name : '予約設定', url : 'ownerReservationSetting'},
       ] ,
       listHeader : 'MY Restaurant',
-      listHeaderTitle  : '예약 관리'
+      listHeaderTitle  : '予約管理'
     }
   },
 }

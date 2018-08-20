@@ -3,21 +3,21 @@
         <div class="create_coupon">
 
             <br>
-            <h2 class="Main_title"><B>쿠폰 추가</B></h2>
-            <span class="sub_title"><B> 원하는 쿠폰을 제작하여 등록할 수 있습니다. </B></span>
+            <h2 class="Main_title"><B>クーポン追加</B></h2>
+            <span class="sub_title"><B> クーポンを制作して登録できます。 </B></span>
             <hr class="Main_title"><br>
 
             <v-dialog v-model="dialog" max-width="500px" >
                 <!-- 쿠폰 추가 버튼 -->
                 <v-btn slot="activator"
                        style="color:white; background-color:#ff9a55">
-                    쿠폰 추가
+                    クーポン追加
                 </v-btn>
                 <v-card class="card_color"
                         style="border: 10px solid #efe2bd; ">
                     <!-- v-card 본문 -->
                     <v-card-title>
-                        <span  class="Main_title" style="margin:auto"> &nbsp;  <h2><B> <v-icon large> restaurant_menu </v-icon> &nbsp;쿠폰 추가 </B></h2> </span>
+                        <span  class="Main_title" style="margin:auto"> &nbsp;  <h3><B> <v-icon large> restaurant_menu </v-icon> &nbsp;　クーポン追加 </B></h3> </span>
                     </v-card-title>
                     <v-card-text>
                         <v-container grid-list-md>
@@ -26,7 +26,7 @@
                                 <!-- 쿠폰 이름 -->
                                 <v-flex xs12>
                                     <v-text-field
-                                            label="쿠폰 이름"
+                                            label="クーポン名"
                                             required
                                             v-model="CouponItem.CouponName"
                                             color="orange darken-1"
@@ -36,18 +36,18 @@
                                 <!-- 쿠폰 종류 -->
                                 <v-flex xs12 sm6 md4>
                                     <v-select
-                                            label="쿠폰 종류"
+                                            label="クーポン種類"
                                             required
-                                            :items="['가격 할인', '상품 제공']"
+                                            :items="['価格割引', '商品提供']"
                                             v-model="CouponItem.CouponType"
                                             color="orange darken-1"
                                     ></v-select>
                                 </v-flex>
 
                                 <!-- 가격 할인 -->
-                                <v-flex xs12 sm6 md4 v-if="CouponItem.CouponType == '가격 할인'">
+                                <v-flex xs12 sm6 md4 v-if="CouponItem.CouponType == '価格割引'">
                                     <v-text-field
-                                            label="할인 가격"
+                                            label="割引"
                                             required
                                             v-model="CouponItem.Discount"
                                             color="orange darken-1"
@@ -55,9 +55,9 @@
                                 </v-flex>
 
                                 <!-- 상품 제공 -->
-                                <v-flex xs12 sm6 md4 v-else-if="CouponItem.CouponType == '상품 제공'">
+                                <v-flex xs12 sm6 md4 v-else-if="CouponItem.CouponType == '商品提供'">
                                     <v-select
-                                            label="상품 선택"
+                                            label="商品選択"
                                             required
                                             :items="AddProductSelect"
                                             v-model="CouponItem.add_product"
@@ -66,7 +66,7 @@
                                 </v-flex>
                                 <v-flex xs12>
                                     <v-text-field
-                                            label="쿠폰 조건"
+                                            label="クーポン条件"
                                             required
                                             v-model="CouponItem.Condition"
                                             color="orange darken-1"
@@ -88,7 +88,7 @@
                                     >
                                         <v-text-field
                                                 slot="activator"
-                                                label="pick start Date"
+                                                label="クーポン使用期間＿初め"
                                                 v-model="CouponItem.start_date"
                                                 prepend-icon="event"
                                                 readonly
@@ -103,8 +103,8 @@
                                                 color="orange darken-1"
                                         >
                                             <v-spacer></v-spacer>
-                                            <v-btn flat style="color:#ff9a55" @click="start_menu = false">Cancel</v-btn>
-                                            <v-btn flat style="color:#ff9a55" @click="$refs.start_menu.save(CouponItem.start_date)">OK</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="start_menu = false">キャンセル</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="$refs.start_menu.save(CouponItem.start_date)">確認</v-btn>
                                         </v-date-picker>
                                     </v-menu>
                                 </v-flex>
@@ -124,7 +124,7 @@
                                     >
                                         <v-text-field
                                                 slot="activator"
-                                                label="pick end Date"
+                                                label="クーポン使用期間＿終了"
                                                 v-model="CouponItem.end_date"
                                                 prepend-icon="event"
                                                 color="orange darken-1"
@@ -137,8 +137,8 @@
                                                 color="orange darken-1"
                                         >
                                             <v-spacer></v-spacer>
-                                            <v-btn flat style="color:#ff9a55" @click="end_menu = false">Cancel</v-btn>
-                                            <v-btn flat style="color:#ff9a55" @click="$refs.end_menu.save(CouponItem.end_date)">OK</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="end_menu = false">キャンセル</v-btn>
+                                            <v-btn flat style="color:#ff9a55" @click="$refs.end_menu.save(CouponItem.end_date)">確認</v-btn>
                                         </v-date-picker>
                                     </v-menu>
                                 </v-flex>
@@ -147,12 +147,12 @@
 
                             <!-- 쿠폰 갯수 (개수제한) -->
                             <v-flex>
-                                <v-checkbox :label="'쿠폰 개수 설정'"
+                                <v-checkbox :label="'発行数設定'"
                                             v-model="coupon_count"
                                             color="orange darken-1"
                                 ></v-checkbox>
                                 <div v-if="coupon_count == true">
-                                    <v-text-field label="쿠폰 발행 개수"
+                                    <v-text-field label="発行数"
                                                   required
                                                   v-model="CouponItem.count"
                                                   color="orange darken-1"
@@ -211,7 +211,7 @@
             return {
                 /* snackbar */
                 createCoupon_snackbar : false,
-                createCoupon_text : '쿠폰 이름을 입력해 주세요',
+                createCoupon_text : 'クーポンの名前を入力してください',
 
                 /* date picker */
                 start_date: null,
@@ -227,13 +227,13 @@
                 /* table */
                 dialog: false,
                 headers: [
-                    { text: '쿠폰 이름',    value: 'name' },
-                    { text: '쿠폰 종류',    value: 'category' },
+                    { text: 'クーポン名',    value: 'name' },
+                    { text: 'クーポン種類',    value: 'category' },
                     { text: ' ',           value: 'discount_product' },
-                    { text: '쿠폰 조건',    value: 'price_condition' },
-                    { text: '사용 시작일',  value: 'start_date' },
-                    { text: '사용 종료일',  value: 'expiry_date' },
-                    { text: '쿠폰 개수',    value: 'coupon_count'},
+                    { text: 'クーポン条件',    value: 'price_condition' },
+                    { text: '使用初め',  value: 'start_date' },
+                    { text: '使用終了',  value: 'expiry_date' },
+                    { text: '発行数',    value: 'coupon_count'},
                     { text: 'Actions',     value: 'name',           sortable: false }
                 ],
                 /* 저장 & 편집 & 삭제 */
@@ -267,13 +267,14 @@
                 for(var i = 0; i < CouponData.length; i++)
                 {
                     CouponArray[i] = [];
+                    CouponArray[i]['coupon_id']       = CouponData[i].id;
                     CouponArray[i]['name']       = CouponData[i].name;
                     CouponArray[i]['category']   = CouponData[i].category;
-                    if(CouponData[i].category == '가격 할인')
+                    if(CouponData[i].category == '価格割引')
                     {
                         CouponArray[i]['discount_product'] = CouponData[i].discount;
                     }
-                    else if(CouponData[i].category == '상품 제공'){
+                    else if(CouponData[i].category == '商品提供'){
                         CouponArray[i]['discount_product'] = CouponData[i].menu_name;
                     }
                     CouponArray[i]['price_condition'] = CouponData[i].price_condition;
@@ -301,12 +302,11 @@
             },
             deleteItem (item) {
                 const index = this.items.indexOf(item);
-                this.clickCouponid = this.items[index].id;
+                this.clickCouponid = this.items[index].coupon_id;
 
                 axios.post('/owner/deleteCoupon', {
                     'coupon_id'         : this.clickCouponid
                 }).then((response) => {
-                    console.log(this.clickCouponid);
                     // location.reload();
                 })
                     .catch(console.log('test'));
@@ -322,12 +322,12 @@
                     check = false;
                 }
                 else if(this.CouponItem.CouponType == null){
-                    this.createCoupon_text = " 쿠폰 종류를 선택하세요. ";
+                    this.createCoupon_text = " クーポン種類を選択してください。";
                     this.createCoupon_snackbar = true;
                     check = false;
                 }
                 else if(this.CouponItem.CouponType == "가격 할인" && this.CouponItem.Discount == null){
-                    this.createCoupon_text = " 할인 가격을 입력하세요. ";
+                    this.createCoupon_text = " 割引価格を入力してください。";
                     this.createCoupon_snackbar = true;
                     check = false;
 
@@ -338,24 +338,24 @@
                     var regNumber = /^[0-9]*$/;
 
                     if(!regNumber.test(this.CouponItem.Discount)) {
-                        this.createCoupon_text = "할인 가격 항목은 숫자만 입력해주세요";
+                        this.createCoupon_text = "割引価格の項目は数字だけ記入してください。";
                         this.createCoupon_snackbar = true;
                         check = false;
                     }
 
                 }
                 else if(this.CouponItem.CouponType == "상품 제공" && this.CouponItem.add_product == null){
-                    this.createCoupon_text = " 제공 상품을 선택하세요.";
+                    this.createCoupon_text = " 提供商品を選択してください。";
                     this.createCoupon_snackbar = true;
                     check = false;
                 }
                 else if(this.CouponItem.Condition == null){
-                    this.createCoupon_text = " 쿠폰 조건을 입력하세요. ";
+                    this.createCoupon_text = " クーポン条件を入力してください。";
                     this.createCoupon_snackbar = true;
                     check = false;
                 }
                 else if( this.CouponItem.start_date == null || this.CouponItem.end_date == null) {
-                    this.createCoupon_text = "날짜를 선택해 주세요";
+                    this.createCoupon_text = "使用期間を選択してください。";
                     this.createCoupon_snackbar = true;
                     check = false;
                 }
@@ -365,7 +365,7 @@
                     var regNumber = /^[0-9]*$/;
 
                     if(!regNumber.test(this.CouponItem.count)) {
-                        this.createCoupon_text = "쿠폰 발행 개수 항목은 숫자만 입력해주세요";
+                        this.createCoupon_text = "　発行数設定の項目は数字だけ記入してください。";
                         this.createCoupon_snackbar = true;
                         check = false;
                     }
@@ -414,7 +414,7 @@
     }
 
     .create_coupon {
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 4%;
+        padding-right: 3%;
     }
 </style>

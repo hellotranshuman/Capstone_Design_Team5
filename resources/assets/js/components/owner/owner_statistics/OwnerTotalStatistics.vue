@@ -31,18 +31,21 @@
           scroll-off-screen
           :scroll-threshold="400"
           clipped-left
+          id="topSelectBar"
         >
-          <v-layout>
+          <v-layout align-center justify-center>
             <v-flex xs2>
               <v-layout>
                 <v-flex>
-                  <v-btn dark v-on:click="setTopDateBarSize" color="amber darken-3">접기</v-btn>
+                  <v-btn dark v-on:click="setTopDateBarSize" id="topSelectBar-size-button">
+                    <v-icon>filter_none</v-icon>
+                  </v-btn>
                 </v-flex>
               </v-layout>
               <!-- 최상단 이동 버튼 -->
               <v-layout>
                 <v-flex>
-                  <v-btn dark v-if="!topDateBar" color="amber darken-3"
+                  <v-btn dark v-if="!topDateBar" id="topSelectBar-up-button"
                   @click="$vuetify.goTo(nowUpPosition, {duration: nowDuration, offset: nowOffset, easing: nowEasing})">
                     <v-icon>arrow_upward</v-icon>
                   </v-btn>
@@ -51,86 +54,88 @@
               <!-- 최하단 이동 버튼 -->
               <v-layout>
                 <v-flex>
-                  <v-btn dark v-if="!topDateBar" color="amber darken-3"
+                  <v-btn dark v-if="!topDateBar" id="topSelectBar-down-button"
                   @click="$vuetify.goTo(nowDownPosition, {duration: nowDuration, offset: nowOffset, easing: nowEasing})">
                     <v-icon>arrow_downward</v-icon>
                   </v-btn>
                 </v-flex>
               </v-layout>
             </v-flex>
-            <v-flex xs9>
-              <v-card v-if="!topDateBar">
-                <v-card-text>
-                  <v-layout>
-                    <!-- 기간 선택, 시작 날짜 -->
-                    <v-flex xs8>
-                      <v-menu 
-                        ref="topBarstartMenu" 
-                        v-model="topBarstartMenu"
-                        transition="scale-transition"
-                        offset-y full-width lazy
-                        min-width="290px"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        :return-value.sync="topBarstartDate">
+            <v-flex xs10>
+              <v-content v-if="!topDateBar" class="ma-2 pa-2 selectCard">
+                <v-card>
+                  <v-card-text>
+                    <v-layout>
+                      <!-- 기간 선택, 시작 날짜 -->
+                      <v-flex xs8>
+                        <v-menu 
+                          ref="topBarstartMenu" 
+                          v-model="topBarstartMenu"
+                          transition="scale-transition"
+                          offset-y full-width lazy
+                          min-width="290px"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          :return-value.sync="topBarstartDate">
 
-                        <v-text-field slot="activator"
-                          label="시작 날짜" v-model="topBarstartDate" 
-                          prepend-icon="event" readonly>
-                        </v-text-field>
-                        <v-date-picker v-model="topBarstartDate" no-title scrollable show-current>
-                          <v-spacer></v-spacer>
-                          <v-btn flat color="primary" @click="topBarstartMenu = false">Cancel</v-btn>
-                          <v-btn flat color="primary" @click="$refs.topBarstartMenu.save(topBarstartDate)">OK</v-btn>
-                        </v-date-picker>
-                      </v-menu>
-                    </v-flex>
-                    <!-- 기간 선택, 마지막 날짜 -->
-                    <v-flex xs8>
-                      <v-menu 
-                        ref="topBarendMenu" 
-                        v-model="topBarendMenu"
-                        transition="scale-transition"
-                        offset-y full-width lazy
-                        min-width="290px"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        :return-value.sync="topBarendDate">
-                        <v-text-field slot="activator"
-                          label="마지막 날짜" v-model="topBarendDate" 
-                          prepend-icon="event" readonly>
-                        </v-text-field>
+                          <v-text-field slot="activator"
+                            :label="this.startDayString" v-model="topBarstartDate" 
+                            prepend-icon="event" readonly>
+                          </v-text-field>
+                          <v-date-picker v-model="topBarstartDate" no-title scrollable show-current>
+                            <v-spacer></v-spacer>
+                            <v-btn flat color="primary" @click="topBarstartMenu = false">Cancel</v-btn>
+                            <v-btn flat color="primary" @click="$refs.topBarstartMenu.save(topBarstartDate)">OK</v-btn>
+                          </v-date-picker>
+                        </v-menu>
+                      </v-flex>
+                      <!-- 기간 선택, 마지막 날짜 -->
+                      <v-flex xs8>
+                        <v-menu 
+                          ref="topBarendMenu" 
+                          v-model="topBarendMenu"
+                          transition="scale-transition"
+                          offset-y full-width lazy
+                          min-width="290px"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          :return-value.sync="topBarendDate">
+                          <v-text-field slot="activator"
+                            :label="this.endDayString" v-model="topBarendDate" 
+                            prepend-icon="event" readonly>
+                          </v-text-field>
 
-                        <v-date-picker v-model="topBarendDate" no-title scrollable show-current>
-                          <v-spacer></v-spacer>
-                          <v-btn flat color="primary" @click="topBarendMenu = false">Cancel</v-btn>
-                          <v-btn flat color="primary" @click="$refs.topBarendMenu.save(topBarendDate)">OK</v-btn>
-                        </v-date-picker>
-                      </v-menu>
-                    </v-flex>
-                    <v-flex>
-                      <v-btn large color="error" v-on:click="dateSearch">
-                        <b>조회</b>
-                      </v-btn>
-                    </v-flex>
-                  </v-layout>
-                </v-card-text>
-                <!-- 기간 자동 선택 버튼 -->
-                <v-card-actions>
-                  <v-layout>
-                    <v-flex xs2>
-                      <v-btn flat color="orange" v-on:click="setToday">오늘</v-btn>
-                    </v-flex>
-                    <v-flex xs2>
-                      <v-btn flat color="orange" v-on:click="setMonth">이번 달</v-btn>
-                    </v-flex>
-                    <v-flex xs2>
-                      <v-btn flat color="orange" v-on:click="setYear">이번 년도</v-btn>
-                    </v-flex>
-                    <v-spacer></v-spacer>
-                  </v-layout>     
-                </v-card-actions>
-              </v-card>
+                          <v-date-picker v-model="topBarendDate" no-title scrollable show-current>
+                            <v-spacer></v-spacer>
+                            <v-btn flat color="primary" @click="topBarendMenu = false">Cancel</v-btn>
+                            <v-btn flat color="primary" @click="$refs.topBarendMenu.save(topBarendDate)">OK</v-btn>
+                          </v-date-picker>
+                        </v-menu>
+                      </v-flex>
+                      <v-flex>
+                        <v-btn large dark id="topSelectBar-select-button" v-on:click="dateSearch">
+                          <b>{{this.daySelect}}</b>
+                        </v-btn>
+                      </v-flex>
+                    </v-layout>
+                  </v-card-text>
+                  <!-- 기간 자동 선택 버튼 -->
+                  <v-card-actions>
+                    <v-layout>
+                      <v-flex xs2>
+                        <v-btn flat color="orange" v-on:click="setToday">{{this.dayFilterToday}}</v-btn>
+                      </v-flex>
+                      <v-flex xs2>
+                        <v-btn flat color="orange" v-on:click="setMonth">{{this.dayFilterMonth}}</v-btn>
+                      </v-flex>
+                      <v-flex xs2>
+                        <v-btn flat color="orange" v-on:click="setYear">{{this.dayFilterYear}}</v-btn>
+                      </v-flex>
+                      <v-spacer></v-spacer>
+                    </v-layout>     
+                  </v-card-actions>
+                </v-card>
+              </v-content>
             </v-flex>
           </v-layout>
         </v-toolbar>
@@ -140,18 +145,18 @@
     <v-layout>
       <v-flex>
         <br> 
-        <h3><B>종합 통계</B></h3>
-        종합적인 통계를 볼 수 있습니다.
+        <h3><B>{{this.pageTitle}}</B></h3>
+        {{this.pageDescription}}
         <hr><br>
       </v-flex>
     </v-layout>
     <!-- 날짜 선택 -->
     <v-layout>
       <v-spacer></v-spacer>
-      <v-flex xs10>
+      <v-flex xs10 class="ma-2 pa-2 selectCard">
         <v-card>
           <v-card-title>
-            기간 선택
+            {{this.daySelectTitle}}
           </v-card-title>
           <v-card-text>
             <v-layout>
@@ -168,7 +173,7 @@
                   :return-value.sync="startDate">
 
                   <v-text-field slot="activator"
-                    label="시작 날짜" v-model="startDate" 
+                    :label="this.startDayString" v-model="startDate" 
                     prepend-icon="event" readonly>
                   </v-text-field>
 
@@ -191,7 +196,7 @@
                   :nudge-right="40"
                   :return-value.sync="endDate">
                   <v-text-field slot="activator"
-                    label="마지막 날짜" v-model="endDate" 
+                    :label="this.endDayString" v-model="endDate" 
                     prepend-icon="event" readonly>
                   </v-text-field>
                   <v-date-picker v-model="endDate" no-title scrollable show-current>
@@ -202,8 +207,8 @@
                 </v-menu>
               </v-flex>
               <v-flex>
-                <v-btn large color="error" v-on:click="dateSearch">
-                  <b>조회</b>
+                <v-btn large dark id="topSelectBar-select-button" v-on:click="dateSearch">
+                  <b>{{this.daySelect}}</b>
                 </v-btn>
               </v-flex>
             </v-layout>
@@ -212,13 +217,13 @@
           <v-card-actions>
             <v-layout>
               <v-flex xs1>
-                <v-btn flat color="orange" v-on:click="setToday">오늘</v-btn>
+                <v-btn flat color="orange" v-on:click="setToday">{{this.dayFilterToday}}</v-btn>
               </v-flex>
               <v-flex xs1>
-                <v-btn flat color="orange" v-on:click="setMonth">이번 달</v-btn>
+                <v-btn flat color="orange" v-on:click="setMonth">{{this.dayFilterMonth}}</v-btn>
               </v-flex>
               <v-flex xs1>
-                <v-btn flat color="orange" v-on:click="setYear">이번 년도</v-btn>
+                <v-btn flat color="orange" v-on:click="setYear">{{this.dayFilterYear}}</v-btn>
               </v-flex>
               <v-spacer></v-spacer>
             </v-layout>     
@@ -235,7 +240,7 @@
         <v-layout justify-space-around>
           <!-- 리뷰 평점 -->
           <v-flex xs2>
-            <h2>손님 평점 (점)</h2>
+            <h2>{{this.customerScoreTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -243,53 +248,56 @@
           <v-flex xs5>
             <CustomerRatingChart :height="300" :chart-data="ratingData" :options="customerRateOptions"></CustomerRatingChart>
           </v-flex>
-          <v-flex xs3 class="card-text-style">
-            <br><br>
-            <v-card>
-              <v-card-title>
-                <v-layout>
-                  <v-spacer></v-spacer>
-                  <v-flex xs7><b>손님 평균 점수</b></v-flex>
-                  <v-spacer></v-spacer>
-                </v-layout>
-              </v-card-title>
-              <v-card-text>
-                <v-layout>
-                  <v-spacer></v-spacer>
-                  <v-flex xs5>총점 : </v-flex>
-                  <v-flex xs2> {{ this.getRatingScore[0]['totalRating'] }} </v-flex>
-                  <v-spacer></v-spacer>
-                </v-layout>
-                <br>
-                <v-layout>
-                  <v-spacer></v-spacer>
-                  <v-flex xs5>맛 : </v-flex>
-                  <v-flex xs2> {{ this.getRatingScore[0]['taste'] }} </v-flex>
-                  <v-spacer></v-spacer>
-                </v-layout>
-                <br>
-                <v-layout>
-                  <v-spacer></v-spacer>
-                  <v-flex xs5>서비스 : </v-flex>
-                  <v-flex xs2> {{ this.getRatingScore[0]['service'] }} </v-flex>
-                  <v-spacer></v-spacer>
-                </v-layout>
-                <br>
-                <v-layout>
-                  <v-spacer></v-spacer>
-                  <v-flex xs5>분위기 : </v-flex>
-                  <v-flex xs2> {{ this.getRatingScore[0]['mood'] }} </v-flex>
-                  <v-spacer></v-spacer>
-                </v-layout>
-                <br>
-                <v-layout>
-                  <v-spacer></v-spacer>
-                  <v-flex xs5>가격 : </v-flex>
-                  <v-flex xs2> {{ this.getRatingScore[0]['price'] }} </v-flex>
-                  <v-spacer></v-spacer>
-                </v-layout>
-              </v-card-text>
-            </v-card>
+          <v-flex xs3>
+            <v-layout>
+              <v-flex class="card-text-style pa-2">
+                <v-card>
+                  <v-card-title>
+                    <v-layout>
+                      <v-spacer></v-spacer>
+                      <v-flex xs7><b>{{this.customerScoreTitle}}</b></v-flex>
+                      <v-spacer></v-spacer>
+                    </v-layout>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-layout>　　　　　
+                      <v-spacer></v-spacer>
+                      <v-flex xs5>{{this.customerScoretotal}} </v-flex>
+                      <v-flex xs2> {{ this.getRatingScore[0]['totalRating'] }} </v-flex>
+                      <v-spacer></v-spacer>
+                    </v-layout>
+                    <br>
+                    <v-layout>
+                      <v-spacer></v-spacer>
+                      <v-flex xs5>{{this.customerScoreTaste}}</v-flex>
+                      <v-flex xs2> {{ this.getRatingScore[0]['taste'] }} </v-flex>
+                      <v-spacer></v-spacer>
+                    </v-layout>
+                    <br>
+                    <v-layout>
+                      <v-spacer></v-spacer>
+                      <v-flex xs5>{{this.customerScoreService}}</v-flex>
+                      <v-flex xs2> {{ this.getRatingScore[0]['service'] }} </v-flex>
+                      <v-spacer></v-spacer>
+                    </v-layout>
+                    <br>
+                    <v-layout>
+                      <v-spacer></v-spacer>
+                      <v-flex xs5>{{this.customerScoreMood}}</v-flex>
+                      <v-flex xs2> {{ this.getRatingScore[0]['mood'] }} </v-flex>
+                      <v-spacer></v-spacer>
+                    </v-layout>
+                    <br>
+                    <v-layout>
+                      <v-spacer></v-spacer>
+                      <v-flex xs5>{{this.customerScorePrice}}</v-flex>
+                      <v-flex xs2> {{ this.getRatingScore[0]['price'] }} </v-flex>
+                      <v-spacer></v-spacer>
+                    </v-layout>
+                  </v-card-text>
+                </v-card>
+              </v-flex>
+            </v-layout>
           </v-flex>
           <v-spacer></v-spacer>
         </v-layout>
@@ -302,7 +310,7 @@
     <v-layout justify-space-around>
       <v-spacer></v-spacer>
       <v-flex xs2>
-        <h2>방문 손님 수 (명)</h2>
+        <h2>{{this.customerNumberTitle}}</h2>
       </v-flex>
       <v-spacer></v-spacer>
     </v-layout>
@@ -310,13 +318,13 @@
     <br><br>
     <v-layout>
       <v-spacer></v-spacer>
-      <v-flex xs10>
+      <v-flex xs10 class="ma-2 pa-2 selectCard">
         <v-card>
           <v-card-text>
             <v-layout>
               <v-spacer></v-spacer>
               <v-flex xs5>
-                <h3>{{this.startDate}} ~ {{this.endDate}} 방문손님 :</h3>
+                <h3>{{this.startDate}} ~ {{this.endDate}} {{this.customerNumberTitle}}</h3>
               </v-flex>
               <v-flex xs3>
                 <h2>
@@ -346,7 +354,7 @@
       <v-flex xs4>
         <v-layout justify-space-around>
           <v-flex xs7>
-            <h2>방문 손님 성비 (%)</h2>
+            <h2>{{this.customerGenderTitle}}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -359,7 +367,7 @@
       <v-flex xs4>
         <v-layout justify-space-around>
           <v-flex xs7>
-            <h2>방문 손님 연령대 (%)</h2>
+            <h2>{{this.customerAgeTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -372,7 +380,7 @@
       <v-flex xs4>
         <v-layout justify-space-around>
           <v-flex xs7>
-            <h2>방문 손님 국적 (%)</h2>
+            <h2>{{this.customerCountryTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -388,20 +396,20 @@
     <!-- 메뉴 필터링 (국적, 연령, 성별) -->
     <v-layout>
       <v-spacer></v-spacer>
-      <v-flex xs10>
+      <v-flex xs10 class="ma-2 pa-2 selectCard">
         <v-card>
           <v-card-title>
-            인기 메뉴 필터링
+            {{this.menuCountTitle}}
           </v-card-title>
           <v-card-text>
             <!-- 전체,국적,성별,연령 필터링 -->
             <v-layout>
               <v-spacer></v-spacer>
               <v-flex xs2>
-                <v-select 
+                <v-select
                   :items      ="rankingCountryItems" 
                   v-model     ="rankingCountrySelect" 
-                  label       ="국가 선택"  
+                  :label       ="this.rankingCountrySelect['country']"  
                   item-text   ="country"
                   single-line
                   return-object
@@ -412,7 +420,7 @@
                 <v-select 
                   :items      ="rankingGenderItems" 
                   v-model     ="rankingGenderSelect" 
-                  label       ="성별 선택"  
+                  :label      ="this.rankingGenderSelect['gender']"
                   item-text   ="gender"
                   single-line
                   return-object>
@@ -422,7 +430,7 @@
                 <v-select 
                   :items      ="rankingAgeItems" 
                   v-model     ="rankingAgeSelect" 
-                  label       ="연령 선택"  
+                  :label      ="this.rankingAgeSelect['age']"
                   item-text   ="age"
                   single-line
                   return-object>
@@ -442,7 +450,7 @@
         <v-layout justify-space-around>
           <!-- 인기 메뉴 순위 -->
           <v-flex xs3>
-                <h2>인기 메뉴 순위 (그릇)</h2>
+                <h2>{{this.menuCountTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -461,7 +469,7 @@
         <v-layout justify-space-around>
           <!-- 전체 매출 -->
           <v-flex xs2>
-                <h2>매출액 (￥)</h2>
+                <h2>{{this.salesCountTitle}}</h2>
           </v-flex>
         </v-layout>
 
@@ -469,13 +477,13 @@
         <br><br>
         <v-layout>
           <v-spacer></v-spacer>
-          <v-flex xs10>
+          <v-flex xs10 class="ma-2 pa-2 selectCard">
             <v-card>
               <v-card-text>
                 <v-layout>
                   <v-spacer></v-spacer>
                   <v-flex xs5>
-                    <h3>{{this.startDate}} ~ {{this.endDate}} 매출 :</h3>
+                    <h3>{{this.startDate}} ~ {{this.endDate}} {{this.salesCountTitle}}</h3>
                   </v-flex>
                   <v-flex xs3>
                     <h2>
@@ -506,8 +514,8 @@
       <!-- 매출 성비를 그래프 -->
       <v-flex xs4>
         <v-layout justify-space-around>
-          <v-flex xs4>
-            <h2>매출 성비 (%)</h2>
+          <v-flex xs8>
+            <h2>{{this.salesGenderTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -519,8 +527,8 @@
       <!-- 매출 연령대별 그래프 -->
       <v-flex xs4>
         <v-layout justify-space-around>
-          <v-flex xs5>
-            <h2>매출 연령대 (%)</h2>
+          <v-flex xs8>
+            <h2>{{this.salesAgeTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -532,8 +540,8 @@
       <!-- 매출 국적별 그래프 -->
       <v-flex xs4>
         <v-layout justify-space-around>
-          <v-flex xs7>
-            <h2>매출 국적 (%)</h2>
+          <v-flex xs8>
+            <h2>{{this.salesCountryTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -549,10 +557,10 @@
     <!-- 메뉴 필터링 (국적, 연령, 성별) -->
     <v-layout>
       <v-spacer></v-spacer>
-      <v-flex xs10>
+      <v-flex xs10 class="ma-2 pa-2 selectCard">
         <v-card>
           <v-card-title>
-            메뉴 필터링
+            {{this.menuSaleTitle}}
           </v-card-title>
           <v-card-text>
             <!-- 전체,국적,성별,연령 필터링 -->
@@ -562,7 +570,7 @@
                 <v-select 
                   :items      ="salesCountryItems" 
                   v-model     ="salesCountrySelect" 
-                  label       ="국가 선택"  
+                  :label       ="this.salesCountrySelect['country']"  
                   item-text   ="country"
                   single-line
                   return-object>
@@ -572,7 +580,7 @@
                 <v-select 
                   :items      ="salesGenderItems" 
                   v-model     ="salesGenderSelect" 
-                  label       ="성별 선택"  
+                  :label      ="this.salesGenderSelect['gender']"
                   item-text   ="gender"
                   single-line
                   return-object>
@@ -582,7 +590,7 @@
                 <v-select 
                   :items      ="salesAgeItems" 
                   v-model     ="salesAgeSelect" 
-                  label       ="연령 선택"  
+                  :label      ="this.salesAgeSelect['age']"
                   item-text   ="age"
                   single-line
                   return-object>
@@ -603,7 +611,7 @@
         <v-layout justify-space-around>
           <!-- 인기 메뉴 순위 -->
           <v-flex xs3>
-            <h2>매출 메뉴 순위 (￥)</h2>
+            <h2>{{this.menuSaleTitle}}</h2>
           </v-flex>
         </v-layout>
         <v-layout justify-space-around>
@@ -663,7 +671,35 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
         endDatePlusOne  : null,    // 마지막 날짜 + 1일 값이 저장되는 변수 (날짜까지만 있으면 00시00분00초가 기준이 되기 떄문에, 해당날의 모든 데이터를 포함하기 위해서는 다음날짜가 필요)
         endMenu         : false,
 
-        rankingCountrySelect    : { country: '국가 선택', countryNum: 0 },  // 선택된 국가 필터링 기준
+        
+        pageTitle       : '総合グラフ',
+        pageDescription : '総合的なグラフを見ることができます。',
+        startDayString  : '最初の日',
+        endDayString    : '最後の日',
+        daySelectTitle  : '日にちを選択してください',
+        dayFilterToday  : '今日',
+        dayFilterMonth  : '今月',
+        dayFilterYear   : '今年',
+        daySelect       : '照会',
+        customerScoreTitle    : '平均点(点)',
+        customerScoretotal    : '総点',
+        customerScoreTaste    : '味',
+        customerScoreService  : 'サービス',
+        customerScoreMood     : '雰囲気',
+        customerScorePrice    : '価格',
+        customerNumberTitle   : '客入り(人)',
+        customerGenderTitle   : 'お客様の性別(％)',
+        customerAgeTitle      : 'お客様の年齢(％)',
+        customerCountryTitle  : 'お客様の国籍(％)',
+        menuCountTitle        : '人気メニューランキング(皿)',
+
+        salesCountTitle   : '売り上げ(￥)',
+        salesGenderTitle  : '売り上げ対比の性別(％)',
+        salesAgeTitle     : '売り上げ対比の年齢(％)',
+        salesCountryTitle : '売り上げ対比の国籍(％)',
+        menuSaleTitle     : '人気メニューランキング(￥)',
+
+        rankingCountrySelect    : { country: '国籍', countryNum: 0 },  // 선택된 국가 필터링 기준
         rankingCountryItems     : [                                         // 국가 필터링 기준들
           { country: 'all',   countryNum: 0 },
           { country: 'china', countryNum: 1 },
@@ -672,14 +708,14 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           { country: 'usa',   countryNum: 4 },
         ],
 
-        rankingGenderSelect    : { gender: '성별 선택', genderNum: 0 }, // 선택된 국가 필터링 기준
+        rankingGenderSelect    : { gender: '性別', genderNum: 0 }, // 선택된 국가 필터링 기준
         rankingGenderItems     : [                                      // 국가 필터링 기준들
           { gender: 'all',    genderNum: 0 },
           { gender: 'male',   genderNum: 1 },
           { gender: 'female', genderNum: 2 },
         ],
 
-        rankingAgeSelect    : { age: '연령 선택', ageNum: 0 },    // 선택된 국가 필터링 기준
+        rankingAgeSelect    : { age: '年齢', ageNum: 0 },    // 선택된 국가 필터링 기준
         rankingAgeItems     : [                                   // 국가 필터링 기준들
           { age: 'all',       ageNum: 0 },
           { age: '0~9세',     ageNum: 1 },
@@ -692,7 +728,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
         ],
 
         // 매출 필터링
-        salesCountrySelect    : { country: '국가 선택', countryNum: 0 },  // 선택된 국가 필터링 기준
+        salesCountrySelect    : { country: '国籍', countryNum: 0 },  // 선택된 국가 필터링 기준
         salesCountryItems     : [                                         // 국가 필터링 기준들
           { country: 'all',   countryNum: 0 },
           { country: 'china', countryNum: 1 },
@@ -702,14 +738,14 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
         ],
 
 
-        salesGenderSelect    : { gender: '성별 선택', genderNum: 0 }, // 선택된 국가 필터링 기준
+        salesGenderSelect    : { gender: '性別', genderNum: 0 }, // 선택된 국가 필터링 기준
         salesGenderItems     : [                                      // 국가 필터링 기준들
           { gender: 'all',    genderNum: 0 },
           { gender: 'male',   genderNum: 1 },
           { gender: 'female', genderNum: 2 },
         ],
 
-        salesAgeSelect    : [{ age: '연령 선택', ageNum: 0 }],  // 선택된 국가 필터링 기준
+        salesAgeSelect    : { age: '年齢', ageNum: 0 },  // 선택된 국가 필터링 기준
         salesAgeItems     : [                                   // 국가 필터링 기준들
           { age: 'all',       ageNum: 0 },
           { age: '0~9세',     ageNum: 1 },
@@ -814,7 +850,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
       //************************* 상태에 따른 날짜 상단바의 크기를 조절하는 함수 *************************
       setTopDateBarSize(){
         if(this.topDateBar){
-          this.topDateBarSize = 205;
+          this.topDateBarSize = 200;
         }
         else {
           this.topDateBarSize = 50;
@@ -1091,10 +1127,10 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
 
           // Overwriting base render method with actual data.
           this.ratingData = {
-            labels: ['총점', '맛', '서비스', '분위기', '가격'],
+            labels: ['総点', '味', 'サービス', '雰囲気', '価格'],
             datasets: [
               {
-                label: '평점',
+                label: '平均点',
                 backgroundColor: ['rgba(54, 162, 235, 0.5)'],
                 borderColor: ['#0099FF'],
                 fill: true,
@@ -1138,7 +1174,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           // 전달받은 성별값을 대입합니다. (퍼센트가 아니라 성별 주문횟수)
           var genderValueArray = Object.values(getGenderData[0]);
           // 연령대별 이름
-          var genderNameData   = ['남자 손님', '여자 손님'];
+          var genderNameData   = ['男性', '女性'];
           // 연령대별 그래프 색상
           var genderGraphColor = ['#3399FF', '#FF6666'];
 
@@ -1150,7 +1186,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
             labels: getGraphData['name'],
             datasets: [
               {
-                label: '손님 성비',
+                label: '性別',
                 backgroundColor: getGraphData['color'],
                 data: getGraphData['ratio']
               }
@@ -1177,7 +1213,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           var ageValueArray = Object.values(getAgeData[0]);
 
           // 연령대별 이름
-          var ageNameData   = ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'];
+          var ageNameData   = ['0~9歳', '10代', '20代', '30代', '40代', '50代', '60際以上'];
           // 연령대별 그래프 색상
           var ageGraphColor = ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300'];
 
@@ -1189,7 +1225,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
             labels: getGraphData['name'],
             datasets: [
               {
-                label: '매출 연령대',
+                label: '年齢',
                 backgroundColor: getGraphData['color'],
                 data: getGraphData['ratio']
               },
@@ -1216,7 +1252,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           var countryValueArray = Object.values(JSON.parse(JSON.stringify(getCountryData[0])));
 
           // 국적명
-          var countryNameData   = ['한국', '일본', '중국', '미국'];
+          var countryNameData   = ['韓国', '日本', '中国', '米国'];
           // 국적별 그래프 색상
           var countryGraphColor = ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300','#FF6666', '#66FFFF'];
 
@@ -1228,7 +1264,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
             labels: getGraphData['name'],
             datasets: [
               {
-                label: '방문 손님 국적',
+                label: '国籍',
                 backgroundColor: getGraphData['color'],
                 data: getGraphData['ratio']
               }
@@ -1251,7 +1287,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           // 전달받은 성별값을 대입합니다. (퍼센트가 아니라 성별 매출금액)
           var genderSalesValueArray = Object.values(getSalesGenderData[0]);
           // 연령대별 이름
-          var genderSalesNameData = ['남자 손님', '여자 손님'];
+          var genderSalesNameData = ['男性', '女性'];
           // 연령대별 그래프 색상
           var genderSalesGraphColor = ['#3399FF', '#FF6666'];
 
@@ -1263,7 +1299,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
             labels: getGraphData['name'],
             datasets: [
               {
-                label: '손님 성비',
+                label: '性別',
                 backgroundColor: getGraphData['color'],
                 data: getGraphData['ratio']
               }
@@ -1293,7 +1329,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           // console.log(ageArray);
 
           // 연령대별 이름
-          var ageSalesNameData   = ['0~9세', '10대', '20대', '30대', '40대', '50대', '60세 이상'];
+          var ageSalesNameData   = ['0~9歳', '10代', '20代', '30代', '40代', '50代', '60歳以上'];
           // 연령대별 그래프 색상
           var ageSalesGraphColor = ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300'];
 
@@ -1305,7 +1341,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
             labels: getGraphData['name'],
             datasets: [
               {
-                label: '매출 연령대',
+                label: '売り上げ',
                 backgroundColor: getGraphData['color'],
                 data: getGraphData['ratio']
               }
@@ -1332,7 +1368,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
           var countrySalesValueArray = Object.values(JSON.parse(JSON.stringify(getSalesCountryData[0])));
 
           // 국적명
-          var countrySalesNameData   = ['한국', '일본', '중국', '미국'];
+          var countrySalesNameData   = ['韓国', '日本', '中国', '米国'];
           // 국적별 그래프 색상
           var countrySalesGraphColor = ['#3399FF', '#FF3300', '#CCFF00', '#00CC33', '#CCCC00','#990066', '#663300','#FF6666', '#66FFFF'];
 
@@ -1347,7 +1383,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
             labels: getGraphData['name'],
             datasets: [
               {
-                label: '방문 손님 국적',
+                label: '国籍',
                 backgroundColor: getGraphData['color'],
                 data: getGraphData['ratio']
               }
@@ -1395,7 +1431,7 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
             labels: menuData['menuNameList'],
             datasets: [
               {
-                label: '그릇',
+                label: '皿',
                 backgroundColor: menuData['menuBarColorList'],
                 hoverBackgroundColor:[
                   'rgba(255,051,051,0.8)',
@@ -1519,5 +1555,30 @@ import SalesCountryChart      from './SalesCountryChart.vue';     // 매출 국�
 
     .card-text-style {
       font-size: 1.5em;
+      background-color: #efe2bd;
+    }
+
+    .selectCard {
+      background-color: #efe2bd;
+    }
+
+    #topSelectBar {
+      background-color: #ffffff;
+    }
+
+    #topSelectBar-size-button {
+      background-color: #d2b07d;
+    }
+
+    #topSelectBar-up-button {
+      background-color: #9d724b;
+    }
+
+    #topSelectBar-down-button {
+      background-color: #6d4d35;
+    }
+
+    #topSelectBar-select-button {
+      background-color: #ff9a55;
     }
 </style>

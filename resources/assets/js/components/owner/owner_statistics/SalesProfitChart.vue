@@ -21,7 +21,7 @@ export default {
 
   data(){
     return {
-      monthList        : ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],  // 월별 매출을 분류할 기준
+      monthList        : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],  // 월별 매출을 분류할 기준
       shop_id          : this.$route.params.shop_id,   // 식당 아이디를 저장하는 변수
       getSalesScore    : [],                           // 월별 매출값을 전달받는 배열
       sendMonthList    : [],                           // 전송할 값
@@ -51,10 +51,10 @@ export default {
 
       // Overwriting base render method with actual data.
       this.renderChart({
-        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        labels: this.monthList,
         datasets: [
           {
-            label: '올해 매출',
+            label: '今年の売り上げ',
             backgroundColor       : 'transparent',          // 배경 색상, transparent는 투명함을 의미
             data                  : this.filterSalesScore,
             lineTension           : 0,                      // 선의 곡선 관련 값, 0은 직선을 의미

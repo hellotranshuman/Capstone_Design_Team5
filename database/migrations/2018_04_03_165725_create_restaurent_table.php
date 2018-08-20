@@ -39,7 +39,8 @@ class CreateRestaurentTable extends Migration
             $table->boolean('privateroom');
             $table->unsignedInteger('selectLayout')->default('1');
             $table->boolean('reservation_selectMenu')->default(false);
-            $table->string('coordinate')->nullable();
+            $table->double('coordinate_lat')->nullable();
+            $table->double('coordinate_lang')->nullable();
             $table->string('qrcode')->nullable();
             $table->timestamps();
             $table->foreign('user_num')
