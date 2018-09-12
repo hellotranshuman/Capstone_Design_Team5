@@ -6,14 +6,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Review;
 use App\Review_like;
-use Illuminate\Support\Facades\Redirect;
 
 class ReviewController extends Controller
 {
+    // <-- Show Review List Form
     public function showReviewForm() {
          return view('user.review');
     }
 
+    // <-- Show Write Review Form
+    public function showWriteReviewForm() {
+        return view('user.writeReview');
+    }
+
+    // <-- Get Review Data Method
     public function getReviewData(Request $request) {
 
         // <-- select Review Data
@@ -41,7 +47,9 @@ class ReviewController extends Controller
                         ->get()
                         ->toArray();
 
+        // Case : login -> current user's like data select
         if(auth()->check()) {
+            // current user's like data select
             // <-- 현재 유저의 리뷰 좋아요한 리뷰 게시글번호
             $reviewLike = Review_like::select('review_id')
                 ->where('user_num', auth()->user()->id)
@@ -54,7 +62,7 @@ class ReviewController extends Controller
             $reviewLike = '';
         }
 
-        // <-- Review Image
+        // <-- select Review Image data
         $reviewImage = Review::join('review_image', 'review_image.review_id', '=', 'review.id')
                         ->select('review_image.filename')
                         ->orderByRaw('review.reg_date DESC')
@@ -62,6 +70,7 @@ class ReviewController extends Controller
                         ->get()
                         ->toArray();
 
+        // array merge -> totalRate, review, image
         $reviewData = array_merge($totalRating, $review, $reviewImage);
 
         return response()->json([
@@ -73,18 +82,17 @@ class ReviewController extends Controller
         ]);
     }
 
-    public function showWriteReviewForm() {
-       return view('user.writeReview');
-    }
-
-    // <-- Review 좋아요
+    // <-- Review Like
     public function getReviewLike(Request $request) {
+       // Case : not login
         if(!auth()->check()) {
             return response()->json([
-                'msg' => 'failed',
+                'msg' => false,
             ]);
         }
         else {
+
+            // case : true : like
             if($request->get('review_status'))
             {
                 Review_like::create([
@@ -93,9 +101,10 @@ class ReviewController extends Controller
                 ]);
 
                 return response()->json([
-                    'msg' => '좋아요 했습니다.',
+                    'msg' => true,
                 ]);
             }
+            // case : false : like cancel
             else
             {
                 Review_like::where('user_num', auth()->user()->id)
@@ -110,8 +119,9 @@ class ReviewController extends Controller
 
     }
 
+    // <-- Create Review data
     public function createReview(Request $request) {
-        // 현재 시간 불러오기
+        // Load current date, time
         $currentDate = date("Y-m-d H:i:s");
 
         // create Review column in Review Table
@@ -128,7 +138,7 @@ class ReviewController extends Controller
             'img_num' => $request->get('imgNum'),
         ]);
 
-        // <-- current Review Id 가져오기
+        // <-- Load current Review Id
         $review =  DB::table('review')
                     ->select('id')
                     ->where('writer', auth()->user()->id)
@@ -137,12 +147,14 @@ class ReviewController extends Controller
 
         $reviewId = $review->id;
 
+        // Case : hashtag data -> O
         if(!is_null($request->get('HASHTAG'))) {
-            // <-- hash Tag column create in HashTag Table
+            // get tag data, change string -> array,
             $tags = implode(',' , $request->get('HASHTAG'));
             $hashTag = str_replace('#', '', $tags);
             $hashTags = explode(',', $hashTag);
 
+            // <-- hash Tag column create in HashTag Table
             for( $num = 0 ; $num < count($hashTags) ; $num++)
             {
                 \App\Hashtag::create([
@@ -155,6 +167,11 @@ class ReviewController extends Controller
         /*
          * 1. 리뷰 이미지 갯수 확인
          * 2. 리뷰 이미지 있으면 갯수 만큼 저장후 테이블에도 저장 
+         * */
+
+        /*
+         * 1. review image number check
+         * 2. review image O -> file save, DB table Save
          * */
 
         $imgNum = $request->get('imgNum');

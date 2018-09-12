@@ -14,6 +14,7 @@ use \App\Restaurant;
 
 class MenuController extends Controller
 {
+    // Translate API Client id, pw, Setting
     const client_id     = "yW2oDpUuRW0O7sbIKUJ2";
     const client_secret = "pevANwIHvX";
 
@@ -21,50 +22,55 @@ class MenuController extends Controller
     private $is_post = true;
     private $headers = array();
 
+    // <-- Translate API Setting
     function __construct()
     {
         $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id ;
         $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
     }
 
-    public function showMenuForm() {
-        return view('restaurant.ownerMenu');
-    }
-
+    // <-- Show Create Menu Form
     public function showCreateMenuForm() {
         return view('restaurant.createMenuForm');
     }
 
+    // <-- Show Menu List Form
     public function showMenuList() {
         return view('restaurant.ownerMenuList');
     }
 
+    // <-- Show Menu LayoutList Form
     public function showMenuLayout() {
         return view('restaurant.ownerMenuLayout');
     }
 
+    // <-- Show User Restaurant Page Case Menu Form
     public function showUserMenuForm() {
         return view('user.userMenu');
     }
 
-    // <-- 해당 가게의 레이아웃, 메뉴 카테고리 불러오기
+    // <-- Load Current Restaurant Layout, Menu Category
     public function getCategory(Request $request) {
         $shop_id = $request->get('shop_id');
         $layout = '';
 
+        // Load Layout Data
         $layoutData = Restaurant::select('selectLayout')
             ->where('id', $shop_id)
             ->first();
 
         $layoutNum = $layoutData->selectLayout;
 
+        // Case : User Custom Layout
         if($layoutNum > 4) {
+          // Load Custom Layout Data
           $layout  = Layout::select(DB::raw('CAST(layout_data as CHAR) as layout_data, id, shop_id, layout_name, thumbnail'))
                         ->where('id', $layoutNum)
                         ->get()
                         ->toArray();
         }
 
+        // Load Menu Category
         $category =  Menu::select('category')
                     ->where('shop_id', $shop_id)
                     ->get()
@@ -76,10 +82,12 @@ class MenuController extends Controller
         ]);
     }
 
-    // <-- 해당 카테고리의 메뉴 정보 가져오기
+    // <-- Load Current Category's Menu Data
     public function getMenu($shop_id, $category) {
+        // Menu Data Translate
         $target = '';
 
+        // Menu Data Trans Language Target Setting
         if(!auth()->check()) {
             $target = 'ja';
         }
@@ -113,9 +121,9 @@ class MenuController extends Controller
             } // <-- switch end
         }
 
-        // <-- 메뉴정보를 저장할 Array
+        // <-- Menu Data Array
         $totalMenuArray = array();
-        // <-- 메뉴 Data Select
+        // <-- Menu Data Select
         $menuData = Menu::join('menu_image', 'menu.id', '=', 'menu_image.menu_id')
                     ->select('menu.id as id', 'menu.name as name', 'menu.explanation as explanation',
                             'menu.price as price', 'menu.remark as remark',
@@ -131,7 +139,7 @@ class MenuController extends Controller
 
            $menuArray['id'] = $menu->id;
 
-           // <-- 메뉴 이름 번역
+           // <-- Menu Name Translate
             $encText = urlencode($menu->name);
             $postValues = 'source=ja&target=' . $target . '&text='.$encText;
             $ch  = curl_init();
@@ -148,6 +156,7 @@ class MenuController extends Controller
 
             curl_close ($ch);
 
+            // Input Menu Name Translate Data in Menu Data Array
             if($status_code == 200) {
                 $responseData = json_decode($response);
 
@@ -156,7 +165,7 @@ class MenuController extends Controller
             else
                 $menuArray['name'] = $menu->name;
 
-            // <-- 메뉴 설명 번역
+            // <-- Menu Explanation Translate
             $encText = urlencode($menu->explanation);
             $postValues = 'source=ja&target=' . $target . '&text='.$encText;
             $ch  = curl_init();
@@ -173,6 +182,7 @@ class MenuController extends Controller
 
             curl_close ($ch);
 
+            // Input Menu Explanation Translate Data in Menu Data Array
             if($status_code == 200) {
                 $responseData = json_decode($response);
 
@@ -181,6 +191,7 @@ class MenuController extends Controller
             else
                 $menuArray['explanation'] = $menu->explanation;
 
+           // Input Menu Data in Menu Data Array
            $menuArray['price']      = $menu->price;
            $menuArray['remark']     = $menu->remark;
            $menuArray['path']       = $menu->path;
@@ -204,7 +215,7 @@ class MenuController extends Controller
                $menuArray[$opIdName] = $opNum;
                $keyName = 'optionName' . $optionKey;
 
-                // <-- 옵션 이름 번역
+                // <-- Option Name translate
                $encText = urlencode($option->name);
                $postValues = 'source=ja&target=' . $target . '&text='.$encText;
                $ch  = curl_init();
@@ -221,6 +232,7 @@ class MenuController extends Controller
 
                curl_close ($ch);
 
+               // Input Menu Option Name Translate Data in Menu Data Array
                if($status_code == 200 && auth()->user()->country != 'Japan') {
                    $responseData = json_decode($response);
 
@@ -241,7 +253,7 @@ class MenuController extends Controller
                    $subOpKeyName = $optionKey .'optionValue' . $subOpKey;
                    $subOpIDName = $optionKey .'subOptionId' . $subOpKey;
 
-                   // <-- subOption 이름 번역
+                   // <-- subOption name translate
                    $encText = urlencode($subOption->name);
                    $postValues = 'source=ja&target=' . $target . '&text='.$encText;
                    $ch  = curl_init();
@@ -258,6 +270,7 @@ class MenuController extends Controller
 
                    curl_close ($ch);
 
+                   // Input Menu SubOption Name Translate Data in Menu Data Array
                    if($status_code == 200) {
                        $responseData = json_decode($response);
 
@@ -266,7 +279,6 @@ class MenuController extends Controller
                    else
                        $menuArray[$subOpKeyName] = $subOption->name;
 
-                   // $menuArray[$subOpKeyName]  = $subOption->name;
                    $menuArray[$subOpIDName]   = $subOption->sub_opnum;
 
                    $subOpKey++;
@@ -290,7 +302,7 @@ class MenuController extends Controller
 
     }
 
-    // <-- 메뉴 등록
+    // <-- Register Menu Method
     public function createMenu(Request $request) {
 
         $shopId = $request->get('shop_id');
@@ -362,7 +374,7 @@ class MenuController extends Controller
             Storage::makeDirectory($dir);
 
         if($request->file('menu_img')) {
-            // menu Img 가져오기
+            // Load menu Img
             $menuImg = $request->file('menu_img');
 
             // File Name Setting
@@ -392,14 +404,16 @@ class MenuController extends Controller
 
     }
 
-    // <--  현재 선택된 레이아웃 번호 불러오기
+    // <-- Load Current Layout Number Method
     public function getLayoutNumber(Request $request) {
+        // load layout data
         $layoutData = Restaurant::select('selectlayout')
                         ->where('id', $request->get('shop_id'))
                         ->first();
 
         $layoutNum = $layoutData->selectlayout;
 
+        // Case : layout -> Custom user layout
         if($layoutNum > 4) {
             $layoutNum = 0;
         }
@@ -409,10 +423,12 @@ class MenuController extends Controller
         ]);
     }
 
-    // <-- Menu 삭제
+    // <-- Menu Delete
     public function deleteMenu(Request $request) {
+        // Get menu id
         $shop_id = $request->get('menu_id');
 
+        // menu data delete
         Menu::where('id', $shop_id)
             ->delete();
 
@@ -421,14 +437,14 @@ class MenuController extends Controller
         ]);
     }
 
-    // <-- Menu  수정
+    // <-- Menu Update Method
     public function updateMenu(Request $request)
     {
-        // 메뉴, 가게 id 가져오기
+        // Get Menu Id, Shop id
         $menu_id = $request->get('menu_id');
         $shopId = $request->get('shop_id');
 
-        // 메뉴 정보 업데이트
+        // Menu Data Update
         Menu::where('id', $menu_id)
             ->update([
                 'name'          => $request->get('name'),
@@ -444,6 +460,7 @@ class MenuController extends Controller
             $opDataList = \App\Menu_Option::where('menu_id', $menu_id)
                         ->get();
 
+            // Option Data O -> Delete and Insert
             // 옵션 데이터가 있을 경우 먼저 삭제 한 후 다시 Insert
             foreach ($opDataList as $opData) {
                 $opNum = $opData->opnum;
@@ -454,7 +471,7 @@ class MenuController extends Controller
 
             $opArr = $request->get('option');
 
-            // 옵션 추가
+            // Add Option Data
             for ($opNum = 0; $opNum < count($opArr); $opNum++) {
                 $opName = $opArr[$opNum]['name'];
 

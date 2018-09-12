@@ -12,6 +12,7 @@ use App\Review;
 
 class RestaurantController extends Controller
 {
+    // Translate API Client id, pw, Setting
     const client_id     = "1ml1HFOe7ffSU4tD0da7";
     const client_secret = "qubdYMY8uA";
 
@@ -19,26 +20,31 @@ class RestaurantController extends Controller
     private $is_post = true;
     private $headers = array();
 
+    // <-- Translate API Setting
     function __construct()
     {
         $this->headers[] = "X-Naver-Client-Id: ".OrderController::client_id ;
         $this->headers[] = "X-Naver-Client-Secret: ".OrderController::client_secret ;
     }
 
+    // <-- Show Create Restaurent Form View
     public function showRestaurantForm() {
         if(!auth()->check() || auth()->user()->category == true)
-            return 'failed!!!!!@@@';
+            return false;
         else
             return view('restaurant.createRestaurant');
     }
 
+    // <-- Show Restaurent View
     public function showRestaurantInfoForm() {
 
         return view('user.userRestaurant');
     }
 
+    // <-- Get Restaurant Data Info Method
     public function showRestaurantInfo($shop_id) {
 
+        // Restaurant Id Check
         $resCheck = Restaurant::where('id', $shop_id)
                     ->count();
 
@@ -47,8 +53,10 @@ class RestaurantController extends Controller
                 'restaurant' => null,
             ]);
 
+        // Restaurant Info Translate
         $target = '';
 
+        // Restaurant Info Trans Language Target Setting
         if(!auth()->check()) {
             $target = 'ja';
         }
@@ -76,11 +84,12 @@ class RestaurantController extends Controller
             } // <-- switch end
         }
 
+        // get Restaurant Data
         $restaurant = Restaurant::where('id', $shop_id)
                                  ->get()
                                  ->toArray();
 
-        // <-- 가게이름 & 설명 번역
+        // <-- Restaurant Name & Explanation Translate
         $encText = urlencode($restaurant[0]['name']);
         $postValues = 'source=ja&target=' . $target . '&text='.$encText;
         $ch  = curl_init();
@@ -97,6 +106,7 @@ class RestaurantController extends Controller
 
         curl_close ($ch);
 
+        // Input Restaurant Translate Data in Restaurant Data Array
         if($status_code == 200) {
             $responseData = json_decode($response);
 
@@ -122,6 +132,7 @@ class RestaurantController extends Controller
 
         curl_close ($ch);
 
+        // Input Restaurant Translate Data in Restaurant Data Array
         if($status_code == 200) {
             $responseData = json_decode($response);
 
@@ -131,16 +142,19 @@ class RestaurantController extends Controller
             $restaurant[0]['trans_explanation']  = null;
         }
 
+        // Get Restaurant Total Rating Data
         $totalRating = Review::select(DB::raw('ROUND(AVG(rating), 2) as totalRating'))
                         ->where('shop_id', $shop_id)
                         ->get()
                         ->toArray();
 
+        // Get Restaurant Image Data
         $file = Upload::select('path', 'filename')
                         ->where('shop_id', $shop_id)
                         ->get()
                         ->toArray();
 
+        // Get Restaurant Like Data
         if(!auth()->check()) {
             $shopLikeNumData = 0;
         }
@@ -150,6 +164,7 @@ class RestaurantController extends Controller
                 ->count();
         }
 
+        // Restaurant Like Data
         if($shopLikeNumData == 0)
             $shopLike = false;
         else
@@ -158,14 +173,14 @@ class RestaurantController extends Controller
         $restaurantInfo = array_merge($restaurant, $totalRating, $file); //, $totalRating);
 
          return response()->json([
-            // 'translatedText' => RestaurantController::$shopId,
-            'restaurant' => $restaurantInfo,
+             'restaurant' => $restaurantInfo,
              'shopLike'  => $shopLike,
         ]);
 
 
     }
 
+    // <-- Insert Restaurant Data Method
     public function createRestaurant(Request $request) {
 
         // <-- *** insert restaurant data ***
@@ -221,7 +236,7 @@ class RestaurantController extends Controller
         $number = $request->get('num');
 
         if($request->file('titleImg')) {
-            // title Img 가져오기
+            // Load title Img
             $titleImg = $request->file('titleImg');
 
             // File Name Setting
@@ -240,10 +255,10 @@ class RestaurantController extends Controller
 
         if($number != 0) {
             for( $num = 0 ; $num < $number ; $num++ ) {
-                // 업로드한 파일 인덱스 찾기
+                // Find Upload File Index
                 $uploadName = 'galleryImg' . $num;
 
-                // 이미지 파일 가져오기
+                // Load ImageFile
                 $image = $request->file($uploadName);
 
                 // File Name Setting
@@ -253,7 +268,7 @@ class RestaurantController extends Controller
                 // Upload File Save
                 $image->storeAs($currentShopId, $fileName);
 
-                // DB에 저장
+                // Save DB
                 \App\Upload::create([
                     'filename'  => $fileName,
                     'shop_id'   => $currentShopId,
@@ -266,12 +281,13 @@ class RestaurantController extends Controller
         $link = route('restaurant.showRestaurantInfoForm' , ['shop_id' => $currentShopId]);
 
          return response()->json([
-             'msg'  => '등록이 완료되었습니다.',
+             'msg'  => '店の情報の登録を完了しました。.',
              'link' => $link,
          ]);
 
     }
 
+    // <-- Update Restaurant Info
     public function updateRestaurantInfo(Request $request) {
         $shop_id = $request->get('shop_id');
 
@@ -310,14 +326,16 @@ class RestaurantController extends Controller
          * */
 
 
-        // gallery 이미지 갯수
+        // gallery Image Num
         $imageNum = $request->get('num');
-        // db에 저장할 경로
+        // db Save Path
         $dbPath = '/images/'. $shop_id . '/';
         $deleteFlag = false;
 
+        // <-- Title Image
         if($request->file('titleImg')) {
 
+            // Delete title Img
             $selectFileName = '%' . $shop_id . '_titleImg%';
 
             $fileData = Upload::where('filename', 'like', $selectFileName)
@@ -325,13 +343,14 @@ class RestaurantController extends Controller
 
             $fileName = $fileData->filename;
 
+            // Title Img Found Case
             if($fileName != '') {
                 $deleteFileName = '/'. $shop_id . '/'. $fileName;
 
                 Storage::delete($deleteFileName);
             }
 
-            // title Img 가져오기
+            // Load title Img
             $titleImg = $request->file('titleImg');
 
             // File Name Setting
@@ -348,6 +367,7 @@ class RestaurantController extends Controller
                 ]);
 
         }
+        // Case : Upload Title Img Not Found
         else if(is_null($request->get('titleImg'))) {
             $selectFileName = '%' . $shop_id . '_titleImg%';
 
@@ -356,6 +376,7 @@ class RestaurantController extends Controller
 
             $fileName = $fileData->filename;
 
+            // Title Img Found Case
             if($fileName != '') {
                 $deleteFileName = '/'. $shop_id . '/'. $fileName;
 
@@ -367,6 +388,7 @@ class RestaurantController extends Controller
 
         } // <-- titleImg If End
 
+        // <-- Gallery Image
         for($imageIndex = 0 ; $imageIndex < $imageNum ; $imageIndex++ ) {
 
             $galleryIndexName = 'galleryImg' . $imageIndex;
@@ -378,11 +400,13 @@ class RestaurantController extends Controller
              * 　해당 갤러리 이미지 번호에 이미 이미지가 있을경우
              * */
 
+            // Case : Upload Gallery file Found
             if($request->file($galleryIndexName)) {
 
                 $fileCount = Upload::where('filename', 'like', $selectGalleryFileName)
                                 ->count();
 
+                // Case : DB Gallery Image File Found -> Delete
                 if($fileCount != 0) {
                     $fileData = Upload::where('filename', 'like', $selectGalleryFileName)
                         ->first();
@@ -397,7 +421,7 @@ class RestaurantController extends Controller
                         ->delete();
                 }
 
-                // gallery Img 가져오기
+                // Load gallery Img
                 $galleryImg = $request->file($galleryIndexName);
 
                 // File Name Setting
@@ -413,11 +437,13 @@ class RestaurantController extends Controller
                     ]);
 
             }
-            else if ($request->get($galleryIndexName) == 'dd') {
+            // Case : Selected Gallery Image File Delete
+            else if ($request->get($galleryIndexName) == 'delete') {
 
                 $fileCount = Upload::where('filename', 'like', $selectGalleryFileName)
                             ->count();
 
+                // Case : DB Gallery Image File Found -> Delete
                 if($fileCount != 0) {
 
                     $fileData = Upload::where('filename', 'like', $selectGalleryFileName)
@@ -438,6 +464,7 @@ class RestaurantController extends Controller
             }
             else {
 
+                // Load File Data and File Index Number Setting
                 $fileData = Upload::where('filename', 'like' ,$selectGalleryFileName)
                              ->first();
 
@@ -446,13 +473,16 @@ class RestaurantController extends Controller
                 else
                     $fileNumber = $imageIndex;
 
+                // File Name Setting
                 $currentGalleryName = $shop_id . '_galleryImg_' . $fileNumber;
                 $fileName = $fileData->filename;
 
                 $fileNameArray = explode('.', $fileName);
                 $galleryName = $fileNameArray[0];
 
-                // 해당 갤러리 번호와 다른 번호일 경우 지우고 다시 업뎃  아닐경우 업데이트 x
+                // Current Gallery Index Number Another Number Case -> Delete and Update
+                // Current Gallery Index Number Same Number Case -> Update X
+                // 해당 갤러리 번호와 다른 번호일 경우 지우고 다시 업뎃 아닐경우 업데이트 x
                 if($currentGalleryName != $galleryName) {
                     $beforeName = '/'. $shop_id . '/' . $fileName;
                     $moveFileName = '/'. $shop_id . '/'. $currentGalleryName . '.' . $fileNameArray[1];
@@ -483,14 +513,15 @@ class RestaurantController extends Controller
 
     }
 
-    // <-- 식당 좋아요
+    // <-- Restaurant Like
     public function restaurantsLike(Request $request) {
-        // 로그인 안되어 있을 경우
+        // Not Login Status
         if(!auth()->check())
             return response()->json([
                 'shopLike' => 'failed',
             ]);
 
+        // Request Shop like data
         if($request->get('shopLike')) {
 
             Shop_like::create([
@@ -502,6 +533,7 @@ class RestaurantController extends Controller
                 'shopLike' => true,
             ]);
         }
+        // Request Shop like cancel data
         else {
             Shop_like::where('user_num', auth()->user()->id)
                 ->where('shop_id', $request->get('shop_id'))

@@ -1,19 +1,25 @@
 <template>
     <v-app>
-         <div style="padding-left:8%; padding-right:8%"> 
+        <div id="fatherDiv"> 
         <v-stepper v-model="Menu_Order" style="background-color:#efe2bd">
             <!-- Header -->
             <v-stepper-header>
                 <!-- 1. 메뉴선택 -->
-                <v-stepper-step step="1" :complete="Menu_Order > 1"><B style="font-size:17px">{{trans_menu_select}}</B></v-stepper-step>
+                <v-stepper-step step="1" :complete="Menu_Order > 1">
+                    <B style="font-size:17px">{{trans_menu_select}}</B>
+                </v-stepper-step>
                 <v-divider></v-divider>
 
                 <!-- 2. 메뉴 확인 -->
-                <v-stepper-step step="2" :complete="Menu_Order > 2"><B style="font-size:17px">{{trans_menu_check}}</B></v-stepper-step>
+                <v-stepper-step step="2" :complete="Menu_Order > 2">
+                    <B style="font-size:17px">{{trans_menu_check}}</B>
+                </v-stepper-step>
                 <v-divider></v-divider>
 
                 <!-- 3. 번역 -->
-                <v-stepper-step step="3"><B style="font-size:17px">{{trans_menu_trans}}</B ></v-stepper-step>
+                <v-stepper-step step="3">
+                    <B style="font-size:17px">{{trans_menu_trans}}</B >
+                </v-stepper-step>
             </v-stepper-header>
 
             <!-- Main -->
@@ -455,6 +461,9 @@
 <style>
     /* 모바일 */
     @media (max-width: 639px){
+        #fatherDiv {
+            padding : 0; 
+        }
         .total {
             padding-left: 5%;
             padding-right: 5%;
@@ -470,6 +479,10 @@
     }
     /* 테블릿 */
     @media (min-width: 640px) and (max-width: 1023px){
+        #fatherDiv {
+            padding-left: 3%; 
+            padding-right: 3%;
+        }
         .total {
             padding-left: 5%;
             padding-right: 5%;
@@ -485,6 +498,10 @@
     }
     /* 데스트 탑 */
     @media (min-width: 1024px){
+        #fatherDiv {
+            padding-left: 8%; 
+            padding-right: 8%;
+        }
         .total {
             padding-left: 5%;
             padding-right: 5%;

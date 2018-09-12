@@ -825,7 +825,7 @@ export default {
             // 이미지 파일 저장 배열에서도 제거.
             for(let i=0; i < gallery.children.length; i++){
                 if(div === gallery.children[i]){ 
-                    this.SaveImg[i] = 'dd';
+                    this.SaveImg[i] = 'delete';
                 }
             }             
             gallery.removeChild(div);  

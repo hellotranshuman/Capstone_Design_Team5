@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use Validator;
 use Input;
 use \App\Restaurant;
@@ -13,7 +11,7 @@ use \App\User;
 
 class UsersController extends Controller
 {
-    //
+    // <-- Show Login Page
     public function showLogin() {
         if(auth()->check())
             return redirect('/');
@@ -22,47 +20,26 @@ class UsersController extends Controller
             return View('user.login');
     }
 
-    // <-- 로그인
+    // <-- Login Method
     public function doLogin(Request $request) {
-        /*
-        // <-- 유효성 검사 규칙 정의
-        $rules = array(
-            'id'    => 'required',
-            'password' => 'required|min:3',
-        );
 
-        // <-- 유효성 검사 Message 설정
-        $messsages = array(
-            'id.required'=>'아이디를 입력하세여~~',
-            'password.required'=>'비번을 입력하세여~~',
-            'password.min'=>'비번 글자가 짧아여~~',
-        );
-
-        // <-- 유효성 검사 실행
-        $validator = Validator::make($request->all(), $rules, $messsages);
-
-        // <-- 유효성 검사 실패
-        if ($validator->fails()) {
-            return Redirect::to('user.login')
-                ->withErrors($validator)
-                ->withInput($request->except('password'));
-        }      */
-
-
-        // <-- User Login 정보 가져오기
+        // <-- Load Input User Login Info
         $userData = array(
             'user_id'     => $request->get('user_id'),
             'password'  => $request->get('password')
         );
 
-        // <-- Login 정보 확인
+        // <-- Login Info Check
+        // Login Case -> False
         if (! auth()->attempt($userData, true)) {
             return response()->json([
                 'login' => false,
-                'msg' => '아이디와 비밀번호를 확인해주세요.',
             ]);
         }
+        // Login Case -> True
         else {
+
+            // User Category -> Restaurant
             if(!auth()->user()->category)
             {
                 $userId = auth()->user()->id;
@@ -71,6 +48,7 @@ class UsersController extends Controller
                     ->get()
                     ->first();
 
+                // Restaurant Register Check
                 if($restaurant)
                     $restaurant_id = $restaurant->id;
                 else
@@ -83,6 +61,8 @@ class UsersController extends Controller
                     'user_name' => auth()->user()->name,
                 ]);
             }
+
+            // User Category -> User
             else {
                 $restaurant_id = '/';
                 $userInfo = User::where('id', auth()->user()->id)
@@ -102,24 +82,24 @@ class UsersController extends Controller
                 ]);
             }
 
-            // auth()->user()->id
-            // auth()->user()->name
         }
 
 
     }
 
-    // <-- 로그아웃
+    // <-- Logout Method
     public function doLogout(Request $request) {
 
+        // Session Delete
         $request->session()->flush();
 
+        // Logout -> Redirect HomePage Path
         auth()->logout();
 
         return redirect('/');
     }
 
-    // <-- User 정보 받아오기
+    // <-- Load User Info Method
     public function getUserInfo(Request $request) {
         $user_id = $request->get('user_id');
 
@@ -130,7 +110,7 @@ class UsersController extends Controller
         return $userInfo;
     }
 
-    // <-- User 정보 수정
+    // <-- Update User Info Method
     public function editUserInfo(Request $request) {
         User::where('id', auth()->user()->id)
             ->update([

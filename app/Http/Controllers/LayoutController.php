@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class LayoutController extends Controller
 {
-    // <-- 현재 선택된 템플릿 번호 불러오기
+    // <-- Load Current Selected Layout Data
     public function getSelectedLayout($shop_id) {
 
+        // Get Layout Number
         $layoutData = Restaurant::select('selectlayout')
                         ->where('id', $shop_id)
                         ->first();
 
         $layoutNum = $layoutData->selectlayout;
 
+        // Case : Custom User Layout
         if($layoutNum > 4) {
 
             $layoutNameData = Layout::select('layout_name')
@@ -28,7 +30,7 @@ class LayoutController extends Controller
             $layoutName = $layoutNameData[0]["layout_name"];
 
         }
-
+        // Case : Default Layout
         else
             $layoutName = 'デフォルトテンプレート';
 
@@ -40,14 +42,17 @@ class LayoutController extends Controller
 
     }
 
-    // <-- 유저가 만든 레이아웃 저장
+    // <-- Save Custom User Layout
     public function saveCustomLayout(Request $request) {
+         // get layout, shop id, layout name data
          $layout = $request->get('menu');
          $shopId = $request->get('shop_id');
          $name   = $request->get('name');
 
+         // image routing route setting
          $dbPath = '/images/'. $shopId . '/';
 
+         // save thumbnail data
         if($request->file('thumbnail')) {
             $thumbnail = $request->file('thumbnail');
             $fileName = $name . '_thumbnail' . '.png';
@@ -69,12 +74,14 @@ class LayoutController extends Controller
             'thumbnail'      => $dbFileName,
          ]);
 
-       $layoutIdData = Layout::select('id')
+        // get layout number
+        $layoutIdData = Layout::select('id')
             ->where('shop_id', $shopId)
             ->first();
 
         $layoutId = $layoutIdData->id;
 
+        // update layout number in restaurant table
         Restaurant::where('id', $shopId)
             ->update(['selectLayout' => $layoutId]);
 
@@ -84,19 +91,24 @@ class LayoutController extends Controller
 
     }
 
-    // <-- 유저가 만든 레이아웃 불러오기
+    // <-- Load Custom User Layout Data
     public function loadCustomLayout(Request $request) {
+        // get shop id data
         $shopId     = $request->get('shop_id');
 
+        // count layout data
         $layoutCount = Layout::select('layout_data')
                         ->where('shop_id', $shopId)
                         ->count();
 
+        // case : layout data -> X
         if($layoutCount == 0)
             return response()->json([
                 'layoutData' => null,
             ]);
+        // case : layout data -> O
         else
+            // get layout data
             $layoutData = Layout::select(DB::raw('CAST(layout_data as CHAR) as layout_data, id, shop_id, layout_name, thumbnail'))
                             ->where('shop_id', $shopId)
                             ->get()
@@ -108,18 +120,24 @@ class LayoutController extends Controller
 
     }
 
+    // <-- Update Custom User Layout
     public function updateCustomLayout(Request $request) {
+        // get layout id, shop id, layout name data
         $layoutId = $request->get('id');
         $shopId = $request->get('shop_id');
         $name   = $request->get('name');
+
+        // image routing route setting
         $dbPath = '/images/'. $shopId . '/';
 
+        // save thumbnail data
         if($request->file('thumbnail')) {
+            // get thumbnail data
             $thumbnail = $request->file('thumbnail');
+            // thumbnail name setting
             $fileName = $name . '_thumbnail' . '.png';
             $dbFileName = $dbPath . $fileName;
-
-
+            // thumbnail file save
             $thumbnail->storeAs($shopId, $fileName);
         }
         else {
@@ -128,7 +146,7 @@ class LayoutController extends Controller
             ]);
         }
 
-
+        // update layout data
         Layout::where('id', $layoutId)
             ->update([
                 'layout_data'       => $request->get('menu'),
@@ -142,14 +160,14 @@ class LayoutController extends Controller
 
     }
 
-    // <-- 선택한 레이아웃 템플릿 저장
+    // <-- save selected layout setting
     public function saveSelectedLayout(Request $request) {
 
+        // get shop id, select layout number
         $shopId         = $request->get('shop_id');
         $selectLayout   = $request->get('slt_tem');
 
-
-
+        // update select layout number in restaurant table
         Restaurant::where('id', $shopId)
                     ->update(['selectLayout' => $selectLayout]);
 
@@ -159,11 +177,13 @@ class LayoutController extends Controller
 
     }
 
-    // <-- 선택한 레이아웃 템플릿 삭제
+    // <-- delete selected layout data
     public function deleteSelectedLayout(Request $request) {
 
+        // get layout number data
         $selectLayout   = $request->get('costom');
 
+        // delete layout data by layout id
         Layout::where('id', $selectLayout)
             ->delete();
 
